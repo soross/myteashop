@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC   
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 相当与调用httpServletRequest的setCharacterEncoding -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 请求后缀 默认为*.action ,可以自己进行设置,多个可以使用逗号(,)隔开-->
+	<constant name="struts.action.extension" value="do" />
+	<!-- 浏览器是否缓存静态内容 生产为true  开发就为false -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- struts配置文件修改后是否重新加载 生产为false（默认）  开发还是为true吧 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 使用开发模式可以打印出更多详细的错误信息 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 默认的视图主题 -->
+	<constant name="strust.ui.theme" value="simple" />
+	<!-- 对象由spring管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 
+		<include file="struts-default.xml" />
+	-->
+	<!-- 
+		http://xxx:dk/工程名/namespace/actionName_resultName.do 
+		例：http://localhost:8080/tesshop/struts/action_list.do
+	-->
+	<package name="struts" namespace="/struts" extends="struts-default">
+		<global-results>
+			<result name="message">/WEB-INF/page/message.jsp</result>
+		</global-results>
+		<action name="action_*" class="loginAction" method="(1)">
+			<result name="list">/WEB-INF/page/list.jsp</result>
+			<result name="add">/WEB-INF/page/add.jsp</result>
+			<result name="edit">/WEB-INF/page/edit.jsp</result>
+		</action>
+	</package>
+</struts>

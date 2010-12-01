@@ -1,0 +1,94 @@
+/*****三个模板共用*****/
+/*****主要是框架结构*****/
+
+
+/***** 全局设置 *****/ 
+* {margin:0;padding:0; }
+body{margin:0;font-size:12px;line-height:1.5;text-align:center;background:#E8F6E0;}
+body{width:967px;margin:0 auto;}
+div,td{font-size:12px;}
+img{border:0;}
+ul{list-style:none;text-align:left;}
+h1,h3{text-align:center;}
+h1{font-size:18px;}
+h2{font-size:12px;}
+h3,h4{font-size:12px;font-weight:normal;}
+
+.clear{clear:both;}
+
+/***** 链接颜色 *****/
+.red,a.red,a.red:link,a.red:visited{color:red;}
+
+/***** 头部设置 *****/
+
+#top h1 {font-family:"黑体";font-weight:600;display:block;overflow:hidden;word-break:break-all;padding:32px 0 0 0;width:966px;height:80px;color:#FFF;margin:0 auto;}
+
+
+
+/*****产品列表*****/
+#con #showtype{text-align:center;float:left;}
+#con .l2{word-break:break-all;width:98%;margin:0 auto;clear:both;}
+#con .l1 .pic{height:106px;width:106px;text-align:center;border:1px solid #BEBAB9;margin:0 auto;}
+#con .l1 .pic img{vertical-align:middle;border:3px solid #FFF;}
+
+
+
+/*可能产生的滚动图片*/
+#demo{overflow:hidden;width:750px;height:175px;border-top:0;margin:0 5px 0 5px;}
+#demo td{padding:0 8px;border:0;}
+#demo img{border:1px solid #BEBAB9;}
+
+.delinfo{text-decoration : line-through;}
+#trueprice{font-size:14px;font-weight:bold;}
+
+/*****产品详情 相关产品*****/
+#con .box4{border:1px solid;float:right;width:136px;border-right:0;border-top:0;}
+#con .box4 ul{width:130px;margin:0 auto;overflow:hidden;}
+
+/*****可视化编辑处理*****/
+#con .custom    {padding-left:10px;}
+#con .custom p  {margin:0 0 18px 0;}
+#con .custom ul {margin:0 0 0 25px;list-style:desc;}
+#con .custom ol {margin:0 0 0 25px;list-style:decimal;}
+.intro p        {margin:0 0 18px 0;}
+
+
+/***** 分页 *****/
+.cutpage{height:24px;line-height:25px;text-align:center;clear:both;}
+
+.PageInfo{float:left;text-indent:6px;}
+.PageChanger{float:right;}
+.PageChanger a.curpage{font-weight:bold;}
+.PageChanger a{padding:0 3px 0 0;}
+.PageChanger img{vertical-align:-3px;}
+.PageChanger input{border:1px solid #AAA;background-color:#FFF;margin:0 2px;}
+
+/*IE5 Crack*/
+.PageChanger input{
+	height:16px;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	height:12px;
+}
+
+.PageChanger #custompage{width:20px;}
+
+
+.tr1{height:25px;}
+
+.center{text-align:center;}
+
+
+#bottom .copy2,#bottom a.copy2,#bottom a.copy2:link,#bottom a.copy2:visited{text-decoration:underline;color:red;}
+
+/***** 新闻动态 *****/
+#news_show{width:600px;margin:0 auto;clear:both;}
+#news_show h1{text-align:center;}
+
+/***** 新闻列表 *****/
+#con ul.list{padding:0 0 0 6px;}
+#con ul.list li{line-height:1.8;width:750px;}
+
+/***** 千网计划 *****/
+#qianwang {position:relative;top:0;left:0;text-align:left;}
+#qianwang2 {position:absolute;top:3px;left:0;}

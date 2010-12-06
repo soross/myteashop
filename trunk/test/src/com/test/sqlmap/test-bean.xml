@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="book">
+	<!-- 获得日记ID -->
+	<select id="getID"  resultClass="int">
+		<![CDATA[
+			SELECT SEQ_CZSQ_DIARY_ID.NEXTVAL FROM DUAL
+		]]>
+	</select>
+</sqlMap>

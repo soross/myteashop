@@ -5,10 +5,17 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="book">
-	<!-- 获得日记ID -->
-	<select id="getID"  resultClass="int">
+	<!-- 获得菜单信息 -->
+	<select id="getMenu"  resultClass="java.util.HashMap" parameterClass="int">
 		<![CDATA[
-			SELECT SEQ_CZSQ_DIARY_ID.NEXTVAL FROM DUAL
+			SELECT ID,NAME,URL,PID FROM TEST WHERE ID=#value#
+		]]>
+	</select>
+	
+	<!-- 获得菜单列表 -->
+	<select id="getMenuList"  resultClass="java.util.HashMap">
+		<![CDATA[
+			SELECT * FROM TEST
 		]]>
 	</select>
 </sqlMap>

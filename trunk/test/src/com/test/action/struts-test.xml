@@ -4,7 +4,10 @@
 	
 <struts>
 	<package name="testAction"  extends="struts-default">
-		<action name="test" class="com.test.action.testAction" method="test">
+		<action name="basic" class="basicAction" method="test">
+			<result name="input">/</result>
+		</action>
+		<action name="test" class="testAction" method="test">
 			<result>/WEB-INF/page/MyJsp.jsp</result>
 		</action>
 

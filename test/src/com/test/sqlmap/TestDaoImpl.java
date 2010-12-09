@@ -1,6 +1,11 @@
 package com.test.sqlmap;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 
@@ -11,9 +16,15 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 @SuppressWarnings("unchecked")
 public class TestDaoImpl  extends SqlMapClientDaoSupport
 {
-    public int getNum()
+    public Map getMenu(int id)
     {
-        int num = Integer.valueOf(getSqlMapClientTemplate().queryForObject("getID").toString());
-        return num;
+        Map map = (HashMap)getSqlMapClientTemplate().queryForObject("getMenu",id);
+        return map;
+    }
+    
+    public List getMenuList()
+    {
+        List<HashMap> mapList = (ArrayList<HashMap>)getSqlMapClientTemplate().queryForList("getMenu");
+        return mapList;
     }
 }

@@ -24,7 +24,7 @@ public class TestDaoImpl  extends SqlMapClientDaoSupport
     
     public List getMenuList()
     {
-        List<HashMap> mapList = (ArrayList<HashMap>)getSqlMapClientTemplate().queryForList("getMenu");
+        List<HashMap> mapList = (ArrayList<HashMap>)getSqlMapClientTemplate().queryForList("getMenuList");
         return mapList;
     }
 }

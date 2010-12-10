@@ -1,10 +1,13 @@
 package com.test.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.test.sqlmap.TestDaoImpl;
 import com.test.util.BasicAction;
+import com.test.util.MenuUtil;
 
 public class testAction extends BasicAction{
     private TestDaoImpl testDao;
@@ -22,7 +25,7 @@ public class testAction extends BasicAction{
     public String test()
 	{
         this.before();
-		
+	
 		 Map m = new HashMap();
          int flag = 0;
          int code = 0;
@@ -37,7 +40,13 @@ public class testAction extends BasicAction{
         
         try
         {
-            m = testDao.getMenu(id);
+//            m = testDao.getMenu(id);
+            List menulist = testDao.getMenuList();
+            System.out.println("menulist=="+menulist.size());
+            MenuUtil mu = new MenuUtil();
+            List list = mu.checkMenu(menulist, 0);
+            this.checkList(list,100);
+            m.put("LIST", list);
         }
         catch (Exception e)
         {
@@ -53,7 +62,20 @@ public class testAction extends BasicAction{
 		return null;
 	}
 		
-
+    public void checkList(List list,int id)
+    {
+        for(int i =0;i<list.size();i++)
+        {
+            Map map = (HashMap)list.get(i);
+            System.out.println("NUM==="+id+",ID=="+map.get("ID")+",NAME=="+map.get("NAME")+",URL=="+map.get("URL")+",PID=="+map.get("PID"));
+            List slist = (ArrayList)map.get("SMENU");
+            if(slist.size()!=0)
+            {
+                this.checkList(slist,i);
+            }
+                
+        }
+    }
 	
 }
 

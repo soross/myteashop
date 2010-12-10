@@ -15,7 +15,7 @@
 	<!-- 获得菜单列表 -->
 	<select id="getMenuList"  resultClass="java.util.HashMap">
 		<![CDATA[
-			SELECT * FROM TEST
+			SELECT ID,NAME,URL,PID FROM TEST
 		]]>
 	</select>
 </sqlMap>

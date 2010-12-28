@@ -51,7 +51,7 @@ function getMenuList(list,id)
 		   {
 			   str = str+'----';
 		   }
-		   xml = xml+ str +"id: "+list[i].ID+",name: "+list[i].NAME+",url: "+list[i].URL+",pid: "+list[i].PID+"<br>";
+		   xml = xml+"²Ëµ¥¼¶±ð£º"+parseInt(id+1)+"      "+ str +"id: "+list[i].ID+",name: "+list[i].NAME+",url: "+list[i].URL+",pid: "+list[i].PID+"<br>";
 		   if(list[i].SMENU.length !=0)
            {
         	   alert(list[i].SMENU.length);

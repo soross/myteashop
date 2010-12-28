@@ -8,7 +8,7 @@ import java.util.Map;
 import com.test.sqlmap.TestDaoImpl;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
-
+@SuppressWarnings("unchecked")
 public class testAction extends BasicAction{
     private TestDaoImpl testDao;
 
@@ -44,7 +44,7 @@ public class testAction extends BasicAction{
             List menulist = testDao.getMenuList();
             System.out.println("menulist=="+menulist.size());
             MenuUtil mu = new MenuUtil();
-            List list = mu.checkMenu(menulist, 0);
+            List list = mu.checkMenu(menulist, id,"ID","PID","SMENU");
             this.checkList(list,100);
             m.put("LIST", list);
         }

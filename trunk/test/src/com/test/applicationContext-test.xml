@@ -20,13 +20,13 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<bean id="basicAction" class="com.test.util.BasicAction"/>
-	<!-- DAO -->
+	<!-- DAO 
 	<bean id="testDao" class="com.test.sqlmap.TestDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="sqlMapClient" ref="sqlMapClient" />
 	</bean>
-	
+	-->
 	<bean id="testAction" class="com.test.action.testAction">
-		<property name="testDao" ref="testDao"></property>
+		<!-- <property name="testDao" ref="testDao"></property> -->
 	</bean>
 </beans>

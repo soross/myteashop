@@ -21,6 +21,31 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<!-- 数据库 
 	<import resource="classpath*:ibatis-bean.xml"/>
+	
 	-->
 	<import resource="classpath*:com/test/applicationContext-test.xml"/>
+	<!-- ehcache 配置 -->
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ehcache.xml</value>
+		</property>
+		<property name="shared">
+			<value>true</value>
+		</property>
+	</bean>
+
+	<bean id="dhsCache" class="com.test.util.CacheUtil">
+		<property name="cache">
+			<bean
+				class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+				<property name="cacheManager">
+					<ref local="cacheManager" />
+				</property>
+				<property name="cacheName" value="dhsCache" />
+			</bean>
+		</property>
+	</bean>
+	
+	
 </beans>

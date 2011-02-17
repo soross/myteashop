@@ -61,3 +61,22 @@ function getMenuList(list,id)
        }
 	   return xml;
 }
+
+function ab() {
+	$.ajax( {
+		url : domain+'/login.shtml',
+		type : 'POST',
+		dataType : 'json',
+		cache : false,
+		async : false,
+		timeout : 1000,
+		error : function()
+		{
+			alert('≤È—Ø ß∞‹');
+		},
+		success : function(json) 
+		{
+			document.getElementById("aaa").innerHTML=json.str;
+		}
+	});
+ }

@@ -12,11 +12,31 @@
     
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
 
+	<script language="JavaScript" >
+	function init(){
+	   $.ajax( {
+		url : domain+'/login.shtml',
+		type : 'POST',
+		dataType : 'json',
+		cache : false,
+		async : false,
+		timeout : 1000,
+		error : function()
+		{
+			alert('查询失败');
+		},
+		success : function(json) 
+		{
+			document.getElementById("aaa").innerHTML=json.str;
+		}
+	});
+	}
+	</script>
+
   </head>
   
-  <body>
-  	<a href="javascript:getMenu(0);" class="button01">点击查询</a>
-    	显示数据: <br><span id="Menu"></span>
+  <body onload="javascript:init();">
+    	<span id ="aaa" >
   </body>
 </html>
 <script type="text/javascript" src="../../resources/js/page.js"></script>

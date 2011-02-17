@@ -10,6 +10,8 @@
 		<action name="test" class="testAction" method="test">
 			<result>/WEB-INF/page/MyJsp.jsp</result>
 		</action>
-
+		<action name="login" class="loginAction" method="login">
+			<result name="success">index.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -29,4 +29,5 @@
 	<bean id="testAction" class="com.test.action.testAction">
 		<!-- <property name="testDao" ref="testDao"></property> -->
 	</bean>
+	<bean id="loginAction" class="com.test.action.loginAction"></bean>
 </beans>

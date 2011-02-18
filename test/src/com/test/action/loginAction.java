@@ -60,7 +60,7 @@ public class loginAction extends BasicAction{
 //		   // Õ∑≈¡¨Ω”   
 //		   getMethod.releaseConnection();   
 //		  }
-		String url = "http://www.1soccer.com/resources/js/global.js";
+		String url = "http://www.1soccer.com/oddsindex/index/";
         PostMethod postMethod = new UTF8PostMethod(url);
         StringBuilder origin = new StringBuilder();
         origin.setLength(0);

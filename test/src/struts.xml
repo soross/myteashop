@@ -5,4 +5,5 @@
 
 <struts>
 	<include file="com/test/action/struts-test.xml"/>
+	<include file="com/test/action/login/struts-login.xml"/>
 </struts>

@@ -19,11 +19,13 @@
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.2.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id="basicAction" class="com.test.util.BasicAction"/>
 	<!-- 数据库 -->
 	<import resource="classpath*:ibatis-bean.xml"/>
 	
 	
 	<import resource="classpath*:com/test/applicationContext-test.xml"/>
+	<import resource="classpath*:com/test/action/login/applicationContext-login.xml"/>
 	<!-- ehcache 配置 -->
 	<bean id="cacheManager"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">

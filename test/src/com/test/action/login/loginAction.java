@@ -1,32 +1,35 @@
-package com.test.action;
+package com.test.action.login;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.test.sqlmap.TestDaoImpl;
+import com.test.sqlmap.login.LoginDaoImpl;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
 @SuppressWarnings("unchecked")
-public class testAction extends BasicAction{
-    private TestDaoImpl testDao;
+public class loginAction extends BasicAction{
+    private LoginDaoImpl loginDao;
 
-	public TestDaoImpl getTestDao()
+    public LoginDaoImpl getLoginDao()
     {
-        return testDao;
+        return loginDao;
     }
 
-    public void setTestDao(TestDaoImpl testDao)
+    public void setLoginDao(LoginDaoImpl loginDao)
     {
-        this.testDao = testDao;
+        this.loginDao = loginDao;
     }
 
-    public String test()
-	{
+    private String userName;
+    private String passWord;
+    
+    public String login()
+    {
         this.before();
-	
-		 Map m = new HashMap();
+    
+         Map m = new HashMap();
          int flag = 0;
          int code = 0;
          int id = 0;
@@ -41,11 +44,11 @@ public class testAction extends BasicAction{
         try
         {
 //            m = testDao.getMenu(id);
-			//从数据库中查询出来的List（List中是MAP）
-            List menulist = testDao.getMenuList();
+            //从数据库中查询出来的List（List中是MAP）
+            List menulist = loginDao.getMenuList(userName, passWord);
             System.out.println("menulist=="+menulist.size());
             MenuUtil mu = new MenuUtil();
-			//将查询出来的list用工具类处理成特定结构的list
+            //将查询出来的list用工具类处理成特定结构的list
             List list = mu.checkMenu(menulist, id,"ID","PID","SMENU");
             this.checkList(list,100);
             m.put("LIST", list);
@@ -61,9 +64,9 @@ public class testAction extends BasicAction{
 
        //json返回结果
          writeMapToJson(m);
-		return null;
-	}
-		
+        return null;
+    }
+        
     public void checkList(List list,int id)
     {
         for(int i =0;i<list.size();i++)
@@ -78,6 +81,6 @@ public class testAction extends BasicAction{
                 
         }
     }
-	
+    
 }
 

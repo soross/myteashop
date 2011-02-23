@@ -34,7 +34,11 @@ public class loginAction extends BasicAction{
          int code = 0;
          int id = 0;
          try {
-            id =  Integer.valueOf(getParam("id").toString());
+        	 userName =  getParam("userName").toString();
+        	 System.out.println(userName);
+        	 passWord =  getParam("passWord").toString();
+        	 
+        	 System.out.println(passWord);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

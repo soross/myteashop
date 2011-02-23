@@ -99,7 +99,7 @@ UNLOCK TABLES;
 #
 
 CREATE TABLE `fb_newbase` (
-  `NB_Id` int(8) NOT NULL AUTO_INCREMENT COMMENT '新闻基本表ID',
+  `NB_Id` int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY, COMMENT '新闻基本表ID',
   `NB_CId` int(2) NOT NULL DEFAULT '0' COMMENT '分类ID',
   `NB_Title` varchar(100) DEFAULT NULL COMMENT '标题',
   `NB_Author` varchar(20) DEFAULT NULL COMMENT '作者',
@@ -121,7 +121,7 @@ UNLOCK TABLES;
 #
 
 CREATE TABLE `fb_newclass` (
-  `NC_Id` int(8) NOT NULL AUTO_INCREMENT COMMENT '新闻分类ID',
+  `NC_Id` int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY, COMMENT '新闻分类ID',
   `NC_FId` int(2) NOT NULL DEFAULT '0' COMMENT '父ID',
   `NC_Name` varchar(50) DEFAULT NULL COMMENT '新闻分类名称',
   `NC_Keywrod` varchar(100) DEFAULT NULL COMMENT '新闻分类的关键字',

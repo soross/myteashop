@@ -30,6 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </style>
     <script language="JavaScript" >
 	function login(){
+	var username = document.getElementById("username").value;
+	alert(username);
+	var passWord = document.getElementById("passWord").value;
 	   $.ajax( {
 		url : domain+'/login.shtml',
 		type : 'POST',

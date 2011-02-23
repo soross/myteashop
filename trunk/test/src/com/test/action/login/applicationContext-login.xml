@@ -20,12 +20,12 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<!-- DAO -->
-	<bean id="testDao" class="com.test.sqlmap.TestDaoImpl">
+	<bean id="loginDao" class="com.test.sqlmap.login.LoginDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="sqlMapClient" ref="sqlMapClient" />
 	</bean>
 	
-	<bean id="testAction" class="com.test.action.testAction">
-		<property name="testDao" ref="testDao"></property>
+	<bean id="loginAction" class="com.test.action.login.loginAction">
+		<property name="loginDao" ref="loginDao"></property> 
 	</bean>
 </beans>

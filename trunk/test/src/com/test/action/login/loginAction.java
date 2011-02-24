@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.test.sqlmap.login.LoginDaoImpl;
+import com.test.database.login.impl.LoginDaoImpl;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
 @SuppressWarnings("unchecked")

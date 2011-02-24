@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="book">
+	<typeAlias alias="adminBean" type="com.test.database.login.bean.AdminBean" />
+	<resultMap id="admin" class="adminBean">
+		<result property="A_UserId" column="A_USERID" columnIndex="1" />
+		<result property="A_UserName" column="A_USERNAME" columnIndex="2" />
+		<result property="A_PassWord" column="A_PASSWORD" columnIndex="3" />
+	</resultMap>
+	<!-- 验证用户 -->
+	<select id="checkAdmin"  parameterClass="adminBean" resultClass="adminBean">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERNAME=#A_UserName# AND A.A_PASSWORD=#A_PassWord#
+		]]>
+	</select>
+	
+	<!-- 获得菜单列表 -->
+	<select id="getAdminMenuList" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		<![CDATA[
+			SELECT M.M_MENUID,M.M_MENUNAME,M.M_MENUNUMBER,M.M_MENUPARENT,M.M_MENUURL,M.M_MENUTYPE,M.M_MENUISDEL FROM FB_MENU M  
+			LEFT JOIN FB_MENU_ROLE MR ON MR.MR_MENUID = M.M_MENUID
+			LEFT JOIN FB_ROLE R ON R.R_ROLEID = MR.MR_ROLEID
+			LEFT JOIN FB_ADMIN_ROLE AR ON AR.AR_ROLEID = R.R_ROLEID
+			LEFT JOIN FB_ADMIN A ON A.A_USERID=AR.AR_ADMINID
+			WHERE A.A_USERNAME=#USERNAME# AND A.A_PASSWORD=#PASSWORD# AND M.M_MENUISDEL=0 AND M.M_MENUTYPE=0
+		]]>
+	</select>
+</sqlMap>

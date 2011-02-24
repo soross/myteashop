@@ -22,9 +22,7 @@
 	<bean id="basicAction" class="com.test.util.BasicAction"/>
 	<!-- 数据库 -->
 	<import resource="classpath*:ibatis-bean.xml"/>
-	
-	
-	<import resource="classpath*:com/test/applicationContext-test.xml"/>
+	<!-- 加载配置文件 -->
 	<import resource="classpath*:com/test/action/login/applicationContext-login.xml"/>
 	<!-- ehcache 配置 -->
 	<bean id="cacheManager"

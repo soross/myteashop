@@ -33,23 +33,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var username = document.getElementById("username").value;
 	alert(username);
 	var passWord = document.getElementById("passWord").value;
+	var code = document.getElementById("txtCode").value;
 	   $.ajax( {
 		url : domain+'/login.shtml',
 		type : 'POST',
 		dataType : 'json',
 		cache : false,
 		async : false,
-		data : ({userName : username,passWord : passWord}),
+		data : ({userName : username,passWord : passWord,code : code}),
 		timeout : 1000,
 		error : function()
 		{
-			alert('查询失败');
+			alert('系统有问题！！请联系站长');
 		},
 		success : function(json) 
 		{
-			//document.getElementById("aaa").innerHTML=json.str;
-			alert('查询成功');
+			if(json.loginflag=="true"){
+			alert(json.message);
 			//window.location.href='<%=request.getContextPath()%>'+"/service/transaction/mall/package.jsp";
+			}
+			else{
+			alert(json.message);
+			}		
 		}
 	});
 	}

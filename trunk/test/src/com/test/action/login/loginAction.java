@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.test.database.login.bean.AdminBean;
 import com.test.database.login.impl.LoginDaoImpl;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
@@ -51,13 +52,13 @@ public class loginAction extends BasicAction{
         
         try
         {
-        	loginnum = loginDao.checkAdmin(userName, passWord);//判断用户名和密码是否正确
+            AdminBean loginbean = loginDao.checkAdmin(userName, passWord);//判断用户名和密码是否正确
 //            m = testDao.getMenu(id);
             //从数据库中查询出来的List（List中是MAP）
         	System.out.println(loginnum);
            // List menulist = loginDao.getMenuList(userName, passWord);
            // System.out.println("menulist=="+menulist.size());
-            if(loginnum==0){
+            if(loginbean==null){
             	loginflag = "false";
             	message = "输入信息有误！请重新输入";
             }

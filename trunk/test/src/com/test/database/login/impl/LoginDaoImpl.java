@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import com.test.database.login.bean.AdminBean;
+
 
 /**
  * @author fanml
@@ -16,13 +18,13 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 @SuppressWarnings("unchecked")
 public class LoginDaoImpl  extends SqlMapClientDaoSupport
 {
-    public int checkAdmin(String userName,String passWord)
+    public AdminBean checkAdmin(String userName,String passWord)
     {
-        Map adminMap = new HashMap();
-        adminMap.put("USERNAME", userName);
-        adminMap.put("PASSWORD", passWord);
-        int count = (Integer)getSqlMapClientTemplate().queryForObject("checkAdmin",adminMap);
-        return count;
+        AdminBean bean = new AdminBean();
+        bean.setA_UserName(userName);
+        bean.setA_PassWord(passWord);
+        AdminBean adminBean = (AdminBean)getSqlMapClientTemplate().queryForObject("checkAdmin",bean);
+        return adminBean;
     }
     
     public List getMenuList(String userName,String passWord)

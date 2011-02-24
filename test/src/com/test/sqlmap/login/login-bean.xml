@@ -8,7 +8,7 @@
 	<!-- 验证用户 -->
 	<select id="checkAdmin"  parameterClass="java.util.HashMap" resultClass="int">
 		<![CDATA[
-			SELECT COUTN(*) FROM FB_ADMIN A WHERE A.A_USERNAME=#USERNAME# AND A.A_PASSWORD=#PASSWORD#
+			SELECT COUNT(*) FROM FB_ADMIN A WHERE A.A_USERNAME=#USERNAME# AND A.A_PASSWORD=#PASSWORD#
 		]]>
 	</select>
 	

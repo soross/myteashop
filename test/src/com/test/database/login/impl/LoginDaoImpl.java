@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.test.database.login.bean.AdminBean;
+import com.test.database.login.bean.MenuBean;
 
 
 /**
@@ -29,10 +30,10 @@ public class LoginDaoImpl  extends SqlMapClientDaoSupport
     
     public List getMenuList(String userName,String passWord)
     {
-        Map adminMap = new HashMap();
-        adminMap.put("USERNAME", userName);
-        adminMap.put("PASSWORD", passWord);
-        List<HashMap> mapList = (ArrayList<HashMap>)getSqlMapClientTemplate().queryForList("getAdminMenuList",adminMap);
+        AdminBean bean = new AdminBean();
+        bean.setA_UserName(userName);
+        bean.setA_PassWord(passWord);
+        List<MenuBean> mapList = (ArrayList<MenuBean>)getSqlMapClientTemplate().queryForList("getAdminMenuList",bean);
         return mapList;
     }
 }

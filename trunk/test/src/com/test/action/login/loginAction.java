@@ -39,7 +39,7 @@ public class loginAction extends BasicAction{
          int flag = 0;
          int code = 0;
          int id = 0;
-         int loginnum=0;
+         int loginnum=0;//判断用户名是存在
          codeimg = request.getSession().getAttribute("rand").toString();
          if(codeimg.equals(getParam("code").toString())){
          try {
@@ -56,7 +56,6 @@ public class loginAction extends BasicAction{
             AdminBean loginbean = loginDao.checkAdmin(userName, passWord);//判断用户名和密码是否正确
 //            m = testDao.getMenu(id);
             //从数据库中查询出来的List（List中是MAP）
-        	System.out.println(loginnum);
            // List menulist = loginDao.getMenuList(userName, passWord);
            // System.out.println("menulist=="+menulist.size());
             if(loginbean==null){
@@ -65,7 +64,10 @@ public class loginAction extends BasicAction{
             }
             else{
             	loginflag = "true";
-            	message="输入正确";
+            	//从数据库中查询出来的List（List中是MAP）
+                List menulist = loginDao.getMenuList(userName, passWord);
+                request.getSession().setAttribute("loginbean", loginbean);
+                request.getSession().setAttribute("menulist", menulist);
             }
             MenuUtil mu = new MenuUtil();
             //将查询出来的list用工具类处理成特定结构的list
@@ -78,7 +80,8 @@ public class loginAction extends BasicAction{
             // TODO: handle exception
             e.printStackTrace();
             flag = 1;
-        }}
+        }
+        }
          else{
         	 loginflag = "false";
          	message = "输入验证码有误！！请重新输入";

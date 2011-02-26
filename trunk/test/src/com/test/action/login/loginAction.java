@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.test.database.login.bean.AdminBean;
+import com.test.database.login.bean.MenuBean;
 import com.test.database.login.impl.LoginDaoImpl;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
@@ -86,7 +87,12 @@ public class loginAction extends BasicAction{
          m.put("message", message);
          m.put("flag", flag);
          m.put("code",code);
-
+         List list = loginDao.getMenuList(userName, passWord);
+         for (Object o : list)
+         {
+             MenuBean menu = (MenuBean)o;
+             System.out.println(menu.getM_MenuName());
+         }
        //json·µ»Ø½á¹û
          writeMapToJson(m);
         return null;

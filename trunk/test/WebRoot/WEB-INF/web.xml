@@ -39,4 +39,15 @@
 		<filter-name>Struts2</filter-name>
 		<url-pattern>*.shtml</url-pattern>
 	</filter-mapping>
+	
+	<!-- 配置s标签在jsp里面使用会报错问题 -->
+	<filter-mapping>
+		<filter-name>Struts2</filter-name>
+		 <url-pattern>*.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher> 
+	</filter-mapping>
+	
+	
+	
 </web-app>

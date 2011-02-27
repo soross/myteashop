@@ -47,25 +47,25 @@ background="<%=basePath%>image/fb_main/menu_bg.jpg" border=0>
   <TR>
     <TD vAlign=top align=middle>
     <s:iterator value="#session.menulist" id="list">
-    <s:if test="#list.M_MENUPARENT==null">
+    <s:if test="#list.M_MenuParent==null">
       <TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
         <TR height=22>
           <TD style="PADDING-LEFT: 30px" background=<%=basePath%>image/fb_main/menu_bt.jpg><A 
-            class=menuParent onclick=expand('<s:property value="#list.M_MENUID"/>') 
-            href="javascript:void(0);"><s:property value="#list.M_MENUNAME"/></A></TD></TR>
+            class=menuParent onclick=expand('<s:property value="#list.M_MenuId"/>') 
+            href="javascript:void(0);"><s:property value="#list.M_MenuName"/></A></TD></TR>
         <TR height=4>
           <TD></TD></TR></TABLE>
          
-      <TABLE id="child<s:property value="#list.M_MENUID"/>" style="DISPLAY: none" cellSpacing=0 cellPadding=0 
+      <TABLE id="child<s:property value="#list.M_MenuId"/>" style="DISPLAY: none" cellSpacing=0 cellPadding=0 
       width=150 border=0>
       <s:iterator value="#session.menulist" id="list1">
-          <s:if test="#list.M_MENUID==#list1.M_MENUPARENT">        
+          <s:if test="#list.M_MenuId==#list1.M_MenuParent">        
         <TR height=20>
           <TD align=middle width=30><IMG height=9 
             src="<%=basePath%>image/fb_main/menu_icon.gif" width=9></TD>
           <TD><A class=menuChild 
             href="#" 
-            target=main><s:property value="#list1.M_MENUNAME"/></A></TD></TR>
+            target=main><s:property value="#list1.M_MenuName"/></A></TD></TR>
             </s:if>
             </s:iterator>
        </TABLE>

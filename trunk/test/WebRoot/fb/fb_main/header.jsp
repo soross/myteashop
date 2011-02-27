@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'header.jsp' starting page</title>
-    
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/global.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.4.2.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -30,7 +32,7 @@ background="<%=basePath%>image/fb_main/header_bg.jpg" border=0>
     <TD width=260><IMG height=56 src="<%=basePath%>image/fb_main/header_left.jpg" 
     width=260></TD>
     <TD style="FONT-WEIGHT: bold; COLOR: #fff; PADDING-TOP: 20px" 
-      align=middle>当前用户：admin &nbsp;&nbsp; <A style="COLOR: #fff" 
+      align=middle>当前用户：<s:property value="#session.loginbean.A_UserName"/>&nbsp;&nbsp; <A style="COLOR: #fff" 
       href="" 
       target=main>修改口令</A> &nbsp;&nbsp; <A style="COLOR: #fff" 
       onclick="if (confirm('确定要退出吗？')) return true; else return false;" 

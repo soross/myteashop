@@ -119,6 +119,7 @@ public class loginAction extends BasicAction{
     //=======================管理员列表的查询======================
     
     public String getAdminList(){
+        this.before();
     	System.out.println("进来======");
     	AdminBean ab = new AdminBean();
     	if(getParam("userName")!=null){
@@ -133,7 +134,7 @@ public class loginAction extends BasicAction{
     	
     	System.out.println(adminlist.size());
     	
-    	this.request.setAttribute("adminlist", adminlist);
+    	request.setAttribute("adminlist", adminlist);
     	return "listadmin";
     } 
     

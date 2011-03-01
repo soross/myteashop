@@ -1,11 +1,13 @@
 package com.test.database.login.bean;
 
+import java.io.Serializable;
+
 
 /**
  * @author fanml
  *
  */
-public class AdminBean
+public class AdminBean implements Serializable
 {
     /**
      * ÓÃ»§ID

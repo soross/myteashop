@@ -1,6 +1,8 @@
 package com.test.database.login.bean;
 
-public class MenuBean
+import java.io.Serializable;
+
+public class MenuBean implements Serializable
 {
     private String M_MenuId;//²Ëµ¥ID
     

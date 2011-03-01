@@ -10,5 +10,8 @@
 		<action name="login" class="loginAction" method="login">
 			<result name="success">index.jsp</result>
 		</action>
+		<action name="getAdminList" class="loginAction" method="getAdminList">
+			<result name="listadmin">/fb/fb_main/fb_sys_admin/adminlist.jsp</result>
+		</action>
 	</package>
 </struts>

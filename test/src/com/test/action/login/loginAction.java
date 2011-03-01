@@ -116,5 +116,26 @@ public class loginAction extends BasicAction{
         }
     }
     
+    //=======================管理员列表的查询======================
+    
+    public String getAdminList(){
+    	System.out.println("进来======");
+    	AdminBean ab = new AdminBean();
+    	if(getParam("userName")!=null){
+    	String username = getParam("userName").toString();
+    	ab.setA_UserName(username);	
+    	}
+    	if(getParam("passWord")!=null){
+    	String pwd = getParam("passWord").toString();
+    	ab.setA_UserName(pwd);
+    	}
+    	List adminlist = loginDao.getAdminList(ab); 
+    	
+    	System.out.println(adminlist.size());
+    	
+    	this.request.setAttribute("adminlist", adminlist);
+    	return "listadmin";
+    } 
+    
 }
 

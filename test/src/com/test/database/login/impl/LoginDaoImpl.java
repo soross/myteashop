@@ -28,6 +28,19 @@ public class LoginDaoImpl  extends SqlMapClientDaoSupport
         return adminBean;
     }
     
+    public List getAdminList(AdminBean adminbean){
+    	
+    	
+    	System.out.println("=============");
+    	
+    	List<AdminBean> adminlist = (ArrayList<AdminBean>)getSqlMapClientTemplate().queryForList("getAdminList", adminbean);
+    	
+    	System.out.println("=============");
+    	
+    	
+    	return adminlist;
+    }
+    
     public List getMenuList(String userName,String passWord)
     {
         AdminBean bean = new AdminBean();

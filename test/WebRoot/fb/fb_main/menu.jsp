@@ -64,7 +64,7 @@ background="<%=basePath%>image/fb_main/menu_bg.jpg" border=0>
           <TD align=middle width=30><IMG height=9 
             src="<%=basePath%>image/fb_main/menu_icon.gif" width=9></TD>
           <TD><A class=menuChild 
-            href="#" 
+            href="<%=basePath%><s:property value="#list1.M_MenuUrl"/>" 
             target=main><s:property value="#list1.M_MenuName"/></A></TD></TR>
             </s:if>
             </s:iterator>

@@ -65,8 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				success : function(json) 
 				{
 					if(json.loginflag=="true"){
-					alert(json.message);
-					//window.location.href='<%=request.getContextPath()%>'+"/service/transaction/mall/package.jsp";
+					window.location.href='<%=request.getContextPath()%>'+"/fb/fb_main/index.jsp";
 					}
 					else{
 					alert(json.message);

@@ -41,4 +41,17 @@
 			WHERE A.A_USERNAME=#A_UserName# AND A.A_PASSWORD=#A_PassWord# AND M.M_MENUISDEL=0 AND M.M_MENUTYPE=0
 		]]>
 	</select>
+	
+		<!-- 验证用户 -->
+	<select id="getAdminList"  parameterClass="adminBean" resultMap="admin">
+		SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A 
+			<dynamic prepend="where">
+			<isNotNull prepend="AND" property="A_UserName">
+           A_USERNAME=#A_UserName# 
+        </isNotNull>
+        <isNotNull prepend="AND" property="A_PassWord">
+        A_PASSWORD=#A_PassWord# 
+        </isNotNull>
+      </dynamic>	
+	</select>
 </sqlMap>

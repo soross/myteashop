@@ -9,9 +9,9 @@
 
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/test"/>
 
-        <property name="username" value="test"/>
+        <property name="username" value="root"/>
 
-        <property name="password" value="1234"/>
+        <property name="password" value="root"/>
     </bean>
 <!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">

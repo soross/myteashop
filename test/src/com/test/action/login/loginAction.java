@@ -1,18 +1,29 @@
 package com.test.action.login;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.PostMethod;
+
 import com.test.database.login.bean.AdminBean;
 import com.test.database.login.bean.MenuBean;
 import com.test.database.login.impl.LoginDaoImpl;
+import com.test.database.sys.bean.AdminRoleBean;
+import com.test.database.sys.bean.RoleBean;
 import com.test.util.BasicAction;
 import com.test.util.MenuUtil;
+import com.test.util.CodeGenerator;
 @SuppressWarnings("unchecked")
 public class loginAction extends BasicAction{
     private LoginDaoImpl loginDao;
+    
 
     public LoginDaoImpl getLoginDao()
     {
@@ -23,6 +34,14 @@ public class loginAction extends BasicAction{
     {
         this.loginDao = loginDao;
     }
+    
+    private String testid;
+    
+    private String pwd;
+    
+    private String user;
+    
+    private String newpwd;
 
     private String userName;//用户名
     private String passWord;//密码
@@ -120,7 +139,6 @@ public class loginAction extends BasicAction{
     
     public String getAdminList(){
         this.before();
-    	System.out.println("进来======");
     	AdminBean ab = new AdminBean();
     	if(getParam("userName")!=null){
     	String username = getParam("userName").toString();
@@ -131,12 +149,143 @@ public class loginAction extends BasicAction{
     	ab.setA_UserName(pwd);
     	}
     	List adminlist = loginDao.getAdminList(ab); 
-    	
-    	System.out.println(adminlist.size());
-    	
     	request.setAttribute("adminlist", adminlist);
     	return "listadmin";
     } 
+    
+    
+  //=======================管理员显示增加页面======================
+    
+    public String showaddadmin(){
+    	
+    	this.before();
+    	
+    	List<RoleBean> rolelist = loginDao.getrolelist();
+    	
+    	request.setAttribute("rolelist", rolelist);
+    	
+    	return "showaddadmins";
+    }
+    
+    
+  //=======================管理员检验管理员账号是否重名页面======================
+    
+    
+    public String checkadminusername(){
+    	
+    	 this.before();
+    	
+    	 String message = null;
+    	 
+         String checkflag = null;
+         
+         Map m = new HashMap();
+    	
+    	String username = getParam("userName").toString();
+    	
+    	System.out.println("username===="+username);
+    	
+    	AdminBean adminbean = new AdminBean();
+    	
+    	adminbean.setA_UserName(username);
+    	
+    	List checkadmin = loginDao.checkadminusername(adminbean);
+    	
+    	System.out.println("====="+checkadmin.size());
+    	
+    	if(checkadmin.size()>0){
+    		
+    		checkflag="false";
+    		
+    		message="用户名已重名";
+    		
+    	}
+    	else{
+    		
+    		checkflag="true";
+    		
+    		message="用户名可以使用";
+    		
+    	}
+    	
+    	m.put("checkflag", checkflag);
+    	m.put("message", message);
+    	writeMapToJson(m);
+    	
+    	return null;
+    }
+    
+    
+  //=======================管理员增加页面======================
+    
+    public String addadmin(){
+    	
+    	this.before();
+    	
+    	String userId = CodeGenerator.getUUID();
+    	
+    	AdminBean adminbean = new AdminBean();
+    	
+    	AdminRoleBean adminrolebean = new AdminRoleBean();
+    	
+    	adminrolebean.setAR_AdminId(userId);
+    	
+    	adminrolebean.setAR_RoleId(testid);
+    	
+    	adminbean.setA_UserId(userId);
+    	
+    	adminbean.setA_PassWord(pwd);
+    	
+    	adminbean.setA_UserName(user);
+    	
+    	loginDao.addadmin(adminbean);
+    	
+    	loginDao.addadminrole(adminrolebean);
+    	
+    	AdminBean ab = new AdminBean();
+ 
+    	List adminlist = loginDao.getAdminList(ab);
+    	
+    	request.setAttribute("adminlist", adminlist);
+    	
+    	return "addadmins";
+    }
+    //=====================================================
+
+
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getNewpwd() {
+		return newpwd;
+	}
+
+	public void setNewpwd(String newpwd) {
+		this.newpwd = newpwd;
+	}
+
+	public String getTestid() {
+		return testid;
+	}
+
+	public void setTestid(String testid) {
+		this.testid = testid;
+	}
+   
     
 }
 

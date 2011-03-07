@@ -54,4 +54,16 @@
         </isNotNull>
       </dynamic>	
 	</select>
+	<!-- 验证管理员是否重名 -->
+	<select id="checkadminusername"  parameterClass="adminBean" resultMap="admin">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERNAME=#A_UserName# ]]>
+	</select>
+	
+	<!-- 增加管理员 -->
+	<insert id="addadmin"  parameterClass="adminBean" >
+		<![CDATA[
+			INSERT INTO FB_ADMIN (A_USERID,A_USERNAME,A_PASSWORD) VALUES(#A_UserId#,#A_UserName#,#A_PassWord#) ]]>
+	</insert>
+	
 </sqlMap>

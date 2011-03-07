@@ -13,5 +13,6 @@
 		useStatementNamespaces="false"
 		/>
 	<sqlMap resource="com/test/database/login/login-bean.xml"/>
+	<sqlMap resource="com/test/database/sys/sys-bean.xml"/>
 </sqlMapConfig>
 

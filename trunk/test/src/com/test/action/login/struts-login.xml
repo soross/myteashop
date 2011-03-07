@@ -13,5 +13,16 @@
 		<action name="getAdminList" class="loginAction" method="getAdminList">
 			<result name="listadmin">fb/fb_sy_admin/adminlist.jsp</result>
 		</action>
+		<action name="showaddadmin" class="loginAction" method="showaddadmin">
+			<result name="showaddadmins">fb/fb_sy_admin/admin.jsp</result>
+		</action>
+		<action name="checkadminusername" class="loginAction" method="checkadminusername">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="addadmin" class="loginAction" method="addadmin">
+			<result name="addadmins">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		
+		
 	</package>
 </struts>

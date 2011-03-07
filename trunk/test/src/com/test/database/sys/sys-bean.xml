@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="book">
+
+<typeAlias alias="roleBean" type="com.test.database.sys.bean.RoleBean" />
+	<resultMap id="role" class="roleBean">
+		<result property="R_RoleId" column="R_ROLEID" columnIndex="1" />
+		<result property="R_RoleName" column="R_ROLENAME" columnIndex="2" />
+	</resultMap>
+	
+	<typeAlias alias="adminRoleBean" type="com.test.database.sys.bean.AdminRoleBean" />
+	<resultMap id="adminrole" class="adminRoleBean">
+		<result property="AR_AdminId" column="AR_ADMINID" columnIndex="1" />
+		<result property="AR_RoleId" column="AR_ROLEID" columnIndex="2" />
+	</resultMap>
+	
+<!-- 取得管理员list -->
+	<select id="rolelist"  parameterClass="roleBean" resultMap="role">
+		SELECT R_ROLEID,R_ROLENAME FROM FB_Role R
+			<dynamic prepend="where">
+			<isNotNull prepend="AND" property="R_RoleId">
+           R_ROLEID=#R_RoleId# 
+        </isNotNull>
+        <isNotNull prepend="AND" property="R_RoleName">
+        R_RoleName like '%$R_RoleName$%' 
+        </isNotNull>
+      </dynamic>	
+	</select>
+	
+	<!-- 增加管理员权限 -->
+	<insert id="addadminrole"  parameterClass="adminRoleBean" >
+		<![CDATA[
+			INSERT INTO FB_ADMIN_ROLE (AR_ADMINID,AR_ROLEID) VALUES(#AR_AdminId#,#AR_RoleId#) ]]>
+	</insert>
+	
+</sqlMap>

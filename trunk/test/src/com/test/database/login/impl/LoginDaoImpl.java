@@ -10,6 +10,8 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.test.database.login.bean.AdminBean;
 import com.test.database.login.bean.MenuBean;
+import com.test.database.sys.bean.AdminRoleBean;
+import com.test.database.sys.bean.RoleBean;
 
 
 /**
@@ -29,15 +31,8 @@ public class LoginDaoImpl  extends SqlMapClientDaoSupport
     }
     
     public List getAdminList(AdminBean adminbean){
-    	
-    	
-    	System.out.println("=============");
-    	
     	List<AdminBean> adminlist = (ArrayList<AdminBean>)getSqlMapClientTemplate().queryForList("getAdminList", adminbean);
-    	
-    	System.out.println("=============");
-    	
-    	
+
     	return adminlist;
     }
     
@@ -48,5 +43,34 @@ public class LoginDaoImpl  extends SqlMapClientDaoSupport
         bean.setA_PassWord(passWord);
         List<MenuBean> mapList = (ArrayList<MenuBean>)getSqlMapClientTemplate().queryForList("getAdminMenuList",bean);
         return mapList;
+    }
+    
+    public List checkadminusername(AdminBean adminbean){
+    	
+    	List<AdminBean> adminlist = (ArrayList<AdminBean>)getSqlMapClientTemplate().queryForList("checkadminusername", adminbean);
+    	
+    	return adminlist;
+    	
+    }
+    
+    public void addadmin(AdminBean adminbean){
+    	
+    	getSqlMapClientTemplate().insert("addadmin", adminbean);
+    	
+    }
+    
+    public List<RoleBean> getrolelist(){
+    	
+    	RoleBean rb = new RoleBean();
+    	
+    	List<RoleBean> rolelist = (ArrayList<RoleBean>)getSqlMapClientTemplate().queryForList("rolelist", rb);
+    	
+    	return rolelist;
+    	
+    }
+    
+    public void addadminrole(AdminRoleBean adminrolebean){
+    	
+    	getSqlMapClientTemplate().insert("addadminrole", adminrolebean);
     }
 }

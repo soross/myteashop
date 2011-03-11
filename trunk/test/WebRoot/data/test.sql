@@ -177,6 +177,68 @@ LOCK TABLES `fb_role` WRITE;
 /*!40000 ALTER TABLE `fb_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
+#
+# Source for table fb_advertising
+#
+
+CREATE TABLE `fb_advertising` (
+  `advertising
+_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `advertising
+_title` varchar(255) DEFAULT NULL COMMENT '广告标题',
+  `advertising
+_URL` varchar(255) DEFAULT NULL COMMENT '广告图片路径',
+  `position
+_id` int(11) DEFAULT NULL COMMENT '位置编号',
+  `advertising
+_addtime` date DEFAULT NULL COMMENT '广告启用时间',
+  `advertising
+_endtime` date DEFAULT NULL COMMENT '广告失效时间',
+  `advertising
+_state` varchar(255) DEFAULT 'Y' COMMENT '在用状态',
+  PRIMARY KEY (`advertising
+_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk COMMENT='广告信息';
+
+
+#
+# Dumping data for table fb_advertising
+#
+LOCK TABLES `fb_advertising` WRITE;
+/*!40000 ALTER TABLE `fb_advertising` DISABLE KEYS */;
+
+/*!40000 ALTER TABLE `fb_advertising` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
+# Source for table fb_position
+#
+
+CREATE TABLE `fb_position` (
+  `position
+_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '位置编号',
+  `position
+_markers` varchar(255) DEFAULT NULL COMMENT '位置标记',
+  `position
+_state` varchar(255) DEFAULT NULL COMMENT '在用状态',
+  `position
+_display` varchar(255) DEFAULT NULL COMMENT '显示方式',
+  PRIMARY KEY (`position
+_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk COMMENT='广告位置表';
+
+
+
+#
+# Dumping data for table fb_position
+#
+LOCK TABLES `fb_position` WRITE;
+/*!40000 ALTER TABLE `fb_position` DISABLE KEYS */;
+
+/*!40000 ALTER TABLE `fb_position` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -6,7 +6,7 @@ import java.util.Map;
 public class GlobVar {
 	// 存放每次捕获新闻的所有图片
 	public static Map<String, String> IMG_MAP = new Hashtable<String, String>();
-
+	
 	// 在图片的位置放入间隔符号
 	public static String IMG_START_ID_STRING = "###IMGIDSTART***";
 	public static String IMG_END_ID_STRING = "###IMGIDEND***";

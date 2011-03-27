@@ -42,6 +42,8 @@ public class loginAction extends BasicAction{
     private String user;
     
     private String newpwd;
+    
+    private String userid;
 
     private String userName;//用户名
     private String passWord;//密码
@@ -183,15 +185,12 @@ public class loginAction extends BasicAction{
     	
     	String username = getParam("userName").toString();
     	
-    	System.out.println("username===="+username);
-    	
     	AdminBean adminbean = new AdminBean();
     	
     	adminbean.setA_UserName(username);
     	
     	List checkadmin = loginDao.checkadminusername(adminbean);
     	
-    	System.out.println("====="+checkadmin.size());
     	
     	if(checkadmin.size()>0){
     		
@@ -250,9 +249,97 @@ public class loginAction extends BasicAction{
     	
     	return "addadmins";
     }
-    //=====================================================
+    //===========================删除管理员操作==========================
+    
+    public String deladmin(){
+    	
+    	this.before();
+    	
+    	String user_id= getParam("userid").toString();
+    	
+    	AdminBean adminbean = new AdminBean();
+    	
+    	adminbean.setA_UserId(user_id);
+    	
+    	AdminRoleBean adminRoleBean = new AdminRoleBean();
+    	
+    	adminRoleBean.setAR_RoleId(user_id);
+    	
+    	loginDao.deladmin(adminbean);
+    	
+    	loginDao.deladminrole(adminRoleBean);
+    	
+    	AdminBean ab = new AdminBean();
+    	 
+    	List adminlist = loginDao.getAdminList(ab);
+    	
+    	request.setAttribute("adminlist", adminlist);
+    	
+    	return "deladmins";
+    	
+    }
 
+    //===========================显示更新管理员操作==========================
+    
+    
+    public String showupdateadmin(){
+    	
+    	this.before();
+    	
+    	String user_id= getParam("userid").toString();
+    	
+    	AdminBean adminbean = new AdminBean();
+    	
+    	AdminRoleBean adminRoleBean = new AdminRoleBean();
+    	
+    	adminbean.setA_UserId(user_id);
+    	
+    	adminRoleBean.setAR_AdminId(user_id);
+    	
+    	List<RoleBean> rolelist = loginDao.getrolelist();
+    	
+    	request.setAttribute("rolelist", rolelist);
+    	
+    	AdminBean adminbeans = loginDao.selectadminusername(adminbean);
+    	
+    	AdminRoleBean adminrolebean = loginDao.selectadminrole(adminRoleBean);
+    	
+    	request.setAttribute("adminbeans", adminbeans);
+    	
+    	request.setAttribute("adminrolebean", adminrolebean);
 
+    	return "showupdateadmins";
+    }
+   
+    //===========================修改管理员密码操作==========================
+    
+    public String updateadminpass(){
+    	this.before();
+    	
+    	AdminBean adminbean = new AdminBean();
+    	
+    	AdminRoleBean adminrolebean = new AdminRoleBean();
+    	
+    	adminbean.setA_PassWord(pwd);
+    	
+    	adminbean.setA_UserId(userid);
+    	
+    	adminrolebean.setAR_AdminId(userid);
+    	
+    	adminrolebean.setAR_RoleId(testid);
+    	
+    	loginDao.updateadminpwd(adminbean);
+    	
+    	loginDao.updateadminrole(adminrolebean);
+    	
+    	AdminBean ab = new AdminBean();
+   	 
+    	List adminlist = loginDao.getAdminList(ab);
+    	
+    	request.setAttribute("adminlist", adminlist);
+    	
+    	return "succadminpwd";
+    }
 
 	public String getPwd() {
 		return pwd;
@@ -284,6 +371,14 @@ public class loginAction extends BasicAction{
 
 	public void setTestid(String testid) {
 		this.testid = testid;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
    
     

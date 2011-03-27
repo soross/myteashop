@@ -8,7 +8,7 @@
 
 	<typeAlias alias="adminBean" type="com.test.database.login.bean.AdminBean" />
 	<resultMap id="admin" class="adminBean">
-		<result property="A_UserId" column="A_USERID" columnIndex="1" />
+		<result property="A_UserId" column="A_USERID" columnIndex="1"  />
 		<result property="A_UserName" column="A_USERNAME" columnIndex="2" />
 		<result property="A_PassWord" column="A_PASSWORD" columnIndex="3" />
 	</resultMap>
@@ -65,5 +65,25 @@
 		<![CDATA[
 			INSERT INTO FB_ADMIN (A_USERID,A_USERNAME,A_PASSWORD) VALUES(#A_UserId#,#A_UserName#,#A_PassWord#) ]]>
 	</insert>
+	
+	
+	<!-- 删除管理员 -->
+	<delete id="deladmin"  parameterClass="adminBean" >
+		<![CDATA[
+			DELETE FROM  FB_ADMIN WHERE A_USERID = #A_UserId# ]]>
+	</delete>
+	
+	<!-- 查询管理员信息 -->
+	<select id="selectadminusername"  parameterClass="adminBean" resultMap="admin">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERID=#A_UserId# ]]>
+	</select>
+	
+	<!-- 查询管理员信息 -->
+	<update id="updateadminpwd"  parameterClass="adminBean">
+		<![CDATA[
+			UPDATE FB_ADMIN SET A_PASSWORD=#A_PassWord# WHERE A_USERID=#A_UserId# ]]>
+	</update>
+	
 	
 </sqlMap>

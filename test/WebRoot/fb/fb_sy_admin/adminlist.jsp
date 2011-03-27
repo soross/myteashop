@@ -83,13 +83,13 @@ body {
           <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="6%" height="19" valign="bottom"><div align="center"> <img src="<%=request.getContextPath() %>/images/cr/frame/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1"> 用户列表</span></td>
+                <td width="6%" height="19" valign="bottom"><div align="center"> <img src="<%=request.getContextPath() %>/image/fb_image/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 管理员列表</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
-             <img src="<%=request.getContextPath() %>/images/cr/frame/add.gif" width="10" height="10" /> 
-             <a href="<%=request.getContextPath() %>/tuser.do?task=showadduser" style="color: white;text-decoration: none;">添加用户</a>   </span><span class="STYLE1"> &nbsp;</span></div></td>
+             <img src="<%=request.getContextPath() %>/image/fb_image/add.gif" width="10" height="10" /> 
+             <a href="<%=request.getContextPath() %>/showaddadmin.shtml" style="color: white;text-decoration: none;">添加管理员</a>   </span><span class="STYLE1"> &nbsp;</span></div></td>
           </tr>
         </table></td>
       </tr>
@@ -97,35 +97,36 @@ body {
   </tr>
    <tr>
      <td>
-    
-    111
-    
-    
-   <div style="margin-top: 12px; margin-bottom: 10px;" align="center" class="STYLE6">用户账号：
+     <form action="<%=request.getContextPath() %>/listuser.do?method=listUser" method="post" id="form1">
+   <div style="margin-top: 12px; margin-bottom: 10px;" align="center" class="STYLE6">管理员编号：
+   <input type="text" name="snames" value="" style="width: 100px; height: 20px;">
+        管理员账号：<input type="text" name="srealname" value="" style="width: 100px; height: 20px;">
+        &nbsp;&nbsp;&nbsp;
+        <input type="submit" value="查询">
    </div>  
-     11111
-    
-     
+     </form> 
      <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
     <tr>
     <td width="10%" height="30" bgcolor="d3eaef" class="STYLE6" align="center">用户编号</td>
-    <td width="10%"  bgcolor="d3eaef" class="STYLE6" align="center">真实姓名</td>
-    <td width="10%"  bgcolor="d3eaef" class="STYLE6" align="center">性别</td>
-    <td width="15%"  bgcolor="d3eaef" class="STYLE6" align="center">工号</td>
-    <td width="20%"  bgcolor="d3eaef" class="STYLE6" align="center">地址</td>
-    <td width="10%"  bgcolor="d3eaef" class="STYLE6" align="center">用户状态</td>
+    <td width="10%"  bgcolor="d3eaef" class="STYLE6" align="center">管理员</td>
     <td width="20%" bgcolor="d3eaef" class="STYLE6" align="center">操作</td>
     </tr>
-   
+   <s:iterator value="#request.adminlist" id="list">
+   <s:if test="#list.A_UserName=='admin'">
      <tr>
-       <td height="20"  bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">111</td>
-       <td bgcolor="#FFFFFF" class="STYLE6" align="center">1111<td>   
+       <td height="20"  bgcolor="#FFFFFF" class="STYLE6" align="center"><s:property value="#list.A_UserId"/></td>
+       <td bgcolor="#FFFFFF" class="STYLE6" align="center"><s:property value="#list.A_UserName"/></td>
+       <td bgcolor="#FFFFFF" class="STYLE6" align="center"><a href="#">查看</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="<%=request.getContextPath() %>/showupdateadmin.shtml?userid=<s:property value="#list.A_UserId"/>">修改</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td> 
      </tr>
+     </s:if>
+     <s:else>
+     <tr>
+       <td height="20"  bgcolor="#FFFFFF" class="STYLE6" align="center"><s:property value="#list.A_UserId"/></td>
+       <td bgcolor="#FFFFFF" class="STYLE6" align="center"><s:property value="#list.A_UserName"/></td>
+       <td bgcolor="#FFFFFF" class="STYLE6" align="center"><a href="#">查看</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="<%=request.getContextPath() %>/showupdateadmin.shtml?userid=<s:property value="#list.A_UserId"/>">修改</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="<%=request.getContextPath() %>/deladmin.shtml?userid=<s:property value="#list.A_UserId"/>">删除</a></td> 
+     </tr>
+     </s:else>
+     </s:iterator>
      </table>
  
  </td></tr></table>

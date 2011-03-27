@@ -22,7 +22,15 @@
 		<action name="addadmin" class="loginAction" method="addadmin">
 			<result name="addadmins">fb/fb_sy_admin/adminlist.jsp</result>
 		</action>
-		
+		<action name="deladmin" class="loginAction" method="deladmin">
+			<result name="deladmins">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		<action name="showupdateadmin" class="loginAction" method="showupdateadmin">
+			<result name="showupdateadmins">fb/fb_sy_admin/updateadmin.jsp</result>
+		</action>
+		<action name="updateadminpass" class="loginAction" method="updateadminpass">
+			<result name="succadminpwd">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
 		
 	</package>
 </struts>

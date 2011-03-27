@@ -3,6 +3,7 @@ package com.test.database.login.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -73,4 +74,61 @@ public class LoginDaoImpl  extends SqlMapClientDaoSupport
     	
     	getSqlMapClientTemplate().insert("addadminrole", adminrolebean);
     }
+    
+    public void deladmin(AdminBean adminbean){
+    	
+    	getSqlMapClientTemplate().delete("deladmin", adminbean);
+    }
+    
+    public void deladminrole(AdminRoleBean adminRoleBean){
+    	
+    	getSqlMapClientTemplate().delete("deladminrole", adminRoleBean);
+    	
+    }
+    
+    public AdminRoleBean selectadminrole(AdminRoleBean adminRoleBean){
+    	
+    	List<AdminRoleBean> adminrolelist = getSqlMapClientTemplate().queryForList("showadminrole", adminRoleBean);
+    	
+    	AdminRoleBean adminrolebean = new AdminRoleBean();
+    	
+    	for (AdminRoleBean adminrole : adminrolelist) {
+			
+    		adminrolebean.setAR_AdminId(adminrole.getAR_AdminId());
+    		adminrolebean.setAR_RoleId(adminrole.getAR_RoleId());
+		}
+    	
+    	return adminrolebean;
+    }
+    
+    public AdminBean selectadminusername(AdminBean adminbean){
+    	
+    	List<AdminBean> adminlist = getSqlMapClientTemplate().queryForList("selectadminusername", adminbean);
+    	
+    	AdminBean adminbeans = new AdminBean();
+    	
+    	for (AdminBean adminBean2 : adminlist) {
+			
+    		adminbeans.setA_UserId(adminBean2.getA_UserId());
+    		adminbeans.setA_UserName(adminBean2.getA_UserName());
+    		adminbeans.setA_PassWord(adminBean2.getA_PassWord());
+    		
+		}
+    	
+    	return  adminbeans;
+    }
+    
+    
+    public void updateadminpwd(AdminBean adminbean){
+    	
+    	
+    	getSqlMapClientTemplate().update("updateadminpwd", adminbean);
+    	
+    }
+    
+	public void updateadminrole(AdminRoleBean adminrolebean){
+		
+		getSqlMapClientTemplate().update("updateadminrole", adminrolebean);
+		
+	}
 }

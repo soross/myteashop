@@ -26,6 +26,7 @@
 	<import resource="classpath*:com/test/action/login/applicationContext-login.xml"/>
 	<import resource="classpath*:com/test/action/sys/applicationContext-system.xml"/>
 	<import resource="classpath*:applicationContext-timer.xml"/>
+	<import resource="classpath*:com/test/news/applicationContext-news.xml"/>
 	<!-- ehcache 配置 -->
 	<bean id="cacheManager"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">

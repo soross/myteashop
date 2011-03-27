@@ -31,10 +31,35 @@
       </dynamic>	
 	</select>
 	
+	<!-- 判断管理员名list -->
+	<select id="checkrolename"  parameterClass="roleBean" resultMap="role">
+		SELECT R_ROLEID,R_ROLENAME FROM FB_Role WHERE R_RoleName=#R_RoleName# 
+	</select>
+	
+	
+	
+	<!-- 取得管理员list -->
+	<select id="showadminrole"  parameterClass="adminRoleBean" resultMap="adminrole">
+		SELECT AR_ADMINID,AR_ROLEID FROM FB_ADMIN_ROLE WHERE AR_ADMINID=#AR_AdminId# 
+	</select>
+	
+		
 	<!-- 增加管理员权限 -->
 	<insert id="addadminrole"  parameterClass="adminRoleBean" >
 		<![CDATA[
 			INSERT INTO FB_ADMIN_ROLE (AR_ADMINID,AR_ROLEID) VALUES(#AR_AdminId#,#AR_RoleId#) ]]>
 	</insert>
+	
+	<!-- 删除管理员权限 -->
+	<delete id="deladminrole"  parameterClass="adminRoleBean" >
+		<![CDATA[
+			DELETE FROM  FB_ADMIN_ROLE WHERE AR_ADMINID = #AR_AdminId# ]]>
+	</delete>
+	
+	<!-- 修改管理员权限 -->
+	<delete id="updateadminrole"  parameterClass="adminRoleBean" >
+		<![CDATA[
+			UPDATE FB_ADMIN_ROLE SET AR_ROLEID=#AR_RoleId# WHERE AR_ADMINID = #AR_AdminId# ]]>
+	</delete>
 	
 </sqlMap>

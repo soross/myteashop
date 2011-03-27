@@ -11,5 +11,11 @@
 			<result name="rolelist">fb/fb_sy_common/rolelist.jsp</result>
 		</action>
 		
+		<action name="showaddrole" class="systemAction" method="showaddrole">
+			<result name="showaddrole">fb/fb_sy_common/addrole.jsp</result>
+		</action>
+		<action name="checkrolename" class="systemAction" method="checkrolename">
+		</action>
+		
 	</package>
 </struts>

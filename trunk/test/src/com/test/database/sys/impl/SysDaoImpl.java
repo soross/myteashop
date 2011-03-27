@@ -27,8 +27,17 @@ public class SysDaoImpl  extends SqlMapClientDaoSupport
 		
 		List<RoleBean> rolelist = (ArrayList<RoleBean>)getSqlMapClientTemplate().queryForList("rolelist", rolebean);
 		
-		
 		return rolelist;
 	}
+	
+
+	public List<RoleBean> checkrolename(RoleBean rolebean){
+		
+		List<RoleBean> clecknamelist = (ArrayList<RoleBean>)getSqlMapClientTemplate().queryForList("checkrolename", rolebean);
+		
+		
+		return clecknamelist;
+	}
+	
 	
 }

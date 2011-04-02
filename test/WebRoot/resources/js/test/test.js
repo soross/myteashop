@@ -12,19 +12,19 @@ function getMenu(id) {
 		timeout : 1000,
 		error : function()
 		{
-			alert('²éÑ¯Ê§°Ü');
+			alert('æŸ¥è¯¢å¤±è´¥');
 		},
 		success : function(json) 
 		{
 			if(json.code ==1)
 			{
-				alert('Èë²Î³ö´í');
+				alert('å…¥å‚å‡ºé”™');
 			}
 			else
 			{
 				if(json.flag == 1)
 				{
-					alert("²éÑ¯Òì³£");
+					alert("æŸ¥è¯¢å¼‚å¸¸");
 				}
 				else
 				{
@@ -51,7 +51,7 @@ function getMenuList(list,id)
 		   {
 			   str = str+'----';
 		   }
-		   xml = xml+"²Ëµ¥¼¶±ğ£º"+parseInt(id+1)+"      "+ str +"id: "+list[i].ID+",name: "+list[i].NAME+",url: "+list[i].URL+",pid: "+list[i].PID+"<br>";
+		   xml = xml+"èœå•çº§åˆ«ï¼š"+parseInt(id+1)+"      "+ str +"id: "+list[i].ID+",name: "+list[i].NAME+",url: "+list[i].URL+",pid: "+list[i].PID+"<br>";
 		   if(list[i].SMENU.length !=0)
            {
         	   alert(list[i].SMENU.length);
@@ -72,7 +72,7 @@ function ab() {
 		timeout : 1000,
 		error : function()
 		{
-			alert('²éÑ¯Ê§°Ü');
+			alert('æŸ¥è¯¢å¤±è´¥');
 		},
 		success : function(json) 
 		{

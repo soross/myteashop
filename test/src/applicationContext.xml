@@ -23,10 +23,10 @@
 	<!-- 数据库 -->
 	<import resource="classpath*:ibatis-bean.xml"/>
 	<!-- 加载配置文件 -->
-	<!-- 
+	<!-- -->
 	<import resource="classpath*:com/test/action/login/applicationContext-login.xml"/>
 	<import resource="classpath*:com/test/action/sys/applicationContext-system.xml"/>
-	 -->
+	 
 	<import resource="classpath*:com/test/action/advertising/applicationContext-advertising.xml"/>
 	<import resource="classpath*:applicationContext-timer.xml"/>
 	<import resource="classpath*:com/test/news/applicationContext-news.xml"/>

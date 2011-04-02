@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="advertising">
+	<!-- 获得广告列表 -->
+	<select id="getAdvertisingList" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		<![CDATA[
+			SELECT A.* FROM FB_ADVERTISING A
+			LEFT JOIN FB_POSITION P ON A.ADVERTISING_POSITIONID = P.POSITION_ID
+			 WHERE A.ADVERTISING_STATE = 'Y' 
+			 AND P.POSITION_STATE = 'Y'
+			 ]]>
+		<isNotNull prepend="AND" property="POSITION_MARKERS">
+        	P.POSITION_MARKERS = #POSITION_MARKERS#
+        </isNotNull>
+        <isNotNull prepend="AND" property="POSITION_DISPLAY">
+        	P.POSITION_DISPLAY = #POSITION_DISPLAY#
+        </isNotNull>
+	</select>
+</sqlMap>

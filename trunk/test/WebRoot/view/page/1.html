@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>wahaha</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=GBK" />
+	<script type="text/javascript" src="../../resources/js/global.js"></script>
+	<script type="text/javascript" src="../../resources/js/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="../../resources/js/main.js"></script>
+	<script language="JavaScript" >
+	function init(){
+	   $.ajax( {
+		url : domain+'/show.shtml',
+		type : 'POST',
+		dataType : 'json',
+		cache : false,
+		async : false,
+		timeout : 1000,
+		error : function()
+		{
+			alert('查询失败');
+		},
+		success : function(json) 
+		{
+			if(json.CODE=='0')
+			{
+				if(json.CENTERLIST!=null)
+				{
+					var str = '';
+					var ls = new Array();
+					for(var i =0;i<json.CENTERLIST.length;i++)
+					{
+						ls.push(json.CENTERLIST[i].ADVERTISING_ID);
+						var url = '';
+						if(json.CENTERLIST[i].ADVERTISING_URL!=null)
+						{
+							url = ' onClick="window.top.location=\''+json.CENTERLIST[i].ADVERTISING_URL+'\';"';
+							//url = 'onClick="window.top.location=\'http://www.baidu.com\';"';
+						}
+						str = str+ '<div id="'+json.CENTERLIST[i].ADVERTISING_ID+'" style="width:100px;height:100px;background-image:url('+json.CENTERLIST[i].ADVERTISING_IMAGE+');"'+url+'></div>';
+					}
+					document.getElementById("aa").innerHTML = str;
+					//document.getElementById("bb").innerText = str;
+					for(var j =0;j<ls.length;j++)
+					{
+						var ad=new AdMove(ls[j]);
+       			  		ad.Run();
+					}
+				}
+				//if(json.LEFTLIST!=null)
+				//{
+				//	showLeftAndRight("L","1");
+				//	window.onscroll=scall;
+				//	window.onresize=scall;
+				//	window.onload=scall;	
+				//}
+			}
+		}
+	});
+	}
+	</script>
+</head>
+<body onload="init();">
+<div id="aa" ></div>
+<div id="bb" ></div>
+</body>
+</html>

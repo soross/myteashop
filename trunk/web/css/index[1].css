@@ -1,0 +1,46 @@
+
+.cat { height:555px; margin-bottom:15px;}
+.cat dd { height:430px;border:1px solid #eaeaea;border-top:3px solid #f1f1f1;}
+
+.cat1 {  width:100%; height:100%;}
+.cat1 dd { height:100%;}
+.cat_img1 { float:left; padding-left:28px; padding-top:20px; padding-bottom:20px;}
+.cat_img2 { float:left; padding-bottom:20px; padding-left:20px; padding-top:20px;}
+.cat_img3 { float:left; padding-left:20px;}
+.cat1_ul { display:block; height:165px; text-align:center; width:150px; float:left; padding-left:28px; margin-top:0px;}
+.cat1_ul li { width:150px; text-align:left; }
+.cat1_ul span { color:#c90809; font-size:12px; font-family:Arial, Helvetica, sans-serif; line-height:22px;}
+.cat1_ul li a { line-height:18px;}
+.cat1_img { position:relative; padding-bottom:10px;}
+
+.fl { float:left;}
+.fr { float:right;}
+
+.clear { clear: both; font-size:0; line-height:0; height:0;}
+
+
+DIV#earthquake {
+	BORDER-BOTTOM: #dddddd 1px solid;
+	BORDER-LEFT: #dddddd 1px solid;
+	PADDING-BOTTOM: 10px;
+	MARGIN: 15px 0px;
+	PADDING-LEFT: 10px;
+	PADDING-RIGHT: 10px;
+	BORDER-TOP: #dddddd 1px solid;
+	BORDER-RIGHT: #dddddd 1px solid;
+	PADDING-TOP: 10px
+}
+
+DIV#earthquake P {
+	MARGIN-BOTTOM: 0.5em;
+	FONT-SIZE: 14px
+}
+h3{
+ line-height:30px; height:30px; border-bottom:1px dashed #dddddd; display:block; margin-bottom:12px;
+}
+h5{
+ line-height:30px; height:30px; border-bottom:1px dashed #dddddd; display:block; margin-bottom:5px;
+}
+h4{
+ line-height:20px; height:20px; border-bottom:1px dashed #dddddd; display:block; margin-bottom:10px; font-size:13px;
+}

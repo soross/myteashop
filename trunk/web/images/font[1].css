@@ -1,0 +1,278 @@
+body{
+	color:#222;
+	font-family:Arial, sans-serif, Geneva;
+}
+
+div#headerwrap{
+	font-size:75%;
+}
+
+div#headerwrap div#header input.submitQuery{
+	font-size:1.0em;
+}
+
+div#headerwrap div#globalnav{
+		font-weight:bold;
+}
+
+
+div#breadcrumb{
+	font-size:75%;
+}
+
+div#pagetitle p{
+	font-size:100%;
+	font-weight:bold;
+}
+
+div#pagetitle h1{
+	font-size:100%;
+}
+
+.title,
+.title02,
+.question{
+	line-height:130%;
+}
+
+.title,
+.title02,
+.question{
+	font-size:75%;
+}
+
+
+h2.subtitle,
+h3.subtitle{
+	font-size:75%;
+}
+
+h3.btn-lnk-alignl{
+	font-weight:normal;
+}
+
+
+div.txt3c,
+div.img1c-txt2c,
+div.txt1c-txt2c,
+div.img2c-txt1c,
+div.img12c-txt52c,
+div.pagingnav,
+div.txt2c-txt1c,
+div.img12c-txt32c-txt1c,
+div.img12c-txt1c,
+div.txt32c,
+div.txt32ctxt34c-txt34c,
+div.txt1c-txt1c-txt1c,
+div.txt1c-gradation,
+div.img14c-txt14c-img14c-txt14c,
+div.img100c-txt160c-img100c-txt160c,
+div.dl1c-2c,
+div.dl1c-2c-normal,
+div.articlesc,
+div.suplink3c,
+div.suplink,
+div.suplink32c,
+div.answer,
+div.diagram,
+div.tabnav01,
+div.tabnav02,
+div.tabnav03,
+div.tabnav04,
+div.utilitynav,
+div.keyimgnav,
+div.txt3btnc,
+div.txt3btnc-alignr,
+div.recommend{
+	font-size:75%;
+	line-height:135%;
+}
+
+
+
+div.txt3c *,
+div.img1c-txt2c *,
+div.txt1c-txt2c *,
+div.img2c-txt1c *,
+div.img12c-txt52c *,
+div.pagingnav *,
+div.txt2c-txt1c *,
+div.img12c-txt32c-txt1c *,
+div.img12c-txt1c *,
+div.txt32c *,
+div.txt32ctxt34c-txt34c *,
+div.txt1c-txt1c-txt1c *,
+div.txt1c-gradation *,
+div.img14c-txt14c-img14c-txt14c *,
+div.img100c-txt160c-img100c-txt160c *,
+div.dl1c-2c *,
+div.dl1c-2c-normal *,
+div.articlesc *,
+div.suplink3c *,
+div.suplink *,
+div.answer *,
+div.diagram *,
+div.tabnav01 *,
+div.tabnav02 *,
+div.tabnav03 *,
+div.tabnav04 *,
+div.utilitynav *,
+div.keyimgnav *,
+div.txt3btnc *,
+div.txt3btnc-alignr *,
+div.recommend *{
+	font-size:100%;
+}
+
+
+
+div.txt3c div.newstitle h2{
+	font-size:140%;
+	line-height:135%;
+}
+
+strong{
+	font-size:110% !important;
+}
+
+
+sub,sup{
+	font-size:85% !important;
+}
+
+
+.notice,
+.small,
+.caption{
+	font-size:95% !important;
+}
+
+
+
+.italic{
+	font-style:italic;
+}
+
+
+
+div.table1c-2c table,
+div.table1c-2c02 table,
+div.table1c-2c03 table,
+div.table1c-3c table,
+div.tableformc table{
+	font-size:75%;
+}
+
+div.table1c-2c table td .notice,
+div.table1c-2c table td .small{
+	font-size:95%;
+}
+
+
+div.btn-pagetop{
+	font-size:75%;
+}
+
+
+
+div.form,
+div.confirm{
+	font-size:75%;
+	line-height:130%;
+}
+.requirenotice{
+	font-size:95%;
+}
+div.error1c{
+	font-size:70%;
+	line-height:130%;
+}
+div.error1c .title{
+	font-size:110%;
+}
+
+
+
+
+div.img12c-txt1c h3.subtitle,
+div.txt32ctxt34c-txt34c h3.subtitle,
+div.img14c-txt14c-img14c-txt14c h2.subtitle,
+div.img14c-txt14c-img14c-txt14c h3.subtitle,
+div.txt32c .subtitle,
+div.answer dd .subtitle,
+div.answer dd div.table1c-2c,
+div.img100c-txt160c-img100c-txt160c .subtitle{
+	font-size:100%;
+}
+
+
+
+
+
+div#localnav,
+div#bnrcol{
+	font-size:70%;
+	line-height:130%;
+}
+div#bnrcol .title{
+	font-size:1em;
+}
+
+div#bnrcol p{
+	line-height:120%;
+}
+div#bnrcol div.supportcol h2{
+	font-size:110%;
+}
+
+
+#footerwrap{
+	font-size:75%;
+
+}
+
+
+div#headerwrap_v14{
+	font-size:75%;
+}
+
+div#headerwrap_v14 div#header_v14 input.submitQuery{
+	font-size:1.0em;
+}
+
+div#headerwrap_v14 div#globalnav_v14{
+		font-weight:bold;
+}
+
+div#breadcrumb_v14{
+	font-size:75%;
+}
+
+div#pagetitle_v14 p{
+	font-size:100%;
+	font-weight:bold;
+}
+
+div#pagetitle_v14 h1{
+	font-size:100%;
+}
+
+div#bnrcol_v14{
+	font-size:70%;
+	line-height:130%;
+}
+div#bnrcol_v14 .title{
+	font-size:1em;
+}
+
+div#bnrcol_v14 p{
+	line-height:120%;
+}
+div#bnrcol_v14 div.supportcol h2{
+	font-size:110%;
+}
+
+#footerwrap_v14{
+	font-size:75%;
+
+}

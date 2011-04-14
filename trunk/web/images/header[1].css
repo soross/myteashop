@@ -1,0 +1,514 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div#headerwrap *{
+	margin:0;
+	padding:0;
+}
+
+div#headerwrap ul{
+	list-style:none;
+}
+
+
+
+
+div#headerwrap{
+	margin-top:16px;
+}
+
+
+
+
+div#header{
+	position:relative;
+	width:770px;
+	height:49px;
+}
+
+div#header ul li{
+	position:absolute;
+}
+
+div#header ul li a{
+	_display:block;
+	_display:inline;
+	padding-left:14px;
+	color:#222;
+	text-decoration:none;
+	background:url("arrow_cir_right_black_fff[1].gif") 0 50% no-repeat;
+}
+div#header a:hover{
+	text-decoration:underline;
+}
+
+
+div#header p#top{
+	position:absolute;
+	left:12px;
+	top:0;
+	width:116px;
+	height:31px;
+}
+
+div#header p#top a{
+	display:inline;
+	padding:0;
+}
+
+div#header p#logo-country{
+	position:absolute;
+	top:15px;
+	left:152px;
+}
+
+
+div#headerwrap div#search{
+	position:absolute;
+	right:8em;
+	right:6em;
+	top:0;
+	width:190px;
+	_width:11em;
+}
+div#search fieldset{
+	border:none;
+}
+div#search legend{
+	display:none;
+}
+div#search fieldset div{
+	display:block;
+	position:relative;
+	width:190px;
+}
+
+div#search input.query{
+	width:125px;
+	margin-right:10px;
+	padding:1px 2px;
+	height:16px;
+	border:1px solid;
+	border-color: #999 #ddd #ddd #999;
+	background-color:#fff;
+}
+
+html.ie-non-dtd div#search input.query{
+	height:19px;
+	width:130px;
+}
+html.ge-non-dtd div#search input.query{
+	height:20px;
+	width:131px;
+}
+
+div#search input.submitQuery{
+	display:block;
+	position:absolute;
+	left:135px;
+	top:0;
+	width:50px;
+	height:19px;
+	border:1px solid;
+	border-color: #ddd #aaa #aaa #ddd;
+	vertical-align:top;
+	background: #ddd;
+}
+
+
+
+div#header ul li#gn-top{
+	right:0;
+	top:2px;
+}
+
+div#header ul li#gn-sitemap{
+	right:0;
+	top:28px;
+}
+
+div#header li#gn-contact{
+	right:6.5em;
+	top:28px;
+}
+
+div#header li#gn-store{
+	right:14.5em;
+	top:28px;
+}
+
+
+
+
+div#globalnav{
+	float:left;
+	width:770px;
+	background:#d5d5d5;
+}
+
+div#globalnav ul li{
+	display:inline;
+}
+
+div#globalnav ul li a{
+	display:block;
+	float:left;
+	width:179px;
+	margin-right:18px;
+	padding:5px 0 4px;
+	color:#222;
+	text-align:center;
+	text-decoration:none;
+	background:#d5d5d5 url("bg_globalnav[1].gif") 0 0 no-repeat;
+}
+
+div#globalnav ul li a:hover{
+	background:#eaeaea url("bg_globalnav[1].gif") 0 0 no-repeat;
+}
+div#globalnav ul li a.on{
+	background:#fff url("bg_globalnav[1].gif") 100% 100% no-repeat;
+}
+
+
+div#globalnav ul li#gn-news a{
+	margin-right:0;
+}
+
+div#globalnav li#gn-about a{width:137px;padding-left:42px;}
+div#globalnav li#gn-products a{width:149px;padding-left:30px;}
+div#globalnav li#gn-support a{width:112px;padding-left:67px;}
+div#globalnav li#gn-news a{width:132px;padding-left:47px;}
+
+
+div#globalnav div.clear{
+	width:770px;
+	background:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div#headerwrap_v14 *{
+	margin:0;
+	padding:0;
+}
+
+div#headerwrap_v14 ul{
+	list-style:none;
+}
+
+
+
+
+div#headerwrap_v14{
+	margin-top:13px;
+}
+
+
+
+
+div#header_v14{
+	position:relative;
+	width:967px;
+	height:49px;
+}
+
+div#header_v14 ul {
+	width:967px;
+}
+
+div#header_v14 ul:after {
+	content: "";
+	clear: both;
+	height: 0;
+	display: block;
+	visibility: hidden;
+}
+
+div#header_v14 ul li a{
+	_display:block;
+	_display:inline;
+	padding-left:14px;
+	color:#222;
+	text-decoration:none;
+	background:url("arrow_cir_right_black_fff[1].gif") 0 50% no-repeat;
+}
+div#header_v14 a:hover{
+	text-decoration:underline;
+}
+
+
+div#header_v14 p#top{
+	position:absolute;
+	left:12px;
+	top:0;
+	width:116px;
+	height:31px;
+}
+
+div#header_v14 p#top a{
+	display:inline;
+	padding:0;
+}
+
+div#header_v14 p#logo-country{
+	position:absolute;
+	top:4px;
+	left:152px;
+}
+
+
+div#headerwrap_v14 div#search{
+	position:absolute;
+	right:96px;
+	top:2px;
+	width:190px;
+	_width:11em;
+}
+div#headerwrap_v14 div#search fieldset{
+	border:none;
+}
+div#headerwrap_v14 div#search legend{
+	display:none;
+}
+div#headerwrap_v14 div#search fieldset div{
+	display:block;
+	position:relative;
+	width:190px;
+}
+
+div#headerwrap_v14 div#search input.query{
+	width:125px;
+	margin-right:10px;
+	padding:1px 2px;
+	height:16px;
+	border:1px solid;
+	border-color: #999 #ddd #ddd #999;
+	background-color:#fff;
+}
+
+html.ie-non-dtd div#headerwrap_v14 div#search input.query{
+	height:19px;
+	width:130px;
+}
+html.ge-non-dtd div#headerwrap_v14 div#search input.query{
+	height:20px;
+	width:131px;
+}
+
+div#headerwrap_v14 div#search input.submitQuery{
+	display:block;
+	position:absolute;
+	left:135px;
+	top:0;
+	width:50px;
+	height:19px;
+	border:1px solid;
+	border-color: #ddd #aaa #aaa #ddd;
+	vertical-align:top;
+	background: #ddd;
+}
+
+
+
+div#header_v14 ul li#gn-product{
+	float:right;
+	padding-right:15px;
+	padding-top:6px;
+}
+
+div#header_v14 ul li#gn-top{
+	position:absolute;
+	right:0;
+	top:6px;
+}
+
+div#header_v14 ul li#gn-sitemap{
+	right:0;
+	top:28px;
+}
+
+div#header_v14 li#gn-contact{
+	float:right;
+	padding-right:301px;
+	padding-top:6px;
+}
+
+div#header_v14 li#gn-store{
+	right:14.5em;
+	top:28px;
+}
+
+
+
+
+div#globalnav_v14{
+	float:left;
+	width:967px;
+	background:#d5d5d5;
+}
+
+div#globalnav_v14 ul li{
+	display:inline;
+}
+
+div#globalnav_v14 ul li a{
+	display:block;
+	float:left;
+	width:135px;
+	margin-right:18px;
+	padding:5px 0 4px;
+	color:#222;
+	text-align:center;
+	text-decoration:none;
+	background:#d5d5d5 url("bg_globalnav[1].gif") 0 0 no-repeat;
+}
+
+div#globalnav_v14 ul li a:hover{
+	background:#eaeaea url("bg_globalnav[1].gif") 0 0 no-repeat;
+}
+div#globalnav_v14 ul li a.on{
+	background:#fff url("bg_globalnav[1].gif") 100% 100% no-repeat;
+}
+
+
+div#globalnav_v14 ul li#gn-news a{
+	margin-right:0;
+}
+
+div#globalnav li#gn-about a{width:135px;padding-left:42px;}
+div#globalnav li#gn-products a{width:135px;padding-left:30px;}
+div#globalnav li#gn-support a{width:135px;padding-left:67px;}
+div#globalnav li#gn-news a{width:135px;padding-left:47px;}
+
+
+div#globalnav_v14 div.clear{
+	width:967px;
+	background:#fff;
+}
+
+
+
+
+div#globalnav_v14 ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	zoom: 1;
+}
+div#globalnav_v14 ul:before,
+div#globalnav_v14 ul:after {
+	content: ".";
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+}
+div#globalnav_v14 ul li {
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 0;
+	z-index: 100000000;
+}
+div#globalnav_v14 ul li a {
+	display: block;
+	margin: 0;
+	padding:5px 0 4px;
+	width: 135px;
+	background:#d5d5d5 url("bg_globalnav[1].gif") 0 0 no-repeat;
+	color: #222;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	zoom: 1;
+}
+div#globalnav_v14 ul li.first a,
+div#globalnav_v14 ul li.last a {
+	width: 135px;
+}
+div#globalnav_v14 ul li a:hover {
+	background:#eaeaea url("bg_globalnav[1].gif") 0 0 no-repeat;
+}
+div#globalnav_v14 ul li a.on,
+div#globalnav_v14 ul li a.on:hover {
+	background:#fff url("bg_globalnav[1].gif") 100% 100% no-repeat;
+}
+div#globalnav_v14 ul li ul,
+div#globalnav_v14 ul li iframe {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #b8b8b8;
+	border-bottom: 3px solid #6fa5db;
+	border-left: 0 none;
+	border-right: 0 none;
+	width: 140px;
+	font-weight: normal;
+	z-index: 1;
+}
+div#globalnav_v14 ul li iframe {
+	z-index: 0;
+	border: none;
+}
+div#globalnav_v14 ul li.first ul,
+div#globalnav_v14 ul li.last ul,
+div#globalnav_v14 ul li.first iframe,
+div#globalnav_v14 ul li.last iframe {
+	width: 140px;
+}
+div#globalnav_v14 ul li ul li {
+	position: static;
+	float: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #d5d5d5;
+	border-left: 1px solid #d5d5d5;
+	border-right: 1px solid #d5d5d5;
+	zoom: 1;
+}
+div#globalnav_v14 ul li ul li a,
+div#globalnav_v14 ul li.first ul li a,
+div#globalnav_v14 ul li.last ul li a {
+	float: none;
+	padding: 7px 9px 6px;
+	width: auto;
+	background-color: #eaeaea;
+	background-image: none;
+	text-align: left;
+	font-weight: normal;
+	zoom: 1;
+}
+div#globalnav_v14 ul li ul li a:hover,
+div#globalnav_v14 ul li ul li a:active {
+	background-color: #fafafa;
+	background-image: none;
+	text-decoration: underline;
+}
+
+

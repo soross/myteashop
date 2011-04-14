@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<HEAD>
+<TITLE>深圳市金华洲模具钢材有限公司</TITLE>
+<META content="text/html; charset=GBK" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type>
+<META content=text/javascript http-equiv=Content-Script-Type>
+<META name=keywords content="深圳市金华洲模具钢材有限公司">
+<META name=description content="深圳市金华洲模具钢材有限公司">
+<LINK rel=stylesheet type=text/css href="/web/images/screen[1].css" media=all>
+<script language="JavaScript" type="text/javascript" src="/web/js/about.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+window.onload = function() {
+rolinTab("rolin")
+}
+//]]>
+</script>
+
+</HEAD>
+
+<BODY id=toppage sizcache="43" sizset="1">
+<DIV id=contentwrap_v14 sizcache="43" sizset="1"><!--[HEADER BLOCK]--> <!-- ============================== Begin "Header navigation" area ============================== -->
+<DIV id=headerwrap_v14><!-- ==== header ==== -->
+<DIV id=header_v14>
+<P class=rmv><A href="#pagetitle">go to main contents</A></P>
+<P class=rmv>Header navigation area begins from here.</P>
+<P id=top><A href="/web/index.php"><IMG alt="返回首页"
+	src="/web/images/logo.jpg" width=135px; heigth=45px;></A></P>
+<DIV id=search>
+<FIELDSET>
+<DIV>
+</FIELDSET>
+</DIV>
+<!-- /#search --></DIV>
+<!--/#header_v14 --><!-- ==== /header ==== --><!--[MAIN_MENU BLOCK]--><!-- ==== Global navigation ==== -->
+<DIV id=globalnav_v14>
+<UL>
+	<LI id=gn-about class=first
+		onmouseover="javascript:if(document.getElementById('gszyUL').style.display=='none')document.getElementById('gszyUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('gszyUL').style.display=='block')document.getElementById('gszyUL').style.display='none';"><A
+		href="/web/index.php">公司主页</A>
+	<UL style="DISPLAY: none" id="gszyUL">
+	</UL>
+	</LI>
+	<LI id=gn-industrial
+		onmouseover="javascript:if(document.getElementById('gsjjUL').style.display=='none')document.getElementById('gsjjUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('gsjjUL').style.display=='block')document.getElementById('gsjjUL').style.display='none';"><A
+		href="/web/about/aboutme.php">走进金华洲</A>
+	<UL style="DISPLAY: none" id="gsjjUL">
+		<LI><A href="/web/about/aboutme.php">公司简介</A></LI>
+		<LI><A href="/web/about/aboutme.php">企业文化</A></LI>
+		<LI><A href="/web/about/aboutme.php">公司架构</A></LI>
+	</UL>
+	</LI>
+	<LI id=gn-products
+		onmouseover="javascript:if(document.getElementById('cpzxUL').style.display=='none')document.getElementById('cpzxUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('cpzxUL').style.display=='block')document.getElementById('cpzxUL').style.display='none';"><A
+		href="/web/prod/prod.php">产品展示</A>
+	<UL style="DISPLAY: none" id="cpzxUL">
+		<LI><A href="/web/prod/prod.php">进口模具钢</A></LI>
+		<LI><A href="/web/prod/prod.php">国产模具钢</A></LI>
+	</UL>
+	</LI>
+	<LI id=gn-products
+		onmouseover="javascript:if(document.getElementById('slzsUL').style.display=='none')document.getElementById('slzsUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('slzsUL').style.display=='block')document.getElementById('slzsUL').style.display='none';"><A
+		href="/web/strength/strength.php">实力展示</A>
+	<UL style="DISPLAY: none" id="slzsUL">
+		<LI><A href="/web/strength/strength.php">仓库展示</A></LI>
+		<LI><A href="/web/strength/strength.php">生产设备展示</A></LI>
+		<LI><A href="/web/strength/strength.php">加工设备展示</A></LI>
+	</UL>
+	</LI>
+	<LI id=gn-news
+		onmouseover="javascript:if(document.getElementById('khfwUL').style.display=='none')document.getElementById('khfwUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('khfwUL').style.display=='block')document.getElementById('khfwUL').style.display='none';"><A
+		href="/web/service/service.php">客户服务</A>
+	<UL style="DISPLAY: none" id="khfwUL">
+		<LI><A href="/web/service/service.php">在线留言</A></LI>
+		<LI><A href="/web/service/service.php">服务流程</A></LI>
+	</UL>
+	</LI>
+	<LI id=gn-business
+		onmouseover="javascript:if(document.getElementById('rczpUL').style.display=='none')document.getElementById('rczpUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('rczpUL').style.display=='block')document.getElementById('rczpUL').style.display='none';"><A
+		href="/web/about/aboutme.php">人才招聘</A>
+	<UL style="DISPLAY: none" id="rczpUL">
+		<LI><A href="/web/about/aboutme.php">公司简介</A></LI>
+		<LI><A href="/web/about/aboutme.php">企业文化</A></LI>
+		<LI><A href="/web/about/aboutme.php">公司架构</A></LI>
+	</UL>
+	</LI>
+	</LI>
+	<LI id=gn-business class=last
+		onmouseover="javascript:if(document.getElementById('lxwmUL').style.display=='none')document.getElementById('lxwmUL').style.display='block';"
+		onmouseout="javascript:if(document.getElementById('lxwmUL').style.display=='block')document.getElementById('lxwmUL').style.display='none';"><A
+		href="/web/about/aboutme.php">联系我们</A>
+	<UL style="DISPLAY: none" id="lxwmUL">
+		<LI><A href="/web/about/aboutme.php">公司简介</A></LI>
+		<LI><A href="/web/about/aboutme.php">企业文化</A></LI>
+		<LI><A href="/web/about/aboutme.php">公司架构</A></LI>
+	</UL>
+	</LI>
+</UL>
+<DIV class=clear><IMG alt="" src="/web/images/1px[1].gif" width=1 height=1></DIV>
+</DIV>
+<!-- /#globalnav_v14 --><!-- ==== /Global navigation ==== --><!--/[MAIN_MENU BLOCK]--></DIV>
+<!-- /#headerwrap --><!-- ============================== End "Header navigation" area ============================== --><!--/[HEADER BLOCK]--><!--[[CONTENTS AREA]]--><!-- ============================== Begin "Main area" ============================== -->
+<DIV id=mainwrap_v14 class=indexContents sizcache="43" sizset="1"><!-- ==== Page tile ==== -->
+<HR>
+
+
+
+<P class=rmv>Main Contents begins from here.</P>
+<!-- /.pagetitle --><!-- ==== /Page tile ==== --><!-- ==== Begin "PR colum area" ==== -->
+<DIV id=setionTop class=section sizcache="43" sizset="1">
+<DIV id=mainVisual sizcache="43" sizset="1">
+<DIV sizcache="43" sizset="0"></DIV>
+</DIV>
+
+
+<DIV>
+<ul class="rolinList" id="rolin">
+  <li>
+    <h2><span style="color:#002366;">公司简介</span></h2>
+    <div class="content">
+    	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深圳市金华洲致力于服务模具行业，专业向模具制造企业推荐和供应质量最优秀的冷作工具钢、高速工具钢、热作压铸工具钢和塑胶模具钢等，主营进口模具钢材：瑞典“一胜百”、奥地利”百禄“、日本“日立”“大同” 、德国“撒斯特”；国产模具钢材：抚钢、冶钢、钢华长钢、上五钢等；是集模具钢销售、精光板机加工及热处理服务于一体的综合型企业。</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司本着诚信为本，质量第一；精益求精，服务至上的宗旨，重合同、守信誉，保质量积极发展与海内外客户的业务往来和合作关系，竭诚为国内外客户提供优质服务。</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谒诚欢迎新老客户共同合作，共创辉煌明天……</p>
+		<IMG style="FILTER: ; WIDTH: 325px; HEIGHT: 220px" height=220 alt="" hspace=10 src="/web/images/gs.jpg" width=325 align=right vspace=10 border=0>
+		<br>
+    </div>
+  </li>
+  <li>
+    <h2><span style="color:#002366;">企业文化</span></h2>
+    <div class="content">
+	    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、企业使命：为中国制造走向世界提供最优质的产品和服务；</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、企业宗旨：诚信为本，服务至上；质量第一，精益求精；</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、经营理念：以至上的服务，优质的产品，服务客户，服务市场；</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、服务理念：顾客满意是企业永恒的追求；</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、质量方针：弘扬品质精神，精益求精，构建完善的质量管理体系。</p>
+		<br>
+    </div>
+  </li>
+  <li>
+    <h2><span style="color:#002366;">公司架构</span></h2>
+    <div class="content" style="text-align:center;">
+      <img src=/web/images/group.png alt="金华洲组织架构图">
+    </div>
+  </li>
+</ul>
+</DIV>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<DIV class="column_5_2 r">
+<DIV id=videonews class=box_sg>
+<DIV class=box_sg_bot>
+<DIV class=contents>
+<!-- / .box_sg_top --></DIV>
+<!-- / .box_sg_bot --></DIV>
+<!-- / #videonews .box_sg --></DIV>
+<!-- / .column_5_2 r --></DIV>
+
+
+
+
+<div>
+			<br>
+			<IFRAME id=bottomIframe height=18 marginHeight=0 src="/web/page/foot.html" frameBorder=0 width="100%" allowTransparency name=bottomIframe marginWidth=0 scrolling=no></IFRAME>
+		<div>
+ <!-- ================ [Return to Top] ================ -->
+<DIV class=btn-pagetop>
+<UL class=txt>
+	<LI><A href="#toppage">返回顶部</A></LI>
+</UL>
+</DIV>
+<!-- /.btn-pagetop --><!-- ================ /[Return to Top] ================ --></DIV>
+<!-- /#mainwrap --><!-- ============================== End "Main area" ============================== --><!--/[[CONTENTS AREA]]--><!--[FOOTER BLOCK]--><!-- ============================== Begin "Footer navigation" area ============================== -->
+<DIV id=footerwrap_v14>
+<HR>
+
+
+
+
+
+
+<P class=rmv>Footer navigation area begins from here.</P>
+<DIV id=footer_v14 class=copy>
+&nbsp;版权所有&copy;深圳市金华洲模具钢材有限公司&nbsp;&nbsp;www.jhzhou.com&nbsp;&nbsp;&nbsp;&nbsp;电话：0755-81492036<br />
+&nbsp;公司地址：深圳市宝安区沙井新村方圆科技园4栋1楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传真：0755-81492236<br />
+</DIV>
+</DIV>
+<br>
+&nbsp; <!-- /#footerwrap_v14 --><!-- ============================== End "Footer navigation" area ============================== --><!--/[FOOTER BLOCK]--></DIV>
+</BODY>
+
+</html>
+

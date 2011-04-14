@@ -1,0 +1,566 @@
+@import "goble[1].css";
+@import "font[1].css";
+#Head{ text-align:center; background:white}
+
+#Wrap{ background:white;  width:1002px;margin:0px auto; padding-top:0px }
+
+#Container{ padding-left:5px; padding-right:5px; padding-top:0px;}
+#bottom{ background:white; padding-top:40px; position:relative; text-align:center}
+
+.logo{ margin-bottom:25px}
+.logo span a{ font-weight:bold; line-height:55px }
+.logo span{ float:right}
+
+.MenuBar{ background:url("/web/images/MenuBar[1].jpg") no-repeat left bottom; width:960px; height:32px; margin-bottom:21px}
+.MenuBar ul li{ float:left; display:inline;  height:32px}
+.MenuBar ul li a{line-height:30px;height:30px; text-align:center; display:block; font-size:14px; color:white; padding-top:2px; position:relative}
+.MenuBar ul li a img{ display:none;azimuth: expression(
+this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+this.src = "/web/images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url(",'').replace(")',''),this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",this.runtimeStyle.backgroundImage = "none")),this.pngSet=true);}
+
+.MenuBar ul li a.Index{ width:91px}
+.MenuBar ul li a.IndexNow,.MenuBar ul li a.IndexNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat left top; width:91px; color:black ; font-weight:bold}
+.MenuBar ul li a.IndexNow img.rimg{ display:block; position:absolute; top:2px; left:91px}
+.MenuBar ul li a.Index:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat left top;}
+
+.MenuBar ul li a.Intro{ width:134px}
+.MenuBar ul li a.IntroNow,.MenuBar ul li a.IntroNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat -91px top;width:134px; color:black ; font-weight:bold}
+.MenuBar ul li a.IntroNow img.rimg,.MenuBar ul li a.IntroNow img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.MenuBar ul li a.IntroNow img.rimg{ left:134px}
+.MenuBar ul li a.Intro:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat -91px top;}
+
+.MenuBar ul li a.doSer{ width:102px}
+.MenuBar ul li a.doSerNow,.MenuBar ul li a.doSerNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat -225px top;width:102px; color:black ; font-weight:bold}
+.MenuBar ul li a.doSerNow img.rimg,.MenuBar ul li a.doSerNow img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.MenuBar ul li a.doSerNow img.rimg{ left:102px}
+.MenuBar ul li a.doSer:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat -225px top;}
+
+
+.NewRealTip{ background:url("/web/images/newrealtip[1].jpg") no-repeat; width:280px; height:158px; padding:20px 15px 0px 38px}
+.NewRealTip strong{ display:block; padding-left:44px; font-size:14px; color:#cc0000;}
+.NewRealTip p{ text-indent:24px; line-height:22px; padding-top:0px}
+
+.MenuBar ul li a.Useing{ width:95px}
+.MenuBar ul li a.UseingNow,.MenuBar ul li a.UseingNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat -327px top;width:95px; color:black ; font-weight:bold}
+.MenuBar ul li a.UseingNow img.rimg,.MenuBar ul li a.UseingNow img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.MenuBar ul li a.UseingNow img.rimg{ left:95px}
+.MenuBar ul li a.Useing:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat -327px top;}
+
+.MenuBar ul li a.SerCard{ width:109px}
+.MenuBar ul li a.SerCardNow,.MenuBar ul li a.SerCardNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat -422px top; width:109px; color:black ; font-weight:bold}
+.MenuBar ul li a.SerCardNow img.rimg,.MenuBar ul li a.SerCardNow img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.MenuBar ul li a.SerCardNow img.rimg{ left:109px}
+.MenuBar ul li a.SerCard:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat -422px top;}
+
+.MenuBar ul li a.getCard{ width:138px}
+.MenuBar ul li a.getCardNow,.MenuBar ul li a.getCardNow:hover{background:url("/web/images/MenuBarNow[1].jpg") no-repeat -531px top;width:138px; color:black ; font-weight:bold}
+.MenuBar ul li a.getCardNow img.rimg,.MenuBar ul li a.getCardNow img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.MenuBar ul li a.getCardNow img.rimg{ left:138px}
+.MenuBar ul li a.getCard:hover{ background:url("/web/images/MenuBarHover[1].jpg") no-repeat -531px top;}
+
+
+.newMenuBar{ background: #4cac24; width:982px; height:39px;margin:0px auto; background:url("/web/images/NewTop[1].jpg") no-repeat; padding-left:15px}
+.newbarbg2{background:url("/web/images/NewMenuBar2[1].jpg") no-repeat left bottom;}
+.newMenuBar ul li .FlMenu{ position:absolute; background:url("/web/images/FloatBg[1].jpg") no-repeat; width:240px; height:19px; line-height:19px; text-align:center; top:40px; left:-35px; display:none}
+.newMenuBar ul li .FlBg2{ width:400px; left:-120px}
+
+.FlMenu .rightfloat{ position:absolute; background:url("/web/images/rightfloat[1].jpg") no-repeat; width:20px; height:19px; right:0px; top:0px}
+.newMenuBar ul li .FlMenu a,.newMenuBar ul li .FlMenu a:hover{ font-weight:bold; text-decoration:none; font-size:12px; display:inline; padding:0px; margin:0px; color:green; line-height:19px; background:none}
+.newMenuBar ul li .FlMenu #SafeList a{ font-weight:normal; text-decoration:underline; font-size:12px; display:inline; padding:0px; margin:0px; color:#333333; line-height:19px; background:none}
+.newMenuBar ul li{ float:left; display:inline;  height:31px; padding-top:8px; padding-right:12px}
+.newMenuBar ul li a{line-height:29px;height:29px; text-align:center;width:148px; display:block; font-size:14px; color:white; padding-top:2px; font-weight:bold}
+.newMenuBar ul li a.now2,.newMenuBar ul li a.now2:hover{background:url("/web/images/now3[1].jpg") no-repeat left bottom; width:110px; color:black; font-weight:bold; position:relative}
+.newMenuBar ul li a:hover,.newMenuBar ul li a.now,.newMenuBar ul li a.now:hover{ background:url("/web/images/now[1].jpg") no-repeat left bottom; color:black; font-weight:bold; position:relative}
+.newMenuBar ul li a.now2 img.limg,.newMenuBar ul li a.now img.limg{ display:block; position:absolute; top:2px; left:-26px}
+.newMenuBar ul li a.now2 img.rimg,.newMenuBar ul li a.now img.rimg{display:block; position:absolute; top:2px; right:-26px}
+
+
+.NewFrame{ width:920px; background:url("/web/images/Indexbg[1].jpg") no-repeat; padding-top:23px; padding-left:40px; padding-bottom:40px}
+.framebox{ width:340px; float:left; display:inline}
+.framebox h2{ background:url("/web/images/maintitle[1].jpg") no-repeat; display:block; height:49px; margin-bottom:12px; text-indent:-400px; overflow:hidden}
+.framebox h2.sub2{ background-position:-498px top}
+.framebox h2.sub3{ background-position:left bottom}
+.framebox h2.sub4{ background-position:-498px bottom}
+
+.framecon1 span,.framecon2 span,.framecon3 span,.framecon4 span{ font-weight:bold; color:#045e45}
+.framecon1{ background:url("/web/images/intro4[1].jpg") no-repeat; padding-left:110px}
+.framecon2{ background:url("/web/images/intro2[1].jpg") no-repeat; padding-left:94px}
+.framecon3{ background:url("/web/images/intro3[1].jpg") no-repeat; padding-left:95px; height:130px}
+.framecon4{ background:url("/web/images/intro1[1].jpg") no-repeat; padding-left:100px; height:130px}
+
+.rightmar{ margin-right:21px}
+
+.Frame{ width:960px;}
+.Frame .leftCon{ width:698px; float:left; display:inline; margin-right:10px}
+.Frame .rightCon{ width:250px; float:left; display:inline; }
+.rightCon .rbo{ background:#f1f1f1; border-top:1px solid #ff6600; padding-top:11px; padding-left:17px; margin-bottom:7px}
+.rbo h2{ font-size:14px; text-align:left; display:block}
+.rbo a.maing{ font-size:14px; font-weight:bold; color:#005447; text-decoration:underline}
+.leftCon .TBX{background:#eff2fa; border:1px solid #d3ddf0; padding:20px 25px 20px 25px; margin-bottom:7px;}
+.TBX h2{ font-size:20px; font-family:"ºÚÌå"; border-bottom:1px solid #dddddd; padding-bottom:8px; margin-bottom:18px; font-weight:normal}
+
+
+.Frame .Left{ float:left; display:inline; width:218px; margin-right:14px}
+.Left .LoginBox{ background:#eff2fa; border: 1px solid #d1daeb; padding-left:15px; padding-bottom:15px; margin-bottom:8px}
+.LoginBox h3{ display:block; height:33px; line-height:33px; font-size:14px; color:#333333; border-bottom:1px solid #8bc1b3; width:182px; text-align:center; margin-bottom:10px}
+
+.Left .LeftBox{ padding-bottom:34px; border-top:1px solid #1fa987; background:#fafafa}
+.LeftBox h2{ height:24px; display:block; background:#eff2fa; color:#333333; font-size:14px; font-weight:bold; padding-left:14px; line-height:24px; position:relative; margin-bottom:16px }
+.LeftBox h2.blit{ margin-bottom:10px}
+.LeftBox h2 a{ display:block; background:url("/web/images/more[1].gif") no-repeat; width:36px; height:7px; font-size:0px; line-height:0px; position:absolute; right:7px; top:10px; text-indent:-500px; overflow:hidden}
+.LeftBox ul li{ height:23px;background:url("/web/images/greyarr[1].gif") no-repeat 5px 2px; padding-left:20px}
+.LeftBox ul li a{ color:#333333}
+.LeftBox ul li span{ float:right}
+.LeftBox p{ line-height:24px; padding-left:5px; text-indent:24px}
+
+.Frame .Middle{ float:left; display:inline; width:514px; margin-right:14px}
+.Middle .advbar{ border:1px solid #cccccc; margin-bottom:9px}
+.Middle .Midcon{ border:1px solid #d3ddf0; background:#eff2fa; padding:17px 0px 20px 22px}
+.MainMid{ height:350px}
+.Midcon .contxt{ margin-bottom:25px!important;*margin-bottom:15px;}
+.contxt strong{ font-size:14px; line-height:30px; display:block; height:30px}
+.contxt .conbar{ background:url("/web/images/conbar[1].jpg") no-repeat; width:447px; height:21px; padding-left:15px; overflow:hidden}
+.conbar ul.menuli li{ float:left; display:inline; width:83px}
+.conbar ul.menuli li a{ display:block; color:white; line-height:21px; text-align:center; width:83px; height:21px}
+.conbar ul.menuli li a.now,.conbar ul.menuli li a:hover{ background:url("/web/images/nowmenu[1].gif") no-repeat left 3px; color:black; font-weight:bold; padding-top:3px; height:18px; overflow:hidden}
+
+.contxt ul.wordli li{ float:left; display:inline; width:180px; font-weight:bold; padding-left:24px; color:#333333; height:35px; line-height:35px}
+.contxt ul.wordli{ margin-top:15px; margin-left:30px}
+.contxt ul.wordli li.icon1{ background:url("/web/images/iconcol[1].gif") no-repeat left 5px}
+.contxt ul.wordli li.icon2{ background:url("/web/images/iconcol[1].gif") no-repeat left -22px}
+.contxt ul.wordli li.icon3{ background:url("/web/images/iconcol[1].gif") no-repeat left -51px}
+.contxt ul.wordli li.icon4{ background:url("/web/images/iconcol[1].gif") no-repeat 3px -82px}
+.contxt ul.wordli li a,.conbar ul.wordli li a:hover{ text-decoration:underline; font-weight:normal}
+
+.contxt .SubCon{ position:relative; height:55px}
+.contxt .SubCon p{ line-height:22px; color:#333333; padding-left:16px; padding-top:15px}
+.contxt .SubCon p.topP{ padding-top:30px}
+
+
+.phonediv{ background:url("/web/images/phone[1].gif") no-repeat 5px 5px; padding-left:120px; padding-right:30px; margin-top:15px; line-height:27px; padding-top:10px; min-height:50px; height:100px}
+.passdiv{ background:url("/web/images/phone[1].gif") no-repeat 5px -190px; padding-left:180px; padding-right:30px; margin-top:15px; line-height:27px; padding-top:0px; padding-bottom:20px}
+.safebg{ background:url("/web/images/phone[1].gif") no-repeat 5px 5px;}
+.podbg{ background:url("/web/images/phone[1].gif") no-repeat 5px -430px;}
+
+
+.Frame .Right{ float:left; display:inline; width:189px;}
+.Right .Rcon{border-top:1px solid #ff6600; background:#f1f1f1; padding-left:8px; margin-bottom:15px; padding-top:2px; padding-bottom:10px}
+.Right h1{ font-size:14px; font-weight:bold; display:block; height:25px; line-height:25px; margin-bottom:5px}
+.Right .bgbox{ background:url("/web/images/bgcolnew[1].jpg") no-repeat; width:175px; height:90px; margin-bottom:15px}
+.Right .boximg2{ background-position:left bottom}
+
+
+.IntroFrame{ border:1px solid #d3ddf0; background:#eff2fa; padding-left:23px; padding-top:20px; padding-right:23px; width:912px; padding-bottom:40px}
+.NewW{ width:696px;}
+
+.IntroFrame .MenuIntro{ height:40px; padding-left:270px; margin-bottom:30px}
+.MenuIntro ul li{ float:left; display:inline; padding-right:100px}
+.IntroFrame .MenuIntro2{ height:40px; padding-left:135px; margin-bottom:30px}
+.MenuIntro2 ul li{ float:left; display:inline; padding-right:100px}
+
+.NewSafe{ background:url("/web/images/newsafe[1].jpg") no-repeat #eff2fa 10px 25px; padding-top:180px  }
+
+.IntroFrame h2{ padding-left:23px; display:block; border-bottom:1px solid #cccccc; height:30px; line-height:30px; font-size:14px; margin-bottom:20px}
+.IntroFrame h2 span{ font-weight:normal; font-size:14px}
+.IntroFrame p{ padding-left:17px}
+.IntroFrame p.par{ line-height:38px}
+.IntroFrame p.Npar{ line-height:25px}
+.IntroFrame p.redtip{ line-height:22px; color:#cc0000; margin-top:5px; margin-bottom:70px}
+.IntroFrame .OtherDo{ padding-top:36px; padding-right:20px; text-align:right}
+.OtherDo a{ text-decoration:underline}
+.OtherDo p{ text-align:left; padding-top:39px; color:#cc0000}
+.OtherDo p a{ font-weight:bold}
+
+
+.newlink{ display:block; background:url("/web/images/MenubarCol[1].gif") no-repeat; width:73px; height:25px; line-height:25px; padding-left:35px; font-weight:bold; color:black; text-align:left}
+
+.ContentBar .LeftMenu{ width:179px; height:460px; background:url("/web/images/greenBg[1].jpg") no-repeat; float:left; display:inline; margin-right:22px; padding-top:37px;}
+.LeftMenu a{ display:block; background:url("/web/images/LeftMenu[1].jpg") no-repeat; width:116px; height:37px; line-height:37px; padding-left:62px; font-size:14px; color:#333333; text-decoration:none}
+.LeftMenu a:hover,.LeftMenu a.now{ background:url("/web/images/LeftBarNow[1].jpg") no-repeat; height:35px; line-height:35px; padding-left:60px; width:118px; color:#e13102; font-weight:bold}
+
+
+
+#FAQ dt{padding-bottom:20px; cursor:pointer;font-size:12px; color:black; }
+#FAQ dt h2{font-weight:bold; background:url("/web/images/yeask[1].jpg")  no-repeat left center; display:block; padding-left:30px; font-size:12px; height:30px; border-bottom:1px solid #dddddd; margin-bottom:0px}
+#FAQ dt p{ line-height:30px;  display:none; font-weight:normal; cursor:default; color:#333333; padding-left:30px; padding-top:10px}
+
+
+
+.RainLeft{ width:197px; margin-right:15px; float:left; display:inline; background:url("/web/images/Lmenutop[1].jpg") no-repeat; padding-top:30px;}
+.RainLeft .Rbb{ background:url("/web/images/bb[1].jpg") no-repeat center top; height:17px; overflow:hidden}
+.RainLeft .SubMenu{ border:1px solid #d1d1d1; border-bottom:none; border-top:none; padding-bottom:500px; background:white; position:relative}
+.SubMenu ul li a,.SubMenu ul li a:hover{ height:38px; background:url("/web/images/submenu[1].jpg") no-repeat left top; display:block; text-decoration:none; padding-left:43px; line-height:38px; font-weight:bold; color:#333333}
+.SubMenu ul li a.now,.SubMenu ul li a.now:hover{background:url("/web/images/submenu[1].jpg") no-repeat left bottom; }
+
+.SubMenu .SubBord{ position:absolute; display:none; left:115px; top:85px; width:118px; height:44px; background:url("/web/images/SubLay[1].gif") no-repeat; padding:1px}
+.SubMenu .lv2{top:143px}
+.SubMenu .SubBord a{ background:url("/web/images/orgarr[1].jpg") no-repeat 10px 6px; display:block; height:22px; line-height:22px; color:#33333; padding-left:35px }
+.SubMenu .SubBord a:hover{background:url("/web/images/orgbluehover[1].jpg") no-repeat left top; text-decoration:underline}
+
+.SubMenu ul li .subsub{ display:none; padding-top:8px; padding-bottom:22px}
+.SubMenu ul li .subsub a{ background:none; color:#333333; font-weight:normal; display:block; margin-top:15px; height:auto; width:auto; padding-left:56px; line-height:normal;}
+.SubMenu ul li .subsub a.MLink{ background:url("/web/images/orgarr[1].jpg") no-repeat 125px 6px; margin-top:10px; padding-top:5px; padding-bottom:5px }
+.SubMenu ul li .subsub a.now,.SubMenu ul li .subsub a.now:hover{ color:green; font-weight:bold; background:none; text-decoration:none}
+.SubMenu ul li .subsub a:hover{ text-decoration:underline; font-weight:normal; color:green;background:none; height:auto; width:auto; padding-left:56px; line-height:normal}
+.SubMenu ul li .subsub a.MLink:hover,.SubMenu ul li .subsub a.MLinkHover,.SubMenu ul li .subsub a.MLinkHover:hover{ border-top:1px solid #d1d1d1; border-bottom:1px solid #d1d1d1;margin-top:10px; padding-top:4px; padding-bottom:4px; text-decoration:none; font-weight:bold; color:green; text-decoration:none; font-weight:bold}
+
+.SubMenu ul li .subsub a.MLinkNow{ background:url("/web/images/orgarr[1].jpg") no-repeat 125px 6px; margin-top:10px; padding-top:5px; padding-bottom:5px; font-weight:bold; color:green; }
+
+.IndexDo{padding-bottom:40px}
+
+
+
+.IndexDo Iframe{ float:left; display:inline; width:100%;}
+
+
+.InnerIndex{ width:100%; background:url("/web/images/InnerTop[1].jpg") #fefefe no-repeat;}
+.InnerHelp{ background:url("/web/images/HelpTop[1].jpg") no-repeat; padding-top:45px;}
+.Inner2{ width:960px;background:url("/web/images/InnerTopWi[1].jpg") #fefefe no-repeat;}
+
+.InnerIndex .AccStep{ background:url("/web/images/AccStep1[1].jpg") no-repeat 25px 31px; height:130px}
+.InnerIndex .AccStep h2.NewF{ height:25px; display:block; background:url("/web/images/givebank[1].jpg") no-repeat; padding-bottom:2px; border-bottom:1px solid #cccccc; margin-bottom:37px}
+.InnerIndex .AccStep h2.CarF{ height:25px; display:block; background:url("/web/images/buca[1].jpg") no-repeat; padding-bottom:2px; border-bottom:1px solid #cccccc; margin-bottom:37px}
+
+.InnerIndex .AccStep2{ background:url("/web/images/AccStep2[1].jpg") no-repeat 13px 31px; height:130px}
+.InnerIndex .AccStep3{ background:url("/web/images/AccStep3[1].jpg") no-repeat 25px 31px; height:130px}
+.InnerIndex .AccStep4{ background:url("/web/images/AccStep4[1].jpg") no-repeat 18px 31px; height:130px}
+
+.InnerIndex .ChangeStep1{ background:url("/web/images/changeoldstep1[1].jpg") no-repeat 115px 25px; height:130px}
+.InnerIndex .ChangeStep2{ background:url("/web/images/changeoldstep2[1].jpg") no-repeat 115px 25px; height:130px}
+.InnerIndex .ChangeStep3{ background:url("/web/images/changeoldstep3[1].jpg") no-repeat 115px 25px; height:130px}
+
+
+.InnerIndex .NoStep{ background:none; height:auto; padding:50px 39px 0px 40px}
+.InnerIndex .NoStep2{ background:none; height:auto; padding:20px 21px 0px 22px}
+.InnerIndex .BuStep1{ background:url("/web/images/BuStep1[1].jpg") no-repeat 132px 21px;}
+.InnerIndex .BuStep2{ background:url("/web/images/BuStep2[1].jpg") no-repeat 132px 21px;}
+.InnerIndex .BuStep3{ background:url("/web/images/BuStep3[1].jpg") no-repeat 132px 21px;}
+
+.InnerIndex .PassForm{border:1px solid #d3ddf0; background:#eff2fa; width:703px; margin:0px auto;}
+.Inner2 .PassForm{ width:680px; }
+
+.FormW1{ padding-top:90px; padding-bottom:150px}
+
+
+
+.InnerIndex .NoPassForm{width:718px; margin:0px auto; padding-top:15px}
+.InnerIndex .NoFormW{ width:575px; padding-top:0px;}
+.NoFormW .card{ float:left; display:inline; width:247px; }
+.card p{ line-height:33px; height:33px}
+
+.InnerIndex .NoFormW2{ padding-left:50px; width:auto;padding-top:26px}
+.Inner2 .NoFormW2{ padding-left:155px }
+.InnerIndex .NoFormW3{ width:654px}
+.NoFormW3 h2{ display:block; border-bottom:1px solid #dddddd; margin-bottom:20px}
+.NoFormW3 .ZLform{ position:relative; padding-bottom:50px}
+.ZLform .Tip1{ background:url("/web/images/maintip2[1].jpg") no-repeat; width:266px; height:156px; padding:25px 12px 0px 44px; position:absolute; left:310px; top:45px}
+.ZLform .Tip2{ background:url("/web/images/maintip3[1].jpg") no-repeat; width:215px; height:94px; padding:26px 12px 0px 44px; position:absolute; left:310px; top:145px}
+.ZLform p.pt{ text-indent:24px; line-height:20px; margin-bottom:10px}
+.Tip1 p,.Tip2 p{ line-height:23px; text-indent:24px}
+.Tip1 strong{ font-size:14px; display:block; color:#cc0000;  margin-bottom:10px; padding-left:31px}
+.Tip2 strong{ font-size:14px; display:block; color:#cc0000;  margin-bottom:10px; padding-left:7px}
+
+.NoFormW3 h2.t1{ background:url("/web/images/icon[2].gif") no-repeat left -2px; height:35px; padding-left:40px; line-height:35px; color:#cc0000; font-size:14px;}
+h2.t2{ background:url("/web/images/icon[2].gif") no-repeat left -50px; height:35px; padding-left:40px; line-height:35px; color:#cc0000; font-size:14px;}
+
+
+.NoFormW2 .w344{ width:344px; float:left; display:inline}
+.NoFormW2 .w324,.NoStep .w324{ width:324px; float:left; display:inline; padding-top:16px}
+.NoStep .w324{ padding-top:0px; width:329}
+.NoStep .w344{ width:334px; float:left; display:inline}
+
+
+
+.NoFormW .safetip{ float:left; display:inline; width:328px; background:url("/web/images/safettip[1].jpg") no-repeat left 35px; padding-top:35px }
+.safetip .TTWord{height:151px; color:#cc0000; padding-top:39px; padding-left:52px; padding-right:15px}
+.TTWord strong{ display:block; padding-left:27px; font-size:14px; color:#cc0000}
+.TTWord p{ text-indent:24px; line-height:23px}
+.safetip .tipbtn{ padding-left:100px; padding-top:25px}
+
+
+#cardtable{ border:2px solid #c5c5c5; border-bottom:1px solid #c5c5c5; border-right:1px solid #c5c5c5; width:237px}
+#cardtable tr.yelo td,#cardtable tr.yelo th{ background:#aaf0f0}
+#cardtable tr.gre td,#cardtable tr.gre th{ background:#ffffff}
+
+#cardtable tr td,#cardtable tr th,#cardtable tr td span{ width:27px; height:23px; text-align:center; line-height:23px; font-size:14px;}
+#cardtable tr th.top{ border-bottom:2px solid #c5c5c5; border-right:1px solid #c5c5c5}
+#cardtable tr th.topfirst{ border-bottom:2px solid #c5c5c5; border-right:2px solid #c5c5c5}
+#cardtable tr th.rt{ border-right:2px solid #c5c5c5; border-bottom:1px solid #c5c5c5; background:white}
+#cardtable tr td{ border-bottom:1px solid #c5c5c5; border-right:1px solid #c5c5c5}
+#cardtable tr td.nowValue{ background:#ff6600; font-weight:bold; color:white}
+
+
+
+#cardtable2{ border:2px solid #c5c5c5; border-bottom:1px solid #c5c5c5; border-right:1px solid #c5c5c5; width:292px}
+
+#cardtable2 tr.yelo td,#cardtable2 tr.yelo th{ background:#faf5d4}
+#cardtable2 tr.gre td,#cardtable2 tr.gre th{ background:#f0f0f0}
+
+#cardtable2 tr td,#cardtable tr th,#cardtable2 tr td span{ width:31px; height:23px; text-align:center; line-height:23px; font-size:14px;}
+#cardtable2 tr th.top{ border-bottom:2px solid #c5c5c5; border-right:1px solid #c5c5c5}
+#cardtable2 tr th.topfirst{ border-bottom:2px solid #c5c5c5; border-right:2px solid #c5c5c5}
+#cardtable2 tr th.rt{ border-right:2px solid #c5c5c5; border-bottom:1px solid #c5c5c5}
+#cardtable2 tr td{ border-bottom:1px solid #c5c5c5; border-right:1px solid #c5c5c5}
+#cardtable2 tr td.nowValue{ background:#f2c76a; font-weight:bold}
+
+
+
+.OCIndex{ width:710px;border:1px solid #d3ddf0; background:#eff2fa; padding:31px 0px 50px 32px; min-height:540px; height:auto!important; height:540px; }
+.OCIndex p{ color:#cc0000; line-height:25px; margin-bottom:34px; padding-right:62px}
+.OCIndex p a{ text-decoration:underline}
+.ProList{ margin-bottom:20px}
+
+.OCIndex .ProList ul li{ float:left; display:inline; line-height:42px; margin-bottom:34px; width:244px}
+.OCIndex .ProList ul li.SMW{ width:204px}
+.OCIndex .ProList ul li span{ display:block; float:left; width:117px; height:42px; line-height:42px; text-align:center; font-size:14px; font-weight:bold; color:#ffffff; margin-right:9px; background:url("/web/images/gamelist[1].jpg") no-repeat}
+.OCIndex .ProList ul li a{ font-size:14px; font-weight:bold; text-decoration:underline; line-height:42px}
+.OCIndex .ProList ul li a.unOpen{ font-size:12px; font-weight:normal; text-decoration:none; line-height:42px}
+p.suceed{ padding-top:80px;; text-align:center; padding-bottom:350px; font-size:14px; font-weight:bold; color:red}
+
+.NewTIP{ background:url("/web/images/newtip[1].jpg") no-repeat; width:278px; height:89px; padding:23px 12px 0px 54px}
+.NewTIP strong{ display:block; padding-left:22px; font-size:14px; color:#cc0000}
+.NewTIP p{ text-indent:24px; line-height:23px;color:#cc0000; padding-top:6px}
+
+.w324 p.rbt{ margin-bottom:25px; font-size:14px; font-weight:bold; color:red}
+
+.NewCard{ width:650px; margin:0px auto}
+
+.CardIntro{ padding:20px 0px 0px 0px}
+.CardIntro .Card{ float:left; display:inline; text-align:center; width:195px; margin-right:30px; background:url("/web/images/CardCol[1].jpg") no-repeat #eff2fa 20px top; padding-top:130px; text-align:center; font-size:14px; font-weight:bold; color:#045e45}
+.CardIntro .Card2{ background-position:-235px top;}
+.CardIntro .Card3{ background-position:-500px top;}
+.CardIntro .Card4{background-position:-750px top;}
+
+
+
+#HelpForm .lefthelp{ background:url("/web/images/helpimg1[1].jpg") no-repeat; width:295px; height:396px; float:left; display:inline}
+#HelpForm .righthelp{ float:left; display:inline; background:url("/web/images/NormarBg[1].jpg") no-repeat; width:369px;  padding-top:109px;}
+#HelpForm .righthelp .WordShow{ width:248px; height:132px; margin:0px auto; overflow:hidden; margin-bottom:44px; padding-left:36px; padding-right:36px}
+.WordShow #ShowForm div{color:#ffcc00; font-size:16px; font-weight:bold; line-height:35px; text-align:left; padding-top:38px; height:94px}
+#ShowForm div a{ font-size:14px; font-weight:bold; color:#33ff66}
+#ShowForm div.lc{ text-align:center}
+#ShowForm div.lc2{ text-align:left; padding-top:20px; height:112px}
+div.lc2 a{ margin-left:90px;}
+
+
+.righthelp p{ text-align:center; padding-bottom:31px;}
+.righthelp p a{ font-size:14px; text-decoration:underline; font-weight:bold; color:#cc0000}
+.righthelp p.Goto a{ color:#33ff66}
+.righthelp p.Goto2 a{ color:green}
+.nnhelp{ margin-bottom:12px;}
+.nnhelp .HelpTipForm{ width:246px; border:1px solid #bcbcbc; padding-top:70px; padding-left:117px; float:left; display:inline; line-height:24px; height:130px}
+.HelpTipForm p{ padding-bottom:5px; line-height:22px;}
+
+.nnhelp .unbimg{ background:url("/web/images/UnBind[1].jpg") no-repeat left top; margin-right:14px};
+.nnhelp .buimg{ background:url("/web/images/BuCard[1].jpg") no-repeat left top}
+
+.FaqForm{}
+.FaqForm h2{ padding:0px; margin:0px; border:none; display:block; background:url("/web/images/OtherHelp[1].jpg") no-repeat; height:37px;}
+.FaqForm h2.unb{ background:url("/web/images/UnBindHelp[1].jpg") no-repeat}
+.FaqForm .FaqCon{ border:1px solid #d8d9da; border-top:none; padding:32px 45px 20px 45px}
+.FaqCon div.MM{padding-bottom:10px; cursor:pointer;font-size:12px; color:black; }
+.InnerIndex .FaqCon div.MM h2{font-weight:normal; background:url("/web/images/newarricon[1].jpg")  no-repeat left center; display:block; padding:0px; margin:0px; padding-left:25px; font-size:12px; height:25px; line-height:25px; border-bottom:1px solid #dddddd; margin-bottom:0px; color:#ff3300}
+.FaqCon div.MM div{ line-height:22px; display:none;  font-weight:normal; cursor:default; color:#333333; padding-left:27px; padding-top:20px; padding-bottom:30px}
+div.MM div table{ border:1px solid green; border-bottom:none; border-right:none}
+div.MM div table tr td,div.MM div table tr th{ padding-left:15px; border:1px solid green; border-top:none; border-left:none}
+div.MM div table tr th{ color:green; background:#E9FCED}
+
+
+
+.IndexDo .cntBox_btm{float:left;width:730px;background-image:url("/web/images/cntBox_bg_btm[1].gif"); background-repeat: repeat-x;}
+.IndexDo .cntBox_right{background:url("/web/images/cntBox_bg_right[1].gif") no-repeat top right;}
+.IndexDo .cntBox_left{background:url("/web/images/cntBox_bg_left[1].gif") no-repeat top left; padding:10px;}
+.IndexDo .cntBox_left iframe{ float:none; width:690px;}
+
+
+.function{ height:40px; background:url("/web/images/smbg[1].jpg") no-repeat; padding-left:30px; color:#666666; margin-bottom:10px }
+.function a{ font-weight:bold; text-decoration:none; display:block; margin-bottom:4px}
+.f2{ background-position:left -48px}
+.f3{ background-position:left -95px}
+.f4{ background-position:left -145px}
+.f5{ background-position:left -195px}
+
+.AccountCenter{ width:757px;overflow:hidden; margin-right:6px; float:left; display:inline}
+.AccountCenter h2{ display:block; line-height:30px; height:30px; overflow:hidden; color:#333333; padding-left:15px; font-size:14px; background:url("/web/images/sfdtit[1].jpg") no-repeat}
+.AccountCenter .lbod{ border:1px solid #d8d9da; border-bottom:none; border-top:none; padding-top:24px; }
+.lbod .head{ padding:0px 30px 0px 44px; width:100px; float:left; display:inline;}
+.lbod .rhead{ width:550px; float:left; display:inline;}
+.rhead p{ font-size:14px; font-weight:bold; color:#333333; padding-bottom:18px}
+.rhead p strong{ color:#ff3300; font-size:14px}
+
+.safece{ background:url("/web/images/safecelue[1].jpg") no-repeat; height:31px; width:540px; margin-top:20px}
+.safecon{ border:1px solid #d8d8d8; background:#f5f5f5;; border-top:none; padding-left:8px; padding-right:8px; width:521px}
+.safebot{ background:url("/web/images/mbot[1].jpg") no-repeat; height:9px; overflow:hidden; line-height:0px; font-size:0px; *margin-top:1px; margin-top:24px!important;*margin-top:1px!important;}
+
+.safecon .intdiv{ border-bottom:1px solid #dfdfdf; font-weight:bold; background:url("/web/images/greyicon[1].gif") no-repeat 15px 10px; height:35px; padding-top:13px; padding-left:50px; padding-right:18px; position:relative}
+.safecon .int2{ background-position:15px -38px}
+.safecon .int3{ background-position:15px -87px}
+.safecon .int4{ background-position:15px -136px}
+.safecon .int5{ background-position:15px -183px}
+.intdiv .red{ color:#cc0000}
+.intdiv .bindright{ color:#077600; margin-right:50px; font-size:14px}
+.intdiv span{ font-weight:normal}
+.intdiv a{ position:absolute; left:410px; top:10px;}
+
+.RightCen{ float:left; display:inline; width:197px;}
+.RightCen .Rbox{ margin-bottom:6px;}
+.Rbox h2{ font-size:14px; font-weight:bold; color:#333333; display:block; line-height:30px; height:30px; overflow:hidden; color:#333333; padding-left:15px; background:url("/web/images/shotit[1].jpg") no-repeat 0px top;}
+.Rbox .rcon{ padding-top:6px; border:1px solid #d8d8d8; border-bottom:none; border-top:none}
+.rcon p{ padding-top:23px; text-align:center}
+.rcon a{ background:url("/web/images/smicon2[1].jpg") no-repeat 16px 6px; display:block; height:32px; line-height:32px; border-bottom:1px dashed #e3e3e3; padding-left:48px;}
+.rcon a.co2{ background-position:16px -30px}
+.rcon a.co3{background-position:16px -67px}
+.rcon a.co4{background-position:16px -102px}
+.rcon a.co5{background-position:16px -138px}
+.rcon a.co6{background-position:16px -175px}
+.rcon a.co7{background-position:16px -210px}
+.Rbox .rbt{ background:url("/web/images/mbot[1].jpg") no-repeat; background-position: right top!important; background-position: -761px top; height:9px; overflow:hidden; font-size:0px; line-height:0px;}
+
+
+
+#ClassForm{width:744px; padding-left:5px}
+.BindStep{ background:url("/web/images/stepbind[1].jpg") no-repeat; height:71px; overflow:hidden; margin-bottom:18px; position:relative}
+.BindStep div{height:71px; overflow:hidden ;background:url("/web/images/stepbind[1].jpg") no-repeat; float:left; display:inline}
+.BindStep a{ display:block; float:left; display:inline;height:71px; position:absolute; top:0px; width:125px;}
+.BindStep .bs1{ background-position:left bottom; width:135px}
+.BindStep .bs2{ background-position:-165px bottom; width:124px; margin-left:165px}
+.BindStep .bs3{ background-position:-315px bottom; width:125px; margin-left:315px}
+.BindStep .bs4{ background-position:-463px bottom; width:123px; margin-left:463px}
+.BindStep .bs5{ background-position:-610px bottom; width:125px; margin-left:610px}
+.BuCardStep{background:url("/web/images/stepbucard[1].jpg") no-repeat; height:70px; overflow:hidden; margin-bottom:18px;position:relative}
+.BuCardStep div{height:70px; overflow:hidden ;background:url("/web/images/stepbucard[1].jpg") no-repeat; float:left; display:inline;}
+.BuCardStep a{ display:block; float:left; display:inline;height:70px; position:absolute; top:0px; width:153px;}
+.BuCardStep .bs1{ background-position:left bottom; width:172px}
+.BuCardStep .bs2{ background-position:-210px bottom; width:153px; margin-left:210px}
+.BuCardStep .bs3{ background-position:-390px bottom; width:153px; margin-left:390px}
+.BuCardStep .bs4{ background-position:-570px bottom; width:153px; margin-left:570px}
+.ChangeStep{background:url("/web/images/changeStep[1].jpg") no-repeat; height:70px; overflow:hidden; margin-bottom:18px;position:relative}
+.ChangeStep div{height:70px; overflow:hidden ;background:url("/web/images/changeStep[1].jpg") no-repeat; float:left; display:inline}
+.ChangeStep a{ display:block; float:left; display:inline;height:70px; position:absolute; top:0px; width:153px;}
+.ChangeStep .bs1{ background-position:left bottom; width:182px}
+.ChangeStep .bs2{ background-position:-210px bottom; width:153px; margin-left:210px}
+.ChangeStep .bs3{ background-position:-390px bottom; width:153px; margin-left:390px}
+.ChangeStep .bs4{ background-position:-570px bottom; width:153px; margin-left:570px}
+
+.UnBindStep{background:url("/web/images/UnBindStep[1].jpg") no-repeat; height:70px; overflow:hidden; margin-bottom:18px;position:relative}
+.UnBindStep div{height:70px; overflow:hidden ;background:url("/web/images/UnBindStep[1].jpg") no-repeat; float:left; display:inline}
+.UnBindStep a{ display:block; float:left; display:inline;height:70px; position:absolute; top:0px; width:210px}
+.UnBindStep .bs1{ background-position:left bottom; width:242px}
+.UnBindStep .bs2{ background-position:-273px bottom; width:210px; margin-left:273px}
+.UnBindStep .bs3{ background-position:-509px bottom; width:210px; margin-left:509px}
+
+.OpenCloseStep{background:url("/web/images/OpenCloseStep[1].jpg") no-repeat; height:70px; overflow:hidden; margin-bottom:18px;position:relative}
+.OpenCloseStep div{height:70px; overflow:hidden ;background:url("/web/images/OpenCloseStep[1].jpg") no-repeat; float:left; display:inline}
+.OpenCloseStep a{ display:block; float:left; display:inline;height:70px; position:absolute; top:0px; width:210px}
+.OpenCloseStep .bs1{ background-position:left bottom; width:242px}
+.OpenCloseStep .bs2{ background-position:-273px bottom; width:210px; margin-left:273px}
+.OpenCloseStep .bs3{ background-position:-509px bottom; width:210px; margin-left:509px}
+
+.BindMainForm{ background:url("/web/images/yelowintro[1].jpg") no-repeat; width:708px; padding:30px 0px 0px 31px}
+.BindMainForm .intform{ height:113px; }
+.BindMainForm .intform strong{ display:block; margin-bottom:22px; font-size:14px}
+.BindMainForm .intform p{ line-height:23px; text-indent:24px; padding-right:34px}
+.imgform{ border:1px solid #dddddd; padding-top:25px; padding-bottom:30px; text-align:center; border-top:none; width:737px}
+
+#AskSet{ margin-bottom:27px}
+
+
+.SubBar{ background:url("/web/images/subar[1].jpg") no-repeat; height:26px; padding-top:8px}
+.SubBar ul li{ float:left; display:inline; height:21px; border-right:1px solid #c3c3c4; width:110px;}
+.SubBar ul li.nobord{ border-right:none}
+.SubBar ul li a{ display:block; height:21px; text-align:center ;line-height:24px}
+.SubBar ul li.long{ width:140px;}
+.SubBar ul li a.now{ margin:0px auto; width:91px; height:21px; text-align:center; line-height:21px; color:white; background:url("/web/images/subnow[1].jpg") no-repeat}
+
+
+#navbar{ background:url("/web/images/dh_bg[1].gif") no-repeat 0px 52px; width:665px; overflow:hidden; height:69px; margin:10px auto;}
+#navbar ul{ margin:0; padding:0; list-style:none;font-weight:bold;}
+#navbar ul li{ background:url("/web/images/navbar_stbg[1].gif") no-repeat; color:#777;float:left; width:158px; text-align:center; height:59px; margin:0 3px; padding-top:10px; display:inline-block; line-height:normal; font-size:14px;}
+#navbar ul li.current{ background:url("/web/images/navbar_ctbg[1].gif") no-repeat; color:#fff;}
+
+
+.left_part{width:210px;padding-right:12px; background:url("/web/images/menubg[1].jpg") repeat-y left;float:left;}
+.left_part .top{background:url("/web/images/MenuTop[1].jpg") no-repeat left top;padding-top:26px;}
+.left_part .btm{background:url("/web/images/MenuBot[1].jpg") no-repeat left bottom;padding-bottom:26px;}
+
+.left_part dl{margin:0; padding:0;}
+.left_part dd{margin:0;padding:0;}
+.left_part dd h6
+{
+     font-size:14px;
+
+	 margin:0 8px 0 0;
+	 padding-left:10px;
+	 display:block;
+	 border-top:1px solid #d5d7d6;
+	 line-height:40px;
+}
+.left_part dd ul
+{
+     list-style:none;
+     margin:0 0 15px 0;
+     padding:0;
+}
+.left_part dd ul ul
+{
+     margin:0;
+	 width:120px;
+	 display:block;
+	 position:absolute;
+	 background:url("/web/images/menubg[1].jpg") repeat-y;
+	 margin-left:210px;
+	 display:none;
+	 border-top:1px solid #d0d2cf;
+	 border-left:1px solid #d0d2cf;
+	 border-right:1px solid #d0d2cf;
+}
+.left_part dd ul li
+{
+     background:url("/web/images/arr_03[1].gif") no-repeat 14px center;
+	 padding:0;
+	 font-size:14px;
+	 line-height:36px;
+}
+.left_part dd ul li li
+{
+     background:none;
+	 font-size:12px;
+     border-bottom:1px solid #d0d2cf;
+	 display:block;
+	 line-height:30px;
+}
+.left_part dd ul li li a
+{
+	 font-size:12px;
+
+}
+.left_part dd ul li a{
+	font-size:14px;
+	color:#000;
+	text-decoration:none;
+     padding-left:34px;
+	 display:block;
+	 height:36px;
+	 width:176px;
+	 line-height:36px;
+}
+.left_part dd ul li a:hover
+{
+     background:url("/web/images/hover_bg[1].gif") no-repeat left;
+     color:#FFF;
+     font-weight:bold;
+}
+.left_part dd ul li a.current{background:url("/web/images/current_bg[1].gif") no-repeat left; color:#FFF; font-weight:bold;}
+.left_part dd ul li a.current:hover{background:url("/web/images/current_bg[1].gif") no-repeat left;}
+.left_part dd ul li.showmenu ul{display:block;}
+.left_part dd ul li.showmenu ul a{ background:none; color:#000; font-weight:normal; width:100px; padding-left:20px; line-height:30px;height:30px;}
+.left_part dd ul li.showmenu ul a.present{background:#4cac24; font-weight:normal;color:#FFF;}
+.left_part dd ul li.showmenu ul a.present:hover{background:#4cac24;}
+.left_part dd ul li.showmenu ul a:hover{ background:#a3d836;color:#FFF; font-weight:normal;}
+.left_part dd ul li.showmenu a{background:url("/web/images/hover_bg[1].gif") no-repeat left;color:#FFF;font-weight:bold;}
+.left_part dd ul li.showmenu a.current{background:url("/web/images/current_bg[1].gif") no-repeat left; color:#FFF; font-weight:bold;}
+.left_part dd.open h6{background:url("/web/images/arr_01[1].gif") no-repeat 180px center;}
+.left_part dd.close h6{background:url("/web/images/arr_02[1].gif") no-repeat 180px center;}
+.left_part dd.close ul{display:none;}
+

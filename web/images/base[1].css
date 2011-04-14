@@ -1,0 +1,56 @@
+
+body{
+	margin:0;
+	padding:0;
+	background:#fff;
+}
+
+@media print {
+	body {
+		_zoom: 66%;
+	}
+}
+
+img{
+	border:none;
+}
+img.border{
+	border:1px solid #ccc;
+}
+
+hr{
+	display:none;
+}
+
+
+em{
+	font-style:normal;
+	font-weight:bold;
+}
+
+sub{
+	vertical-align:baseline;
+}
+sup{
+	vertical-align:text-top;
+}
+
+
+span.rmv,
+p.rmv{
+	display:block;
+	position:absolute;
+	top:-9999px;
+	left:-9999px;
+	width:100px;
+}
+
+
+span.clear,
+div.clear{
+	display:block;
+	clear:both;
+	width:1px;
+	height:1px;
+	margin-top: -1px;
+}

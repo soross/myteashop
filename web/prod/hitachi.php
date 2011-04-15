@@ -84,31 +84,31 @@ document.onselectstart=new Function("event.returnValue=false;");
 								<DIV class=step1Form>
 										<UL>
 										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_3.gif" />
+											<img src="/web/images/hitachi/rbdt_79.gif" />
 										</LI>
 										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_4.gif" />
+											<img src="/web/images/hitachi/rbdt_77.gif" />
 										</LI>
 										</UL>
 										<UL>
 										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_5.gif" />
+											<img src="/web/images/hitachi/rbdt_69.gif" />
 										</LI>
 										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_6.gif" />
+											<img src="/web/images/hitachi/rbdt_59.gif" />
 										</LI>
 										</UL>
 										<UL>
 										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_7.gif" />
+											<img src="/web/images/hitachi/rbdt_49.gif" />
 										</LI>
 										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_8.gif" />
+											<img src="/web/images/hitachi/rbdt_39.gif" />
 										</LI>
 										</UL>
 										<UL>
 										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/bohler/bohler_9.gif" />
+											<img src="/web/images/hitachi/rbdt_29.gif" />
 										</LI>
 										<LI  style="float:left;padding-bottom:10px; height:190px;">
 											<img src="/web/images/hitachi/rbdt_09.gif" />

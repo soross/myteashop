@@ -88,7 +88,7 @@ document.onselectstart=new Function("event.returnValue=false;");
 					width=78 height=42></DD>
 				<DD class=lnk>
 				<UL style="width: 370px;font-size:15px;font-family: Arial, Helvetica, sans-serif;">
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深圳市金华洲致力于服务模具行业，是一家专业从事国内外知名特种模具钢材销售、加工、真空热处理、物流于一体的模具企业。<p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深圳市金华洲模具钢材有限公司致力于服务模具行业，是一家专业从事国内外知名特种模具钢材销售、加工、真空热处理、物流于一体的模具企业。<p>
 					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司在长期的经营过程中，与国内外多家钢厂建立了长期的友好合作伙伴关系：日本日立金属“日立H1TACH1”,日本大同钢材“大同DA1DO”,瑞典一胜百ASSAB”,德国“撒斯特”。。。[<a href="/web/about/aboutme.php">详细介绍</a>]</p>
 					<!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深圳市金华洲致力于服务模具行业，专业向模具制造企业推荐和供应质量最优秀的冷作工具钢、高速工具钢、热作压铸工具钢和塑胶模具钢等，主营进口模具钢材：瑞典“一胜百”、奥地利”百禄“、日本“日立”“大同” 、德国“撒斯特”；国产模具钢材：抚钢、冶钢、钢华长钢、上五钢等；是集模具钢销售、精光板机加工及热处理服务于一体。。。[<a href="/web/about/aboutme.php">详细介绍</a>]</p>
 					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司本着诚信为本，质量第一；精益求精，服务至上的宗旨，重合同、守信誉，保质量积极发展与海内外客户的业务往来和合作关系，竭诚为国内外客户提供优质服务。</p>
@@ -328,6 +328,49 @@ document.onselectstart=new Function("event.returnValue=false;");
 	</DIV><!--column_5_4 l-->
 	<!--联系我们end-->
 
+
+	<!--友情连接
+	<DIV class="column_5_4 r">
+	<DIV id=hdnews class=box_lw_2>
+	<DIV class=box_lw_bot_2>
+	<DIV class=box_lw_top_2>
+		<DIV class=ttl>
+		<H2><A class=mover href="/web/contactus/contactus.php"><IMG alt="联系我们"
+			src="/web/images/link.jpg" width=181 height=21></A></H2>
+		<UL>
+			<LI></LI>
+		</UL>
+		</DIV>
+		<DIV class=contents>
+			<table width="100%;" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;padding-top:10px;padding-left:10px;filter:alpha(Opacity=80);">
+		  <tr height="27px">
+		    <td width="75px;">电&nbsp;&nbsp;&nbsp;&nbsp;话：</td>
+		    <td>0755-81492036&nbsp;&nbsp;&nbsp;&nbsp;0755-27467575</td>
+		  </tr>
+		  <tr height="27px">
+		    <td width="75px;">电&nbsp;&nbsp;&nbsp;&nbsp;话：</td>
+		    <td>0755-81492036&nbsp;&nbsp;&nbsp;&nbsp;0755-27467575</td>
+		  </tr>
+		  <tr height="27px">
+		    <td width="75px;">电&nbsp;&nbsp;&nbsp;&nbsp;话：</td>
+		    <td>0755-81492036&nbsp;&nbsp;&nbsp;&nbsp;0755-27467575</td>
+		  </tr>
+		  <tr height="27px">
+		    <td width="75px;">电&nbsp;&nbsp;&nbsp;&nbsp;话：</td>
+		    <td>0755-81492036&nbsp;&nbsp;&nbsp;&nbsp;0755-27467575</td>
+		  </tr>
+		</table>
+		</DIV>
+	</DIV><!--box_lw_top_2-->
+	<!--</DIV>box_lw_bot_2-->
+	<!--</DIV><!--box_lw_2-->
+	<!--</DIV><!--column_5_4 l-->
+
+
+
+
+
+
 	<!-- /#mainwrap --><!-- ============================== End "Main area" ============================== --><!--/[[CONTENTS AREA]]--><!--[FOOTER BLOCK]--><!-- ============================== Begin "Footer navigation" area ============================== -->
 	<DIV id=footerwrap_v14>
 		<div>
@@ -348,8 +391,8 @@ document.onselectstart=new Function("event.returnValue=false;");
 			<?php  require_once("page/info.html"); ?>
 		</DIV>
 	</DIV>
-	<br>
 &nbsp; <!-- /#footerwrap_v14 --><!-- ============================== End "Footer navigation" area ============================== --><!--/[FOOTER BLOCK]--></DIV>
+<script src="http://s20.cnzz.com/stat.php?id=3012594&web_id=3012594&show=pic" language="JavaScript"></script>
 </BODY>
 </html>
 

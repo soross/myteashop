@@ -54,6 +54,7 @@
 										<H6>客户服务</H6>
 						<UL>
 						<LI><A class=current href="/web/service/service.php">在线留言</A>
+						<LI><A href="/web/service/list.php">留言列表</A>
 						<LI><A href="/web/service/flow.php">服务流程</A>
 						</LI></UL>
 									<!--	<TABLE border=0 cellSpacing=0 cellPadding=8 width="100%">

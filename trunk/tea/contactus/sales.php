@@ -14,13 +14,13 @@
 	<?php require_once("../inc/top.html"); ?>
 
 
-	<DIV style="MARGIN: 0px auto; WIDTH: 1002px; BACKGROUND: url(&quot;../images/cbg[1].jpg&quot;); HEIGHT: 346px" id=content jQuery1302968872377="26"><!-- 网页标题(菜单) -->
+	<DIV style="MARGIN: 0px auto; WIDTH: 1002px; BACKGROUND: url(&quot;../images/cbg[1].jpg&quot;); HEIGHT: 346px" id=content><!-- 网页标题(菜单) -->
 		<?php require_once("inc/left.html"); ?>
 
 
-		<DIV style="Z-INDEX: 12; WIDTH: 762px; HEIGHT: 37px; TOP: 0px; LEFT: 230px" id=pdv_20144 class=pdv_class title=当前位置 jQuery1302968872377="9">
+		<DIV style="Z-INDEX: 12; WIDTH: 762px; HEIGHT: 37px; TOP: 0px; LEFT: 230px" id=pdv_20144 class=pdv_class title=当前位置>
 			<DIV style="WIDTH: 100%; HEIGHT: 100%; OVERFLOW: hidden" id=spdv_20144 class=pdv_content>
-				<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[3].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border jQuery1302968872377="12">
+				<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/title[3].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border jQuery1302968872377="12">
 					<LINK rel=stylesheet type=text/css href="../css/A.css">
 					<DIV id=nav>您现在的位置：
 						<A href="http://demo.2799.cn/1290584523/">农业科技公司</A> &gt; 联系方式

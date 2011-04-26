@@ -17,6 +17,228 @@ document.oncontextmenu=new Function("event.returnValue=false;");
 document.onselectstart=new Function("event.returnValue=false;");
 </script>
 
+
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+.xl6520296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:SimSun;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	background:#F2F2F2;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl6620296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:SimSun;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	background:#F2F2F2;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl6720296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:SimSun;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	background:#F2F2F2;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl6820296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#538ED5;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid #538ED5;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.5pt solid #538ED5;
+	background:#D8D8D8;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl6920296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:1.5pt solid #538ED5;
+	border-right:1.5pt solid #538ED5;
+	border-bottom:none;
+	border-left:none;
+	background:#C5D9F1;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7020296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#538ED5;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.5pt solid #538ED5;
+	background:#D8D8D8;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl7120296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#538ED5;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.5pt solid #538ED5;
+	border-left:1.5pt solid #538ED5;
+	background:#D8D8D8;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl7220296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:none;
+	border-right:1.5pt solid #538ED5;
+	border-bottom:1.5pt solid #538ED5;
+	border-left:none;
+	background:white;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7320296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:none;
+	border-right:1.5pt solid #538ED5;
+	border-bottom:.5pt dotted #538ED5;
+	border-left:none;
+	background:white;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7420296
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"微软雅黑", sans-serif;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:.5pt dotted #538ED5;
+	border-right:1.5pt solid #538ED5;
+	border-bottom:.5pt dotted #538ED5;
+	border-left:none;
+	background:white;
+	mso-pattern:black none;
+	white-space:normal;}
+-->
+</style>
+
+
+
+
 </HEAD>
 
 <BODY id=toppage sizcache="43" sizset="1">
@@ -55,15 +277,95 @@ document.onselectstart=new Function("event.returnValue=false;");
 								<DL>
 									<DD class=open>
 										<H6>产品列表</H6>
-						<UL><LI><A id="ProdTypeLink" class=current href="/web/prod/sweden.php">瑞典ASSAB系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/daido.php">日本DAIDO系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/hitachi.php">日本HITACHI系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/austria.php">奥地利BOHLER系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/german.php">德国SAARSTAHL系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/china.php">国产优质特钢系列</A>
-								<LI><A id="ProdTypeLink" href="/web/prod/copper.php">铜类</A>
-								</LI></UL>
-									<!--	<TABLE border=0 cellSpacing=0 cellPadding=8 width="100%">
+										<UL>
+										<?php
+											if(isset($_GET[classcode])){
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php"><img src="../images/hot.gif" width="20" height="15">&nbsp;热销系列</A>
+										<?php
+												if('c4ca4238a0b923820dcc509a6f75849b'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=c4ca4238a0b923820dcc509a6f75849b">瑞典ASSAB系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=c4ca4238a0b923820dcc509a6f75849b">瑞典ASSAB系列</A>
+										<?php
+												}
+										 		if('c81e728d9d4c2f636f067f89cc14862c'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=c81e728d9d4c2f636f067f89cc14862c">日本DAIDO系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=c81e728d9d4c2f636f067f89cc14862c">日本DAIDO系列</A>
+										<?php
+												}
+										 		if('eccbc87e4b5ce2fe28308fd9f2a7baf3'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=eccbc87e4b5ce2fe28308fd9f2a7baf3">日本HITACHI系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=eccbc87e4b5ce2fe28308fd9f2a7baf3">日本HITACHI系列</A>
+										<?php
+												}
+										 		if('a87ff679a2f3e71d9181a67b7542122c'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=a87ff679a2f3e71d9181a67b7542122c">奥地利BOHLER系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=a87ff679a2f3e71d9181a67b7542122c">奥地利BOHLER系列</A>
+										<?php
+												}
+										 		if('e4da3b7fbbce2345d7772b0674a318d5'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=e4da3b7fbbce2345d7772b0674a318d5">德国SAARSTAHL系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=e4da3b7fbbce2345d7772b0674a318d5">德国SAARSTAHL系列</A>
+										<?php
+												}
+										 		if('1679091c5a880faf6fb5e6087eb1b2dc'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=1679091c5a880faf6fb5e6087eb1b2dc">国产优质特钢系列</A>
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=1679091c5a880faf6fb5e6087eb1b2dc">国产优质特钢系列</A>
+										<?php
+												}
+										 		if('8f14e45fceea167a5a36dedd4bea2543'==$_GET[classcode]){
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php?classcode=8f14e45fceea167a5a36dedd4bea2543">铜类</A>
+
+										<?php
+												}else{
+										?>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=8f14e45fceea167a5a36dedd4bea2543">铜类</A>
+										<?php
+												}
+											}else{
+
+
+										?>
+										<LI><A id="ProdTypeLink" class=current href="/web/prod/prod.php"><img src="../images/hot.gif" width="20" height="15">&nbsp;热销系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=c4ca4238a0b923820dcc509a6f75849b">瑞典ASSAB系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=c81e728d9d4c2f636f067f89cc14862c">日本DAIDO系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=eccbc87e4b5ce2fe28308fd9f2a7baf3">日本HITACHI系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=a87ff679a2f3e71d9181a67b7542122c">奥地利BOHLER系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=e4da3b7fbbce2345d7772b0674a318d5">德国SAARSTAHL系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=1679091c5a880faf6fb5e6087eb1b2dc">国产优质特钢系列</A>
+										<LI><A id="ProdTypeLink" href="/web/prod/prod.php?classcode=8f14e45fceea167a5a36dedd4bea2543">铜类</A>
+										<?php
+											}
+										?>
+
+										</LI>
+										</UL>
+										<!--	<TABLE border=0 cellSpacing=0 cellPadding=8 width="100%">
 											<TBODY>
 											<TR>
 												<TD id=tdflash1 class=f_14_000000></TD>
@@ -82,53 +384,56 @@ document.onselectstart=new Function("event.returnValue=false;");
 								<DIV class=greybg>
 									<DIV class=step1Form>
 										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_1.gif" />
+										<?php
+											require_once("../db/conn.php");
+											if(isset($_GET['classcode'])){
+												$sql="select a.prod_name as prod_name,a.state as state,a.prod_desc as prod_desc,b.class_name as class_name from prod a,prod_class b " .
+														"where a.prod_class=b.class_code and a.prod_class='".$_GET[classcode]."' order by a.id desc";
+											}else{
+												$sql="select a.prod_name as prod_name,a.state as state,a.prod_desc as prod_desc,b.class_name as class_name from prod a,prod_class b " .
+														"where a.prod_class=b.class_code and show_index_page= 1 order by a.id";
+											}
+											$result = @ mysql_query($sql, $conn) or die(mysql_error());
+											$index =0;
+											while($row=mysql_fetch_array($result)){
+										?>
+
+										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;padding-right:10px;">
+											<table border=0 cellpadding=0 cellspacing=0 width=314 class=xl6720296
+											 style='border-collapse:collapse;table-layout:fixed;width:236pt'>
+											 <tr height=60px>
+											  <td height=60px class=xl6820296 width=69 style='width:52pt'>名称</td>
+											  <td class=xl6920296 width=245 style='width:184pt'><?php echo $row[prod_name];?></td>
+											 </tr>
+											 <tr height=40px>
+											  <td height=40px class=xl7020296>品牌</td>
+											  <td class=xl7320296 width=245 style='width:184pt'><?php echo $row[class_name];?></td>
+											 </tr>
+											  <tr height=40px>
+											  <td height=40px class=xl7020296>营销公司</td>
+											  <td class=xl7320296 width=245 style='width:184pt'>深圳金华洲模具钢材有限公司</td>
+											 </tr>
+											 <tr height=60px>
+											  <td height=60px class=xl7020296>状态</td>
+											  <td class=xl7420296 width=245 style='border-top:none;width:184pt'><?php echo $row[state];?></td>
+											 </tr>
+											 <tr height=150px>
+											  <td height=150px class=xl7120296>说明</td>
+											  <td class=xl7220296 width=245 style='width:184pt'><?php echo $row[prod_desc];?></td>
+											 </tr>
+											</table>
 										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_2.gif" />
-										</LI>
-										</UL>
-										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_3.gif" />
-										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_4.gif" />
-										</LI>
-										</UL>
-										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_5.gif" />
-										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_6.gif" />
-										</LI>
-										</UL>
-										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_7.gif" />
-										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_8.gif" />
-										</LI>
-										</UL>
-										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_9.gif" />
-										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_10.gif" />
-										</LI>
-										</UL>
-										<UL>
-										<LI style="WIDTH: 50%; float:left;padding-bottom:10px;">
-											<img src="/web/images/assab/assab_11.gif" />
-										</LI>
-										<LI  style="float:left;padding-bottom:10px;">
-											&nbsp;
-										</LI>
-										</UL>
+
+
+											<?php
+												$index=$index+1;
+												if($index%2==0){?>
+													</UL>
+													<UL>
+											<?php
+												}
+											}?>
+
 									</DIV>
 								</DIV>
 							</DIV>

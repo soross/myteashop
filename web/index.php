@@ -230,18 +230,18 @@ document.onselectstart=new Function("event.returnValue=false;");
 			<dl class="cat cat1 fl">
 			  <dd>
 			    <span class="cat_img1"><a href="/web/prod/sweden.php" title="瑞典Assab一胜百 S136耐蚀镜面模具钢"  target="_blank">
-				<img src="/web/images/hot_prod/1.jpg" width="240" height="240" /></a></span>
+				<img src="/web/images/hot_prod/1.png" width="240" height="240" /></a></span>
 
 			    <span class="cat_img2"><a href="/web/prod/daido.php" title="日本DaiDo大同 NAK80" target="_blank">
-				<img src="/web/images/hot_prod/2_1.jpg" width="250" height="110" /></a></span>
+				<img src="/web/images/hot_prod/2_1.png" width="250" height="110" /></a></span>
 
 			    <span class="cat_img3"><a href="/web/prod/austria.php" title="奥地利Bohler百禄 M300" target="_blank">
-				<img src="/web/images/hot_prod/2_2.jpg" width="250" height="110" /></a></span>
+				<img src="/web/images/hot_prod/2_2.png" width="250" height="110" /></a></span>
 
 			    <span class="clear"></span>
 			    <ul class="cat1_ul" >
 					<li class="cat1_img"> <a href="/web/prod/sweden.php" title="瑞典Assab一胜百 8407" target="_blank">
-						<img height="145" width="145" alt="瑞典Assab一胜百 8407" src="/web/images/hot_prod/3_1.jpg"></a>
+						<img height="145" width="145" alt="瑞典Assab一胜百 8407" src="/web/images/hot_prod/3_1.png"></a>
 					</li>
 					<!--
 			  		<li><a href="#" title="千寻磁性艺术书签-荷塘月色（五只装）" target="_blank">千寻磁性艺术书签-荷塘月色（五只装）</a></li>
@@ -250,13 +250,13 @@ document.onselectstart=new Function("event.returnValue=false;");
 
 			    <ul class="cat1_ul" >
 					<li class="cat1_img"> <a href="/web/prod/german.php" title="德国Saarstahl撒斯特 2083 " target="_blank">
-						<img height="145" width="145" alt="德国Saarstahl撒斯特 2083 " src="/web/images/hot_prod/3_2.jpg"></a>
+						<img height="145" width="145" alt="德国Saarstahl撒斯特 2083 " src="/web/images/hot_prod/3_2.png"></a>
 					</li>
 				</ul>
 
 			    <ul class="cat1_ul" style="padding-right:0">
 					<li class="cat1_img"> <a href="/web/prod/german.php" title="德国Saarstahl撒斯特 2738 预硬优质塑料模具钢" target="_blank">
-			  			<img height="145" width="145" alt="德国Saarstahl撒斯特 2738 预硬优质塑料模具钢" src="/web/images/hot_prod/3_3.jpg"></a>
+			  			<img height="145" width="145" alt="德国Saarstahl撒斯特 2738 预硬优质塑料模具钢" src="/web/images/hot_prod/3_3.png"></a>
 					</li>
 				</ul>
 			  </dd>

@@ -98,7 +98,7 @@ if($cnt>0){
 
 		<LI class=title>
 			<DIV class=title>
-				<A href="info.php?id=<?php echo $row[id]; ?>&classcode=<?php echo $row[news_class];?>&cpage=<?php echo $_GET[cpage];?>" target=_self><?php echo $row[title]; ?></A>
+				<A href="info.php?id=<?php echo $row[id]; ?>&classcode=<?php echo $_GET[classcode].$_POST[classcode];?>&cpage=<?php echo $_GET[cpage];?>" target=_self><?php echo $row[title]; ?></A>
 			</DIV>
 			<DIV class=time><?php echo substr($row[create_date],0,10);?></DIV>
 		</LI>

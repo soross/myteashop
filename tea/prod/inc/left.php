@@ -1,9 +1,9 @@
 <!-- 产品分类 + 搜索 begin #ffcc33-->
 	<DIV style="Z-INDEX: 5; WIDTH: 215px; HEIGHT: 500px; TOP: 0px; LEFT: 10px" id=pdv_20035 class=pdv_class title=产品系列>
 		<DIV style="WIDTH: 100%; OVERFLOW: visible" id=spdv_20035 class=pdv_content>
-			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[1].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 100%; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border>
+			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/4217268_title[1].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 100%; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border>
 				<DIV style="HEIGHT: 100%">
-					<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[1].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px"></DIV>
+					<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/4217268_title[1].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px"></DIV>
 					<DIV style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
 						<LINK rel=stylesheet type=text/css href="../css/productclass_dolphin.css">
 						<DIV class=productclass_dolphin>
@@ -30,9 +30,9 @@
 
 	<DIV style="Z-INDEX: 9; WIDTH: 215px; HEIGHT: 148px; TOP:395px; LEFT: 10px" id=pdv_19989 class=pdv_class title="" >
 		<DIV style="WIDTH: 100%; OVERFLOW: visible" id=spdv_19989 class=pdv_content>
-			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[4].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 100%; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border>
+			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/title_prod_search.jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 100%; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border>
 				<DIV style="HEIGHT: 100%">
-					<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[4].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px"></DIV>
+					<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/title_prod_search.jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px"></DIV>
 					<DIV style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
 						<LINK rel=stylesheet type=text/css href="../css/newsclass_dolphin.css">
 						<DIV class=newsclass_dolphin>
@@ -94,7 +94,7 @@
 									</tr>
 									<tr>
 										<td align="right">
-											<INPUT id=submit src="images/search5[2].gif" type=image onclick="if(document.getElementById('prodseachkey').value=='请输入关键字')document.getElementById('prodseachkey').value='';">
+											<INPUT id=submit src="../images/search5.gif" type=image onclick="if(document.getElementById('prodseachkey').value=='请输入关键字')document.getElementById('prodseachkey').value='';">
 										</td>
 									</tr>
 								</table>
@@ -121,7 +121,7 @@
 
 	<DIV style="Z-INDEX: 12; WIDTH: 762px; HEIGHT: 37px; TOP: 0px; LEFT: 230px" id=pdv_20079 class=pdv_class title=当前位置 jQuery1303290804862="9">
 		<DIV style="WIDTH: 100%; HEIGHT: 100%; OVERFLOW: hidden" id=spdv_20079 class=pdv_content>
-			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;images/title[3].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border jQuery1303290804862="12">
+			<DIV style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(&quot;../images/title[3].jpg&quot;) no-repeat 0px 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 37px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px" class=pdv_border jQuery1303290804862="12">
 				<LINK rel=stylesheet type=text/css href="../css/A.css">
 				<DIV id=nav>您现在的位置：
 					<A href="../index.php">农业科技公司</A> &gt;

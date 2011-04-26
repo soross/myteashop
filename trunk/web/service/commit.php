@@ -5,12 +5,8 @@ $randcode = $_SESSION['validationcode'];
 
 if($code == $randcode){
 	require_once('../db/conn.php');
-	$utc=date("T");
-	if ($utc=="UTC")
-	$h=date("H")+8;
-	$create_date=date("Y-m-d ".$h.":i:s");
 	$sql = "insert into message(username,title,link,email,is_flag,create_date,content)".
-		"values('".$_POST[username]."','".$_POST[title]."','".$_POST[phone]."','".$_POST[email]."','0','$create_date','".htmtocode($_POST[content])."')";
+		"values('".$_POST[username]."','".$_POST[title]."','".$_POST[phone]."','".$_POST[email]."','0',now(),'".htmtocode($_POST[content])."')";
 	if(mysql_query($sql,$conn)){
 		mysql_close($conn);
 		echo "<script>alert('恭喜您,您的留言成功了,谢谢您的宝贵建议,我们将第一时间与您联系。');location.href='service.php';</script>";

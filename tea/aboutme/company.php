@@ -10,7 +10,8 @@
 <LINK rel=stylesheet type=text/css href="../css/pagetitlemenu_dolphin.css">
 
 </HEAD>
-<BODY style="BACKGROUND: url(&quot;../images/bg[1].png&quot;) repeat-x" jQuery1302831998240="19">
+<BODY style="BACKGROUND: url(&quot;../images/bg[1].png&quot;) repeat-x">
+	<?php require_once("../inc/service.html");?>
 	<?php require_once("../inc/top.html");?>
 
 	<DIV style="MARGIN: 0px auto; WIDTH: 1002px; BACKGROUND: url(&quot;../images/cbg[1].jpg&quot;); HEIGHT: 416px" id=content jQuery1302831998240="26"><!-- 网页标题(菜单) -->
@@ -29,7 +30,7 @@
 					<DIV style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
 						<LINK rel=stylesheet type=text/css href="../css/pagecontent.css">
 						<DIV id=pagecontent class=page_content>
-							<IMG style="PADDING-BOTTOM: 10px; PADDING-RIGHT: 20px; DISPLAY: inline; FLOAT: left" border=0 alt="" src="images/company.jpg" oldblock="inline">
+							<IMG style="PADDING-BOTTOM: 10px; PADDING-RIGHT: 20px; DISPLAY: inline; FLOAT: left;width=244px;height:180px;" border=0 alt="" src="images/gs.jpg" oldblock="inline">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某某农业科技开发有限公司始创于1992年，是一家集科研、生产、销售、技术服务于一体的规模化专业型农业科技公司。公司本着“科技为民所用”的原则，致力于农业科技成果的转化和推广，在研发具有自主知识产权产品的同时，以亚洲为中心，积极引进和筛选来自世界各地的优质产品资源。目前，公司拥有子公司四个，经营着大田作物种子、蔬菜种子和农化产品三块业务，在企业经营管理上实行董事会领导下的总经理负责制。按照现代企业制度的要求，坚持有利于科研、有利于生产、有利于销售的“三个有利于”原则；在管理机构的设置上则坚持减少层次、职责分明、提高效率的原则。<BR>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 项目的建设、生产/销售等完全实行自主经营、自负盈亏、风险与业绩挂钩，与市场经济相适应的经营管理机制，建立起了灵活、机动的企业管理体系。为了使企业能够持续、健康、稳定地发展，公司将所获利润的较大部分投入到了产品研发之中，在自主研发与合作开发的理念指导下，与国内众多大专院校、科研机构及企业有着密切地交流及技术往来，并建立了科研试验基地160多亩。公司有着稳定的种子生产基地、严格的试验筛选及生产加工流程。销售方面，公司经过多年的探索和创新，开发出了一套惠及各方利益的市场运作方案，建立起了1100余个销售服务网点，使公司及产品在当地都形成了良好的口碑。 作为一名发展势头强劲的农业科技新贵，公司正以快速而稳健的步伐走在种子行业的前沿，并逐步向集团化公司过渡。我们坚信：在全体同仁的共同努力下，公司的明天会更美好，一定能够在农业的腾飞中大放异彩！
 						</DIV>
@@ -53,9 +54,7 @@
 
 
 	<?php require_once("../inc/bottom.html");?>
-
-
-	<DIV id=bodyex></DIV>
-
+	<DIV id=bodyex>
+	</DIV>
 </BODY>
 </html>

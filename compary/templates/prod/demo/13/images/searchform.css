@@ -1,0 +1,9 @@
+DIV.globalsearchformzone {
+	PADDING-LEFT: 28px; BACKGROUND: url(images/search.gif) no-repeat 6px 50%; HEIGHT: 24px
+}
+DIV.globalsearchformzone DIV.globalsearchform {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 3px; FLOAT: left; PADDING-TOP: 0px
+}
+DIV.globalsearchformzone DIV.globalsearchform .input {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BACKGROUND: #fbfbfb; HEIGHT: 20px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 0px
+}

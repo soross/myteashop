@@ -1,0 +1,15 @@
+DIV#topmenu {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 28px; COLOR: #fff; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+DIV#topmenu A:link {
+	MARGIN: 0px 5px; FONT: 12px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #fff; TEXT-DECORATION: none
+}
+DIV#topmenu A:visited {
+	MARGIN: 0px 5px; FONT: 12px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #fff; TEXT-DECORATION: none
+}
+DIV#topmenu A:active {
+	MARGIN: 0px 5px; FONT: 12px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #fff; TEXT-DECORATION: none
+}
+DIV#topmenu A:hover {
+	MARGIN: 0px 5px; COLOR: #ffcc00; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}

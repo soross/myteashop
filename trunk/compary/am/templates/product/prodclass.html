@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<META content=Alan name=Author>
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 产品管理 >> 产品分类
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+
+		<table border=0 cellspacing=1 align=center class="form  tablelayout">
+			<tr>
+				<th>
+					添加产品分类
+				</th>
+			</tr>
+			<form action="action/post.php" method="post">
+				<tr>
+					<td align="center" height='30px'>
+						类型名称：<input type="text" name="class_name" style="width:100px"/>
+						英文简明：<input type="text" name="ename" style="width:30px"/>
+						英文全名：<input type="text" name="full_ename" style="width:150px"/>
+						<input type="submit" name="into_class" value=" 添加产品分类 " />
+						<input type="hidden" name="task" value="addProdClass" />
+					</td>
+				</tr>
+			</form>
+		</table>
+		<br>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="5">
+					系统产品分类
+				</th>
+			</tr>
+			{section name=list loop=$prodClassList}
+			<form action="action/post.php" method="post">
+				<tr style="vertical-align: top">
+					<td width="28%" align=right>
+						{$prodClassList[list].id}
+					</td>
+					<td align=left width="150px">
+						<input type="hidden" name="id" value="{$prodClassList[list].id}" />
+						<input type="hidden" name="task" value="updateProdClass" />
+						<input type="text" name="class_name" value="{$prodClassList[list].class_name}" />
+					</td>
+					<td width="30px">
+						<input type="text" style="width:30px" name="ename" value="{$prodClassList[list].ename}" />
+					</td>
+					<td width="250px">
+						<input type="text" style="width:230px" name="full_ename" value="{$prodClassList[list].full_ename}" />
+					</td>
+					<td>
+						<input type="submit" name="update_class" value="更新" />
+						<input type="button" value="删除" onclick="location.href='action/post.php?task=deleteProdClass&id={$prodClassList[list].id}'"/>
+					</td>
+				</tr>
+			</form>
+			{/section}
+		</table>
+		<br>
+	</BODY>
+</HTML>

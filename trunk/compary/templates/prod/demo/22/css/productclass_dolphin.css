@@ -1,0 +1,15 @@
+DIV.productclass_dolphin {
+	PADDING-BOTTOM: 2px; MARGIN: 5px 30px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+A.productclass_dolphin:link {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 14px; DISPLAY: block; FONT: 12px/14px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot2.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+A.productclass_dolphin:visited {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 14px; DISPLAY: block; FONT: 12px/14px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot2.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+A.productclass_dolphin:active {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 14px; DISPLAY: block; FONT: 12px/14px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot2.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+A.productclass_dolphin:hover {
+	DISPLAY: block; FONT: 12px/14px Verdana, Arial, Helvetica, sans-serif; COLOR: #333; TEXT-DECORATION: none
+}

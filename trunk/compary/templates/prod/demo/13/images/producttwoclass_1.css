@@ -1,0 +1,30 @@
+.producttwoclass {
+	WIDTH: 100%
+}
+.producttwoclass .producttwoclass_top {
+	FONT: 12px/30px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; HEIGHT: 30px; COLOR: #999999; CLEAR: both; CURSOR: pointer
+}
+.producttwoclass .producttwoclass_top A {
+	PADDING-LEFT: 5px; FONT: 14px/23px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #505050; TEXT-DECORATION: none
+}
+.producttwoclass .producttwoclass_top A:visited {
+	COLOR: #505050
+}
+.producttwoclass .producttwoclass_top A:hover {
+	COLOR: #ff6600
+}
+.producttwoclass UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.producttwoclass UL LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 11px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; COLOR: #999999; PADDING-TOP: 0px
+}
+.producttwoclass UL LI A {
+	MARGIN: 0px 6px; FONT: 12px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #505050; TEXT-DECORATION: none
+}
+.producttwoclass UL LI A:visited {
+	COLOR: #505050
+}
+.producttwoclass UL LI A:hover {
+	COLOR: #ff6600
+}

@@ -1,0 +1,42 @@
+#channelmenu {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; BACKGROUND: url(menu.png) repeat-x -20px -250px; HEIGHT: 40px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+#channelmenu A.channelmenu_main:link {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -1px; WIDTH: 100px; DISPLAY: block; FONT: 14px/40px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.png) no-repeat 0px -1550px; FLOAT: left; HEIGHT: 40px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+#channelmenu A.channelmenu_main:active {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -1px; WIDTH: 100px; DISPLAY: block; FONT: 14px/40px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.png) no-repeat 0px -1550px; FLOAT: left; HEIGHT: 40px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+#channelmenu A.channelmenu_main:visited {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -1px; WIDTH: 100px; DISPLAY: block; FONT: 14px/40px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.png) no-repeat 0px -250px; FLOAT: left; HEIGHT: 40px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+#channelmenu A.channelmenu_main_current {
+	TEXT-ALIGN: center; MARGIN: 0px -1px 0px 0px; WIDTH: 100px; DISPLAY: block; FONT: 14px/40px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.png) no-repeat 0px -200px; FLOAT: left; HEIGHT: 40px; COLOR: #333333; TEXT-DECORATION: none
+}
+#channelmenu A.channelmenu_main:hover {
+	TEXT-ALIGN: center; MARGIN: 0px -1px 0px 0px; WIDTH: 100px; DISPLAY: block; FONT: 14px/40px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.png) no-repeat 0px -200px; FLOAT: left; HEIGHT: 40px; COLOR: #333333; TEXT-DECORATION: none
+}
+#channelmenu_subdiv {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: url(menu.png) repeat-x 0px -1600px; HEIGHT: 30px; BORDER-TOP: #ddd 0px solid; BORDER-RIGHT: #ddd 1px solid
+}
+#channelmenu_sub {
+	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 25px; TOP: 41px; PADDING-TOP: 0px; LEFT: 8px
+}
+#channelmenu_sub UL {
+	MARGIN: 0px; DISPLAY: none
+}
+#channelmenu_sub LI {
+	LIST-STYLE-TYPE: none; MARGIN: 0px; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 25px; COLOR: #3e3e3e
+}
+#channelmenu_sub A:link {
+	MARGIN: 0px 6px; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; COLOR: #3e3e3e; TEXT-DECORATION: none
+}
+#channelmenu_sub A:visited {
+	MARGIN: 0px 6px; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; COLOR: #3e3e3e; TEXT-DECORATION: none
+}
+#channelmenu_sub A:active {
+	MARGIN: 0px 6px; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; COLOR: #3e3e3e; TEXT-DECORATION: none
+}
+#channelmenu_sub A:hover {
+	MARGIN: 0px 6px; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; COLOR: #ff6600; TEXT-DECORATION: underline
+}

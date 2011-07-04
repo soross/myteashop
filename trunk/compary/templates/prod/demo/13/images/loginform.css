@@ -1,0 +1,21 @@
+DIV.loginform {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-TOP: 0px
+}
+DIV.loginform .col {
+	LINE-HEIGHT: 28px; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 28px
+}
+DIV.loginform .con {
+	HEIGHT: 28px
+}
+DIV.loginform .input {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: #fff; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+DIV.loginform .yanzheng {
+	WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 28px; MARGIN-RIGHT: 1px
+}
+DIV.loginform_islogin {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 12px; LINE-HEIGHT: 32px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; DISPLAY: none; CLEAR: both; PADDING-TOP: 12px
+}
+#loginform_logout {
+	CURSOR: pointer
+}

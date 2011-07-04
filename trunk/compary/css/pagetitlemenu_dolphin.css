@@ -1,0 +1,15 @@
+DIV.titlemenu_dolphin {
+	PADDING-BOTTOM: 24px; MARGIN: 9px 34px 0px 33px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV.titlemenu_dolphin A.titlemenu_dolphin:link {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 44px; DISPLAY: block; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot3.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+DIV.titlemenu_dolphin A.titlemenu_dolphin:visited {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 44px; DISPLAY: block; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot3.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+DIV.titlemenu_dolphin A.titlemenu_dolphin:active {
+	TEXT-ALIGN: left; MARGIN: 0px; PADDING-LEFT: 44px; DISPLAY: block; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: url(../images/dot3.gif) no-repeat 0px 0px; HEIGHT: 26px; COLOR: #3d3d3d; TEXT-DECORATION: none
+}
+DIV.titlemenu_dolphin A.titlemenu_dolphin:hover {
+	DISPLAY: block; FONT: 12px/25px Verdana, Arial, Helvetica, sans-serif; COLOR: #333; TEXT-DECORATION: none
+}

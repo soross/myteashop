@@ -1,0 +1,20 @@
+错误SQL语句：
+insert into cust_case_log(cust_id,case_id,result,create_date) values('1','$caseList[list].id','state:0->-1',now()
+客户IP:127.0.0.1
+时间 :2011-06-21 08:51:59
+
+错误SQL语句：
+insert into cust_case_log(cust_id,case_id,result,create_date) values('1','$caseList[list].id','state:0->-1',now()
+客户IP:127.0.0.1
+时间 :2011-06-21 08:52:12
+
+错误SQL语句：
+insert into cust_case_log(cust_id,case_id,result,create_date) values('1','1','state:0->-1',now()
+客户IP:127.0.0.1
+时间 :2011-06-21 08:53:07
+
+错误SQL语句：
+insert into cust_case_log(cust_id,case_id,result,create_date) values('1','4','state:0->-1',now())
+客户IP:127.0.0.1
+时间 :2011-06-21 08:53:47
+

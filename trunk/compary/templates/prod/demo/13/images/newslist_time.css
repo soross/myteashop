@@ -1,0 +1,21 @@
+UL.newslist_time {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI.newslist_time {
+	LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 16px; BACKGROUND: url(images/li.gif) no-repeat left 50%
+}
+LI.newslist_time .time {
+	FONT: 12px/22px Verdana, Arial, Helvetica, sans-serif; FLOAT: right; COLOR: #999
+}
+A.newslist_time:link {
+	FONT: 12px/22px Verdana, Arial, Helvetica, sans-serif; COLOR: #505050; TEXT-DECORATION: none
+}
+A.newslist_time:visited {
+	FONT: 12px/22px Verdana, Arial, Helvetica, sans-serif; COLOR: #505050; TEXT-DECORATION: none
+}
+A.newslist_time:active {
+	FONT: 12px/22px Verdana, Arial, Helvetica, sans-serif; COLOR: #505050; TEXT-DECORATION: none
+}
+A.newslist_time:hover {
+	FONT: 12px/22px Verdana, Arial, Helvetica, sans-serif; COLOR: #ff0000; TEXT-DECORATION: underline
+}

@@ -1,0 +1,5 @@
+错误SQL语句：
+select id,name from prod_class
+客户IP:127.0.0.1
+时间 :2011-06-28 09:11:50
+

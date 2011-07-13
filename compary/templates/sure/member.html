@@ -5,7 +5,7 @@
 
 <!-- 网页标题(菜单) -->
 
-<div id='pdv_14997' class='pdv_class'  title='栏目导航' style='width:207px;height:187px;top:0px;left:0px; z-index:9'>
+<div id='pdv_14997' class='pdv_class'  title='果果网络-栏目导航' style='width:207px;height:187px;top:0px;left:0px; z-index:9'>
 <div id='spdv_14997' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
 <div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
@@ -38,7 +38,7 @@
 
 <!-- HTML编辑区 -->
 
-<div id='pdv_15171' class='pdv_class'  title='联系我们' style='width:207px;height:218px;top:197px;left:0px; z-index:10'>
+<div id='pdv_15171' class='pdv_class'  title='果果网络-联系我们' style='width:207px;height:218px;top:197px;left:0px; z-index:10'>
 <div id='spdv_15171' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
 <div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
@@ -61,7 +61,7 @@
 
 <!-- HTML编辑区 -->
 
-<div id='pdv_15191' class='pdv_class'  title='会员登录' style='width:763px;height:500px;top:0px;left:239px; z-index:12'>
+<div id='pdv_15191' class='pdv_class'  title='果果网络-会员登录' style='width:763px;height:500px;top:0px;left:239px; z-index:12'>
 <div id='spdv_15191' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
 
@@ -81,20 +81,20 @@
 	  {if "2"!=$caseList[list].state}
 	  <tr>
 	  	<td width="30%" style="text-align:center;">
-		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="点击查看主页详细信息"><img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
+		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
 	  	</td>
 	  	<td>
 	  		<table border="0"  style="width:100%;height:80px;">
 	  			<tr height="40%">
 	  				<td width="50%">
-	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="点击查看主页详细信息">{if "1"== $caseList[list].state}<FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT>{else}{$caseList[list].case_name}{/if}</a>
+	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">{if "1"== $caseList[list].state}<FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT>{else}{$caseList[list].case_name}{/if}</a>
 	  				</td>
 	  				<td width="50%" rowspan='3'>
 	  					{if "1"== $caseList[list].state}
 	  					<table cellpadding="0" cellpadding="0">
 	  						<tr>
 	  							<td>方案进度：</td>
-	  							<td style="width:100px;height:10px;background-image:url(../images/cw1.gif);"><img src="../images/cw3.gif" width="{$caseList[list].case_plan}px" height="10px"></td>
+	  							<td style="width:100px;height:10px;background-image:url(../images/cw1.gif);"><img src="../images/cw3.gif" width="{$caseList[list].case_plan}px" height="10px" title="果果网络-方案进度" alt="果果网络-方案进度"></td>
 	  							<td>&nbsp;{$caseList[list].case_plan}%</td>
 	  						</tr>
 	  					</table>
@@ -146,19 +146,21 @@
 	  {else}
 	   <tr>
 	  	<td width="30%" style="text-align:center;">
-		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="点击查看主页详细信息"><img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
+		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">
+		  		<img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
 	  	</td>
 	  	<td>
 	  		<table border="0"  style="width:100%;height:80px;">
 	  			<tr height="40%">
 	  				<td width="50%">
-	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="点击查看主页详细信息"><FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT></a>
+	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT></a>
 	  				</td>
 	  				<td width="50%" rowspan='3'>
 	  					<table>
 	  						<tr>
 	  							<td>方案进度：</td>
-	  							<td style="width:100px;height:10px;background-image:url(../images/cw1.gif);"><img src="../images/cw3.gif" width="100px" height="10px"></td>
+	  							<td style="width:100px;height:10px;background-image:url(../images/cw1.gif);">
+	  								<img src="../images/cw3.gif" width="100px" height="10px" title="果果网络-方案进度" alt="果果网络-方案进度"></td>
 	  							<td>&nbsp;100%</td>
 	  						</tr>
 	  					</table>

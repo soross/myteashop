@@ -12,8 +12,8 @@ $caseList = array();
 while($row = $db->fetch_array($query)){
 	$caseList[] = $row;
 }
-
 $smarty->assign("caseList",$caseList);
+
 $smarty->assign("cpage",$page);
 $smarty->assign("page",$pagenav);
 

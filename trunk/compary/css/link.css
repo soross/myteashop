@@ -1,0 +1,3 @@
+#link_ul li {white-space:nowrap;padding-top:10px;}
+#link_ul a {border: 1px solid #eee; background: #FFF;  padding: 3px 6px; text-decoration:none; }
+#link_ul a:hover {border: 1px solid #eee; background: #FFF;  padding: 3px 6px; text-decoration:none; }

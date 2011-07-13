@@ -1,0 +1,9 @@
+#div1 {position:relative; width:400px; height:125px; margin-top:50px;margin-left:100px;}
+#div1 a {position:absolute; top:0px; left:0px; color:#000; text-decoration:none; padding: 3px 6px; }
+#div1 a:hover {border: 1px solid #eee; background: #FFF; }
+#div1 .blue {color:blue;}
+#div1 .red {color:#CC3300;}
+#div1 .yellow {color:#FF9900;}
+#div1 .color4 {color:#993333;}
+#div1 .green {color:#009900;}
+

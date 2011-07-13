@@ -47,6 +47,32 @@ while($rowNewsList = $db->fetch_array($newListQuery)){
 }
 $smarty->assign("newsListStr",$newsListStr);
 
+//技术专栏
+$newsListQueryByTech = $db->query("select id,title,news_info_url,create_date from news where news_class='3' order by create_date desc limit 0,5");
+$newsListByTech = array();
+while($rowNewsList = $db->fetch_array($newsListQueryByTech)){
+	$newsListByTech[] = $rowNewsList;
+}
+$smarty->assign("newsListByTech",$newsListByTech);
+
+//互联网摘
+$newsListQueryByInter = $db->query("select id,title,news_info_url,create_date from news where news_class='4' order by create_date desc limit 0,5");
+$newsListByInter = array();
+while($rowNewsList = $db->fetch_array($newsListQueryByInter)){
+	$newsListByInter[] = $rowNewsList;
+}
+$smarty->assign("newsListByInter",$newsListByInter);
+
+
+//友情链接
+$linkQuery = $db->query("select * from link");
+$linkList = array();
+while($linkRow = $db->fetch_array($linkQuery)){
+	$linkList[] = $linkRow;
+}
+$smarty->assign("linkList",$linkList);
+
+
 //脚注信息
 $queryButtomInfo = $db->query("select * from comm_info where info_type='ButtomInfo'");
 $rowButtomInfo = $db->fetch_array($queryButtomInfo);

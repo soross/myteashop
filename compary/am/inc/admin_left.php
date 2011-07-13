@@ -32,12 +32,18 @@ require_once("../action/global_action.php");
 					</TR>
 					<TR id=left_1>
 						<TD>
-							<TABLE width="100%">
+							<TABLE width="100%" style="margin-top:5px">
 								<TBODY>
 							        <TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
 									  		<A href="../config/config.php" target=main>配置信息</A>
+									  	</TD>
+									</TR>
+									 <TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../config/link.php" target=main>添加友链</A>
 									  	</TD>
 									</TR>
 							        <TR>
@@ -59,25 +65,31 @@ require_once("../action/global_action.php");
 					</TR>
 					<TR id=left_3>
 						<TD>
-							<TABLE width="100%">
+							<TABLE width="100%" style="margin-top:5px">
         						<TBODY>
 							        <TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-									  		<A href="../product/prodclass.php" target=main>产品分类</A>
+									  		<A href="../product/prodclass.php" target=main>方案分类</A>
 									  	</TD>
 									</TR>
 		        					<TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-		  									<A href="../product/prodlist.php" target=main>产品列表</A>
+		  									<A href="../product/prodlist.php" target=main>方案列表</A>
 		  								</TD>
 									</TR>
 	        						<TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-		  									<A href="../product/prodadd.php" target=main>添加产品</A>
+		  									<A href="../product/prodadd.php" target=main>添加方案</A>
 		  								</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../case/caselist.php" target=main>成功案例</A>
+									  	</TD>
 									</TR>
  								</TBODY>
  							</TABLE>
@@ -92,7 +104,7 @@ require_once("../action/global_action.php");
 					</TR>
 					<TR id=left_2>
 						<TD>
-							<TABLE width="100%">
+							<TABLE width="100%" style="margin-top:5px">
         						<TBODY>
 							        <TR>
 										<TD>
@@ -115,6 +127,12 @@ require_once("../action/global_action.php");
 									<TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+		  									<A href="../news/gatheraddress.php" target=main>采集地址</A>
+		  								</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
 		  									<A href="../news/newsgather.php" target=main>新闻采集</A>
 		  								</TD>
 									</TR>
@@ -131,12 +149,24 @@ require_once("../action/global_action.php");
 					</TR>
 					<TR id=left_4>
 						<TD>
-							<TABLE width="100%">
+							<TABLE width="100%" style="margin-top:5px">
         						<TBODY>
 							        <TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-									  		<A href="../case/caselist.php" target=main>成功案例</A>
+									  		<A href="../cust/custadd.php" target=main>添加客户</A>
+									  	</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../cust/custcaseadd.php" target=main>添加客案</A>
+									  	</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../cust/custcaselist.php" target=main>客户案例</A>
 									  	</TD>
 									</TR>
  								</TBODY>

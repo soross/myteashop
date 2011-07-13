@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<script src="../js/preview.js"></script>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 新闻管理 >> 采集地址管理
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+
+
+		<table border=0 cellspacing=1 align=center class=form>
+			<form action="action/post.php" method="post">
+			<tr>
+				<th colspan="5">
+					采集地址管理
+				</th>
+			</tr>
+			<tr>
+				<td width="30%" align=right>
+					采集地址名称
+				</td>
+				<td width="100px">
+					<input type="text" name="ga_name" size="20" maxlength=70 />
+				</td>
+				<td width="60px" align=right>
+					采集地址
+				</td>
+				<td width="200px">
+					<input type="text" name="ga" size="30" maxlength=70 />
+				</td>
+				<td>
+					<input type="button" name="add_prod" style="height:25px;"
+						value="新增采集地址" onclick="this.form.submit();">
+					<input type="hidden" name="task" value="addGatherAddress">
+				</td>
+			</tr>
+			</form>
+		</table>
+		<br>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="5">
+					采集地址管理
+				</th>
+			</tr>
+			{section name=list loop=$gatherAddressList}
+			<form action="action/post.php" method="post">
+			<tr>
+				<td width="25%" align=right>
+					采集地址
+				</td>
+				<td align=center>
+					{$gatherAddressList[list].remark}
+				</td>
+				<td width="320px">
+					<input type="text" name="ga" value='{$gatherAddressList[list].info_value}' size="50" maxlength=70 />
+				</td>
+				<td>
+					<input type="button" name="add_prod" style="height:25px;"
+						value="更新采集地址" onclick="this.form.submit();">
+					<input type="hidden" name="id" value="{$gatherAddressList[list].id}">
+					<input type="hidden" name="task" value="updateGatherAddress">
+					<input type="button" name="add_prod" style="height:25px;"
+						value="删除采集地址" onclick="location.href='action/post.php?id={$gatherAddressList[list].id}&task=deleteGatherAddress'">
+				</td>
+			</tr>
+			{/section}
+			</form>
+		</table>
+		<br>
+	</BODY>
+</HTML>

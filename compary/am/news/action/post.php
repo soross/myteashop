@@ -2,7 +2,8 @@
 require_once("../../action/global_post.php");
 //发布新闻
 if(isset($_POST[task])&&"addNews"==$_POST[task]){
-	$sql = "insert into news(title,news_class,author,src,create_date,content) values('$_POST[title]','$_POST[news_class]','$_POST[author]','$_POST[src]',now(),'$_POST[newsContent]')";
+	//stripslashes
+	$sql = "insert into news(title,news_class,author,src,create_date,content) values('$_POST[title]','$_POST[news_class]','$_POST[author]','$_POST[src]',now(),'".addslashes($_POST[newsContent])."')";
 	$db->query($sql);
 	//更新字段
 	$newsId = $db->insert_id();
@@ -44,9 +45,9 @@ else if(isset($_GET[task])&& "deleteNewsClass"==$_GET[task]){
 
 //RSS生成新闻
 else if(isset($_POST[task])&& "createNews"==$_POST[task]){
-	$db->query("insert into news(title,content,news_class) select title,content,'-123' from rss where state='0'");
+	$db->query("insert into news(title,content,news_class,src) select title,content,'-123',src from rss where state='0'");
 	$db->query("update rss set state='1' where state='0'");
-	$db->query("update news set news_class='4',author='管理员整理',src='不可思E',create_date=now(),news_info_url=CONCAT('newsinfo.php?id=',id) where news_class='-123'");
+	$db->query("update news set news_class='4',author='果果整理',create_date=now(),news_info_url=CONCAT('newsinfo.php?id=',id) where news_class='-123'");
 	$cnt = $db->db_affected_rows();
 	echo $cnt;
 }
@@ -70,6 +71,27 @@ else if(isset($_POST[task])&&"getRssDate" == $_POST[task]){
 	}
 	$rss.="</table>";
 	echo escape($rss);
+}
+
+//addGatherAddress
+else if(isset($_POST[task])&&"addGatherAddress" == $_POST[task]){
+	$sql = "insert into comm_info(info_type,info_value,remark) values('GatherAddress','$_POST[ga]','$_POST[ga_name]')";
+	$db->query($sql);
+	echo "<script>alert('采集地址添加成功,将采集地址列表!');location.href='../gatheraddress.php'</script>";
+}
+
+//updateGatherAddress
+else if(isset($_POST[task])&&"updateGatherAddress" == $_POST[task]){
+	$sql = "update comm_info set info_value='$_POST[ga]' where info_type='GatherAddress' and id='$_POST[id]'";
+	$db->query($sql);
+	echo "<script>alert('采集地址添加成功,将采集地址列表!');location.href='../gatheraddress.php'</script>";
+}
+
+//id={$gatherAddressList[list].id}task=deleteGatherAddress
+else if(isset($_GET[task])&&"deleteGatherAddress" == $_GET[task]){
+	$sql = "delete from comm_info where info_type='GatherAddress' and id='$_GET[id]'";
+	$db->query($sql);
+	echo "<script>alert('采集地址删除成功,将采集地址列表!');location.href='../gatheraddress.php'</script>";
 }
 
 ?>

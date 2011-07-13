@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gbk">
+		<META content=Alan name=Author>
+		<LINK href="../css/pagecontent.css" type=text/css rel=stylesheet>
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<script src="../../js/jquery.js"></script>
+		<script src="../js/case.js"></script>
+		<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+		  		<TR>
+		    		<TH>后台 >> 案例管理</TH>
+		    	</TR>
+		    </TBODY>
+		</TABLE>
+		<br>
+		<form action="action/action.php" method="post">
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="3">&nbsp;&nbsp;【添加案例】</th>
+			</tr>
+		    <tr>
+		    	<td rowspan="2" width="25%"></td>
+			    <td align="center" height='30' width="450px">
+			    	方案类型：
+			    	<select id="classCodeSelect" name="classcode">
+						<option value="-1">请选择产品类型</option>
+							{section name="list" loop="$prodClassList"}
+							<option value="{$prodClassList[list].id}">
+								{$prodClassList[list].class_name}
+							</option>
+							{/section}
+					</select>&nbsp;
+					方案名称：
+				    <select id="prodidSelect" name="prodid">
+						<option value="-1">请选择产品名称</option>
+					</select>&nbsp;
+			    </td>
+			    <td rowspan="2">
+			    	<input type="submit" name="into_case_button" value="转为案例" style="height:25px;"/>
+				    <input type="hidden" id="task" name="task" value="addCase"/>
+			    </td>
+		    </tr>
+		    <tr>
+		    	<td align="center">在线网址：<input type="text" id="prod_link" name="prod_link">&nbsp;公司名称：<input type="text" id="compary" name="compary"></td>
+		    </tr>
+		</table>
+		</form>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th width='40px' align=center>序号</th>
+				<th width=''>案例名称</th>
+				<th width='100px' align=center>案例类型</th>
+				<th width='200px' align=center>在网地址</th>
+				<th width="200" align=center>服务公司</th>
+				<th width="125" align=center>创建时间</th>
+				<th width="85px" align=center>图片</th>
+			</tr>
+			{section name=list loop=$caseList}
+			<tr>
+				<td align=center>{$caseList[list].id}</td>
+				<td align=center>{$caseList[list].prod_name}</td>
+				<td align=center>{$caseList[list].class_name}</td>
+				<td align=center>{$caseList[list].prod_link}</td>
+				<td align=center>{$caseList[list].compary}</td>
+				<td align=center>{$caseList[list].create_date}</td>
+				<td align=center><img src="../../product/images/{$caseList[list].prod_picture}" width="80px" height="64px"/></td>
+			</tr>
+			{/section}
+			<tr>
+				<th colspan="10">{$page}</th>
+			</tr>
+		</table>
+		<br>
+	</BODY>
+</HTML>

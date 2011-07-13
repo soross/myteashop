@@ -3,7 +3,12 @@ $index = 0;
 if("RSS" == $_POST[task]){
 	require_once("../action/global_post.php");
 	//RSS源地址列表数组
-	$rssfeed = array("http://feed.feedsky.com/tourmsg");
+	$query = $db->query("select info_value,remark from comm_info where info_type='GatherAddress'");
+	$rssfeed = array();
+	while($row=$db->fetch_array($query)){
+		$rssfeed[] = $row;
+	}
+	//$rssfeed = array("http://feed.feedsky.com/tourmsg");
 	/**
 	$rssfeed = array("http://feed.feedsky.com/tourmsg",
 	"http://www.jb51.net/feed",
@@ -18,7 +23,7 @@ if("RSS" == $_POST[task]){
 		$buff = "";
 		$rss_str="";
 		//打开rss地址，并读取，读取失败则中止
-		$fp = fopen($rssfeed[$i],"r") or die("can not open $rssfeed");
+		$fp = fopen($rssfeed[$i][info_value],"r") or die("can not open $rssfeed[$i][info_value]");
 		while ( !feof($fp) ) {
 			$buff .= fgets($fp,10240);
 		}
@@ -34,6 +39,9 @@ if("RSS" == $_POST[task]){
 		//xml_parser_free -- 释放指定的 XML 解析器
 		xml_parser_free($parser);
 
+		$content="";
+		$title="";
+		$link = "";
 		foreach ($values as $val) {
 			$tag = $val["tag"];
 			$type = $val["type"];
@@ -73,7 +81,7 @@ if("RSS" == $_POST[task]){
 				$row = $db->fetch_array($query);
 				if($row[0]<1){
 					$index++;
-					$db->query("insert into rss(title,link,type,content,create_date) values('$title','$link','$type','$content',now())");
+					$db->query("insert into rss(title,link,type,content,create_date,src) values('$title','$link','$type','$content',now(),'".$rssfeed[$i][remark]."')");
 					$content="";
 					$title="";
 					$link = "";

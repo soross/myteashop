@@ -22,6 +22,7 @@ else if(isset($_POST[task])&&"addCustCase"==$_POST[task]){
 	$db->query($sql);
 	echo "<script>if(confirm('是否继续添加客户案例?')){location.href='../custcaseadd.php';}else{location.href='../custcaselist.php';}</script>";
 }
+
 //删除案例task=deleteCustCase&id=4&path=../product/images/prod_001.jpg&page=1
 else if(isset($_GET[task])&&"deleteCustCase"==$_GET[task]){
 	unlink("../../".$_GET[path]);

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gbk">
+		<META content=Alan name=Author>
+		<LINK href="../css/pagecontent.css" type=text/css rel=stylesheet>
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+		  		<TR>
+		    		<TH>后台 >> 客户维系 >> 客户案例</TH>
+		    	</TR>
+		    </TBODY>
+		</TABLE>
+		<br>
+		<form action="" method="post" >
+			<table border=0 cellspacing=1 align=center class=form style="display:none;">
+				<tr>
+					<th colspan="2">&nbsp;&nbsp;【产品搜索】</th>
+				</tr>
+			    <tr>
+				    <td colspan="2" align="center" height='30'>
+				    	产品类型：
+				    	<select name="classcode">
+							<option value="">请选择产品类型</option>
+						    <option value="1">dfafds</option>";
+						</select>&nbsp;
+					    关键字：<input type="text" name="key" id="key" value="" />
+					    <input type="submit" name="into_class" value="产品搜索"/>
+				    </td>
+			    </tr>
+			</table>
+		</form>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th width='40px' align=center>序号</th>
+				<th width='100px'>客户名称</th>
+				<th width='150px' align=center>客户公司</th>
+				<th width='' align=center>案例名称</th>
+				<th width='150px' align=center>进度</th>
+				<th width="125" align=center>添加时间</th>
+				<th width="100" align=center>操作</th>
+				<th width="85px" align=center>图片</th>
+			</tr>
+			{section name=list loop=$caseList}
+			<tr>
+				<td align=center>{$caseList[list].id}</td>
+				<td align=center>{$caseList[list].cust_name}</td>
+				<td align=center>{$caseList[list].compary}</td>
+				<td align=center>{$caseList[list].case_name}</td>
+				<td align=center>
+				{if $caseList[list].state == 1}
+					{if $caseList[list].case_plan<100}
+						<form id="updatePlan" action="action/action.php" method="post">
+							<input type="text" size="3" name="case_plan" value="{$caseList[list].case_plan}">
+							<input type="submit" name="case_plan_update" value="更新进度">
+							<input type="hidden" name="cust_case_id" value="{$caseList[list].id}">
+							<input type="hidden" name="task" value="updateCustCasePlan">
+						</form>
+					{else}
+						<span style="color:#000099;font-weight:bold;">已完成</span>
+					{/if}
+				{/if}
+				{if $caseList[list].state==0}
+					<span style="color:#FF0000;font-weight:bold;">未确定</span>
+				{/if}
+				{if $caseList[list].state==2}
+					<span style="color:#990000;font-weight:bold;">结束</span>
+				{/if}
+				{if $caseList[list].state==-1}
+					<span style="color:#009900;font-weight:bold;">废弃</span>
+				{/if}
+				{if $caseList[list].state==-2}
+					<span style="color:#CC00CC;font-weight:bold;">已选择</span>
+				{/if}
+				</td>
+				<td align=center>{$caseList[list].create_date}</td>
+				<td align=center>
+					<table cellpadding="0" cellspacing="0">
+							<td style="cursor:hand;" onclick="location.href='action/action.php?task=deleteCustCase&id={$caseList[list].id}&path={$caseList[list].case_picture}&page={$cpage}'">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="14px">
+											<img src="../images/delete.png" border="0" />
+										</td>
+										<td width="30px">
+											删除
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td align=center><img src="../{$caseList[list].case_picture}" width="80px" height="64px"/></td>
+			</tr>
+			{/section}
+			<tr>
+				<th colspan="10">{$page}</th>
+			</tr>
+		</table>
+		<br>
+	</BODY>
+</HTML>

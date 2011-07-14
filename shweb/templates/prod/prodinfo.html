@@ -1,0 +1,28 @@
+{include file="inc/head.html"}
+<div id="content">
+	{include file="inc/left.html"}
+
+	<div id="content_zw">
+		<div class="zw_top">
+			<div class="zw_bt"><img src="../images/content_bt03.gif" /></div>
+			<div class="zw_weizhi">{$address}</div>
+			<div class="zw_btline"></div>
+		</div><!--zw_top-->
+		<div class="zw_text">
+
+		<div class="content_mid_pro_show">
+			<div class="content_mid_pro_show_01"><img src="../images/{$prodinfo.prod_picture}" border="0"></div>
+			<div class="content_mid_pro_show_02">
+				<div class="content_mid_pro_show_02_01"><h3>产品型号:{$prodinfo.prod_code}</h3></div>
+				<div class="content_mid_pro_show_02_01"><h3>产品名称:{$prodinfo.prod_name}</h3></div>
+			</div>
+			<div class="content_mid_pro_show_03">
+				{$prodinfo.prod_desc}
+			</div>
+			<div><div class="content_mid_pro_show_02_03">【<a href="prodorder.php?id={$prodinfo.id}" class="a01">在线订购</a>】&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【<a href="javascript:history.go(-1)" class="a01"> 返 回 </a>】</div></div>
+		</div>
+		</div><!--zw_text-->
+	</div><!--content_zw-->
+</div><!--content-->
+
+{include file="inc/buttom.html"}

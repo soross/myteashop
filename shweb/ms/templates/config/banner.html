@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 基本操作 >> 动画管理
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+			<table border=0 cellspacing=1 class=form>
+				<tr>
+					<th colspan="7">
+						更新首页动画
+					</th>
+				</tr>
+				{section name=list loop=$bannerList}
+				<tr>
+					<form id="UpdateBanner" action="action/action.php" method="post" enctype="multipart/form-data">
+					<td width="50px" align=center>
+						{$bannerList[list].id}
+					</td>
+					<td width="200px" align=center>
+						名称：<input type="text" name="text" value="{$bannerList[list].text}">
+					</td>
+					<td width="250px" align=center>
+						指向地址：<input type="radio" name="url" {if $bannerList[list].state==0}checked{/if} value="0">案例&nbsp;<input type="radio" name="url" {if $bannerList[list].state==1}checked{/if} value="1">产品&nbsp;ID：<input type="text" name="link_id" size='5' value="{$bannerList[list].link_id}">
+					</td>
+					<td>
+						图片1：<input type="file" name="upfile" />
+					</td>
+					<td>
+						<input type="hidden" name="id" value="{$bannerList[list].id}">
+						<input type="hidden" name="task" value="updateBanner">
+						<input type="button" name="updateBanner" style="height:25px;"
+							value="更新首页动画" onclick="this.form.submit();">
+					</td>
+					<td width="65">
+						<img src="../../images/{$bannerList[list].url}" border="0" width="60" height="60">
+					</td>
+					</form>
+				</tr>
+				{/section}
+				<tr>
+					<td>&nbsp;</td>
+					<td colspan="5">
+						<input type="button" name="goback" style="height: 30px;"
+							value="取消返回" onclick="window.history.back()">&nbsp;
+					</td>
+				</tr>
+			</table>
+		<br>
+	</BODY>
+</HTML>

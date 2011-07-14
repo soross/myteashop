@@ -1,0 +1,97 @@
+{include file="inc/head.html"}
+<div id="content">
+	{include file="inc/left.html"}
+
+	<div id="content_zw">
+		<div class="zw_top">
+			<div class="zw_bt"><img src="../images/content_bt05.gif" /></div>
+			<div class="zw_weizhi">当前位置：首 页 > <font color="#FF3300">在线订购</font></div>
+			<div class="zw_btline"></div>
+		</div><!--zw_top-->
+		<div class="zw_text">
+
+			  <div>
+
+  </div>
+			<script src="../js/jquery.js"></script>
+			<script src="../js/feedbook.js"></script>
+			<table width="89%" border="0" align="center" cellpadding="2" cellspacing="0" class="feedback_css">
+                    <form action="action/action.php" method="post" name="form0">
+                      <input id="id" name="id" type="hidden" value="{$prodinfo.id}">
+                      <tr>
+                      	<td colspan="2"><div  id="notice" class="noticediv"></div></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;&nbsp;客户名称:</span><span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td width="346" height="13" align="left"><input name="company" type="text" id="company2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center" valign="top">&nbsp;<span class="">&nbsp;联系地址</span>:<span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="20" align="left"><input name="addr" type="text" id="addr2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;&nbsp;联系电话</span>:<span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="25" align="left"><input name="tel" type="text" id="tel2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;联系传真:</span></td>
+                        <td height="25" align="left"><input name="fax" type="text" id="fax2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;联&nbsp;系&nbsp;人:</span></td>
+                        <td height="25" align="left"><input name="linkman" type="text" id="linkman2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;&nbsp;产品名称</span>:<span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="25" align="left"><input name="proname" type="text" id="proname2" size="40" maxlength="50" value="{$prodinfo.prod_name}"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;&nbsp;产品型号</span>:<span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="25" align="left"><input name="procode" type="text" id="procode2" size="40" maxlength="50" value="{$prodinfo.prod_code}"></td>
+                      </tr>
+                      <tr>
+                        <td height="30" align="center"><span class="">&nbsp;&nbsp;订购数量:</span><span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="-2" align="left"><input name="num" type="text" id="num2" size="40" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td height="12" align="center" valign="top"><span class="">&nbsp;备 　 注:</span></td>
+                        <td height="0" align="left"><textarea name="bz" cols="45" rows="7" id="textarea2" style="font-size:12px"></textarea></td>
+                      </tr>
+                      <tr>
+                        <td width="533" height="25" align="center" class="feedback_css">&nbsp;&nbsp;验&nbsp;证&nbsp;码:<span class="style6"><font color="#FF0000">*</font></span></td>
+                        <td height="25" width="533">
+                        	<table cellpadding="0" cellspacing="0">
+                        		<tr>
+                        			<td>
+                        				<input name="m_code" type="text" id="m_code3" size="10" maxlength="4">
+                        			</td>
+                        			<td>
+										&nbsp;<img id="codeimg" src="../random/imgcode.php" width="60" height="20" style="border:1px #dddddd solid;cursor:pointer;">
+									</td>
+                        			<td>
+										<span id="getImgCode" style="cursor:pointer;margin-left:10px;line-height:20px;font-size:12px;">看不清？更换一张</span>
+                        			</td>
+                        		</tr>
+                        	</table>
+                       	</td>
+                      </tr>
+                      <tr align="center" valign="middle">
+					  	<td height="30" colspan="2" align="center">
+					  		<input type="hidden" id="task" name="task" value="addProdOrder">
+					  		<input type="reset" name="resetButtom" value="重填" class="buttonface">
+							&nbsp;&nbsp;
+							<input type="submit" id="submitButtom"  name="submitButtom" value="确认" class="buttonface" disabled="disabled">
+						</td>
+                      </tr>
+                    </form>
+          </table>
+
+		</div><!--zw_text-->
+	</div><!--content_zw-->
+
+
+
+
+</div><!--content-->
+
+{include file="inc/buttom.html"}

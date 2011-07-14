@@ -1,0 +1,48 @@
+{include file="inc/head.html"}
+<div id="content">
+	{include file="inc/left.html"}
+	<div id="content_zw">
+		<div class="zw_top">
+			<div class="zw_bt"><img src="../images/content_bt03.gif" /></div>
+			<div class="zw_weizhi">{$address}</div>
+			<div class="zw_btline"></div>
+		</div><!--zw_top-->
+		<div class="zw_text">
+
+<!--================================================-->
+<div class="pro_list">
+      <tr align="center">
+
+		{section name=list loop=$prodList}
+	<div class="pro_lb">
+		<div class="pro_lbxx">
+			<ul>
+				<li class="pro_lbxx_pic"><a href="prodinfo.php?id={$prodList[list].id}"><img src="../images/{$prodList[list].prod_picture}" border="0" width="200px" height="150px"></a></li><!-- （产品图片） end-->
+				<li class="pro_lbxx_xh"><a href="prodinfo.php?id={$prodList[list].id}">{$prodList[list].prod_name}</a></li><!-- （名称） end-->
+				<li class="pro_lbxx_hh"><a href="prodinfo.php?id={$prodList[list].id}">{$prodList[list].prod_code}</a></li><!-- （型号） end-->
+			</ul>
+		</div><!--pro_lbxx-->
+	</div><!--pro_lb-->
+	{/section}
+
+
+
+<div class="pro_bom_pagefy">
+<link href="../css/pagecontent.css" rel="stylesheet" type="text/css" />
+<div class=pagefy>
+{$page}
+</div>
+
+
+
+</div><!--pro_list-->
+<!--================================================-->
+
+
+
+		</div><!--zw_text-->
+	</div><!--content_zw-->
+
+</div><!--content-->
+
+{include file="inc/buttom.html"}

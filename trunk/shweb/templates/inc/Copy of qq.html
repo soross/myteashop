@@ -1,0 +1,185 @@
+{literal}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>上海星霸艺术涂装有限公司-QQ在线客服</title>
+<meta http-equiv="content-type" content="text/html; charset=GBK">
+<style>
+.qqbox{
+	font-size:12px;
+	height:232px;
+	width:127px;
+	letter-spacing:0px;
+	overflow:hidden;
+	position:absolute;
+	right:0;
+	top:100px;
+}
+.qqlv{
+	float:right;
+	height:162px;
+	overflow:hidden;
+	position:relative;
+	width:41px;
+	z-index:50px;
+}
+.qqtable{
+	height:230px;
+	text-align:center;
+	width:127px;
+}
+.qqtable2{
+	height:98%;
+	width:98%;
+}
+
+.qqtd{
+	background-image:url(../images/im/show.gif);
+	background-repeat: no-repeat;
+	height:230px;
+	width:127px;
+}
+.qqtr1{
+	height:30px;
+}
+.qqtr2{
+	height:140px;
+	vertical-align:top;
+}
+.qqtr3{
+	height:10px;
+}
+</style>
+
+</head><body>
+<div class="qqbox" id="divQQbox">
+  <div style="display: block;" class="qqlv" id="meumid" onmouseover="show()">
+  	<img src="../images/im/qq.gif">
+  </div>
+  <div class="qqkf" style="display: none;" id="contentid" onmouseout="hideMsgBox(event)">
+	<table class="qqtable">
+		<tr>
+			<td class="qqtd">
+				<table class="qqtable2">
+					<tr class="qqtr1">
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+					<tr class="qqtr2">
+						<td>
+							<table>
+								<tr>
+									<td>
+										&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=94344753&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:94344753:42" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=97117177&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:97117177:42" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=342667849&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:342667849:42" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=82easy82&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=82easy82&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=hybjshop&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=hybjshop&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E6%98%9F%E9%9C%B8%E6%95%B0%E7%A0%81%E7%A7%91%E6%8A%80&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=%E6%98%9F%E9%9C%B8%E6%95%B0%E7%A0%81%E7%A7%91%E6%8A%80&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr class="qqtr2">
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<table>
+  </div>
+</div>
+<script language="javascript">
+	var tips;
+	var theTop = 100;
+	var old = theTop;
+	function initFloatTips()
+	{
+		tips = document.getElementById('divQQbox');
+		moveTips();
+	}
+	function moveTips()
+	{
+			  var tt=50;
+			  if (window.innerHeight)
+			  {
+			pos = window.pageYOffset
+			  }else if (document.documentElement && document.documentElement.scrollTop) {
+			pos = document.documentElement.scrollTop
+			  }else if (document.body) {
+				pos = document.body.scrollTop;
+			  }
+			  //http:
+			  pos=pos-tips.offsetTop+theTop;
+			  pos=tips.offsetTop+pos/10;
+			  if (pos < theTop){
+				 pos = theTop;
+			  }
+			  if (pos != old) {
+				 tips.style.top = pos+"px";
+				 tt=10;//alert(tips.style.top);
+			  }
+			  old = pos;
+			  setTimeout(moveTips,tt);
+	}
+	initFloatTips();
+	if(typeof(HTMLElement)!="undefined")//给firefox定义contains()方法，ie下不起作用
+		{
+		  HTMLElement.prototype.contains=function (obj)
+		  {
+			  while(obj!=null&&typeof(obj.tagName)!="undefind"){//
+	   　　 　if(obj==this) return true;
+	   　　　	　obj=obj.parentNode;
+	   　　	  }
+			  return false;
+		  }
+	}
+	function show()
+	{
+		document.getElementById("meumid").style.display="none"
+		document.getElementById("contentid").style.display="block"
+	}
+	function hideMsgBox(theEvent){
+	  if (theEvent){
+		var browser=navigator.userAgent;
+		if (browser.indexOf("Firefox")>0){//Firefox
+		    if (document.getElementById("contentid").contains(theEvent.relatedTarget)) {
+				return
+			}
+		}
+		if (browser.indexOf("MSIE")>0 || browser.indexOf("Presto")>=0){
+	        if (document.getElementById('contentid').contains(event.toElement)) {
+			    return;//结束函式
+		    }
+		}
+	  }
+	  document.getElementById("meumid").style.display = "block";
+	  document.getElementById("contentid").style.display = "none";
+ 	}
+</script>
+</body>
+</html>
+{/literal}

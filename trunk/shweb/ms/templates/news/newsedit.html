@@ -1,0 +1,64 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gb2312">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 新闻管理 >> 新闻修改
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="2">
+					新闻修改
+				</th>
+			</tr>
+			<form action="action/post.php" method="post">
+			<tr>
+				<td width=80>
+					新闻标题
+				</td>
+				<td>
+					<input type="text" name="title" value="{$info[1]}" size=50 maxlength="50">&nbsp;<font style="color: red;">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td width=80>
+					新闻内容
+					<font style="color: red;">*<br />
+				</td>
+				<td>
+					{include file="inc/editor.html"}
+				</td>
+			</tr>
+			<tr>
+				<td width=80></td>
+				<td>
+					<input type="button" name="goback" style="height: 30px;"
+						value="取消返回" onclick="window.history.back()">
+					<input type="button" name="add_news" style="height:30px;"
+							value="新闻修改" onclick="this.form.newsContent.value=KE.util.getData('content1');this.form.submit();">
+					<input type="hidden" name="newsContent">
+					<input type="hidden" name="task" value="editNews">
+					<input type="hidden" name="id" value="{$info[0]}">
+					<input type="hidden" name="page" value="{$page}">
+				</td>
+			</tr>
+			</form>
+		</table>
+		<br>
+
+	</BODY>
+</HTML>

@@ -1,0 +1,26 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options Indexes
+ErrorDocument 400 http://www.shxingba.com/error404.html
+ErrorDocument 401 http://www.shxingba.com/error404.html
+ErrorDocument 402 http://www.shxingba.com/error404.html
+ErrorDocument 403 http://www.shxingba.com/error404.html
+ErrorDocument 404 http://www.shxingba.com/error404.html
+ErrorDocument 405 http://www.shxingba.com/error404.html
+ErrorDocument 406 http://www.shxingba.com/error404.html
+ErrorDocument 407 http://www.shxingba.com/error404.html
+ErrorDocument 408 http://www.shxingba.com/error404.html
+ErrorDocument 409 http://www.shxingba.com/error404.html
+ErrorDocument 410 http://www.shxingba.com/error404.html
+ErrorDocument 411 http://www.shxingba.com/error404.html
+ErrorDocument 412 http://www.shxingba.com/error404.html
+ErrorDocument 413 http://www.shxingba.com/error404.html
+ErrorDocument 414 http://www.shxingba.com/error404.html
+ErrorDocument 500 http://www.shxingba.com/error404.html
+ErrorDocument 501 http://www.shxingba.com/error404.html
+ErrorDocument 502 http://www.shxingba.com/error404.html
+ErrorDocument 503 http://www.shxingba.com/error404.html
+ErrorDocument 504 http://www.shxingba.com/error404.html
+ErrorDocument 505 http://www.shxingba.com/error404.html
+order deny,allow

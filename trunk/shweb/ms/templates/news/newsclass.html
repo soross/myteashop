@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<META content=Alan name=Author>
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 新闻管理 >> 新闻分类
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+
+		<table border=0 cellspacing=1 align=center class="form  tablelayout">
+			<tr>
+				<th>
+					添加新闻分类
+				</th>
+			</tr>
+			<form action="action/post.php" method="post">
+				<tr>
+					<td align="center" height='30px'>
+						类型名称：<input type="text" name="class_name" style="width:100px"/>
+						<input type="submit" name="into_class" value=" 添加新闻分类 " />
+						<input type="hidden" name="task" value="addNewsClass" />
+					</td>
+				</tr>
+			</form>
+		</table>
+		<br>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="5">
+					系统新闻分类
+				</th>
+			</tr>
+			{section name=list loop=$newsClassList}
+			<form action="action/post.php" method="post">
+				<tr style="vertical-align: top">
+					<td width="40%" align=right>
+						{$newsClassList[list].id}
+					</td>
+					<td align=left width="150px">
+						<input type="hidden" name="id" value="{$newsClassList[list].id}" />
+						<input type="hidden" name="task" value="updateNewsClass" />
+						<input type="text" name="class_name" value="{$newsClassList[list].class_name}" />
+					</td>
+					<td>
+						<input type="submit" name="update_class" value="更新" />
+						<input type="button" value="删除" onclick="location.href='action/post.php?task=deleteNewsClass&id={$newsClassList[list].id}'"/>
+					</td>
+				</tr>
+			</form>
+			{/section}
+		</table>
+		<br>
+	</BODY>
+</HTML>

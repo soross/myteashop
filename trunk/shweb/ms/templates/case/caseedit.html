@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<script src="../js/preview.js"></script>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 案例管理 >> 案例修改
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+			<table border=0 cellspacing=1 class=form>
+				<tr>
+					<th colspan="3">
+						案例修改
+					</th>
+				</tr>
+
+				<tr>
+					<td width="20%" align=center>
+						案例名称
+					</td>
+					<td>
+						<form id="addProd" action="action/action.php" method="post" enctype="multipart/form-data">
+							<input type="text" name="case_name" size="30" value="{$info[1]}" maxlength=50 />&nbsp;<font style="color: red;">*</font>
+							<input type="button" name="add_prod" style="height:20px;"
+								value="修改案例名称" onclick="this.form.submit();">
+							<input type="hidden" name="task" value="editCaseName">
+							<input type="hidden" name="id" value="{$info[0]}">
+							<input type="hidden" name="page" value="{$page}">
+						</form>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="20%" align=center>
+					已有案例图片
+					</td>
+					<td>
+						<table>
+							{section name=list loop=$casePathList}
+							<tr>
+								<td width='250px'><img src='../../images/{$casePathList[list].case_path}' border='0' width="200px" height="150px"></td>
+								<td><a href='action/action.php?id={$casePathList[list].id}&path={$casePathList[list].case_path}&task=deleteCasePath&caseid={$info[0]}&page={$page}'>单独删除该图片</a></td>
+							</tr>
+							{/section}
+						</table>
+					</td>
+				</tr>
+				<form id="addProd" action="action/action.php" method="post" enctype="multipart/form-data">
+				<tr>
+					<td width="20%" align=center>
+					新增案例图片
+					</td>
+					<td>
+						{include file='inc/file_plus.html'}
+						<span style="padding-left:250px;"><input type="button" name="add_prod" style="height:30px;"
+							value="添加案例图片" onclick="this.form.submit();"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<input type="button" name="goback" style="height: 30px;"
+							value="取消返回" onclick="window.history.back()">&nbsp;
+						<input type="hidden" name="task" value="editcase">
+						<input type="hidden" name="id" value="{$info[0]}">
+						<input type="hidden" name="page" value="{$page}">
+					</td>
+				</tr>
+				</form>
+			</table>
+		<br>
+	</BODY>
+</HTML>

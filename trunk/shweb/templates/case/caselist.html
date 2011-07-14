@@ -1,0 +1,34 @@
+{include file="inc/head.html"}
+<div id="content">
+	{include file="inc/left.html"}
+	<div id="content_zw">
+		<div class="zw_top">
+			<div class="zw_bt"><img src="../images/content_bt04.gif" /></div>
+			<div class="zw_weizhi">{$address}</div>
+			<div class="zw_btline"></div>
+		</div><!--zw_top-->
+	<div class="zw_text">
+
+	<div>
+	</div>
+	{section name=list loop=$caseList}
+	<div class="news_list">
+		<ul>
+			<li class="news_title"><img src=../images/jt01.gif border='0'>&nbsp;<a href="caseinfo.php?id={$caseList[list].id}"> {$caseList[list].case_name}</a><span class="news_date">{$caseList[list].create_date}</span></li>
+		</ul>
+	</div><!--news_list-->
+	<div>
+	</div>
+	{/section}
+
+	<div>
+	<div class="news_fy">
+	<link href="../css/pagecontent.css" rel="stylesheet" type="text/css" />
+		{$page}
+	</div>
+
+		</div><!--zw_text-->
+	</div><!--content_zw-->
+</div><!--content-->
+
+{include file="inc/buttom.html"}

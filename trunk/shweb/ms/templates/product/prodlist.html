@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gbk">
+		<META content=Alan name=Author>
+		<LINK href="../css/pagecontent.css" type=text/css rel=stylesheet>
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+		  		<TR>
+		    		<TH>后台 >> 产品管理 >> 产品列表</TH>
+		    	</TR>
+		    </TBODY>
+		</TABLE>
+		<br>
+		<form action="" method="post" >
+			<table border=0 cellspacing=1 align=center class=form style="display:none;">
+				<tr>
+					<th colspan="2">&nbsp;&nbsp;【产品搜索】</th>
+				</tr>
+			    <tr>
+				    <td colspan="2" align="center" height='30'>
+				    	产品类型：
+				    	<select name="classcode">
+							<option value="">请选择产品类型</option>
+						    <option value="1">dfafds</option>";
+						</select>&nbsp;
+					    关键字：<input type="text" name="key" id="key" value="" />
+					    <input type="submit" name="into_class" value="产品搜索"/>
+				    </td>
+			    </tr>
+			</table>
+		</form>
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th width='40px' align=center>序号</th>
+				<th width=''>产品名称</th>
+				<th width='150px' align=center>产品编码</th>
+				<th width='100px' align=center>产品类型</th>
+				<th width='60px' align=center>状态</th>
+				<th width="125" align=center>添加时间</th>
+				<th width="150px" align=center>操作</th>
+				<th width="85px" align=center>图片</th>
+			</tr>
+			{section name=list loop=$prodList}
+			<tr>
+				<td align=center>{$prodList[list].id}</td>
+				<td align=center>{$prodList[list].prod_name}</td>
+				<td align=center>{$prodList[list].prod_code}</td>
+				<td align=center>{$prodList[list].class_name}</td>
+				<td align=center>{if "1"==$prodList[list].state}<font color="red">推荐</font>{else}普通{/if}</td>
+				<td align=center>{$prodList[list].create_date}</td>
+				<td align=center>
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="cursor:hand;" onclick="location.href='prodedit.php?task=editProd&id={$prodList[list].id}&page={$cpage}'">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="14px">
+											<img src="../images/edit.gif" border="0" />
+										</td>
+										<td width="30px">
+											修改
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td>|</td>
+							<td style="cursor:hand;" onclick="if(confirm('确定删除该产品吗?'))location.href='action/post.php?task=deleteProd&id={$prodList[list].id}&path={$prodList[list].prod_picture}&page={$cpage}';">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="14px">
+											<img src="../images/delete.png" border="0" />
+										</td>
+										<td width="30px">
+											删除
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td align=center><img src="../../images/{$prodList[list].prod_picture}" width="80px" height="64px"/></td>
+			</tr>
+			{/section}
+			<tr>
+				<th colspan="10">{$page}</th>
+			</tr>
+		</table>
+		<br>
+	</BODY>
+</HTML>

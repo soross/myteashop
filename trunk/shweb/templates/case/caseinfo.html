@@ -1,0 +1,31 @@
+{include file="inc/head.html"}
+<div id="content">
+	{include file="inc/left.html"}
+
+	<div id="content_zw">
+		<div class="zw_top">
+			<div class="zw_bt"><img src="../images/content_bt04.gif" /></div>
+			<div class="zw_weizhi">{$address}</font></div>
+			<div class="zw_btline"></div>
+		</div><!--zw_top-->
+		<div class="zw_text">
+
+			<div></div>
+
+<div class="shownews_bt"><h1>{$caseinfo.case_name}</h1></div>
+<div class="shownews_zw">
+{section name=list loop=$pathList}
+<P align=center><IMG border=0 src="../images/{$pathList[list].case_path}"></P>
+{/section}
+</div>
+<div class="shownews_bom"><a href="javascript:history.go(-1)">[ ·µ »Ø ]</a></div>
+
+		</div><!--zw_text-->
+	</div><!--content_zw-->
+
+
+
+
+</div><!--content-->
+
+{include file="inc/buttom.html"}

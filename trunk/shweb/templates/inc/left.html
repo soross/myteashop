@@ -1,0 +1,24 @@
+<div id="sidebar">		<div class="sidebar_pro">
+			<div class="sidebar_top"><img src="../images/left_bt.jpg" /></div>
+			<div class="sidebar_list">
+
+				{section name=list loop=$prodClassList}
+				<div class=leftpro_list>
+					<ul>
+						<li><a href="../product/prodlist.php?classcode={$prodClassList[list].id}">{$prodClassList[list].class_name}</a></li>
+					</ul>
+				</div>
+				{/section}
+
+			</div>
+		</div><!--sidebar_pro-->
+		<div class="sidebar_search">
+			<div class="sidebar_search_bt"><img src="../images/left_searchbt.gif" /></div>
+			<div class="sidebar_search_text">
+				<form action="../product/prodlist.php" method="post" name="form2" id="form2" onsubmit="return (document.getElementById('keyword').value!='ÇëÊäÈë¹Ø¼ü×Ö')">
+				  <input name="keyword" type="text" value="ÇëÊäÈë¹Ø¼ü×Ö" size="20" maxlength="50" class="search_keyword" onblur="if(this.value=='')this.value='ÇëÊäÈë¹Ø¼ü×Ö';" onfocus="if(this.value=='ÇëÊäÈë¹Ø¼ü×Ö')this.value='';"/>
+				  <input name="Submit" type="image"  value="ËÑË÷" src="../images/search_btn.gif" width="70" height="27" class="search_btn" onclick="if(document.getElementById('keyword').value=='ÇëÊäÈë¹Ø¼ü×Ö')alert('ÇëÊäÈë¹Ø¼ü×Ö!');"/ >
+				</form>
+			</div>
+		</div><!--sidebar_search-->
+</div>

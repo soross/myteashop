@@ -1,0 +1,5 @@
+错误SQL语句：
+delete * from prod_class where id='11'
+客户IP:127.0.0.1
+时间 :2011-06-28 08:13:23
+

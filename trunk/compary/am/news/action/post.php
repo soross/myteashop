@@ -45,9 +45,37 @@ else if(isset($_GET[task])&& "deleteNewsClass"==$_GET[task]){
 
 //RSS生成新闻
 else if(isset($_POST[task])&& "createNews"==$_POST[task]){
-	$db->query("insert into news(title,content,news_class,src) select title,content,'-123',src from rss where state='0'");
+	require_once("../../action/simple_html_dom.php");
+	$queryRss = $db->query("select title,content,src from rss where state='0'");
+	$i = 0;
+	$sql = array();
+	while($rowRss = $db->fetch_array($queryRss)){
+		$html = str_get_html($rowRss[content]);
+		$index = 0;
+		foreach($html->find('img') as $element){
+			if(strpos($element->src,"?")===false){
+	    		if($element->src!=""){
+	    			//echo $element->src;
+					$filename=GrabImage($element->src);
+	    		}
+				//../news/images/../../../news/images/18Jul2011130629.jpg
+				if($filename!="" && $filename!=false){
+					$html->find('img', $index)->src = "../news/images/".$filename;
+				}
+			}else{
+				$html->find('img', $index)->src = '';
+			}
+			$index++;
+		}
+		$sql[$i] ="insert into news(title,news_class,src,content,create_date,author) values('".$rowRss[title]."','-123','".$rowRss[src]."','".$html."',now(),'果果网络')";
+		$i++;
+	}
+
+	for ($j = 0; $j < sizeof($sql); $j++) {
+		$db->query($sql[$j]);
+	}
 	$db->query("update rss set state='1' where state='0'");
-	$db->query("update news set news_class='4',author='果果整理',create_date=now(),news_info_url=CONCAT('newsinfo.php?id=',id) where news_class='-123'");
+	$db->query("update news set news_class='4',news_info_url=CONCAT('newsinfo.php?id=',id) where news_class='-123'");
 	$cnt = $db->db_affected_rows();
 	echo $cnt;
 }
@@ -94,4 +122,37 @@ else if(isset($_GET[task])&&"deleteGatherAddress" == $_GET[task]){
 	echo "<script>alert('采集地址删除成功,将采集地址列表!');location.href='../gatheraddress.php'</script>";
 }
 
+
+
+
+
+
+function GrabImage($url,$filename="") {
+	if($url==""):return false;endif;
+	$path="../../../news/images/"; //指定存储文件夹
+
+	//若文件不存在,则创建;
+	if(!file_exists($path)){
+		mkdir($path);
+	}
+
+	if($filename=="") {
+		$ext=strrchr($url,".");
+		if($ext!=".gif" && $ext!=".jpg" && $ext!=".png"):return false;endif;
+		$filename = date("dMYHis").$ext;
+		$filepath=$path.$filename;
+	}
+
+	ob_start();
+	readfile($url);
+	$img = ob_get_contents();
+	ob_end_clean();
+	$size = strlen($img);
+
+	$fp2=@fopen($filepath, "a");
+	fwrite($fp2,$img);
+	fclose($fp2);
+
+	return $filename;
+}
 ?>

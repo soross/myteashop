@@ -22,9 +22,11 @@
 
 <a href="../sure/" target="_self" class="titlemenu_dolphin"><FONT style="color:#FF6600;">合作登入</FONT></a>
 
-<a href="../job/joblist.php" target="_self" class="titlemenu_dolphin">诚聘英才</a>
-
-<a href="../aboutus/link.php" target="_self" class="titlemenu_dolphin">友情链接</a>
+<a href="../job/joblist.html" target="_self" class="titlemenu_dolphin">诚聘英才</a>
+<!--
+<a href="../aboutus/addlink.html" target="_self" class="titlemenu_dolphin">申请链接</a>
+ -->
+<a href="../aboutus/link.html" target="_self" class="titlemenu_dolphin">友情链接</a>
 
 </div>
 
@@ -63,7 +65,7 @@
 </div>
 <!-- 图片友情链接 -->
 
-<div id='pdv_15300' class='pdv_class'  title='果果网络-友情链接' style='width:740px;height:41px;top:77px;left:244px; z-index:13'>
+<div id='pdv_15300' class='pdv_class'  title='果果网络-友情链接' style='width:740px;height:300px;top:77px;left:244px; z-index:13'>
 <div id='spdv_15300' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
 	<div style="height:25px;margin:1px;display:none;background:;">
@@ -75,24 +77,13 @@
 		</div>
 	</div>
 <div style="padding:0px">
-
-<ul style="padding:0px;overflow:hidden;margin:0px 20px;">
-<!--
+<link href="../css/link.css" rel="stylesheet" type="text/css" />
+<ul style="list-style-type:none;overflow:hidden;" id="link_ul_page">
 {section name=list loop=$rowLink}
-<li style="list-style-type:none;float:left;margin:0px;padding:3px 22px 3px 0px;padding-top:20px;">
-<a href="{$rowLink[list].link_url}" target='_blank' alt="果果网络-{$rowLink[list].link_name}" title="果果网络-{$rowLink[list].link_name}">
-{if $rowLink[list].state=="0"}
-<img src="../images/link/{$rowLink[list].link_picture}" border="0" width="{$rowLink[list].width}"  height="{$rowLink[list].height}" alt="果果网络-{$rowLink[list].link_name}" title="果果网络-{$rowLink[list].link_name}" />
-{else}
-<span style="width:400px;">
-<h3 style="font-weight: bold;width:400px;">{$rowLink[list].link_name}</h3></span>
-{/if}
-</a>
+<li style="float:left;padding-left:10px;">
+	<a href="{$rowLink[list].link_url}" target="_blank"  alt="果果网络-{$rowLink[list].link_name}" title="果果网络-{$rowLink[list].link_name}">{$rowLink[list].link_name}</a><br>&nbsp;
+</li>
 {/section}
-<br>
- -->
-{include file="inc/tag.html"}
-
 </ul>
 </div>
 </div>

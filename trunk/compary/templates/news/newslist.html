@@ -19,14 +19,8 @@
 <div class="newsclass_dolphin">
 
 {section name=list loop=$newsClassRow}
-	  <a href="newslist.php?classcode={$newsClassRow[list].id}" target="_self" class="newsclass_dolphin">{$newsClassRow[list].class_name}</a>
+	  <a href="newslist.html?classcode={$newsClassRow[list].id}" target="_self" class="newsclass_dolphin">{$newsClassRow[list].class_name}</a>
 {/section}
-<!--
-<a href="../../news/class/?86.html" target="_self" class="newsclass_dolphin">新闻动态</a>
-
-
-<a href="../../news/class/?100.html" target="_self" class="newsclass_dolphin">包装常识</a>
--->
 </div>
 
 </div>
@@ -137,9 +131,6 @@
 	</div>
 
 <div id="showpages">
-	  <!--  <div id="pagesinfo">共10条 每页10条 页次：1/1</div>
-	  <div id="pages"><ul><li class="pbutton"><a href=/1273472146/news/class/index.php?page=1&amp;catid=0&amp;myord=uptime&amp;myshownums=&amp;showtj=&amp;showdate=&amp;author=&amp;key=>首页</a></li><li class="pbutton">上一页</li><li class="pagesnow">1</li><li class="pbutton">下一页</li><li class="opt"><select onChange="window.location=this.options[this.selectedIndex].value"><option value="/1273472146/news/class/index.php?page=1&amp;catid=0&amp;myord=uptime&amp;myshownums=&amp;showtj=&amp;showdate=&amp;author=&amp;key=" selected>第1页</option></select></li><li class="pbutton"><a href=/1273472146/news/class/index.php?page=1&amp;catid=0&amp;myord=uptime&amp;myshownums=&amp;showtj=&amp;showdate=&amp;author=&amp;key=>尾页</a></li></ul></div>
-	  -->
 	{$page}
 </div>
 

@@ -5,16 +5,14 @@ require_once("../action/public_info.php");
 require_once("../action/public_info_contact.php");
 
 //公司简介
-$queryCompanyInfo = $db->query("select * from comm_info where info_type='CompanyInfo'");
+$queryCompanyInfo = $db->query("select info_value from comm_info where info_type='CompanyInfo'");
 $rowCompanyInfo = $db->fetch_array($queryCompanyInfo);
 $smarty->assign("companyInfo",$rowCompanyInfo[info_value]);
 
 //标题
-//$smarty->assign("title","公司简介");
-$smarty->assign("title","关于我们-果果网络(Www.GuoguoNet.com)");
-$smarty->assign("keywords","关于我们 果果网络 软件 软件开发 网站 网站建设 整站建设");
-$smarty->assign("description","果果网络工作室诚挚为您提供软件开发、软件设计、系统研发、网站建设、网站设计、网站维护、域名注册、空间注册、成品建站、局域网搭建等服务！");
-
+$smarty->assign("title","关于我们|".$SeoTitle);
+$smarty->assign("keywords","关于我们|".$SeoKeywords);
+$smarty->assign("description","关于我们|".$SeoDesc);
 
 //当前位置
 $address = "您现在的位置：<a href='../'>果果网络工作室</a> &gt; 公司简介";

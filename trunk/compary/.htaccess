@@ -1,11 +1,20 @@
-<Files ~ "^\.(htaccess|htpasswd)$">
-deny from all
-</Files>
-Options Indexes
-ErrorDocument 400 http://www.guoguonet.com/error404.html
-ErrorDocument 401 http://www.guoguonet.com/error404.html
-ErrorDocument 402 http://www.guoguonet.com/error404.html
-ErrorDocument 403 http://www.guoguonet.com/error404.html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /compary/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^news/newslist.html(.*)$ news/newslist.php$1 [L,QSA]
+RewriteRule ^news/news_([0-9]+)_info.html news/newsinfo.php?id=$1 [L]
+RewriteRule ^product/prodlist.html(.*)$ product/prodlist.php$1 [L,QSA]
+RewriteRule ^product/product_([0-9]+)_info.html product/prodinfo.php?id=$1 [L]
+RewriteRule ^case/caselist.html case/caselist.php$1 [L,QSA]
+RewriteRule ^case/case_([0-9]+)_info.html case/caseinfo.php?id=$1 [L]
+RewriteRule ^job/joblist.html job/joblist.php$1 [L,QSA]
+RewriteRule ^job/job_([0-9]+)_info.html job/jobinfo.php?id=$1 [L]
+RewriteRule ^(.*).html(.*)$ $1.php?$2
+</IfModule>
+
+
 ErrorDocument 404 http://www.guoguonet.com/error404.html
 ErrorDocument 405 http://www.guoguonet.com/error404.html
 ErrorDocument 406 http://www.guoguonet.com/error404.html
@@ -23,4 +32,3 @@ ErrorDocument 502 http://www.guoguonet.com/error500.html
 ErrorDocument 503 http://www.guoguonet.com/error500.html
 ErrorDocument 504 http://www.guoguonet.com/error500.html
 ErrorDocument 505 http://www.guoguonet.com/error500.html
-order deny,allow

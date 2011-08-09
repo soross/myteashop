@@ -45,6 +45,7 @@ else if(isset($_GET[task])&& "deleteNewsClass"==$_GET[task]){
 
 //RSS生成新闻
 else if(isset($_POST[task])&& "createNews"==$_POST[task]){
+	/**
 	require_once("../../action/simple_html_dom.php");
 	$queryRss = $db->query("select title,content,src from rss where state='0'");
 	$i = 0;
@@ -53,6 +54,7 @@ else if(isset($_POST[task])&& "createNews"==$_POST[task]){
 		$html = str_get_html($rowRss[content]);
 		$index = 0;
 		foreach($html->find('img') as $element){
+			$filename="";
 			if(strpos($element->src,"?")===false){
 	    		if($element->src!=""){
 	    			//echo $element->src;
@@ -69,13 +71,18 @@ else if(isset($_POST[task])&& "createNews"==$_POST[task]){
 		}
 		$sql[$i] ="insert into news(title,news_class,src,content,create_date,author) values('".$rowRss[title]."','-123','".$rowRss[src]."','".$html."',now(),'果果网络')";
 		$i++;
+
+		$html='';
+		$element = '';
 	}
 
 	for ($j = 0; $j < sizeof($sql); $j++) {
 		$db->query($sql[$j]);
 	}
+	**/
+	$db->query("insert into news(title,news_class,src,content,create_date) select title,state,src,content,now() from rss where state='0'");
 	$db->query("update rss set state='1' where state='0'");
-	$db->query("update news set news_class='4',news_info_url=CONCAT('newsinfo.php?id=',id) where news_class='-123'");
+	$db->query("update news set news_class='4',author='果果网络',news_info_url=CONCAT('news_',id,'_info.html') where news_class='0'");
 	$cnt = $db->db_affected_rows();
 	echo $cnt;
 }

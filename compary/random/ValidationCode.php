@@ -42,8 +42,16 @@
                     case 1 : $rand_number=rand(65,90);break;    //大写字母
                     case 2 : $rand_number=rand(97,122);break;   //小写字母
                 }
-                $ascii=sprintf("%c",$rand_number);
-                $ascii_number=$ascii_number.$ascii;
+                //0 1 O o I i l 去掉  用户难识别
+                if($rand_number==48 || $rand_number==49 ||
+                   $rand_number==73||$rand_number==105 ||
+                   $rand_number==79 || $rand_number==111
+                   ||$rand_number==108){
+                	$i--;
+                }else{
+                	$ascii=sprintf("%c",$rand_number);
+                	$ascii_number=$ascii_number.$ascii;
+                }
             }
             return $ascii_number;
         }

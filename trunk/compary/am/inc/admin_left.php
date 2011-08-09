@@ -175,6 +175,33 @@ require_once("../action/global_action.php");
 	 				</TR>
 	 			</TBODY>
 	 		</TABLE>
+	 		<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
+				<TBODY>
+					<TR>
+						<TH onClick="javascript:menu_tree('left_5');" align=middle>¡Ô Çå³ý»º´æ ¡Ô</TH>
+					</TR>
+					<TR id=left_5>
+						<TD>
+							<TABLE width="100%" style="margin-top:5px">
+        						<TBODY>
+							        <TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../cache/indexcache.php" target=main>Ö÷Ò³»º´æ</A>
+									  	</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../cache/cache.php" target=main>È«²¿»º´æ</A>
+									  	</TD>
+									</TR>
+ 								</TBODY>
+ 							</TABLE>
+	 					</TD>
+	 				</TR>
+	 			</TBODY>
+	 		</TABLE>
 			<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
 				<TBODY>
 					<TR>

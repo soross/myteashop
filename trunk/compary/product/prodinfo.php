@@ -28,9 +28,10 @@ while($rowProdClass = $db->fetch_array($queryProdClass)){
 $smarty->assign("prodclass",$rowPC);
 
 //标题
-$smarty->assign("title",$row[prod_name]."-解决方案-果果网络(Www.GuoguoNet.com)");
-$smarty->assign("keywords",$row[prod_name]." 解决方案 果果网络 软件 软件开发 网站 网站建设 整站建设");
-$smarty->assign("description","果果网络工作室诚挚为您提供软件开发、软件设计、系统研发、网站建设、网站设计、网站维护、域名注册、空间注册、成品建站、局域网搭建等服务！");
+$smarty->assign("title",$row[prod_name]."|解决方案|".$SeoTitle);
+$smarty->assign("keywords",$row[prod_name]."|解决方案|".$SeoKeywords);
+$smarty->assign("description",$row[prod_name]."|解决方案|".$SeoDesc);
+
 
 
 
@@ -44,9 +45,9 @@ $content = $smarty->fetch('prod/prodinfo.html',$_GET[id]);
 $db->makeSearchData("../product/prodinfo.php?id=".$_GET[id],$content);
 
 //生产html
-$filename = $db->getFileName($_GET[id],"../prodpage/","prod");
-$db->makeHtml("../prodpage/".$filename,$content);//写入内容到news.html文件
+//$filename = $db->getFileName($_GET[id],"../prodpage/","prod");
+//$db->makeHtml("../prodpage/".$filename,$content);//写入内容到news.html文件
 
-$db->query("update prod set prod_info_url='../prodpage/".$filename."' where id='".$_GET[id]."'");
+//$db->query("update prod set prod_info_url='../prodpage/".$filename."' where id='".$_GET[id]."'");
 //echo "<script>location.href='../prodpage/".$filename."'</script>";
 ?>

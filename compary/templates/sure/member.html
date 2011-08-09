@@ -21,9 +21,12 @@
 
 <a href="../sure/" target="_self" class="titlemenu_dolphin"><FONT style="color:#FF6600;">合作登入</FONT></a>
 
-<a href="../job/joblist.php" target="_self" class="titlemenu_dolphin">诚聘英才</a>
+<a href="../job/joblist.html" target="_self" class="titlemenu_dolphin">诚聘英才</a>
 
-<a href="../aboutus/link.php" target="_self" class="titlemenu_dolphin">友情链接</a>
+<!--
+<a href="../aboutus/addlink.html" target="_self" class="titlemenu_dolphin">申请链接</a>
+ -->
+<a href="../aboutus/link.html" target="_self" class="titlemenu_dolphin">友情链接</a>
 
 </div>
 
@@ -81,13 +84,13 @@
 	  {if "2"!=$caseList[list].state}
 	  <tr>
 	  	<td width="30%" style="text-align:center;">
-		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
+		  	<a href="showcase.html?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
 	  	</td>
 	  	<td>
 	  		<table border="0"  style="width:100%;height:80px;">
 	  			<tr height="40%">
 	  				<td width="50%">
-	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">{if "1"== $caseList[list].state}<FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT>{else}{$caseList[list].case_name}{/if}</a>
+	  					<a href="showcase.html?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">{if "1"== $caseList[list].state}<FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT>{else}{$caseList[list].case_name}{/if}</a>
 	  				</td>
 	  				<td width="50%" rowspan='3'>
 	  					{if "1"== $caseList[list].state}
@@ -146,14 +149,14 @@
 	  {else}
 	   <tr>
 	  	<td width="30%" style="text-align:center;">
-		  	<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">
+		  	<a href="showcase.html?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息">
 		  		<img src="{$caseList[list].case_picture}" border='0' width="100px" height="100px"/></a>
 	  	</td>
 	  	<td>
 	  		<table border="0"  style="width:100%;height:80px;">
 	  			<tr height="40%">
 	  				<td width="50%">
-	  					<a href="showcase.php?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT></a>
+	  					<a href="showcase.html?path={$caseList[list].case_picture|escape:"url"}" target="_black" title="果果网络-点击查看主页详细信息"><FONT style="color:#FF6600;">{$caseList[list].case_name}</FONT></a>
 	  				</td>
 	  				<td width="50%" rowspan='3'>
 	  					<table>

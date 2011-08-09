@@ -32,7 +32,7 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //新闻列表
-$newsQuery = $db->query("select * from news ".$where." order by create_date desc limit $firstcount, $displaypg ");
+$newsQuery = $db->query("select id,title,create_date,news_info_url from news ".$where." order by create_date desc limit $firstcount, $displaypg ");
 $newsRow = array();
 while($rowR = $db->fetch_array($newsQuery)){
 	$newsRow[] = $rowR;
@@ -40,7 +40,7 @@ while($rowR = $db->fetch_array($newsQuery)){
 $smarty->assign("newsRow",$newsRow);
 
 //新闻类型
-$newsClassQuery = $db->query("select * from news_class");
+$newsClassQuery = $db->query("select id,class_name,url from news_class");
 $newsClassRow = array();
 while($rowCR = $db->fetch_array($newsClassQuery)){
 	$newsClassRow[] = $rowCR;
@@ -51,10 +51,9 @@ $smarty->assign("newsClassRow",$newsClassRow);
 $smarty->assign("page",$pagenav);
 
 //标题
-//$smarty->assign("title","新闻动态");
-$smarty->assign("title","新闻动态-果果网络(Www.GuoguoNet.com)");
-$smarty->assign("keywords","新闻动态 果果网络 软件 软件开发 网站 网站建设 整站建设");
-$smarty->assign("description","果果网络工作室诚挚为您提供软件开发、软件设计、系统研发、网站建设、网站设计、网站维护、域名注册、空间注册、成品建站、局域网搭建等服务！");
+$smarty->assign("title","新闻动态|".$SeoTitle);
+$smarty->assign("keywords","新闻动态|".$SeoKeywords);
+$smarty->assign("description","新闻动态|".$SeoDesc);
 
 
 //当前位置

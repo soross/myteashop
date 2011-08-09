@@ -33,6 +33,7 @@
  * @version 1.11 ($Rev: 184 $)
  * @package PlaceLocalInclude
  * @subpackage simple_html_dom
+ *
  */
 
 /**

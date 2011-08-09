@@ -1,6 +1,6 @@
 <?php
 require_once("../../action/global_post.php");
-echo "file upload....".$_POST[task]."...".$_GET[page];
+//echo "file upload....".$_POST[task]."...".$_GET[page];
 
 //添加产品
 if(isset($_POST[task])&&"addProduct"==$_POST[task]){
@@ -16,7 +16,7 @@ if(isset($_POST[task])&&"addProduct"==$_POST[task]){
 	$prodId = $db->insert_id();
 	$prodUrl = $_POST[prod_url]==1?"dome/".$prodId."/index.html":NULL;
 	$prodCode = getProdCode($db,$_POST[prod_class],$prodId);
-	$updateSql = "update prod set prod_code='".$prodCode."',prod_info_url='prodinfo.php?id=".$prodId."',case_info_url='caseinfo.php?id=".$prodId."',prod_url='".$prodUrl."' where id='".$prodId."'";
+	$updateSql = "update prod set prod_code='".$prodCode."',prod_info_url='product_".$prodId."_info.html',case_info_url='case_".$prodId."_info.html',prod_url='".$prodUrl."' where id='".$prodId."'";
 	$db->query($updateSql);
 	echo "<script>if(confirm('产品添加成功,是否继续添加产品?')){location.href='../prodadd.php';}else{location.href='../prodlist.php'}</script>";
 }
@@ -39,7 +39,7 @@ else if(isset($_POST[task])&&"editProduct"==$_POST[task]){
 		$sql.=" prod_picture='$fname', ";
 		unlink("../../../product/images/".$_POST[path]);
 	}
-	$sql.= "state='$_POST[state]',prod_link='$_POST[prod_link]',compary='$_POST[compary]',prod_info_url='prodinfo.php?id=".$_POST[id]."',case_info_url='caseinfo.php?id=".$_POST[id]."' where id='$_POST[id]'";
+	$sql.= "state='$_POST[state]',prod_link='$_POST[prod_link]',compary='$_POST[compary]' where id='$_POST[id]'";
 	$db->query($sql);
 	echo "<script>if(confirm('产品修改成功,是否继续修改产品信息?')){location.href='../prodedit.php?page=$_POST[page]&id=$_POST[id]&task=editProd';}else{location.href='../prodlist.php?page=$_POST[page]'}</script>";
 }

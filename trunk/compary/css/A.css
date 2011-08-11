@@ -5,13 +5,13 @@
 	PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; MARGIN: 0px 0px 0px 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 32px; OVERFLOW: hidden; PADDING-TOP: 0px
 }
 #menumain_dolphin A.menumain_dolphin:link {
-	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(../images/menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
 }
 #menumain_dolphin A.menumain_dolphin:active {
-	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(../images/menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
 }
 #menumain_dolphin A.menumain_dolphin:visited {
-	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(../images/menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
 }
 #menumain_dolphin A.menumain_dolphin:hover {
 	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 12px/34px 'SimSun',Arial,Sans-Serif; FLOAT: left; HEIGHT: 32px; COLOR: #111; TEXT-DECORATION: none

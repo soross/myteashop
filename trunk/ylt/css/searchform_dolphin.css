@@ -1,0 +1,15 @@
+DIV.globalsearchformzone {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/searchl.gif) no-repeat 0px 0px; HEIGHT: 22px; PADDING-TOP: 0px
+}
+DIV.globalsearchformzone DIV.globalsearchform {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/18px simsun; FLOAT: left; HEIGHT: 22px; PADDING-TOP: 0px
+}
+DIV.globalsearchformzone DIV.globalsearchform1 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+DIV.globalsearchformzone DIV.globalsearchform .input {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 13px; WIDTH: 150px; PADDING-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 20px; COLOR: #999; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+DIV.globalsearchformzone DIV.globalsearchform1 .imgbutton {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}

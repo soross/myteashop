@@ -1,0 +1,115 @@
+
+{include file="inc/head.html"}
+<div id='content' style='width:1002px;height:417px;background:none transparent scroll repeat 0% 0%;margin:0px auto'>
+
+
+<!-- 网页标题(菜单)-->
+
+
+<div id='pdv_14997' class='pdv_class'  title='果果网络-栏目导航' style='width:207px;height:187px;top:0px;left:0px; z-index:9'>
+<div id='spdv_14997' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
+<div style="height:48px;border:0px;padding:0;margin:0;background:url(../images/title_lmdh.gif) no-repeat">
+	<div style="float:left;width:120px;height:38px;font:12px/46px simsun;color:#464646;padding-top:4px;padding-left:38px;">栏目导航</div>
+	<div style="float:right;width:20px;height:48px;background:url(../images/title_lmdh.gif) -880px 0px no-repeat;"></div>
+</div>
+
+<div style="margin:0px 1px 0px;padding:0px;">
+
+<link href="../css/pagetitlemenu_dolphin.css" rel="stylesheet" type="text/css" />
+<div class="titlemenu_dolphin" >
+
+<a href="../sure/" target="_self" class="titlemenu_dolphin"><FONT style="color:#FF6600;">合作登入</FONT></a>
+
+<a href="../job/joblist.html" target="_self" class="titlemenu_dolphin">诚聘英才</a>
+<!--
+<a href="../aboutus/addlink.html" target="_self" class="titlemenu_dolphin">申请链接</a>
+ -->
+<a href="../aboutus/link.html" target="_self" class="titlemenu_dolphin">友情链接</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-10px;height:10px;line-height:10px;background:url(../images/title_lmdh.gif) 0px -90px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-10px;line-height:10px;width:12px;height:10px;background:url(../images/title_lmdh.gif) -888px -90px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+
+
+
+<!-- HTML编辑区 -->
+
+<div id='pdv_15171' class='pdv_class'  title='果果网络-联系我们' style='width:207px;height:218px;top:197px;left:0px; z-index:10'>
+<div id='spdv_15171' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
+<div style="height:48px;border:0px;padding:0;margin:0;background:url(../images/title_link.gif) no-repeat">
+	<div style="float:left;width:120px;height:38px;font:12px/46px simsun;color:#464646;padding-top:4px;padding-left:38px;">联系我们</div>
+	<div style="float:right;width:20px;height:48px;background:url(../images/title_link.gif) -880px 0px no-repeat;"></div>
+</div>
+
+<div style="margin:0px 1px 0px;padding:0px;">
+<div style="MARGIN-TOP: 15px; PADDING-BOTTOM: 20px; MARGIN-LEFT: 15px; COLOR: #333; LINE-HEIGHT: 150%">
+{$contactInfo}</div>
+</div>
+</div>
+</div>
+<div style="margin-top:-10px;height:10px;line-height:10px;background:url(../images/title_link.gif) 0px -90px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-10px;line-height:10px;width:12px;height:10px;background:url(../images/title_link.gif) -888px -90px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+<!-- 图片友情链接 -->
+
+<div id='pdv_15300' class='pdv_class'  title='果果网络-友情链接' style='width:740px;height:300px;top:77px;left:244px; z-index:13'>
+<div id='spdv_15300' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		友情链接
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="http://Www.GuoguoNet.Com" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+<link href="../css/link.css" rel="stylesheet" type="text/css" />
+<ul style="list-style-type:none;overflow:hidden;" id="link_ul_page">
+{section name=list loop=$rowLink}
+<li style="float:left;padding-left:10px;">
+	<a href="{$rowLink[list].link_url}" target="_blank"  alt="果果网络-{$rowLink[list].link_name}" title="果果网络-{$rowLink[list].link_name}">{$rowLink[list].link_name}</a><br>&nbsp;
+</li>
+{/section}
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_15301' class='pdv_class'  title='当前位置' style='width:763px;height:47px;top:0px;left:239px; z-index:14'>
+<div id='spdv_15301' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/title_address.gif) no-repeat">
+	<a href="../../" style="font:12px/20px simsun;cursor:hand;"><div style="float:right;width:11px;height:44px;background:url(../images/title_address.gif) -889px 0px no-repeat;padding-top:6px;"></div></a>
+
+<link href="../css/nav.css" rel="stylesheet" type="text/css" />
+<div id="nav">
+{$address}
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+{include file="inc/buttom.html"}

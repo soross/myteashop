@@ -1,0 +1,35 @@
+#menumain_dolphin {
+	MARGIN: 0px; WHITE-SPACE: nowrap; HEIGHT: 32px; OVERFLOW: hidden
+}
+#menumain_dolphin .mainmenuiner_dolphin {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; MARGIN: 0px 0px 0px 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 32px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+#menumain_dolphin A.menumain_dolphin:link {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 14px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+}
+#menumain_dolphin A.menumain_dolphin:active {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 14px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+}
+#menumain_dolphin A.menumain_dolphin:visited {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 14px/34px 'SimSun',Arial,Sans-Serif; BACKGROUND: url(menu.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 32px; COLOR: #2e2e2e; TEXT-DECORATION: none
+}
+#menumain_dolphin A.menumain_dolphin:hover {
+	TEXT-ALIGN: center; MARGIN: 0px 0px 0px -2px; WIDTH: 80px; DISPLAY: block; FONT: 14px/34px 'SimSun',Arial,Sans-Serif; FLOAT: left; HEIGHT: 32px; COLOR: #111; TEXT-DECORATION: none
+}
+
+
+DIV#bottommenu {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px/28px SimSun; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 28px; COLOR: #333; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+DIV#bottommenu A:link {
+	MARGIN: 0px 5px 0px 2px; FONT: 14px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #333; TEXT-DECORATION: none
+}
+DIV#bottommenu A:visited {
+	MARGIN: 0px 5px 0px 2px; FONT: 14px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #333; TEXT-DECORATION: none
+}
+DIV#bottommenu A:active {
+	MARGIN: 0px 5px 0px 2px; FONT: 14px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #333; TEXT-DECORATION: none
+}
+DIV#bottommenu A:hover {
+	MARGIN: 0px 5px 0px 2px; FONT: 14px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif; COLOR: #333; TEXT-DECORATION: underline
+}

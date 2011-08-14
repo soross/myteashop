@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<script src="../js/preview.js"></script>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 客户维系 >> 客服管理
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+			<table border=0 cellspacing=1 class=form>
+				<tr>
+					<th colspan="4">
+						客服管理
+					</th>
+				</tr>
+				{section name=list loop=$imList}
+					<form id="imms" action="action/action.php" method="post">
+						<tr>
+							<td width="50px" align=center>
+								{$imList[list].id}
+							</td>
+							<td width="70px" align=center>
+								编码
+							</td>
+							<td>
+								<textarea name="imCode" cols="100" rows="5">{$imList[list].info_value}</textarea>
+							</td>
+							<td width="70px">
+								<input type="button" name="add_prod" style="height:30px;"
+									value="修改" onclick="this.form.submit();">
+								<input type="hidden" name="task" value="updateImInfo">
+								<input type="hidden" name="id" value="{$imList[list].id}">
+							</td>
+						</tr>
+					</form>
+				{/section}
+			</table>
+
+		<br>
+	</BODY>
+</HTML>

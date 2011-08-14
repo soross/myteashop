@@ -1,0 +1,139 @@
+{include file="inc/head.html"}
+<div id='content' style='width:1002px;height:1599px;background:none transparent scroll repeat 0% 0%;margin:0px auto'>
+
+
+<!-- 网页标题(菜单) -->
+
+<div id='pdv_15313' class='pdv_class'  title='栏目导航' style='width:207px;height:187px;top:0px;left:0px; z-index:9'>
+<div id='spdv_15313' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
+<div style="height:48px;border:0px;padding:0;margin:0;background:url(../images/title_lmdh.gif) no-repeat">
+	<div style="float:left;width:120px;height:38px;font:12px/46px simsun;color:#464646;padding-top:4px;padding-left:38px;">栏目导航</div>
+	<div style="float:right;width:20px;height:48px;background:url(../images/title_lmdh.gif) -880px 0px no-repeat;"></div>
+</div>
+
+<div style="margin:0px 1px 0px;padding:0px;">
+
+<link href="../css/pagetitlemenu_dolphin.css" rel="stylesheet" type="text/css" />
+<div class="titlemenu_dolphin" >
+
+
+
+<a href="company.php" target="_self" class="titlemenu_dolphin">关于我们</a>
+
+<a href="flow.php" target="_self" class="titlemenu_dolphin">合作流程</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-10px;height:10px;line-height:10px;background:url(../images/title_lmdh.gif) 0px -90px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-10px;line-height:10px;width:12px;height:10px;background:url(../images/title_lmdh.gif) -888px -90px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+
+<!-- HTML编辑区 -->
+
+<div id='pdv_15303' class='pdv_class'  title='联系我们' style='width:207px;height:218px;top:197px;left:0px; z-index:10'>
+<div id='spdv_15303' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(../images/bg.gif) right repeat-y;">
+<div style="height:48px;border:0px;padding:0;margin:0;background:url(../images/title_link.gif) no-repeat">
+	<div style="float:left;width:120px;height:38px;font:12px/46px simsun;color:#464646;padding-top:4px;padding-left:38px;">联系我们</div>
+	<div style="float:right;width:20px;height:48px;background:url(../images/title_link.gif) -880px 0px no-repeat;"></div>
+</div>
+
+<div style="margin:0px 1px 0px;padding:0px;">
+<div style="MARGIN-TOP: 15px; PADDING-BOTTOM: 20px; MARGIN-LEFT: 15px; COLOR: #333; LINE-HEIGHT: 150%">
+{$contactInfo}
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:-10px;height:10px;line-height:10px;background:url(../images/title_link.gif) 0px -90px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-10px;line-height:10px;width:12px;height:10px;background:url(../images/title_link.gif) -888px -90px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+
+
+<!-- 全站搜索结果 -->
+
+<div id='pdv_15314' class='pdv_class'  title='全站搜索' style='width:740px;height:1522px;top:77px;left:244px; z-index:11'>
+<div id='spdv_15314' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		全站搜索
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="http://www.smarthousekeeper.com" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<link href="../css/search.css" rel="stylesheet" type="text/css" />
+
+<div id="search">
+<ul id="queryul">
+
+{section name=list loop=$searchList}
+<li>
+	<div class="title" ><a href="../news/{$searchList[list][0]}" target="_blank" >{$searchList[list].title}</a></div>
+	<div class="memo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$searchList[list].content}</div>
+	<div class="showlink">{$searchList[list][0]}&nbsp;[时间：{$searchList[list].create_date}]&nbsp;[访问：{$searchList[list].cnt} 次]</div>
+
+</li>
+{/section}
+{section name=list loop=$searchListProd}
+<li>
+	<div class="title" ><a href="{$searchListProd[list][0]}" target="_blank" >{$searchListProd[list].prod_name}</a></div>
+	<div class="memo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$searchListProd[list].prod_desc}</div>
+	<div class="showlink">{$searchListProd[list][0]}&nbsp;[时间：{$searchListProd[list].create_date}]&nbsp;[访问：{$searchListProd[list].cnt} 次]</div>
+</li>
+{/section}
+</ul>
+</div>
+
+<div id="showpages">
+<!--
+	  <div id="pagesinfo">共搜索到2条 每页20条 页次：1/1</div>
+	  <div id="pages"><ul>
+	  	<li class="pbutton"><a href=/1273472146/search/index.php?page=1&amp;catid=&amp;myord=uptime&amp;myshownums=&amp;key=%E5%A4%8D%E5%90%88>首页</a></li>
+	  	<li class="pbutton">上一页</li><li class="pagesnow">1</li><li class="pbutton">下一页</li>
+	  	<li class="opt"><select onChange="window.location=this.options[this.selectedIndex].value"><option value="/1273472146/search/index.php?page=1&amp;catid=&amp;myord=uptime&amp;myshownums=&amp;key=%E5%A4%8D%E5%90%88" selected>第1页</option></select></li>
+	  	<li class="pbutton"><a href=/1273472146/search/index.php?page=1&amp;catid=&amp;myord=uptime&amp;myshownums=&amp;key=%E5%A4%8D%E5%90%88>尾页</a></li></ul></div>
+	  	-->
+</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_15315' class='pdv_class'  title='当前位置' style='width:763px;height:47px;top:0px;left:239px; z-index:12'>
+<div id='spdv_15315' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(../images/title_address.gif) no-repeat">
+	<a href="../" style="font:12px/20px simsun;cursor:hand;"><div style="float:right;width:11px;height:44px;background:url(../images/title_address.gif) -889px 0px no-repeat;padding-top:6px;"></div></a>
+
+<link href="../css/nav.css" rel="stylesheet" type="text/css" />
+<div id="nav">
+{$address}
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+{include file="inc/buttom.html"}

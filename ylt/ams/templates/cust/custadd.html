@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+
+		<script src="../js/preview.js"></script>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 客户维系 >> 新增客户
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+		<form id="addCust" action="action/action.php" method="post" enctype="multipart/form-data">
+			<table border=0 cellspacing=1 class=form>
+			<tr>
+				<th colspan="3">
+					新增客户信息
+				</th>
+			</tr>
+			<tr>
+				<td width="40%" align=right>
+					客户名称
+				</td>
+				<td>
+					<input type="text" name="cust_name" size="20" maxlength=50 />
+				</td>
+			</tr>
+			<tr>
+				<td width="40%" align=right>
+				公司或组织名称
+				</td>
+				<td>
+					<input type="text" name="compary" size="35" maxlength=50 />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					客户登入密码
+				</td>
+				<td>
+					<input type="text" name="cust_pass" size="20" maxlength=50 />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					手机号码
+				</td>
+				<td>
+					<input type="text" name="mobile" size="20" maxlength=50 />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					电话号码
+				</td>
+				<td>
+					<input type="text" name="phone" size="20" maxlength=50 />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					地址
+				</td>
+				<td>
+					<input type="text" name="address" size="50" />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					邮编
+				</td>
+				<td>
+					<input type="text" name="zip_code" size="10" />
+				</td>
+			</tr>
+			<tr>
+				<td align=right>
+					&nbsp;
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type="button" name="goback" style="height: 25px;"
+						value="取消返回" onclick="window.history.back()">&nbsp;
+					<input type="button" name="add_prod" style="height:25px;"
+						value="新增客户信息" onclick="this.form.submit();">
+					<input type="hidden" name="task" value="addCust">
+				</td>
+			</tr>
+		</table>
+		</form>
+		<br>
+	</BODY>
+</HTML>

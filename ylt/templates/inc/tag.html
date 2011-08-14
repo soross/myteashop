@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>3D球面标签云</title>
+<link rel="stylesheet" type="text/css" href="../css/miaov_style.css" />
+<script type="text/javascript" src="../js/miaov.js"></script>
+</head>
+<body>
+<div id="div1">
+	{section name=list loop=$rowLink}
+	<a href="{$rowLink[list].link_url}"
+	{if rand(1,6)==1} class="blue" {/if}
+	{if rand(1,6)==2} class="red" {/if}
+	{if rand(1,6)==3} class="yellow" {/if}
+	{if rand(1,6)==4} class="green" {/if}
+	{if rand(1,6)==5} class="color4" {/if}
+	{if rand(1,6)==6} {/if}	>{$rowLink[list].link_name}</a>
+	{/section}
+	<a href="http://www.jhzhou.com" class="blue">金华洲</a>
+	<a href="http://www.huafengtea.com" class="red">华锋茶叶</a>
+	<a href="http://www.shxingba.com" class="yellow">上海星霸艺术涂装有限公司</a>
+	<a href="http://www.GuoguoNet.Com" class="blue">OA</a>
+	<a href="http://www.shxingba.com" class="green">艺术涂装</a>
+	<a href="http://www.jhzhou.com" class="green">模具钢材</a>
+	<a href="http://www.GuoguoNet.Com" class="yellow">果果网络</a>
+	<a href="http://www.GuoguoNet.Com" class="green">软件开发</a>
+	<a href="http://www.GuoguoNet.Com">网站建设</a>
+	<a href="http://www.GuoguoNet.Com" class="blue">建站</a>
+	<a href="http://www.GuoguoNet.Com" class="red">系统开发</a>
+	<a href="http://www.huafengtea.com" >安溪华锋茶叶网上商城</a>
+	<a href="http://www.GuoguoNet.Com" class="color4">CRM</a>
+	<a href="http://www.GuoguoNet.Com" class="red">B2C</a>
+	<a href="http://www.GuoguoNet.Com" class="yellow">B2B</a>
+	<a href="http://www.GuoguoNet.Com">XHTML</a>
+	<a href="http://www.GuoguoNet.Com" class="blue">setInterval</a>
+	<a href="http://www.GuoguoNet.Com">W3C</a>
+	<a href="http://www.shxingba.com">上海星霸</a>
+	<a href="http://www.jhzhou.com" class="yellow">深圳金华洲模具钢材有限公司</a>
+	<a href="http://www.GuoguoNet.Com" class="green">网上商城</a>
+	<a href="http://www.GuoguoNet.Com" class="yellow">JS</a>
+	<a href="http://www.GuoguoNet.Com">果果</a>
+	<a href="http://www.huafengtea.com" class="blue">铁观音</a>
+</div>
+</body>
+</html>

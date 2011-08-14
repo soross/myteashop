@@ -1,0 +1,85 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<TITLE>后台管理</TITLE>
+	<META http-equiv=Content-Type content="text/html; charset=gbk">
+	<LINK href="../css/private.css" type=text/css rel=stylesheet>
+	<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+</HEAD>
+<BODY>
+<TABLE class=navi cellSpacing=1 align=center border=0>
+  <TBODY>
+  <TR>
+
+
+
+    <TH>后台 >> 基本操作 >> 系统配置</TH></TR></TBODY></TABLE><BR>
+ <form action="../config/config.php" method="post">
+	<table border=0 cellspacing=1 align=center class=form>
+	<tr>
+		<th colspan="2">网页底部信息配置</th>
+	</tr>
+	<!--
+     	  <tr>
+  <td align="right" style="width:45%;">联系人:</td>
+  <td><input type="text" name="link_name" value="{$buttomInfo.info_link_name}"/>  </td>
+  </tr>
+   -->
+         	  <tr>
+  <td align="right" style="width:45%;">电话:</td>
+  <td><input type="text" name="phone"/><font color="red">*</font></td>
+  </tr>
+   <tr>
+  <td align="right">传真:</td>
+  <td><input type="text" name="mobile"/><font color="red">*</font></td>
+  </tr>
+           	  <tr>
+  <td align="right">email:</td>
+  <td><input type="text" name="email" size=30/><font color="red">*</font></td>
+  </tr>
+  <!--
+             	  <tr>
+  <td align="right">地址:</td>
+  <td><input type="text" name="address" size=40 value="{$buttomInfo.info_address}"/>  </td>
+  </tr>
+  <tr>
+  <td align="right">QQ:</td>
+  <td><input type="text" name="im" size=20 value="{$buttomInfo.info_im}"/>  </td>
+  </tr>
+   -->
+  <tr >
+  <td colspan="2" align="center">{$buttomInfo.info_value}</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" height='30'>
+    <input type="hidden" name="id" value="{$buttomInfo.id}">
+     <input type="hidden" name="task" value="contactUs">
+  <input type="submit" name="update" value=" 更新 "/><br>
+  [<font color="red">PS:请确定是否都填值了,没有修改的请填原来的值</font>]
+
+  </td>
+    </tr>
+	</table>
+	 </form>
+	<!-- 公司简介信息 -->
+	<form action="../config/config.php" method="post">
+	<table border=0 cellspacing=1 align=center class=form>
+	<tr>
+		<th colspan="2">公司简介配置</th>
+	</tr>
+  <tr>
+  <td align=center >
+  	{include file="inc/company.html"}
+  </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" height='30'>
+    <input type="hidden" name="id" value="{$companyInfo.id}">
+        <input type="hidden" name="task" value="company">
+  <input type="submit" name="update" value=" 更新 "/>
+  </td>
+    </tr>
+	</table>
+</form>
+	</BODY></HTML>

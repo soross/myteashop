@@ -1,0 +1,65 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<TITLE>后台管理</TITLE>
+	<META http-equiv=Content-Type content="text/html; charset=gbk">
+	<LINK href="../css/private.css" type=text/css rel=stylesheet>
+	<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+</HEAD>
+<BODY>
+<TABLE class=navi cellSpacing=1 align=center border=0>
+  <TBODY>
+  <TR>
+    <TH>后台 >> 基本操作 >> 用户管理</TH></TR></TBODY></TABLE><BR>
+<form action="action/action.php" method="post">
+    <table border=0 cellspacing=1 align=center class=form>
+	<tr>
+		<th colspan="2">后台用户新增</th>
+	</tr>
+     	  <tr>
+  <td align="right" style="width:45%;">管理员帐号:</td>
+  <td><input type="text" name="adminname"/>  </td>
+  </tr>
+       	  <tr>
+  <td align="right">管理员密码:</td>
+  <td><input type="password" name="adminpwd"/>  </td>
+  </tr>
+         	  <tr>
+  <td align="right">重复密码:</td>
+  <td><input type="password" name="adminpwd_again"/>  </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" height='30'>
+    <input type="hidden" name="task" value="addAdminUser">
+  <input type="submit" value=" 添加管理员用户 "/>
+
+  </td>  </form>
+    </tr>
+	</table>
+
+	<table border=0 cellspacing=1 align=center class=form>
+	<tr>
+		<th colspan="9">后台用户信息管理</th>
+	</tr>
+		{section name=list loop=$userList}
+     	  <tr>
+     	   <form action="action/action.php" method="post">
+			  <td align="right" style="width:20%;">管理员帐号:</td>
+			  <td style="width:130px;"><input type="text" name="adminname" value="{$userList[list].am_name}"/>  </td>
+
+			  <td align="right" style="width:70px;">管理员密码:</td>
+			  <td style="width:130px;"><input type="password" name="adminpwd"/>  </td>
+			 <td align="right" style="width:60px;">重复密码:</td>
+			  <td style="width:130px;"><input type="password" name="adminpwd_again"/>  </td>
+		    <td align="left" height='30'>
+				  	<input type="submit" name="update" value=" 更新 "/>&nbsp;
+				  	<input type="button" name="update" value=" 删除 " onclick="if(confirm('确定删除该管理员吗?'))location.href='action/action.php?task=deleteAdminUser&id={$userList[list].id}';"/>
+			  	    <input type="hidden" name="id" value="{$userList[list].id}">
+			  	    <input type="hidden" name="task" value="updateAdminUser">
+			</td>
+	     	</form>
+    	</tr>
+    	{/section}
+	</table>
+	</BODY></HTML>

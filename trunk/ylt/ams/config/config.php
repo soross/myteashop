@@ -9,7 +9,7 @@ if($_POST[update]){
 
 		echo "<script>alert('更新成功!');location.href='../inc/admin_main.php'</script>";
 	}else if(isset($_POST[task])&&"company"==$_POST[task]){
-		$db->query("update comm_info set remark = '$_POST[content]' where id='$_POST[id]'");
+		$db->query("update comm_info set info_value = '$_POST[content]' where id='$_POST[id]'");
 		echo "<script>alert('更新成功!');location.href='../inc/admin_main.php'</script>";
 	}
 }else{

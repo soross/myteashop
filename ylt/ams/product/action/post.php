@@ -1,30 +1,32 @@
 <?php
 require_once("../../action/global_post.php");
-echo "file upload....".$_POST[task]."...".$_GET[page];
+//echo "file upload....".$_POST[task]."...".$_GET[page];
 
 //添加产品
 if(isset($_POST[task])&&"addProduct"==$_POST[task]){
 	//上传文件并获取文件名
 	require_once("../../action/fileUpload.php");
-
+	echo "<script>alert('图片上传完成..');</script>";
 	$prod_Desc = str_replace("./../../../","../",$_POST[prodDesc]);
 	//插入其他数据到数据库
-	$sql = "insert into prod(prod_name,prod_desc,prod_class,create_date,prod_picture,state,prod_link,compary)".
-	"values('$_POST[prod_name]','$prod_Desc','$_POST[prod_class]',now(),'$fname','$_POST[prod_url]')";
+	$sql = "insert into prod(prod_name,prod_desc,prod_class,create_date,prod_picture)".
+	"values('$_POST[prod_name]','$prod_Desc','$_POST[prod_class]',now(),'$fname')";
 	$db->query($sql);
-
+	//echo "<script>alert('插入数据库！！');</script>";
 	//更新字段
 	$prodId = $db->insert_id();
 	$prodCode = getProdCode($db,$_POST[prod_class],$prodId);
 	$updateSql = "update prod set prod_code='".$prodCode."',prod_info_url='prodinfo.php?id=".$prodId."',case_info_url='caseinfo.php?id=".$prodId."' where id='".$prodId."'";
 	$db->query($updateSql);
-	echo "<script>if(confirm('产品添加成功,是否继续添加产品?')){location.href='../prodadd.php';}else{location.href='../prodlist.php'}</script>";
+	echo "<script>if(confirm('产品添加成功,是否继续添加产品?')){location.href='../../product/prodadd.php';}else{location.href='../../product/prodlist.php'}</script>";
 }
 //删除产品
 else if(isset($_GET[task])&&"deleteProd"==$_GET[task]){
-	unlink("../../../product/images/".$_GET[path]);
+	if("nopic.jpg"!=$_GET[path]){
+		unlink("../../../product/images/".$_GET[path]);
+	}
 	$db->query("delete from prod where id='".$_GET[id]."'");
-	echo "<script>alert('产品删除成功,将返回产品列表!');location.href='../prodlist.php?page=$_GET[page]';</script>";
+	echo "<script>alert('产品删除成功,将返回产品列表!');location.href='../../product/prodlist.php?page=$_GET[page]';</script>";
 }
 
 //修改产品信息
@@ -37,9 +39,13 @@ else if(isset($_POST[task])&&"editProduct"==$_POST[task]){
 	$sql = "update prod set prod_name='$_POST[prod_name]',prod_code='$prodCode', prod_desc='$prod_Desc',prod_class='$_POST[prod_class]',";
 	//上传文件并获取文件名
 	if (!is_uploaded_file($_FILES["upfile"][tmp_name])){
-		if("ERROR"!=$failed){
+		$file = $_FILES["upfile"];
+		//检查文件大小
+		if(0 != $file["size"]){
 			$sql.=" prod_picture='$fname', ";
-			unlink("../../../product/images/".$_POST[path]);
+			if("nopic.jpg"!=$_POST[path]){
+				unlink("../../../product/images/".$_POST[path]);
+			}
 		}
 	}
 	$sql.= "state='$_POST[state]' where id='$_POST[id]'";

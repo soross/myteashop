@@ -1,0 +1,37 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<TITLE>后台管理</TITLE>
+	<META http-equiv=Content-Type content="text/html; charset=gbk">
+	<LINK href="../css/private.css" type=text/css rel=stylesheet>
+	<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+</HEAD>
+<BODY>
+<TABLE class=navi cellSpacing=1 align=center border=0>
+  <TBODY>
+  <TR>
+
+    <TH>后台 >> 客户维系 >> 联系信息配置</TH></TR></TBODY></TABLE><BR>
+	<!-- 公司简介信息 -->
+<form action="action/action.php" method="post">
+	<table border=0 cellspacing=1 align=center class=form>
+	<tr>
+		<th colspan="2">联系信息配置</th>
+	</tr>
+  <tr>
+  <td align=center >
+  	{include file="inc/contact_inc.html"}
+  </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" height='30'>
+    	<input type="hidden" name="id" value="{$contactInfoAll.id}">
+        <input type="hidden" name="task" value="ContactInfoUpdate">
+        <input type="hidden" name="type" value="{$type}">
+  		<input type="submit" name="update" value=" 更新 "/>
+ 	 </td>
+    </tr>
+	</table>
+</form>
+	</BODY></HTML>

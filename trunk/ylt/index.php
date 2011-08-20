@@ -35,6 +35,12 @@ while($rowInfo = $db->fetch_array($queryInfo)){
 		$smarty->assign("textContent",$rowInfo[info_value]);
 	}
 }
+$queryCompanyInfo = $db->query("select info_value,info_code from comm_info where info_type='CompanyInfo'");
+$rowIndexCompany = $db->fetch_array($queryCompanyInfo);
+$smarty->assign("textContent",$rowIndexCompany[info_value]);
+
+//$smarty->assign("textContent",$rowInfo[info_value]);
+
 
 
 //пбне╧Ж╤╞

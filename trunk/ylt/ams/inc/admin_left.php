@@ -55,7 +55,7 @@ require_once("../action/global_action.php");
 							        <TR>
 							        	<TD>
 							        		<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-									  		<A onClick="return confirm('提示：您确定要退出系统吗？')" href="../ms.php"  target=_parent>退出后台</A>
+									  		<A onClick="return confirm('提示：您确定要退出系统吗？')" href="../login.php"  target=_parent>退出后台</A>
 									  	</TD>
 									</TR>
 								</TBODY>
@@ -67,7 +67,7 @@ require_once("../action/global_action.php");
 			<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
 				<TBODY>
 					<TR>
-						<TH onClick="javascript:menu_tree('left_3');" align=middle>≡ 案例管理 ≡</TH>
+						<TH onClick="javascript:menu_tree('left_3');" align=middle>≡ 产品管理 ≡</TH>
 					</TR>
 					<TR id=left_3>
 						<TD>
@@ -76,19 +76,60 @@ require_once("../action/global_action.php");
 							        <TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-									  		<A href="../product/prodclass.php" target=main>案例分类</A>
+									  		<A href="../product/prodclass.php" target=main>产品分类</A>
 									  	</TD>
 									</TR>
 		        					<TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-		  									<A href="../product/prodlist.php" target=main>案例列表</A>
+		  									<A href="../product/prodlist.php" target=main>产品列表</A>
 		  								</TD>
 									</TR>
 	        						<TR>
 										<TD>
 											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
-		  									<A href="../product/prodadd.php" target=main>添加案例</A>
+		  									<A href="../product/prodadd.php" target=main>添加产品</A>
+		  								</TD>
+									</TR>
+									<!--
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../case/caselist.php" target=main>成功案例</A>
+									  	</TD>
+									</TR>
+									-->
+ 								</TBODY>
+ 							</TABLE>
+	 					</TD>
+	 				</TR>
+	 			</TBODY>
+	 		</TABLE>
+	 		<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
+				<TBODY>
+					<TR>
+						<TH onClick="javascript:menu_tree('left_30');" align=middle>≡ 案例管理 ≡</TH>
+					</TR>
+					<TR id=left_30>
+						<TD>
+							<TABLE width="100%" style="margin-top:5px">
+        						<TBODY>
+							        <TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../case/prodclass.php" target=main>案例分类</A>
+									  	</TD>
+									</TR>
+		        					<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+		  									<A href="../case/prodlist.php" target=main>案例列表</A>
+		  								</TD>
+									</TR>
+	        						<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+		  									<A href="../case/prodadd.php" target=main>添加案例</A>
 		  								</TD>
 									</TR>
 									<!--
@@ -173,7 +214,33 @@ require_once("../action/global_action.php");
 									  		<A href="../service/imms.php" target=main>IM管理</A>
 									  	</TD>
 									</TR>
-
+ 								</TBODY>
+ 							</TABLE>
+	 					</TD>
+	 				</TR>
+	 			</TBODY>
+	 		</TABLE>
+	 		<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
+				<TBODY>
+					<TR>
+						<TH onClick="javascript:menu_tree('left_5');" align=middle>≡ 联系信息 ≡</TH>
+					</TR>
+					<TR id=left_5>
+						<TD>
+							<TABLE width="100%" style="margin-top:5px">
+        						<TBODY>
+        							<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../service/contact.php?type=ContactInfo" target=main>简要信息</A>
+									  	</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../service/contact.php?type=ContactInfoAll" target=main>详细信息</A>
+									  	</TD>
+									</TR>
  								</TBODY>
  							</TABLE>
 	 					</TD>

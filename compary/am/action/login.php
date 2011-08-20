@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=gbk');
 require_once ("mysql.class.php");
-//session_start();
+session_start();
 if ($_POST[login]) {
 	if (isset ($_POST[code]) && $_POST["code"] == $_SESSION['validationcode']) {
 		$username = str_replace(" ", "", $_POST[username]);

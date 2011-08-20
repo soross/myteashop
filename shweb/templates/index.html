@@ -30,7 +30,7 @@
 		<div class="main_search">
 			<div class="main_search_bt"><img src="images/main_searchbt.png"></div>
 			<div class="main_search_text">
-				<form action="product/prodlist.php" method="post" name="form2" id="form2" onsubmit="return (document.getElementById('keyword').value!='请输入关键字')">
+				<form action="product/prodlist.html" method="post" name="form2" id="form2" onsubmit="return (document.getElementById('keyword').value!='请输入关键字')">
 				  <input name="keyword" id="keyword" type="text" value="请输入关键字" onblur="if(this.value=='')this.value='请输入关键字';" onfocus="if(this.value=='请输入关键字')this.value='';" size="20" maxlength="50" class="main_search_keyword" />
 				  <input name="Submit" type="image"  value="搜索" onclick="if(document.getElementById('keyword').value=='请输入关键字')alert('请输入关键字!');" src="images/main_search_btn.gif" width="70" height="27" class="main_search_btn" / >
 				</form>
@@ -109,7 +109,7 @@
 
 <div id="main_footer">
 	<div class="copyright">
-版权所有：上海星霸艺术涂装有限公司 Copyright (c) 2011 <br>
+版权所有：上海星霸信息科技有限公司 Copyright (c) 2011 <br>
 地址：{$buttomInfo.info_address} 电话/传真：{$buttomInfo.info_phone}&nbsp;{$buttomInfo.info_mobile} 联系人：{$buttomInfo.info_link_name} E-mail：{$buttomInfo.info_email}<br>
 技术支持：<a href='Http://Www.GuoguoNet.Com' target="_blank" style="color:#CCCCCC;text-decoration: none;">果果网络</a>(<a href='Http://Www.GuoguoNet.Com' target="_blank" style="color:#CCCCCC;text-decoration: none;">Http://Www.GuoguoNet.Com</a>)
 </div>

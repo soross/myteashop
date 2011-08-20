@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+		<script src="../js/preview.js"></script>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 案例管理 >> 案例修改
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+		<form id="addProd" action="action/post.php" method="post"
+				onsubmit="return false;" enctype="multipart/form-data">
+			<table border=0 cellspacing=1 class=form>
+				<tr>
+					<th colspan="3">
+						案例修改
+					</th>
+				</tr>
+				<tr>
+					<td width="150px" align=center>
+						案例名称
+					</td>
+					<td>
+						<input type="text" name="prod_name" size="30" value="{$info[1]}" maxlength=50 />&nbsp;<font style="color: red;">*</font>
+					</td>
+				</tr>
+				<tr>
+					<td align=center>
+						案例类别
+					</td>
+					<td >
+						<select name="prod_class">
+							<option value="10">
+								请选择案例类型
+							</option>
+							{section name="list" loop="$prodClassList"}
+							<option value="{$prodClassList[list].id}" {if $info[3]==$prodClassList[list].id}selected{/if}>
+								{$prodClassList[list].class_name}
+							</option>
+							{/section}
+						</select>
+						<font style="color: red;">*</font>
+					</td>
+				</tr>
+				<!--
+				<tr>
+					<td width="150px" align=center>
+						是否发布Demo
+					</td>
+					<td>
+						<input type="radio" name="prod_url" value="0" {if "0"==$info[7]}checked{/if} />未发布
+			  			<input type="radio" name="prod_url" value="1" {if "1"==$info[7]}checked{/if}/>已发布&nbsp;<font style="color:red;">*</font>
+					</td>
+				</tr>
+				 -->
+				<tr>
+					<td align=center>
+						案例图片
+					</td>
+					<td>
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="300px">
+									{literal}
+									<input id="upload_img" name="upfile" type="file"
+										style="border: 1 solid #9a9999; font-size: 9pt; background-color: #ffffff;"
+										  onChange="if(this.value!=''){previewImg.src=this.value;}else{previewImg.src='../../product/images/nopic.jpg';}">
+									<br>
+									允许上传的文件类型为:
+									<br>
+									jpg|jpeg|png|pjpeg|gif|bmp|x-png|swf
+									{/literal}
+									&nbsp;<font style="color: red;">*</font>
+								</td>
+								<td>
+									<img id="previewImg" name="previewImg" src="../../product/images/{$info[4]}"
+										style="cursor: hand;" onClick="window.open(this.src);" width="150"
+										height="120" alt="点击查看大图" />
+								</td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+				<tr style="height:200px;">
+					<td align=center>
+						案例简介
+					</td>
+					<td>
+						{include file="inc/editor.html"}
+					</td>
+				</tr>
+				<!--
+				<tr>
+					<td width="150px" align=center>
+						成功案例网址
+					</td>
+					<td>
+						<input type="text" name="prod_link" value="{$info[5]}" size="30" />
+					</td>
+				</tr>
+				<tr>
+					<td width="150px" align=center>
+						案例公司名称
+					</td>
+					<td>
+						<input type="text" name="compary" value="{$info[6]}" size="30" />
+					</td>
+				</tr> -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<!--
+						<input type="button" name="button" value="取得内容" onclick="javascript:alert(KE.util.getData('content1'));" />
+					    <input type="button" name="button" value="取得纯文本" onclick="javascript:alert(KE.util.getPureData('content1'));" />
+					    <input type="submit" name="button" value="提交内容" />
+						 -->
+						<input type="button" name="goback" style="height: 30px;"
+							value="取消返回" onclick="window.history.back()">&nbsp;
+						<input type="button" name="add_prod" style="height:30px;"
+							value="案例修改" onclick="this.form.prodDesc.value=KE.util.getData('content1');this.form.submit();">
+						<input type="hidden" name="task" value="editProduct">
+						<input type="hidden" name="prodDesc">
+						<input type="hidden" name="id" value="{$info[0]}">
+						<input type="hidden" name="path" value="{$info[4]}">
+						<input type="hidden" name="page" value="{$page}">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+	</BODY>
+</HTML>

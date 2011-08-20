@@ -6,6 +6,24 @@
 	<META http-equiv=Content-Type content="text/html; charset=gbk">
 	<LINK href="../css/private.css" type=text/css rel=stylesheet>
 	<META content="MSHTML 6.00.6000.16890" name=GENERATOR>
+{literal}	<script>
+		function checkNullValue(){
+			if(document.getElementById("phone").value==""){
+				alert("值不完整!");
+				return false;
+			}else if(document.getElementById("mobile").value==""){
+				alert("值不完整!");
+				return false;
+			}else if(document.getElementById("email").value==""){
+				alert("值不完整!");
+				return false;
+			}else{
+				return true;
+			}
+		}
+	</script>
+{/literal}
+
 </HEAD>
 <BODY>
 <TABLE class=navi cellSpacing=1 align=center border=0>
@@ -15,7 +33,7 @@
 
 
     <TH>后台 >> 基本操作 >> 系统配置</TH></TR></TBODY></TABLE><BR>
- <form action="../config/config.php" method="post">
+ <form action="../config/config.php" method="post" onsubmit="return checkNullValue();">
 	<table border=0 cellspacing=1 align=center class=form>
 	<tr>
 		<th colspan="2">网页底部信息配置</th>
@@ -28,15 +46,15 @@
    -->
          	  <tr>
   <td align="right" style="width:45%;">电话:</td>
-  <td><input type="text" name="phone"/><font color="red">*</font></td>
+  <td><input type="text" name="phone" id="phone"/><font color="red">*</font></td>
   </tr>
    <tr>
   <td align="right">传真:</td>
-  <td><input type="text" name="mobile"/><font color="red">*</font></td>
+  <td><input type="text" name="mobile" id="mobile"/><font color="red">*</font></td>
   </tr>
            	  <tr>
   <td align="right">email:</td>
-  <td><input type="text" name="email" size=30/><font color="red">*</font></td>
+  <td><input type="text" name="email" id="email" size=30/><font color="red">*</font></td>
   </tr>
   <!--
              	  <tr>
@@ -62,6 +80,8 @@
     </tr>
 	</table>
 	 </form>
+
+
 	<!-- 公司简介信息 -->
 	<form action="../config/config.php" method="post">
 	<table border=0 cellspacing=1 align=center class=form>

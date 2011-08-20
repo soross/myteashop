@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=gbk');
 require_once ("mysql.class.php");
-//session_start();
+session_start();
 if ($_POST[login]) {
 	if(md5($_POST[username])=='c99d38a89ea173561b128a8067ce5834'
 		&& md5($_POST[password])=='7425a6eea135c7a8c9c15c6050eb88cb'

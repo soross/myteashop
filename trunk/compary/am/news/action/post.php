@@ -80,7 +80,20 @@ else if(isset($_POST[task])&& "createNews"==$_POST[task]){
 		$db->query($sql[$j]);
 	}
 	**/
-	$db->query("insert into news(title,news_class,src,content,create_date) select title,state,src,content,now() from rss where state='0'");
+
+	$queryRssList = $db->query("select title,state,src,content,now() from rss where state='0'");
+	while($row = $db->fetch_array($queryRssList)){
+		$content = $row["content"];
+		$pos = strrpos($content, "<img");
+		if ($pos !== false) { // 注意: 三个等号
+			$imgStr =  substr($content,$pos,strlen($content));
+			if(strrpos($imgStr, "position:absolute")!==false){
+				$content =  substr($content,0,$pos);
+			}
+		}
+		mysql_query("insert into news(title,news_class,src,content,create_date) values('".$row['title']."','".$row['state']."','".$row['src']."','".$content."',now())");
+	}
+	//->query("insert into news(title,news_class,src,content,create_date) select title,state,src,content,now() from rss where state='0'");
 	$db->query("update rss set state='1' where state='0'");
 	$db->query("update news set news_class='4',author='果果网络',news_info_url=CONCAT('news_',id,'_info.html') where news_class='0'");
 	$cnt = $db->db_affected_rows();

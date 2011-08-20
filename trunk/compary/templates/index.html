@@ -542,7 +542,7 @@ $().picFit("auto");
 			{section name=list loop=$newsListByTech}
 				<li class="title">
 					<div class="title">
-						<a href="/news/{$newsListByTech[list].news_info_url}" target="_blank" alt="{$newsListByTech[list].title}-果果网络" title="{$newsListByTech[list].title}-果果网络">{$newsListByTech[list].title|truncate:38}</a>
+						<a href="/news/{$newsListByTech[list].news_info_url}" target="_blank" alt="{$newsListByTech[list].title}-果果网络" title="{$newsListByTech[list].title}-果果网络">{$newsListByTech[list].title|truncate:38:".."}</a>
 					</div>
 					<div class="time">{$newsListByTech[list].create_date|truncate:13:""}</div>
 				</li>
@@ -579,7 +579,7 @@ $().picFit("auto");
 			{section name=list loop=$newsListByInter}
 				<li class="title">
 					<div class="title">
-						<a href="/news/{$newsListByInter[list].news_info_url}" target="_blank" alt="{$newsListByInter[list].title}-果果网络" title="{$newsListByInter[list].title}-果果网络">{$newsListByInter[list].title|truncate:38}</a>
+						<a href="/news/{$newsListByInter[list].news_info_url}" target="_blank" alt="{$newsListByInter[list].title}-果果网络" title="{$newsListByInter[list].title}-果果网络">{$newsListByInter[list].title|truncate:38:".."}</a>
 					</div>
 					<div class="time">{$newsListByInter[list].create_date|truncate:13:""}</div>
 				</li>

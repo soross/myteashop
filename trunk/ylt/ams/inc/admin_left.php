@@ -179,6 +179,35 @@ require_once("../action/global_action.php");
 	 				</TR>
 	 			</TBODY>
 	 		</TABLE>
+	 		<!--
+	 		<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
+				<TBODY>
+					<TR>
+						<TH onClick="javascript:menu_tree('left_10');" align=middle>≡ 视讯管理 ≡</TH>
+					</TR>
+					<TR id=left_10>
+						<TD>
+							<TABLE width="100%" style="margin-top:5px">
+        						<TBODY>
+							        <TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../video/videoadd.php" target=main>添加视讯</A>
+									  	</TD>
+									</TR>
+									<TR>
+										<TD>
+											<IMG src="../images/menu.gif" align=absMiddle border=0>&nbsp;
+									  		<A href="../video/videolist.php" target=main>视讯列表</A>
+									  	</TD>
+									</TR>
+ 								</TBODY>
+ 							</TABLE>
+	 					</TD>
+	 				</TR>
+	 			</TBODY>
+	 		</TABLE>
+	 		-->
 	 		<TABLE class=Menu cellSpacing=0 style="margin-top:5px">
 				<TBODY>
 					<TR>

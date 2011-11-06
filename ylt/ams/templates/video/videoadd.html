@@ -1,0 +1,88 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gb2312">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 视讯管理 >> 添加视讯
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+<form action="action/action.php" method="post" enctype="multipart/form-data">
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="3">
+					添加视讯
+				</th>
+			</tr>
+			<tr>
+
+					<td width=80>
+						视讯名称
+						<font style="color: red;">*<br />
+					</td>
+					<td>
+							<input type="text" name="title" size=50 maxlength="50">
+					</td>
+					<td>
+
+					</td>
+			</tr>
+			<tr>
+				<td width=80>
+					视讯简介
+				</td>
+				<td>
+						<textarea name="desc"  rows=5 cols=50></textarea>
+				</td>
+				<td>
+
+				</td>
+			</tr>
+			<tr>
+				<td width=80>
+					视讯简图
+					<font style="color: red;">*<br />
+				</td>
+				<td>
+						<table>
+							<tr>
+								<td><img src="" width="120px" height="100px"></td>
+								<td>
+									<input type="file" id="video_picture" name="video_picture"><br>
+									允许上传的文件类型为：gif|jpg|jpeg|png|bmp|avi.
+								</td>
+							</tr>
+						</table>
+
+				</td>
+				<td>
+
+				</td>
+			</tr>
+			<tr>
+				<td width=80></td>
+				<td>
+					<input type="button" name="goback" style="height: 30px;"
+						value="取消返回" onclick="window.history.back()">
+					<input type="submit" name="editVideoDesc" style="height:30px;"	value="添加视讯基本信息">
+					<input type="hidden" name="task" value="addVideoInfo">
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		</form>
+		<br>
+
+	</BODY>
+</HTML>

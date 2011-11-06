@@ -1,0 +1,132 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>后台管理</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gb2312">
+		<LINK href="../css/private.css" type=text/css rel=stylesheet>
+	</HEAD>
+	<BODY>
+		<TABLE class=navi cellSpacing=1 align=center border=0>
+			<TBODY>
+				<TR>
+					<TH>
+						后台 >> 视讯管理 >> 视讯修改
+					</TH>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<BR>
+
+		<table border=0 cellspacing=1 align=center class=form>
+			<tr>
+				<th colspan="3">
+					视讯修改
+				</th>
+			</tr>
+			<tr>
+				<form action="action/action.php" method="post">
+					<td width=80>
+						视讯名称
+						<font style="color: red;">*<br />
+					</td>
+					<td>
+							<input type="text" name="title" value="{$info[1]}" size=50 maxlength="50">
+					</td>
+					<td>
+						<input type="submit" name="editVideoName" style="height:20px;"	value="视讯名称修改">
+						<input type="hidden" name="task" value="editVideoName">
+						<input type="hidden" name="id" value="{$info[0]}">
+						<input type="hidden" name="page" value="{$page}">
+					</td>
+				</form>
+			</tr>
+			<tr>
+				<form action="action/action.php" method="post">
+					<td width=80>
+						视讯简介
+					</td>
+					<td>
+							<textarea id="desc" name="desc" value="{$info[3]}" rows=5 cols=50>{$info[3]}</textarea>
+					</td>
+					<td>
+						<input type="submit" name="editVideoDesc" style="height:20px;"	value="视讯描述修改">
+							<input type="hidden" name="task" value="editVideoDesc">
+							<input type="hidden" name="id" value="{$info[0]}">
+							<input type="hidden" name="page" value="{$page}">
+					</td>
+				</form>
+			</tr>
+			<tr>
+				<form action="action/action.php" method="post" enctype="multipart/form-data">
+					<td width=80>
+						视讯简图
+						<font style="color: red;">*<br />
+					</td>
+					<td>
+
+							<table>
+								<tr>
+									<td><img src="../{$info[2]}" width="120px" height="100px"></td>
+									<td>
+										<!-- <input type="file" id="upfile" name="upfile"> -->
+										<input type="file" id="imgFile" name="imgFile"><br>
+										允许上传的文件类型为：gif|jpg|jpeg|png|bmp|avi.
+
+									</td>
+								</tr>
+							</table>
+
+
+					</td>
+					<td>
+						<input type="submit" name="editVideoPicture_buttom" style="height:20px;"	value="视讯描述简图修改">
+						<input type="hidden" name="task" value="editVideoPicture">
+							<input type="hidden" name="id" value="{$info[0]}">
+							<input type="hidden" id="old_picture" name="old_picture" value="{$info[2]}">
+							<input type="hidden" name="page" value="{$page}">
+					</td>
+				</form>
+			</tr>
+			<tr>
+				<form action="action/action.php" method="post" enctype="multipart/form-data">
+					<td width=80>
+						视讯文件
+						<font style="color: red;">*<br />
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>{$info[5]}</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="file" id="upfile" name="upfile"><br>
+									允许上传的文件类型为：swf|avi|asf|mid|wmv|wma|ra.
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<input type="hidden" id="task" name="task" value="editVideoFiles">
+						<input type="hidden" id="id" name="id" value="{$info[0]}">
+						<input type="hidden" id="page" name="page" value="{$page}">
+						<input type="hidden" id="old_file" name="old_file" value="{$info[5]}">
+						<input type="submit" name="editVideoFile_buttom" style="height:20px;" value="视讯修改" onclick="this.style.display='none';document.getElementById('loading_span').innerHTML='<img src=../images/load.gif />';">
+						<span id="loading_span" name="loading_span"></span>
+					</td>
+				</form>
+			</tr>
+			<tr>
+				<td width=80></td>
+				<td>
+					<input type="button" name="goback" style="height: 30px;"
+						value="取消返回" onclick="window.history.back()">
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+
+	</BODY>
+</HTML>

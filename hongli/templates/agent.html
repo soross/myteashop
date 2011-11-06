@@ -1,0 +1,630 @@
+{include file="inc/top.html"}
+	  <!--topbannerad-->
+
+	  <!--/topbannerad-->
+
+<div class="container" style="margin-top: 25px;">
+	<div class="containerLeft">
+    	<div style="float: left; width: 134px; text-align: center;">
+			<img src="images/agent.jpg">
+		</div>
+        <div style="width: 605px; float: left;">
+			<img src="images/lianmengagent.gif" />
+			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
+				代理联盟网发展属于自己的会员，会员成功消费后可获红利分成，获取更多的利润分成。商家加盟联盟网，可获得免费的宣传、推荐获取人气，并可获得联盟网的红利卡。心动不如行动吧....<br>
+				<a onclick="javascript:showAgentDiv(7,0)" href="javascript:showAgentDiv(7,0)">在线申请&gt;&gt;</a>
+			</span>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+    	<div class="containerleft2">
+        	<ul class="leftMenu" id="leftmenu">
+            	<li class="sele">
+					<span style="font-size: 17px; color: rgb(255, 255, 255); font-weight: bold;">加盟中心</span>
+				</li>
+				<li><a  href="agent.php?mode=applySjAgent" class="graylink" style="display: block;">商家加盟申请</a></li>
+                <li><a  href="agent.php?mode=applyAgent" class="graylink" style="display: block;">代理加盟申请</a></li>
+				<li><a onclick="javascript:showAgentDiv(7,3)" href="javascript:showAgentDiv(7,3)" class="graylink" style="display: block;">加盟说明</a></li>
+				<li><a onclick="javascript:showAgentDiv(7,4)" href="javascript:showAgentDiv(7,4)" class="graylink" style="display: block;">加盟优势</a></li>
+				<li><a onclick="javascript:showAgentDiv(7,5)" href="javascript:showAgentDiv(7,5)" class="graylink" style="display: block;">加盟流程</a></li>
+				<li><a onclick="javascript:showAgentDiv(7,6)" href="javascript:showAgentDiv(7,6)" class="graylink" style="display: block;">合同下载</a></li>
+				<li><a  href="help.php" class="graylink" style="display: block;">常见问题</a></li>
+            </ul>
+            <br>
+            <ul>
+            	{section name=list loop=$leftAD}
+            	<div style="padding: 0px;">
+					<a href="{$leftAD[list].type_url}" target="_blank"><img src="{$leftAD[list].type_code}" border="0" style="width:145px;"></a>
+				</div>
+				{/section}
+            </ul>
+        </div>
+    	<div class="containerleft3">
+		 <!-- 首页 开始 -->
+    	  <div id="div0" style="display:block;">
+	    	  <div class="procatTit">模式</div>
+	    	  <div style="font-size: 17px; color: rgb(49, 49, 49); font-weight: bold; clear: both;"></div>
+
+
+			  <!-- 263代理 开始 -->
+			  <link rel="stylesheet" rev="stylesheet" type="text/css" href="css/agent.css" media="screen" />
+				<div class="Agent_Title_2"></div>
+				<div class="Agent_Content RedLink">
+				  <ul>
+					{$AboutSjAgent}
+					<li class="dm_hd"></li>
+					<li class="dm_co">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="agent.php?mode=applySjAgent"><img src="images/Agent_Button_b.gif" width="151" height="28" /></a>
+					</li>
+				  </ul>
+				</div>
+				<div class="div_line"><img src="images/spacer.gif" width="1" height="1" /></div>
+				<div class="Agent_Title_4"></div>
+				<div class="Agent_Content RedLink">
+				  <ul>
+					{$AboutAgentAgent}
+					<li class="dm_hd"></li>
+					<li class="dm_co">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="agent.php?mode=applyAgent"><img src="images/Agent_Button_b.gif" width="151" height="28" border="0" /></a>
+					<!--
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mode-d.asp"><img src="images/Agent_Button_a.gif" width="151" height="28" /></a>
+					-->
+					</li>
+				  </ul>
+				</div>
+
+
+				<!-- 263代理 结束 -->
+
+			</div>
+
+		 <!-- 首页 结束 -->
+
+		<!-- 商家加盟申请 开始 -->
+    	 <div id="div1" style="display:none;">
+			  <div>
+			  	<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<div class="bc" style="text-align: left;">
+					<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">商家加盟申请</div>
+					<div class="bb" style="text-align: left; height: 100%;"
+						id="resultDiv">
+						<form name="procatshopform" action="post/agent_action.php" method="post"  enctype="multipart/form-data">
+						<table class="litab" cellpadding="1" cellspacing="1" width="100%">
+							<tr>
+								<th style="border-left:0px;" width="122px">
+									商家名称
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="sj_name" name="sj_name" maxlength="100" size="35"><font style="color:red;">*</font>
+									<!-- 必填 -->
+								</td>
+							</tr>
+							<!--
+							<tr>
+								<th style="border-left:0px;">
+									许可证编码
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="sj_code" name="sj_code" maxlength="50" size="20"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							 -->
+							<tr>
+								<th style="border-left:0px;">
+									所属行业
+								</th>
+								<td style="text-align: left;">
+									<select id="type" name="type">
+										<option id='0'>请选择行业...</option>
+										{section name=list loop=$sjTypeRow}
+						                <option id='{$sjTypeRow[list].id}'>{$sjTypeRow[list].name}</option>
+						                {/section}
+									</select><font style="color:red;">*</font>
+								</td>
+								<!-- 必选 -->
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									代理商
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="agent" name="agent" maxlength="20" size="20"><font style="color:red;">*</font>
+								</td>
+								<!-- 必填 -->
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									商家描述
+								</th>
+								<td style="text-align: left;">
+									<textarea id="sj_desc" name="sj_desc" cols=60 rows=6></textarea><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									图片
+								</th>
+								<td style="text-align: left;">
+									<input type="file" id="pic" name="pic" size="25"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									联系人
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="link_man" name="link_man" maxlength="20" size="15"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									电话
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="tel" name="tel" maxlength="20" size="15"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									传真
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="fax" name="fax" maxlength="20" size="15"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									手机
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="phone" name="phone" maxlength="20" size="15"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									E-mail
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="email" name="email" maxlength="50" size="25"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									QQ
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="qq" name="qq" maxlength="20" size="20"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									省市
+								</th>
+								<td style="text-align: left;">
+									<script src="js/address.js"></script>
+									<select  onchange=chsel() size=1 id="szSheng" name=szSheng  hidefocus>
+									<OPTION selected value=''>
+										请选择省份……
+									</OPTION>
+									<OPTION value="北京">
+										北京
+									</OPTION>
+									<OPTION value="安徽">
+										安徽
+									</OPTION>
+									<OPTION value="山东省">
+										山东省
+									</OPTION>
+									<OPTION value="江苏省">
+										江苏省
+									</OPTION>
+									<OPTION value="上海市">
+										上海市
+									</OPTION>
+									<OPTION value="广东省">
+										广东省
+									</OPTION>
+									<OPTION value="浙江省">
+										浙江省
+									</OPTION>
+									<OPTION value="福建省">
+										福建省
+									</OPTION>
+									<OPTION value="重庆市">
+										重庆市
+									</OPTION>
+									<OPTION value="甘肃省">
+										甘肃省
+									</OPTION>
+									<OPTION value="广西省">
+										广西省
+									</OPTION>
+									<OPTION value="贵州省">
+										贵州省
+									</OPTION>
+									<OPTION value="海南省">
+										海南省
+									</OPTION>
+									<OPTION value="河北省">
+										河北省
+									</OPTION>
+									<OPTION value="河南省">
+										河南省
+									</OPTION>
+									<OPTION value="黑龙江省">
+										黑龙江省
+									</OPTION>
+									<OPTION value="湖北省">
+										湖北省
+									</OPTION>
+									<OPTION value="湖南省">
+										湖南省
+									</OPTION>
+									<OPTION value="江西省">
+										江西省
+									</OPTION>
+									<OPTION value="吉林省">
+										吉林省
+									</OPTION>
+									<OPTION value="辽宁省">
+										辽宁省
+									</OPTION>
+									<OPTION value="内蒙古">
+										内蒙古
+									</OPTION>
+									<OPTION value="宁夏">
+										宁夏
+									</OPTION>
+									<OPTION value="青海省">
+										青海省
+									</OPTION>
+									<OPTION value="山西省">
+										山西省
+									</OPTION>
+									<OPTION value="陕西省">
+										陕西省
+									</OPTION>
+									<OPTION value="四川省">
+										四川省
+									</OPTION>
+									<OPTION value="天津市">
+										天津市
+									</OPTION>
+									<OPTION value="新疆">
+										新疆
+									</OPTION>
+									<OPTION value="西藏">
+										西藏
+									</OPTION>
+									<OPTION value="云南省">
+										云南省
+									</OPTION>
+									<OPTION value="香港">
+										香港
+									</OPTION>
+									<OPTION value="澳门">
+										澳门
+									</OPTION>
+									<OPTION value="台湾">
+										台湾
+									</OPTION>
+									<OPTION value="国外与其它">
+										国外与其它
+									</OPTION>
+								</select>
+						    	<SELECT size=1 name=szShi hidefocus>
+									<OPTION selected>
+										请选择城市……
+									</OPTION>
+								</select><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									地址
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="address" name="address" maxlength="120" size="35"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									留言
+								</th>
+								<td style="text-align: left;">
+									<textarea id="remark" name="remark" cols=60 rows=6></textarea><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									验证码
+								</th>
+								<td style="text-align: left;">
+									<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+								</td>
+							</tr>
+							{if $errorInfoByAgentMc!="OK"}
+							<tr style="display:none;">
+								<td></td>
+								<td style="text-align:left;font-weight:bold;">
+									<font style="color:red;">{$errorInfoByAgentMc}</font>
+								</td>
+							</tr>
+							{/if}
+							<tr>
+								<td colspan="2">
+									<input type="reset" size="重置">
+									<input type="submit" value="免费申请">
+									<input type="hidden" id="task" name="task" value="applyAgentMc">
+								</td>
+							</tr>
+						</table>
+						</form>
+					</div>
+					<div class="bt" style="height: 1px;"></div>
+				</div>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
+
+
+			  </div>
+		 </div>
+
+
+		<!-- 商家加盟申请 结束 -->
+
+		<!-- 代理加盟申请 开始 -->
+		 <div id="div2" style="display:none;">
+	    	  <div>
+			  	<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<div class="bc" style="text-align: left;">
+					<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">代理加盟申请</div>
+					<div class="bb" style="text-align: left; height: 100%;"
+						id="resultDiv">
+						<form action="post/agent_action.php" method="post"  enctype="multipart/form-data">
+						<table class="litab" cellpadding="1" cellspacing="1" width="100%">
+							<tr>
+								<th style="border-left:0px;width:200px;height:70px;">
+									验证码
+								</th>
+								<td style="text-align: left;">
+									<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+									{if $errorInfoByAgentAgent!="OK"}
+									<br>
+									<font style="color:red;font-weight:bold;">{$errorInfoByAgentAgent}</font>
+									{/if}
+								</td>
+								<td style="text-align: left;border-left:0px;">
+									<input type="submit" value="" style="background:url(images/Agent_Button_b.gif); width:151px;height:33px" >
+									<input type="hidden" id="task" name="task" value="applyAgentAgent">
+								</td>
+							</tr>
+						</table>
+						</form>
+
+					</div>
+					<div class="bt" style="height: 1px;"></div>
+				</div>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
+
+
+			  </div>
+
+			</div>
+		<!-- 代理加盟申请 结束 -->
+		{$scriptShowAgentSjApplyDiv}
+		{$scriptShowAgentApplyDiv}
+
+		<!-- 加盟说明 开始 -->
+		 <div id="div3" style="display:none;">
+	    	 <div>
+			  	<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<div class="bc" style="text-align: left;">
+					<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">加盟说明</div>
+					<div class="bb" style="text-align: left; height: 100%;"
+						id="resultDiv">
+						<table class="litab" cellpadding="1" cellspacing="1" width="100%">
+							<tr>
+								<td style="text-align: left;border-left:0px;">
+									affdsfdsfds
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="bt" style="height: 1px;"></div>
+				</div>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
+
+
+			  </div>
+
+		</div>
+		<!-- 加盟说明  结束 -->
+
+		<!-- 加盟优势 开始 -->
+    	<div id="div4" style="display:none;">
+	    	  <b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<div class="bc" style="text-align: left;">
+					<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">加盟优势</div>
+					<div class="bb" style="text-align: left; height: 100%;"
+						id="resultDiv">
+						<table class="litab" cellpadding="1" cellspacing="1" width="100%">
+							<tr>
+								<td style="text-align: left;border-left:0px;">
+									affdsfdsfds
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="bt" style="height: 1px;"></div>
+				</div>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
+
+			</div>
+
+		<!-- 加盟优势  结束 -->
+
+
+		<!-- 加盟流程 开始 -->
+    	<div id="div5" style="display:none;">
+	    	   <b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<div class="bc" style="text-align: left;">
+					<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">加盟流程</div>
+					<div class="bb" style="text-align: center; height: 100%;"
+						id="resultDiv">
+						<img src="images/flow.jpg" width="500px;">
+
+					</div>
+					<div class="bt" style="height: 1px;"></div>
+				</div>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
+
+			</div>
+
+		<!--加盟流程  结束 -->
+
+		<!-- 合同下载 开始 -->
+    	<div id="div6" style="display:none;">
+			<b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">合同下载</div>
+				<div class="bb" style="text-align: center; height: 200px;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<th>
+								商家加盟合同
+							</th>
+							<th>
+								代理加盟合同
+							</th>
+						</tr>
+						<tr>
+							<td style="text-align: center;">
+								<a href="post/download.php?type=SjHeTong"><img src="images/download.jpg"></a>
+								<br>
+								<a href="post/download.php?type=SjHeTong"><strong>点击下载</strong></a>
+							</td>
+							<td style="text-align: center;">
+								<a href="post/download.php?type=AgentHeTong"><img src="images/download.jpg"></a>
+								<br>
+								<a href="post/download.php?type=AgentHeTong"><strong>点击下载</strong></a>
+							</td>
+						</tr>
+
+					</table>
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+
+
+			</div>
+		<!--合同下载  结束 -->
+
+		<!-- 常见问题 开始 -->
+    	<div id="div7" style="display:none;">
+    	   <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">常见问题</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table class="litab" cellpadding="1" cellspacing="1" width="100%">
+						<tr>
+							<th style="border-left:0px;" width="122px">
+								商品图片
+							</th>
+							<th>
+								商品名称
+							</th>
+							<th width="65px">
+								操作
+							</th>
+							<th width="70px">
+								价格
+							</th>
+						</tr>
+
+						{section name=list loop=$mcRow}
+							<tr>
+								<td style="border-left:0px;">
+									<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+								</td>
+								<td>
+									<span style="color:#333333;font-size:16px;">{$mcRow[list].mc_name}</span><br>
+									数量：<font style="color:#C03ACB;">{$mcRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
+									状态：{if $mcRow[list].state == "0"}
+										<font style="color:#2D6C3D;">在售商品</font>
+									{/if}
+									{if $mcRow[list].state == "-1"}
+										<font style="color:red;">无效商品</font>
+									{/if}
+									{if $mcRow[list].state == "-2"}
+										<font style="color:#C0C0C0;">已售完</font>
+									{/if}
+
+								</td>
+								<td>
+									修改/删除
+								</td>
+								<td>
+									{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
+								</td>
+							</tr>
+						{/section}
+					</table>
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+
+			</div>
+		<!--常见问题  结束 -->
+
+
+		</div>
+    	<div class="clear"></div>
+    </div>
+
+{include file="inc/right.html"}
+
+</div>
+{include file="inc/buttom.html"}

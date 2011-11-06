@@ -1,0 +1,72 @@
+{include file="inc/top.html"}
+	  <!--topbannerad-->
+
+	  <!--/topbannerad-->
+
+<div class="container" style="margin-top: 25px;">
+
+
+	<div class="containerLeft">
+
+		<div style="float: left; width: 134px; text-align: center;">
+			<img src="images/news.jpg">
+		</div>
+        <div style="width: 600px; float: left;">
+			<img src="images/news2.jpg" />
+			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
+				联盟网的最新动态都在这里哦!想要得到最新的资讯、第一手的返利信息，那就来联盟资讯吧....
+			</span>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+        <div class="containerleft2">
+        	<ul class="leftMenu" id="leftmenu">
+            	<li class="sele">
+					<span style="font-size: 17px; color: rgb(255, 255, 255); font-weight: bold;">资讯类型</span>
+				</li>
+				<li><a href="news.php?type=1" class="graylink" style="display: block;">联盟公告</a></li>
+                <li><a href="news.php?type=0" class="graylink" style="display: block;">联盟动态</a></li>
+            </ul>
+            <br>
+            <ul>
+            	{section name=list loop=$leftAD}
+            	<div style="padding: 0px;">
+					<a href="{$leftAD[list].type_url}" target="_blank"><img src="{$leftAD[list].type_code}" border="0" style="width:145px;"></a>
+				</div>
+				{/section}
+            </ul>
+        </div>
+		<div class="containerleft3">
+		  	<b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">{if $newsInfo.type==1}联盟公告{else}联盟动态{/if}</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<div id="newscontent">
+						<div class="newstitle">{$newsInfo.title}</div>
+						<div class="info">作者：{$newsInfo.auther} &nbsp;&nbsp; 发布于：{$newsInfo.create_date}</div>
+						<div id="con" class="con">
+							<p>{$newsInfo.content}</p>
+							<br>
+							<p>
+							版权申明：本站文章均来自网络，如有侵权，请联系我们，我们收到后将立即删除，谢谢！<br>
+							特别注意：本站所有转载文章言论不代表本站观点，本站所提供的摄影照片，插画，设计作品，如需使用，请与原作者联系，版权归原作者所有！
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+		</div>
+    	<div class="clear"></div>
+    </div>
+
+	{include file="inc/right.html"}
+
+</div>
+{include file="inc/buttom.html"}

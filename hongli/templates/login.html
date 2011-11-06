@@ -1,0 +1,363 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<meta name="keywords" content="联盟网,51红利,我要联盟红利" />
+		<meta name="description"
+			content="从联盟网去300家知名网上商城购物，折后返现金高达 35%！联盟网还提供给会员团购红利、网购比价、网购晒单、领取优惠券等服务！联盟网，红利第一站" />
+		<title>联盟网|红利返利就来联盟网</title>
+		<link rel="stylesheet" href="css/login_css.css" type="text/css" />
+	</head>
+	<body style="background-color: #E7FCE4;">
+		<div id="wrap">
+			<div id="header">
+				<div id="logo">
+					<a href="/" target="_blank"> <img
+							src="images/51fanli_logonew.gif" width="272" height="52"
+							alt="联盟网" title="联盟网" /> </a>
+				</div>
+
+			</div>
+			<div id="page_content">
+				<div id="cont_l">
+					<div id="banner">
+
+						<script type="text/javascript">
+
+						{/literal}
+							{$ad}
+						{literal}
+						var focus_width=700
+						var focus_height=370
+						var text_height=0
+						var swf_height = focus_height+text_height
+
+						document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+						document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="images/focus1.swf"><param name="quality" value="high"><param name="bgcolor" value="#F0F0F0">');
+						document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+						document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+						document.write('</object>');
+						</script>
+
+
+						<div class="box-left-2">
+							<img src="images/login_nav.jpg" border="0" usemap="#Map">
+							<map name="Map" id="Map">
+								<area shape="rect" coords="6,5,344,39" href="procat.php" />
+								<area shape="rect" coords="355,6,691,39" href="#" />
+							</map>
+						</div>
+
+					</div>
+				</div>
+				<div>
+
+
+					<div id="cont_r">
+						<div id="register">
+							<h1>
+								已有帐号，请登录
+							</h1>
+							<form action="post/action.php" name="loginformrm" method="post"
+								onsubmit="return login();">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="text">
+											会员类型：
+										</td>
+										<td class="text">
+											<select id="sltMemberType" name="mb_type">
+												<option value="0">
+													普通会员
+												</option>
+												<option value="1">
+													合作商家
+												</option>
+												<option value="2">
+													代理商
+												</option>
+											</select>
+										</td>
+										<td class="text">
+											<img id="email_right"
+												style="margin-left: 5px; display: none;"
+												src="images/index2_42.gif" />
+										</td>
+									</tr>
+									<tr>
+										<td class="text">
+											帐&nbsp;&nbsp;&nbsp;&nbsp;号：
+										</td>
+										<td class="text">
+											<input class="edit" type="text" maxlength="20"
+												name="username" id="username" value="sjuser"/>
+										</td>
+										<td class="text">
+											<img id="email_right"
+												style="margin-left: 5px; display: none;"
+												src="images/index2_42.gif" />
+										</td>
+									</tr>
+									<tr>
+										<td class="text">
+											密&nbsp;&nbsp;&nbsp;&nbsp;码：
+										</td>
+										<td class="text">
+											<input class="edit" type="password" maxlength="20"
+												name="password" id="password" value="sjuser"/>
+										</td>
+										<td class="text">
+											<img id="email_right"
+												style="margin-left: 5px; display: none;"
+												src="images/index2_42.gif" />
+										</td>
+									</tr>
+									<tr>
+										<td class="text">
+											验&nbsp;证&nbsp;码：
+										</td>
+										<td class="text">
+											<table cellpadding="0" cellspacing="0">
+												<tr>
+													<td></td>
+													<td>
+														<input class="edit" style="width:50px;" type="text"
+															maxlength="4" NAME="randomCode" ID="randomCode" />
+													</td>
+													<td>
+														&nbsp;
+													</td>
+													<td>
+														<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" />
+														<!-- <img src="images/imgcode.gif"> -->
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td class="text">
+											<img id="email_right"
+												style="margin-left: 5px; display: none;"
+												src="images/index2_42.gif" />
+										</td>
+									</tr>
+									<!--
+									<tr>
+										<td></td>
+										<td>
+											<table cellspacing="0" cellpadding="0" border="0">
+												<tbody>
+												<tr>
+													<td>
+														<input type="checkbox" value="" id="rememberLogin">
+													</td>
+													<td>保存登录状态</td>
+												</tr>
+												</tbody>
+											</table>
+										</td>
+										<td></td>
+									</tr>
+									-->
+									{/literal}
+
+									{if $errorInfo!="OK"}
+									<tr>
+										<td></td>
+										<td class="text" style="color:red;">
+											{$errorInfo}
+										</td>
+										<td></td>
+									</tr>
+									{/if}
+									{literal}
+
+
+									<tr>
+										<td></td>
+										<td>
+											<input class="landing_submit1" name="mb_login" id="mb_login" value="" type="submit" />
+										</td>
+										<td></td>
+									</tr>
+								</table>
+							</form>
+							<h1>
+								没有帐号点击免费注册
+							</h1>
+							<input class="btn" type="button" value="" onclick="javascript: goUrl();"/>
+						</div>
+					</div>
+
+
+					<div class="cle"></div>
+				</div>
+			</div>
+
+			<div class="footer">
+				<div style="font-size: 12px;color: rgb(43, 43, 43);text-align: center;font-family: arial;">
+					<br>
+					{/literal}
+					{$buttomInfo}
+					{literal}
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/prototype.js"></script>
+	<script type="text/javascript">
+	function checkspace(checkstr) {
+	  var str = '';
+	  for(i = 0; i < checkstr.length; i++) {
+	    str = str + ' ';
+	  }
+	  return (str == checkstr);
+	}
+	function isValidName(str)//只允许字母,数字,汉字和下划线
+	{
+	var filter = /^[\u4e00-\u9fa5a-zA-Z_0-9]+$/;
+	if(filter.test(str)) return true;
+	else return false;
+	}
+
+	function isValidEmail(inEmail)
+	{
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if (filter.test(inEmail)) return true;
+		else return false;
+	}
+	function chkname(inputid,showid,action) {
+	var u_name = document.getElementById(inputid).value;
+	if(showid=="emailinfo"){
+		if(u_name=="")
+		{
+			document.getElementById(showid).innerHTML="<span style='color:red'>Email不能为空!</span>";
+			document.getElementById(showid).style.display="inline-block";
+			document.getElementById("email_right").style.display="none";
+			return;
+		}
+		if(!isValidEmail(u_name)){
+			document.getElementById(showid).innerHTML="<span style='color:red'>Email格式错误!</span>";
+			document.getElementById(showid).style.display="inline-block";
+			document.getElementById("email_right").style.display="none";
+			return;
+		}
+		if(u_name.indexOf("yahoo.com")!=-1){
+			document.getElementById(showid).innerHTML="<span style='color:red'>暂时不支持yahoo.com和yahoo.com.cn邮箱!</span>";
+			document.getElementById(showid).style.display="inline-block";
+			document.getElementById("email_right").style.display="none";
+			return;
+		}
+	}
+	if(showid=="nameinfo"){
+		if(u_name=="")
+		{
+			document.getElementById(showid).innerHTML="<span style='color:red'>用户名不能为空!</span>";
+			document.getElementById(showid).style.display="inline-block";
+			document.getElementById("name_right").style.display="none";
+			return;
+		}
+		if(!isValidName(u_name)){
+			document.getElementById(showid).innerHTML="<span style='color:red'>只允许字母,数字,汉字和下划线!</span>";
+			document.getElementById(showid).style.display="inline-block";
+			document.getElementById("name_right").style.display="none";
+			return;
+		}
+	}
+	var url = "chkname.asp?action="+action+"&name=" + encodeURIComponent(u_name);
+		document.getElementById(showid).innerHTML="loading...";
+		document.getElementById(showid).style.display="inline-block";
+		new Ajax.Request(url,
+		{
+		onSuccess:function(transport){
+			var result = transport.responseText;
+			document.getElementById(showid).innerHTML=result+"<br/>";
+			if(showid=="emailinfo"&&document.getElementById("emailinfo").innerHTML.indexOf("red")==-1)
+			{
+				document.getElementById("email_right").style.display="inline-block";
+			}
+			if(showid=="nameinfo"&&document.getElementById("nameinfo").innerHTML.indexOf("red")==-1)
+			{
+				document.getElementById("name_right").style.display="inline-block";
+			}
+		},
+		onFailure:function(){document.getElementById(showid).innerHTML="读取失败。";}
+		}
+		);
+
+	}
+
+	function reging(){
+		if(checkspace(document.userinfo.useremail.value)) {
+			document.getElementById("emailinfo").innerHTML="<span style='color:red'>Email不能为空！</span>";
+			document.getElementById("emailinfo").style.display="inline-block";
+			document.getElementById("email_right").style.display="none";
+			document.userinfo.useremail.focus();
+			return false;
+		}
+		if(!isValidEmail(document.userinfo.useremail.value)){
+			document.getElementById("emailinfo").innerHTML="<span style='color:red'>Email格式错误!</span>";
+			document.getElementById("emailinfo").style.display="inline-block";
+			document.getElementById("email_right").style.display="none";
+			document.userinfo.useremail.focus();
+			return false;
+		}
+		if(checkspace(document.userinfo.username.value)) {
+			document.getElementById("nameinfo").innerHTML="<span style='color:red'>用户名不能为空！</span>";
+			document.getElementById("nameinfo").style.display="inline-block";
+			document.getElementById("name_right").style.display="none";
+			document.userinfo.username.focus();
+			return false;
+		}
+		if(!isValidName(document.userinfo.username.value)){
+			document.getElementById("nameinfo").innerHTML="<span style='color:red'>只允许字母,数字,汉字和下划线!</span>";
+			document.getElementById("nameinfo").style.display="inline-block";
+			document.getElementById("name_right").style.display="none";
+			return false;
+		}
+		if(checkspace(document.userinfo.username.value) || document.userinfo.username.value.length < 3) {
+			document.getElementById("nameinfo").innerHTML="<span style='color:red'>用户名长度不能小于3！</span>";
+			document.getElementById("nameinfo").style.display="inline-block";
+			document.getElementById("name_right").style.display="none";
+			document.userinfo.username.focus();
+			return false;
+		}
+		if(checkspace(document.userinfo.UserPassword.value) || document.userinfo.UserPassword.value.length < 6) {
+			document.getElementById("pwdinfo").innerHTML="<span style='color:red'>密码长度不能小于6！</span>";
+			document.getElementById("pwdinfo").style.display="inline-block";
+			document.getElementById("pwd_right").style.display="none";
+			document.userinfo.UserPassword.focus();
+			return false;
+		}
+		document.getElementById("UserPassword2").value=document.getElementById("UserPassword").value;
+	}
+
+	function verc()
+	{
+		document.getElementById('codeimg').src='logincode.asp?'+(new Date()).getTime();
+	}
+
+	function login()
+	{
+		var username=document.loginformrm.username.value;
+		var UserPassword=document.loginformrm.UserPassword.value;
+		var passcode=document.loginformrm.passcode.value;
+		if(username==""){alert("请输入用户名");document.loginformrm.username.focus();return false;}
+		if(UserPassword==""){alert("请输入密码");document.loginformrm.UserPassword.focus();return false;}
+		if(passcode==""){alert("请输入验证码");document.loginformrm.passcode.focus();return false;}
+	}
+	//免费注册
+	function goUrl(){
+		document.location.href='xieyi.php';
+	}
+
+	function newgdcode(obj,url) {
+        //后面传递一个随机参数，否则在IE7和火狐下，不刷新图片
+        obj.src = url+ '?nowtime=' + new Date().getTime();
+    }
+	</script>
+</html>
+{/literal}

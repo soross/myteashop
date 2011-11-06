@@ -1,0 +1,118 @@
+<div class="containerRight" style="padding: 0pt; width: 180px; overflow: hidden;">
+    	<div style="border: 1px solid rgb(201, 215, 154); background: none repeat scroll 0% 0% rgb(238, 242, 225);">
+        	<div style="height: 10px; overflow: hidden;"></div>
+       	    <div style="padding: 0pt 0pt 0pt 10px; height: 25px; line-height: 25px;"><span style="color: rgb(49, 49, 49); font-weight: bold; font-size: 14px;">3步拿联盟红利</span>&nbsp;<a href="helpinfo.php?helpid=3">详情&gt;&gt;</a></div>
+            <div style="padding: 0pt 5px;">
+                <a style="float: left;" href="#" target="_blank"><img style="float: left;" src="images/procat1_7.gif"></a>
+                <img style="float: left; margin: 0pt 7px;" src="images/procat1_9.gif">
+
+				<a target="_blank" href="#"><img style="float: left; border: 0pt none; margin-left: 7px;" src="images/procat1_6.gif"></a>
+                <img style="float: left; margin: 0pt 7px;" src="images/procat1_9.gif">
+
+
+                <a style="float: left;" href="#" target="_blank"><img style="float: left;" src="images/procat1_8.gif"></a>
+                <div class="clear"></div>
+            </div>
+            <div style="margin: 10px 0pt 15px;">
+            	<table><tr>
+            		<Td><a style="float: left; margin-left: 5px;" href="procat.php">联盟商家消费</a></Td>
+            		<Td><a style="float: left; margin-left: 10px;" href="login.php">登录联盟网</a></Td>
+            		<Td><a style="float: left; margin-left: 12px;" href="index.php">分红利或换购产品</a></Td>
+            	</tr></table>
+                <div class="clear"></div>
+            </div>
+      </div>
+
+
+      <br>
+	{if $showNewsList != none}
+	 <div style="margin-left: 0px; margin-top: 15px;">
+		<div style="padding: 0px;">
+			<div class="flwindex_duxiang_h1">
+				联盟动态
+				<span class="flwindex_duxiang_h1_more"><a href="news.php?type=2"
+					class="shier" target="_blank">更多&gt;&gt;</a>
+				</span>
+			</div>
+			<div class="flwindex_remenyhq_content">
+			<ul>
+				{section name=list loop=$newsDTRow}
+				<li>
+					<span class="flwindex_remenyhq_span1"><span
+						class="flwindex_xiaosanjiao"
+						style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
+						href="newsinfo.php?newsid={$newsDTRow[list].id}" target="_blank" title="{$newsDTRow[list].title}">{$newsDTRow[list].title}</a>
+					</span>
+				</li>
+				{/section}
+
+				<li>
+					<span class="flwindex_remenyhq_span1"><span
+						class="flwindex_xiaosanjiao"
+						style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
+						href="#" target="_blank" title="测试">测试测试测试测试测试</a>
+					</span>
+				</li>
+
+				<div class="qingchu"></div>
+			</ul>
+			</div>
+		</div>
+    </div>
+		<br>
+	{/if}
+	{if $showAboutMe!=none}
+	 <div style="margin-left: 0px; margin-top: 10px;">
+		<div style="padding: 0px;">
+			<div class="flwindex_duxiang_h1">
+				联盟简介
+				<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
+					class="shier" target="_blank">更多&gt;&gt;</a>
+				</span>
+			</div>
+			<div class="flwindex_remenyhq_content">
+			<ul>
+			{$aboutMeInfo|truncate:500:".."}
+				<div class="qingchu"></div>
+			</ul>
+			</div>
+		</div>
+    </div>
+
+    <br>
+    {/if}
+{if $showNewsList != none}
+     <div style="margin-left: 0px; margin-top: 10px;">
+		<div style="padding: 0px;">
+			<div class="flwindex_duxiang_h1">
+				联盟公告
+				<span class="flwindex_duxiang_h1_more"><a href="news.php?type=1"
+					class="shier" target="_blank">更多&gt;&gt;</a>
+				</span>
+			</div>
+			<div class="flwindex_remenyhq_content">
+			<ul>
+				{section name=list loop=$newsGGRow}
+				<li>
+					<span class="flwindex_remenyhq_span1"><span
+						class="flwindex_xiaosanjiao"
+						style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
+						href="newsinfo.php?newsid={$newsGGRow[list].id}" target="_blank" title="{$newsGGRow[list].title}">{$newsGGRow[list].title}</a>
+					</span>
+				</li>
+				{/section}
+				<div class="qingchu"></div>
+			</ul>
+			</div>
+		</div>
+    </div>
+{/if}
+		{section name=list loop=$rightAD}
+        <div style="margin-left: 0px; margin-top: 5px;">
+			<div style="padding: 0px;">
+				<a href="{$rightAD[list].type_url}" target="_blank"><img src="{$rightAD[list].type_code}" border="0" width="180px"></a>
+			</div>
+        </div>
+        {/section}
+    </div>
+    <div class="clear"></div>

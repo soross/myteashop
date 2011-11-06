@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title>联盟网-联盟商家购物返红利</title>
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/flwindex.css">
+		<link rel="stylesheet" type="text/css" href="css/flwindex_style.css">
+		<link rel="stylesheet" type="text/css" href="css/pagecontent.css">
+
+		<script type="text/javascript" src="js/jquery-1.js"></script>
+		<script src="js/ga.js" async="" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="flwindex_head">
+			<div class="flwindex_juzhong">
+				{$isLoginText}
+
+				<div class="flwindex_juzhong_right" style="position: relative;">
+					<span class="flwindex_color5">|</span><a href="helpinfo.php?helpid=4" class="huise"
+						target="_blank">新手上路</a><span class="flwindex_color5">|</span><a
+						href="javascript:" onclick="setHome(this,window.location)" class="huise">设置首页</a><span class="flwindex_color5">|</span>
+						<a href="Http://Www.lianmeng.Com" class="huise" onClick="addFavorite(window.location,document.title); return(false);"><span class="flwindex_yaoqinghy" style="position: relative; top: 3px; left: -3px; display: none;"></span>加入收藏	</a><span class="flwindex_color5">|</span><!--<a href="#" class="huise"
+						style="color: rgb(204, 0, 0); font-weight: bold;" target="_blank">对联盟网提建议</a><span
+						class="flwindex_color5">|</span>
+					<input name="" type="button" class="flwindex_submit2" value="" style="position:relative;top:1px;"/>-->
+					<a href='http://wpa.qq.com/msgrd?v=3&amp;uin={$qq[0].type_code}&amp;site={$qq[0].content}&amp;menu=yes' target='_blank'><img src="images/kfimg.gif"
+						style="position: relative; top: 5px; cursor: pointer;"  border='0'></a>
+					<div class="flwindex_weibojgz"
+						style="position: absolute; left: -110px; top: 2px; text-align: left;"></div>
+				</div>
+			</div>
+		</div>
+		<!--/topbar-->
+
+{literal}
+		<div id="all">
+			<div class="flwindex">
+				<!--header-->
+				<!--search-->
+				<div class="flwindex_top">
+					<span class="flwindex_top_logo">
+						<a href="#">
+							<img src="images/51fanli_logonew.gif" width="272" height="52" />
+						</a>
+					</span>
+					<div class="flwindex_top_logo">
+						<img src="images/2ew.jpg" />
+					</div>
+					<div class="qingchu"></div>
+				</div>
+				<!--/search-->
+				<!--导航-->
+				<div class="flwindex_menu">
+					<div class="flwindex_menu_left"></div>
+					<div class="flwindex_menu_content">
+						<div class="flwindex_menu_zhuyao">
+							<ul>
+								{/literal}
+								<li {$INDEX_LI}><a href="index.php" class="sekuai {$INDEX_A}" {$INDEX_A_CSS}>首页</a></li>
+								<li {$PROCAT_LI}><a href="procat.php" class="sekuai {$PROCAT_A}" {$PROCAT_A_CSS}>联盟商家</a></li>
+			 					<li {$AGENT_LI}><a href="agent.php" class="sekuai {$AGENT_A}" {$AGENT_A_CSS}>加盟中心</a></li>
+			 					<li {$NEWS_LI}><a href="news.php" class="sekuai {$NEWS_A}" {$NEWS_A_CSS}>联盟资讯</a></li>
+			 					<!-- <li {$SJ_LI}><a href="sj.php" class="sekuai {$SJ_A}" {$SJ_A_CSS}>商家平台</a></li>
+			 					<li {$AUTH_LI}><a href="auth.php" class="sekuai {$AUTH_A}" {$AUTH_A_CSS}>审核中心</a></li> -->
+			 					<li {$HELP_LI}><a href="help.php" class="sekuai {$HELP_A}" {$HELP_A_CSS}>帮助中心</a></li>
+
+								<div class="qingchu"></div>
+							</ul>
+						</div>
+						<div class="flwindex_menu_pic">
+							<div class="flwindex_xiaolaba"
+								style="position: relative; top: 3px;"></div>
+							<div class="rolltxt_span2" id="roll_div">
+								<ul id="rolltxt">
+									{section name=list loop=$newsTipRow}
+									<li>
+										<a target="_blank" class="shierfff" href="newsinfo.php?newsid={$newsTipRow[list].id}"
+											title="{$newsTipRow[list].title}">{$newsTipRow[list].title|truncate:30:""}</a>
+									</li>
+									{/section}
+									{literal}
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="2011年10月15日红利发放记录">2011年10月15日红利发放记录</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="好消息! 名品打折网红利翻倍啦!">好消息! 名品打折网红利翻倍啦!</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="摩机网上线，最高返105元">摩机网上线，最高返105元</a>
+									</li>
+
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="宜衣易衣上线，全场返18%">宜衣易衣上线，全场返18%</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="1折店上线，最高返21%">1折店上线，最高返21%</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="我是好东家上线，平均返15.51%">我是好东家上线，平均返15.51%</a>
+									</li>
+									<!--
+
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="2011年10月15日红利发放记录">2011年10月15日红利发放记录</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="好消息! 名品打折网红利翻倍啦!">好消息! 名品打折网红利翻倍啦!</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="摩机网上线，最高返105元">摩机网上线，最高返105元</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="宜衣易衣上线，全场返18%">宜衣易衣上线，全场返18%</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="1折店上线，最高返21%">1折店上线，最高返21%</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="我是好东家上线，平均返15.51%">我是好东家上线，平均返15.51%</a>
+									</li>
+									<li>
+										<a target="_blank" class="shierfff" href="#"
+											title="九九淘金上线，最高返1.4%">九九淘金上线，最高返1.4%</a>
+									</li>
+									 -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="flwindex_menu_right"></div>
+					<div class="qingchu"></div>
+				</div>
+				<!--/导航-->
+
+				<script type="text/javascript">
+//滚动公告
+var box=document.getElementById("rolltxt"),can=true;
+box.innerHTML+=box.innerHTML;
+box.onmouseover=function(){can=false};
+box.onmouseout=function(){can=true};
+new function (){
+	//alert(can);
+	var stop=box.scrollTop%14==0&&!can;
+	if(!stop)box.scrollTop==parseInt(box.scrollHeight/2)?box.scrollTop=0:box.scrollTop++;
+	setTimeout(arguments.callee,box.scrollTop%14?10:2000);
+};
+
+  </script>
+
+
+{/literal}

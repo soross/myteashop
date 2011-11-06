@@ -1,0 +1,2225 @@
+{include file="inc/top.html"}
+{literal}				<!--/msg-->
+				<div class="flwindex_content">
+					<div class="flwindex_content_left">
+						<!--红利商家-->
+						<div class="flwindex_fanlisj">
+							<div class="flwindex_fanlisj_h1" style="margin-bottom: 10px;">
+								<span class="flwindex_h1_flsj" style="cursor:hand;" onclick="showOrHiddleDiv('mb')"></span>
+								<span class="flwindex_fanlisj_changqusj"
+									id="wodechangqushangjia"></span>
+								<span class="flwindex_fanlisj_h1_more"></span>
+							</div>
+{/literal}
+							<div id="mb_div">
+							<div class="flwindex_fanlisj_left">
+								<ul>
+									<li id="shops_1" class="xuanzhong" onclick="menuclick(21,1,'mb');">
+										我的资料
+									</li>
+									<li id="shops_2" onclick="menuclick(21,2,'mb');">
+										我要分红
+										<span class="flwindex_hot"
+											style="position: absolute; top: 5px; right: -8px;"></span>
+									</li>
+									<li id="shops_20" onclick="menuclick(21,20,'mb');">
+										我要积分
+									</li>
+									<li id="shops_3" onclick="menuclick(21,3,'mb');">
+										我要分红
+									</li>
+									<li id="shops_4" onclick="menuclick(21,4,'mb');">
+										我的红利
+									</li>
+									<li id="shops_5" onclick="menuclick(21,5,'mb');">
+										我的会员
+									</li>
+									<li id="shops_6" onclick="menuclick(21,6,'mb');">
+										我要提现
+									</li>
+									<li id="shops_21" onclick="menuclick(21,21,'mb');">
+										我要转账
+									</li>
+									<li id="shops_7" onclick="menuclick(21,7,'mb');">
+										我的收藏
+									</li>
+									<li id="shops_11" onclick="menuclick(21,11,'mb');">
+										我的订单
+									</li>
+									<li id="shops_8" onclick="menuclick(21,8,'mb');">
+										换购通知
+									</li>
+									<li id="shops_9" onclick="menuclick(21,9,'mb');">
+										问题反馈
+									</li>
+									<li id="shops_10" onclick="menuclick(21,10,'mb');">
+										密码修改
+									</li>
+								</ul>
+							</div>
+
+							<!-- 我的资料开始 -->
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_1" style="">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的资料
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<script src="js/address.js"></script>
+										<form action="post/messageinfo.php" method="post" name="procatshopform">
+
+										<table width="520px">
+											<tr>
+												<th width="80px">
+													用户名
+												</th>
+												<td>
+													{$mbInfo.mb_name}
+												</td>
+												<th width="80px">
+													真是姓名
+												</th>
+												<td>
+													<input type="text" id="realname" name="realname" value="{$mbInfo.realname}" size="15" maxlength="15">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													身份证号码
+												</th>
+												<td>
+													<input type="text" id="idcard" name="idcard" value="{$mbInfo.idcard}" size="18" maxlength="20">
+
+												</td>
+												<th>
+													固话/手机
+												</th>
+												<td>
+													<input type="text" id="phone" name="phone" value="{$mbInfo.phone}" size="15" maxlength="20">
+
+												</td>
+
+											</tr>
+											<tr>
+
+												<th>
+													所在省市
+												</th>
+												<td colspan="3">
+													<SELECT onchange=chsel() size=1 name=szSheng id=szSheng>
+													<OPTION selected value=''>
+														请选择省份……
+													</OPTION>
+													<OPTION value="北京">
+														北京
+													</OPTION>
+													<OPTION value="安徽">
+														安徽
+													</OPTION>
+													<OPTION value="山东省">
+														山东省
+													</OPTION>
+													<OPTION value="江苏省">
+														江苏省
+													</OPTION>
+													<OPTION value="上海市">
+														上海市
+													</OPTION>
+													<OPTION value="广东省">
+														广东省
+													</OPTION>
+													<OPTION value="浙江省">
+														浙江省
+													</OPTION>
+													<OPTION value="福建省">
+														福建省
+													</OPTION>
+													<OPTION value="重庆市">
+														重庆市
+													</OPTION>
+													<OPTION value="甘肃省">
+														甘肃省
+													</OPTION>
+													<OPTION value="广西省">
+														广西省
+													</OPTION>
+													<OPTION value="贵州省">
+														贵州省
+													</OPTION>
+													<OPTION value="海南省">
+														海南省
+													</OPTION>
+													<OPTION value="河北省">
+														河北省
+													</OPTION>
+													<OPTION value="河南省">
+														河南省
+													</OPTION>
+													<OPTION value="黑龙江省">
+														黑龙江省
+													</OPTION>
+													<OPTION value="湖北省">
+														湖北省
+													</OPTION>
+													<OPTION value="湖南省">
+														湖南省
+													</OPTION>
+													<OPTION value="江西省">
+														江西省
+													</OPTION>
+													<OPTION value="吉林省">
+														吉林省
+													</OPTION>
+													<OPTION value="辽宁省">
+														辽宁省
+													</OPTION>
+													<OPTION value="内蒙古">
+														内蒙古
+													</OPTION>
+													<OPTION value="宁夏">
+														宁夏
+													</OPTION>
+													<OPTION value="青海省">
+														青海省
+													</OPTION>
+													<OPTION value="山西省">
+														山西省
+													</OPTION>
+													<OPTION value="陕西省">
+														陕西省
+													</OPTION>
+													<OPTION value="四川省">
+														四川省
+													</OPTION>
+													<OPTION value="天津市">
+														天津市
+													</OPTION>
+													<OPTION value="新疆">
+														新疆
+													</OPTION>
+													<OPTION value="西藏">
+														西藏
+													</OPTION>
+													<OPTION value="云南省">
+														云南省
+													</OPTION>
+													<OPTION value="香港">
+														香港
+													</OPTION>
+													<OPTION value="澳门">
+														澳门
+													</OPTION>
+													<OPTION value="台湾">
+														台湾
+													</OPTION>
+													<OPTION value="国外与其它">
+														国外与其它
+													</OPTION>
+												</SELECT>
+												<SELECT size=1 name=szShi>
+													<OPTION selected>
+														国外与其它
+													</OPTION>
+												</SELECT>
+													{$mbAddressPC}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													详细地址
+												</th>
+												<td colspan="3">
+													<input type="text" id="address" name="address" value="{$mbInfo.address}" size="55" maxlength="50">
+
+												</td>
+											</tr>
+											<tr>
+												<th>
+													开户行
+												</th>
+												<td>
+													<input type="text" id="bankName" name="bankName" value="{$mbInfo.bankName}" size="20" maxlength="30">
+
+												</td>
+												<th>
+													E-mail
+												</th>
+												<td>
+													<input type="text" id="email" name="email" value="{$mbInfo.email}" size="20" maxlength="30">
+
+												</td>
+											</tr>
+											<tr>
+												<th>
+													开户名
+												</th>
+												<td>
+												<input type="text" id="bankUser" name="bankUser" value="{$mbInfo.bankUser}" size="20" maxlength="30">
+
+												</td>
+												<th>
+													帐号
+												</th>
+												<td>
+													<input type="text" id="bankCode" name="bankCode" value="{$mbInfo.bankCode}" size="20" maxlength="30">
+												</td>
+											</tr>
+											<tr>
+												<th>二次密码</th>
+												<td>
+												<input type="password" id="password" name="password" value="" size="20" maxlength="30">
+												</td>
+												<th>验证码</th>
+												<td>
+												<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" />
+												</td>
+											</tr>
+											{if $errorInfoByMbInfo!="OK"}
+											<tr>
+												<td colspan="4" style="text-align:center;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByMbInfo}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td colspan="4" style="text-align:center;">
+													<input type="submit" value="会员资料修改">
+													<input type="hidden" id="task" name="task" value="updateMbInfo">
+													<input type="hidden" id="mbid" name="mbid" value="{$mbInfo.id}">
+												</td>
+											</tr>
+										</table>
+										</form>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+							</div>
+
+							<!-- 我的资料结束 -->
+
+							<!-- 我要分红开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_2" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我要分红
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form method="post" action="post/messageinfo.php">
+										<table width="520px">
+											<tr>
+												<th>
+													红利卡号：
+												</th>
+												<td>
+													<input type="text" id="no" name="no" size="20" maxlength="20"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													红利卡密码：
+												</th>
+												<td>
+													<input type="password" id="password" name="password" size="20" maxlength="16"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											{if $errorInfoByHongLi!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByHongLi}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提交">
+													<input type="hidden" id="task" name="task" value="getHongLi">
+												</td>
+											</tr>
+										</table>
+										</form>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要分红结束 -->
+
+							<!-- 我要积分开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_20" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我要积分
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form method="post" action="post/messageinfo.php">
+										<table width="520px">
+											<tr>
+												<th>
+													红利卡号：
+												</th>
+												<td>
+													<input type="text" id="no" name="no" size="20" maxlength="20"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													红利卡密码：
+												</th>
+												<td>
+													<input type="password" id="password" name="password" size="20" maxlength="16"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											{if $errorInfoByJiFen!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByJiFen}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提交">
+													<input type="hidden" id="task" name="task" value="getJiFen">
+												</td>
+											</tr>
+										</table>
+										</form>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要积分结束 -->
+
+							<!-- 我的积分开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_3" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我要分红
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;width:30%;text-align:right;">
+													积分总数&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$jfTotal}
+												</td>
+											</tr>
+											<tr>
+												<th style="border-left:0px;text-align:right;">
+													分红权数&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$jfTotalBasic}
+												</td>
+											</tr>
+										</table>
+										<table class="litab"  width=520px>
+											<tr>
+												<th style="border-left:0px;color:red;text-align:left;">我要分红</th>
+											</tr>
+										</table>
+										<form action="post/messageinfo.php" method="post">
+											<table class="litab"  width=520px>
+												<tr>
+													<th style="border-left:0px;width:30%;text-align:right;">
+															分红权数：
+													</th>
+													<td style="text-align:left;">
+														<input type="text" id="hongli" name="hongli" size="10" maxlength="11">
+													</td>
+												</tr>
+												<tr>
+													<th style="border-left:0px;text-align:right;">
+															二次密码：
+													</th>
+													<td style="text-align:left;">
+														<input type="password" id="password" name="password" size="20" maxlength="11">
+													</td>
+												</tr>
+												{if $errorInfoByJiFen2HongLi!="OK"}
+												<tr>
+													<td>&nbsp;</td>
+													<td style="border-left:0px;text-align:left;font-weight:bold;">
+														<font style="color:red;">{$errorInfoByJiFen2HongLi}</font>
+													</td>
+												</tr>
+												{/if}
+												<tr>
+													<td colspan="2" style="border-left:0px;text-align:center;">
+														<input type="submit" value="确定并提交">
+														<input type="hidden" id="task" name="task" value="JiFen2HongLi">
+														<input type="hidden" id="srchongli" name="srchongli" value="{$jfTotalBasic}">
+													</td>
+												</tr>
+											</table>
+										</form>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我的积分结束 -->
+
+							<!-- 我的红利开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_4" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的红利
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;width:30%;text-align:right;">
+													分红权数&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$hlhongli}
+												</td>
+											</tr>
+											<tr>
+												<th style="border-left:0px;text-align:right;">
+													今天红利&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$hlDay}
+												</td>
+											</tr>
+											<tr>
+												<th style="border-left:0px;text-align:right;">
+													未分红利&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$notHongLi}
+												</td>
+											</tr>
+											<tr>
+												<th style="border-left:0px;text-align:right;">
+													红利总额&nbsp;&nbsp;
+												</th>
+												<td style="text-align:left;font-weight:bold;color:#262626;">
+													&nbsp;&nbsp;{$money}
+												</td>
+											</tr>
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我的红利结束 -->
+
+							<!-- 我的会员开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_5" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的会员
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="150px">
+													会员名称
+												</th>
+												<th width="120px">
+													会员姓名
+												</th>
+												<th>
+													注册时间
+												</th>
+											</tr>
+											{section name=list loop=$myMemberRow}
+												<tr>
+													<td style="border-left:0px;">
+															{$myMemberRow[list].mb_name}
+													</td>
+													<td style="">
+														{$myMemberRow[list].realname}
+													</td>
+													<td style="">
+														{$myMemberRow[list].create_Date}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我的会员结束 -->
+
+							<!-- 我要提现开始 -->
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_6" style="display:none">
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的提现
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form method="post" action="post/messageinfo.php">
+										<table width=520px>
+											<tr>
+												<th>
+													可提现金额：
+												</th>
+												<td>
+													{$getMoneyOK}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													提现金额：
+												</th>
+												<td>
+													<input type="text" size="15" maxlength="5" id="num" name="num"><font color="red">*</font><br>请输入大于500且为整数的数字。
+												</td>
+											</tr>
+											<tr>
+												<th>
+													二次密码：
+												</th>
+												<td>
+													<input type="password" size="15" maxlength="16" id="password" name="password"><font color="red">*</font><br>非登入密码。
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											{if $errorInfoByTiXian!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByTiXian}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提现申请">
+													<input type="hidden" id="task" name="task" value="getMoney">
+												</td>
+											</tr>
+										</table>
+										<br>
+										</form>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要提现结束 -->
+
+							<!-- 我要转账开始 -->
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_21" style="display:none">
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我要转账
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form method="post" action="post/messageinfo.php">
+										<table width=520px>
+											<tr>
+												<th>
+													可转红利：
+												</th>
+												<td>
+													{$getMoneyOK}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													可转积分：
+												</th>
+												<td>
+													{$jfTotal}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													转账类型：
+												</th>
+												<td>
+													<select id="type" name="type">
+														<option value="0">积分</option>
+														<option value="1">红利</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													转入用户名：
+												</th>
+												<td>
+													<input type="text" size="15" maxlength="20" id="username" name="username"><font color="red">*</font><br>请输入对方的用户名。
+												</td>
+											</tr>
+											<tr>
+												<th>
+													转出数额：
+												</th>
+												<td>
+													<input type="text" size="15" maxlength="11" id="num" name="num"><font color="red">*</font><br>请输入整数。
+												</td>
+											</tr>
+											<tr>
+												<th>
+													二次密码：
+												</th>
+												<td>
+													<input type="password" size="15" maxlength="16" id="password" name="password"><font color="red">*</font><br>非登入密码。
+												</td>
+											</tr>
+											{if $errorInfoByZhuanZhang!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByZhuanZhang}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+
+												</td>
+												<td>
+													<input type="submit" value="确定并转账">
+													<input type="hidden" id="task" name="task" value="getMoneyToMb">
+												</td>
+											</tr>
+										</table>
+										<br>
+										</form>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要转账结束 -->
+
+							<!-- 我要收藏开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_7" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的收藏
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="122px">
+													商品图片
+												</th>
+												<th>
+													商品名称
+												</th>
+												<th width="65px">
+													操作
+												</th>
+												<th width="70px">
+													价格
+												</th>
+											</tr>
+
+											{section name=list loop=$mcScRow}
+												<tr>
+													<td style="border-left:0px;">
+														<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+													</td>
+													<td>
+														<span style="color:#333333;font-size:16px;">{$mcScRow[list].mc_name}</span><br>
+														数量：<font style="color:#C03ACB;">{$mcScRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcScRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
+														状态：{if $mcScRow[list].state == "0"}
+															<font style="color:#2D6C3D;">在售商品</font>
+														{/if}
+														{if $mcScRow[list].state == "-1"}
+															<font style="color:red;">无效商品</font>
+														{/if}
+														{if $mcScRow[list].state == "-2"}
+															<font style="color:#C0C0C0;">已售完</font>
+														{/if}
+
+													</td>
+													<td>
+														{if $mcScRow[list].mc_type==0}
+														<a href="mcinfo.php?mcid={$mcScRow[list].mc_id}" target="_blank">购买</a>
+														{else}
+														<a href="mcinfo.php?mcid={$mcScRow[list].mc_id}" target="_blank">换购</a>
+														{/if}
+														<br><br>
+														<a href="post/messageinfo.php?task=cancelSc&id={$mcScRow[list].id}">取消收藏</a>
+													</td>
+													<td>
+														{if $mcScRow[list].mc_price != ""}{$mcScRow[list].mc_price}红利{/if}{if $mcScRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$mcScRow[list].mc_price_type}积分
+														{/if}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要收藏结束 -->
+
+							<!-- 我要订单开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_11" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;我的订单
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="150px">
+													订单号
+												</th>
+												<th>
+													订单描述
+												</th>
+												<th width="120px">
+													生成时间
+												</th>
+												<th width="50px">
+													状态
+												</th>
+											</tr>
+
+											{section name=list loop=$orderRow}
+												<tr>
+													<td style="border-left:0px;">
+														{$orderRow[list].order_id}
+													</td>
+													<td>
+														商品名称：{$orderRow[list].mc_name}<br>
+														金额：{$orderRow[list].price}红利+{$orderRow[list].price_type}积分<br>
+														所属商家：{$orderRow[list].sj_name}
+													</td>
+													<td>
+														{$orderRow[list].create_date}
+													</td>
+													<td>
+														{if $orderRow[list].mode == "0"}已付款{/if}
+														{if $orderRow[list].mode == "1"}发货{/if}
+														{if $orderRow[list].mode == "2"}完成交易{/if}
+													</td>
+												</tr>
+											{/section}
+										</table>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 我要订单结束 -->
+
+							<!-- 换购通知开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_8" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;换购通知
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="122px">
+													商品图片
+												</th>
+												<th>
+													商品名称
+												</th>
+												<th width="65px">
+													操作
+												</th>
+												<th width="70px">
+													价格
+												</th>
+											</tr>
+											{section name=list loop=$productRow}
+												<tr>
+													<td style="border-left:0px;">
+														<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+													</td>
+													<td>
+														<span style="color:#333333;font-size:16px;">{$productRow[list].mc_name}</span><br>
+														数量：<font style="color:#C03ACB;">{$productRow[list].mc_count}</font>(件)&nbsp;&nbsp;状态：{if $productRow[list].state == "0"}
+															<font style="color:#2D6C3D;">在售商品</font>
+														{/if}
+														{if $productRow[list].state == "-1"}
+															<font style="color:red;">无效商品</font>
+														{/if}
+														{if $productRow[list].state == "-2"}
+															<font style="color:#C0C0C0;">已售完</font>
+														{/if}
+														<br>
+														发布时间：<font style="color:#666600;">{$productRow[list].create_date}</font>
+
+													</td>
+													<td>
+														<a href="mcinfo.php?mcid={$productRow[list].id}" target="_blank">去换购</a>
+													</td>
+													<td>
+														{if $productRow[list].mc_price != ""}{$productRow[list].mc_price}红利{/if}{if $productRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$productRow[list].mc_price_type}积分
+														{/if}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 换购通知结束 -->
+
+							<!-- 问题反馈开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_9" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;问题反馈
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form method="post" action="post/messageinfo.php">
+										<table width=520px>
+											<tr>
+												<th>
+													标题：
+												</th>
+												<td>
+													<input type="text" size="30" id="title" name="title"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													内容：
+												</th>
+												<td>
+													<textarea cols="50" rows="5" id="content" name="content"></textarea><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" size="5" id="random" name="random">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											{if $errorInfoByQA!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByQA}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提交问题">
+													<input type="hidden" id="task" name="task" value="QA">
+												</td>
+											</tr>
+										</table>
+										</form>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 问题反馈结束 -->
+
+							<!-- 密码修改开始 -->
+
+							<div class="flwindex_fanlisj_right" id="mb_div_shops_10" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：会员中心&nbsp;&raquo;&nbsp;密码修改
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table width=520px>
+										<tr style="background: #7FB829; font-weight:bold;">
+											<td id="td_password" onclick="showModifyPassword('password');" style="text-align:left;font-size:14px;cursor:hand;">&gt;&gt;通过旧密码修改密码</td>
+											<td id="td_password2" onclick="showModifyPassword('password2');" style="text-align:left;font-size:14px;cursor:hand;">&gt;&gt;通过二次密码修改密码</td>
+											<td id="td_question" onclick="showModifyPassword('question');" style="text-align:left;font-size:14px;cursor:hand;">&gt;&gt;通过密保修改二次密码</td>
+										</tr>
+										</table>
+										{if $errorInfoByPassword!="OK"}
+										<table width=520px>
+											<tr>
+												<td style="text-align:center;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByPassword}</font>
+												</td>
+											</tr>
+										</table>
+										{/if}
+										<form method="post" action="post/messageinfo.php">
+										<table id="tb_password" width="520px">
+											<tr>
+												<th>
+													旧密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="oldpassword" name="oldpassword"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													新密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="password" name="password"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													确定密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="password2" name="password2"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" size="5" id="random" name="random">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="修改密码">
+													<input type="hidden" id="task" name="task" value="ModifyPasswordByOldPassword">
+												</td>
+											</tr>
+										</table>
+										</form>
+
+										<form method="post" action="post/messageinfo.php">
+										<table id="tb_password2" width="520px" style="display:none;">
+											<tr>
+												<th>
+													二次密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="secondpassword" name="secondpassword"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													新密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="password" name="password"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													确定密码：
+												</th>
+												<td>
+													<input type="password" size="30" id="password2" name="password2"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" size="5"  id="random" name="random">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提交问题">
+													<input type="hidden" id="task" name="task" value="ModifyPasswordBySecondPassword">
+												</td>
+											</tr>
+										</table>
+										</form>
+
+										<form method="post" action="post/messageinfo.php">
+										<table id="tb_question" width="520px" style="display:none;">
+											<tr>
+												<th>
+													问题：
+												</th>
+												<td>
+													{$mbInfo.question}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													答案：
+												</th>
+												<td>
+													<input type="text" size="30" id="answer" name="answer"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													新二次密码：
+												</th>
+												<td>
+													<input type="password" size="30"  id="password" name="password"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													确定二次密码：
+												</th>
+												<td>
+													<input type="password" size="30"  id="password2" name="password2"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" size="5"  id="random" name="random">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="提交问题">
+													<input type="hidden" id="task" name="task" value="ModifyPasswordByQuestion">
+												</td>
+											</tr>
+										</table>
+										</form>
+										<br>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 密码修改结束 -->
+
+							</div>
+
+
+
+							<!-- 会员中心结束 ####################################################################-->
+
+
+							<div class="qingchu"></div>
+
+							{if $mbInfo.mb_type > 0 && $mbInfo.state !=-1}
+
+
+							<!--商家平台 -->
+							<div class="flwindex_fanlisj_h1" style="margin-top: 10px; margin-bottom: 10px;">
+								<span class="flwindex_h3_jxcx" style="cursor:hand;" onclick="showOrHiddleDiv('sj')"></span>
+								<span class="flwindex_fanlisj_changqusj"
+									id="wodechangqushangjia"></span>
+								<span class="flwindex_fanlisj_h1_more"></span>
+							</div>
+
+							<div id="sj_div">
+
+							<div class="flwindex_fanlisj_left">
+								<ul>
+									<li id="shops_12" class="xuanzhong"  onclick="menuclick(21,12,'sj');">
+										基本资料
+									</li>
+									<li class="" id="shops_13" onclick="menuclick(21,13,'sj');">
+										完善平台
+									</li>
+									<li class="" id="shops_14" onclick="menuclick(21,14,'sj');">
+										查看平台
+									</li>
+									<li class="" id="shops_15" onclick="menuclick(21,15,'sj');">
+										售出产品
+									</li>
+									<li class="" id="shops_16" onclick="menuclick(21,16,'sj');">
+										换购会员
+									</li>
+									<li class="" id="shops_17" onclick="menuclick(21,17,'sj');">
+										意向顾客
+									</li>
+								</ul>
+							</div>
+							<!-- 基本资料平台 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_12" style="">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：商家平台&nbsp;&raquo;&nbsp;商家资料
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form action="post/messageinfo.php" method="post" name="sjform">
+										<table width="520px">
+											<tr>
+												<th width="100px">
+													注册商家名称
+												</th>
+												<td colspan="3">
+													<input type="text" id="sj_name" name="sj_name" size="35" maxlength="100" value="{$sjInfo.sj_name}">
+												</td>
+											</tr>
+											<tr>
+
+												<th>
+													商家类型
+												</th>
+												<td>
+													<select id="sj_type" name="sj_type">
+														{section name=list loop=$sjTypeRow}
+															<option value="{$sjTypeRow[list].id}" {if $sjTypeRow[list].id==$sjInfo.sj_type}selected{/if}>{$sjTypeRow[list].name}</option>
+														{/section}
+													</select>
+												</td>
+												<th  width="60px">
+													固话/手机
+												</th>
+												<td>
+													<input type="text" id="phone" name="phone" size="20" maxlength="20" value="{$sjInfo.phone}">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													所在省市
+												</th>
+												<td colspan="3">
+													<SELECT onchange=chsel2() size=1 name=szSheng id=szSheng>
+													<OPTION {if $sjInfo.province=='北京'}selected{/if} value="北京">
+														北京
+													</OPTION>
+													<OPTION {if $sjInfo.province=='安徽'}selected{/if} value="安徽">
+														安徽
+													</OPTION>
+													<OPTION {if $sjInfo.province=='山东省'}selected{/if} value="山东省">
+														山东省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="江苏省">
+														江苏省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='上海市'}selected{/if} value="上海市">
+														上海市
+													</OPTION>
+													<OPTION{if $sjInfo.province=='广东省'}selected{/if} value="广东省">
+														广东省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='浙江省'}selected{/if} value="浙江省">
+														浙江省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='福建省'}selected{/if} value="福建省">
+														福建省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='重庆市'}selected{/if} value="重庆市">
+														重庆市
+													</OPTION>
+													<OPTION {if $sjInfo.province=='甘肃省'}selected{/if} value="甘肃省">
+														甘肃省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='广西省'}selected{/if} value="广西省">
+														广西省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='贵州省'}selected{/if} value="贵州省">
+														贵州省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="海南省">
+														海南省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='河北省'}selected{/if} value="河北省">
+														河北省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='河南省'}selected{/if} value="河南省">
+														河南省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='黑龙江省'}selected{/if} value="黑龙江省">
+														黑龙江省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='湖北省'}selected{/if} value="湖北省">
+														湖北省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='湖南省'}selected{/if} value="湖南省">
+														湖南省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='江西省'}selected{/if} value="江西省">
+														江西省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='吉林省'}selected{/if} value="吉林省">
+														吉林省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='辽宁省'}selected{/if} value="辽宁省">
+														辽宁省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='内蒙古'}selected{/if} value="内蒙古">
+														内蒙古
+													</OPTION>
+													<OPTION {if $sjInfo.province=='宁夏'}selected{/if} value="宁夏">
+														宁夏
+													</OPTION>
+													<OPTION {if $sjInfo.province=='青海省'}selected{/if} value="青海省">
+														青海省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='山西省'}selected{/if} value="山西省">
+														山西省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='陕西省'}selected{/if} value="陕西省">
+														陕西省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='四川省'}selected{/if} value="四川省">
+														四川省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='天津市'}selected{/if} value="天津市">
+														天津市
+													</OPTION>
+													<OPTION {if $sjInfo.province=='新疆'}selected{/if} value="新疆">
+														新疆
+													</OPTION>
+													<OPTION {if $sjInfo.province=='西藏'}selected{/if} value="西藏">
+														西藏
+													</OPTION>
+													<OPTION {if $sjInfo.province=='云南省'}selected{/if} value="云南省">
+														云南省
+													</OPTION>
+													<OPTION {if $sjInfo.province=='香港'}selected{/if} value="香港">
+														香港
+													</OPTION>
+													<OPTION {if $sjInfo.province=='澳门'}selected{/if} value="澳门">
+														澳门
+													</OPTION>
+													<OPTION {if $sjInfo.province=='台湾'}selected{/if} value="台湾">
+														台湾
+													</OPTION>
+													<OPTION {if $sjInfo.province=='国外与其它'}selected{/if} value="国外与其它">
+														国外与其它
+													</OPTION>
+												</SELECT>
+												<SELECT size=1 name=szShi id="szShi2">
+													<OPTION selected>
+														国外与其它
+													</OPTION>
+												</SELECT>
+												{$sjAddressCity}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													详细地址
+												</th>
+												<td colspan="3">
+													<input type="text" id="address" name="address" size="35" maxlength="200" value="{$sjInfo.address}">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													法定人名称
+												</th>
+												<td>
+													<input type="text" id="link_man" name="link_man" size="20" maxlength="50" value="{$sjInfo.link_man}">
+
+												</td>
+												<th>
+													E-mail
+												</th>
+												<td>
+												<input type="text" id="email" name="email" size="20" maxlength="50" value="{$sjInfo.email}">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													状态
+												</th>
+												<td>
+													{if $sjInfo.state==0}
+														<font style="color:red">未审核</font>
+													{else}
+														<font style="color:blue">已审核</font>
+													{/if}
+												</td>
+												<th>
+													注册时间
+												</th>
+												<td>
+													{$sjInfo.create_date}
+												</td>
+											</tr>
+											<tr>
+												<th>二次密码</th>
+												<td>
+												<input type="password" id="password" name="password" value="" size="20" maxlength="30">
+												</td>
+												<th>验证码</th>
+												<td>
+												<input type="text" maxlength="4" id="random" name="random" size="5">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" />
+												</td>
+											</tr>
+											{if $errorInfoBySjInfo!="OK"}
+											<tr>
+												<td colspan="4" style="text-align:center;font-weight:bold;">
+													<font style="color:red;">{$errorInfoBySjInfo}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td colspan="4" style="text-align:center;">
+													<input type="submit" value="商家资料修改">
+													<input type="hidden" id="task" name="task" value="updateSjInfo">
+													<input type="hidden" id="sjid" name="sjid" value="{$sjInfo.id}">
+													<input type="hidden" id="mbid" name="mbid" value="{$sjInfo.mb_id}">
+												</td>
+											</tr>
+										</table>
+										</form>
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 基本资料 结束 -->
+
+							<!-- 完善平台 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_13" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bt" style="text-align: right;color:#FFFFFF;">
+										当前位置：商家平台&nbsp;&raquo;&nbsp;完善平台
+									</div>
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<form action="post/messageinfo.php" method="post" enctype="multipart/form-data">
+										<table width=520px>
+											<tr>
+												<th>
+													商品名称：
+												</th>
+												<td>
+													<input type="text" size="30" id="mc_name" name="mc_name" maxlength="200"><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													商品类型：
+												</th>
+												<td>
+													<input type="radio" id="type" name="type" value="product" checked>产品
+													<input type="radio" id="type" name="type" value="mc">换购产品<font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													内容：
+												</th>
+												<td>
+													<textarea cols="70" rows="10" id="mc_desc" name="mc_desc"></textarea><font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													图片：
+												</th>
+												<td>
+													<input type="file" id="pic_file" name="pic_file"><font color="red">*</font><br>
+													允许上传的图片格式为：gif|jpg|jpeg|png|bmp,最大为5M.
+												</td>
+											</tr>
+											<tr>
+												<th>
+													红利：
+												</th>
+												<td>
+													<input type="text" id="price" name="price" maxlength="10">(红利)<font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													积分：
+												</th>
+												<td>
+													<input type="text" id="price_type" name="price_type" maxlength="10">(积分)<font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													数量：
+												</th>
+												<td>
+													<input type="text" id="count" name="count" maxlength="10">(件)<font color="red">*</font>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													验证码：
+												</th>
+												<td>
+													<input type="text" size="5" id="random" name="random"  maxlength="4">&nbsp;<img src="action/random/imgcode.php" alt="看不清楚，换一张"
+														    style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" /><font color="red">*</font>
+												</td>
+											</tr>
+											{if $errorInfoByAddProduct!="OK"}
+											<tr>
+												<td></td>
+												<td style="text-align:left;font-weight:bold;">
+													<font style="color:red;">{$errorInfoByAddProduct}</font>
+												</td>
+											</tr>
+											{/if}
+											<tr>
+												<td>
+													&nbsp;
+												</td>
+												<td>
+													<input type="reset" size="重置">
+													<input type="submit" value="发布信息">
+													<input type="hidden" id="sjid" name="sjid" value="{$sjInfo.id}">
+													<input type="hidden" id="task" name="task" value="addProduct">
+
+												</td>
+											</tr>
+										</table>
+										</form>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 完善平台 结束 -->
+
+							<!-- 查看平台 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_14" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="122px">
+													商品图片
+												</th>
+												<th>
+													商品名称
+												</th>
+												<th width="65px">
+													操作
+												</th>
+												<th width="70px">
+													价格
+												</th>
+											</tr>
+
+											{section name=list loop=$mcRow}
+												<tr>
+													<td style="border-left:0px;">
+														<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+													</td>
+													<td>
+														<span style="color:#333333;font-size:16px;">{$mcRow[list].mc_name}</span><br>
+														数量：<font style="color:#C03ACB;">{$mcRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
+														状态：{if $mcRow[list].state == "0"}
+															<font style="color:#2D6C3D;">在售商品</font>
+														{/if}
+														{if $mcRow[list].state == "-1"}
+															<font style="color:red;">无效商品</font>
+														{/if}
+														{if $mcRow[list].state == "-2"}
+															<font style="color:#C0C0C0;">已售完</font>
+														{/if}
+
+													</td>
+													<td>
+														修改/删除
+													</td>
+													<td>
+														{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 完善平台 结束 -->
+
+							<!-- 售出产品 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_15" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="122px">
+													商品图片
+												</th>
+												<th>
+													商品名称
+												</th>
+												<th width="65px">
+													售出量
+												</th>
+												<th width="70px">
+													价格
+												</th>
+											</tr>
+											{section name=list loop=$mcRow}
+												<tr>
+													<td style="border-left:0px;">
+														<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+													</td>
+													<td>
+														<span style="color:#333333;font-size:16px;">{$mcRow[list].mc_name}</span><br>
+														数量：<font style="color:#C03ACB;">{$mcRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
+														状态：{if $mcRow[list].state == "0"}
+															<font style="color:#2D6C3D;">在售商品</font>
+														{/if}
+														{if $mcRow[list].state == "-1"}
+															<font style="color:red;">无效商品</font>
+														{/if}
+														{if $mcRow[list].state == "-2"}
+															<font style="color:#C0C0C0;">已售完</font>
+														{/if}
+
+													</td>
+													<td>
+														100(件)
+													</td>
+													<td>
+														{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 售出产品 结束 -->
+
+							<!-- 换购会员 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_16" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="80px">
+													会员名称
+												</th>
+												<th>
+													商品名称
+												</th>
+												<th width="120px">
+													换购时间
+												</th>
+												<th width="110px">
+													商品价格
+												</th>
+											</tr>
+											{section name=list loop=$memberRow}
+											<tr>
+												<td style="border-left:0px;">
+													{$memberRow[list].mb_name}
+												</td>
+												<td>
+													{$memberRow[list].mc_name}
+												</td>
+												<td>
+													{$memberRow[list].create_date}
+												</td>
+												<td>
+												<!-- 0价格1积分2红利 -->
+													{$memberRow[list].price}红利+{$memberRow[list].price_type}积分
+												</td>
+											</tr>
+											{sectionelse}
+											<tr>
+												<td style="border-left:0px;text-align: center;">
+													没有所要查询的数据...
+												</td>
+											</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 换购会员 结束 -->
+
+							<!-- 意向顾客 -->
+							<div class="flwindex_fanlisj_right" id="sj_div_shops_17" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" cellpadding="1" cellspacing="1" width=520px>
+											<tr>
+												<th style="border-left:0px;" width="150px">
+													会员名称
+												</th>
+												<th width="120px">
+													会员姓名
+												</th>
+												<th width="120px">
+													关注产品
+												</th>
+												<th>
+													联系方式
+												</th>
+											</tr>
+											{section name=list loop=$customerRow}
+												<tr>
+													<td style="border-left:0px;">
+															{$customerRow[list].mb_name}
+													</td>
+													<td style="">
+														{$customerRow[list].mb_realname}
+													</td>
+													<td>
+														{$customerRow[list].mc_name}
+													</td>
+													<td style="">
+														{$customerRow[list].mb_phone}
+													</td>
+												</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 意向顾客 结束 -->
+
+							</div>
+
+
+							<div class="qingchu"></div>
+
+							{/if}
+
+							{if $mbInfo.mb_type > 1 && $mbInfo.state !=-1}
+
+							<!-- 商家平台结束 ####################################################################-->
+
+
+
+
+							<!-- 审核中心 -->
+							<div class="flwindex_fanlisj_h1" style="margin-top: 10px;margin-bottom: 10px;">
+								<span class="flwindex_h4_husd" style="cursor:hand;" onclick="showOrHiddleDiv('auth')"></span>
+								<span class="flwindex_fanlisj_changqusj"
+									id="wodechangqushangjia"></span>
+								<span class="flwindex_fanlisj_h1_more"></span>
+							</div>
+
+							<div id="auth_div">
+
+							<div class="flwindex_fanlisj_left">
+								<ul>
+									<li id="shops_18" class="xuanzhong"  onclick="menuclick(21,18,'auth');">
+										商家审核
+									</li>
+									<li id="shops_19" onclick="menuclick(21,19,'auth');">
+										已审核商家
+									</li>
+								</ul>
+							</div>
+
+
+							<!-- 商家审核 -->
+							<div class="flwindex_fanlisj_right" id="auth_div_shops_18" style="">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+
+										<table class="litab" cellpadding="0" cellspacing="0" width=520px>
+											<tr style="font-weight:bold;">
+												<th style="text-align:center;border-left:0px;">
+													商家名称
+												</th>
+												<th  style="width:100px;text-align:center;">
+													申请帐号
+												</th>
+												<th  style="width:120px;text-align:center;">
+													申请时间
+												</th>
+												<th  style="width:80px;text-align:center;">
+													操作
+												</th>
+											</tr>
+											{section name=list loop=$unAuthRow}
+											<tr>
+												<td style="text-align:center;border-left:0px;">
+													{$unAuthRow[list].sj_name}
+												</td>
+												<td style="text-align:center;">
+													{$unAuthRow[list].mb_name}
+												</td>
+												<td style="text-align:center;">
+													{$unAuthRow[list].create_date}
+												</td>
+												<td style="text-align:center;">
+													<a href="post/messageinfo.php?sjid={$unAuthRow[list].id}&task=PassAuthSj">同意</a>&nbsp;/&nbsp;<a href="post/messageinfo.php?sjid={$unAuthRow[list].id}&task=BackAuthSj">退回</a>
+												</td>
+											</tr>
+											{sectionelse}
+											<tr>
+												<td colspan="4" style="text-align:center;border-left:0px;">
+													没有未审核商家...
+												</td>
+											</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 商家审核 结束 -->
+
+
+							<!-- 已审核商家-->
+							<div class="flwindex_fanlisj_right" id="auth_div_shops_19" style="display:none">
+
+								<b class="b1"></b>
+								<b class="b2"></b>
+								<b class="b3"></b>
+								<div class="bc" style="text-align: left;">
+									<div class="bb" style="text-align: left; height: 100%;"
+										id="resultDiv">
+										<table class="litab" width=520px>
+											<tr style="font-weight:bold;">
+												<th style="text-align:center;border-left:0px;">
+													商家名称
+												</th>
+												<th  style="text-align:center;">
+													申请帐号
+												</th>
+												<th  style="text-align:center;">
+													申请时间
+												</th>
+												<th  style="text-align:center;">
+													状态
+												</th>
+											</tr>
+											{section name=list loop=$authRow}
+											<tr>
+												<td style="text-align:center;border-left:0px;">
+													{$authRow[list].sj_name}
+												</td>
+												<td style="text-align:center;">
+													{$authRow[list].mb_name}
+												</td>
+												<td style="text-align:center;">
+													{$authRow[list].create_date}
+												</td>
+												<td style="text-align:center;">
+													{if $authRow[list].state==0}
+														<font style="color:blue;">通过审核</font>
+													{else}
+														<font style="color:red;">退回</font>&nbsp;/&nbsp;<a href="post/messageinfo.php?sjid={$unAuthRow[list].id}&task=PassAuthSj">再审通过</a>
+													{/if}
+												</td>
+											</tr>
+											{sectionelse}
+											<tr>
+												<td colspan="4" style="text-align:center;border-left:0px;">
+													没有已审核商家...
+												</td>
+											</tr>
+											{/section}
+										</table>
+
+									</div>
+									<div class="bt" style="height: 1px;"></div>
+								</div>
+								<b class="b3"></b>
+								<b class="b2"></b>
+								<b class="b1"></b>
+
+							</div>
+							<!-- 已审核商家 结束 -->
+
+							</div>
+							<div class="qingchu"></div>
+							{/if}
+
+							{literal}
+
+						</div>
+
+						<!--/红利商家-->
+
+
+					</div>
+					<div class="flwindex_content_right">
+						<!--首页轮转广告
+		  <div class="flwindex_guanggao">
+			<style type="text/css">
+			.slideimage{width:270px;height:175px;text-align:left;margin:0px;}
+			.textbg{margin-top:150px;z-index:1;width:270px;position:absolute;height:25px;background:url(images/flwindex_ggbj.jpg) repeat-x bottom;}
+			.text{margin-top:157px;*margin-top:158px;_margin-top:158px;z-index:2;padding-left:10px;font-size:12px;width:135px;color:#006600;height:16px;overflow:hidden;position:absolute;cursor:pointer;overflow:hidden;}
+			.num{margin:154px 0px 0px 155px;z-index:3;width:100px;text-align:right;position:absolute;height:25px;font-family:Arial, Helvetica, sans-serif;}
+			.num a{margin:0 0px;font-size:14px;cursor:pointer;color:#333;padding:2px 6px 2px 6px;text-align:center;margin-right:2px;}
+			.num a.on{background:url(images/flwindex_bj.jpg) 0 -92px;color:#fff;}
+			.num a.off{color:#333;}
+			.content img{width:270px;height:150px;}
+			</style>
+	<div class="slideimage">
+	  <ul>
+			<li class="textbg"></li>
+			<li class="text"><a href="http://www.51fanli.com/emailcheck.asp?edmid=tg_event_20111001_02&amp;url=http%3a%2f%2ftg.51fanli.com%2findex.php%2fevent%2fe20111130.html%3f%26utm_source%3d51fanli%26utm_medium%3dad%26utm_content%3dtg_event_20111001_02%26utm_campaign%3dtg_event_20111001" target="_blank">大闸蟹专场,免单进行时!</a></li>
+			<li class="num"><a class="off">1</a><a class="on">2</a><a class="off">3</a><a class="off">4</a><a class="off">5</a></li>
+			<li class="content" id="index_flash">
+
+				<a style="display: none;" href="http://www.51fanli.com/zt/jinqiu1007/" onclick="upwkview(560,'indexflash')" indexflash_id="560" target="_blank" title="汇聚全网2折起秋冬新款!"><img src="index_files/201110179102890504.jpg" alt="汇聚全网2折起秋冬新款!"></a>联盟动态 <a style="display: none;" href="http://www.51fanli.com/goshop.asp?shopid=633&amp;gourl=http://www.yihaodian.com/cms/view.do?topicId=17486&amp;merchant=1" onclick="upwkview(554,'indexflash')" indexflash_id="554" target="_blank" title="1元抢到全世界信不信!"><img src="index_files/20111071026337595.jpg" alt="1元抢到全世界信不信!"></a>
+
+				<a style="display: none;" href="http://www.51fanli.com/goshop.asp?shopid=1105&amp;gourl=http://www.yjcs.cn/zhuti/yinxin_gl/51sale.html" onclick="upwkview(561,'indexflash')" indexflash_id="561" target="_blank" title="送40元,全网隐形最低价!"><img src="index_files/2011101218134554189.jpg" alt="送40元,全网隐形最低价!"></a>
+
+				<a style="display: none;" href="http://www.51fanli.com/goshop.asp?shopid=1147&amp;gourl=http://www.cp2y.com/" onclick="upwkview(556,'indexflash')" indexflash_id="556" target="_blank" title="小投入!万一中了呢!"><img src="index_files/201110816422695125.jpg" alt="小投入!万一中了呢!"></a>			</li>
+		</ul>
+	</div>
+</div>-->
+						<!--/首页轮转广告-->
+
+						<!--首页独享活动-->{/literal}
+						<div class="flwindex_duxiang">
+							<div class="flwindex_duxiang_h1">
+								联盟动态
+								<span class="flwindex_duxiang_h1_more"><a href="news.php?type=2"
+									class="shier" target="_blank">更多&gt;&gt;</a>
+								</span>
+							</div>
+
+							<div class="flwindex_duxiang_content">
+								<ul>
+
+									{section name=list loop=$newsDTRow}
+									<li>
+										<span class="flwindex_xiaosanjiao"
+											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;
+										<a href="#" class="shier" target="_blank"></a><a href="newsinfo.php?newsid={$newsDTRow[list].id}"
+											target="_blank" title="{$newsDTRow[list].title}">{$newsDTRow[list].title}</a>
+									</li>
+									{/section}
+
+									<li>
+										<span class="flwindex_xiaosanjiao"
+											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;
+										<a href="#" class="shier" target="_blank"></a><a href="#"
+											target="_blank" title="测试!">测试测试测试测试测试测试!</a>
+									</li>
+
+									<li class="bianjuwu">
+										<span class="flwindex_xiaosanjiao"
+											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;
+										<a href="#" class="shier" target="_blank"></a><a href="#"
+											target="_blank" title="测试测试测试!">测试测试测试测试测试!</a>
+									</li>
+
+									<div class="qingchu"></div>
+								</ul>
+							</div>
+						</div>
+						<!--/首页独享活动-->
+
+
+						<!--首页独享活动-->
+						<div class="flwindex_duxiang">
+							<div class="flwindex_duxiang_h1">
+								联盟介绍
+								<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
+									class="shier" target="_blank">更多&gt;&gt;</a>
+								</span>
+							</div>
+							<!--
+            <div class="flwindex_duxiang_pic">22</div>
+            -->
+							<div class="flwindex_duxiang_content" style="padding-left:10px;padding-right:10px;">
+								<!--
+              <ul>
+
+                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试测试!</a></li>
+
+                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
+
+                <li class="bianjuwu"><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
+
+                <div class="qingchu"></div></ul>-->
+								{$aboutMeInfo|truncate:500:".."}
+
+							</div>
+						</div>
+						<!--/首页独享活动-->
+
+						<!--首页热门优惠券-->
+						<div class="flwindex_duxiang">
+							<div class="flwindex_duxiang_h1">
+								联盟公告
+								<span class="flwindex_duxiang_h1_more"><a href="news.php?type=1"
+									class="shier" target="_blank">更多&gt;&gt;</a>
+								</span>
+							</div>
+							<div class="flwindex_remenyhq_content">
+								<ul>
+
+									{section name=list loop=$newsGGRow}
+									<li>
+										<span class="flwindex_remenyhq_span1"><span
+											class="flwindex_xiaosanjiao"
+											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
+											href="newsinfo.php?newsid={$newsGGRow[list].id}" target="_blank" title="{$newsGGRow[list].title}">{$newsGGRow[list].title}</a>
+										</span>
+									</li>
+									{/section}
+
+									<li>
+										<span class="flwindex_remenyhq_span1"><span
+											class="flwindex_xiaosanjiao"
+											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
+											href="#" target="_blank" title="测试">测试测试测试测试</a>
+										</span>
+
+									</li>
+
+									<div class="qingchu"></div>
+								</ul>
+							</div>
+						</div>
+						<!--/首页热门优惠券-->
+
+					</div>
+
+
+
+{$js}
+{include file="inc/buttom.html"}

@@ -1,0 +1,50 @@
+{include file="inc/top.html"}
+	  <!--topbannerad-->
+
+	  <!--/topbannerad-->
+
+<div class="container" style="margin-top: 25px;">
+
+
+	<div class="containerLeft">
+
+		<div style="float: left; width: 134px; text-align: center;">
+			<img src="images/qa.jpg">
+		</div>
+        <div style="width: 600px; float: left;">
+			<img src="images/help.gif" />
+			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
+				联盟网的问题在这寻找答案，这将让你快速走上联盟网的旅程，赶快联盟返利的行动吧....
+			</span>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+		<div>
+		  	<b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">常见问题</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<div id="newscontent">
+						<div class="newstitle">{$newsInfo.title}</div>
+						<div class="info">作者：{$newsInfo.auther} &nbsp;&nbsp; 发布于：{$newsInfo.create_date}</div>
+						<div id="con" class="con">
+							<p>{$newsInfo.content}</p></br>
+						</div>
+					</div>
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+		</div>
+    	<div class="clear"></div>
+    </div>
+
+	{include file="inc/right.html"}
+
+</div>
+{include file="inc/buttom.html"}

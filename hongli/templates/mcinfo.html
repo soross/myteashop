@@ -1,0 +1,246 @@
+{include file="inc/top.html"}
+{literal}
+
+
+<div class="container" style="margin-top: 25px;">
+	<div class="containerLeft">
+    	<div style="float: left; width: 134px; text-align: center;">
+			<img src="images/procat1_5.gif">
+		</div>
+        <div style="width: 605px; float: left;">
+			<img src="images/lianmengshangjia.gif" />
+			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
+				联盟网引导会员去联盟商家消费，成功消费后可从商城获得红利卡，凭红利卡到联盟网换起红利，大部分利润会返还给会员，这就是联盟红利！<br>
+				<a href="#">点击了解更多&gt;&gt;</a>
+			</span>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+    	<div class="containerleft2">
+        	<ul class="leftMenu" id="leftmenu">
+            	<li class="sele">
+					<span style="font-size: 17px; color: rgb(255, 255, 255); font-weight: bold;">商家分类</span>
+				</li>
+				{/literal}
+				{section name=list loop=$sjTypeRow}
+                <li><a href="procat.php?type={$sjTypeRow[list].id}" class="graylink" style="display: block;">{$sjTypeRow[list].name}</a></li>
+                {sectionelse}
+				<li>没有所要查找的数据……</li>
+                {/section}
+
+            </ul>
+            <br>
+             <ul>
+            	{section name=list loop=$leftAD}
+            	<div style="padding: 0px;">
+					<a href="{$leftAD[list].type_url}" target="_blank"><img src="{$leftAD[list].type_code}" border="0" style="width:145px;"></a>
+				</div>
+				{/section}
+            </ul>
+        </div>
+    	<div class="containerleft3">
+    	  <div class="procatTit">{$mcInfo.sj_name}-{$mcInfo.mc_name}</div>
+    	  <div class="procatsou">
+    	    <div style="clear: both; height: 1px; overflow: hidden;"></div>
+  	      </div>
+			<!--商品详细信息-->
+		<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>商品详细信息</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<td width="240px;" rowspan="{if $mcInfo.mc_type==0}5{else}6{/if}">
+								<table style="width:100%;height:100%;"><tr><td>
+									<img src="{$mcInfo.mc_pic}" width="238px" height="200px">
+								</td></tr></table>
+							</td>
+
+							<th>
+								商品名称：
+							</th>
+							<td>
+								{$mcInfo.mc_name}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								商品数量：
+							</th>
+							<td>
+								{$mcInfo.mc_count}件
+							</td>
+						</tr>
+						<tr>
+							<th>
+								商品价格：
+							</th>
+							<td>
+								<font style="color:red;">{$mcInfo.mc_price}红利+{$mcInfo.mc_price_type}积分</font>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								商品类型：
+							</th>
+							<td>
+								{$mcInfo.name}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								所属商家：
+							</th>
+							<td>
+								<a href="procatinfo.php?id={$mcInfo.sj_id}">{$mcInfo.sj_name}</a>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<th style="text-align:left;">
+								商品描述
+							</th>
+						</tr>
+						<tr>
+							<td>
+							{$mcInfo.mc_desc}
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td style="text-align:center;">
+									{if $mcInfo.mc_type==0}
+									<form action="post/mc_action.php" method="post" onsubmit="return confirm('确定购买?');">
+										<input type="button" class="submit15" value="返回" onclick="window.history.back();">&nbsp;
+										<input type="button" class="submit11" value="我要收藏" onclick="location.href='post/mc_action.php?task=ShouChang&mcid={$mcInfo.id}'">&nbsp;
+										<input type="submit" class="submit15" value="购买">
+										<input type="hidden" id="task" name="task" value="BuyMc">
+									{else}
+									<form action="post/mc_action.php" method="post" onsubmit="return confirm('确定换购?');">
+										<input type="button" class="submit15" value="返回" onclick="window.history.back();">&nbsp;
+										<input type="button" class="submit11" value="我要收藏" onclick="location.href='post/mc_action.php?task=ShouChang&mcid={$mcInfo.id}'">&nbsp;
+										<input type="submit" class="submit11" value="我要换购">
+										<input type="hidden" id="task" name="task" value="BuyProduct">
+									{/if}
+									<input type="hidden" id="mbid" name="mbid" value="{$mcInfo.mb_id}">
+									<input type="hidden" id="mcid" name="mcid" value="{$mcInfo.id}">
+								</form>
+							</td>
+						</tr>
+					</table>
+
+
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+
+			<!--商品详细信息结束-->
+
+
+			<br>
+
+			<!--联系方式-->
+		<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>联系方式</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<th>
+								联系人：
+							</th>
+							<td>
+								{$mcInfo.link_man}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								电话：
+							</th>
+							<td>
+								{$mcInfo.telephone}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								手机：
+							</th>
+							<td>
+								{$mcInfo.phone}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								传真：
+							</th>
+							<td>
+								{$mcInfo.fax}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								QQ：
+							</th>
+							<td>
+								{$mcInfo.qq}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								地址：
+							</th>
+							<td>
+								{$mcInfo.province}{$mcInfo.city}{$mcInfo.address}
+							</td>
+						</tr>
+					</table>
+
+
+
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+
+			<!--联系方式结束-->
+
+
+
+    	    <div style="clear: both; height: 1px; overflow: hidden;"></div>
+
+
+		</div>
+
+
+
+
+
+    	<div class="clear"></div>
+    </div>
+{include file="inc/right.html"}
+
+</div>
+
+{include file="inc/buttom.html"}

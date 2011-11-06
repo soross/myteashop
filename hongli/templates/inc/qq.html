@@ -1,0 +1,207 @@
+	<div class="qqbox_left" id="divQQbox2" style="display: none">
+	</div>
+    <div class="qqbox" id="divQQbox">
+        <div class="qqlv" id="meumid" onmouseover="show()">
+            <img src="images/qq/kefu.gif" />
+		</div>
+        <div class="qqkf" id="contentid" style="display: none" onmouseout="hideMsgBox(event)">
+            <!--栏目标题一-->
+            <div class='qqkfbt' id='qq-1'></div>
+            {section name=list loop=$qq}
+			<div class='submenu' id='DIV{$qq[list].id}'>
+				<div class='qqkfhm'>
+					<a href='http://wpa.qq.com/msgrd?v=3&amp;uin={$qq[list].type_code}&amp;site={$qq[list].content}&amp;menu=yes' target='_blank'>
+						<img title='{$qq[list].remark}' alt='{$qq[list].remark}' src='{$qq[list].type_url}' border='0'>
+					</a>
+				</div>
+			</div>
+			{/section}
+			<!--
+			<div class='submenu' id='DIV1'>
+				<div class='qqkfhm'>
+					<a href='http://wpa.qq.com/msgrd?v=3&amp;uin=2281161284&amp;site=销售主管&amp;menu=yes' target='_blank'>
+						<img title='点击这里给我发消息' alt='点击这里给我发消息' src='images/qq/qq3.gif' border='0'>
+					</a>
+				</div>
+			</div>
+			<div class='submenu' id='DIV2'>
+				<div class='qqkfhm'>
+					<a href='http://wpa.qq.com/msgrd?v=3&amp;uin=2500880378&amp;site=销售主管&amp;menu=yes' target='_blank'>
+						<img title='点击这里给我发消息' alt='点击这里给我发消息' src='images/qq/qq4.gif' border='0'>
+					</a>
+				</div>
+			</div>
+			<div class='submenu' id='DIV3'>
+				<div class='qqkfhm'>
+					<a href='http://wpa.qq.com/msgrd?v=3&amp;uin=1742784799&amp;site=销售主管&amp;menu=yes' target='_blank'>
+						<img title='点击这里给我发消息' alt='点击这里给我发消息' src='images/qq/qq5.gif' border='0'>
+					</a>
+				</div>
+			</div>
+			<div class='submenu' id='DIV4'><div class='qqkfhm'>
+				<a href='http://wpa.qq.com/msgrd?v=3&amp;uin=1173745835&amp;site=销售主管&amp;menu=yes' target='_blank'>
+					<img title='点击这里给我发消息' alt='点击这里给我发消息' src='images/qq/qq6.gif' border='0'>
+				</a>
+			</div>
+			 -->
+		</div>
+	</div>
+
+{literal}
+<!--在线QQ客服开始-->
+<link href="css/style_QQ_servces.css" rel="stylesheet" type="text/css" />
+<!--在线QQ客服结束-->
+<script type="text/javascript">
+	function showandhide(h_id,hon_class,hout_class,c_id,totalnumber,activeno) {
+		var h_id,hon_id,hout_id,c_id,totalnumber,activeno;
+		for (var i=1;i<=totalnumber;i++) {
+			document.getElementById(c_id+i).style.display='none';
+			document.getElementById(h_id+i).className=hout_class;
+		}
+		document.getElementById(c_id+activeno).style.display='block';
+		document.getElementById(h_id+activeno).className=hon_class;
+	}
+
+
+	function show()
+	{
+	   alert("begin");
+		document.getElementById("meumid").style.display="none"
+		document.getElementById("contentid").style.display="block"
+	}
+		function hideMsgBox(theEvent){
+		debugger;
+		  if (theEvent){
+			var browser=navigator.userAgent;
+			if (browser.indexOf("Firefox")>0){  //如果是Firefox
+				if (document.getElementById("contentid").contains(theEvent.relatedTarget)) {  //如果是子元素
+					return
+				}
+			}
+			if (browser.indexOf("MSIE")>0 || browser.indexOf("Presto")>=0){  //如果是IE
+				if (document.getElementById('contentid').contains(event.toElement)) {  //如果是子元素
+					return;  //结束函式
+				}
+			}
+		  }
+		  document.getElementById("meumid").style.display = "block";
+		  document.getElementById("contentid").style.display = "none";
+		}
+			</script>
+
+		</div>
+
+		<script type="text/javascript">
+	function showandhide(h_id,hon_class,hout_class,c_id,totalnumber,activeno) {
+		var h_id,hon_id,hout_id,c_id,totalnumber,activeno;
+		for (var i=1;i<=totalnumber;i++) {
+			document.getElementById(c_id+i).style.display='none';
+			document.getElementById(h_id+i).className=hout_class;
+		}
+		document.getElementById(c_id+activeno).style.display='block';
+		document.getElementById(h_id+activeno).className=hon_class;
+	}
+
+	var tips;
+	var tips2;
+	var theTop = 232;
+	var MaxTop=380;
+	var MinTop=2337;
+	var old = theTop;
+	var old2 = theTop;
+	function initFloatTips()
+	{
+		tips = document.getElementById('divQQbox');
+		tips2 = document.getElementById('divQQbox2');
+		moveTips2();
+		moveTips();
+	}
+	function moveTips()
+	{
+			  var tt=50;
+			  if (window.innerHeight)
+			  {
+				  MinTop = pos = window.pageYOffset
+			  }else if (document.documentElement && document.documentElement.scrollTop) {
+				  MinTop = pos = document.documentElement.scrollTop
+			  }else if (document.body) {
+				  MinTop = pos = document.body.scrollTop;
+			  }
+			  pos=pos-tips.offsetTop+theTop;
+			  pos=tips.offsetTop+pos/10;
+	//		  if(pos<MaxTop)
+	//		     pos=MaxTop;
+	//		  if(pos>MinTop+theTop-5)
+	//		     pos=MinTop+theTop-5;
+			  if (pos != old) {
+				 tips.style.top = pos+"px";
+				 tt=10;  //alert(tips.style.top);
+			  }
+			  old = pos;
+			  setTimeout(moveTips,tt);
+	}
+	function moveTips2()
+	{
+			  var tt=50;
+			  if (window.innerHeight)
+			  {
+				  pos = window.pageYOffset
+			  }else if (document.documentElement && document.documentElement.scrollTop) {
+				 pos = document.documentElement.scrollTop
+			  }else if (document.body) {
+				pos = document.body.scrollTop;
+			  }
+			  pos=pos-tips2.offsetTop+theTop;
+			  pos=tips2.offsetTop+pos/10;
+			  if (pos < theTop){
+				 pos = theTop;
+			  }
+			  if(pos<MaxTop)
+				 pos=MaxTop;
+			  if(pos>MinTop)
+				 pos=MinTop;
+			  if (pos != old2) {
+				 tips2.style.top = pos+"px";
+				 tt=10;  //alert(tips.style.top);
+			  }
+			  old2 = pos;
+			  setTimeout(moveTips2,tt);
+	}
+	initFloatTips();
+
+		if(typeof(HTMLElement)!="undefined")    //给firefox定义contains()方法，ie下不起作用
+			{
+			  HTMLElement.prototype.contains=function (obj)
+			  {
+				  while(obj!=null&&typeof(obj.tagName)!="undefind"){ //通过循环对比来判断是不是obj的父元素
+		   　　 　if(obj==this) return true;
+		   　　　	　obj=obj.parentNode;
+		   　　	  }
+				  return false;
+			  }
+		}
+
+	function show()
+	{
+		document.getElementById("meumid").style.display="none"
+		document.getElementById("contentid").style.display="block"
+	}
+	function hideMsgBox(theEvent){
+	  if (theEvent){
+		var browser=navigator.userAgent;
+		if (browser.indexOf("Firefox")>0){  //如果是Firefox
+		    if (document.getElementById("contentid").contains(theEvent.relatedTarget)) {  //如果是子元素
+				return
+			}
+		}
+		if (browser.indexOf("MSIE")>0 || browser.indexOf("Presto")>=0){  //如果是IE
+	        if (document.getElementById('contentid').contains(event.toElement)) {  //如果是子元素
+			    return;  //结束函式
+		    }
+		}
+	  }
+	  document.getElementById("meumid").style.display = "block";
+	  document.getElementById("contentid").style.display = "none";
+ 	}
+</script>
+{/literal}

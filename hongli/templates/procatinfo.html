@@ -1,0 +1,269 @@
+{include file="inc/top.html"}
+{literal}
+
+
+<div class="container" style="margin-top: 25px;">
+	<div class="containerLeft">
+    	<div style="float: left; width: 134px; text-align: center;">
+			<img src="images/procat1_5.gif">
+		</div>
+        <div style="width: 605px; float: left;">
+			<img src="images/lianmengshangjia.gif" />
+			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
+				联盟网引导会员去联盟商家消费，成功消费后可从商城获得红利卡，凭红利卡到联盟网换起红利，大部分利润会返还给会员，这就是联盟红利！<br>
+				<a href="#">点击了解更多&gt;&gt;</a>
+			</span>
+        </div>
+        <div class="clear" style="height: 20px;"></div>
+    	<div class="containerleft2">
+        	<ul class="leftMenu" id="leftmenu">
+            	<li class="sele">
+					<span style="font-size: 17px; color: rgb(255, 255, 255); font-weight: bold;">商家分类</span>
+				</li>
+				{/literal}
+				{section name=list loop=$sjTypeRow}
+                <li><a href="procat.php?type={$sjTypeRow[list].id}" class="graylink" style="display: block;">{$sjTypeRow[list].name}</a></li>
+                {sectionelse}
+				<li>没有所要查找的数据……</li>
+                {/section}
+
+            </ul>
+            <br>
+            <ul>
+            	{section name=list loop=$leftAD}
+            	<div style="padding: 0px;">
+					<a href="{$leftAD[list].type_url}" target="_blank"><img src="{$leftAD[list].type_code}" border="0" style="width:145px;"></a>
+				</div>
+				{/section}
+            </ul>
+        </div>
+    	<div class="containerleft3">
+    	  <div class="procatTit">{$sjInfo.sj_name}</div>
+    	  <div class="procatsou">
+    	    <div style="clear: both; height: 1px; overflow: hidden;"></div>
+  	      </div>
+
+    	  <div style="font-size: 17px; color: rgb(49, 49, 49); font-weight: bold; clear: both;"></div>
+			<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>公司简介</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<td>
+								<!-- 简介 -->
+								<div style="PADDING-RIGHT: 8px; PADDING-LEFT: 10px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px">
+									<img style="PADDING-RIGHT: 15px; FLOAT: left" alt="公司简介" title="公司简介" src="{$sjInfo.sj_pic}" border=0 />
+									<span style="FONT-SIZE: 12px; COLOR: #333; LINE-HEIGHT: 180%; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif">{$sjInfo.sj_desc}</span></div>
+								</div>
+
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+		<!--公司简介结束-->
+
+			<br>
+		<!--产品展示-->
+		<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>产品展示</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<td>
+<link href="css/productquery.css" rel="stylesheet" type="text/css" />
+{section name=list loop=$sjProduct}
+<div id="productquery">
+	<div class="fang" style="width:180px;height:147px">
+		<div class="picFit" style="width:180px;height:147px">
+		<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" >
+		<img src="{$sjProduct[list].mc_pic}" alt="{$sjProduct[list].mc_name}" title="{$sjProduct[list].mc_name}" style="width:170px;height:137px;" border="0" /></a>
+		</div>
+	</div>
+	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">产品说明：{$sjProduct[list].mc_desc|truncate:10:""}</a><br>
+	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">{$sjProduct[list].mc_price}红利+{$sjProduct[list].mc_price_type}积分</font></a>
+</div>
+{sectionelse}
+没有所要查找的数据……
+{/section}
+							</td>
+						</tr>
+					</table>
+
+
+
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+
+			<!--产品展示结束-->
+
+			<br>
+
+			<!--换购商品展示-->
+		<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>换购商品</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<td>
+{section name=list loop=$sjMc}
+<div id="productquery">
+	<div class="fang" style="width:180px;height:147px">
+		<div class="picFit" style="width:180px;height:147px">
+		<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" >
+		<img src="{$sjMc[list].mc_pic}" alt="{$sjMc[list].mc_name}" title="{$sjMc[list].mc_name}" style="width:180px;height:147px" border="0" /></a>
+		</div>
+	</div>
+	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">商品数量:{$sjMc[list].mc_count}件</a><br>
+	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">{$sjMc[list].mc_price}红利+{$sjMc[list].mc_price_type}积分</font></a><br>
+	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">商品简介：{$sjMc[list].mc_desc|truncate:10:""}</a>
+</div>
+{sectionelse}
+没有所要查找的数据……
+{/section}
+
+							</td>
+						</tr>
+					</table>
+
+
+
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+
+			<!--换购商品展示结束-->
+
+
+			<br>
+
+			<!--联系方式-->
+		<ul class="listall">
+    	    <b class="b1"></b>
+			<b class="b2"></b>
+			<b class="b3"></b>
+			<div class="bc" style="text-align: left;">
+				<div class="bt">
+						<font size="2"><strong>联系方式</strong> </font>
+				</div>
+				<div class="bb" style="text-align: left; height: 100%;"
+					id="resultDiv">
+					<table width="100%">
+						<tr>
+							<th>
+								联系人：
+							</th>
+							<td>
+								{$sjInfo.link_man}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								电话：
+							</th>
+							<td>
+								{$sjInfo.telephone}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								手机：
+							</th>
+							<td>
+								{$sjInfo.phone}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								传真：
+							</th>
+							<td>
+								{$sjInfo.fax}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								QQ：
+							</th>
+							<td>
+								{$sjInfo.qq}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								地址：
+							</th>
+							<td>
+								{$sjInfo.province}{$sjInfo.city}{$sjInfo.address}
+							</td>
+						</tr>
+					</table>
+
+
+
+
+				</div>
+				<div class="bt" style="height: 1px;"></div>
+			</div>
+			<b class="b3"></b>
+			<b class="b2"></b>
+			<b class="b1"></b>
+			</ul>
+
+			<!--联系方式结束-->
+
+
+
+    	    <div style="clear: both; height: 1px; overflow: hidden;"></div>
+
+
+		</div>
+
+
+
+
+
+    	<div class="clear"></div>
+    </div>
+   {include file="inc/right.html"}
+
+</div>
+
+{include file="inc/buttom.html"}

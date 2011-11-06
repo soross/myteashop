@@ -78,68 +78,69 @@
 		</div>
 	</div>
 <div style="padding:0px">
-
-<link href="../css/productcontent.css" rel="stylesheet" type="text/css" />
-<script type=text/javascript src="../js/productcontent.js"></script>
-
-<div id="productcontent">
-	<div class="productpics">
-		<div class="piczone">
-			<table align="center" cellpadding="0" cellspacing="0">
-			<tr>
-			<td align="center">
-			<div id="productview">
-				<img src="../product/images/{$prodinfo.prod_picture}" style="width:300px;height:230px;" border="0" id="productloading" class="productpic"  title="{$prodinfo.prod_name}" alt="{$prodinfo.prod_name}">
-			</div>
-			</td>
-			</tr>
-			</table>
-		</div>
-		<div id="contentpages"></div>
-	</div>
-
-	<div class="introzone">
-		<div id="prodtitle">{$prodinfo.prod_name}</div>
-		<div id="prop"><strong>方案编号：</strong>&nbsp;{$prodinfo.prod_code}</div>
-		<!--
-		<div id="memo" class="memo" style="display:block">
-			<strong>合作企业：</strong>
-			{if $prodinfo.prod_link!=""}
-				<a href='{$prodinfo.prod_link}' target="_block">{$prodinfo.compary}</a>
-			{else}
-				企业要求保密或信息录入中...
-			{/if}
-		</div>
-		<div id="memo" class="memo" style="display:block">
-			<strong>在线地址：</strong>
-			{if $prodinfo.prod_link!=""}
-				<a href='{$prodinfo.prod_link}' target="_block">{$prodinfo.prod_link}</a>
-			{else}
-				无公网地址或信息录入中...
-			{/if}
-		</div>
-		<div id="memo" class="memo" style="display:block">
-			<strong>首页展示：</strong>
-			{if $prodinfo.prod_url!=""}
-				<a href='../product/showIndex.php?url={$prodinfo.prod_url}'><FONT style="color:#FF6600;">点击查看首页</FONT></a>
-			{else}
-				信息录入中...
-			{/if}
-		</div>
-		 -->
-	</div>
-	<div class="bodyzone">
-	<strong>简介：</strong><br><br>
-		{$prodinfo.prod_desc}
-	</div>
-	<div class="bzone">
-	<input type="hidden" id="productid" value="{$prodinfo.id}">
-	<div id="banzhu" class="banzhu"></div>
-	</div>
+<div style="padding-left:100px">
+{if $moiveType=="MediaPlayer"}
+<object classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" type="application/x-oleobject" width=500 height=350 align="middle" standby="Loading Microsoft?Windows?Media Player components..." id="MediaPlayer1">
+<param name="transparentAtStart" value="True">
+<param name="transparentAtStop" value="True">
+<param name="AnimationAtStart" value="Ture">
+<param name="AutoStart" value="True">
+<param name="AutoRewind" value="true">
+<param name="DisplaySize" value="0">
+<param name="AutoSize" value="false">
+<param name="ShowDisplay" value="false">
+<param name="ShowStatusBar" value="ture">
+<param name="ShowControls" value="ture">
+<param name="FileName" value="{$videoinfo.video_path}">
+<param name="Volume" value="0">
+<embed src="" width="500" height="350" autostart="True" align="middle" transparentatstart="True" transparentatstop="True" animationatstart="Ture" autorewind="true" displaysize="0" autosize="false" showdisplay="False" showstatusbar="-1" showcontrols="ture" filename="{$videoinfo.video_path}" volume="0">
+</embed>
+</object>
+{/if}
+{if $moiveType=="RealPlayer"}
+<object ID="video" CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" HEIGHT="350" WIDTH="500" align="center">
+<param name="_ExtentX" value="9260">
+<param name="_ExtentY" value="6350">
+<param name="AUTOSTART" value="-1">
+<param name="SHUFFLE" value="0">
+<param name="PREFETCH" value="0">
+<param name="NOLABELS" value="0">
+<param name="SRC" value="{$videoinfo.video_path}">
+<param name="CONTROLS" value="ImageWindow">
+<param name="CONSOLE" value="Clip1">
+<param name="LOOP" value="0">
+<param name="NUMLOOP" value="0">
+<param name="CENTER" value="0">
+<param name="MAINTAINASPECT" value="0">
+<param name="BACKGROUNDCOLOR" value="#000000"><embed SRC="{$videoinfo.video_path}" type="audio/x-pn-realaudio-plugin" CONSOLE="Clip1" CONTROLS="ImageWindow" HEIGHT="350" WIDTH="500" AUTOSTART="false">
+</object>
+<br>
+<object ID="video" CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" HEIGHT="40" WIDTH="500" align="center">
+<param name="_ExtentX" value="9260">
+<param name="_ExtentY" value="1058">
+<param name="AUTOSTART" value="-1">
+<param name="SHUFFLE" value="0">
+<param name="PREFETCH" value="0">
+<param name="NOLABELS" value="0">
+<param name="CONTROLS" value="ControlPanel,StatusBar">
+<param name="CONSOLE" value="Clip1">
+<param name="LOOP" value="0">
+<param name="NUMLOOP" value="0">
+<param name="CENTER" value="0">
+<param name="MAINTAINASPECT" value="0">
+<param name="BACKGROUNDCOLOR" value="#000000">
+<embed type="audio/x-pn-realaudio-plugin" CONSOLE="Clip1" CONTROLS="ControlPanel,StatusBar" HEIGHT="60" WIDTH="400" AUTOSTART="false">
+</object>
+{/if}
+{if $moiveType=="FlashPlayer"}
+<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="500" height="350">
+<param name="movie" value="{$videoinfo.video_path}">
+<param name="quality" value="High">
+<embed src="{$videoinfo.video_path}" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="500" height="350">
+</object>
+{/if}
 
 </div>
-
-
 </div>
 </div>
 

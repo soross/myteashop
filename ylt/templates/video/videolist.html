@@ -18,12 +18,10 @@
 		</div>
 	</div>
 <div style="padding:0px">
-
 <!--
 <a href="prodorder.php"><img src="../images/1268633326.gif" border="0" width="100%" title="方案订购" alt="方案订购"/></a>
 -->
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2576618507&site=qq&menu=yes"><img src="../images/1268621395.gif" border="0" width="100%" title="-在线服务" alt="-在线服务"/></a>
-
 
 </div>
 </div>
@@ -48,7 +46,7 @@
 <div class="productclass_dolphin">
 
 {section name=list loop=$prodclass}
-<a href="caselist.php?classcode={$prodclass[list].id}" target="_self" class="productclass_dolphin">{$prodclass[list].class_name}</a>
+<a href="{$prodclass[list].url}" target="_self" class="productclass_dolphin">{$prodclass[list].class_name}</a>
 {/section}
 
 </div>
@@ -100,15 +98,15 @@
 <div style="padding:0px">
 
 <link href="../css/productquery.css" rel="stylesheet" type="text/css" />
-{section name=list loop=$prodRow}
+{section name=list loop=$videoRow}
 <div id="productquery">
 	<div class="fang" style="width:140px;height:107px">
 		<div class="picFit" style="width:140px;height:107px">
-		<a href="{$prodRow[list].case_info_url}" target="_self" >
-			<img src="../product/images/{$prodRow[list].prod_picture}" alt="{$prodRow[list].prod_name}" title="{$prodRow[list].prod_name}" style="width:140px;height:107px" border="0" /></a>
+		<a href="../video/play.php?id={$videoRow[list].id}" target="_blank" >
+		<img src="{$videoRow[list].video_picture}" alt="{$videoRow[list].video_name}" title="{$videoRow[list].video_name}" style="width:140px;height:107px" border="0" /></a>
 		</div>
 	</div>
-	<a href="{$prodRow[list].case_info_url}" target="_self" class="prodtitle" title="{$prodRow[list].prod_name}">{$prodRow[list].prod_name|truncate:20:".."}</a>
+	<a href="../video/play.php?id={$videoRow[list].id}" target="_blank" class="prodtitle" alt="{$videoRow[list].video_name}" title="{$videoRow[list].video_name}">{$videoRow[list].video_name|truncate:20:".."}</a>
 </div>
 {/section}
 

@@ -29,14 +29,6 @@
 				<li><a onclick="javascript:showAgentDiv(7,6)" href="javascript:showAgentDiv(7,6)" class="graylink" style="display: block;">合同下载</a></li>
 				<li><a  href="help.php" class="graylink" style="display: block;">常见问题</a></li>
             </ul>
-            <br>
-            <ul>
-            	{section name=list loop=$leftAD}
-            	<div style="padding: 0px;">
-					<a href="{$leftAD[list].type_url}" target="_blank"><img src="{$leftAD[list].type_code}" border="0" style="width:145px;"></a>
-				</div>
-				{/section}
-            </ul>
         </div>
     	<div class="containerleft3">
 		 <!-- 首页 开始 -->
@@ -50,7 +42,14 @@
 				<div class="Agent_Title_2"></div>
 				<div class="Agent_Content RedLink">
 				  <ul>
-					{$AboutSjAgent}
+					<li class="dm_hd">适合加盟群体：</li>
+					<li class="dm_co">拥有自己商店的店主等</li>
+					<li class="dm_hd">优势：</li>
+					<li class="dm_co">test</li>
+					<li class="dm_hd">加入条件：</li>
+					<li class="dm_co">联盟网任意用户。<span class="redColor">赠送红利卡XX张。</span></li>
+					<li class="dm_hd">加盟价格：</li>
+					<li class="dm_co"><img src="images/ico_free_d.gif" />&nbsp;<span class="redColor">完全免费</span></li>
 					<li class="dm_hd"></li>
 					<li class="dm_co">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -64,7 +63,14 @@
 				<div class="Agent_Title_4"></div>
 				<div class="Agent_Content RedLink">
 				  <ul>
-					{$AboutAgentAgent}
+					<li class="dm_hd">适合加盟群体：</li>
+					<li class="dm_co">拥有自己商店的店主等</li>
+					<li class="dm_hd">优势：</li>
+					<li class="dm_co">test</li>
+					<li class="dm_hd">加入条件：</li>
+					<li class="dm_co">联盟网任意用户。<span class="redColor">赠送红利卡XX张。</span></li>
+					<li class="dm_hd">加盟价格：</li>
+					<li class="dm_co"><img src="images/ico_free_d.gif" />&nbsp;<span class="redColor">完全免费</span></li>
 					<li class="dm_hd"></li>
 					<li class="dm_co">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -102,7 +108,7 @@
 									商家名称
 								</th>
 								<td style="text-align: left;">
-									<input type="text" id="sj_name" name="sj_name" maxlength="100" size="35"><font style="color:red;">*</font>
+									<input type="text" id="sj_name" name="sj_name" onblur="checksj_name()" maxlength="100" size="35"><font style="color:red;">*</font>
 									<!-- 必填 -->
 								</td>
 							</tr>
@@ -332,14 +338,6 @@
 								</th>
 								<td style="text-align: left;">
 									<input type="text" id="address" name="address" maxlength="120" size="35"><font style="color:red;">*</font>
-								</td>
-							</tr>
-							<tr>
-								<th style="border-left:0px;">
-									留言
-								</th>
-								<td style="text-align: left;">
-									<textarea id="remark" name="remark" cols=60 rows=6></textarea><font style="color:red;">*</font>
 								</td>
 							</tr>
 							<tr>
@@ -625,6 +623,6 @@
     </div>
 
 {include file="inc/right.html"}
-
+<script src="js/agent.js" type="text/javascript"></script>
 </div>
 {include file="inc/buttom.html"}

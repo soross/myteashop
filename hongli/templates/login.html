@@ -16,7 +16,7 @@
 			<div id="header">
 				<div id="logo">
 					<a href="/" target="_blank"> <img
-							src="images/51fanli_logonew.gif" width="272" height="52"
+							src="images/logo.gif" width="272" height="52"
 							alt="ÁªÃËÍø" title="ÁªÃËÍø" /> </a>
 				</div>
 
@@ -46,7 +46,7 @@
 						<div class="box-left-2">
 							<img src="images/login_nav.jpg" border="0" usemap="#Map">
 							<map name="Map" id="Map">
-								<area shape="rect" coords="6,5,344,39" href="procat.php" />
+								<area shape="rect" coords="6,5,344,39" href="procat.html" />
 								<area shape="rect" coords="355,6,691,39" href="#" />
 							</map>
 						</div>
@@ -61,6 +61,7 @@
 							<h1>
 								ÒÑÓÐÕÊºÅ£¬ÇëµÇÂ¼
 							</h1>
+							<script src="js/login.js" type="text/javascript"></script>
 							<form action="post/action.php" name="loginformrm" method="post"
 								onsubmit="return login();">
 								<table cellpadding="0" cellspacing="0">
@@ -93,7 +94,7 @@
 										</td>
 										<td class="text">
 											<input class="edit" type="text" maxlength="20"
-												name="username" id="username" value="sjuser"/>
+												name="username" id="username"/>
 										</td>
 										<td class="text">
 											<img id="email_right"
@@ -107,7 +108,7 @@
 										</td>
 										<td class="text">
 											<input class="edit" type="password" maxlength="20"
-												name="password" id="password" value="sjuser"/>
+												name="password" id="password"/>
 										</td>
 										<td class="text">
 											<img id="email_right"
@@ -207,6 +208,7 @@
 			</div>
 		</div>
 	</body>
+
 	<script type="text/javascript" src="js/prototype.js"></script>
 	<script type="text/javascript">
 	function checkspace(checkstr) {

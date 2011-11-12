@@ -1,8 +1,10 @@
 <?php
+ini_set('display_errors', 'Off');
 require_once("action/checkLogin.php");
 require_once("action/smarty_index.php");
 require_once("action/mysql.class.php");
 require_once("action/public_info.php");
+
 //顶部导航
 $smarty->assign("INDEX_LI","class='beijingwu'");
 $smarty->assign("INDEX_A"," flwindex_menu_zhuyao_sekuai");
@@ -29,12 +31,16 @@ $smarty->assign("jfTotalBasic",floor($mb_limit[jifen]/500));
 //我的红利
 $smarty->assign("hlhongli",$mb_limit[hongli]);//红利权数
 $smarty->assign("notHongLi",$mb_limit[not_hongli]);//未分红利
-$smarty->assign("money",$mb_limit[money]);//总分红
+$smarty->assign("money",round($mb_limit[money],2));//总分红
 
 //当前红利
-$lmQuery = $db->query("select sale_money,exchange from lm_mb_limit where id='0'");
+$lmQuery = $db->query("select sale_money,exchange from lm_limit where id='1'");
 $lm_limit =  $db->fetch_array($lmQuery);
-$smarty->assign("hlDay",round(($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli],1);//今天红利
+$hlDay = 0;
+if(round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1) != "" ){
+	$hlDay = round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1);
+}
+$smarty->assign("hlDay",$hlDay);//今天红利
 
 
 //我的订单

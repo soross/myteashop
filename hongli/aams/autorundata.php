@@ -4,7 +4,7 @@ if(isset($_GET[task]) && "toAutoRunData"==$_GET[task]){
 	ignore_user_abort();//关掉浏览器，PHP脚本也可以继续执行.
 	set_time_limit(0);// 通过set_time_limit(0)可以让程序无限制的执行下去
 	//$interval=24*60*60;// 每隔24小时运行
-	$interval=60;// 每隔1分钟运行
+	$interval=30;// 每隔1分钟运行
 	do{
 		$run = include 'action/jobconfig.php';
 		if(!$run) die('job is die by flag');

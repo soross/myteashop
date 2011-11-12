@@ -140,12 +140,14 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../ad.php" target="dataFrame">其他界面广告管理</a></p>
 	    </div>
 	  </li>
+	  <!--
 	   <li>
 	    <h2>+&nbsp;数据中心</h2>
 	    <div class="content">
 	      <p>-&nbsp;<a href="../autorundata.php?task=toAutoRunData" target="dataFrame">启动定时数据业务</a></p>
 	    </div>
 	  </li>
+	  -->
 	</ul>
 
 

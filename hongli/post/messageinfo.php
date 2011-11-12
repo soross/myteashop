@@ -47,6 +47,7 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"100红利卡兑换",$num,"OK",$cardNo,"+","A");
 
+
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{
 			echo "<script>location.href='../index.php?error=HL-2&divNo=2&flag=mb'</script>";
@@ -73,6 +74,7 @@ else if(isset($_POST['task'])&&"getJiFen"==$_POST['task']){
 
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],$num."红利卡兑换",$num,"OK",$cardNo,"+","A");
 
+
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{
 			echo "<script>location.href='../index.php?error=JF-2&divNo=20&flag=mb'</script>";
@@ -92,6 +94,7 @@ else if(isset($_POST['task'])&&"JiFen2HongLi"==$_POST['task']){
 		}else{
 			$query = $db->query("update lm_mb_limit set hongli = hongli+".$_POST[hongli]." ,jifen=jifen-".($_POST[hongli]*500)." where id = '".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			addHongLi($db,$_POST[hongli]);
+
 			echo "<script>alert('兑换成功!');location.href='../index.php?divNo=3&flag=mb'</script>";
 		}
 	}else{
@@ -127,6 +130,7 @@ else if(isset($_POST['task'])&&"getMoney"==$_POST['task']){
 			$db->query("insert into lm_mb_money(mb_id,num,create_date,bankname,bankuser,bankcode) values('".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."','$_POST[num]',now(),'$row[bankName]','$row[bankUser]','$row[bankCode]')");
 			$orderNo=randNum();
 			Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"提现",$cnt,"OK","","ADD",$orderNo);
+
 			echo "<script>alert('提现申请提交成功!');location.href='../index.php?divNo=6&flag=mb'</script>";
 		}else{
 			echo "<script>location.href='../index.php?error=TX-2&divNo=6&flag=mb'</script>";
@@ -178,6 +182,7 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 			}
 			$orderNo=randNum();
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"转帐".$mbinfo[mb_name],$cnt,"OK","","ADD",$orderNo);
+
 			echo "<script>alert('成功转账!');location.href='../index.php?divNo=21&flag=mb'</script>";
 		}else{
 			echo "<script>location.href='../index.php?error=ZZ-4&divNo=21&flag=mb'</script>";
@@ -334,10 +339,10 @@ else if(isset($_GET['task'])&&"BackAuthSj"==$_GET['task']){
 
 //增加联盟总红利权数
 function addHongLi($db,$cnt){
-	$db->query("update lm_mb_limit set hongli=hongli+$cnt where id='0'");
+	$db->query("update lm_limit set hongli=hongli+$cnt where id='1'");
 }
 //增加联盟未分红利
 function addNotHongLi($db,$cnt){
-	$db->query("update lm_mb_limit set not_hongli=not_hongli+$cnt where id='0'");
+	$db->query("update lm_limit set not_hongli=not_hongli+$cnt where id='1'");
 }
 ?>

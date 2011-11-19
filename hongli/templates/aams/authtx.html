@@ -116,6 +116,12 @@ for(i=0;i<cs.length;i++){
               </table></td> -->
               <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
+                    <td class="STYLE1"><div align="center"><input type="checkbox" id='allselect' name='allselect'></div></td>
+                    <td class="STYLE1"><div align="center"><a href="outExcel.php?task=outExcelByTx">全选</a></div></td>
+                  </tr>
+              </table></td>
+              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
                     <td class="STYLE1"><div align="center"><img src="images/tab/001.gif" width="14" height="14" /></div></td>
                     <td class="STYLE1"><div align="center"><a href="outExcel.php?task=outExcelByTx">导出</a></div></td>
                   </tr>
@@ -164,7 +170,7 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authTxRow[list].bankuser}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authTxRow[list].bankcode}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authTxRow[list].create_date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="post/auth.action.php?txid={$authTxRow[list].id}&result=passAuthTx">通过</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('是否确定通过审核?'))location.href='post/auth.action.php?txid={$authTxRow[list].id}&result=passAuthTx';">通过</a><span class="STYLE1">]</span></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="images/tab/010.gif" width="9" height="9" /> </span><span class="STYLE1">[</span><a href="post/auth.action.php?txid={$authTxRow[list].id}&result=backAuthTx">退回</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}

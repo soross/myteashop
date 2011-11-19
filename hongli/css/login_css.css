@@ -179,7 +179,7 @@
 		#register {
 			color: #43781d;
 			font-weight: bold;
-			line-height: 28px;
+			line-height: 30px;
 			padding: 10px 0px 0px 10px;
 		}
 
@@ -198,6 +198,7 @@
 
 		#register td.text {
 			height: 35px;
+			font-size:14px;
 		}
 
 		#register form {
@@ -215,11 +216,12 @@
 		}
 
 		#register input.edit {
-			width: 142px;
+			width: 125px;
 			border: 1px solid #B8B8B8;
-			height: 15px;
+			height: 20px;
 			line-height: 15px;
 			vertical-align: middle;
+			padding-top: 5px;
 		}
 
 		#register input.edit2 {

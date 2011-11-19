@@ -7,7 +7,7 @@ $smarty->assign("NEWS_LI","class='beijingwu'");
 $smarty->assign("NEWS_A"," flwindex_menu_zhuyao_sekuai");
 $smarty->assign("NEWS_A_CSS",'style="color: rgb(0, 0, 0); font-family: ËÎÌו;"');
 
-$where=" where 1=1 ";
+$where=" where type<>'-1' ";
 if(isset($_GET['type']) && !empty($_GET['type'])){
 	$where = $where." and type='".$_GET['type']."' ";
 	$smarty->assign("newsType",$_GET['type']);

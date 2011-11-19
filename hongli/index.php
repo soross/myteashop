@@ -30,8 +30,8 @@ $smarty->assign("jfTotalBasic",floor($mb_limit[jifen]/500));
 
 //我的红利
 $smarty->assign("hlhongli",$mb_limit[hongli]);//红利权数
-$smarty->assign("notHongLi",$mb_limit[not_hongli]);//未分红利
-$smarty->assign("money",round($mb_limit[money],2));//总分红
+$smarty->assign("notMoney",round($mb_limit[not_hongli],2));//未分红利
+$smarty->assign("money",round($mb_limit[money],2)+round($mb_limit[not_hongli],2));//总分红
 
 //当前红利
 $lmQuery = $db->query("select sale_money,exchange from lm_limit where id='1'");

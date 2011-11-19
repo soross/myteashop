@@ -22,6 +22,15 @@ if(isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) && isset($_SESSION['WEB_USER_
 }
 $smarty->assign("isLoginText",$loginText);
 
+$lmInfoQuery = $db->query("select * from lm_limit where id='1'");
+$lmTopInfo = $db->fetch_array($lmInfoQuery);
+$lmInfo="<li>联盟总红利权数：".$lmTopInfo[hongli]."</li>
+		 <li>今天总红利权数：".$lmTopInfo[dayhongli]."</li>
+ 		 <li>每人可分红利：".round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[hongli]),1)."</li>";
+$smarty->assign("lmInfo",$lmInfo);
+
+
+
 //底部copy信息
 $buttomQuery=$db->query("select content from lm_comm_code where type_name='ButtomCopyInfo'");
 $buttomInfo = $db->fetch_array($buttomQuery);

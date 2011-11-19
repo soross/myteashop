@@ -5,7 +5,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 	if(isset($_POST[num])&& !empty($_POST[num])){
 		for($i=0;$i<$_POST[num];$i++){
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('No1.')."','".getPassword()."','".md5(getPassword())."','0',now(),'2')");
+					"values('".getCardNo('1')."','".getPassword()."','".md5(getPassword())."','0',now(),'2')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额100的红利卡!');location.href='../createcard.php';</script>";
 	}else{
@@ -15,7 +15,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 	if(isset($_POST[num])&& !empty($_POST[num])){
 		for($i=0;$i<$_POST[num];$i++){
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('No5.')."','".getPassword()."','".md5(getPassword())."','0',now(),'10')");
+					"values('".getCardNo('5')."','".getPassword()."','".md5(getPassword())."','0',now(),'10')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额500的红利卡!');location.href='../createcard.php';</script>";
 	}else{
@@ -25,7 +25,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 	if(isset($_POST[num])&& !empty($_POST[num])){
 		for($i=0;$i<$_POST[num];$i++){
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('No0.')."','".getPassword()."','".md5(getPassword())."','0',now(),'20')");
+					"values('".getCardNo('0')."','".getPassword()."','".md5(getPassword())."','0',now(),'20')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额1000的红利卡!');location.href='../createcard.php';</script>";
 	}else{

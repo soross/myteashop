@@ -32,21 +32,17 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 			$service_code = "GetHongLi";
 			$num=0;
 			if($row['type']==2){
-				$num = $row['type']*50;
-				$sql="update lm_mb_limit set not_hongli=not_hongli+".$num." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'";
-				$msg="成功领取积分!";
-				$service_code = "GetNotHongLi";
-				addNotHongLi($db,$num);
+				echo "<script>location.href='../index.php?error=HL-3&divNo=2&flag=mb'</script>";
+				exit;
 			}else{
 				$num = $row['type']/10;
 				$sql="update lm_mb_limit set hongli=hongli+".$num." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'";
 				addHongLi($db,$num);
 			}
 			$db->query($sql);
-			$db->query("update lm_card set state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
+			$db->query("update lm_card set use_date=now(), state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
 
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"100红利卡兑换",$num,"OK",$cardNo,"+","A");
-
 
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{
@@ -110,12 +106,13 @@ else if(isset($_POST['task'])&&"getMoney"==$_POST['task']){
 		$query = $db->query($sql);
 		$us = is_array($row = $db->fetch_array($query));
 		$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
-		if ($ps && $_POST[num] >= 500) {
+		if ($ps && $_POST[num] >= 400) {
 			$cnt = $_POST[num];
 			$query = $db->query("select * from lm_mb_limit where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			$limit = $db->fetch_array($query);
 			if(($limit[money]*0.8)>= $cnt){
 				$db->query("update lm_mb_limit set money=money-" .($cnt/0.8) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+
 			}else if((($limit[money]*0.8)+($limit[sale_money]*0.8))>= $cnt){
 				$tmp = $cnt-($limit[money]*0.8);
 				$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp/0.8)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
@@ -153,35 +150,59 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 			$query = $db->query("select * from lm_mb_limit where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			$limit = $db->fetch_array($query);
 			$cnt = $_POST[num];
-			$service_code="GetMoneyToMb";
-			if($_POST[type]=='1'){
-				if(($limit[money])>= $cnt){
-					$db->query("update lm_mb_limit set money=money-" .($cnt) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-					$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
-				}else if((($limit[money])+($limit[sale_money]))>= $cnt){
-					$tmp = $cnt-($limit[money]);
-					$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-					$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
-				}else if((($limit[money])+($limit[sale_money])+$limit[exchange])>= $cnt){
-					$tmp = $cnt- (($limit[money]) + ($limit[sale_money]));
-					$db->query("update lm_mb_limit set money=0,sale_money=0,exchange=exchange-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-					$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
+			$jfcnt = $_POST[jifennum];
+
+			if(empty($_POST[num]) || ""== $_POST[num]){
+				$cnt=0;
+			}
+			if(empty($_POST[jifennum]) || ""== $_POST[jifennum]){
+				$jfcnt=0;
+			}
+			if(($limit[money])>= $cnt && $limit[jifen]>= $jfcnt){
+				$db->query("update lm_mb_limit set money=money-" .($cnt) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
+
+
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+
+
+			}else if((($limit[money])+($limit[sale_money]))>= $cnt && $limit[jifen]>= $jfcnt){
+				$tmp = $cnt-($limit[money]);
+				$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
+
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+
+
+			}else if((($limit[money])+($limit[sale_money])+$limit[exchange])>= $cnt && $limit[jifen]>= $jfcnt){
+				$tmp = $cnt- (($limit[money]) + ($limit[sale_money]));
+				$db->query("update lm_mb_limit set money=0,sale_money=0,exchange=exchange-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
+
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+
+			}else{
+				if($limit[jifen]< $jfcnt){
+					echo "<script>location.href='../index.php?error=ZZ-2&divNo=21&flag=mb'</script>";
+					exit;
 				}else{
 					echo "<script>location.href='../index.php?error=ZZ-3&divNo=21&flag=mb'</script>";
 					exit;
 				}
-			}else{
-				if($limit[jifen]>= $cnt){
-					$db->query("update lm_mb_limit set jifen=jifen-" .($cnt) ." where mb_id='".$mbinfo[id]."'");
-					$db->query("update lm_mb_limit set jifen=jifen+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
-				}else{
-					echo "<script>location.href='../index.php?error=ZZ-2&divNo=21&flag=mb'</script>";
-					exit;
-				}
-				$service_code = "GetJiFenToMb";
 			}
+
+
 			$orderNo=randNum();
+
+			$service_code="GetMoneyToMb";
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"转帐".$mbinfo[mb_name],$cnt,"OK","","ADD",$orderNo);
+
+			$service_code = "GetJiFenToMb";
+			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"转帐".$mbinfo[mb_name],$cnt,"OK","","ADD",$orderNo);
+
 
 			echo "<script>alert('成功转账!');location.href='../index.php?divNo=21&flag=mb'</script>";
 		}else{
@@ -282,7 +303,7 @@ else if(isset($_POST['task'])&&"updateSjInfo"==$_POST['task']){
 		if ($ps) {
 			$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',phone='$_POST[phone]'," .
 					"province='$_POST[szSheng]',city='$_POST[szShi]',address='$_POST[address]',link_man='$_POST[link_man]'," .
-					"email='$_POST[email]' where id='" . $_POST['sjid'] . "'");
+					"email='$_POST[email]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
 			echo "<script>alert('商家信息修改成功!');location.href='../index.php?divNo=12&flag=sj'</script>";
 
 		}else{
@@ -296,16 +317,33 @@ else if(isset($_POST['task'])&&"updateSjInfo"==$_POST['task']){
 //商家完善信息
 else if(isset($_POST['task'])&&"addProduct"==$_POST['task']){
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
+		$cnt = 0;
+		if($_POST[type]=="product"){
+			$type='0';
+			$query = $db->query("select id from lm_sj_mc where mc_type='$type' and sj_id='$_POST[sjid]'");
+			$cnt = $db->db_num_rows($query);
+		}else if($_POST[type]=="mc"){
+			$type='1';
+			$query = $db->query("select id from lm_sj_mc where mc_type='$type' and sj_id='$_POST[sjid]'");
+			$cnt = $db->db_num_rows($query);
+		}else{
+			echo "<script>alert('非法操作!');location.href='../login.php';</script>";
+			exit;
+		}
+		if($cnt>2){
+			echo "<script>alert('最多只能发布3条信息!');location.href='../index.php?divNo=13&flag=sj';</script>";
+			exit;
+		}
 		//文件保存目录URL
 		$save_path = '../images/';
 		//定义允许上传的文件扩展名
 		$ext_arr = array('gif', 'jpg', 'jpeg', 'png', 'bmp');
 		require "../action/FileUpload.class.php";
-		$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>1048576));
+		$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>102400));
 		if($up->uploadFile('pic_file')){
 			$filename = "images/".$up->getNewFileName();
 			$sql="insert into lm_sj_mc(sj_id,mc_name,mc_type,mc_desc,mc_pic,mc_price,mc_price_type,mc_count,end_date,create_date,state) ".
-				 "values('$_POST[sjid]','$_POST[mc_name]','$_POST[type]','$_POST[mc_desc]','$filename','$_POST[price]','$_POST[price_type]','$_POST[count]','$_POST[end_date]',now(),'0')";
+				 "values('$_POST[sjid]','$_POST[mc_name]','$type','$_POST[mc_desc]','$filename','$_POST[price]','$_POST[price_type]','$_POST[count]','$_POST[end_date]',now(),'0')";
 			$db->query($sql);
 	  		echo "<script>if(confirm('添加成功,是否继续添加?')){location.href='../index.php?divNo=13&flag=sj';}else{location.href='../index.php?divNo=14&flag=sj';}</script>";
 		}else{
@@ -339,7 +377,7 @@ else if(isset($_GET['task'])&&"BackAuthSj"==$_GET['task']){
 
 //增加联盟总红利权数
 function addHongLi($db,$cnt){
-	$db->query("update lm_limit set hongli=hongli+$cnt where id='1'");
+	$db->query("update lm_limit set hongli=hongli+$cnt,dayhongli=dayhongli+$cnt where id='1'");
 }
 //增加联盟未分红利
 function addNotHongLi($db,$cnt){

@@ -1,6 +1,7 @@
 <?php
 require_once ("../action/mysql.class.php");
 session_start();
+if($_POST[agreement]==1){
 if(isset($_POST[password]) && isset($_POST[confirm_password]) && $_POST[password]== $_POST[confirm_password]){
 	if(isset($_POST[password_2]) && isset($_POST[confirm_password_2]) && $_POST[password_2]== $_POST[confirm_password_2]){
 		$tjr = false;
@@ -26,6 +27,9 @@ if(isset($_POST[password]) && isset($_POST[confirm_password]) && $_POST[password
 				$tjr=true;
 				$state="-1";
 			}
+		}else if($_POST[tjr]=="lianmengwang"){
+			$tjr = true;
+			$state = "-1";
 		}
 		if($tjr){
 
@@ -68,6 +72,10 @@ if(isset($_POST[password]) && isset($_POST[confirm_password]) && $_POST[password
 }else{
 	//密码不一致
 	echo "<script>location.href='../reg.php?error=0'</script>";
+}
+}else{
+	//请勾选用户协议
+	echo "<script>location.href='../reg.php?error=-1'</script>";
 }
 
 ?>

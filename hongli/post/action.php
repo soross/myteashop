@@ -1,7 +1,7 @@
 <?php
 require_once ("../action/mysql.class.php");
 session_start();
-if (isset ($_POST[randomCode]) && $_POST["randomCode"] == $_SESSION['validationcode']) {
+if (isset ($_POST[randomCode]) && strtoupper($_POST["randomCode"]) == strtoupper($_SESSION['validationcode'])) {
 	$username = str_replace(" ", "", $_POST[username]);
 	$query = $db->query("select * from lm_member where mb_name = '" . $username . "'");
 	$us = is_array($row = $db->fetch_array($query));

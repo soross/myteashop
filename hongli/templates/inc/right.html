@@ -22,11 +22,42 @@
                 <div class="clear"></div>
             </div>
       </div>
+ <br>
+ 	<div style=" margin-top: 10px;overflow: hidden;border:1px solid #cecece;">
+		<div style="padding: 0px;">
+			<div class="flwindex_remenyhq_content" style="font-weight:bold;color:#fc4c0f;">
+			<ul>
+				{$lmInfo}
+				<li></li>
+				<div class="qingchu"></div>
+			</ul>
+			</div>
+		</div>
+    </div>
+	{if $showAboutMe!=none}
+	 <div style=" margin-top: 10px;overflow: hidden;">
+		<div style="padding: 0px;">
+			<div class="flwindex_duxiang_h1"  style="Z-index:1;">
+				联盟简介
+				<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
+					class="shier" target="_blank">更多&gt;&gt;</a>
+				</span>
+			</div>
+			<div class="flwindex_remenyhq_content">
+			<ul>
+			{$aboutMeInfo|truncate:500:".."}
+				<div class="qingchu"></div>
+			</ul>
+			</div>
+		</div>
+    </div>
 
 
-      <br>
+    {/if}
+
 	{if $showNewsList != none}
-	 <div style="margin-left: 0px; margin-top: 15px;">
+	 <br>
+	 <div style=" margin-top: 15px; overflow: hidden;">
 		<div style="padding: 0px;">
 			<div class="flwindex_duxiang_h1">
 				联盟动态
@@ -59,32 +90,13 @@
 			</div>
 		</div>
     </div>
-		<br>
-	{/if}
-	{if $showAboutMe!=none}
-	 <div style="margin-left: 0px; margin-top: 10px;">
-		<div style="padding: 0px;">
-			<div class="flwindex_duxiang_h1">
-				联盟简介
-				<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
-					class="shier" target="_blank">更多&gt;&gt;</a>
-				</span>
-			</div>
-			<div class="flwindex_remenyhq_content">
-			<ul>
-			{$aboutMeInfo|truncate:500:".."}
-				<div class="qingchu"></div>
-			</ul>
-			</div>
-		</div>
-    </div>
 
-    <br>
-    {/if}
+	{/if}
 {if $showNewsList != none}
-     <div style="margin-left: 0px; margin-top: 10px;">
+<br>
+     <div style="margin-top: 10px; overflow: hidden;">
 		<div style="padding: 0px;">
-			<div class="flwindex_duxiang_h1">
+			<div class="flwindex_duxiang_h1" style="overflow: hidden;">
 				联盟公告
 				<span class="flwindex_duxiang_h1_more"><a href="news.php?type=1"
 					class="shier" target="_blank">更多&gt;&gt;</a>

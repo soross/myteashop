@@ -112,7 +112,7 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;审核中心</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../auth.php" target="dataFrame">未审核代理商</a></p>
+	      <p>-&nbsp;<a href="../auth.php" target="dataFrame">未审核代理商/商家</a></p>
 	      <p>-&nbsp;<a href="../authtx.php" target="dataFrame">提现申请审核</a></p>
 	      <p>-&nbsp;<a href="../uploadht.php" target="dataFrame">合同上传</a></p>
 	    </div>
@@ -123,6 +123,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">管理员帐号</a></p>
 	      <p>-&nbsp;<a href="../addaamsuser.php" target="dataFrame">新增管理员帐号</a></p>
 	      <p>-&nbsp;<a href="../member.php" target="dataFrame">会员帐号</a></p>
+	      <p>-&nbsp;<a href="../message.php" target="dataFrame">反馈信息</a></p>
 	    </div>
 	  </li>
 	  <li>

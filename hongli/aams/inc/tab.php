@@ -1,3 +1,7 @@
+<?php
+require_once("../action/checkAamsLogin.php");
+require_once("../action/mysql.class.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -100,8 +104,8 @@ for(i=0;i<cs.length;i++){
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="../images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="../images/tab/tab_05.gif"><img src="../images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">服务器进程配置列表</span></td>
-        <td width="281" background="../images/tab/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
+        <td width="1101" background="../images/tab/tab_05.gif"><img src="../images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">联盟当前信息</span></td>
+        <td width="281" background="../images/tab/tab_05.gif"><!-- <table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
               <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
@@ -130,7 +134,7 @@ for(i=0;i<cs.length;i++){
                   </tr>
               </table></td>
             </tr>
-        </table></td>
+        </table>--></td>
         <td width="14"><img src="../images/tab/tab_07.gif" width="14" height="30" /></td>
       </tr>
     </table></td>
@@ -139,17 +143,26 @@ for(i=0;i<cs.length;i++){
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="../images/tab/tab_12.gif">&nbsp;</td>
+        <?php
+		$lmInfoQuery = $db->query("select * from lm_limit where id='1'");
+		$lmTopInfo = $db->fetch_array($lmInfoQuery);
+		//$lmInfo = '&nbsp;：<span style="color:red;">'.$lmTopInfo[hongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;：<span style="color:red;">'.$lmTopInfo[dayhongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;联盟当前红利：<span style="color:red;">'.round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[hongli]),1).'</span>';
+		?>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="6%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">选择</div></td>
-            <td width="8%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
-            <td width="24%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">运行机器ip地址</div></td>
-            <td width="10%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">机器名</div></td>
-            <td width="14%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">节点类型</div></td>
-            <td width="24%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">服务器进程配置</div></td>
-            <td width="7%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
-            <td width="7%" height="18" background="../images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟红利总权数</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo $lmTopInfo[hongli];?></div></td>
           </tr>
+          <tr>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟今天红利权数</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo $lmTopInfo[dayhongli];?></div></td>
+          </tr>
+          <tr>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟当前红利</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[hongli]),1);?></div></td>
+          </tr>
+
+          <!--
           <tr>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
               <input name="checkbox" type="checkbox" class="STYLE2" value="checkbox" />
@@ -209,7 +222,7 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="#">服务器进程配置</a></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="../images/tab/037.gif" width="9" height="9" /></span><span class="STYLE1"> [</span><a href="#">编辑</a><span class="STYLE1">]</span></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="../images/tab/010.gif" width="9" height="9" /></span><span class="STYLE2"> </span><span class="STYLE1">[</span><a href="#">删除</a><span class="STYLE1">]</span></div></td>
-          </tr>
+          </tr>-->
         </table></td>
         <td width="9" background="../images/tab/tab_16.gif">&nbsp;</td>
       </tr>
@@ -221,10 +234,10 @@ for(i=0;i<cs.length;i++){
         <td width="15" height="29"><img src="../images/tab/tab_20.gif" width="15" height="29" /></td>
         <td background="../images/tab/tab_21.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1">共120条纪录，当前第1/10页，每页10条纪录</span></td>
+            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!--共120条纪录，当前第1/10页，每页10条纪录--></span></td>
             <td width="75%" valign="top" class="STYLE1"><div align="right">
               <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-                <tr>
+                <tr><!--
                   <td width="62" height="22" valign="middle"><div align="right"><img src="../images/tab/first.gif" width="37" height="15" /></div></td>
                   <td width="50" height="22" valign="middle"><div align="right"><img src="../images/tab/back.gif" width="43" height="15" /></div></td>
                   <td width="54" height="22" valign="middle"><div align="right"><img src="../images/tab/next.gif" width="43" height="15" /></div></td>
@@ -234,7 +247,7 @@ for(i=0;i<cs.length;i++){
                     <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
                   </span></td>
                   <td width="23" height="22" valign="middle">页</td>
-                  <td width="30" height="22" valign="middle"><img src="../images/tab/go.gif" width="37" height="15" /></td>
+                  <td width="30" height="22" valign="middle"><img src="../images/tab/go.gif" width="37" height="15" /></td>-->
                 </tr>
               </table>
             </div></td>

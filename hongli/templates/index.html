@@ -1,5 +1,6 @@
 {include file="inc/top.html"}
 {literal}				<!--/msg-->
+
 				<div class="flwindex_content">
 					<div class="flwindex_content_left">
 						<!--红利商家-->
@@ -323,7 +324,7 @@
 										<table width="520px">
 											<tr>
 												<th>
-													红利卡号：
+													红利卡帐号：
 												</th>
 												<td>
 													<input type="text" id="no" name="no" size="20" maxlength="20"><font color="red">*</font>
@@ -393,7 +394,7 @@
 										<table width="520px">
 											<tr>
 												<th>
-													红利卡号：
+													红利卡帐号：
 												</th>
 												<td>
 													<input type="text" id="no" name="no" size="20" maxlength="20"><font color="red">*</font>
@@ -662,7 +663,7 @@
 													提现金额：
 												</th>
 												<td>
-													<input type="text" size="15" maxlength="5" id="num" name="num"><font color="red">*</font><br>请输入大于500且为整数的数字。
+													<input type="text" size="15" maxlength="5" id="num" name="num" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');"><font color="red">*</font><br>请输入大于400且为整数的数字。
 												</td>
 											</tr>
 											<tr>
@@ -745,17 +746,6 @@
 											</tr>
 											<tr>
 												<th>
-													转账类型：
-												</th>
-												<td>
-													<select id="type" name="type">
-														<option value="0">积分</option>
-														<option value="1">红利</option>
-													</select>
-												</td>
-											</tr>
-											<tr>
-												<th>
 													转入用户名：
 												</th>
 												<td>
@@ -764,10 +754,18 @@
 											</tr>
 											<tr>
 												<th>
-													转出数额：
+													转出红利：
 												</th>
 												<td>
-													<input type="text" size="15" maxlength="11" id="num" name="num"><font color="red">*</font><br>请输入整数。
+													<input type="text" size="15" maxlength="11" id="num" name="num" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');"><font color="red">*</font><br>请输入整数。
+												</td>
+											</tr>
+											<tr>
+												<th>
+													转出积分：
+												</th>
+												<td>
+													<input type="text" size="15" maxlength="11" id="jifennum" name="jifennum" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');" ><font color="red">*</font><br>请输入整数。
 												</td>
 											</tr>
 											<tr>
@@ -867,7 +865,7 @@
 														<a href="post/messageinfo.php?task=cancelSc&id={$mcScRow[list].id}">取消收藏</a>
 													</td>
 													<td>
-														{if $mcScRow[list].mc_price != ""}{$mcScRow[list].mc_price}红利{/if}{if $mcScRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$mcScRow[list].mc_price_type}积分
+														{if $mcScRow[list].mc_price != ""}{$mcScRow[list].mc_price}元{/if}{if $mcScRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$mcScRow[list].mc_price_type}积分
 														{/if}
 													</td>
 												</tr>
@@ -920,7 +918,7 @@
 													</td>
 													<td>
 														商品名称：{$orderRow[list].mc_name}<br>
-														金额：{$orderRow[list].price}红利+{$orderRow[list].price_type}积分<br>
+														金额：{$orderRow[list].price}元+{$orderRow[list].price_type}积分<br>
 														所属商家：{$orderRow[list].sj_name}
 													</td>
 													<td>
@@ -996,7 +994,7 @@
 														<a href="mcinfo.php?mcid={$productRow[list].id}" target="_blank">去换购</a>
 													</td>
 													<td>
-														{if $productRow[list].mc_price != ""}{$productRow[list].mc_price}红利{/if}{if $productRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$productRow[list].mc_price_type}积分
+														{if $productRow[list].mc_price != ""}{$productRow[list].mc_price}元{/if}{if $productRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$productRow[list].mc_price_type}积分
 														{/if}
 													</td>
 												</tr>
@@ -1522,6 +1520,14 @@
 												</td>
 											</tr>
 											<tr>
+												<th>
+													网址
+												</th>
+												<td colspan="3">
+													<input type="text" id="url" name="url" size="35" maxlength="100" value="{$sjInfo.url}">
+												</td>
+											</tr>
+											<tr>
 												<th>二次密码</th>
 												<td>
 												<input type="password" id="password" name="password" value="" size="20" maxlength="30">
@@ -1571,7 +1577,7 @@
 									</div>
 									<div class="bb" style="text-align: left; height: 100%;"
 										id="resultDiv">
-										<form action="post/messageinfo.php" method="post" enctype="multipart/form-data" name="wspt">
+										<form action="post/messageinfo.php" method="post" enctype="multipart/form-data" name="wspt" id="wspt">
 										<table width=520px>
 											<tr>
 												<th>
@@ -1586,7 +1592,7 @@
 													商品类型：
 												</th>
 												<td>
-													<input type="radio" id="type" name="type" value="product" checked>产品
+													<input type="radio" id="typeproduct" name="type" value="product" checked>产品
 													<input type="radio" id="type" name="type" value="mc">换购产品<font color="red">*</font>
 												</td>
 											</tr>
@@ -1604,7 +1610,7 @@
 												</th>
 												<td>
 													<input type="file" id="pic_file" name="pic_file"><font color="red">*</font><br>
-													允许上传的图片格式为：gif|jpg|jpeg|png|bmp,最大为5M.
+													允许上传的图片格式为：gif|jpg|jpeg|png|bmp,最大为100K.
 												</td>
 											</tr>
 											<tr>
@@ -1612,7 +1618,7 @@
 													红利：
 												</th>
 												<td>
-													<input type="text" id="price" name="price" maxlength="10">(红利)<font color="red">*</font>
+													<input type="text" id="price" name="price" maxlength="10">(元)<font color="red">*</font>
 												</td>
 											</tr>
 											<tr>
@@ -1620,7 +1626,9 @@
 													积分：
 												</th>
 												<td>
-													<input type="text" id="price_type" name="price_type" maxlength="10">(积分)<font color="red">*</font>
+												{literal}
+													<input type="text" id="price_type" name="price_type" maxlength="10" onblur="if(document.wspt.typeproduct.checked){alert('产品不能使用积分值!');this.value='0';}">(积分)<font color="red">*</font>
+													{/literal}
 												</td>
 											</tr>
 											<tr>
@@ -1721,7 +1729,7 @@
 														修改/删除
 													</td>
 													<td>
-														{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
+														{if $mcRow[list].mc_price!=''}{$mcRow[list].mc_price}元{/if}{if $mcRow[list].mc_price!='' && $mcRow[list].mc_price_type!=''}&nbsp;+&nbsp;{/if}{if $mcRow[list].mc_price_type!=''}{$mcRow[list].mc_price_type}元积分{/if}
 													</td>
 												</tr>
 											{/section}
@@ -1784,7 +1792,7 @@
 														100(件)
 													</td>
 													<td>
-														{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
+														{if $mcRow[list].mc_price!=''}{$mcRow[list].mc_price}元{/if}{if $mcRow[list].mc_price!='' && $mcRow[list].mc_price_type!=''}&nbsp;+&nbsp;{/if}{if $mcRow[list].mc_price_type!=''}{$mcRow[list].mc_price_type}元积分{/if}
 													</td>
 												</tr>
 											{/section}
@@ -1837,7 +1845,7 @@
 												</td>
 												<td>
 												<!-- 0价格1积分2红利 -->
-													{$memberRow[list].price}红利+{$memberRow[list].price_type}积分
+													{$memberRow[list].price}元+{$memberRow[list].price_type}积分
 												</td>
 											</tr>
 											{sectionelse}
@@ -2110,8 +2118,53 @@
 	</div>
 </div>-->
 						<!--/首页轮转广告-->
+						{/literal}
 
-						<!--首页独享活动-->{/literal}
+
+						<!--首页独享活动-->
+						<div class="flwindex_duxiang" style="height:100px;">
+							<div class="flwindex_duxiang_content" style="padding-left:10px;padding-right:10px;font-weight:bold;color:#fc4c0f;">
+						        <ul>
+									{$lmInfo}
+									<li></li>
+									<div class="qingchu"></div>
+								</ul>
+
+							</div>
+						</div>
+						<!--/首页独享活动-->
+
+
+						<!--首页独享活动-->
+						<div class="flwindex_duxiang">
+							<div class="flwindex_duxiang_h1">
+								联盟介绍
+								<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
+									class="shier" target="_blank">更多&gt;&gt;</a>
+								</span>
+							</div>
+							<!--
+            <div class="flwindex_duxiang_pic">22</div>
+            -->
+							<div class="flwindex_duxiang_content" style="padding-left:10px;padding-right:10px;">
+								<!--
+              <ul>
+
+                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试测试!</a></li>
+
+                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
+
+                <li class="bianjuwu"><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
+
+                <div class="qingchu"></div></ul>-->
+								{$aboutMeInfo|truncate:500:".."}
+
+							</div>
+						</div>
+						<!--/首页独享活动-->
+
+
+						<!--首页独享活动-->
 						<div class="flwindex_duxiang">
 							<div class="flwindex_duxiang_h1">
 								联盟动态
@@ -2148,35 +2201,6 @@
 
 									<div class="qingchu"></div>
 								</ul>
-							</div>
-						</div>
-						<!--/首页独享活动-->
-
-
-						<!--首页独享活动-->
-						<div class="flwindex_duxiang">
-							<div class="flwindex_duxiang_h1">
-								联盟介绍
-								<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
-									class="shier" target="_blank">更多&gt;&gt;</a>
-								</span>
-							</div>
-							<!--
-            <div class="flwindex_duxiang_pic">22</div>
-            -->
-							<div class="flwindex_duxiang_content" style="padding-left:10px;padding-right:10px;">
-								<!--
-              <ul>
-
-                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试测试!</a></li>
-
-                <li><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
-
-                <li class="bianjuwu"><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[测试]</a><a href="#" target="_blank" title="测试测试测试!">测试测试测试测试!</a></li>
-
-                <div class="qingchu"></div></ul>-->
-								{$aboutMeInfo|truncate:500:".."}
-
 							</div>
 						</div>
 						<!--/首页独享活动-->
@@ -2218,9 +2242,9 @@
 						<!--/首页热门优惠券-->
 
 					</div>
+
+
+
 					<script src="js/index.js" type="text/javascript"></script>
-
-
-
 {$js}
 {include file="inc/buttom.html"}

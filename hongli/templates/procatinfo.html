@@ -10,8 +10,7 @@
         <div style="width: 605px; float: left;">
 			<img src="images/lianmengshangjia.gif" />
 			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
-				联盟网引导会员去联盟商家消费，成功消费后可从商城获得红利卡，凭红利卡到联盟网换起红利，大部分利润会返还给会员，这就是联盟红利！<br>
-				<a href="#">点击了解更多&gt;&gt;</a>
+				消费者到联盟商家消费,消费者可以向联盟商家索取联盟网赠送的等值面额的红利卡，消费者凭借红利卡到联盟网进行分红或换购。
 			</span>
         </div>
         <div class="clear" style="height: 20px;"></div>
@@ -100,7 +99,17 @@
 		</div>
 	</div>
 	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">产品说明：{$sjProduct[list].mc_desc|truncate:10:""}</a><br>
-	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">{$sjProduct[list].mc_price}红利+{$sjProduct[list].mc_price_type}积分</font></a>
+	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">
+	{if $sjProduct[list].mc_price !="" && $sjProduct[list].mc_price!=0 }
+	{$sjProduct[list].mc_price}元
+	{/if}
+	{if $sjProduct[list].mc_price !="" && $sjProduct[list].mc_price!=0 && $sjProduct[list].mc_price_type !="" && $sjProduct[list].mc_price_type !=0 }
+	+
+	{/if}
+	{if $sjProduct[list].mc_price_type !="" && $sjProduct[list].mc_price_type !=0 }
+	{$sjProduct[list].mc_price_type}积分
+	{/if}
+	</font></a>
 </div>
 {sectionelse}
 没有所要查找的数据……
@@ -147,7 +156,17 @@
 		</div>
 	</div>
 	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">商品数量:{$sjMc[list].mc_count}件</a><br>
-	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">{$sjMc[list].mc_price}红利+{$sjMc[list].mc_price_type}积分</font></a><br>
+	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">
+	{if $sjMc[list].mc_price !="" && $sjMc[list].mc_price!=0 }
+	{$sjMc[list].mc_price}元
+	{/if}
+	{if $sjMc[list].mc_price !="" && $sjMc[list].mc_price !=0 && $sjMc[list].mc_price_type !="" && $sjMc[list].mc_price_type !=0 }
+	+
+	{/if}
+	{if $sjMc[list].mc_price_type !="" && $sjMc[list].mc_price_type !=0 }
+	{$sjMc[list].mc_price_type}积分
+	{/if}
+	</font></a><br>
 	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">商品简介：{$sjMc[list].mc_desc|truncate:10:""}</a>
 </div>
 {sectionelse}
@@ -224,6 +243,14 @@
 							</th>
 							<td>
 								{$sjInfo.qq}
+							</td>
+						</tr>
+						<tr>
+							<th>
+								网址：
+							</th>
+							<td>
+								{$sjInfo.url}
 							</td>
 						</tr>
 						<tr>

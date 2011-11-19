@@ -9,10 +9,9 @@
 			<img src="images/agent.jpg">
 		</div>
         <div style="width: 605px; float: left;">
-			<img src="images/lianmengagent.gif" />
+			<img src="images/dailijiameng.gif" />
 			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
-				代理联盟网发展属于自己的会员，会员成功消费后可获红利分成，获取更多的利润分成。商家加盟联盟网，可获得免费的宣传、推荐获取人气，并可获得联盟网的红利卡。心动不如行动吧....<br>
-				<a onclick="javascript:showAgentDiv(7,0)" href="javascript:showAgentDiv(7,0)">在线申请&gt;&gt;</a>
+				通过分红或换购方式让消费者实现消费免费，提高消费者的重复购买率，促使商家营业额提升，最终吸引更多商家加入联盟网的促销平台，实现财富共赢。
 			</span>
         </div>
         <div class="clear" style="height: 20px;"></div>
@@ -158,7 +157,7 @@
 									图片
 								</th>
 								<td style="text-align: left;">
-									<input type="file" id="pic" name="pic" size="25"><font style="color:red;">*</font>
+									<input type="file" id="pic" name="pic" size="25"><font style="color:red;">格式:gif|jpg|jpeg|png|bmp&nbsp;大小100K*</font>
 								</td>
 							</tr>
 							<tr>
@@ -207,6 +206,14 @@
 								</th>
 								<td style="text-align: left;">
 									<input type="text" id="qq" name="qq" maxlength="20" size="20"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									网址
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="url" name="url" maxlength="50" size="30"><font style="color:red;">*</font>
 								</td>
 							</tr>
 							<tr>
@@ -552,70 +559,6 @@
 
 			</div>
 		<!--合同下载  结束 -->
-
-		<!-- 常见问题 开始 -->
-    	<div id="div7" style="display:none;">
-    	   <b class="b1"></b>
-			<b class="b2"></b>
-			<b class="b3"></b>
-			<div class="bc" style="text-align: left;">
-				<div class="bt" style="color:#FFFFFF;font-weight:bold;font-size:14px;height:20px;">常见问题</div>
-				<div class="bb" style="text-align: left; height: 100%;"
-					id="resultDiv">
-					<table class="litab" cellpadding="1" cellspacing="1" width="100%">
-						<tr>
-							<th style="border-left:0px;" width="122px">
-								商品图片
-							</th>
-							<th>
-								商品名称
-							</th>
-							<th width="65px">
-								操作
-							</th>
-							<th width="70px">
-								价格
-							</th>
-						</tr>
-
-						{section name=list loop=$mcRow}
-							<tr>
-								<td style="border-left:0px;">
-									<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
-								</td>
-								<td>
-									<span style="color:#333333;font-size:16px;">{$mcRow[list].mc_name}</span><br>
-									数量：<font style="color:#C03ACB;">{$mcRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
-									状态：{if $mcRow[list].state == "0"}
-										<font style="color:#2D6C3D;">在售商品</font>
-									{/if}
-									{if $mcRow[list].state == "-1"}
-										<font style="color:red;">无效商品</font>
-									{/if}
-									{if $mcRow[list].state == "-2"}
-										<font style="color:#C0C0C0;">已售完</font>
-									{/if}
-
-								</td>
-								<td>
-									修改/删除
-								</td>
-								<td>
-									{$mcRow[list].mc_price}&nbsp;{if $mcRow[list].mc_price_type=='0'}元{/if}{if $mcRow[list].mc_price_type=='1'}积分{/if}{if $mcRow[list].mc_price_type=='2'}红利{/if}
-								</td>
-							</tr>
-						{/section}
-					</table>
-
-				</div>
-				<div class="bt" style="height: 1px;"></div>
-			</div>
-			<b class="b3"></b>
-			<b class="b2"></b>
-			<b class="b1"></b>
-
-			</div>
-		<!--常见问题  结束 -->
 
 
 		</div>

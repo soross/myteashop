@@ -10,8 +10,7 @@
         <div style="width: 605px; float: left;">
 			<img src="images/lianmengshangjia.gif" />
 			<span style="display: inline-block; color: rgb(47, 47, 47); font-size: 12px; line-height: 22px; margin-top: 10px;">
-				联盟网引导会员去联盟商家消费，成功消费后可从商城获得红利卡，凭红利卡到联盟网换起红利，大部分利润会返还给会员，这就是联盟红利！<br>
-				<a href="#">点击了解更多&gt;&gt;</a>
+				消费者到联盟商家消费,消费者可以向联盟商家索取联盟网赠送的等值面额的红利卡，消费者凭借红利卡到联盟网进行分红或换购。
 			</span>
         </div>
         <div class="clear" style="height: 20px;"></div>
@@ -81,7 +80,17 @@
 								商品价格：
 							</th>
 							<td>
-								<font style="color:red;">{$mcInfo.mc_price}红利+{$mcInfo.mc_price_type}积分</font>
+								<font style="color:red;">
+								{if $mcInfo.mc_price !="" && $mcInfo.mc_price!=0 }
+								{$mcInfo.mc_price}元
+								{/if}
+								{if $mcInfo.mc_price !="" && $mcInfo.mc_price !=0 && $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
+								+
+								{/if}
+								{if $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
+								{$mcInfo.mc_price_type}积分
+								{/if}
+								</font>
 							</td>
 						</tr>
 						<tr>

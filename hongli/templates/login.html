@@ -46,7 +46,7 @@
 						<div class="box-left-2">
 							<img src="images/login_nav.jpg" border="0" usemap="#Map">
 							<map name="Map" id="Map">
-								<area shape="rect" coords="6,5,344,39" href="procat.html" />
+								<area shape="rect" coords="6,5,344,39" href="procat.php" />
 								<area shape="rect" coords="355,6,691,39" href="#" />
 							</map>
 						</div>
@@ -70,7 +70,7 @@
 											会员类型：
 										</td>
 										<td class="text">
-											<select id="sltMemberType" name="mb_type">
+											<select id="sltMemberType" name="mb_type" class="edit">
 												<option value="0">
 													普通会员
 												</option>
@@ -94,7 +94,7 @@
 										</td>
 										<td class="text">
 											<input class="edit" type="text" maxlength="20"
-												name="username" id="username"/>
+												name="username" id="username" size="15"/>
 										</td>
 										<td class="text">
 											<img id="email_right"
@@ -108,7 +108,7 @@
 										</td>
 										<td class="text">
 											<input class="edit" type="password" maxlength="20"
-												name="password" id="password"/>
+												name="password" id="password" size="15"/>
 										</td>
 										<td class="text">
 											<img id="email_right"
@@ -353,7 +353,7 @@
 	}
 	//免费注册
 	function goUrl(){
-		document.location.href='xieyi.php';
+		document.location.href='reg.php';
 	}
 
 	function newgdcode(obj,url) {

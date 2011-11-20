@@ -24,9 +24,9 @@ if(isset($_POST['task'])&&"updateMbInfo"==$_POST['task']){
 else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
 		$cardNo = str_replace(" ", "", $_POST['no']);
-		$query = $db->query("select * from lm_card where state=0 and cardno = '" . $cardNo . "'");
+		$query = $db->query("select * from lm_card where state='0' and create_card='1' and cardno = '" . $cardNo . "'");
 		$us = is_array($row = $db->fetch_array($query));
-		$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
+		$ps = $us ? (md5($_POST[password]) == $row[password] ) : FALSE;
 		if ($ps) {
 			$msg="成功领取红利!";
 			$service_code = "GetHongLi";
@@ -46,17 +46,17 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{
-			echo "<script>location.href='../index.php?error=HL-2&divNo=2&flag=mb'</script>";
+			echo "<script>alert();location.href='../index.php?error=HL-2&divNo=2&flag=mb'</script>";
 		}
 	}else{
-		echo "<script>location.href='../index.php?error=HL-1&divNo=2&flag=mb'</script>";
+		echo "<script>alert();location.href='../index.php?error=HL-1&divNo=2&flag=mb'</script>";
 	}
 }
 //我要积分
 else if(isset($_POST['task'])&&"getJiFen"==$_POST['task']){
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
 		$cardNo = str_replace(" ", "", $_POST['no']);
-		$query = $db->query("select * from lm_card where state=0 and cardno = '" . $cardNo . "'");
+		$query = $db->query("select * from lm_card where state='0' and create_card='1' and cardno = '" . $cardNo . "'");
 		$us = is_array($row = $db->fetch_array($query));
 		$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
 		if ($ps) {

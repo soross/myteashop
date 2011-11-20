@@ -150,15 +150,15 @@ for(i=0;i<cs.length;i++){
 		?>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟红利总权数</div></td>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟总红利权数</div></td>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo $lmTopInfo[hongli];?></div></td>
           </tr>
           <tr>
-            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟今天红利权数</div></td>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">今天总分红权数</div></td>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo $lmTopInfo[dayhongli];?></div></td>
           </tr>
           <tr>
-            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">联盟当前红利</div></td>
+            <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">每分红权可分红利</div></td>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[hongli]),1);?></div></td>
           </tr>
 

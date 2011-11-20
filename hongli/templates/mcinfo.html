@@ -81,14 +81,18 @@
 							</th>
 							<td>
 								<font style="color:red;">
-								{if $mcInfo.mc_price !="" && $mcInfo.mc_price!=0 }
-								{$mcInfo.mc_price}元
-								{/if}
-								{if $mcInfo.mc_price !="" && $mcInfo.mc_price !=0 && $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
-								+
-								{/if}
-								{if $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
-								{$mcInfo.mc_price_type}积分
+								{if $mcInfo.mc_type == '0'}
+									{$mcInfo.mc_price}元
+								{else}
+									{if $mcInfo.mc_price !="" && $mcInfo.mc_price!=0 }
+										{$mcInfo.mc_price}元
+									{/if}
+									{if $mcInfo.mc_price !="" && $mcInfo.mc_price !=0 && $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
+									+
+									{/if}
+									{if $mcInfo.mc_price_type !="" && $mcInfo.mc_price_type !=0 }
+									{$mcInfo.mc_price_type}积分
+									{/if}
 								{/if}
 								</font>
 							</td>

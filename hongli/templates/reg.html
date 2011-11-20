@@ -28,7 +28,7 @@
 							</div>
 							<div class="zhuce_mianfeizc_touying"></div>
 							<div class="zhuce_mianfeizc_text">
-							<form action="post/reg_action.php" method="post" name="formUser" onsubmit="return checkuserinfo();">
+							<form action="post/reg_action.php" method="post" name="formUser" onsubmit="return onformUser();">
      							<TABLE border=0 cellSpacing=1 cellPadding=5 width="80%"  bgColor=#cccccc align="center" style="margin-top:10px;">
 
 									<tbody>
@@ -44,7 +44,7 @@
 											<TD width="70%" align=left>
 												<P>
 													<input name="username" type="text" size="25" id="username"
-														onblur="is_registered(this.value);" class="inputBg" maxlength="15"/>
+														onblur="checkusername()" class="inputBg" maxlength="15"/>
 													<span id="username_notice" style="color: #FF0000"> *</span>
 													<BR>
 														请用英文字母或数字注册，不支持中文及特殊符号如:*%#!-&amp;%$，最长15个字符 </P>
@@ -58,7 +58,7 @@
 											<TD align=left>
 												<P>
 												<input name="password" type="password" id="password1"
-													class="inputBg" style="width: 179px;" />
+													class="inputBg" style="width: 179px;" onblur="checkpassword()"/>
 												<span style="color: #FF0000" id="password_notice"> *</span><BR>不支持特殊符号如:*%#!-&amp;%$，最长16个字符</P>
 											</TD>
 										</TR>
@@ -67,7 +67,7 @@
 												确认密码：
 											</TD>
 											<TD align=left>
-												<input name="confirm_password" type="password"
+												<input name="confirm_password" type="password"  onblur="checkconfirm_password()"
 													id="conform_password" class="inputBg" style="width: 179px;" />
 												<span style="color: #FF0000" id="conform_password_notice">
 													*</span>
@@ -80,7 +80,7 @@
 											<TD align=left>
 											<p>
 												<input name="password_2" type="password" id="password_2"
-													class="inputBg" style="width: 120px;" />
+													class="inputBg" style="width: 120px;"  onblur="checkpassword_2()"/>
 												<span style="color: #FF0000" id="password_notice"> *</span><br>更改会员资料或提现时要用到，必须牢记且与登入密码不一致</p>
 											</TD>
 										</TR>
@@ -89,7 +89,7 @@
 												确认二级密码：
 											</TD>
 											<TD align=left>
-												<input name="confirm_password_2" type="password"
+												<input name="confirm_password_2" type="password"  onblur="checkconfirm_password_2()"
 													id="confirm_password_2" class="inputBg" style="width: 120px;" />
 												<span style="color: #FF0000" id="conform_password_notice">
 													*</span>
@@ -103,7 +103,7 @@
 											<TD align=left>
 											<p>
 												<input name="email" type="text" size="25" id="email"
-													onblur="checkEmail(this.value);" class="inputBg" />
+													onblur="checkemail();" class="inputBg" />
 												<span style="color: #FF0000" id="email_notice"> *</span><br>邮箱必填，用于找回账户密码</p>
 											</TD>
 											</TD>
@@ -161,7 +161,7 @@
 											</TD>
 											<TD width="70%" align=left>
 												<INPUT id=passwd_answer class="inputBg" style="width: 179px;"
-													maxLength=18 name=passwd_answer>
+													maxLength=18 name=passwd_answer onblur="checkpasswd_answer();">
 													<br>找回密码的答案
 											</TD>
 										</TR>
@@ -191,7 +191,7 @@
 											</TD>
 											<TD align=left>
 												<INPUT id=shopxp_shiname class="inputBg" style="width: 179px;"
-													size=10 name=realname>
+													size=10 name=realname  onblur="checkshopxp_shiname();">
 												<FONT color=red>*</FONT><br>以便领取红利确认，为了确保您的联盟红利无误的返还到您手上，请正确填写
 											</TD>
 										</TR>
@@ -201,7 +201,7 @@
 											</TD>
 											<TD align=left>
 												<INPUT id=MoMNo class="inputBg" style="width: 179px;"
-													onblur="check_id_card(this.value);" maxLength=18 name=idCard>
+													onblur="checkMoMNo();" maxLength=18 name=idCard>
 												<FONT color=red><span id=MomNo_id></span>*</FONT>
 												<INPUT onclick=javascript:chselradio(); value=haiwai type=radio
 													id="nosfz" name=nosfz>
@@ -217,10 +217,11 @@
 											</TD>
 											<TD align=left>
 												<INPUT id=qyname class="inputBg" style="width: 179px;" size=10
-													name=qyname>
+													name=qyname onblur="checkqyname();">
 												<FONT color=red>*</FONT>
 											</TD>
 										</TR>
+										<!--
 										<TR bgColor=#ffffff id="gerenb" style="display: none;">
 											<TD width="30%" align=right>
 												企业编号：
@@ -230,6 +231,7 @@
 													onblur="check_qyid_card(this.value);" maxLength=18 name=qymc>
 												<FONT color=red><span id="qymc_id"></span>*</FONT>
 										</TR>
+										 -->
 
 										<TR bgColor=#ffffff id="lianxiren" style="display: none;">
 											<TD align=right>
@@ -237,7 +239,7 @@
 											</TD>
 											<TD align=left>
 												<input class="inputBg" style="width: 179px;" maxlength="18"
-													name="lianxiren" />
+													name="lianxiren" onblur="checklianxiren();"/>
 											</TD>
 										</TR>
 										<TR bgColor=#ffffff id="lianxidh" style="display: none;">
@@ -246,7 +248,7 @@
 											</TD>
 											<TD align=left>
 												<input class="inputBg" style="width: 179px;" maxlength="18"
-													name="phone" />
+													name="phone"  onblur="checkphone();"/>
 											</TD>
 										</TR>
 										<TR bgColor=#ffffff>
@@ -255,7 +257,7 @@
 											</TD>
 											<TD align=left>
 												<INPUT name=tjr class="inputBg" id=tjr style="width: 179px;"
-													onblur=check_invite(this.value); maxLength=50>
+													onblur="checktjr();"  maxLength=50 value='lianmengwang'/>
 												<SPAN id=invite_notice style="color: #ff0000">*
 													请填写邀请人帐号或“lianmengwang”</SPAN>
 											</TD>
@@ -389,7 +391,7 @@
 											</TD>
 											<TD align=left>
 												<input id="address" class="inputBg" style="width: 179px;"
-													size="10" name="address" />
+													size="10" name="address" onblur="checkaddress();" />
 											</TD>
 										</tr>
 										<TR bgColor=#ffffff>
@@ -398,7 +400,7 @@
 											</TD>
 											<TD align=left>
 												<INPUT id=usertel class="inputBg" style="width: 179px;"
-													maxLength=18 name=usertel>
+													maxLength=18 name=usertel onblur="checkusertel();" />
 												<FONT color=red>*</FONT>
 												<BR>
 													电话格式：01012345678或13012345678，为及时与您取得联系，请留下能联系的到您本人的号码
@@ -412,12 +414,12 @@
 											</TD>
 											<TD align=left>
 												<table>
-													<tr><td>开户行</td><td><INPUT type=text name=band_name class="inputBg"
-													style="width: 179px;"><FONT color=red>*</FONT></td></tr>
+													<tr><td>开户行</td><td><INPUT type=text name=band_name class="inputBg" value="中国农业银行"
+													style="width: 179px;"  onblur="checkband_name();" readonly><FONT color=red>必须为中国农业银行*</FONT></td></tr>
 													<tr><td>户&nbsp;&nbsp;&nbsp;名</td><td><INPUT type=text
-													name=band_user class="inputBg" style="width: 100px;"><FONT color=red>*</FONT></td></tr>
+													name=band_user class="inputBg" style="width: 100px;"  onblur="checkband_user();"><FONT color=red>*</FONT></td></tr>
 													<tr><td>账&nbsp;&nbsp;&nbsp;号</td><td><INPUT type=text name=band_id class="inputBg"
-													style="width: 250px;"><FONT color=red>*</FONT></td></tr>
+													style="width: 250px;"  onblur="checkband_id();"><FONT color=red>*</FONT></td></tr>
 												</table>
 											</td>
 										</TR>
@@ -437,8 +439,14 @@
 														target="_blank">用户协议</a>》
 												</label>
 											</td>
-										</tr>
-
+										</tr>{/literal}
+										{if $errorInfo!="OK"}
+										<TR>
+											<TD colspan="2" align="center" style="color:red;">
+												{$errorInfo}
+											</TD>
+										</TR>
+										{/if}
 										<TR>
 											<TD colspan="2" align="center">
 												<input type="Submit" name="Submit" value="检查无错误 提交信息"
@@ -478,7 +486,7 @@
 							style="font-size: 12px; color: rgb(67, 120, 29); background: none repeat scroll 0% 0% white; text-align: center;">
 							<br>
 							<!-- <a class="footerAlink" href="#">联盟商家</a>|<a class="footerAlink" style="padding-left: 0.5em;" href="#">关于联盟网</a>|<a class="footerAlink" style="padding-left: 0.5em;" href="#">登入联盟网</a>|<a class="footerAlink" style="padding-left: 0.5em;" href="#">代理加盟</a>|<a class="footerAlink" style="padding-left: 0.5em;" href="#">联盟商城</a>|<a class="footerAlink" style="padding-left: 0.5em;" href="#">友情链接</a> -->
-							{/literal}
+
 							{$buttomNavInfo}
 							{literal}
 						</div>
@@ -1304,15 +1312,9 @@
 
 
 
-function checkspace(checkstr) {
-    var str = '';
-    for (i = 0; i < checkstr.length; i++) {
-        str = str + ' ';
-    }
-    return (str == checkstr);
-}
-function checkuserinfo() {
 
+function checkuserinfo() {
+	onformUser();
     if (checkspace(document.formUser.username.value)) {
         document.formUser.username.focus();
         alert("对不起，请填写会员名！");
@@ -1376,25 +1378,25 @@ function checkuserinfo() {
         return false;
     }
 
- if(document.getElementById("nosfz").checked){
-	 }
-else{
-    isIDCard1 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{2}([xX0-9]{1})$/;
-    isIDCard2 = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([xX0-9]{1})$/;
+ 	if(document.getElementById("nosfz").checked){
 
-    if (!isIDCard1.test(sfz)) {
-        if (!isIDCard2.test(sfz)) {
-            document.formUser.MoMNo.focus();
-            alert("对不起，请填写正确地身份证号！");
-            return false;
-        }
-    }
+	}else{
+    	isIDCard1 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{2}([xX0-9]{1})$/;
+    	isIDCard2 = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([xX0-9]{1})$/;
 
-    if (document.formUser.MoMNo.value.length != 15 && document.formUser.MoMNo.value.length != 18 && document.formUser.MoMNo.value.length != 10 && document.formUser.MoMNo.value.length != 9 && document.formUser.MoMNo.value.length != 6) {
-        document.formUser.MoMNo.focus();
-        alert("请输入正确的身份证号码！");
-        return false;
-    }
+	    if (!isIDCard1.test(sfz)) {
+	        if (!isIDCard2.test(sfz)) {
+	            document.formUser.MoMNo.focus();
+	            alert("对不起，请填写正确地身份证号！");
+	            return false;
+	        }
+	    }
+
+	    if (document.formUser.MoMNo.value.length != 15 && document.formUser.MoMNo.value.length != 18 && document.formUser.MoMNo.value.length != 10 && document.formUser.MoMNo.value.length != 9 && document.formUser.MoMNo.value.length != 6) {
+	        document.formUser.MoMNo.focus();
+	        alert("请输入正确的身份证号码！");
+	        return false;
+	    }
 
     }
 
@@ -1425,7 +1427,7 @@ else{
         return false;
     }
 
-    document.forms[0].submit();
+    //document.forms[0].submit();
 }
 
 
@@ -1440,7 +1442,7 @@ function check_invite(username)
         document.forms['formUser'].elements['Submit'].disabled = 'disabled';
         return false;
     }
-    Ajax.call( 'user.php?act=check_invite', 'invite=' + username, invite_callback , 'GET', 'TEXT', true, true );
+    //Ajax.call( 'user.php?act=check_invite', 'invite=' + username, invite_callback , 'GET', 'TEXT', true, true );
     check_id_card(document.getElementById('MoMNo').value);
 }
 
@@ -1501,7 +1503,7 @@ function check_id_card(username)
         document.forms['formUser'].elements['Submit'].disabled = 'disabled';
         return false;
     }
-    Ajax.call( 'user.php?act=id_card', 'card=' + username, id_card_callback , 'GET', 'TEXT', true, true );
+    //Ajax.call( 'user.php?act=id_card', 'card=' + username, id_card_callback , 'GET', 'TEXT', true, true );
 }
 
 function check_qyid_card(username)
@@ -1519,7 +1521,7 @@ function check_qyid_card(username)
         document.forms['formUser'].elements['Submit'].disabled = 'disabled';
         return false;
     }
-    Ajax.call( 'user.php?act=id_card', 'card=' + username, id_ycard_callback , 'GET', 'TEXT', true, true );
+   // Ajax.call( 'user.php?act=id_card', 'card=' + username, id_ycard_callback , 'GET', 'TEXT', true, true );
 }
 
 

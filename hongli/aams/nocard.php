@@ -14,7 +14,7 @@ if ($firstcount < 0) $firstcount = 0;
 
 
 //未审核会员分类
-$cardQuery = $db->query("select * from lm_card where create_card='0' order by create_date desc limit $firstcount, $displaypg");
+$cardQuery = $db->query("select * from lm_card where create_card='0' order by type,cardno limit $firstcount, $displaypg");
 $cardRow = array();
 while($rowcard = $db->fetch_array($cardQuery)){
 	$cardRow[] = $rowcard;

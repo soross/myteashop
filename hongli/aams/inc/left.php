@@ -94,7 +94,6 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../agentconfig.php" target="dataFrame">加盟信息配置</a></p>
 	      <p>-&nbsp;<a href="../aboutmeconfig.php" target="dataFrame">联盟简介配置</a></p>
 	      <p>-&nbsp;<a href="../useragreementconfig.php" target="dataFrame">用户使用协议配置</a></p>
 	      <p>-&nbsp;<a href="../config.php" target="dataFrame">页脚信息配置</a></p>
@@ -139,6 +138,14 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 	      <p>-&nbsp;<a href="../loginad.php" target="dataFrame">登入界面广告管理</a></p>
 	      <p>-&nbsp;<a href="../ad.php" target="dataFrame">其他界面广告管理</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;加盟信息管理</h2>
+	    <div class="content">
+	      <p>-&nbsp;<a href="../agentconfig.php" target="dataFrame">加盟信息配置</a></p>
+	      <p>-&nbsp;<a href="../agentsm.php" target="dataFrame">加盟说明配置</a></p>
+	      <p>-&nbsp;<a href="../agentys.php" target="dataFrame">加盟优势配置</a></p>
 	    </div>
 	  </li>
 	  <!--

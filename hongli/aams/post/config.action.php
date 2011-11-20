@@ -43,4 +43,13 @@ if(isset($_POST[task]) && "updateButtomCopyInfo"==$_POST[task]){
 	echo "<script>alert('银行信息修改成功?');location.href='../bankinfo.php';</script>";
 }
 
+else if(isset($_POST[task]) && "updateAboutAgentShuoMing"==$_POST[task]){
+	$db->query("update lm_comm_code set content='".htmlentities($_POST[content])."' where type_name='AboutAgentShuoMing'");
+	echo "<script>alert('代理加盟说明修改成功?');location.href='../agentsm.php';</script>";
+}
+
+else if(isset($_POST[task]) && "updateAboutAgentYouShi"==$_POST[task]){
+	$db->query("update lm_comm_code set content='".htmlentities($_POST[content])."' where type_name='AboutAgentYouShi'");
+	echo "<script>alert('代理加盟优势修改成功?');location.href='../agentys.php';</script>";
+}
 ?>

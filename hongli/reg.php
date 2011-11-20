@@ -30,6 +30,8 @@ if("-1"==$_GET[error]){
 	$smarty->assign("errorInfo","用户名已存在!");
 }else if("-2"==$_GET[error]){
 	$smarty->assign("errorInfo","用户名不能为空!");
+}else if("-3"==$_GET[error]){
+	$smarty->assign("errorInfo","系统异常!");
 }else{
 	$smarty->assign("errorInfo","OK");
 }

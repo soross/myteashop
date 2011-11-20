@@ -83,6 +83,14 @@ if(isset($_GET['mode']) && !empty($_GET['mode']) && "applySjAgent"==$_GET['mode'
 	$info = $db->fetch_array($query);
 	$smarty->assign("AboutAgentAgent",html_entity_decode($info[content]));
 
+	$query = $db->query("select content from lm_comm_code where type_name='AboutAgentShuoMing'");
+	$info = $db->fetch_array($query);
+	$smarty->assign("AboutAgentShuoMing",html_entity_decode($info[content]));
+
+	$query = $db->query("select content from lm_comm_code where type_name='AboutAgentYouShi'");
+	$info = $db->fetch_array($query);
+	$smarty->assign("AboutAgentYouShi",html_entity_decode($info[content]));
+
 	$smarty->display("agent.html");
 }
 ?>

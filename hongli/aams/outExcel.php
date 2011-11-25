@@ -25,7 +25,7 @@ if(isset($_GET[task]) &&"outNoCardData"==$_GET[task]){
   while($array = $db->fetch_array($query)) {
 	  ++$i;
 	  xlsWriteNumber($xlsRow,0,"$i");
-	  xlsWriteNumber($xlsRow,0,"$array[0]");
+	  xlsWriteLabel($xlsRow,0,"$array[0]");
 	  xlsWriteLabel($xlsRow,1,"$array[1]");
 	  $xlsRow++;
   }

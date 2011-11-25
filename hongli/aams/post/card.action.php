@@ -6,7 +6,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 		for($i=0;$i<$_POST[num];$i++){
 			$password = strtolower(getPassword());
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('1001','2',$db)."','".$password."','".md5($password)."','0',now(),'2')");
+					"values('".getCardNo('1','2',$db)."','".$password."','".md5($password)."','0',now(),'2')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额100的红利卡!');location.href='../createcard.php';</script>";
 	}else{
@@ -17,7 +17,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 		for($i=0;$i<$_POST[num];$i++){
 			$password = strtolower(getPassword());
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('5001','10',$db)."','".$password."','".md5($password)."','0',now(),'10')");
+					"values('".getCardNo('5','10',$db)."','".$password."','".md5($password)."','0',now(),'10')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额500的红利卡!');location.href='../createcard.php';</script>";
 	}else{
@@ -28,7 +28,7 @@ if(isset($_POST[task]) && "CreateCardBy100"==$_POST[task]){
 		for($i=0;$i<$_POST[num];$i++){
 			$password = strtolower(getPassword());
 			$db->query("insert into lm_card(cardno,srcpwdnomd5,password,state,create_date,type) " .
-					"values('".getCardNo('10001','20',$db)."','".$password."','".md5($password)."','0',now(),'20')");
+					"values('".getCardNo('0','20',$db)."','".$password."','".md5($password)."','0',now(),'20')");
 		}
 		echo "<script>alert('成功创建了".$_POST[num]."张面额1000的红利卡!');location.href='../createcard.php';</script>";
 	}else{
@@ -54,18 +54,14 @@ function getCardNo($start,$type,$db){
 	//$str=date("His").rand(100,999);
 	//return $start.$str;
 	if(!empty($maxcardno)&&""!=$maxcardno){
+
 		$maxcardno = $maxcardno+1;
-		if($type==20){
-		$maxcardno = substr($maxcardno,5,strlen($maxcardno));
-		}else{
-			$maxcardno = substr($maxcardno,4,strlen($maxcardno));
+		if($type == 20){
+			$maxcardno = str_pad($maxcardno, 8, "0", STR_PAD_LEFT);
 		}
+		$maxcardno = substr($maxcardno,1,strlen($maxcardno));
 	}else{
-		if($type==20){
-			$maxcardno = str_pad("1", 7, "0", STR_PAD_LEFT);
-		}else{
-			$maxcardno = str_pad("1", 8, "0", STR_PAD_LEFT);
-		}
+		$maxcardno = str_pad("1", 7, "0", STR_PAD_LEFT);
 	}
 	return $start.$maxcardno;
 }

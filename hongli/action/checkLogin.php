@@ -1,8 +1,30 @@
 <?php
-session_start();
-if (!isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) || !isset($_SESSION['WEB_USER_LOGIN_UID_TYPE']) || !isset ($_SESSION['WEB_USER_LOGIN_SESSION']) || !isset ($_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'])) {
-	session_destroy();
-	Get_Return_Page('login.php', '您还没有登入，请先登入！');
+session_id(SID);
+if(!isset($_SESSION)){
+	session_start();
+}
+ini_set('display_errors', 'Off');
+
+if (!isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) || !isset($_SESSION['WEB_USER_LOGIN_UID_TYPE']) ||
+    !isset ($_SESSION['WEB_USER_LOGIN_SESSION']) || !isset ($_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'])) {
+
+	if(isset($_COOKIE['WEB_USER_LOGIN_UID_COOKIE']) && !empty($_COOKIE['WEB_USER_LOGIN_UID_COOKIE'])
+		&& isset($_COOKIE['WEB_USER_LOGIN_UID_TYPE_COOKIE']) && !empty($_COOKIE['WEB_USER_LOGIN_UID_TYPE_COOKIE'])
+		&& isset($_COOKIE['WEB_USER_LOGIN_COOKIE']) && !empty($_COOKIE['WEB_USER_LOGIN_COOKIE'])
+		&& isset($_COOKIE['WEB_USER_LOGIN_ONTIME_COOKIE']) && !empty($_COOKIE['WEB_USER_LOGIN_ONTIME_COOKIE'])){
+
+		if(Get_user_ontime()){
+			$_SESSION['WEB_USER_LOGIN_UID_SESSION'] = $_COOKIE['WEB_USER_LOGIN_UID_COOKIE'];
+			$_SESSION['WEB_USER_LOGIN_UID_TYPE'] = $_COOKIE['WEB_USER_LOGIN_UID_TYPE_COOKIE'];
+			$_SESSION['WEB_USER_LOGIN_SESSION'] = $_COOKIE['WEB_USER_LOGIN_COOKIE'];
+			$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = $_COOKIE['WEB_USER_LOGIN_ONTIME_COOKIE'];
+		}else{
+			Get_Return_Page("login.php",'登入超时，请重新登入！');
+		}
+	} else{
+		session_destroy();
+		Get_Return_Page('login.php', '您还没有登入，请先登入！');
+	}
 }else{
 	Get_user_ontime();
 }
@@ -16,14 +38,19 @@ function Get_Return_Page($url, $show = '操作已成功！') {
 function Get_user_ontime() {
 	$new_time = mktime();
 	$onlinetime = $_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'];
-	//echo ($new_time - $onlinetime ).'<br>';
+	if(empty($onlinetime)){
+		$onlinetime = $_COOKIE['WEB_USER_LOGIN_ONTIME_COOKIE'];
+	}
+
 	if (($new_time - $onlinetime ) > 36000000) {
 		session_destroy();
-		Get_Return_Page("login.php",'登入超时，请重新登入！');
-		exit ();
+		return false;
 	} else {
 		$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = mktime();
+		setcookie('WEB_USER_LOGIN_ONTIME_COOKIE',mktime(),(time()+ (20*60)),'/') ;
+		return true;
 	}
+
 }
 
 function Save_log($db,$service_code,$mb_id,$remark,$num,$result,$cardNo,$domode,$orderNo){

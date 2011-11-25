@@ -560,7 +560,7 @@ if(date('Ymd')>$remarInfo[remark]){
 	if($info[hongli]>0){
 		if(((($info[sale_money]+$info[exchange])*0.05)/$info[hongli])<0.1){
 			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
-				"values('LmFenHong',now(),'','联盟当前红利".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."'," .
+				"values('LmFenHong',now(),'0','联盟当前红利".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."'," .
 						"'".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."','Error','$info[sale_money]','$info[exchange]','$info[hongli]')");
 		}else{
 			//计算用户的分红

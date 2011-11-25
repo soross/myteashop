@@ -38,6 +38,7 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 				$num = $row['type']/10;
 				$sql="update lm_mb_limit set hongli=hongli+".$num." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'";
 				addHongLi($db,$num);
+				addSaleMoney($db,($row['type']*50));
 			}
 			$db->query($sql);
 			$db->query("update lm_card set use_date=now(), state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
@@ -68,6 +69,8 @@ else if(isset($_POST['task'])&&"getJiFen"==$_POST['task']){
 			$db->query($sql);
 			$db->query("update lm_card set state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
 
+			addSaleMoney($db,$num);
+
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],$num."红利卡兑换",$num,"OK",$cardNo,"+","A");
 
 
@@ -89,7 +92,10 @@ else if(isset($_POST['task'])&&"JiFen2HongLi"==$_POST['task']){
 			echo "<script>location.href='../index.php?error=JF2HL-2&divNo=3&flag=mb'</script>";
 		}else{
 			$query = $db->query("update lm_mb_limit set hongli = hongli+".$_POST[hongli]." ,jifen=jifen-".($_POST[hongli]*500)." where id = '".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+
+
 			addHongLi($db,$_POST[hongli]);
+			addSaleMoney($db,($_POST[hongli]*500));
 
 			echo "<script>alert('兑换成功!');location.href='../index.php?divNo=3&flag=mb'</script>";
 		}
@@ -382,5 +388,10 @@ function addHongLi($db,$cnt){
 //增加联盟未分红利
 function addNotHongLi($db,$cnt){
 	$db->query("update lm_limit set not_hongli=not_hongli+$cnt where id='1'");
+}
+
+function addSaleMoney($db,$cnt){
+	//增加联盟的收益情况
+	$db->query("update lm_limit set sale_money=sale_money+".$cnt." where id='1'");
 }
 ?>

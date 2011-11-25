@@ -78,8 +78,8 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 				$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
 			}
 
-			//增加联盟的收益情况
-			$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500)).",sale_money=sale_money+".$mcInfo[mc_price]." where id='1'");
+			//增加联盟的收益情况,sale_money=sale_money+".$mcInfo[mc_price]."
+			$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500))." where id='1'");
 
 			echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
 
@@ -165,8 +165,8 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 				$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
 			}
 
-			//增加联盟的收益情况
-			$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500)).",exchange=exchange+".$mcInfo[mc_price]." where id='1'");
+			//增加联盟的收益情况,exchange=exchange+".$mcInfo[mc_price]."
+			$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500))." where id='1'");
 
 			echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
 		}

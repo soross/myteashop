@@ -15,7 +15,7 @@ if(isset($_GET['type']) && !empty($_GET['type'])){
 	$smarty->assign("",$_GET['type']);
 }
 
-$pagesize = 10;//一页显示多少条
+$pagesize = 20;//一页显示多少条
 //分页
 $queryTotal = $db->query("select id from lm_news" .$where);
 $total = $db->db_num_rows($queryTotal);

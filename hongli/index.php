@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 'Off');
 require_once("action/checkLogin.php");
 require_once("action/smarty_index.php");
 require_once("action/mysql.class.php");
@@ -30,8 +29,8 @@ $smarty->assign("jfTotalBasic",floor($mb_limit[jifen]/500));
 
 //我的红利
 $smarty->assign("hlhongli",$mb_limit[hongli]);//红利权数
-$smarty->assign("notMoney",round($mb_limit[not_hongli],2));//未分红利
-$smarty->assign("money",round($mb_limit[money],2)+round($mb_limit[not_hongli],2));//总分红
+$smarty->assign("notMoney",round($mb_limit[not_money],2)+round($mb_limit[money],2));//已分红利
+$smarty->assign("money",round($mb_limit[money],2));//可用分红
 
 //当前红利
 $lmQuery = $db->query("select sale_money,exchange from lm_limit where id='1'");

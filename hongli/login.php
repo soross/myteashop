@@ -1,6 +1,19 @@
 <?php
-session_start();
-session_destroy();
+if(!isset($_SESSION)){
+	session_start();
+}
+if(isset($_GET[task]) && "logout"==$_GET[task]){
+	setcookie('WEB_USER_LOGIN_UID_COOKIE','',(time()+ (20*60)),'/');//s
+	setcookie('WEB_USER_LOGIN_UID_TYPE_COOKIE','',(time()+ (20*60)),'/');
+	setcookie('WEB_USER_LOGIN_COOKIE','',(time()+ (20*60)),'/');
+	setcookie('WEB_USER_LOGIN_ONTIME_COOKIE','',(time()+ (20*60)),'/') ;
+	session_destroy();
+}
+/**
+if(isset($_COOKIE)){
+	setcookie("RequireUrl", NULL);
+	unset($_COOKIE);
+}**/
 require_once("action/smarty_index.php");
 require_once("action/mysql.class.php");
 

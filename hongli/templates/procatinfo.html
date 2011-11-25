@@ -98,12 +98,12 @@
 		<img src="{$sjProduct[list].mc_pic}" alt="{$sjProduct[list].mc_name}" title="{$sjProduct[list].mc_name}" style="width:170px;height:137px;" border="0" /></a>
 		</div>
 	</div>
-	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">产品说明：{$sjProduct[list].mc_desc|truncate:10:""}</a><br>
 	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">
 	{if $sjProduct[list].mc_price !="" && $sjProduct[list].mc_price!=0 }
 	{$sjProduct[list].mc_price}元
 	{/if}
-	</font></a>
+	</font></a><br>
+	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">产品说明：{$sjProduct[list].mc_desc|truncate:10:""}</a>
 </div>
 {sectionelse}
 没有所要查找的数据……
@@ -161,7 +161,7 @@
 	{$sjMc[list].mc_price_type}积分
 	{/if}
 	</font></a><br>
-	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle">商品简介：{$sjMc[list].mc_desc|truncate:10:""}</a>
+	<a href="mcinfo.php?mcid={$sjMc[list].id}" target="_blank" class="prodtitle"><br>产品说明：{$sjMc[list].mc_desc|truncate:10:""}</a>
 </div>
 {sectionelse}
 没有所要查找的数据……

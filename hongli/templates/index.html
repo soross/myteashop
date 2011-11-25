@@ -561,15 +561,15 @@
 											</tr>
 											<tr>
 												<th style="border-left:0px;text-align:right;">
-													Œ¥∑÷∫Ï¿˚&nbsp;&nbsp;
+													“—∑÷∫Ï¿˚&nbsp;&nbsp;
 												</th>
 												<td style="text-align:left;font-weight:bold;color:#262626;">
-													&nbsp;&nbsp;{$notHongLi}
+													&nbsp;&nbsp;{$notMoney}
 												</td>
 											</tr>
 											<tr>
 												<th style="border-left:0px;text-align:right;">
-													∫Ï¿˚◊‹∂Ó&nbsp;&nbsp;
+													ø…”√∫Ï¿˚&nbsp;&nbsp;
 												</th>
 												<td style="text-align:left;font-weight:bold;color:#262626;">
 													&nbsp;&nbsp;{$money}
@@ -2157,7 +2157,7 @@
                 <li class="bianjuwu"><span class="flwindex_xiaosanjiao" style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a href="#" class="shier" target="_blank">[≤‚ ‘]</a><a href="#" target="_blank" title="≤‚ ‘≤‚ ‘≤‚ ‘!">≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘!</a></li>
 
                 <div class="qingchu"></div></ul>-->
-								{$aboutMeInfo|truncate:500:".."}
+								{$aboutMeInfo}
 
 							</div>
 						</div>
@@ -2174,7 +2174,7 @@
 							</div>
 
 							<div class="flwindex_duxiang_content">
-								<ul>
+								<ul  style="height:80px;" height=80px;>
 
 									{section name=list loop=$newsDTRow}
 									<li>
@@ -2184,20 +2184,6 @@
 											target="_blank" title="{$newsDTRow[list].title}">{$newsDTRow[list].title}</a>
 									</li>
 									{/section}
-
-									<li>
-										<span class="flwindex_xiaosanjiao"
-											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;
-										<a href="#" class="shier" target="_blank"></a><a href="#"
-											target="_blank" title="≤‚ ‘!">≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘!</a>
-									</li>
-
-									<li class="bianjuwu">
-										<span class="flwindex_xiaosanjiao"
-											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;
-										<a href="#" class="shier" target="_blank"></a><a href="#"
-											target="_blank" title="≤‚ ‘≤‚ ‘≤‚ ‘!">≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘!</a>
-									</li>
 
 									<div class="qingchu"></div>
 								</ul>
@@ -2214,7 +2200,7 @@
 								</span>
 							</div>
 							<div class="flwindex_remenyhq_content">
-								<ul>
+								<ul  style="height:80px;" height=80px;>
 
 									{section name=list loop=$newsGGRow}
 									<li>
@@ -2225,15 +2211,6 @@
 										</span>
 									</li>
 									{/section}
-
-									<li>
-										<span class="flwindex_remenyhq_span1"><span
-											class="flwindex_xiaosanjiao"
-											style="position: relative; top: -1px;"></span>&nbsp;&nbsp;<a
-											href="#" target="_blank" title="≤‚ ‘">≤‚ ‘≤‚ ‘≤‚ ‘≤‚ ‘</a>
-										</span>
-
-									</li>
 
 									<div class="qingchu"></div>
 								</ul>
@@ -2246,5 +2223,6 @@
 
 
 					<script src="js/index.js" type="text/javascript"></script>
-{$js}
-{include file="inc/buttom.html"}
+					{$js}
+
+					{include file="inc/buttom.html"}

@@ -5,15 +5,31 @@ if(isset($_GET[mbid]) && !empty($_GET[mbid])
  &&isset($_GET[result])&& !empty($_GET[result])){
 	//passAuth backAuth
 	$state = -1;
-	$msg ="代理商申请删除成功";
+	$msg ="申请删除成功";
 	if(isset($_GET[result])&&"passAuth"==$_GET[result]){
 		$state = 0;
-		$msg = "代理商申请审核通过!";
-		$db->query("update lm_member set state='".$state."' where id ='".$_GET[mbid]."' ");
-		echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
+		$msg = "审核通过!";
+		$db->query("update lm_member set mb_type=state,state='".$state."' where id ='".$_GET[mbid]."' ");
+
+		$query = $db->query("select id from lm_sj where mb_id='".$_GET[mbid]."'");
+		$cnt = $db->db_num_rows();
+		if($cnt>0){
+			$db->query("update lm_sj set state='0' where mb_id='".$_GET[mbid]."'");
+		}
+
+		if(isset($_GET[gourl]) && "auth"==$_GET[gourl] ){
+			echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
+		}else{
+			echo "<script>alert('".$msg."');location.href='../authdl.php';</script>";
+		}
 	}else{
 		$db->query("delete from lm_member where id ='".$_GET[mbid]."' ");
-		echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
+		$db->query("delete from lm_sj where mb_id ='".$_GET[mbid]."' ");
+		if(isset($_GET[gourl]) && "auth"==$_GET[gourl] ){
+			echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
+		}else{
+			echo "<script>alert('".$msg."');location.href='../authdl.php';</script>";
+		}
 	}
 }else if(isset($_POST[task]) && "SjHeTong"== $_POST[task]){
 		//文件保存目录URL

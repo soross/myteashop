@@ -14,13 +14,17 @@ if(isset($_POST['task'])&&"applyAgentMc"==$_POST['task']){
 		if($up->uploadFile('pic')){
 			$filename = "images/SJ-".$up->getNewFileName();
 
-			$agentIDQuery = $db->query("select id from lm_member where mb_type='2' and mb_name='".$_POST[agent]."'");
+			$agentIDQuery = $db->query("select id from lm_member where mb_name='".$_POST[agent]."'");
 			$cnt = $db->db_num_rows();
 			$agentID="0";
 			if($cnt>0){
 				$arr  = $db->fetch_array($agentIDQuery);
 				$agentID = $arr[id];
+			}else{
+				$agentID = '-1';
 			}
+
+			$db->query("update lm_member set state='2' where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
 
 			$sql="insert into lm_sj(mb_id,agent_id,sj_name,sj_code,sj_pic,sj_desc,sj_type," .
 				"address,telephone,fax,phone,qq,link_man,create_date,province,city,email,state,remark,url)" .
@@ -39,7 +43,7 @@ if(isset($_POST['task'])&&"applyAgentMc"==$_POST['task']){
 }else if(isset($_POST['task'])&&"applyAgentAgent"==$_POST['task']){
 	require_once("../action/checkLogin.php");
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
-		$db->query("update lm_member set state='3' where mb_type='2' and id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+		$db->query("update lm_member set state='3' where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
 		$cnt= $db->db_num_rows();
 		if($cnt==1){
 			echo "<script>alert('申请成功,等待管理员审核!');location.href='../index.php'</script>";

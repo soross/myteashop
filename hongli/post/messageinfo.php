@@ -361,12 +361,15 @@ else if(isset($_POST['task'])&&"addProduct"==$_POST['task']){
 }
 //商家通过审核
 else if(isset($_GET['task'])&&"PassAuthSj"==$_GET['task']){
+	$query = $db->query("select mb_id from lm_sj where id='".$_GET[sjid]."'");
+	$row = $db->fetch_array($query);
+	$db->query("update lm_member set mb_type=state, state=0 where id = '".$row[mb_id]."'");
 	$db->query("update lm_sj set state='0' where id='".$_GET[sjid]."'");
 	echo "<script>alert('审核成功!');location.href='../index.php?divNo=18&flag=auth';</script>";
 }
 //未通过审核
 else if(isset($_GET['task'])&&"BackAuthSj"==$_GET['task']){
-	$db->query("update lm_sj set state='-2' where id='".$_GET[sjid]."'");
+	//$db->query("update lm_sj set state='-2' where id='".$_GET[sjid]."'");
 	echo "<script>alert('退回成功!');location.href='../index.php?divNo=18&flag=auth';</script>";
 }
 

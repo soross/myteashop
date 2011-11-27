@@ -147,7 +147,7 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="12%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">会员类型</div></td>
+            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">申请类型</div></td>
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
             <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">身份证号码</div></td>
             <td width="28%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">地址</div></td>
@@ -159,13 +159,13 @@ for(i=0;i<cs.length;i++){
           {section name=list loop=$authRow}
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$authRow[list].mb_name}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $authRow[list].mb_type==2}商家{else}代理商{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">商家</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].realname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].idcard}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].province}{$authRow[list].city}{$authRow[list].address}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].create_Date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定通过审核?'))location.href='post/auth.action.php?mbid={$authRow[list].id}&result=passAuth'">通过</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="images/tab/010.gif" width="9" height="9" /> </span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定不审核?'))location.href='post/auth.action.php?mbid={$authRow[list].id}&result=backAuth'">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定通过审核?'))location.href='post/auth.action.php?gourl=auth&mbid={$authRow[list].id}&result=passAuth'">通过</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="images/tab/010.gif" width="9" height="9" /> </span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定不审核?'))location.href='post/auth.action.php?gourl=auth&mbid={$authRow[list].id}&result=backAuth'">删除</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}
 			<tr>
@@ -185,10 +185,10 @@ for(i=0;i<cs.length;i++){
         <td background="images/tab/tab_21.gif">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1">共120条纪录，当前第1/10页，每页10条纪录</span></td>
+            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
             <td width="75%" valign="top" class="STYLE1"><div align="right">
               <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-                <tr>
+                <tr><!--
                   <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
                   <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
                   <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
@@ -198,7 +198,7 @@ for(i=0;i<cs.length;i++){
                     <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
                   </span></td>
                   <td width="23" height="22" valign="middle">页</td>
-                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td>
+                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
                 </tr>
               </table>
             </div></td>

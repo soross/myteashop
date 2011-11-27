@@ -47,10 +47,10 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{
-			echo "<script>alert();location.href='../index.php?error=HL-2&divNo=2&flag=mb'</script>";
+			echo "<script>location.href='../index.php?error=HL-2&divNo=2&flag=mb'</script>";
 		}
 	}else{
-		echo "<script>alert();location.href='../index.php?error=HL-1&divNo=2&flag=mb'</script>";
+		echo "<script>location.href='../index.php?error=HL-1&divNo=2&flag=mb'</script>";
 	}
 }
 //我要积分
@@ -67,14 +67,14 @@ else if(isset($_POST['task'])&&"getJiFen"==$_POST['task']){
 			$msg="成功领取积分!";
 
 			$db->query($sql);
-			$db->query("update lm_card set state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
+			$db->query("update lm_card set use_date=now(),state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
 
 			addSaleMoney($db,$num);
 
 			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],$num."红利卡兑换",$num,"OK",$cardNo,"+","A");
 
 
-			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
+			echo "<script>alert('".$msg."');location.href='../index.php?divNo=20&flag=mb'</script>";
 		}else{
 			echo "<script>location.href='../index.php?error=JF-2&divNo=20&flag=mb'</script>";
 		}
@@ -147,9 +147,8 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 	$sql = "select * from lm_member where id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'";
 	$query = $db->query($sql);
 	$us = is_array($row = $db->fetch_array($query));
-	$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
+	$ps = $us ? md5($_POST[password]) == $row[second_password] : FALSE;
 	if ($ps) {
-
 		$mbquery = $db->query("select * from lm_member where mb_name='".$_POST[username]."'");
 		if($db->db_num_rows()==1){
 			$mbinfo = $db->fetch_array($mbquery);
@@ -169,7 +168,7 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
 
 
-				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
 
 
@@ -178,7 +177,7 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 				$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
 
-				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
 
 
@@ -187,7 +186,7 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 				$db->query("update lm_mb_limit set money=0,sale_money=0,exchange=exchange-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				$db->query("update lm_mb_limit set money=money+" .($cnt) ." where mb_id='".$mbinfo[id]."'");
 
-				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
+				$db->query("update lm_mb_limit set jifen=jifen-" .($jfcnt) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				$db->query("update lm_mb_limit set jifen=jifen+" .($jfcnt) ." where mb_id='".$mbinfo[id]."'");
 
 			}else{

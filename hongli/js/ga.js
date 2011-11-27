@@ -1,3 +1,7 @@
+function zhuanzhangcheck(obj){
+		return	confirm('是否确定转出\n红利：'+obj.num+'\n积分：'+obj.jifennum+'\n到账户：'+obj.username);
+}
+
 /**
  *
  * @param {} obj 当前对象，一般是使用this引用。

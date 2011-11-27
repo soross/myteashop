@@ -27,8 +27,8 @@ if(isset($_POST['task'])&&"applyAgentMc"==$_POST['task']){
 				" values('".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."','".$agentID."','$_POST[sj_name]','$_POST[sj_code]'," .
 				"'$filename','$_POST[sj_desc]','$_POST[type]','$_POST[address]','$_POST[tel]','$_POST[fax]','$_POST[phone]','$_POST[qq]'," .
 				"'$_POST[link_man]',now(),'$_POST[szSheng]','$_POST[szShi]','$_POST[email]','-1','$_POST[remark]','$_POST[url]')";
-			$db->query($sql);
 
+			$db->query($sql);
 			echo "<script>location.href='../procatinfo.php?id=".$db->insert_id()."';</script>";
 		}else{
 			echo "<script>location.href='../agent.php?error=APM-2&mode=applySjAgent'</script>";
@@ -39,8 +39,13 @@ if(isset($_POST['task'])&&"applyAgentMc"==$_POST['task']){
 }else if(isset($_POST['task'])&&"applyAgentAgent"==$_POST['task']){
 	require_once("../action/checkLogin.php");
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
-		$db->query("update lm_member set mb_type='3',state='-1' where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-		echo "<script>alert('申请成功,等待管理员审核!');location.href='../index.php'</script>";
+		$db->query("update lm_member set state='3' where mb_type='2' and id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+		$cnt= $db->db_num_rows();
+		if($cnt==1){
+			echo "<script>alert('申请成功,等待管理员审核!');location.href='../index.php'</script>";
+		}else{
+			echo "<script>location.href='../agent.php?error=APA-2&mode=applyAgent'</script>";
+		}
 	}else{
 		echo "<script>location.href='../agent.php?error=APA-1&mode=applyAgent'</script>";
 	}

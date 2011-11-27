@@ -17,7 +17,9 @@ if($_POST[agreement]==1){
 						$rowTjr = $db->fetch_array("$queryTjr");
 						$tjr_id = $rowTjr[id];
 					}
-				}else if($_POST[mb_type]==2){
+				}
+				/**
+				else if($_POST[mb_type]==2){
 					$queryTjr = $db->query("select * from lm_member where mb_name='$_POST[tjr]'");
 					$cnt =$db->db_num_rows();
 					if($cnt>0){
@@ -31,7 +33,7 @@ if($_POST[agreement]==1){
 						$rowTjr = $db->fetch_array("$queryTjr");
 						$tjr_id = $rowTjr[id];
 					}
-				}
+				}**/
 
 				if($tjr){
 					//判断是否存在用户名
@@ -39,9 +41,9 @@ if($_POST[agreement]==1){
 					$cnt = $db->db_num_rows();
 					if($cnt<1){
 						$state = 0;
-						if($_POST[mb_type]==1){
-							$state=-1;
-						}
+						//if($_POST[mb_type]==1){
+						//	$state=-1;
+						//}
 						try{
 							$db->query("insert into lm_member(`mb_name`,`password`,`second_password`,mb_type,email,question, answer,realname,idcard," .
 									"recommendID, province, city, address, phone, bankName, `bankUser`, `bankCode`, create_Date,state) values(" .

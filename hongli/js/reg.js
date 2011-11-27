@@ -14,7 +14,20 @@ function checkusername(){//用户名
         alert("对不起，请填写会员名！");
         return false;
     }else{
-		return true;
+		$.ajax({
+		   type: "POST",
+		   url: "post/ajax.php",
+		   data: "task=ajaxCheckNameExtice&username="+username,
+		   success: function(msg){
+		    if(msg=="OK"){
+				return true;
+			}else{
+				alert('用户名已存在!');
+				return false;
+			}
+
+		   }
+		});
 	}
 }
 

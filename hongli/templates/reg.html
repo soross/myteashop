@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
 		<link rel="stylesheet" href="css/zhuce_css.css" type="text/css">
 		<title>联盟网 - 全球首家消费免费促销平台 - 新用户注册</title>
+		<script src="js/jquery-1.js" type="text/javascript"></script>
 	</head>
 	<body>
 
@@ -173,15 +174,16 @@
 
 										<TR bgColor=#ffffff>
 											<TD width="30%" align=right>
-												会员性质：
+												会员类型：
 											</TD>
 											<TD align=left>
 												<INPUT value="1" CHECKED type=radio name="mb_type">
 													普通会员
+												<!--
 												<INPUT value="2" type=radio name="mb_type">
 													联盟商家
 												<INPUT value="3" type=radio name="mb_type">
-													代理商
+													代理商 -->
 											</TD>
 										</TR>
 
@@ -399,7 +401,7 @@
 												联系电话：
 											</TD>
 											<TD align=left>
-												<INPUT id=usertel class="inputBg" style="width: 179px;"
+												<INPUT id=usertel class="inputBg" style="width: 179px;" onkeypress="if (event.keyCode<48 || event.keyCode>57)event.keyCode=0;"
 													maxLength=18 name=usertel onblur="checkusertel();" />
 												<FONT color=red>*</FONT>
 												<BR>
@@ -418,7 +420,7 @@
 													style="width: 179px;"  onblur="checkband_name();" readonly><FONT color=red>必须为中国农业银行*</FONT></td></tr>
 													<tr><td>户&nbsp;&nbsp;&nbsp;名</td><td><INPUT type=text
 													name=band_user class="inputBg" style="width: 100px;"  onblur="checkband_user();"><FONT color=red>*</FONT></td></tr>
-													<tr><td>账&nbsp;&nbsp;&nbsp;号</td><td><INPUT type=text name=band_id class="inputBg"
+													<tr><td>账&nbsp;&nbsp;&nbsp;号</td><td><INPUT type=text name=band_id class="inputBg" onkeypress="if (event.keyCode<48 || event.keyCode>57)event.keyCode=0;"
 													style="width: 250px;"  onblur="checkband_id();"><FONT color=red>*</FONT></td></tr>
 												</table>
 											</td>

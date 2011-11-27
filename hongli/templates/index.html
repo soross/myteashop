@@ -757,7 +757,7 @@
 													转出红利：
 												</th>
 												<td>
-													<input type="text" size="15" maxlength="11" id="num" name="num" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');"><font color="red">*</font><br>请输入整数。
+													<input type="text" size="15" maxlength="11" id="num" name="num" onkeypress="if (event.keyCode<48 || event.keyCode>57)event.keyCode=0;" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');"><font color="red">*</font><br>请输入整数。
 												</td>
 											</tr>
 											<tr>
@@ -765,7 +765,7 @@
 													转出积分：
 												</th>
 												<td>
-													<input type="text" size="15" maxlength="11" id="jifennum" name="jifennum" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');" ><font color="red">*</font><br>请输入整数。
+													<input type="text" size="15" maxlength="11" id="jifennum" name="jifennum" onkeypress="if (event.keyCode<48 || event.keyCode>57)event.keyCode=0;" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');" ><font color="red">*</font><br>请输入整数。
 												</td>
 											</tr>
 											<tr>
@@ -1333,14 +1333,13 @@
 										<table width="520px">
 											<tr>
 												<th width="100px">
-													注册商家名称
+													商家名称
 												</th>
 												<td colspan="3">
 													<input type="text" id="sj_name" name="sj_name" size="35" maxlength="100" value="{$sjInfo.sj_name}">
 												</td>
 											</tr>
 											<tr>
-
 												<th>
 													商家类型
 												</th>
@@ -2138,7 +2137,7 @@
 						<!--首页独享活动-->
 						<div class="flwindex_duxiang">
 							<div class="flwindex_duxiang_h1">
-								联盟介绍
+								联盟简介
 								<span class="flwindex_duxiang_h1_more"><a href="aboutme.php"
 									class="shier" target="_blank">更多&gt;&gt;</a>
 								</span>

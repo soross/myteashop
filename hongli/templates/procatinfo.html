@@ -100,7 +100,9 @@
 	</div>
 	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">价格：<font style="color:red;">
 	{if $sjProduct[list].mc_price !="" && $sjProduct[list].mc_price!=0 }
-	{$sjProduct[list].mc_price}元
+		{$sjProduct[list].mc_price}元
+	{else}
+		0 元
 	{/if}
 	</font></a><br>
 	<a href="mcinfo.php?mcid={$sjProduct[list].id}" target="_blank" class="prodtitle">产品说明：{$sjProduct[list].mc_desc|truncate:10:""}</a>

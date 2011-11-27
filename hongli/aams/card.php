@@ -13,14 +13,13 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //未审核会员分类
-$cardQuery = $db->query("select * from lm_card order by create_date desc limit $firstcount, $displaypg");
+$cardQuery = $db->query("select c.*,m.mb_name from lm_card c left join lm_member m on c.use_mb_id=m.id order by create_date desc limit $firstcount, $displaypg");
 $cardRow = array();
 while($rowcard = $db->fetch_array($cardQuery)){
 	$cardRow[] = $rowcard;
 }
 $smarty->assign("cardRow",$cardRow);
 
-$smarty->assign("LoginUserName",$_SESSION['WEB_AAMS_USER_LOGIN_UNAME_SESSION']);
 //显示分页的内容
 $smarty->assign("page",$pagenav);
 $smarty->display("aams/card.html");

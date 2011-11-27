@@ -37,5 +37,8 @@ if(isset($_GET[task]) && "toUpdateAamsUser"==$_GET[task]){
 	}else{
 		echo "<script>alert('您不是管理员,无法删除账户!');location.href='../aamsuser.php';</script>";
 	}
+}else if(isset($_GET[task]) && "deleteMessage"==$_GET[task]){
+	$db->query("delete from  lm_qa where id ='".$_GET[qaid]."'" );
+	echo "<script>alert('反馈问题删除成功!');location.href='../message.php';</script>";
 }
 ?>

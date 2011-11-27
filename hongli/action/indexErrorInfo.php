@@ -14,7 +14,7 @@ if($_GET['error']=="MB-1"){
 if($_GET['error']=="HL-1"){
 	$smarty->assign("errorInfoByHongLi","验证码错误!");
 }else if($_GET['error']=="HL-2"){
-	$smarty->assign("errorInfoByHongLi","红利卡卡号与密码不匹配!");
+	$smarty->assign("errorInfoByHongLi","红利卡卡号与密码不匹配或该卡号未制卡!");
 }else if($_GET['error']=="HL-3"){
 	$smarty->assign("errorInfoByHongLi","红利卡面额不对,只能使用500或1000的面额!");
 }else{

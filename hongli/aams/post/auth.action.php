@@ -5,14 +5,16 @@ if(isset($_GET[mbid]) && !empty($_GET[mbid])
  &&isset($_GET[result])&& !empty($_GET[result])){
 	//passAuth backAuth
 	$state = -1;
-	$msg ="代理商审核退回";
+	$msg ="代理商申请删除成功";
 	if(isset($_GET[result])&&"passAuth"==$_GET[result]){
 		$state = 0;
-		$msg = "审核通过!";
+		$msg = "代理商申请审核通过!";
+		$db->query("update lm_member set state='".$state."' where id ='".$_GET[mbid]."' ");
+		echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
+	}else{
+		$db->query("delete from lm_member where id ='".$_GET[mbid]."' ");
+		echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
 	}
-
-	$db->query("update lm_member set state='".$state."' where id ='".$_GET[mbid]."' ");
-	echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
 }else if(isset($_POST[task]) && "SjHeTong"== $_POST[task]){
 		//文件保存目录URL
 		$save_path = '../../file/';

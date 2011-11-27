@@ -25,14 +25,13 @@ function checkusername(){//用户名
 				alert('用户名已存在!');
 				return false;
 			}
-
 		   }
 		});
 	}
 }
 
 function checkpassword(){//密码
-	var password = document.formUser.password1.value;
+	var password = document.formUser.password.value;
 
 	if (checkspace(password) || password.length < 6 || password.length > 20) {
         //document.formUser.password1.focus();
@@ -362,9 +361,8 @@ function checkagreement(){//
 }
 
 function onformUser(){
-
 //&&checkqymc()&&checkmb_type()&&checkqyname()&&checklianxiren()&&checkphone()
-	if(checkusername()&&checkpassword()&&checkconfirm_password()&&checkpassword_2()&&checkemail()&&checkQuesionSel()&&
+	if(checkpassword()&&checkconfirm_password()&&checkpassword_2()&&checkconfirm_password_2&&checkemail()&&checkQuesionSel()&&
 		checkpasswd_answer()&&checkshopxp_shiname()&&checkMoMNo()&&checktjr()&&checkszSheng()&&checkaddress()&&checkusertel()&&checkband_name()&&checkband_user()&&checkband_id()&&checkagreement()){
 		return true;
 	}else{

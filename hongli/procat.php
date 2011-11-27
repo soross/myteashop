@@ -52,6 +52,8 @@ if(isset($_POST[task])&&"searchProcat"==$_POST[task]){
 	}
 }
 
+//print_r($where);
+
 $sjType = "1";
 //¿‡–Õ
 if(isset($_GET[type])&& !empty($_GET[type])){

@@ -105,7 +105,7 @@ $smarty->assign("mcRow",$mcRow);
 //********************************************************************
 
 //我的未审核商家
-$unAuthQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and s.state='-1' and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
+$unAuthQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and s.state='2' and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $unAuthRow = array();
 while($rowunAuth = $db->fetch_array($unAuthQuery)){
 	$unAuthRow[] = $rowunAuth;
@@ -113,7 +113,7 @@ while($rowunAuth = $db->fetch_array($unAuthQuery)){
 $smarty->assign("unAuthRow",$unAuthRow);
 
 //我的已经审核商家
-$authQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and (s.state='-2' or s.state='0') and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
+$authQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and s.state='0' and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $authRow = array();
 while($rowauth = $db->fetch_array($authQuery)){
 	$authRow[] = $rowauth;

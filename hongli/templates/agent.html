@@ -131,9 +131,9 @@
 								</th>
 								<td style="text-align: left;">
 									<select id="type" name="type">
-										<option id='0'>请选择行业...</option>
+										<option id='0' value="1">请选择行业...</option>
 										{section name=list loop=$sjTypeRow}
-						                <option id='{$sjTypeRow[list].id}'>{$sjTypeRow[list].name}</option>
+						                <option id='{$sjTypeRow[list].id}' value='{$sjTypeRow[list].id}'>{$sjTypeRow[list].name}</option>
 						                {/section}
 									</select><font style="color:red;">*</font>
 								</td>
@@ -271,7 +271,6 @@
 								</td>
 								<!-- 必填 -->
 							</tr>
-							<!--
 							<tr>
 								<th style="border-left:0px;">
 									商家描述
@@ -279,7 +278,7 @@
 								<td style="text-align: left;">
 									<textarea id="sj_desc" name="sj_desc" cols=60 rows=6></textarea><font style="color:red;">*</font>
 								</td>
-							</tr> -->
+							</tr>
 							<tr>
 								<th style="border-left:0px;">
 									图片
@@ -339,18 +338,18 @@
 							</tr>
 							<tr>
 								<th style="border-left:0px;">
-									网址
-								</th>
-								<td style="text-align: left;">
-									<input type="text" id="url" name="url" maxlength="50" size="30"><font style="color:red;">*</font>
-								</td>
-							</tr>
-							<tr>
-								<th style="border-left:0px;">
 									地址
 								</th>
 								<td style="text-align: left;">
 									<input type="text" id="address" name="address" maxlength="120" size="35"><font style="color:red;">*</font>
+								</td>
+							</tr>
+							<tr>
+								<th style="border-left:0px;">
+									网址
+								</th>
+								<td style="text-align: left;">
+									<input type="text" id="url" name="url" maxlength="50" size="30"><font style="color:red;">*</font>
 								</td>
 							</tr>
 							<tr>

@@ -147,11 +147,12 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="12%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">申请类型</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
-            <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">身份证号码</div></td>
-            <td width="28%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">地址</div></td>
-            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">申请类型</div></td>
+            <td width="11%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">身份证号码</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">联系方式</div></td>
+            <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">地址</div></td>
+            <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">通过</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
@@ -159,17 +160,18 @@ for(i=0;i<cs.length;i++){
           {section name=list loop=$authRow}
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$authRow[list].mb_name}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">代理商</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">商家</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].realname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].idcard}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].phone}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].province}{$authRow[list].city}{$authRow[list].address}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$authRow[list].create_Date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定通过审核?'))location.href='post/auth.action.php?gourl=authdl&mbid={$authRow[list].id}&result=passAuth'">通过</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="images/tab/010.gif" width="9" height="9" /> </span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定不审核?'))location.href='post/auth.action.php?gourl=authdl&mbid={$authRow[list].id}&result=backAuth'">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><img src="images/tab/037.gif" width="9" height="9" /><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定通过审核?'))location.href='post/auth.action.php?gourl=auth&mbid={$authRow[list].id}&result=passAuth'">通过</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><img src="images/tab/010.gif" width="9" height="9" /> </span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定不审核?'))location.href='post/auth.action.php?gourl=auth&mbid={$authRow[list].id}&result=backAuth'">删除</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan="8" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan="9" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
           {literal}

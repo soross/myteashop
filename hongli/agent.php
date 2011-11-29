@@ -62,7 +62,7 @@ if(isset($_GET['mode']) && !empty($_GET['mode']) && "applySjAgent"==$_GET['mode'
 	if(isset($_GET[error])&&$_GET[error]=="APA-1"){
 		$smarty->assign("errorInfoByAgentAgent","验证码错误!");
 	}else if(isset($_GET[error])&&$_GET[error]=="APA-2"){
-		$smarty->assign("errorInfoByAgentAgent","会员级别错误,请先申请为商家!");
+		$smarty->assign("errorInfoByAgentAgent","申请失败,请重新登入!");
 	}else{
 		$smarty->assign("errorInfoByAgentAgent","OK");
 	}

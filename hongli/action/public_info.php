@@ -12,7 +12,7 @@ if((isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) && isset($_SESSION['WEB_USER
 				您好，欢迎来联盟网！&nbsp;&nbsp;
 				<a href="index.php">'.$mbTopInfo[mb_name].'</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				积分：<span style="color:red;">'.$mbTopInfo[jifen].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-				红利权数：<span style="color:red;">'.	$mbTopInfo[hongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				分红权数：<span style="color:red;">'.	$mbTopInfo[hongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a href="#" onclick=javascript:if(confirm("是否确定退出!"))location.href="login.php?task=logout";>退出</a>
 			  </div>';
 
@@ -34,7 +34,7 @@ if((isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) && isset($_SESSION['WEB_USER
 				您好，欢迎来联盟网！&nbsp;&nbsp;
 				<a href="index.php">'.$mbTopInfo[mb_name].'</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				积分：<span style="color:red;">'.$mbTopInfo[jifen].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-				红利权数：<span style="color:red;">'.	$mbTopInfo[hongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				分红权数：<span style="color:red;">'.	$mbTopInfo[hongli].'</span>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a href="#" onclick=javascript:if(confirm("是否确定退出!"))location.href="login.php?task=logout";>退出</a>
 			  </div>';
 

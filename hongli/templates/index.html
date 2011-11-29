@@ -1282,7 +1282,7 @@
 
 							<div class="qingchu"></div>
 
-							{if ($mbInfo.mb_type > 1 || $mbInfo.mb_type>3) && $mbInfo.state ==0}
+							{if ($mbInfo.mb_type == 2  || $mbInfo.mb_type == 4 ) && $mbInfo.state ==0}
 
 
 							<!--商家平台 -->
@@ -1505,7 +1505,7 @@
 													状态
 												</th>
 												<td>
-													{if $sjInfo.state==0}
+													{if $sjInfo.state==-1}
 														<font style="color:red">未审核</font>
 													{else}
 														<font style="color:blue">已审核</font>
@@ -1925,7 +1925,7 @@
 
 							{/if}
 
-							{if $mbInfo.mb_type > 2 && $mbInfo.state  == 0}
+							{if $mbInfo.mb_type >2 && $mbInfo.state  == 0}
 
 							<!-- 商家平台结束 ####################################################################-->
 

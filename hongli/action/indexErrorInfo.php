@@ -4,7 +4,7 @@
 if($_GET['error']=="MB-1"){
 	$smarty->assign("errorInfoByMbInfo","验证码错误!");
 }else if($_GET['error']=="MB-2"){
-	$smarty->assign("errorInfoByMbInfo","二次密码错误!");
+	$smarty->assign("errorInfoByMbInfo","二级密码错误!");
 }else{
 	$smarty->assign("errorInfoByMbInfo","OK");
 }
@@ -14,7 +14,7 @@ if($_GET['error']=="MB-1"){
 if($_GET['error']=="HL-1"){
 	$smarty->assign("errorInfoByHongLi","验证码错误!");
 }else if($_GET['error']=="HL-2"){
-	$smarty->assign("errorInfoByHongLi","红利卡卡号与密码不匹配或该卡号未制卡!");
+	$smarty->assign("errorInfoByHongLi","红利卡账号与红利卡密码不一致或该卡号未制卡!");
 }else if($_GET['error']=="HL-3"){
 	$smarty->assign("errorInfoByHongLi","红利卡面额不对,只能使用500或1000的面额!");
 }else{
@@ -25,13 +25,13 @@ if($_GET['error']=="HL-1"){
 if($_GET['error']=="JF-1"){
 	$smarty->assign("errorInfoByJiFen","验证码错误!");
 }else if($_GET['error']=="JF-2"){
-	$smarty->assign("errorInfoByJiFen","红利卡卡号与密码不匹配!");
+	$smarty->assign("errorInfoByJiFen","红利卡账号与红利卡密码不一致或该卡号未制卡!");
 }else{
 	$smarty->assign("errorInfoByJiFen","OK");
 }
 //我的积分errorInfoByJiFen2HongLi
 if($_GET['error']=="JF2HL-1"){
-	$smarty->assign("errorInfoByJiFen2HongLi","二次密码错误!");
+	$smarty->assign("errorInfoByJiFen2HongLi","二级密码错误!");
 }else if($_GET['error']=="JF2HL-2"){
 	$smarty->assign("errorInfoByJiFen2HongLi","您的红利权数不够,无法兑换!");
 }else{
@@ -42,7 +42,7 @@ if($_GET['error']=="JF2HL-1"){
 if($_GET['error']=="TX-1"){
 	$smarty->assign("errorInfoByTiXian","验证码错误!");
 }else if($_GET['error']=="TX-2"){
-	$smarty->assign("errorInfoByTiXian","二次密码错误或输入的金额小于500!");
+	$smarty->assign("errorInfoByTiXian","二级密码错误或输入的金额小于500!");
 }else if($_GET['error']=="TX-3"){
 	$smarty->assign("errorInfoByTiXian","您的金额不足,请核对!");
 }else{
@@ -51,7 +51,7 @@ if($_GET['error']=="TX-1"){
 
 //转账
 if($_GET['error']=="ZZ-1"){
-	$smarty->assign("errorInfoByZhuanZhang","二次密码错误!");
+	$smarty->assign("errorInfoByZhuanZhang","二级密码错误!");
 }else if($_GET['error']=="TX-2"){
 	$smarty->assign("errorInfoByZhuanZhang","您的积分不够,请核对!");
 }else if($_GET['error']=="TX-3"){
@@ -76,7 +76,7 @@ if($_GET['error']=="MP-1"){
 }else if($_GET['error']=="MP-3"){
 	$smarty->assign("errorInfoByPassword","旧密码错误!");
 }else if($_GET['error']=="MP-4"){
-	$smarty->assign("errorInfoByPassword","二次密码错误!");
+	$smarty->assign("errorInfoByPassword","二级密码错误!");
 }else if($_GET['error']=="MP-5"){
 	$smarty->assign("errorInfoByPassword","密保答案错误!");
 }else{
@@ -87,7 +87,7 @@ if($_GET['error']=="MP-1"){
 if($_GET['error']=="SJ-1"){
 	$smarty->assign("errorInfoBySjInfo","验证码错误!");
 }else if($_GET['error']=="SJ-2"){
-	$smarty->assign("errorInfoBySjInfo","二次密码错误!");
+	$smarty->assign("errorInfoBySjInfo","二级密码错误!");
 }else{
 	$smarty->assign("errorInfoBySjInfo","OK");
 }

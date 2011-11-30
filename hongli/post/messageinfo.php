@@ -88,11 +88,10 @@ else if(isset($_POST['task'])&&"JiFen2HongLi"==$_POST['task']){
 	$us = is_array($row = $db->fetch_array($query));
 	$ps = $us ? md5($_POST[password]) == $row[second_password] : FALSE;
 	if ($ps) {
-		if($_POST[hongli]>$_POST[srchongli]){
+		if(($_POST[hongli]*500)>$_POST[allJfTotal]){
 			echo "<script>location.href='../index.php?error=JF2HL-2&divNo=3&flag=mb'</script>";
 		}else{
 			$query = $db->query("update lm_mb_limit set hongli = hongli+".$_POST[hongli]." ,jifen=jifen-".($_POST[hongli]*500)." where id = '".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-
 
 			addHongLi($db,$_POST[hongli]);
 			addSaleMoney($db,($_POST[hongli]*500));
@@ -198,7 +197,6 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 					exit;
 				}
 			}
-
 
 			$orderNo=randNum();
 
@@ -306,11 +304,38 @@ else if(isset($_POST['task'])&&"updateSjInfo"==$_POST['task']){
 		$us = is_array($row = $db->fetch_array($query));
 		$ps = $us ? md5($_POST[password]) == $row[second_password] : FALSE;
 		if ($ps) {
-			$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',phone='$_POST[phone]'," .
-					"province='$_POST[szSheng]',city='$_POST[szShi]',address='$_POST[address]',link_man='$_POST[link_man]'," .
-					"email='$_POST[email]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
-			echo "<script>alert('商家信息修改成功!');location.href='../index.php?divNo=12&flag=sj'</script>";
+			//文件保存目录URL
+			$save_path = '../images/';
+			//定义允许上传的文件扩展名
+			$ext_arr = array('gif', 'jpg', 'jpeg', 'png', 'bmp');
+			require "../action/FileUpload.class.php";
+			$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>102400));
+			if($up->uploadFile('pic')){
+				$filename = "images/".$up->getNewFileName();
 
+				/**
+				$sql="insert into lm_sj(mb_id,agent_id,sj_name,sj_code,sj_pic,sj_desc,sj_type," .
+					"address,telephone,fax,phone,qq,link_man,create_date,province,city,email,state,remark,url)" .
+					" values('".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."','".$agentID."','$_POST[sj_name]','$_POST[sj_code]'," .
+					"'$filename','$_POST[sj_desc]','$_POST[type]','$_POST[address]','$_POST[tel]','$_POST[fax]','$_POST[phone]','$_POST[qq]'," .
+					"'$_POST[link_man]',now(),'$_POST[szSheng]','$_POST[szShi]','$_POST[email]','-1','$_POST[remark]','$_POST[url]')";
+				**/
+
+				$imgQuery = $db->query("select * from lm_sj where id='" . $_POST['sjid'] . "'");
+				$imgRow = $db->fetch_array($imgQuery);
+
+				$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',province='$_POST[szSheng]',city='$_POST[szShi]'," .
+					"sj_desc='$_POST[sj_desc]',sj_pic='$filename',link_man='$_POST[link_man]',telephone='$_POST[telephone]',phone='$_POST[phone]'," .
+					"fax='$_POST[fax]',email='$_POST[email]',qq='$_POST[qq]',address='$_POST[address]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
+
+				unlink('../'.$imgRow[sj_pic]);
+				echo "<script>alert('商家信息修改成功!');location.href='../index.php?divNo=12&flag=sj'</script>";
+			}else{
+				$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',province='$_POST[szSheng]',city='$_POST[szShi]'," .
+					"sj_desc='$_POST[sj_desc]',link_man='$_POST[link_man]',telephone='$_POST[telephone]',phone='$_POST[phone]'," .
+					"fax='$_POST[fax]',email='$_POST[email]',qq='$_POST[qq]',address='$_POST[address]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
+				echo "<script>alert('商家其他信息修改成功,商家图片没有修改或图片修改失败!');location.href='../index.php?divNo=12&flag=sj'</script>";
+			}
 		}else{
 			echo "<script>location.href='../index.php?error=SJ-2&divNo=12&flag=sj'</script>";
 		}
@@ -359,6 +384,16 @@ else if(isset($_POST['task'])&&"addProduct"==$_POST['task']){
 		echo "<script>location.href='../index.php?error=AP-1&divNo=13&flag=sj'</script>";
 	}
 }
+//deleteMc
+else if(isset($_GET['task'])&&"deleteMc"==$_GET['task']){
+	$imgQuery = $db->query("select * from lm_sj_mc where id='" . $_GET['mcid'] . "'");
+	$imgRow = $db->fetch_array($imgQuery);
+	$db->query("delete from lm_sj_mc where id='" . $_GET['mcid'] . "'");
+	unlink("../".$imgRow[mc_pic]);
+	echo "<script>alert('成功删除产品!');location.href='../index.php?divNo=14&flag=sj'</script>";
+}
+
+
 //商家通过审核
 else if(isset($_GET['task'])&&"PassAuthSj"==$_GET['task']){
 	$query = $db->query("select mb_id,mb_type from lm_sj where id='".$_GET[sjid]."'");

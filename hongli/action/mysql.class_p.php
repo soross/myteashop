@@ -569,7 +569,7 @@ if(date('Ymd')>$remarInfo[remark]){
 			$db->query("update lm_limit set sale_money='0',exchange='0',dayhongli='0' where id='1'");
 
 			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
-				"values('LmFenHong',now(),'','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
+				"values('LmFenHong',now(),'0','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
 						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')");
 
 			//循环不可用金额大于500的用户

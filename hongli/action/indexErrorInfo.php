@@ -42,7 +42,7 @@ if($_GET['error']=="JF2HL-1"){
 if($_GET['error']=="TX-1"){
 	$smarty->assign("errorInfoByTiXian","验证码错误!");
 }else if($_GET['error']=="TX-2"){
-	$smarty->assign("errorInfoByTiXian","二级密码错误或输入的金额小于500!");
+	$smarty->assign("errorInfoByTiXian","二级密码错误或输入的金额小于400!");
 }else if($_GET['error']=="TX-3"){
 	$smarty->assign("errorInfoByTiXian","您的金额不足,请核对!");
 }else{

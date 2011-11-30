@@ -29,18 +29,23 @@ $smarty->assign("jfTotalBasic",floor($mb_limit[jifen]/500));
 
 //我的红利
 $smarty->assign("hlhongli",$mb_limit[hongli]);//红利权数
-$smarty->assign("notMoney",round($mb_limit[not_money],2)+round($mb_limit[money],2));//已分红利
+$smarty->assign("notMoney",round($mb_limit[not_money],2));//已分红利
 $smarty->assign("money",round($mb_limit[money],2));//可用分红
 
 //当前红利
-$lmQuery = $db->query("select sale_money,exchange from lm_limit where id='1'");
+
+$lmQuery = $db->query("select * from lm_limit where id='1'");
 $lm_limit =  $db->fetch_array($lmQuery);
 $hlDay = 0;
 if(round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1) != "" ){
 	$hlDay = round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1);
 }
+/**
+$lmLimitInfoQuery = $db->query("select * from lm_limit where id='1'");
+$lmLimitTopInfo = $db->fetch_array($lmLimitInfoQuery);
+$hlDay=round(((($lmLimitTopInfo[sale_money]+$lmLimitTopInfo[exchange])*0.05)/$lmLimitTopInfo[hongli]),1);
+print_r($lmLimitTopInfo);**/
 $smarty->assign("hlDay",$hlDay);//今天红利
-
 
 //我的订单
 $orderQuery = $db->query("select * from lm_order where mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' order by create_date desc");
@@ -51,7 +56,9 @@ while($rowOrder = $db->fetch_array($orderQuery)){
 $smarty->assign("orderRow",$orderRow);
 
 //我的提现
-$smarty->assign("getMoneyOK",($mb_limit[money]*0.8)+($mb_limit[sale_money]*0.8)+$mb_limit[exchange]);//总分红
+$smarty->assign("getMoneyOK",($mb_limit[money]*0.8));//可用分红
+$smarty->assign("getSaleMoneyOK",($mb_limit[sale_money]*0.8));//销售额
+$smarty->assign("getExchangeOK",$mb_limit[exchange]);//换购额
 
 
 //我的收藏
@@ -73,7 +80,7 @@ $smarty->assign("productRow",$productRow);
 
 
 //商家资料
-$sjInfoQuery = $db->query("select s.*,t.`name` from lm_sj s,lm_sj_type t where s.sj_type=t.id and s.mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
+$sjInfoQuery = $db->query("select s.*,t.`name`,mb.mb_name from lm_sj s,lm_sj_type t,lm_member mb where s.sj_type=t.id and mb.id=s.agent_id and s.mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $sjInfo = $db->fetch_array($sjInfoQuery);
 $smarty->assign("sjInfo",$sjInfo);
 $smarty->assign("sjAddressCity","<script>selectOptionByAddress('".$sjInfo[city]."','szShi2')</script>");
@@ -98,6 +105,15 @@ while($rowMc = $db->fetch_array($mcQuery)){
 }
 $smarty->assign("mcRow",$mcRow);
 
+
+
+//售出产品
+$orderSaleQuery = $db->query("select * from lm_sj_mc sm,(select mc_id,count(*) as cnt from lm_order where state='3' and sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' group by mc_id) t where sm.id=t.mc_id and id in (select mc_id from lm_order where state='3' and sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."')");
+$orderSaleRow = array();
+while($rowOrderSale = $db->fetch_array($orderSaleQuery)){
+	$orderSaleRow[] = $rowOrderSale;
+}
+$smarty->assign("orderSaleRow",$orderSaleRow);
 
 
 

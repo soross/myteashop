@@ -471,7 +471,7 @@
 											</tr>
 											<tr>
 												<th style="border-left:0px;text-align:right;">
-													分红权数&nbsp;&nbsp;
+													可转分红权数&nbsp;&nbsp;
 												</th>
 												<td style="text-align:left;font-weight:bold;color:#262626;">
 													&nbsp;&nbsp;{$jfTotalBasic}
@@ -513,7 +513,7 @@
 													<td colspan="2" style="border-left:0px;text-align:center;">
 														<input type="submit" value="确定并提交">
 														<input type="hidden" id="task" name="task" value="JiFen2HongLi">
-														<input type="hidden" id="srchongli" name="srchongli" value="{$jfTotalBasic}">
+														<input type="hidden" id="allJfTotal" name="allJfTotal" value="{$jfTotal}">
 													</td>
 												</tr>
 											</table>
@@ -652,7 +652,7 @@
 										<table width=520px>
 											<tr>
 												<th>
-													可提现金额：
+													可用分红：
 												</th>
 												<td>
 													{$getMoneyOK}
@@ -660,10 +660,27 @@
 											</tr>
 											<tr>
 												<th>
-													提现金额：
+													销售额：
 												</th>
 												<td>
-													<input type="text" size="15" maxlength="5" id="num" name="num" onblur="if(!/^[-]?\d+$/.test(this.value))alert('请输入正整数!');"><font color="red">*</font><br>请输入大于400且为整数的数字。
+													{$getSaleMoneyOK}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													换购额：
+												</th>
+												<td>
+													{$getExchangeOK}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													提现金额：
+												</th>
+												<td>{literal}
+													<input type="text" size="15" maxlength="5" id="num" name="num" onblur="if(!/^[-]?\d+$/.test(this.value) || this.value < 400){alert('请输入大于400的正整数!');this.value='0';}"><font color="red">*</font><br>请输入大于400且为整数的数字。
+													{/literal}
 												</td>
 											</tr>
 											<tr>
@@ -1329,7 +1346,7 @@
 									</div>
 									<div class="bb" style="text-align: left; height: 100%;"
 										id="resultDiv">
-										<form action="post/messageinfo.php" method="post" name="sjform">
+										<form action="post/messageinfo.php" method="post" name="sjform"  enctype="multipart/form-data">
 										<table width="520px">
 											<tr>
 												<th width="100px">
@@ -1343,19 +1360,21 @@
 												<th>
 													商家类型
 												</th>
-												<td>
+												<td colspan="3">
 													<select id="sj_type" name="sj_type">
 														{section name=list loop=$sjTypeRow}
 															<option value="{$sjTypeRow[list].id}" {if $sjTypeRow[list].id==$sjInfo.sj_type}selected{/if}>{$sjTypeRow[list].name}</option>
 														{/section}
 													</select>
 												</td>
+												<!--
 												<th  width="60px">
 													固话/手机
 												</th>
 												<td>
 													<input type="text" id="phone" name="phone" size="20" maxlength="20" value="{$sjInfo.phone}">
 												</td>
+												 -->
 											</tr>
 											<tr>
 												<th>
@@ -1479,6 +1498,78 @@
 											</tr>
 											<tr>
 												<th>
+													所属代理商
+												</th>
+												<td colspan="3">
+													{$sjInfo.mb_name}
+												</td>
+											</tr>
+											<tr>
+												<th>
+													商家描述
+												</th>
+												<td colspan="3">
+													<textarea  id="sj_desc" name="sj_desc" rows="5" cols="60">{$sjInfo.sj_desc}</textarea>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													商家图片
+												</th>
+												<td>
+													<img src='{$sjInfo.sj_pic}' width="100px" height="100px">
+												</td>
+												<td colspan="2">
+													<input type="file" id="pic" name="pic" size="20">
+												</td>
+
+											</tr>
+											<tr>
+												<th>
+													联系人
+												</th>
+												<td>
+													<input type="text" id="link_man" name="link_man" size="20" maxlength="200" value="{$sjInfo.link_man}">
+												</td>
+												<th>
+													电话
+												</th>
+												<td>
+												<input type="text" id="tel" name="tel" size="20" maxlength="50" value="{$sjInfo.telephone}">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													手机
+												</th>
+												<td>
+													<input type="text" id="phone" name="phone" size="20" maxlength="50" value="{$sjInfo.phone}">
+
+												</td>
+												<th>
+													传真
+												</th>
+												<td>
+												<input type="text" id="fax" name="fax" size="20" maxlength="50" value="{$sjInfo.fax}">
+												</td>
+											</tr>
+											<tr>
+												<th>
+													E-mail
+												</th>
+												<td>
+												<input type="text" id="email" name="email" size="20" maxlength="50" value="{$sjInfo.email}">
+												</td>
+												<th>
+													QQ
+												</th>
+												<td>
+													<input type="text" id="qq" name="qq" size="20" maxlength="50" value="{$sjInfo.qq}">
+
+												</td>
+											</tr>
+											<tr>
+												<th>
 													详细地址
 												</th>
 												<td colspan="3">
@@ -1487,20 +1578,20 @@
 											</tr>
 											<tr>
 												<th>
-													法定人名称
+													网址
 												</th>
-												<td>
-													<input type="text" id="link_man" name="link_man" size="20" maxlength="50" value="{$sjInfo.link_man}">
-
-												</td>
-												<th>
-													E-mail
-												</th>
-												<td>
-												<input type="text" id="email" name="email" size="20" maxlength="50" value="{$sjInfo.email}">
+												<td colspan="3">
+													<input type="text" id="url" name="url" size="35" maxlength="200" value="{$sjInfo.url}">
 												</td>
 											</tr>
 											<tr>
+												<th>
+													注册时间
+												</th>
+												<td>
+													{$sjInfo.create_date}
+
+												</td>
 												<th>
 													状态
 												</th>
@@ -1510,20 +1601,6 @@
 													{else}
 														<font style="color:blue">已审核</font>
 													{/if}
-												</td>
-												<th>
-													注册时间
-												</th>
-												<td>
-													{$sjInfo.create_date}
-												</td>
-											</tr>
-											<tr>
-												<th>
-													网址
-												</th>
-												<td colspan="3">
-													<input type="text" id="url" name="url" size="35" maxlength="100" value="{$sjInfo.url}">
 												</td>
 											</tr>
 											<tr>
@@ -1725,12 +1802,26 @@
 
 													</td>
 													<td>
-														修改/删除
+														<a href='#' onclick='if(confirm("是否确定删除?"))location.href="post/messageinfo.php?task=deleteMc&mcid={$mcRow[list].id}";'>删除</a>
 													</td>
 													<td>
-														{if $mcRow[list].mc_price!=''}{$mcRow[list].mc_price}元{/if}{if $mcRow[list].mc_price!='' && $mcRow[list].mc_price_type!=''}&nbsp;+&nbsp;{/if}{if $mcRow[list].mc_price_type!=''}{$mcRow[list].mc_price_type}元积分{/if}
+														{if $mcRow[list].mc_price!="" && $mcRow[list].mc_price!=0 }
+															{$mcRow[list].mc_price}元
+														{/if}
+
+														{if $mcRow[list].mc_price!="" && $mcRow[list].mc_price!=0 && $mcRow[list].mc_price_type !="" && $mcRow[list].mc_price_type !=0 }
+															+
+														{/if}
+														{if $mcRow[list].mc_price_type !="" && $mcRow[list].mc_price_type !=0 }
+															{$mcRow[list].mc_price_type}积分
+														{/if}
+
 													</td>
 												</tr>
+											{sectionelse}
+											<tr>
+												<td colspan='4'>没有所要查询的数据....</td>
+											</tr>
 											{/section}
 										</table>
 
@@ -1768,32 +1859,44 @@
 													价格
 												</th>
 											</tr>
-											{section name=list loop=$mcRow}
+											{section name=list loop=$orderSaleRow}
 												<tr>
 													<td style="border-left:0px;">
-														<img src="{$mcRow[list].mc_pic}" width="120px" height="70px">
+														<img src="{$orderSaleRow[list].mc_pic}" width="120px" height="70px">
 													</td>
 													<td>
-														<span style="color:#333333;font-size:16px;">{$mcRow[list].mc_name}</span><br>
-														数量：<font style="color:#C03ACB;">{$mcRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $mcRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
-														状态：{if $mcRow[list].state == "0"}
+														<span style="color:#333333;font-size:16px;">{$orderSaleRow[list].mc_name}</span><br>
+														数量：<font style="color:#C03ACB;">{$orderSaleRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $orderSaleRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
+														状态：{if $orderSaleRow[list].state == "0"}
 															<font style="color:#2D6C3D;">在售商品</font>
 														{/if}
-														{if $mcRow[list].state == "-1"}
+														{if $orderSaleRow[list].state == "-1"}
 															<font style="color:red;">无效商品</font>
 														{/if}
-														{if $mcRow[list].state == "-2"}
+														{if $orderSaleRow[list].state == "-2"}
 															<font style="color:#C0C0C0;">已售完</font>
 														{/if}
 
 													</td>
 													<td>
-														100(件)
+														{$orderSaleRow[list].cnt}(件)
 													</td>
 													<td>
-														{if $mcRow[list].mc_price!=''}{$mcRow[list].mc_price}元{/if}{if $mcRow[list].mc_price!='' && $mcRow[list].mc_price_type!=''}&nbsp;+&nbsp;{/if}{if $mcRow[list].mc_price_type!=''}{$mcRow[list].mc_price_type}元积分{/if}
+														{if $orderSaleRow[list].mc_price !="" && $orderSaleRow[list].mc_price!=0 }
+														{$orderSaleRow[list].mc_price}元
+														{/if}
+														{if $orderSaleRow[list].mc_price !="" && $orderSaleRow[list].mc_price!=0 && $orderSaleRow[list].mc_price_type !="" && $orderSaleRow[list].mc_price_type !=0 }
+														+
+														{/if}
+														{if $orderSaleRow[list].mc_price_type !="" && $orderSaleRow[list].mc_price_type !=0 }
+														{$orderSaleRow[list].mc_price_type}积分
+														{/if}
 													</td>
 												</tr>
+											{sectionelse}
+											<tr>
+												<td colspan='4'>没有所要查询的数据....</td>
+											</tr>
 											{/section}
 										</table>
 

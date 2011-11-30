@@ -564,12 +564,12 @@ if(date('Ymd')>$remarInfo[remark]){
 						"'".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."','Error','$info[sale_money]','$info[exchange]','$info[hongli]')");
 		}else{
 			//计算用户的分红
-			$db->query("update lm_mb_limit set not_money=not_money+(hongli*".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."),hongli='0' where id > 0");
+			$db->query("update lm_mb_limit set not_money=not_money+(hongli*".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2).") where id > 0");
 			//重新计算一天联盟的收益和红利
 			$db->query("update lm_limit set sale_money='0',exchange='0',dayhongli='0' where id='1'");
 
 			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
-				"values('LmFenHong',now(),'','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
+				"values('LmFenHong',now(),'0','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
 						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')");
 
 			//循环不可用金额大于500的用户
@@ -584,8 +584,8 @@ if(date('Ymd')>$remarInfo[remark]){
 													not_money = not_money - FLOOR(not_money/500)*500 where id='".$loop[id]."'");
 			}
 			$db2->query("update lm_limit set hongli = hongli-".$hongli." where id=1");//联盟总红利权数减去分红红利权数
-			$db2->query("update lm_mb_limit set hongli=0 where hongli<0");//修复脏数据
-			$db2->query("update lm_limit set hongli=0 where hongli<0");//修复脏数据
+			//$db2->query("update lm_mb_limit set hongli=0 where hongli<0");//修复脏数据
+			//$db2->query("update lm_limit set hongli=0 where hongli<0");//修复脏数据
 			$db2=null;
 
 		}

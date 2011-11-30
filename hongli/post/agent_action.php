@@ -72,12 +72,7 @@ if(isset($_POST['task'])&&"applyAgentMc"==$_POST['task']){
 			}
 
 			$db->query("update lm_member set state='".$mb_state."' where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-			$cnt= $db->db_num_rows();
-			if($cnt==1){
-				echo "<script>alert('申请成功,等待管理员审核!');location.href='../index.php'</script>";
-			}else{
-				echo "<script>location.href='../agent.php?error=APA-2&mode=applyAgent'</script>";
-			}
+			echo "<script>alert('申请成功,等待管理员审核!');location.href='../index.php'</script>";
 		}
 	}else{
 		echo "<script>location.href='../agent.php?error=APA-1&mode=applyAgent'</script>";

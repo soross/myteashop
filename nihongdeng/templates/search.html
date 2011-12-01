@@ -1,0 +1,53 @@
+{include file="inc/top.html"}
+
+
+<div id="content" class="columns180720">
+	<div id="leftColumn" class="column column180">
+		<a id="sectionHeader" href="product.php" style="background:url({if $clang=='English'}images/title/product_en.gif{else}images/title/product_cn.gif{/if});"><span>Products</span></a>
+		<ul id="subNav">
+
+			{section name=list loop=$titleRows}
+			{if $titleRows[list].pid==8}
+			<li><a href="product.php?typeid={$titleRows[list].id}">{$titleRows[list].menu_name}</a>
+				<ul>
+				{section name=lt loop=$titleRows}
+					{if $titleRows[lt].pid==$titleRows[list].id}
+					<li><a href="product.php?typeid={$titleRows[lt].id}">{$titleRows[lt].menu_name}</a></li>
+					{/if}
+				{/section}
+				</ul>
+
+			</li>
+			{/if}
+			{/section}
+		</ul>
+	</div>
+
+
+	<div id="editor" class="column column520">
+		{section name=list loop=$rows}
+		<div class="article">
+		<h5 class='title'><a href='newsinfo.php?newsid={$rows[list].id}'  target="_blank">{$rows[list].title}</a></h5>
+		<a href='newsinfo.php?newsid={$rows[list].id}'  target="_blank">
+		<span class='date'>{$rows[list].content|truncate:50:""}</span>
+		</a>
+		</div>
+		{/section}
+		{section name=list loop=$rows2}
+		<div class="article">
+		<h5 class='title'><a href='prodinfo.php?prodid={$rows2[list].id}'  target="_blank">{$rows2[list].prod_name}</a></h5>
+		<a href='prodinfo.php?prodid={$rows2[list].id}'  target="_blank">
+		<span class='date'>{$rows2[list].prod_desc|truncate:50:""}</span>
+		</a>
+		</div>
+		{/section}
+		<div class="article">
+			<h5 class='title'>{$echo}</h5>
+		</div>
+
+	</div>
+</div>
+
+
+
+{include file="inc/buttom.html"}

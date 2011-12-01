@@ -1,0 +1,270 @@
+{include file="inc/top.html"}
+<div id='content' style='width:950px;height:581px;background:url(images/1263271146.gif);margin:0px auto'>
+
+
+<!-- 空白边框 -->
+
+<div id='pdv_13493' class='pdv_class'  title='公司简介' style='width:682px;height:190px;top:19px;left:241px; z-index:2'>
+<div id='spdv_13493' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_aboutme.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_aboutme.gif) -850px 0px no-repeat;"><a href="page/html/company.php" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:19px;" /></a></div>
+</div>
+<div style="margin:15px 1px 0px;padding:0px;">
+&nbsp;
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 自选产品列表 -->
+
+<div id='pdv_10809' class='pdv_class'  title='产品展示' style='width:683px;height:180px;top:399px;left:241px; z-index:4'>
+<div id='spdv_10809' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_product.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_product.gif) -850px 0px no-repeat;"><a href="product/class" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:22px;" /></a></div>
+</div>
+<div style="margin:9px 1px 0px 5px;padding:0px;">
+
+<link href="css/productlist_cyrano_lef.css" rel="stylesheet" type="text/css" />
+
+<div class="productlist_cyrano_lef">
+<div id="demo">
+ <table align=left cellpadding=0 cellspace=0 border=0>
+  	<tr>
+		<td id="demo1" valign=top>
+  			<table border=0 cellpadding=0 cellspacing=0>
+  				<tr>
+
+{section name=list loop=$prodlist}
+<td>
+	<div class="fang" style="width:120px;height:93px">
+	<div class="picFit" style="width:120px;height:93px">
+		<a href="prodinfo.php?prodid={$prodlist[list].id}" target="_blank" ><img src="images/product/{$prodlist[list].product_pic}" style="width:120px;height:93px;" border="0" /></a>
+	</div>
+	</div>
+	<div class="title">
+		<a href="prodinfo.php?prodid={$prodlist[list].id}" target="_blank" class="title"   >{$prodlist[list].product_name}</a>
+	</div>
+</td>
+{/section}
+
+				</tr>
+  			</table>
+ 		</td>
+		<td id="demo2" valign=top></td>
+	</tr>
+</table>
+
+</div>
+</div>
+
+{literal}
+<script>
+$(function() {
+$().picFit("auto");
+});
+</script>
+
+<script>
+	var speed=20;
+	var GD=document.getElementById('demo');
+	var GD1=document.getElementById('demo1');
+	var GD2=document.getElementById('demo2');
+	GD2.innerHTML=GD1.innerHTML;
+	function Marquee(){
+		if(GD2.offsetWidth-GD.scrollLeft<=0){
+			GD.scrollLeft-=GD1.offsetWidth;
+		}else{
+			GD.scrollLeft++;
+		}
+	}
+	var MyMar=setInterval(Marquee,speed);
+	GD.onmouseover=function() {clearInterval(MyMar);}
+	GD.onmouseout=function() {MyMar=setInterval(Marquee,speed);}
+</script>
+{/literal}
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- HTML编辑区 -->
+
+<div id='pdv_12539' class='pdv_class'  title='自定内容' style='width:681px;height:94px;top:69px;left:242px; z-index:7'>
+<div id='spdv_12539' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		自定内容
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="-1" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+<div style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px">
+{$aboutUsInfo}
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 多行文字 -->
+
+<div id='pdv_13492' class='pdv_class'  title='联系我们' style='width:163px;height:206px;top:370px;left:21px; z-index:8'>
+<div id='spdv_13492' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_contactus.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_contactus.gif) -850px 0px no-repeat;"></div>
+</div>
+<div style="margin:15px 1px 0px;padding:0px;">
+
+<div style="padding:0px 0px 14px 3px;color:#333;font:12px/20px Verdana, Arial, Helvetica, sans-serif;">
+{$contactUsInfo}
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 自定义模版 -->
+
+<div id='pdv_13495' class='pdv_class'  title='客户服务' style='width:279px;height:69px;top:200px;left:660px; z-index:9'>
+<div id='spdv_13495' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		客户服务
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="-1" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+{literal}
+<style>
+.pw_mainc1{width:124px;height:59px;float:left;background:url(images/diy.gif) 0px 0px no-repeat;position:relative;}
+.pw_mainc2{width:139px;height:59px;float:left;background:url(images/diy.gif) -124px 0px no-repeat;position:relative;}
+.pw_main_c2{height:100%;margin:0px;font:12px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;color:#505050;}
+a.pw_main_c3,a.pw_main_c3:link,a.pw_main_c3:active,a.pw_main_c3:visited{height:100%;display:block;font:12px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;color:#ffffff; text-decoration:none}
+a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
+</style>
+{/literal}
+<div class="pw_mainc1">
+<div class="pw_main_c2"><a href="page/contact/contact.php" class="pw_main_c3"></a></div>
+</div>
+<div class="pw_mainc2">
+<div class="pw_main_c2"><a href="page/contact/feedback.php" class="pw_main_c3"></a></div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 文章列表 -->
+
+<div id='pdv_13938' class='pdv_class'  title='最新文章' style='width:382px;height:205px;top:183px;left:241px; z-index:11'>
+<div id='spdv_13938' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_news.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_news.gif) -850px 0px no-repeat;"><a href="news/class/" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:15px;" /></a></div>
+</div>
+<div style="margin:5px 1px 0px;padding:0px;">
+
+<link href="css/newslist_time.css" rel="stylesheet" type="text/css" />
+<ul class="newslist_time">
+{section name=list loop=$newslist}
+<li class="newslist_time"><div class="time">{$newslist[list].create_date|truncate:10:""}</div><a href="newsinfo.php?newsid={$newslist[list].id}" target="_self" class="newslist_time"   >{$newslist[list].title}</a></li>
+{/section}
+</ul>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 产品二级分类 -->
+
+<div id='pdv_13937' class='pdv_class'  title='产品分类' style='width:163px;height:337px;top:23px;left:21px; z-index:12'>
+<div id='spdv_13937' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_prod_type.gif) no-repeat">
+		<div style="float:right;height:37px;background:url(images/title/title_index_prod_type.gif) -850px 0px no-repeat;"></div>
+</div>
+<div style="margin:15px 1px 0px;padding:0px;">
+
+<link href="css/producttwo_dolphin.css" rel="stylesheet" type="text/css" />
+<div class="producttwo_dolphin">
+
+
+
+{section name=list loop=$typelist}
+{if $typelist[list].pid==0}
+<div class="producttwo_dolphin_top"><a href="product.php?typeid={$typelist[list].id}" target="_self" >{$typelist[list].product_type}</a></div>
+<ul>
+	{section name=lt loop=$typelist}
+	{if $typelist[list].id==$typelist[lt].pid}
+		<li><a href="product.php?typeid={$typelist[lt].id}" target="_self">-&nbsp;{$typelist[lt].product_type}</a></li>
+	{/if}
+	{/section}
+</ul>
+{/if}
+{/section}
+</div>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 图片+名称 -->
+
+<div id='pdv_13941' class='pdv_class'  title='最新图片' style='width:258px;height:85px;top:299px;left:662px; z-index:15'>
+<div id='spdv_13941' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_index_case.gif) 0 0 no-repeat">
+<div style="margin:0px 1px 0px 46px;padding:0px;">
+
+<link href="css/photopic_dolphin.css" rel="stylesheet" type="text/css" />
+
+<ul class="photopic_dolphin">
+
+{section name=list loop=$caselist}
+<li>
+
+<div class="title">
+<a href="caseinfo.php?caseid={$caselist[list].id}" target="_self" class="title"   >{$caselist[list].case_name}</a>
+</div>
+</li>
+{/section}
+
+</ul>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+{include file="inc/buttom.html"}

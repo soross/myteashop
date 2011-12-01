@@ -1,0 +1,83 @@
+/*========¶¥²¿²Ëµ¥=======*/
+#menumain{
+   margin:0;
+   white-space:nowrap;
+   overflow:hidden;
+   height:31px;
+   background:url(../images/menubg.gif) 0px 0px repeat-x;
+}
+
+#menumain .mainmenuiner {
+    height:31px;
+	padding:0;
+    line-height:31px;
+    overflow: hidden;
+    margin: 0 0 0 0px;
+}
+
+#menumain .menuleft{
+   float:left;
+   height:31px;
+   width:17px;
+   background:url(../images/menuleft.gif) 0px 0px no-repeat;
+}
+
+#menumain .menuright{
+   float:right;
+   height:31px;
+   width:17px;
+   background:url(../images/menuright.gif) 0px 0px no-repeat;
+}
+
+#menumain a.menumain:link,#menumain a.menumain:active,#menumain a.menumain:visited{
+   display:block;
+   float:left;
+   height:31px;
+   text-decoration: none;
+   text-align:center;
+   width:70px;
+   color:#2e2e2e;
+   font:12px/34px 'SimSun',Arial,Sans-Serif;
+   background:url(../images/menu.gif) 0px 0px no-repeat;
+   margin:0px;
+}
+
+#menumain a.menumain:hover{
+   display:block;
+   float:left;
+   height:31px;
+   color:#2e2e2e;
+   text-decoration: none;
+   text-align:center;
+   width:70px;
+   font:12px/34px 'SimSun',Arial,Sans-Serif;
+   margin:0px;
+   background:url(../images/menunow.gif) 0px 0px no-repeat;
+}
+
+/*=========½Å×¢²Ëµ¥===========*/
+div#bottommenu{
+margin: 0;
+padding:0;
+border: 0;
+height: 28px;
+color:#333333;
+font:11px/28px SimSun;
+text-align:center;
+}
+
+
+div#bottommenu a:link,div#bottommenu a:visited,div#bottommenu a:active{
+margin:0px 5px 0px 2px;
+color:#333333;
+font:12px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;
+text-decoration: none;
+}
+
+div#bottommenu a:hover{
+margin:0px 5px 0px 2px;
+color:#000;
+font:12px/28px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;
+text-decoration: underline;
+}
+

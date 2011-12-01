@@ -652,7 +652,7 @@
 										<table width=520px>
 											<tr>
 												<th>
-													可用分红：
+													可用红利：
 												</th>
 												<td>
 													{$getMoneyOK}
@@ -750,7 +750,7 @@
 													可转红利：
 												</th>
 												<td>
-													{$getMoneyOK}
+													{$getMoneyZZOK}
 												</td>
 											</tr>
 											<tr>
@@ -879,10 +879,19 @@
 														<a href="mcinfo.php?mcid={$mcScRow[list].mc_id}" target="_blank">换购</a>
 														{/if}
 														<br><br>
-														<a href="post/messageinfo.php?task=cancelSc&id={$mcScRow[list].id}">取消收藏</a>
+														<a href="#" onclick="javascript:if(confirm('确定取消收藏吗?'))location.href='post/messageinfo.php?task=cancelSc&scid={$mcScRow[list].id}';">取消收藏</a>
 													</td>
 													<td>
-														{if $mcScRow[list].mc_price != ""}{$mcScRow[list].mc_price}元{/if}{if $mcScRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$mcScRow[list].mc_price_type}积分
+
+														{if $mcScRow[list].mc_price!="" && $mcScRow[list].mc_price!=0 }
+															{$mcRow[list].mc_price}元
+														{/if}
+
+														{if $mcScRow[list].mc_price!="" && $mcScRow[list].mc_price!=0 && $mcScRow[list].mc_price_type !="" && $mcScRow[list].mc_price_type !=0 }
+															+
+														{/if}
+														{if $mcScRow[list].mc_price_type !="" && $mcScRow[list].mc_price_type !=0 }
+															{$mcScRow[list].mc_price_type}积分
 														{/if}
 													</td>
 												</tr>
@@ -1011,7 +1020,15 @@
 														<a href="mcinfo.php?mcid={$productRow[list].id}" target="_blank">去换购</a>
 													</td>
 													<td>
-														{if $productRow[list].mc_price != ""}{$productRow[list].mc_price}元{/if}{if $productRow[list].mc_price_type != ""}&nbsp;+&nbsp;{$productRow[list].mc_price_type}积分
+														{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 }
+															{$productRow[list].mc_price}元
+														{/if}
+
+														{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 && $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
+															+
+														{/if}
+														{if $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
+															{$productRow[list].mc_price_type}积分
 														{/if}
 													</td>
 												</tr>
@@ -1780,13 +1797,10 @@
 													商品图片
 												</th>
 												<th>
-													商品名称
+													商品信息
 												</th>
-												<th width="65px">
-													售出量
-												</th>
-												<th width="70px">
-													价格
+												<th width="160px">
+													购买者信息
 												</th>
 											</tr>
 											{section name=list loop=$orderSaleRow}
@@ -1796,23 +1810,10 @@
 													</td>
 													<td>
 														<span style="color:#333333;font-size:16px;">{$orderSaleRow[list].mc_name}</span><br>
-														数量：<font style="color:#C03ACB;">{$orderSaleRow[list].mc_count}</font>(件)&nbsp;&nbsp;类型：{if $orderSaleRow[list].mc_type==0}<font style="color:#391CE3;">销售产品</font>{else}<font style="color:#666600;">换购商品</font>{/if}<br>
-														状态：{if $orderSaleRow[list].state == "0"}
-															<font style="color:#2D6C3D;">在售商品</font>
-														{/if}
-														{if $orderSaleRow[list].state == "-1"}
-															<font style="color:red;">无效商品</font>
-														{/if}
-														{if $orderSaleRow[list].state == "-2"}
-															<font style="color:#C0C0C0;">已售完</font>
-														{/if}
-
-													</td>
-													<td>
-														{$orderSaleRow[list].cnt}(件)
-													</td>
-													<td>
-														{if $orderSaleRow[list].mc_price !="" && $orderSaleRow[list].mc_price!=0 }
+														产品类型：<font style="color:#C03ACB;">
+														{if $orderSaleRow[list].mc_type==0}产品{else}换购产品{/if}
+														</font><br>
+														单价：{if $orderSaleRow[list].mc_price !="" && $orderSaleRow[list].mc_price!=0 }
 														{$orderSaleRow[list].mc_price}元
 														{/if}
 														{if $orderSaleRow[list].mc_price !="" && $orderSaleRow[list].mc_price!=0 && $orderSaleRow[list].mc_price_type !="" && $orderSaleRow[list].mc_price_type !=0 }
@@ -1820,7 +1821,29 @@
 														{/if}
 														{if $orderSaleRow[list].mc_price_type !="" && $orderSaleRow[list].mc_price_type !=0 }
 														{$orderSaleRow[list].mc_price_type}积分
+														{/if}<br>
+														购买数量：<font style="color:#C03ACB;">1</font>(件)
+														<!--&nbsp;&nbsp;
+														订单状态：{if $orderSaleRow[list].state == "0"}
+															<font style="color:#2D6C3D;">新下单</font>
 														{/if}
+														{if $orderSaleRow[list].state == "1"}
+															 <font style="color:red;">已发货</font>
+														{/if}
+														{if $orderSaleRow[list].state == "2"}
+															 <font style="color:#C0C0C0;">售后</font>
+														{/if}
+														{if $orderSaleRow[list].state == "3"}
+															<font style="color:#C0C0C0;">完成</font>
+														{/if}-->
+
+
+													</td>
+													<td width="160px">
+														用户名：{$orderSaleRow[list].mb_name}<br>
+														联系人：{$orderSaleRow[list].realname}<br>
+														联系方式：{$orderSaleRow[list].phone}<br>
+														地址：{$orderSaleRow[list].province}{$orderSaleRow[list].city}{$orderSaleRow[list].address}<br>
 													</td>
 												</tr>
 											{sectionelse}

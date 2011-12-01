@@ -22,7 +22,7 @@ $smarty->assign("sjTypeRow",$sjTypeRow);
 
 //商家信息
 //拼装条件
-$where = " where 1=1 ";
+$where = " where state=0 ";
 //省市
 if(isset($_GET[pkey]) && !empty($_GET[pkey])){
 	$where = $where. " and province = '".urldecode($_GET[pkey])."' ";

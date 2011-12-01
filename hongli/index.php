@@ -57,6 +57,7 @@ $smarty->assign("orderRow",$orderRow);
 
 //我的提现
 $smarty->assign("getMoneyOK",($mb_limit[money]*0.8));//可用分红
+$smarty->assign("getMoneyZZOK",($mb_limit[money]));//可用转账
 $smarty->assign("getSaleMoneyOK",($mb_limit[sale_money]*0.8));//销售额
 $smarty->assign("getExchangeOK",$mb_limit[exchange]);//换购额
 
@@ -71,7 +72,7 @@ $smarty->assign("mcScRow",$mcScRow);
 
 
 //换购通知
-$productQuery = $db->query("select * from lm_sj_mc where mc_type='1' and state='0' order by create_date desc");
+$productQuery = $db->query("select * from lm_sj_mc where mc_type='1' and state='0' order by create_date desc limit 0,10");
 $productRow = array();
 while($rowproduct = $db->fetch_array($productQuery)){
 	$productRow[] = $rowproduct;
@@ -108,7 +109,11 @@ $smarty->assign("mcRow",$mcRow);
 
 
 //售出产品
-$orderSaleQuery = $db->query("select * from lm_sj_mc sm,(select mc_id,count(*) as cnt from lm_order where state='3' and sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' group by mc_id) t where sm.id=t.mc_id and id in (select mc_id from lm_order where state='3' and sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."')");
+//$orderSaleQuery = $db->query("select sm.*,t.cnt,t.mc_id from lm_sj_mc sm,(select mc_id,count(*) as cnt from lm_order where sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' group by mc_id) t where sm.id=t.mc_id and id in (select mc_id from lm_order where sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."')");
+$orderSaleQuery = $db->query("SELECT sm.mc_name,sm.mc_pic,sm.mc_price,sm.mc_price_type,sm.mc_type,o.mc_id,
+mb.mb_name,mb.realname,mb.province,mb.city,mb.address,mb.phone FROM
+lm_sj_mc AS sm  INNER JOIN lm_order AS o ON sm.id = o.mc_id INNER JOIN lm_member AS mb ON o.mb_id = mb.id
+ORDER BY o.create_date DESC LIMIT 0, 20");
 $orderSaleRow = array();
 while($rowOrderSale = $db->fetch_array($orderSaleQuery)){
 	$orderSaleRow[] = $rowOrderSale;
@@ -121,7 +126,7 @@ $smarty->assign("orderSaleRow",$orderSaleRow);
 //********************************************************************
 
 //我的未审核商家
-$unAuthQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and s.state='2' and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
+$unAuthQuery = $db->query("select s.*,m.mb_name from lm_sj s,lm_member m  where s.mb_id=m.id and s.state=-1 and s.agent_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $unAuthRow = array();
 while($rowunAuth = $db->fetch_array($unAuthQuery)){
 	$unAuthRow[] = $rowunAuth;

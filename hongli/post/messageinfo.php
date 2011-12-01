@@ -91,7 +91,8 @@ else if(isset($_POST['task'])&&"JiFen2HongLi"==$_POST['task']){
 		if(($_POST[hongli]*500)>$_POST[allJfTotal]){
 			echo "<script>location.href='../index.php?error=JF2HL-2&divNo=3&flag=mb'</script>";
 		}else{
-			$query = $db->query("update lm_mb_limit set hongli = hongli+".$_POST[hongli]." ,jifen=jifen-".($_POST[hongli]*500)." where id = '".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+
+			$db->query("update lm_mb_limit set hongli = hongli+".$_POST[hongli]." ,jifen=jifen-".($_POST[hongli]*500)." where mb_id = '".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 
 			addHongLi($db,$_POST[hongli]);
 			addSaleMoney($db,($_POST[hongli]*500));
@@ -215,7 +216,11 @@ else if(isset($_POST['task'])&&"getMoneyToMb"==$_POST['task']){
 		echo "<script>location.href='../index.php?error=ZZ-1&divNo=21&flag=mb'</script>";
 	}
 }
-
+//取消收藏task=cancelSc&scid=
+else if(isset($_GET['task'])&&"cancelSc"==$_GET['task']){
+	$db->query("delete from lm_mb_sc where id='".$_GET[scid]."'");
+	echo "<script>alert('成功取消收藏!');location.href='../index.php?divNo=7&flag=mb'</script>";
+}
 //QA
 else if(isset($_POST['task'])&&"QA"==$_POST['task']){
 	if (isset ($_POST['random']) && $_POST["random"] == $_SESSION['validationcode']) {
@@ -372,8 +377,8 @@ else if(isset($_POST['task'])&&"addProduct"==$_POST['task']){
 		$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>102400));
 		if($up->uploadFile('pic_file')){
 			$filename = "images/".$up->getNewFileName();
-			$sql="insert into lm_sj_mc(sj_id,mc_name,mc_type,mc_desc,mc_pic,mc_price,mc_price_type,mc_count,end_date,create_date,state) ".
-				 "values('$_POST[sjid]','$_POST[mc_name]','$type','$_POST[mc_desc]','$filename','$_POST[price]','$_POST[price_type]','$_POST[count]','$_POST[end_date]',now(),'0')";
+			$sql="insert into lm_sj_mc(sj_id,mc_name,mc_type,mc_desc,mc_pic,mc_price,mc_price_type,mc_count,create_date,state) ".
+				 "values('$_POST[sjid]','$_POST[mc_name]','$type','$_POST[mc_desc]','$filename','$_POST[price]','$_POST[price_type]','$_POST[count]',now(),'0')";
 			$db->query($sql);
 	  		echo "<script>if(confirm('添加成功,是否继续添加?')){location.href='../index.php?divNo=13&flag=sj';}else{location.href='../index.php?divNo=14&flag=sj';}</script>";
 		}else{
@@ -396,7 +401,7 @@ else if(isset($_GET['task'])&&"deleteMc"==$_GET['task']){
 
 //商家通过审核
 else if(isset($_GET['task'])&&"PassAuthSj"==$_GET['task']){
-	$query = $db->query("select mb_id,mb_type from lm_sj where id='".$_GET[sjid]."'");
+	$query = $db->query("select mb_id from lm_sj where id='".$_GET[sjid]."'");
 	$row = $db->fetch_array($query);
 
 	$db->query("update lm_member set mb_type=state, state=0 where id = '".$row[mb_id]."'");
@@ -405,7 +410,9 @@ else if(isset($_GET['task'])&&"PassAuthSj"==$_GET['task']){
 }
 //未通过审核
 else if(isset($_GET['task'])&&"BackAuthSj"==$_GET['task']){
-	//$db->query("update lm_sj set state='-2' where id='".$_GET[sjid]."'");
+	$db->query("update lm_member set state=0 where id = '".$row[mb_id]."'");
+	$db->query("delete from lm_sj where id='".$_GET[sjid]."'");
+
 	echo "<script>alert('退回成功!');location.href='../index.php?divNo=18&flag=auth';</script>";
 }
 

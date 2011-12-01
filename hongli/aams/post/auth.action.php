@@ -23,11 +23,12 @@ if(isset($_GET[mbid]) && !empty($_GET[mbid])
 			echo "<script>alert('".$msg."');location.href='../authdl.php';</script>";
 		}
 	}else{
-		$db->query("delete from lm_member where id ='".$_GET[mbid]."' ");
-		$db->query("delete from lm_sj where mb_id ='".$_GET[mbid]."' ");
+		$db->query("update lm_member set state='0' where id ='".$_GET[mbid]."'");
+
 		if(isset($_GET[gourl]) && "auth"==$_GET[gourl] ){
 			echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
 		}else{
+			$db->query("delete from lm_sj where mb_id ='".$_GET[mbid]."' ");
 			echo "<script>alert('".$msg."');location.href='../authdl.php';</script>";
 		}
 	}
@@ -82,13 +83,15 @@ if(isset($_GET[mbid]) && !empty($_GET[mbid])
 }else if(isset($_GET[txid]) && !empty($_GET[txid])
  &&isset($_GET[result])&& !empty($_GET[result])){
 	//passAuth backAuth
-	$state = 0;
+	$state = -1;
 	$msg ="提现审核成功退回";
 	if(isset($_GET[result])&&"passAuthTx"==$_GET[result]){
 		$state = 1;
 		$msg = "提现审核通过,请汇款!";
+	}else{
+		$db->query("update lm_mb_limit set money=money+((select num from lm_mb_money where state='0' and id='".$_GET[txid]."')/0.8 )" .
+				"where mb_id = (select mb_id from lm_mb_money where state='0' and id='".$_GET[txid]."')");
 	}
-
 	$db->query("update lm_mb_money set state='".$state."' where id ='".$_GET[txid]."' ");
 	echo "<script>alert('".$msg."');location.href='../authtx.php';</script>";
 }

@@ -80,11 +80,11 @@ body {
 </table>
 
 <map name="Map" id="Map">
-	<area shape="rect" coords="3,1,49,22" href="#" />
-	<!--<area shape="rect" coords="52,2,95,21" href="#" />
+	<!--<area shape="rect" coords="3,1,49,22" href="../main.php" />
+	<area shape="rect" coords="52,2,95,21" href="#" />
 	<area shape="rect" coords="102,2,144,21" href="#" />
 	<area shape="rect" coords="150,1,197,22" href="#" />
 	<area shape="rect" coords="210,2,304,20" href="#" />-->
-	<area shape="rect" coords="314,1,361,23" href="#" />
+	<area shape="rect" coords="314,1,361,23" href="../logout.php?task=logout" />
 </map></body>
 </html>

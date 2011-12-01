@@ -34,8 +34,7 @@ if(isset($_GET[task]) &&"outNoCardData"==$_GET[task]){
 }else if(isset($_GET[task]) &&"outExcelByTx"==$_GET[task]){
 	require_once("action/mysql.class.php");
 
-	$query = $db->query("select bankname,bankuser,bankcode,num from lm_mb_money where state='0' order by bankname");
-
+	$query = $db->query("select mm.bankname,mm.bankuser,mm.bankcode,mm.num,m.phone from lm_mb_money mm,lm_member m where mm.mb_id=m.id and mm.state='1' order by mm.bankname");
 
   // 文件头
   header("Pragma: public");
@@ -54,17 +53,25 @@ if(isset($_GET[task]) &&"outNoCardData"==$_GET[task]){
   xlsWriteLabel(0,1,"开户名");
   xlsWriteLabel(0,2,"银行卡号");
   xlsWriteLabel(0,3,"金额");
+  xlsWriteLabel(0,4,"联系方式");
   $xlsRow = 1;
   while($array = $db->fetch_array($query)) {
 	  ++$i;
 	  xlsWriteNumber($xlsRow,0,"$i");
-	  xlsWriteNumber($xlsRow,0,"$array[0]");
+	  xlsWriteLabel($xlsRow,0,"$array[0]");
 	  xlsWriteLabel($xlsRow,1,"$array[1]");
 	  xlsWriteLabel($xlsRow,2,"$array[2]");
 	  xlsWriteLabel($xlsRow,3,"$array[3]");
+	  xlsWriteLabel($xlsRow,4,"$array[4]");
 	  $xlsRow++;
   }
   xlsEOF();
+
+
+
+  $db->query("update lm_mb_money set state='2' where state='1'");
+
+
   exit();
 }
 

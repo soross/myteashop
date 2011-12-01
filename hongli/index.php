@@ -13,7 +13,7 @@ $smarty->assign("INDEX_A_CSS",'style="color: rgb(0, 0, 0); font-family: 宋体;"')
 $mbInfoQuery = $db->query("select * from lm_member where id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $mbInfo = $db->fetch_array($mbInfoQuery);
 $smarty->assign("mbInfo",$mbInfo);
-$smarty->assign("mbAddressPC","<script>selectOption('".$mbInfo[province]."');selectOptionByAddress('".$mbInfo[city]."','szShi')</script>");
+$smarty->assign("mbAddressPC","<script>selectOption('".$mbInfo[province]."','szSheng');selectOptionByAddress('".$mbInfo[city]."','szShi')</script>");
 
 //展示层
 if(isset($_GET['divNo']) && isset($_GET['flag'])){
@@ -83,7 +83,7 @@ $smarty->assign("productRow",$productRow);
 $sjInfoQuery = $db->query("select s.*,t.`name`,mb.mb_name from lm_sj s,lm_sj_type t,lm_member mb where s.sj_type=t.id and mb.id=s.agent_id and s.mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."'");
 $sjInfo = $db->fetch_array($sjInfoQuery);
 $smarty->assign("sjInfo",$sjInfo);
-$smarty->assign("sjAddressCity","<script>selectOptionByAddress('".$sjInfo[city]."','szShi2')</script>");
+$smarty->assign("sjAddressCity","<script>selectOptionByAddress('".$sjInfo[city]."','szShi2');</script>");
 
 //商家分类
 $sjTypeQuery = $db->query("select * from lm_sj_type");

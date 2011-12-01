@@ -1299,7 +1299,7 @@
 
 							<div class="qingchu"></div>
 
-							{if ($mbInfo.mb_type == 2  || $mbInfo.mb_type == 4 ) && $mbInfo.state ==0}
+							{if $mbInfo.mb_type == 2  || $mbInfo.mb_type == 4}
 
 
 							<!--商家平台 -->
@@ -1381,112 +1381,42 @@
 													所在省市
 												</th>
 												<td colspan="3">
-													<SELECT onchange=chsel2() size=1 name=szSheng id=szSheng>
-													<OPTION {if $sjInfo.province=='北京'}selected{/if} value="北京">
-														北京
-													</OPTION>
-													<OPTION {if $sjInfo.province=='安徽'}selected{/if} value="安徽">
-														安徽
-													</OPTION>
-													<OPTION {if $sjInfo.province=='山东省'}selected{/if} value="山东省">
-														山东省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="江苏省">
-														江苏省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='上海市'}selected{/if} value="上海市">
-														上海市
-													</OPTION>
-													<OPTION{if $sjInfo.province=='广东省'}selected{/if} value="广东省">
-														广东省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='浙江省'}selected{/if} value="浙江省">
-														浙江省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='福建省'}selected{/if} value="福建省">
-														福建省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='重庆市'}selected{/if} value="重庆市">
-														重庆市
-													</OPTION>
-													<OPTION {if $sjInfo.province=='甘肃省'}selected{/if} value="甘肃省">
-														甘肃省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='广西省'}selected{/if} value="广西省">
-														广西省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='贵州省'}selected{/if} value="贵州省">
-														贵州省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="海南省">
-														海南省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='河北省'}selected{/if} value="河北省">
-														河北省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='河南省'}selected{/if} value="河南省">
-														河南省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='黑龙江省'}selected{/if} value="黑龙江省">
-														黑龙江省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='湖北省'}selected{/if} value="湖北省">
-														湖北省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='湖南省'}selected{/if} value="湖南省">
-														湖南省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='江西省'}selected{/if} value="江西省">
-														江西省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='吉林省'}selected{/if} value="吉林省">
-														吉林省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='辽宁省'}selected{/if} value="辽宁省">
-														辽宁省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='内蒙古'}selected{/if} value="内蒙古">
-														内蒙古
-													</OPTION>
-													<OPTION {if $sjInfo.province=='宁夏'}selected{/if} value="宁夏">
-														宁夏
-													</OPTION>
-													<OPTION {if $sjInfo.province=='青海省'}selected{/if} value="青海省">
-														青海省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='山西省'}selected{/if} value="山西省">
-														山西省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='陕西省'}selected{/if} value="陕西省">
-														陕西省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='四川省'}selected{/if} value="四川省">
-														四川省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='天津市'}selected{/if} value="天津市">
-														天津市
-													</OPTION>
-													<OPTION {if $sjInfo.province=='新疆'}selected{/if} value="新疆">
-														新疆
-													</OPTION>
-													<OPTION {if $sjInfo.province=='西藏'}selected{/if} value="西藏">
-														西藏
-													</OPTION>
-													<OPTION {if $sjInfo.province=='云南省'}selected{/if} value="云南省">
-														云南省
-													</OPTION>
-													<OPTION {if $sjInfo.province=='香港'}selected{/if} value="香港">
-														香港
-													</OPTION>
-													<OPTION {if $sjInfo.province=='澳门'}selected{/if} value="澳门">
-														澳门
-													</OPTION>
-													<OPTION {if $sjInfo.province=='台湾'}selected{/if} value="台湾">
-														台湾
-													</OPTION>
-													<OPTION {if $sjInfo.province=='国外与其它'}selected{/if} value="国外与其它">
-														国外与其它
-													</OPTION>
+													<SELECT onchange="chsel2()" size=1 name=szSheng id=szSheng2>
+													<OPTION {if $sjInfo.province=='北京'}selected{/if} value="北京">北京</OPTION>
+													<OPTION {if $sjInfo.province=='安徽'}selected{/if} value="安徽">安徽</OPTION>
+													<OPTION {if $sjInfo.province=='山东省'}selected{/if} value="山东省">山东省</OPTION>
+													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="江苏省">江苏省</OPTION>
+													<OPTION {if $sjInfo.province=='上海市'}selected{/if} value="上海市">上海市</OPTION>
+													<OPTION {if $sjInfo.province=='广东省'}selected{/if} value="广东省">广东省</OPTION>
+													<OPTION {if $sjInfo.province=='浙江省'}selected{/if} value="浙江省">浙江省</OPTION>
+													<OPTION {if $sjInfo.province=='福建省'}selected{/if} value="福建省">福建省</OPTION>
+													<OPTION {if $sjInfo.province=='重庆市'}selected{/if} value="重庆市">重庆市</OPTION>
+													<OPTION {if $sjInfo.province=='甘肃省'}selected{/if} value="甘肃省">甘肃省</OPTION>
+													<OPTION {if $sjInfo.province=='广西省'}selected{/if} value="广西省">广西省</OPTION>
+													<OPTION {if $sjInfo.province=='贵州省'}selected{/if} value="贵州省">贵州省</OPTION>
+													<OPTION {if $sjInfo.province=='江苏省'}selected{/if} value="海南省">海南省</OPTION>
+													<OPTION {if $sjInfo.province=='河北省'}selected{/if} value="河北省">河北省</OPTION>
+													<OPTION {if $sjInfo.province=='河南省'}selected{/if} value="河南省">河南省</OPTION>
+													<OPTION {if $sjInfo.province=='黑龙江省'}selected{/if} value="黑龙江省">黑龙江省</OPTION>
+													<OPTION {if $sjInfo.province=='湖北省'}selected{/if} value="湖北省">湖北省</OPTION>
+													<OPTION {if $sjInfo.province=='湖南省'}selected{/if} value="湖南省">湖南省</OPTION>
+													<OPTION {if $sjInfo.province=='江西省'}selected{/if} value="江西省">江西省</OPTION>
+													<OPTION {if $sjInfo.province=='吉林省'}selected{/if} value="吉林省">吉林省</OPTION>
+													<OPTION {if $sjInfo.province=='辽宁省'}selected{/if} value="辽宁省">辽宁省</OPTION>
+													<OPTION {if $sjInfo.province=='内蒙古'}selected{/if} value="内蒙古">内蒙古</OPTION>
+													<OPTION {if $sjInfo.province=='宁夏'}selected{/if} value="宁夏">宁夏</OPTION>
+													<OPTION {if $sjInfo.province=='青海省'}selected{/if} value="青海省">青海省</OPTION>
+													<OPTION {if $sjInfo.province=='山西省'}selected{/if} value="山西省">山西省</OPTION>
+													<OPTION {if $sjInfo.province=='陕西省'}selected{/if} value="陕西省">陕西省</OPTION>
+													<OPTION {if $sjInfo.province=='四川省'}selected{/if} value="四川省">四川省</OPTION>
+													<OPTION {if $sjInfo.province=='天津市'}selected{/if} value="天津市">天津市</OPTION>
+													<OPTION {if $sjInfo.province=='新疆'}selected{/if} value="新疆">新疆</OPTION>
+													<OPTION {if $sjInfo.province=='西藏'}selected{/if} value="西藏">西藏</OPTION>
+													<OPTION {if $sjInfo.province=='云南省'}selected{/if} value="云南省">云南省</OPTION>
+													<OPTION {if $sjInfo.province=='香港'}selected{/if} value="香港">香港</OPTION>
+													<OPTION {if $sjInfo.province=='澳门'}selected{/if} value="澳门">澳门</OPTION>
+													<OPTION {if $sjInfo.province=='台湾'}selected{/if} value="台湾">台湾</OPTION>
+													<OPTION {if $sjInfo.province=='国外与其它'}selected{/if} value="国外与其它">国外与其它</OPTION>
 												</SELECT>
 												<SELECT size=1 name=szShi id="szShi2">
 													<OPTION selected>
@@ -2028,7 +1958,7 @@
 
 							{/if}
 
-							{if $mbInfo.mb_type >2 && $mbInfo.state  == 0}
+							{if $mbInfo.mb_type >2}
 
 							<!-- 商家平台结束 ####################################################################-->
 

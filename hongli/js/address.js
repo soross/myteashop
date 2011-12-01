@@ -771,16 +771,16 @@ var selects=[];
 
 	function chsel(){
 		with (document.procatshopform){
-			if(szSheng.value) {
-				szShi.options.length=0;
-				for(var i=0;i<selects[szSheng.value].length;i++){
-					szShi.options.add(selects[szSheng.value][i]);
+			if(document.procatshopform.szSheng.value) {
+				document.procatshopform.szShi.options.length=0;
+				for(var i=0;i<selects[document.procatshopform.szSheng.value].length;i++){
+					document.procatshopform.szShi.options.add(selects[document.procatshopform.szSheng.value][i]);
 				}
 			}
 		}
 	}
 
-		function chselradio(){
+	function chselradio(){
 		with (document.procatshopform){
 		szSheng.value='34';
 			if(szSheng.value) {
@@ -792,17 +792,20 @@ var selects=[];
 		}
 	}
 
-	function selectOption(flag){
-		var obj = document.getElementById('szSheng');
+	function selectOption(flag,tagName){
+		var obj = document.getElementById(tagName);
 		for(var k=0;k<obj.options.length;k++){
 			if(obj.options[k].value==flag){
 				obj.options[k].selected="true";
 				break;
 			}
 		}
-		chsel();
+		if('szSheng'==tagName){
+			chsel();
+		}
 	}
 
+	/**
 	function selectOptionByAddress(flag,tagName){
 		var obj = document.getElementById(tagName);
 		for(var k=0;k<obj.options.length;k++){
@@ -812,14 +815,14 @@ var selects=[];
 			}
 		}
 		//chsel();
-	}
+	}**/
 
 	function chsel2(){
 		with (document.sjform){
-			if(szSheng.value) {
-				szShi.options.length=0;
-				for(var i=0;i<selects[szSheng.value].length;i++){
-					szShi.options.add(selects[szSheng.value][i]);
+			if(document.sjform.szSheng.value) {
+				document.sjform.szShi.options.length=0;
+				for(var i=0;i<selects[document.sjform.szSheng.value].length;i++){
+					document.sjform.szShi.options.add(selects[document.sjform.szSheng.value][i]);
 				}
 			}
 		}
@@ -827,15 +830,19 @@ var selects=[];
 
 
 	function selectOptionByAddress(flag,tagName){
-		chsel2();
-		var obj = document.getElementById(tagName);
-		for(var k=0;k<obj.options.length;k++){
-			if(obj.options[k].value==flag){
-				obj.options[k].selected="true";
+		var szSheng = document.getElementById("szSheng2").value;
+		document.getElementById(tagName).options.length=0;
+		for(var i=0;i<selects[szSheng].length;i++){
+			var val = selects[szSheng][i].value;
+			var text = selects[szSheng][i].text;
+			document.getElementById(tagName).options.add(new Option(text,val));
+		}
+		for(var k=0;k<document.getElementById(tagName).options.length;k++){
+			if(document.getElementById(tagName).options[k].value==flag){
+				document.getElementById(tagName).options[k].selected="true";
 				break;
 			}
 		}
-
 	}
 	function writeShopKeyValue(key){
 		if(key!=undefined && key!="")

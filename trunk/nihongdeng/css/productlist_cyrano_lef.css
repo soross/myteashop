@@ -1,0 +1,41 @@
+/* ============产品图片列表============== */
+div .productlist_cyrano_lef{
+	border:0px #ebebeb solid;
+	padding:5px 0px 5px 0px;
+}
+
+div#demo{
+	overflow:hidden;
+	width:728px;
+	color:#ff0000;
+}
+
+div.productlist_cyrano_lef div.fang{
+background:url(../images/pbg.gif) 0 0 no-repeat;
+padding:4px 9px 4px 5px;
+margin:0px 2px;
+text-align:center;
+}
+
+div.productlist_cyrano_lef div.picFit{
+overflow: hidden;
+}
+
+
+div.productlist_cyrano_lef div.title{
+text-align:center;
+overflow: hidden;
+white-space:nowrap;
+}
+
+div.productlist_cyrano_lef a:link,div.productlist_cyrano_lef a:visited,div.productlist_cyrano_lef a:active{
+color:#000;
+font:12px/25px arial,simsun;
+text-decoration: none;
+}
+
+div.productlist_cyrano_lef a:hover{
+color:#333;
+text-decoration: underline;
+font:12px/25px arial,simsun;
+}

@@ -1,0 +1,29 @@
+/* ============Õº∆¨+ΩÈ…‹¡–±Ì============== */
+
+
+ul.photopic_dolphin{
+margin:0;
+padding:0px 0px 0px 2px;
+}
+
+ul.photopic_dolphin li{
+clear:all;
+list-style-type: none; 
+padding:0px;
+height:29px;
+padding-left:24px;
+overflow: hidden;
+background:url(../images/line.gif) 0px 1px no-repeat;
+}
+
+ul.photopic_dolphin a.title:link,ul.photopic_dolphin a.title:visited,ul.photopic_dolphin a.title:active{
+font:12px/15px simsun;
+color:#505050;
+text-decoration: none;
+}
+
+ul.photopic_dolphin a.title:hover{
+font:12px/15px simsun;
+color:#333;
+text-decoration: underline;
+}

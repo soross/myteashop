@@ -23,7 +23,7 @@ $prodlist = getRows("product where lang='".$currlang."' order by create_date lim
 $smarty->assign("prodlist",$prodlist);
 
 //简介AboutUs
-$aboutusInfo = getInfo("cp where remark='AboutUs'",$db,"cp_info_value_".$currlang." as info");
+$aboutusInfo = getInfo("comm_code where type_name='AboutUsInfo'",$db,"type_value_".$currlang." as info");
 $smarty->assign("aboutUsInfo",$aboutusInfo[info]);
 
 //联系我们ContactUs

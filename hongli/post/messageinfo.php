@@ -245,7 +245,7 @@ else if(isset($_POST['task'])&&"ModifyPasswordByOldPassword"==$_POST['task']){
 		if($_POST[password]==$_POST[password2]){
 			$query = $db->query("select * from lm_member where id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			$us = is_array($row = $db->fetch_array($query));
-			$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
+			$ps = $us ? md5($_POST[oldpassword]) == $row[password] : FALSE;
 			if ($ps) {
 				$db->query("update lm_member set password='".md5($_POST[password])."' where id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				echo "<script>alert('密码修改成功!');location.href='../index.php?divNo=10&flag=mb'</script>";
@@ -266,7 +266,7 @@ else if(isset($_POST['task'])&&"ModifyPasswordBySecondPassword"==$_POST['task'])
 		if($_POST[password]==$_POST[password2]){
 			$query = $db->query("select * from lm_member where id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			$us = is_array($row = $db->fetch_array($query));
-			$ps = $us ? md5($_POST[password]) == $row[second_password] : FALSE;
+			$ps = $us ? md5($_POST[secondpassword]) == $row[second_password] : FALSE;
 			if ($ps) {
 				$db->query("update lm_member set password='".md5($_POST[password])."' where id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 				echo "<script>alert('密码修改成功!');location.href='../index.php?divNo=10&flag=mb'</script>";

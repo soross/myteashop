@@ -31,6 +31,7 @@ $smarty->assign("jfTotalBasic",floor($mb_limit[jifen]/500));
 $smarty->assign("hlhongli",$mb_limit[hongli]);//红利权数
 $smarty->assign("notMoney",round($mb_limit[not_money],2));//已分红利
 $smarty->assign("money",round($mb_limit[money],2));//可用分红
+$smarty->assign("getMoneyBuyOK",round(($mb_limit[money]*0.85),2));//可购红利
 
 //当前红利
 
@@ -56,10 +57,10 @@ while($rowOrder = $db->fetch_array($orderQuery)){
 $smarty->assign("orderRow",$orderRow);
 
 //我的提现
-$smarty->assign("getMoneyOK",($mb_limit[money]*0.8));//可用分红
-$smarty->assign("getMoneyZZOK",($mb_limit[money]));//可用转账
-$smarty->assign("getSaleMoneyOK",($mb_limit[sale_money]*0.8));//销售额
-$smarty->assign("getExchangeOK",$mb_limit[exchange]);//换购额
+$smarty->assign("getMoneyOK",round(($mb_limit[money]*0.8),2));//可用分红
+$smarty->assign("getMoneyZZOK",round(($mb_limit[money]),2));//可用转账
+$smarty->assign("getSaleMoneyOK",round(($mb_limit[sale_money]*0.8),2));//销售额
+$smarty->assign("getExchangeOK",round($mb_limit[exchange],2));//换购额
 
 
 //我的收藏

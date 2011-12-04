@@ -416,7 +416,17 @@ else if(isset($_GET['task'])&&"BackAuthSj"==$_GET['task']){
 	echo "<script>alert('退回成功!');location.href='../index.php?divNo=18&flag=auth';</script>";
 }
 
+//确定发货sendProduct orderid
+else if(isset($_GET['task'])&&"sendProduct"==$_GET['task']){
+	$db->query("update lm_order set state='1' where id='".$_GET[orderid]."'");
+	echo "<script>alert('发货成功!');location.href='../index.php?divNo=15&flag=sj';</script>";
+}
 
+//确定收货confirmProduct&orderid
+else if(isset($_GET['task'])&&"confirmProduct"==$_GET['task']){
+	$db->query("update lm_order set state='2' where id='".$_GET[orderid]."'");
+	echo "<script>alert('确定收货成功!');location.href='../index.php?divNo=11&flag=mb';</script>";
+}
 
 
 

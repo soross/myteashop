@@ -935,13 +935,10 @@
 													订单号
 												</th>
 												<th>
-													订单描述
+													订单信息
 												</th>
-												<th width="120px">
-													生成时间
-												</th>
-												<th width="50px">
-													状态
+												<th width="60px">
+													订单状态
 												</th>
 											</tr>
 
@@ -952,16 +949,29 @@
 													</td>
 													<td>
 														商品名称：{$orderRow[list].mc_name}<br>
-														金额：{$orderRow[list].price}元+{$orderRow[list].price_type}积分<br>
-														所属商家：{$orderRow[list].sj_name}
+														数量：1(件)<br>
+														金额：{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 }
+															{$productRow[list].mc_price}元
+														{/if}
+
+														{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 && $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
+															+
+														{/if}
+														{if $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
+															{$productRow[list].mc_price_type}积分
+														{/if}
+														<br>
+														下单时间：{$orderRow[list].create_date}<br>
+														所属商家：{$orderRow[list].sj_name}<br>
+														商家用户名：{$orderRow[list].mb_name}<br>
+														商家联系人：{$orderRow[list].link_man}<br>
+														商家电话：{$orderRow[list].telephone}<br>
+														商家地址：{$orderRow[list].province}{$orderRow[list].city}{$orderRow[list].address}<br>
 													</td>
 													<td>
-														{$orderRow[list].create_date}
-													</td>
-													<td>
-														{if $orderRow[list].mode == "0"}已付款{/if}
-														{if $orderRow[list].mode == "1"}发货{/if}
-														{if $orderRow[list].mode == "2"}完成交易{/if}
+														{if $orderRow[list].state == "0"}已付款{/if}
+														{if $orderRow[list].state == "1"}<a href="#" onclick="if(confirm('您是否确定收到货物?'))location.href='post/messageinfo.php?task=confirmProduct&orderid={$orderRow[list].id}';">确定收货</a>{/if}
+														{if $orderRow[list].state == "2"}完成交易{/if}
 													</td>
 												</tr>
 											{/section}
@@ -1805,10 +1815,10 @@
 													商品图片
 												</th>
 												<th>
-													商品信息
+													订单信息
 												</th>
-												<th width="160px">
-													购买者信息
+												<th width="60px">
+													订单状态
 												</th>
 											</tr>
 											{section name=list loop=$orderSaleRow}
@@ -1830,28 +1840,23 @@
 														{if $orderSaleRow[list].mc_price_type !="" && $orderSaleRow[list].mc_price_type !=0 }
 														{$orderSaleRow[list].mc_price_type}积分
 														{/if}<br>
-														购买数量：<font style="color:#C03ACB;">1</font>(件)
-														<!--&nbsp;&nbsp;
-														订单状态：{if $orderSaleRow[list].state == "0"}
-															<font style="color:#2D6C3D;">新下单</font>
-														{/if}
-														{if $orderSaleRow[list].state == "1"}
-															 <font style="color:red;">已发货</font>
-														{/if}
-														{if $orderSaleRow[list].state == "2"}
-															 <font style="color:#C0C0C0;">售后</font>
-														{/if}
-														{if $orderSaleRow[list].state == "3"}
-															<font style="color:#C0C0C0;">完成</font>
-														{/if}-->
-
-
-													</td>
-													<td width="160px">
+														购买数量：<font style="color:#C03ACB;">1</font>(件)<br>
 														用户名：{$orderSaleRow[list].mb_name}<br>
 														联系人：{$orderSaleRow[list].realname}<br>
 														联系方式：{$orderSaleRow[list].phone}<br>
 														地址：{$orderSaleRow[list].province}{$orderSaleRow[list].city}{$orderSaleRow[list].address}<br>
+
+													</td>
+													<td>
+														{if $orderSaleRow[list].state == "0"}
+															<font style="color:#2D6C3D;"><a href='#' onclick='if(confirm("是否确定发货?"))location.href="post/messageinfo.php?task=sendProduct&orderid={$orderSaleRow[list].id}";'>发货</a></font>
+														{/if}
+														{if $orderSaleRow[list].state == "1"}
+															<font style="color:#2D6C3D;">已发货</font>
+														{/if}
+														{if $orderSaleRow[list].state == "2"}
+															<font style="color:#C0C0C0;">完成交易</font>
+														{/if}&nbsp;
 													</td>
 												</tr>
 											{sectionelse}

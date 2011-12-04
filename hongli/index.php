@@ -49,7 +49,30 @@ print_r($lmLimitTopInfo);**/
 $smarty->assign("hlDay",$hlDay);//今天红利
 
 //我的订单
-$orderQuery = $db->query("select * from lm_order where mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' order by create_date desc");
+$orderQuery = $db->query("SELECT
+sj.address,
+sj.province,
+sj.city,
+mb.mb_name,
+sj.link_man,
+sj.telephone,
+o.id,
+o.order_id,
+o.mb_id,
+o.mc_name,
+o.mc_id,
+o.sj_name,
+o.sj_mb_id,
+o.sj_id,
+o.create_date,
+o.price,
+o.price_type,
+o.state,
+o.`mode`
+FROM
+lm_order AS o
+INNER JOIN lm_sj AS sj ON o.sj_id = sj.id
+INNER JOIN lm_member AS mb ON o.sj_mb_id = mb.id where o.mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' order by o.create_date desc");
 $orderRow = array();
 while($rowOrder = $db->fetch_array($orderQuery)){
 	$orderRow[] = $rowOrder;
@@ -111,7 +134,7 @@ $smarty->assign("mcRow",$mcRow);
 
 //售出产品
 //$orderSaleQuery = $db->query("select sm.*,t.cnt,t.mc_id from lm_sj_mc sm,(select mc_id,count(*) as cnt from lm_order where sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."' group by mc_id) t where sm.id=t.mc_id and id in (select mc_id from lm_order where sj_mb_id='".$_SESSION["WEB_USER_LOGIN_UID_SESSION"]."')");
-$orderSaleQuery = $db->query("SELECT sm.mc_name,sm.mc_pic,sm.mc_price,sm.mc_price_type,sm.mc_type,o.mc_id,
+$orderSaleQuery = $db->query("SELECT sm.mc_name,sm.mc_pic,sm.mc_price,sm.mc_price_type,sm.mc_type,o.mc_id,o.state,o.id,
 mb.mb_name,mb.realname,mb.province,mb.city,mb.address,mb.phone FROM
 lm_sj_mc AS sm  INNER JOIN lm_order AS o ON sm.id = o.mc_id INNER JOIN lm_member AS mb ON o.mb_id = mb.id
 ORDER BY o.create_date DESC LIMIT 0, 20");

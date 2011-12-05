@@ -950,15 +950,15 @@
 													<td>
 														商品名称：{$orderRow[list].mc_name}<br>
 														数量：1(件)<br>
-														金额：{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 }
-															{$productRow[list].mc_price}元
+														金额：{if $orderRow[list].price!="" && $orderRow[list].price!=0 }
+															{$orderRow[list].price}元
 														{/if}
 
-														{if $productRow[list].mc_price!="" && $productRow[list].mc_price!=0 && $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
+														{if $orderRow[list].price!="" && $orderRow[list].price!=0 && $orderRow[list].price_type !="" && $orderRow[list].price_type !=0 }
 															+
 														{/if}
-														{if $productRow[list].mc_price_type !="" && $productRow[list].mc_price_type !=0 }
-															{$productRow[list].mc_price_type}积分
+														{if $orderRow[list].price_type !="" && $orderRow[list].price_type !=0 }
+															{$orderRow[list].price_type}积分
 														{/if}
 														<br>
 														下单时间：{$orderRow[list].create_date}<br>

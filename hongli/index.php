@@ -82,8 +82,8 @@ $smarty->assign("orderRow",$orderRow);
 //我的提现
 $smarty->assign("getMoneyOK",round(($mb_limit[money]*0.8),2));//可用分红
 $smarty->assign("getMoneyZZOK",round(($mb_limit[money]),2));//可用转账
-$smarty->assign("getSaleMoneyOK",round(($mb_limit[sale_money]*0.8),2));//销售额
-$smarty->assign("getExchangeOK",round($mb_limit[exchange],2));//换购额
+$smarty->assign("getSaleMoneyOK",round(($mb_limit[sale_money]*0.85),2));//销售额
+$smarty->assign("getExchangeOK",round(($mb_limit[exchange]*0.95),2));//换购额
 
 
 //我的收藏

@@ -146,7 +146,7 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 				echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
 				exit;
 			}
-			$db->query($sql."jifen=jifen+".($mcInfo[mc_price]-$mcInfo[mc_price_type]).",hongli=hongli+".floor ($mcInfo[mc_price]/500)." where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+			$db->query($sql."jifen=jifen+".($mcInfo[mc_price_type]).",hongli=hongli+".floor ($mcInfo[mc_price]/500)." where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
 			//写日志
 			Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".$mcInfo[mc_price_type]."积分",$mcInfo[mc_price_type],"OK","","-",$orderID);
 			Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".$mcInfo[mc_price]."红利",$mcInfo[mc_price],"OK","","-",$orderID);
@@ -155,7 +155,7 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 			Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".($mcInfo[mc_price])."积分",$mcInfo[mc_price],"OK","","+",$orderID);
 
 			//卖家增加收益
-			$db->query("update lm_mb_limit set jifen=jifen+".($mcInfo[mc_price_type])." exchange=exchange+".($mcInfo[mc_price]*0.95)." where mb_id='".$_POST[mbid]."'");
+			$db->query("update lm_mb_limit set jifen=jifen+".($mcInfo[mc_price_type]).", exchange=exchange+".($mcInfo[mc_price]*0.95)." where mb_id='".$_POST[mbid]."'");
 			Save_log($db,"GetSaleMoney",$_POST[mbid],"出售".$mcInfo[mc_name]."获得".($mcInfo[mc_price]*0.95)."销售额",($mcInfo[mc_price]*0.95),"OK","","+",$orderID);
 
 			//减少商品的数量

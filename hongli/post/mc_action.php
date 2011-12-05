@@ -42,7 +42,7 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 			$orderID=randNum();//¶©µ¥ºÅ
 			$db->query("INSERT INTO `lm_order`(`order_id`,`mb_id`,`mc_id`,`sj_id`,`create_date`,`price`,`price_type`,`state`," .
 					"`mb_name`,`mc_name`,`sj_name`,`sj_mb_id`) VALUES ('$orderID', '".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."', " .
-					"'$mcid', '$mcInfo[sj_id]', 'now()', '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
+					"'$mcid', '$mcInfo[sj_id]', now(), '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
 					"'$mbInfo[mb_name]','$mcInfo[mc_name]','$sjInfo[sj_name]','$sjInfo[id]')");
 
 

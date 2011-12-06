@@ -4,6 +4,12 @@ require_once ("../action/mysql.class.php");
 //购买
 if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 	$mcid = $_POST[mcid];
+
+	$querypwd = $db->query("select * from lm_member where second_password='".md5($_POST[password])."' and id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+	if($db->db_num_rows($querypwd)< 1){
+		echo "<script>alert('二级密码错误!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+		exit;
+	}
 	$cntQuery = $db->query("select * from lm_sj_mc where id=$mcid");
 	if($db->db_num_rows($cntQuery)>0){
 		$mcInfo = $db->fetch_array($mcQuery);//商品信息
@@ -16,172 +22,211 @@ if(isset($_POST['task'])&&"BuyMc"==$_POST['task']){
 			$db->query("update lm_sj_mc set state='state' where id='$mcid'");
 			exit;
 		}else{
-			//会员资金
-			$limit_sql = "select * from lm_mb_limit where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'";
-			$limitQuery = $db->query($limit_sql);
-			$limitInfo = $db->fetch_array($limitQuery);
+			try{
+				$db->query("BEGIN");
+				//会员资金
+				$limit_sql = "select * from lm_mb_limit where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'";
+				$limitQuery = $db->query($limit_sql);
+				$limitInfo = $db->fetch_array($limitQuery);
 
-			//判断红利是否足够
-			if($mcInfo[mc_price]>($limitInfo[money]+$limitInfo[sale_money]+$limitInfo[exchange])){
-				echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
-				exit;
+				//判断红利是否足够
+				if($mcInfo[mc_price]>($limitInfo[money]+$limitInfo[sale_money]+$limitInfo[exchange])){
+					echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+					exit;
+				}
+				//判断积分是否足够
+				if($mcInfo[mc_price_type]>$limitInfo[jifen]){
+					echo "<script>alert('您的积分不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+					exit;
+				}
+
+				//买家会员资料
+				$mbinfoQuery = $db->query("select mb_name from lm_member where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+				$mbInfo = $db->fetch_array($mbinfoQuery);
+
+				//卖家会员资料
+				$sjInfoQuery = $db->query("select s.sj_name,m.id from lm_sj_mc c ,lm_sj s,lm_member m where c.sj_id=s.id and s.mb_id=m.id and c. id='$mcid'");
+				$sjInfo = $db->fetch_array($sjInfoQuery);
+				$orderID=randNum();//订单号
+				$db->query("INSERT INTO `lm_order`(`order_id`,`mb_id`,`mc_id`,`sj_id`,`create_date`,`price`,`price_type`,`state`," .
+						"`mb_name`,`mc_name`,`sj_name`,`sj_mb_id`) VALUES ('$orderID', '".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."', " .
+						"'$mcid', '$mcInfo[sj_id]', now(), '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
+						"'$mbInfo[mb_name]','$mcInfo[mc_name]','$sjInfo[sj_name]','$sjInfo[id]')");
+
+
+				//买家减去红利和积分
+				$sql="";
+				if($limitInfo[money]>= ($mcInfo[mc_price]*1.15)){
+					$sql = "update lm_mb_limit set money=money-".($mcInfo[mc_price]*1.15).",";
+				}
+				/**
+				else if($limitInfo[money]< ($mcInfo[mc_price]*1.15) && ($limitInfo[money]+ $limitInfo[sale_money]) >= ($mcInfo[mc_price]*1.15)){
+					$tmp = ($mcInfo[mc_price]*1.15)-$limitInfo[money];
+					$sql = "update lm_mb_limit set money='0',sale_money = sale_money-".$tmp.",";
+				}else if(($limitInfo[money]+ $limitInfo[sale_money])< ($mcInfo[mc_price]*1.15) && ($limitInfo[money]+ $limitInfo[sale_money] + $limitInfo[exchange]) >= ($mcInfo[mc_price]*1.15) ){
+					$tmp = ($mcInfo[mc_price]*1.15)-($limitInfo[money]+ $limitInfo[sale_money]);
+					$sql = "update lm_mb_limit set money='0',sale_money = '0',exchange = exchange-".$tmp.",";
+				}
+				**/
+				else{
+					echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+					exit;
+				}
+				//,hongli=hongli+".floor (($mcInfo[mc_price]*1.15)/500)."
+				$db->query($sql."jifen=jifen+".($mcInfo[mc_price])."  where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+				//写日志
+				//Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".$mcInfo[mc_price_type]."积分",$mcInfo[mc_price_type],"OK","","-",$orderID);
+				Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".($mcInfo[mc_price]*1.15)."红利",($mcInfo[mc_price]*1.15),"OK","","-",$orderID);
+				//Save_log($db,"GetNotHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15)%500)."未分红利",($mcInfo[mc_price]*1.15)%500,"OK","","+",$orderID);
+				//Save_log($db,"GetHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(floor (($mcInfo[mc_price]*1.15)/500))."红利",floor (($mcInfo[mc_price]*1.15)/500),"OK","","+",$orderID);
+				Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15))."积分",($mcInfo[mc_price]*1.15),"OK","","+",$orderID);
+				//卖家增加收益
+				$db->query("update lm_mb_limit set sale_money=sale_money+".($mcInfo[mc_price])." where mb_id='".$_POST[mbid]."'");
+				Save_log($db,"GetSaleMoney",$_POST[mbid],"出售".$mcInfo[mc_name]."获得".($mcInfo[mc_price])."销售额",($mcInfo[mc_price]),"OK","","+",$orderID);
+
+				//减少商品的数量
+				if($mcInfo[mc_count]<2){
+					$db->query("update lm_sj_mc set mc_count='0',state='-2' where id='$mcid'");
+				}else{
+					$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
+				}
+
+				//增加联盟的收益情况,sale_money=sale_money+".$mcInfo[mc_price]."
+				//$db->query("update lm_limit set hongli=hongli+".(floor (($mcInfo[mc_price]*1.15)/500)).",dayhongli=dayhongli+".(floor (($mcInfo[mc_price]*1.15)/500))." where id='1'");
+
+				echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
+				$db->query("COMMIT");
+			}catch(Exception $e){
+				$db->query("ROLLBACK");
+				echo "<script>alert('系统异常,请重试!');location.href='../mcinfo.php?mcid=$mcid'</script>";
 			}
-			//判断积分是否足够
-			if($mcInfo[mc_price_type]>$limitInfo[jifen]){
-				echo "<script>alert('您的积分不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
-				exit;
-			}
-
-			//买家会员资料
-			$mbinfoQuery = $db->query("select mb_name from lm_member where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-			$mbInfo = $db->fetch_array($mbinfoQuery);
-
-			//卖家会员资料
-			$sjInfoQuery = $db->query("select s.sj_name,m.id from lm_sj_mc c ,lm_sj s,lm_member m where c.sj_id=s.id and s.mb_id=m.id and c. id='$mcid'");
-			$sjInfo = $db->fetch_array($sjInfoQuery);
-			$orderID=randNum();//订单号
-			$db->query("INSERT INTO `lm_order`(`order_id`,`mb_id`,`mc_id`,`sj_id`,`create_date`,`price`,`price_type`,`state`," .
-					"`mb_name`,`mc_name`,`sj_name`,`sj_mb_id`) VALUES ('$orderID', '".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."', " .
-					"'$mcid', '$mcInfo[sj_id]', now(), '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
-					"'$mbInfo[mb_name]','$mcInfo[mc_name]','$sjInfo[sj_name]','$sjInfo[id]')");
-
-
-			//买家减去红利和积分
-			$sql="";
-			if($limitInfo[money]>= ($mcInfo[mc_price]*1.15)){
-				$sql = "update lm_mb_limit set money=money-".($mcInfo[mc_price]*1.15).",";
-			}
-			/**
-			else if($limitInfo[money]< ($mcInfo[mc_price]*1.15) && ($limitInfo[money]+ $limitInfo[sale_money]) >= ($mcInfo[mc_price]*1.15)){
-				$tmp = ($mcInfo[mc_price]*1.15)-$limitInfo[money];
-				$sql = "update lm_mb_limit set money='0',sale_money = sale_money-".$tmp.",";
-			}else if(($limitInfo[money]+ $limitInfo[sale_money])< ($mcInfo[mc_price]*1.15) && ($limitInfo[money]+ $limitInfo[sale_money] + $limitInfo[exchange]) >= ($mcInfo[mc_price]*1.15) ){
-				$tmp = ($mcInfo[mc_price]*1.15)-($limitInfo[money]+ $limitInfo[sale_money]);
-				$sql = "update lm_mb_limit set money='0',sale_money = '0',exchange = exchange-".$tmp.",";
-			}
-			**/
-			else{
-				echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
-				exit;
-			}
-			$db->query($sql."jifen=jifen+".($mcInfo[mc_price]-$mcInfo[mc_price_type]).",hongli=hongli+".floor (($mcInfo[mc_price]*1.15)/500)." where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-			//写日志
-			Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".$mcInfo[mc_price_type]."积分",$mcInfo[mc_price_type],"OK","","-",$orderID);
-			Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."花费".($mcInfo[mc_price]*1.15)."红利",($mcInfo[mc_price]*1.15),"OK","","-",$orderID);
-			Save_log($db,"GetNotHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15)%500)."未分红利",($mcInfo[mc_price]*1.15)%500,"OK","","+",$orderID);
-			Save_log($db,"GetHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(floor (($mcInfo[mc_price]*1.15)/500))."红利",floor (($mcInfo[mc_price]*1.15)/500),"OK","","+",$orderID);
-			Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"购买".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15))."积分",($mcInfo[mc_price]*1.15),"OK","","+",$orderID);
-			//卖家增加收益
-			$db->query("update lm_mb_limit set sale_money=sale_money+".($mcInfo[mc_price]*0.85)." where mb_id='".$_POST[mbid]."'");
-			Save_log($db,"GetSaleMoney",$_POST[mbid],"出售".$mcInfo[mc_name]."获得".($mcInfo[mc_price]*0.85)."销售额",($mcInfo[mc_price]*0.85),"OK","","+",$orderID);
-
-			//减少商品的数量
-			if($mcInfo[mc_count]<2){
-				$db->query("update lm_sj_mc set mc_count='0',state='-2' where id='$mcid'");
-			}else{
-				$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
-			}
-
-			//增加联盟的收益情况,sale_money=sale_money+".$mcInfo[mc_price]."
-			$db->query("update lm_limit set hongli=hongli+".(floor (($mcInfo[mc_price]*1.15)/500)).",dayhongli=dayhongli+".(floor (($mcInfo[mc_price]*1.15)/500))." where id='1'");
-
-			echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
-
+			$db->query("END");
 		}
 	}else{
 		session_destroy();
 		echo "<script>alert('非法操作,请重新登入再重试!');location.href='../login.php'</script>";
 	}
 }else if(isset($_POST['task'])&&"BuyProduct"==$_POST['task']){
-	$mcid = $_POST[mcid];
-	$cntQuery = $db->query("select * from lm_sj_mc where id=$mcid");
-	if($db->db_num_rows($cntQuery)>0){
-		$mcInfo = $db->fetch_array($mcQuery);//商品信息
-		if($_POST[mbid]==$_SESSION['WEB_USER_LOGIN_UID_SESSION']){
-			echo "<script>alert('您不能购买自己的产品!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+
+
+
+
+		$mcid = $_POST[mcid];
+
+
+		$querypwd = $db->query("select * from lm_member where second_password='".md5($_POST[password])."' and id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+		if($db->db_num_rows($querypwd)<0){
+			echo "<script>alert('二级密码错误!');location.href='../mcinfo.php?mcid=$mcid'</script>";
 			exit;
 		}
-		if($mcInfo[mc_count]<0){
-			echo "<script>alert('您下手晚了,该产品已经卖完了!');location.href='../mcinfo.php?mcid=$mcid'</script>";
-			$db->query("update lm_sj_mc set state='state' where id='$mcid'");
-			exit;
-		}else{
-			//会员资金
-			$limit_sql = "select * from lm_mb_limit where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'";
-			$limitQuery = $db->query($limit_sql);
-			$limitInfo = $db->fetch_array($limitQuery);
 
-			//判断红利是否足够
-			if($mcInfo[mc_price]>($limitInfo[money]+$limitInfo[sale_money]+$limitInfo[exchange])){
-				echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+
+		$cntQuery = $db->query("select * from lm_sj_mc where id=$mcid");
+		if($db->db_num_rows($cntQuery)>0){
+			$mcInfo = $db->fetch_array($mcQuery);//商品信息
+			if($_POST[mbid]==$_SESSION['WEB_USER_LOGIN_UID_SESSION']){
+				echo "<script>alert('您不能购买自己的产品!');location.href='../mcinfo.php?mcid=$mcid'</script>";
 				exit;
 			}
-			//判断积分是否足够
-			if($mcInfo[mc_price_type]>$limitInfo[jifen]){
-				echo "<script>alert('您的积分不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+			if($mcInfo[mc_count]<0){
+				echo "<script>alert('您下手晚了,该产品已经卖完了!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+				$db->query("update lm_sj_mc set state='state' where id='$mcid'");
 				exit;
-			}
-
-			//买家会员资料
-			$mbinfoQuery = $db->query("select mb_name from lm_member where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-			$mbInfo = $db->fetch_array($mbinfoQuery);
-
-			//卖家会员资料
-			$sjInfoQuery = $db->query("select s.sj_name,m.id from lm_sj_mc c ,lm_sj s,lm_member m where c.sj_id=s.id and s.mb_id=m.id and c. id='$mcid'");
-			$sjInfo = $db->fetch_array($sjInfoQuery);
-			$orderID=randNum();//订单号
-			$db->query("INSERT INTO `lm_order`(`order_id`,`mb_id`,`mc_id`,`sj_id`,`create_date`,`price`,`price_type`,`state`," .
-					"`mb_name`,`mc_name`,`sj_name`,`sj_mb_id`,`mode`) VALUES ('$orderID', '".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."', " .
-					"'$mcid', '$mcInfo[sj_id]', now(), '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
-					"'$mbInfo[mb_name]','$mcInfo[mc_name]','$sjInfo[sj_name]','$sjInfo[id]','1')");
-
-
-			//买家减去红利和积分
-			$sql="";
-			if($limitInfo[money]>= ($mcInfo[mc_price]*1.15)){
-				$sql = "update lm_mb_limit set money=money-".($mcInfo[mc_price]*1.15).",";
-			}
-			/**
-			else if($limitInfo[money]< $mcInfo[mc_price] && ($limitInfo[money]+ $limitInfo[sale_money]) >= $mcInfo[mc_price]){
-				$tmp = $mcInfo[mc_price]-$limitInfo[money];
-				$sql = "update lm_mb_limit set money='0',sale_money = sale_money-".$tmp.",";
-			}else if(($limitInfo[money]+ $limitInfo[sale_money])< $mcInfo[mc_price] && ($limitInfo[money]+ $limitInfo[sale_money] + $limitInfo[exchange]) >= $mcInfo[mc_price] ){
-				$tmp = $mcInfo[mc_price]-($limitInfo[money]+ $limitInfo[sale_money]);
-				$sql = "update lm_mb_limit set money='0',sale_money = '0',exchange = exchange-".$tmp.",";
-			}
-			**/
-			else{
-				echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
-				exit;
-			}
-			$db->query($sql."jifen=jifen+".($mcInfo[mc_price_type]).",hongli=hongli+".floor (($mcInfo[mc_price]*1.15)/500)." where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
-			//写日志
-			Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."花费".$mcInfo[mc_price_type]."积分",$mcInfo[mc_price_type],"OK","","-",$orderID);
-			Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."花费".($mcInfo[mc_price]*1.15)."红利",($mcInfo[mc_price]*1.15),"OK","","-",$orderID);
-			Save_log($db,"GetNotHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15)%500)."未分红利",($mcInfo[mc_price]*1.15)%500,"OK","","+",$orderID);
-			Save_log($db,"GetHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".(floor (($mcInfo[mc_price]*1.15)/500))."红利",floor (($mcInfo[mc_price]*1.15)/500),"OK","","+",$orderID);
-			//Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".($mcInfo[mc_price])."积分",$mcInfo[mc_price],"OK","","+",$orderID);
-
-			//卖家增加收益
-			$db->query("update lm_mb_limit set jifen=jifen+".($mcInfo[mc_price_type]).", exchange=exchange+".($mcInfo[mc_price]*0.95)." where mb_id='".$_POST[mbid]."'");
-			Save_log($db,"GetSaleMoney",$_POST[mbid],"出售".$mcInfo[mc_name]."获得".($mcInfo[mc_price]*0.95)."销售额",($mcInfo[mc_price]*0.95),"OK","","+",$orderID);
-
-			//减少商品的数量
-			if($mcInfo[mc_count]<2){
-				$db->query("update lm_sj_mc set mc_count='0',state='-2' where id='$mcid'");
 			}else{
-				$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
+				try{
+					$db->query("BEGIN");
+					//会员资金
+					$limit_sql = "select * from lm_mb_limit where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'";
+					$limitQuery = $db->query($limit_sql);
+					$limitInfo = $db->fetch_array($limitQuery);
+
+					//判断红利是否足够
+					if($mcInfo[mc_price]>($limitInfo[money]+$limitInfo[sale_money]+$limitInfo[exchange])){
+						echo "<script>alert('您的红利不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+						exit;
+					}
+					//判断积分是否足够
+					if($mcInfo[mc_price_type]>$limitInfo[jifen]){
+						echo "<script>alert('您的积分不足,购买该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+						exit;
+					}
+
+					//买家会员资料
+					$mbinfoQuery = $db->query("select mb_name from lm_member where id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+					$mbInfo = $db->fetch_array($mbinfoQuery);
+
+					//卖家会员资料
+					$sjInfoQuery = $db->query("select s.sj_name,m.id from lm_sj_mc c ,lm_sj s,lm_member m where c.sj_id=s.id and s.mb_id=m.id and c. id='$mcid'");
+					$sjInfo = $db->fetch_array($sjInfoQuery);
+					$orderID=randNum();//订单号
+					$db->query("INSERT INTO `lm_order`(`order_id`,`mb_id`,`mc_id`,`sj_id`,`create_date`,`price`,`price_type`,`state`," .
+							"`mb_name`,`mc_name`,`sj_name`,`sj_mb_id`,`mode`) VALUES ('$orderID', '".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."', " .
+							"'$mcid', '$mcInfo[sj_id]', now(), '$mcInfo[mc_price]', '$mcInfo[mc_price_type]', '0'," .
+							"'$mbInfo[mb_name]','$mcInfo[mc_name]','$sjInfo[sj_name]','$sjInfo[id]','1')");
+
+
+					//买家减去红利和积分
+					$sql="";
+					if($limitInfo[money]>= ($mcInfo[mc_price]*1.15)){
+						$sql = "update lm_mb_limit set money=money-".($mcInfo[mc_price]*1.15).",";
+					}
+					/**
+					else if($limitInfo[money]< $mcInfo[mc_price] && ($limitInfo[money]+ $limitInfo[sale_money]) >= $mcInfo[mc_price]){
+						$tmp = $mcInfo[mc_price]-$limitInfo[money];
+						$sql = "update lm_mb_limit set money='0',sale_money = sale_money-".$tmp.",";
+					}else if(($limitInfo[money]+ $limitInfo[sale_money])< $mcInfo[mc_price] && ($limitInfo[money]+ $limitInfo[sale_money] + $limitInfo[exchange]) >= $mcInfo[mc_price] ){
+						$tmp = $mcInfo[mc_price]-($limitInfo[money]+ $limitInfo[sale_money]);
+						$sql = "update lm_mb_limit set money='0',sale_money = '0',exchange = exchange-".$tmp.",";
+					}
+					**/
+					else{
+						echo "<script>alert('您的红利不足,换购该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+						exit;
+					}
+
+					if($limitInfo[jifen]>= $mcInfo[mc_price_type]){
+						$sql = $sql." jifen=jifen-".($mcInfo[mc_price_type])." ";
+					}else{
+						echo "<script>alert('您的积分不足,换购该产品失败!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+						exit;
+					}
+
+					//,hongli=hongli+".floor (($mcInfo[mc_price]*1.15)/500)."
+					$db->query($sql." where mb_id='".$_SESSION['WEB_USER_LOGIN_UID_SESSION']."'");
+					//写日志
+					Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."花费".$mcInfo[mc_price_type]."积分",$mcInfo[mc_price_type],"OK","","-",$orderID);
+					Save_log($db,"GetMoney",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."花费".($mcInfo[mc_price]*1.15)."红利",($mcInfo[mc_price]*1.15),"OK","","-",$orderID);
+					//Save_log($db,"GetNotHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".(($mcInfo[mc_price]*1.15)%500)."未分红利",($mcInfo[mc_price]*1.15)%500,"OK","","+",$orderID);
+					//Save_log($db,"GetHongLi",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".(floor (($mcInfo[mc_price]*1.15)/500))."红利",floor (($mcInfo[mc_price]*1.15)/500),"OK","","+",$orderID);
+					//Save_log($db,"GetJiFen",$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"换购".$mcInfo[mc_name]."获得".($mcInfo[mc_price])."积分",$mcInfo[mc_price],"OK","","+",$orderID);
+
+					//卖家增加收益
+					$db->query("update lm_mb_limit set jifen=jifen+".($mcInfo[mc_price_type]).", exchange=exchange+".($mcInfo[mc_price])." where mb_id='".$_POST[mbid]."'");
+					Save_log($db,"GetSaleMoney",$_POST[mbid],"出售".$mcInfo[mc_name]."获得".($mcInfo[mc_price])."销售额",($mcInfo[mc_price]),"OK","","+",$orderID);
+
+					//减少商品的数量
+					if($mcInfo[mc_count]<2){
+						$db->query("update lm_sj_mc set mc_count='0',state='-2' where id='$mcid'");
+					}else{
+						$db->query("update lm_sj_mc set mc_count=mc_count-1 where id='$mcid'");
+					}
+
+					//增加联盟的收益情况,exchange=exchange+".$mcInfo[mc_price]."
+					//$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500))." where id='1'");
+
+					echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
+					$db->query("COMMIT");
+				}catch(Exception $e){
+					$db->query("ROLLBACK");
+					echo "<script>alert('系统异常,请重试!');location.href='../mcinfo.php?mcid=$mcid'</script>";
+				}
+				$db->query("END");
 			}
-
-			//增加联盟的收益情况,exchange=exchange+".$mcInfo[mc_price]."
-			$db->query("update lm_limit set hongli=hongli+".(floor ($mcInfo[mc_price]/500)).",dayhongli=dayhongli+".(floor ($mcInfo[mc_price]/500))." where id='1'");
-
-			echo "<script>location.href='../index.php?divNo=11&flag=mb'</script>";
+		}else{
+			session_destroy();
+			echo "<script>alert('非法操作,请重新登入再重试!');location.href='../login.php'</script>";
 		}
-	}else{
-		session_destroy();
-		echo "<script>alert('非法操作,请重新登入再重试!');location.href='../login.php'</script>";
-	}
+
 }else if(isset($_GET['task'])&&"ShouChang"==$_GET['task']){
 	$mcid = $_GET[mcid];
 	$cntQuery = $db->query("select * from lm_sj_mc where id=$mcid");

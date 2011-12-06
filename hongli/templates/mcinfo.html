@@ -129,19 +129,40 @@
 					<table width="100%">
 						<tr>
 							<td style="text-align:center;">
+									<link rel="stylesheet" type="text/css" href="css/jquery.alert.css"/>
+									<script type="text/javascript" src="js/jquery.js"></script>
+									<script type="text/javascript" src="js/jquery.easydrag.js"></script>
+									<script type="text/javascript" src="js/jquery.alert.js"></script>
+
+									{literal}
+									<script>
+									$(document).ready(function(){
+										$("#buybutton").click( function() {
+											jPrompt('请输入二级密码：', '二级密码', '');
+											return false;
+										});
+									});
+									</script>
+									{/literal}
+
+
 									{if $mcInfo.mc_type==0}
-									<form action="post/mc_action.php" method="post" onsubmit="return confirm('确定购买?');">
+									<form action="post/mc_action.php" id="buyform" name="buyform" method="post">
 										<input type="button" class="submit15" value="返回" onclick="window.history.back();">&nbsp;
 										<input type="button" class="submit11" value="我要收藏" onclick="location.href='post/mc_action.php?task=ShouChang&mcid={$mcInfo.id}'">&nbsp;
-										<input type="submit" class="submit15" value="购买">
+										<!-- <input type="submit" class="submit15" value="我要购买">  onsubmit="return confirm('确定购买?');"-->
+										<input type="button" id="buybutton" name="buybutton" class="submit15" value="我要购买">
 										<input type="hidden" id="task" name="task" value="BuyMc">
+
 									{else}
-									<form action="post/mc_action.php" method="post" onsubmit="return confirm('确定换购?');">
+									<form action="post/mc_action.php" id="buyform" name="buyform" method="post" >
 										<input type="button" class="submit15" value="返回" onclick="window.history.back();">&nbsp;
 										<input type="button" class="submit11" value="我要收藏" onclick="location.href='post/mc_action.php?task=ShouChang&mcid={$mcInfo.id}'">&nbsp;
-										<input type="submit" class="submit11" value="我要换购">
+										<!-- <input type="submit" class="submit11" value="我要换购"> onsubmit="return confirm('确定换购?');"-->
+										<input type="button" id="buybutton" name="buybutton" class="submit15" value="我要换购">
 										<input type="hidden" id="task" name="task" value="BuyProduct">
 									{/if}
+									<input type="hidden" id="password" name="password">
 									<input type="hidden" id="mbid" name="mbid" value="{$mcInfo.mb_id}">
 									<input type="hidden" id="mcid" name="mcid" value="{$mcInfo.id}">
 								</form>

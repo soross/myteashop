@@ -118,13 +118,12 @@ else if(isset($_POST['task'])&&"getMoney"==$_POST['task']){
 			$limit = $db->fetch_array($query);
 			if(($limit[money]*0.8)>= $cnt){
 				$db->query("update lm_mb_limit set money=money-" .($cnt/0.8) ." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-
-			}else if((($limit[money]*0.8)+($limit[sale_money]*0.8))>= $cnt){
+			}else if((($limit[money]*0.8)+($limit[sale_money]*0.85))>= $cnt){
 				$tmp = $cnt-($limit[money]*0.8);
-				$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp/0.8)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
-			}else if((($limit[money]*0.8)+($limit[sale_money]*0.8)+$limit[exchange])>= $cnt){
-				$tmp = $cnt- (($limit[money]*0.8) + ($limit[sale_money]*0.8));
-				$db->query("update lm_mb_limit set money=0,sale_money=0,exchange=exchange-".($tmp)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+				$db->query("update lm_mb_limit set money=0,sale_money=sale_money-".($tmp/0.85)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
+			}else if((($limit[money]*0.8)+($limit[sale_money]*0.85)+($limit[exchange]*0.95))>= $cnt){
+				$tmp = $cnt- (($limit[money]*0.8) + ($limit[sale_money]*0.85));
+				$db->query("update lm_mb_limit set money=0,sale_money=0,exchange=exchange-".($tmp/0.95)." where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			}else{
 				echo "<script>location.href='../index.php?error=TX-3&divNo=6&flag=mb'</script>";
 				exit;

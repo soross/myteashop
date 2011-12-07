@@ -4,7 +4,7 @@ require_once("../action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
 //未审核会员分类
-$authQuery = $db->query("select * from lm_member where state='2'");
+$authQuery = $db->query("select * from lm_member where state='2' or (mb_type='3' and state='4')");
 $authRow = array();
 while($rowauth = $db->fetch_array($authQuery)){
 	$authRow[] = $rowauth;

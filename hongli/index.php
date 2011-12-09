@@ -38,8 +38,8 @@ $smarty->assign("getMoneyBuyOK",round(($mb_limit[money]*0.85),2));//¿É¹ººìÀû
 $lmQuery = $db->query("select * from lm_limit where id='1'");
 $lm_limit =  $db->fetch_array($lmQuery);
 $hlDay = 0;
-if(round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1) != "" ){
-	$hlDay = round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[hongli]),1);
+if(round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[dayhongli]),2) != "" ){
+	$hlDay = round(((($lm_limit[sale_money]+$lm_limit[exchange])*0.05)/$lm_limit[dayhongli]),2);
 }
 /**
 $lmLimitInfoQuery = $db->query("select * from lm_limit where id='1'");

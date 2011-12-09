@@ -329,14 +329,14 @@ else if(isset($_POST['task'])&&"updateSjInfo"==$_POST['task']){
 				$imgRow = $db->fetch_array($imgQuery);
 
 				$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',province='$_POST[szSheng]',city='$_POST[szShi]'," .
-					"sj_desc='$_POST[sj_desc]',sj_pic='$filename',link_man='$_POST[link_man]',telephone='$_POST[telephone]',phone='$_POST[phone]'," .
+					"sj_desc='$_POST[sj_desc]',sj_pic='$filename',link_man='$_POST[link_man]',telephone='$_POST[tel]',phone='$_POST[phone]'," .
 					"fax='$_POST[fax]',email='$_POST[email]',qq='$_POST[qq]',address='$_POST[address]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
 
 				unlink('../'.$imgRow[sj_pic]);
 				echo "<script>alert('商家信息修改成功!');location.href='../index.php?divNo=12&flag=sj'</script>";
 			}else{
 				$db->query("update lm_sj set sj_name='$_POST[sj_name]',sj_type='$_POST[sj_type]',province='$_POST[szSheng]',city='$_POST[szShi]'," .
-					"sj_desc='$_POST[sj_desc]',link_man='$_POST[link_man]',telephone='$_POST[telephone]',phone='$_POST[phone]'," .
+					"sj_desc='$_POST[sj_desc]',link_man='$_POST[link_man]',telephone='$_POST[tel]',phone='$_POST[phone]'," .
 					"fax='$_POST[fax]',email='$_POST[email]',qq='$_POST[qq]',address='$_POST[address]',url='$_POST[url]' where id='" . $_POST['sjid'] . "'");
 				echo "<script>alert('商家其他信息修改成功,商家图片没有修改或图片修改失败!');location.href='../index.php?divNo=12&flag=sj'</script>";
 			}

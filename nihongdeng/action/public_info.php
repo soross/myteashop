@@ -14,10 +14,10 @@ $smarty->assign("ButtomCopyInfo",$copy_buttom_info[type_value]);
 
 
 //语言
-if($currlang=="zh_cn"){
-	$clang = '中文';
-}else{
+if($currlang=="en"){
 	$clang = 'English';
+}else{
+	$clang = '中文';
 }
 $smarty->assign("clang",$clang);
 

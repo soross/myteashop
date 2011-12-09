@@ -9,7 +9,7 @@ if (isset ($_POST[randomCode]) && strtoupper($_POST["randomCode"]) == strtoupper
 	$us = is_array($row = $db->fetch_array($query));
 	$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
 	if ($ps) {
-		if($row[mb_type]==$_POST[mb_type]){
+		if($row[mb_type]==$_POST[mb_type] || $row[mb_type]=='4'){
 			$_SESSION['WEB_USER_LOGIN_UID_SESSION'] = $row[id];
 			$_SESSION['WEB_USER_LOGIN_UID_TYPE'] = $row[mb_type];
 			$_SESSION['WEB_USER_LOGIN_SESSION'] = md5($row[mb_name] . $row[password] . "TKBK");

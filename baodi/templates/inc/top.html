@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+ 	<title>宝迪肤护品</title>
+	<meta name="KEYWORDS" content="young living news stories, young living headlines" />
+	<meta name="Description" content="Read current and archived Young Living news stories." />
+
+	<link rel="stylesheet" type="text/css" href="css/global.css">
+	<link rel="stylesheet" type="text/css" href="css/sub.css">
+	<link rel="stylesheet" type="text/css" href="css/tables.css">
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/AC_RunActiveContent.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="header">
+		<a id="logo" href="#"><span>11111</span></a>
+		<!--mainNav -->
+		<ul id="mainNav">
+			{assign var=tmp value=0}
+			{section name=list loop=$menuRows}
+				{if $menuRows[list].pid==0}
+				<li id="main{$tmp}" class="first"><a id="mainLink{$tmp}" href="{$menuRows[list].url}" onmouseover="dd({$tmp});" onmouseout="timer();">{$menuRows[list].menu_name}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="sub{$tmp}" class="sub" onmouseout="timer();" onmouseover="clearTimer();">
+						<ul >
+							{section name=lt loop=$menuRows}
+								{if $menuRows[lt].pid==$menuRows[list].id}
+								<li ><a href="{$menuRows[lt].url}">{$menuRows[lt].menu_name}</a></li>
+								{/if}
+							{/section}<!--
+							<li><a href="#">企业文化</a></li>
+
+							<li><a href="#">品牌诠释</a></li> -->
+						</ul>
+						<div class="subBottom"></div>
+					</div>
+				</li>
+				{assign var=tmp value=$tmp+1}
+				{/if}
+			{/section}
+		</ul>
+		<!--mainNav end -->
+
+		<!-- Join Social Media BEGIN -->
+		<div id="joinSocialMedia"></div>
+		<!-- Join Social Media END -->
+
+		<span id="selectText">{$lang.YuYanXuanZhe}</span>
+		<a id="languageSelect" onmouseout="timer();" href="javascript:toggle('languageList');">{$clang}</a>
+		<div id="languageList" onmouseout="timer();" onmouseover="clearTimer();">
+			<ul>
+				<li><a href="changeLang.php?lang=zh_cn">{$lang.ZhongWen}</a></li>
+				<li class="selected"><a href="changeLang.php?lang=en">{$lang.YingYu}</a></li>
+			</ul>
+			<div class="languageListBottom"></div>
+		</div>
+		<div id="topRightNav">
+			<a id="memberSignup" onClick="window.parent.location.href='index.php'">{$lang.WangZhanZhuYe}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+
+
+			<a id="liveHelp" href="#">{$lang.SheWeiZhuYe}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+
+			<a id="distributorsOnly" href="changeLang.php">{$lang.JiaRuShouChang}</a>
+
+			<div id="liveHelpListTop"></div>
+		</div>
+		<form name="searchForm" action="search.php" method="POST">
+			<input id="searchField" onclick="c('searchField')" name="searchField" type="text" value="{$lang.SouSuo}" onkeypress="if (event.keyCode==13 && isValidSearch('search','{if $clang=='English'}Please enter a valid search term that is at least 3 characters long.{else}请输入3个字符.{/if}')) {literal}{ document.searchForm.submit();return false;}"/>
+			<div id="goOn">&nbsp;</div>{/literal}
+			<a id="go" onclick="if (isValidSearch('search','{if $clang=='English'}Please enter a valid search term that is at least 3 characters long.{else}请输入3个字符.{/if}')) document.searchForm.submit();" ><span>go</span></a>
+		</form>
+
+	</div>
+	<!--header end -->
+
+	<div id="homeMainImage"></div>
+	<div id="homeSwf" style="z-index:20;">
+	{if $clang=='English'}
+		<script type="text/javascript">
+		AC_FL_RunContent('codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','900','height','300','src','flv/baodi','quality','high','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','flv/baodi','wmode','opaque' ); //end AC code
+      </script>
+      <noscript>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="300">
+        <param name="movie" value="flv/baodi.swf" />
+        <param name="quality" value="high" />
+        <param name="wmode" value="opaque" />
+        <embed src="flv/baodi.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="300"></embed>
+      </object>
+      </noscript>
+
+      <!--
+		<noscript>
+	   <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="300">
+        <param name="movie" value="flv/baodi.swf" />
+        <param name="quality" value="high" />
+		<param name="wmode" value="opaque" />
+		<embed src="flv/baodi.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="300"></embed>
+        </object>
+        </noscript>
+       -->
+      {else}
+      <script type="text/javascript">
+      AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','900','height','300','src','flv/baodi_ch','quality','high','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','flv/baodi_ch','wmode','opaque' ); //end AC code
+      </script>
+      <noscript>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="300">
+        <param name="movie" value="flv/baodi_ch.swf" />
+        <param name="quality" value="high" />
+		<param name="wmode" value="opaque" />
+		<embed src="flv/baodi_ch.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="300"></embed>
+        </object>
+        </noscript>
+	{/if}
+	</div>
+

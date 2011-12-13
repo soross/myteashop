@@ -1,0 +1,57 @@
+{include file="inc/top.html"}
+
+	<div id="content" class="columns180520200">
+		<div id="leftColumn" class="column column180">
+		<a id='sectionHeader' href='news.php' style='background:url({if $clang=='English'}images/title/news_en.gif{else}images/title/news_cn.gif{/if});'><span>新闻中心</span></a>
+		<ul id="subNav">
+			{section name=titleList loop=$titleRows}
+			<li><a href="news.php?typeid={$titleRows[titleList].id}">{$titleRows[titleList].menu_name}</a></li>
+			{/section}
+		</ul>
+
+		<div id="testimonial">
+		</div>
+
+		</div>
+		<div id="editor" class="column column520">
+			{section name=list loop=$newsRows}
+			<div class="article">
+			<h5 class='title'>{$newsRows[list].create_date|truncate:10:""}</h5>
+			<a href='newsinfo.php?newsid={$newsRows[list].id}'  target="_blank">
+			<span class='date'>{$newsRows[list].title}</span>
+			</a>
+			</div>
+			{/section}
+
+		</div>
+		<div id="rightColumn" class="column column180">
+			<div class="box">
+				<h1>{$lang_news.ZuiXinZiXin}</h1>
+				<div class='content'>
+					<ul>
+					{section name=lt loop=$newsTopRows}
+					<li><a href='newsinfo.php?newsid={$newsTopRows[lt].id}'  target="_blank">{$newsTopRows[lt].title}</a></li>
+					{/section}
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="inc/buttom.html"}

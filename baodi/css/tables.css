@@ -1,0 +1,36 @@
+tr.browntrow1 {
+	font-size:12px;
+	font-weight:bold;
+	height:16px;
+	background-color : #D4BF86;
+}
+
+tr.browntrow2 {
+	font-size:12px;
+	height:16px;
+	background-color: #F3F1DA;
+}
+
+tr.browntrow3 {
+	font-size:12px;
+	height:16px;
+	background-color : #FFFFFF;
+}
+tr.purpletrow1 {
+	font-size:12px;
+	font-weight:bold;
+	height:16px;
+	background-color : #7373A9;
+}
+
+tr.purpletrow2 {
+	font-size:12px;
+	height:16px;
+	background-color: #C7C7DD;
+}
+
+tr.purpletrow3 {
+	font-size:12px;
+	height:16px;
+	background-color : #FFFFFF;
+}

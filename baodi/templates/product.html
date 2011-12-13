@@ -1,0 +1,67 @@
+{include file="inc/top.html"}
+
+<!-- w位置
+<div id="bcwrapper">
+	<div id="breadcrumbs">
+		<a href="/">首页</a> >
+		<a href="#">产品中心</a> >
+		<a href="#">Essential Nutrition</a> >
+		<strong>Antioxidants</strong>
+	</div>
+
+	<div id="addthis">
+	</div>
+	<div class=clear></div>
+</div>
+ -->
+
+<div id="content" class="columns180720">
+	<div id="leftColumn" class="column column180">
+		<a id="sectionHeader" href="product.php" style="background:url({if $clang=='English'}images/title/product_en.gif{else}images/title/product_cn.gif{/if});"><span>Products</span></a>
+		<ul id="subNav">
+
+			{section name=list loop=$titleRows}
+			{if $titleRows[list].pid==5}
+			<li><a href="product.php?typeid={$titleRows[list].id}">{$titleRows[list].menu_name}</a>
+				<ul>
+				{section name=lt loop=$titleRows}
+					{if $titleRows[lt].pid==$titleRows[list].id}
+					<li><a href="product.php?typeid={$titleRows[lt].id}">{$titleRows[lt].menu_name}</a></li>
+					{/if}
+				{/section}
+				</ul>
+
+			</li>
+			{/if}
+			{/section}
+		</ul>
+	</div>
+
+
+	<div id="productColumnWrapper" >
+
+		<link href="css/productquery.css" rel="stylesheet" type="text/css" />
+		{section name=list loop=$prodRows}
+		<div id="productquery" class="border1" onmousemove="javascript:this.className='border2';" onmouseout="javascript:this.className='border1';">
+			<div class="fang" style="width:140px;height:107px">
+				<div class="picFit" style="width:140px;height:107px">
+				<a href="prodinfo.php?prodid={$prodRows[list].id}"  target="_blank" >
+					<img src="{$prodRows[list].prod_pic}" alt="{$prodRows[list].prod_name}" title="{$prodRows[list].prod_name}" style="width:140px;height:107px" border="0" /></a>
+				</div>
+			</div>
+			<a href="prodinfo.php?prodid={$prodRows[list].id}"  target="_blank" class="prodtitle" title="{$prodRows[list].prod_name}">{$prodRows[list].prod_name|wordwrap:26:"<br>"}
+
+			</a>
+		</div>
+		{/section}
+
+		<br class="clear" />
+		<div id="showpages" >
+			{$page}
+		</div>
+
+	</div>
+</div>
+
+
+{include file="inc/buttom.html"}

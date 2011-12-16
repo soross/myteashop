@@ -53,7 +53,7 @@
                 	$ascii_number=$ascii_number.$ascii;
                 }
             }
-            return $ascii_number;
+            return strtolower($ascii_number);
         }
         private function setDisturbColor() {    //设置干扰像素，向图像中输出不同颜色的100个点
             for ($i=0;$i<=100;$i++) {

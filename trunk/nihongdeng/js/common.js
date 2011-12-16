@@ -10,21 +10,21 @@ $(document).ready(function() {
 
 	var getObj = $('div.pdv_class');
 	getObj.each(function(id) {
-		
+
 		var obj = this.id;
-		
+
 		if($("#s"+obj)[0].style.overflow=="visible"){
-			
-			
+
+
 			//设置可溢出层的高度
-			$("#"+obj)[0].style.height=$("#s"+obj)[0].offsetHeight +"px"; 
-			
+			$("#"+obj)[0].style.height=$("#s"+obj)[0].offsetHeight +"px";
+
 			var cha=0;
 			var L=$("#"+obj)[0].offsetLeft;
 			var T=$("#"+obj)[0].offsetTop;
 			var R=$("#"+obj)[0].offsetLeft+$("#"+obj)[0].offsetWidth;
 			var B=$("#"+obj)[0].offsetTop+$("#"+obj)[0].offsetHeight;
-			
+
 
 			var broObj=$("#"+obj).siblings(".pdv_class");  //找出可溢出层的兄弟元素
 			broObj.each(function(id){
@@ -33,21 +33,21 @@ $(document).ready(function() {
 				var broT=$("#"+bro)[0].offsetTop;
 				var broH=$("#"+bro)[0].offsetHeight;
 				var broR=$("#"+bro)[0].offsetLeft+$("#"+bro)[0].offsetWidth;
-				
-				
+
+
 				if(((broL<L && broR>L) || (broL>L && broL<R) || broL==L) && broT>T){
-				
+
 					$("#"+bro)[0].style.top= B + cha +10 +"px"; //设置可溢出层的top值
 					cha=cha+broH+10;
-				
+
 				}
-				
+
 			});
 
 		}else{
-				
+
 				//设置插件边框层的高度
-				
+
 				var borderH=$("#s"+obj)[0].offsetHeight;
 				var bbw=$("#s"+obj).find(".pdv_border").css("borderWidth");
 				var bbp=$("#s"+obj).find(".pdv_border").css("padding");
@@ -60,8 +60,8 @@ $(document).ready(function() {
 				bbm ? borderH-=parseInt(bbm)*2 : borderH-=0 ;
 
 				$("#s"+obj).children(".pdv_border")[0].style.height=borderH +"px";
-			
-				
+
+
 		}
 	});
 
@@ -76,7 +76,7 @@ $(document).ready(function() {
 		th = th>h?th:h;
 	});
 	$("#top")[0].style.height = th + "px";
-	
+
 
 	var getObj = $('div.pdv_content');
 	var ch=0,h=0;
@@ -96,9 +96,9 @@ $(document).ready(function() {
 		h=$("#"+obj).parents()[0].offsetTop + $("#"+obj).parents()[0].offsetHeight;
 		bh = bh>h?bh:h;
 	});
-	
+
 	$("#bottom")[0].style.height = bh + "px";
-	
+
 });
 
 
@@ -115,16 +115,16 @@ $(document).ready(function() {
 			var obj = this.id;
 
 			if($("#s"+obj)[0].style.overflow=="visible"){
-				
+
 				//设置可溢出层的高度
-				$("#"+obj)[0].style.height=$("#s"+obj)[0].offsetHeight +"px"; 
-			
+				$("#"+obj)[0].style.height=$("#s"+obj)[0].offsetHeight +"px";
+
 				var cha=0;
 				var L=$("#"+obj)[0].offsetLeft;
 				var T=$("#"+obj)[0].offsetTop;
 				var R=$("#"+obj)[0].offsetLeft+$("#"+obj)[0].offsetWidth;
 				var B=$("#"+obj)[0].offsetTop+$("#"+obj)[0].offsetHeight;
-				
+
 				var broObj=$("#"+obj).siblings(".pdv_class");  //找出可溢出层的兄弟元素
 				broObj.each(function(id){
 					var bro = this.id;
@@ -132,15 +132,15 @@ $(document).ready(function() {
 					var broT=$("#"+bro)[0].offsetTop;
 					var broH=$("#"+bro)[0].offsetHeight;
 					var broR=$("#"+bro)[0].offsetLeft+$("#"+bro)[0].offsetWidth;
-					
-					
+
+
 					if(((broL<L && broR>L) || (broL>L && broL<R) || broL==L) && broT>T){
-					
+
 						$("#"+bro)[0].style.top= B + cha +10 +"px"; //设置可溢出层的top值
 						cha=cha+broH+10;
-					
+
 					}
-					
+
 				});
 			}
 		});
@@ -151,13 +151,13 @@ $(document).ready(function() {
 		var getObj = $('div.pdv_top');
 		var th=0,h=0;
 		getObj.each(function(id) {
-			
+
 			var obj = this.id;
 			h=$("#"+obj).parents()[0].offsetTop + $("#"+obj).parents()[0].offsetHeight;
 			th = th>h?th:h;
 		});
 		$("#top")[0].style.height = th + "px";
-		
+
 
 		var getObj = $('div.pdv_content');
 		var ch=0,h=0;
@@ -177,10 +177,10 @@ $(document).ready(function() {
 			h=$("#"+obj).parents()[0].offsetTop + $("#"+obj).parents()[0].offsetHeight;
 			bh = bh>h?bh:h;
 		});
-		
+
 		$("#bottom")[0].style.height = bh + "px";
-		
-		
+
+
 
 	};
 })(jQuery);
@@ -193,12 +193,12 @@ $(document).ready(function() {
 //刷新图形码
 $(document).ready(function() {
 
-	$("img#codeimg").click(function () { 
-		$("img#codeimg")[0].src=PDV_RP+"codeimg.php?"+Math.round(Math.random()*1000000);
+	$("img#codeimg").click(function () {
+		$("img#codeimg")[0].src="action/random/imgcode.php?"+Math.round(Math.random()*1000000);
 	 });
 
-	$("#getImgCode").click(function () { 
-		$("img#codeimg")[0].src=PDV_RP+"codeimg.php?"+Math.round(Math.random()*1000000);
+	$("#getImgCode").click(function () {
+		$("img#codeimg")[0].src="action/random/imgcode.php?"+Math.round(Math.random()*1000000);
 	 });
 });
 
@@ -207,7 +207,7 @@ $(document).ready(function() {
 
 //生成静态页，直接在html状态下生成静态页,在管理状态下,跳转到非静态
 function BuildHtml(RP,ver,catchtime,i){
-		
+
 		$.ajax({
 			type: "GET",
 			url:"./index.php",
@@ -220,10 +220,10 @@ function BuildHtml(RP,ver,catchtime,i){
 						window.location='./?'+i+'.html';
 					}
 				}
-				
+
 			}
 		});
-	
+
 }
 
 
@@ -241,40 +241,40 @@ function selOption(selname,v){
 //获取弹出式登录框
 (function($){
 	$.fn.popLogin = function(act){
-		
+
 		//获取登录表单
 		$.ajax({
 			type: "POST",
 			url:PDV_RP+"member/post.php",
 			data: "act=getpoploginform&RP="+PDV_RP,
 			success: function(msg){
-				
+
 				$('html').append(msg);
-				$.blockUI({message: $('div#loginDialog'),css:{width:'300px'}}); 
-				$('.pwClose').click(function() { 
-					$.unblockUI(); 
+				$.blockUI({message: $('div#loginDialog'),css:{width:'300px'}});
+				$('.pwClose').click(function() {
+					$.unblockUI();
 					$('div#loginDialog').remove();
-				}); 
+				});
 
-				$('img#zhuce').click(function() { 
-					$.unblockUI(); 
+				$('img#zhuce').click(function() {
+					$.unblockUI();
 					window.location=PDV_RP+"member/reg.php";
-				}); 
+				});
 
-				$("img#fmCodeImg").click(function () { 
+				$("img#fmCodeImg").click(function () {
 					$("img#fmCodeImg")[0].src=PDV_RP+"codeimg.php?"+Math.round(Math.random()*1000000);
 				 });
 
-				 $('#LoginForm').submit(function(){ 
+				 $('#LoginForm').submit(function(){
 
 					$('#LoginForm').ajaxSubmit({
 						target: 'div#loginnotice',
 						url: PDV_RP+'post.php',
 						success: function(msg) {
-							
+
 							if(msg=="OK" || msg.substr(0,2)=="OK"){
 								$('div#loginnotice').hide();
-								$.unblockUI(); 
+								$.unblockUI();
 								$('div#loginDialog').remove();
 								if(act=="1"){
 									$("div#notLogin").hide();
@@ -285,22 +285,22 @@ function selOption(selname,v){
 								}else{
 									$().alertwindow("会员登录成功","");
 								}
-								
+
 							}else{
 								$('div#loginnotice').show();
 							}
 						}
-					}); 
-			   
-				return false; 
+					});
 
-			 }); 
+				return false;
+
+			 });
 
 
 			}
 		});
 
-		
+
 	};
 })(jQuery);
 
@@ -310,16 +310,16 @@ function selOption(selname,v){
 (function($){
 	$.fn.picFit = function(fitType){
 
-		
+
 		var maxHeight,maxWidth,accMax,MT,ML;
-		
+
 		$("div.picFit").each(function(){
 			maxHeight=parseInt($(this).css("height"));
 			maxWidth=parseInt($(this).css("width"));
 			accMax=maxWidth/maxHeight;
 
 			$(this).find("img").each(function(){
-				
+
 				$(this).css({width:"",height:""});
 
 				if(fitType=="auto"){
@@ -359,8 +359,8 @@ function selOption(selname,v){
 //分组标签切换
 (function($){
 	$.fn.switchLable = function(pdvid,lables,roll){
-		
-		
+
+
 		//排版状态下无效
 		if(getCookie("PLUSADMIN")=="SET"){return false}
 
@@ -373,7 +373,7 @@ function selOption(selname,v){
 		var CUR=CLN+"_current";
 		var R,S;
 
-		
+
 		//清空标签,获取被控层编号,决定标签数量
 		$("ul#gblable_"+pdvid).empty();
 		$("#pdv_"+pdvid).css({zIndex:32});
@@ -391,13 +391,13 @@ function selOption(selname,v){
 					$("ul#gblable_"+pdvid).append("<li id='GBLLIST_"+i+"' class='"+CLN+"'>"+$("#pdv_"+strAry[i])[0].title+"</li>");
 				}
 			}
-			
+
 		}
-		
+
 		R=$("ul#gblable_"+pdvid).children();
 		S=R.size();
-		
-		
+
+
 		if(roll=="click"){
 			R.click(function(){
 				R.each(function(){
@@ -407,8 +407,8 @@ function selOption(selname,v){
 				$(this)[0].className=CUR;
 				$("#pdv_"+strAry[this.id.substr(8)]).show();
 				$("#pdv_"+strAry[this.id.substr(8)]).css({zIndex:99});
-				
-			});	
+
+			});
 		}else{
 			R.mouseover(function(){
 				R.each(function(){
@@ -418,7 +418,7 @@ function selOption(selname,v){
 				$(this)[0].className=CUR;
 				$("#pdv_"+strAry[this.id.substr(8)]).show();
 				$("#pdv_"+strAry[this.id.substr(8)]).css({zIndex:99});
-			});	
+			});
 		}
 
 		//自动播放
@@ -441,7 +441,7 @@ function selOption(selname,v){
 
 			}, 5000);
 		}
-		
+
 
 	};
 

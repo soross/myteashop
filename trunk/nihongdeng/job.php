@@ -11,36 +11,25 @@ if($currlang=="en"){
 }
 
 
-//类型目录
-$titleRow = getRows("news_type",$db,"id,news_type_".$currlang." as news_type  ");
-$smarty->assign("titleRows",$titleRow);
+//联系我们ContactUs
+$contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
+$smarty->assign("contactUsInfo",$contactusInfo[info]);
 
-$where = " where lang='$currlang' ";
-if(isset($_GET[typeid])&&!empty($_GET[typeid])){
-	$where = $where." and type_id ='$_GET[typeid]' ";
-}
 
-if(isset($_GET['key'])&&!empty($_GET['key'])){
-	$keyValue='';
-	$where = $where." and (title like '%".$_GET['key']."%' or content like '%".$_GET['key']."%' or author like '%".$_GET['key']."%') ";
-}
-
-//分页
-$pagesize = 8;//一页显示多少条
-$queryTotal = $db->query("select id from news" .$where);
+$pagesize =6;//一页显示多少条
+$queryTotal = $db->query("select id from job where state='0'" .$where);
 $total = $db->db_num_rows();
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 //显示分页的内容
 $smarty->assign("page",$pagenav);
 
-//print_r($where);
-//新闻
-$newsRow = getRows("news ".$where ."order by create_date desc limit $firstcount, $displaypg " ,$db);
-$smarty->assign("newsRows",$newsRow);
+//职位
+$jobRow = getRows("job where state='0' order by create_date desc  limit $firstcount, $displaypg " ,$db);
+$smarty->assign("jobRows",$jobRow);
 
 
 $smarty->assign("lang_news",$lang[$currlang]['news']);
 
-$smarty->display("news.html");
+$smarty->display("job.html");
 ?>

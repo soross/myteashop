@@ -1,5 +1,5 @@
 <?php
-if(!isset($_GET[newsid])||empty($_GET[newsid])){
+if(!isset($_GET[jobid])||empty($_GET[jobid])){
 	echo "<script>window.history.back();</script>";
 	exit;
 }else{
@@ -9,13 +9,15 @@ if(!isset($_GET[newsid])||empty($_GET[newsid])){
 	include_once("action/public_info.php");
 
 	//类型目录
-	$titleRow = getRows("news_type",$db,"id,news_type_".$currlang." as news_type  ");
-	$smarty->assign("titleRows",$titleRow);
-
-	$newsInfo = getInfo("news where id='".$_GET[newsid]."'",$db);
-	$smarty->assign("newsinfo",$newsInfo);
+	//联系我们ContactUs
+	$contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
+	$smarty->assign("contactUsInfo",$contactusInfo[info]);
 
 
-	$smarty->display("newsinfo.html");
+	$jobInfo = getInfo("job where id='".$_GET[jobid]."'",$db);
+	$smarty->assign("jobinfo",$jobInfo);
+
+
+	$smarty->display("jobinfo.html");
 }
 ?>

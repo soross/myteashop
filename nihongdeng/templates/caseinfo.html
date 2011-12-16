@@ -97,9 +97,9 @@
 <div id="nav">
 您现在的位置：<a href="index.php">深圳市琢典标识有限公司</a>
 
-&gt; <a href="product.php" >产品展示</a>
+&gt; <a href="case.php" >案例展示</a>
 
-&gt; {$prodinfo.product_name}
+&gt; {$caseinfo.case_name}
 
 </div>
 
@@ -136,7 +136,7 @@
 				<!--
 				<img src="images/loading.gif" border="0" id="productloading" class="productloading">
 				 -->
-				<img src="images/product/{$prodinfo.product_pic}" border="0" id="productpic" class="productpic">
+				<img src="images/case/{$caseinfo.case_pic}" border="0" id="productpic" class="productpic">
 			</div>
 			</td>
 			</tr>
@@ -146,9 +146,9 @@
 	</div>
 
 	<div class="introzone">
-		<div id="prodtitle">{$prodinfo.product_name}</div>
+		<div id="prodtitle">{$caseinfo.case_name}</div>
 		<div id="prop">
-		发布时间：{$prodinfo.create_date}<br>
+		发布时间：{$caseinfo.create_date}<br>
 		<!--
 		产品编号：PD-208<br>
 		表干时间：3h<br>
@@ -160,7 +160,7 @@
 	</div>
 
 	<div class="bodyzone">
-	{$prodinfo.product_desc}
+	{$caseinfo.case_desc}
 	</div>
 
 	<div class="bzone">

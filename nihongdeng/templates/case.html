@@ -1,21 +1,23 @@
+
 {include file="inc/top.html"}
 
-
-<div id='content' style='width:950px;height:628px;background:url(images/1263271146.gif);margin:0px auto'>
+<div id='content' style='width:950px;height:522px;background:url(images/1263271146.gif);margin:0px auto'>
 
 
 <!-- 产品二级分类 -->
 
-<div id='pdv_14050' class='pdv_class'  title='产品分类' style='width:163px;height:301px;top:23px;left:21px; z-index:6'>
-<div id='spdv_14050' class='pdv_content' style='overflow:visible;width:100%;'>
+<div id='pdv_14019' class='pdv_class'  title='产品分类' style='width:163px;height:337px;top:23px;left:21px; z-index:6'>
+<div id='spdv_14019' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
 <div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_product_type.gif) no-repeat">
+		<div style="float:right;height:37px;background:url(images/title_product_type.gif) -850px 0px no-repeat;"></div>
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
 <link href="css/producttwo_dolphin.css" rel="stylesheet" type="text/css" />
 <div class="producttwo_dolphin">
+
 {section name=list loop=$titleRows}
 	{if $titleRows[list].pid==0}
 		<div class="producttwo_dolphin_top"><a href="product.php?typeid={$titleRows[list].id}" target="_self" >{$titleRows[list].prod_type}</a></div>
@@ -29,9 +31,76 @@
 	{/if}
 {/section}
 
+
 </div>
 
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 产品检索搜索 -->
+
+<div id='pdv_14035' class='pdv_class'  title='产品检索' style='width:684px;height:382px;top:105px;left:251px; z-index:9'>
+<div id='spdv_14035' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		产品检索
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="-1" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<link href="css/productquery.css" rel="stylesheet" type="text/css" />
+{literal}
+<style>
+.text-overflow-prod {
+display:block;/*内联对象需加*/
+width:135px;
+word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+</style>
+{/literal}
+{section name=list loop=$caseRows}
+<div id="productquery">
+	<div class="fang" style="width:140px;height:110px">
+		<div class="picFit" style="width:140px;height:110px">
+		<a href="caseinfo.php?caseid={$caseRows[list].id}" target="_self" >
+			<img src="images/case/{$caseRows[list].case_pic}" style="width:140px;height:110px" border="0" /></a>
+		</div>
+	</div>
+	<a href="caseinfo.php?caseid={$caseRows[list].id}" target="_self"   class="prodtitle"><span class="text-overflow-prod">{$caseRows[list].case_name}</span></a>
+</div>
+{sectionelse}
+<div id="productquery">
+	<div class="fang" style="width:140px;height:110px">
+		<div class="picFit" style="width:140px;height:110px">
+			没有所要查询的数据...
+		</div>
+	</div>
+</div>
+{/section}
+
+{literal}
+<script>
+$(function() {
+$().picFit("auto");
+});
+</script>
+{/literal}
+<div id="showpages" >
+{$page}
+</div>
+
+
 </div>
 </div>
 
@@ -55,6 +124,7 @@
    <div class="productsearchform">
     <select name="typeid" id="typeid" class="box" style="display:none; background:#ffffff; width:140px; height:19px;">
       <option value="" >请选择分类</option>
+
 	    {section name=list loop=$titleRows}
 			{if $titleRows[list].pid==0}
 				 <option value='{$titleRows[list].id}'>{$titleRows[list].prod_type}</option>
@@ -88,8 +158,8 @@
 
 <!-- 当前位置提示条 -->
 
-<div id='pdv_14051' class='pdv_class'  title='当前位置' style='width:670px;height:40px;top:24px;left:248px; z-index:10'>
-<div id='spdv_14051' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div id='pdv_14034' class='pdv_class'  title='当前位置' style='width:670px;height:40px;top:24px;left:248px; z-index:11'>
+<div id='spdv_14034' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_contactus_address.gif) no-repeat">
 	<div style="float:right;width:8px;height:43px;background:url(images/title/title_contactus_address.gif) -892px 0px no-repeat;"></div>
 
@@ -99,79 +169,8 @@
 
 &gt; <a href="product.php" >产品展示</a>
 
-&gt; {$prodinfo.product_name}
-
 </div>
 
-</div>
-
-</div>
-</div>
-
-<!-- 产品详情 -->
-
-<div id='pdv_14058' class='pdv_class'  title='产品详情' style='width:665px;height:521px;top:105px;left:251px; z-index:11'>
-<div id='spdv_14058' class='pdv_content' style='overflow:visible;width:100%;'>
-<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
-	<div style="height:25px;margin:1px;display:none;background:;">
-		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
-		产品详情
-		</div>
-		<div style="float:right;margin-right:10px;display:none">
-		<a href="-1" style="line-height:25px;color:">更多</a>
-		</div>
-	</div>
-<div style="padding:0px">
-
-<link href="css/productcontent.css" rel="stylesheet" type="text/css" />
-<script type=text/javascript src="js/productcontent.js"></script>
-
-<div id="productcontent">
-	<div class="productpics">
-		<div class="piczone">
-			<table align="center" cellpadding="0" cellspacing="0">
-			<tr>
-			<td align="center">
-			<div id="productview">
-				<!--
-				<img src="images/loading.gif" border="0" id="productloading" class="productloading">
-				 -->
-				<img src="images/product/{$prodinfo.product_pic}" border="0" id="productpic" class="productpic">
-			</div>
-			</td>
-			</tr>
-			</table>
-		</div>
-		<div id="contentpages"></div>
-	</div>
-
-	<div class="introzone">
-		<div id="prodtitle">{$prodinfo.product_name}</div>
-		<div id="prop">
-		发布时间：{$prodinfo.create_date}<br>
-		<!--
-		产品编号：PD-208<br>
-		表干时间：3h<br>
-		 -->
-		</div>
-		<div id="memo" class="memo" style="display:block">
-			<!-- 钢结构防火隔热涂料是以防火添加剂、粘结剂、固化剂、树脂成膜物质、隔热材料与化学复合助剂等原料按特定工艺制作而成的一种钢结构防火保护喷涂材料。 -->
-		</div>
-	</div>
-
-	<div class="bodyzone">
-	{$prodinfo.product_desc}
-	</div>
-
-	<div class="bzone">
-	<input type="hidden" id="productid" value="82">
-	<div id="banzhu" class="banzhu"></div>
-	</div>
-
-</div>
-
-
-</div>
 </div>
 
 </div>

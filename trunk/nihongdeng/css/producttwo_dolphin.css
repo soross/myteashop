@@ -4,12 +4,13 @@ padding:0px 0px 24px 0px;
 }
 
 .producttwo_dolphin .producttwo_dolphin_top{
-height:20px;
+height:23px;
 color: #999999;
 font:12px/15px Verdana, Arial, Helvetica, sans-serif;
 background:url(../images/twoarr.gif) 14px 6px no-repeat;
 border-bottom:1px #e1e1e1 solid;
 cursor: pointer;
+margin-top:3px;
 }
 
 .producttwo_dolphin .producttwo_dolphin_top a{
@@ -23,22 +24,23 @@ text-decoration: none;
 color: #000;
 }
 
-.producttwo_dolphin .producttwo_dolphin_top a:hover{ 
+.producttwo_dolphin .producttwo_dolphin_top a:hover{
 color: #555;
 }
 
 
-.producttwo_dolphin ul{ 
+.producttwo_dolphin ul{
 padding:0px;
 margin:0px;
 }
 
 .producttwo_dolphin ul li{
 list-style-type: none;
-height:18px;
+height:23px;
 font:12px/12px Verdana, Arial, Helvetica, sans-serif;
 border-bottom:1px #e1e1e1 solid;
-padding:0px; 
+padding:0px;
+padding-top:5px;
 margin:0px;
 color: #999999;
 }
@@ -54,7 +56,7 @@ text-decoration: none;
 color: #000;
 }
 
-.producttwo_dolphin ul li a:hover{ 
+.producttwo_dolphin ul li a:hover{
 color: #555;
 }
 

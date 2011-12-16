@@ -10,11 +10,11 @@ $typelist = getRows("product_type t where remark='1'",$db,"id,product_type_".$cu
 $smarty->assign("typelist",$typelist);
 
 //ĞÂÎÅ
-$newslist = getRows("news where lang='".$currlang."' order by create_date limit 0,5",$db);
+$newslist = getRows("news where lang='".$currlang."' order by create_date limit 0,8",$db);
 $smarty->assign("newslist",$newslist);
 
 //°¸Àı
-$caselist = getRows("obj_case where lang='".$currlang."' order by create_date limit 0,3",$db);
+$caselist = getRows("obj_case where lang='".$currlang."' order by create_date limit 0,6",$db);
 $smarty->assign("caselist",$caselist);
 
 

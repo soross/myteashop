@@ -22,7 +22,7 @@
 
 <!-- 自选产品列表 -->
 
-<div id='pdv_10809' class='pdv_class'  title='产品展示' style='width:683px;height:180px;top:399px;left:241px; z-index:4'>
+<div id='pdv_10809' class='pdv_class'  title='产品展示' style='width:683px;height:180px;top:489px;left:241px; z-index:4'>
 <div id='spdv_10809' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
@@ -33,7 +33,18 @@
 <div style="margin:9px 1px 0px 5px;padding:0px;">
 
 <link href="css/productlist_cyrano_lef.css" rel="stylesheet" type="text/css" />
-
+{literal}
+<style>
+.text-overflow-prod {
+display:block;/*内联对象需加*/
+width:125px;
+word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+</style>
+{/literal}
 <div class="productlist_cyrano_lef">
 <div id="demo">
  <table align=left cellpadding=0 cellspace=0 border=0>
@@ -49,7 +60,7 @@
 		<a href="prodinfo.php?prodid={$prodlist[list].id}" target="_blank" ><img src="images/product/{$prodlist[list].product_pic}" style="width:120px;height:93px;" border="0" /></a>
 	</div>
 	</div>
-	<div class="title">
+	<div class="title text-overflow-prod">
 		<a href="prodinfo.php?prodid={$prodlist[list].id}" target="_blank" class="title"   >{$prodlist[list].product_name}</a>
 	</div>
 </td>
@@ -166,10 +177,10 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 </style>
 {/literal}
 <div class="pw_mainc1">
-<div class="pw_main_c2"><a href="page/contact/contact.php" class="pw_main_c3"></a></div>
+<div class="pw_main_c2"><a href="#" class="pw_main_c3"></a></div>
 </div>
 <div class="pw_mainc2">
-<div class="pw_main_c2"><a href="page/contact/feedback.php" class="pw_main_c3"></a></div>
+<div class="pw_main_c2"><a href="#" class="pw_main_c3"></a></div>
 </div>
 </div>
 </div>
@@ -179,7 +190,7 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 
 <!-- 文章列表 -->
 
-<div id='pdv_13938' class='pdv_class'  title='最新文章' style='width:382px;height:205px;top:183px;left:241px; z-index:11'>
+<div id='pdv_13938' class='pdv_class'  title='最新文章' style='width:382px;height:295px;top:183px;left:241px; z-index:11'>
 <div id='spdv_13938' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
@@ -191,7 +202,10 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 <link href="css/newslist_time.css" rel="stylesheet" type="text/css" />
 <ul class="newslist_time">
 {section name=list loop=$newslist}
-<li class="newslist_time"><div class="time">{$newslist[list].create_date|truncate:10:""}</div><a href="newsinfo.php?newsid={$newslist[list].id}" target="_self" class="newslist_time"   >{$newslist[list].title}</a></li>
+<li class="newslist_time">
+	<div class="time">{$newslist[list].create_date|truncate:10:""}</div>
+	<a href="newsinfo.php?newsid={$newslist[list].id}" target="_self" class="newslist_time"   >{$newslist[list].title}</a>
+</li>
 {/section}
 </ul>
 
@@ -224,7 +238,7 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 <ul>
 	{section name=lt loop=$typelist}
 	{if $typelist[list].id==$typelist[lt].pid}
-		<li><a href="product.php?typeid={$typelist[lt].id}" target="_self">-&nbsp;{$typelist[lt].product_type}</a></li>
+		<li><a href="product.php?typeid={$typelist[lt].id}" target="_self">{$typelist[lt].product_type}</a></li>
 	{/if}
 	{/section}
 </ul>
@@ -242,19 +256,30 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 
 <!-- 图片+名称 -->
 
-<div id='pdv_13941' class='pdv_class'  title='最新图片' style='width:258px;height:85px;top:299px;left:662px; z-index:15'>
+<div id='pdv_13941' class='pdv_class'  title='最新图片' style='width:258px;height:175px;top:299px;left:662px; z-index:15'>
 <div id='spdv_13941' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_index_case.gif) 0 0 no-repeat">
 <div style="margin:0px 1px 0px 46px;padding:0px;">
 
 <link href="css/photopic_dolphin.css" rel="stylesheet" type="text/css" />
-
+{literal}
+<style>
+.text-overflow-case {
+display:block;/*内联对象需加*/
+width:180px;
+word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+</style>
+{/literal}
 <ul class="photopic_dolphin">
 
 {section name=list loop=$caselist}
 <li>
 
-<div class="title">
+<div class="title text-overflow-case">
 <a href="caseinfo.php?caseid={$caselist[list].id}" target="_self" class="title"   >{$caselist[list].case_name}</a>
 </div>
 </li>

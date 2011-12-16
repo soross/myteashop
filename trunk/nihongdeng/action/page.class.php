@@ -56,24 +56,22 @@ $firstcount=($page-1)*$displaypg;
 
 
 
-$pagenav = "
-<DIV id=pagesinfo>";
-//开始分页导航条代码：
-$pagenav = $pagenav."All&nbsp;". $totle."/". $displaypg ."&nbsp;Rows Page：". $page ."/".$lastpg;
 
-$pagenav = $pagenav."</DIV>
-		<<div id='pages'>
-			<UL>";
+
+//开始分页导航条代码：
+$pagenav = "
+<DIV id=pagesinfo>共". $totle."条 每页". $displaypg ."条 页次：". $page ."/".$lastpg."</DIV>
+			<div id='pages'><UL>";
 
 if($page==1){
-	$pagenav = $pagenav."<LI class=pagesnow>|<</LI><LI class=pagesnow><<</LI>";
+	$pagenav = $pagenav."<LI class=pagesnow>首页</LI><LI class=pagesnow>上一页</LI>";
 
 }else{
 	$pagenav = $pagenav."
 				<LI class=pbutton>
-					<A href='$url=1'>|<</A>
+					<A href='$url=1'>首页</A>
 				</LI>
-				<LI class=pbutton><a href='$url=$prepg'><<</a></LI>";
+				<LI class=pbutton><a href='$url=$prepg'>上一页</a></LI>";
 }
 
 	//如果总页数小于6 全部显示
@@ -117,27 +115,27 @@ if($lastpg<6){
 }
 
 if($page== $lastpg){
-	$pagenav = $pagenav."<LI class=pagesnow>>></LI>";
+	$pagenav = $pagenav."<LI class=pagesnow>下一页</LI>";
 
 }else{
-	$pagenav = $pagenav."<LI class=pbutton><a href='".$url."=".($page+1)."'>>></a></LI>";
+	$pagenav = $pagenav."<LI class=pbutton><a href='".$url."=".($page+1)."'>下一页</a></LI>";
 }
 
 $pagenav = $pagenav."<LI class=opt><SELECT onchange='if(-1!=this.value)location.href=\"".$url."=\"+this.value;'>";
 for($i=1; $i<$lastpg +1 ;$i++){
 	if($page == $i){
-		$pagenav = $pagenav."<OPTION selected value='-1'>-".$i."-</OPTION>";
+		$pagenav = $pagenav."<OPTION selected value='-1'>第".$i."页</OPTION>";
 	}else{
-		$pagenav = $pagenav."<OPTION value='$i'>-".$i."-</OPTION>";
+		$pagenav = $pagenav."<OPTION value='$i'>第".$i."页</OPTION>";
 	}
 }
 $pagenav = $pagenav."</SELECT></LI>";
 
 if($page== $lastpg){
-	$pagenav = $pagenav."<LI class=pagesnow>>|</LI>";
+	$pagenav = $pagenav."<LI class=pagesnow>尾页</LI>";
 }else{
 	$pagenav = $pagenav."<LI class=pbutton>
-					<A href='$url=$lastpg'>>|</A>
+					<A href='$url=$lastpg'>尾页</A>
 				</LI>";
 }
 $pagenav = $pagenav."

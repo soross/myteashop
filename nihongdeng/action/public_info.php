@@ -15,9 +15,9 @@ $smarty->assign("ButtomCopyInfo",$copy_buttom_info[type_value]);
 
 //ÓïÑÔ
 if($currlang=="en"){
-	$clang = 'English';
+	$clang = 'en';
 }else{
-	$clang = 'ÖÐÎÄ';
+	$clang = '';
 }
 $smarty->assign("clang",$clang);
 

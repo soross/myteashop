@@ -10,7 +10,7 @@
 <div id='spdv_14165' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 
 {include file="inc/aboutus_left.html"}
@@ -27,7 +27,7 @@
 <div id='spdv_14162' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -51,10 +51,10 @@
 
 <link href="css/nav.css" rel="stylesheet" type="text/css" />
 <div id="nav">
-您现在的位置：<a href="index.php">深圳市琢典标识有限公司
-</a> &gt; <a href="job.php">诚聘英才</a>
 
-&gt; {$jobinfo.job_name}
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; <a href="job.php">{$lang.JobList}</a>
+&gt; {$jobinfo.job_name|truncate:50:".."}
 
 </div>
 
@@ -70,7 +70,7 @@
 <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
 	<div style="height:25px;margin:1px;display:block;background:#f5f5f5;">
 		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
-		应聘申请
+		{$lang_job.Apply}
 		</div>
 		<div style="float:right;margin-right:10px;display:none">
 		<a href="-1" style="line-height:25px;color:">更多</a>
@@ -84,104 +84,104 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="3" >
 
 <tr>
-      <td width="80" align="right">姓　　名：</td>
+      <td width="160" align="right">{$lang_job.Name}：</td>
       <td>
         <input type="text" name="title" value="" class="input" style="width:200px" maxlength="30"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
     <tr>
-      <td width="80" align="right">性　　别：</td>
+      <td width="160" align="right">{$lang_job.Gender}：</td>
       <td>
         <select name="sex" >
-		<option value='男' >男</option><option value='女' >女</option>
+		<option value='{$lang_job.Gender_Male}' >{$lang_job.Gender_Male}</option><option value='{$lang_job.Gender_Female}' >{$lang_job.Gender_Female}</option>
         </select>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div> </td>
     </tr>
 
 
 <tr>
-      <td width="80" align="right">出生日期：</td>
+      <td width="160" align="right">{$lang_job.Birthdate}：</td>
       <td>
         <input type="text" name="name" value="" class="input" style="width:200px"  maxlength="10"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
     <tr>
-      <td width="80" align="right">婚姻状况：</td>
+      <td width="160" align="right">{$lang_job.MaritalStatus}：</td>
       <td>
         <select name="custom1" >
-		<option value='未婚' >未婚</option><option value='已婚' >已婚</option>
+		<option value='{$lang_job.MaritalStatus_Nnmarried}' >{$lang_job.MaritalStatus_Nnmarried}</option><option value='{$lang_job.MaritalStatus_Married}' >{$lang_job.MaritalStatus_Married}</option>
         </select>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div> </td>
     </tr>
 
 
 <tr>
-      <td width="80" align="right">毕业院校：</td>
+      <td width="160" align="right">{$lang_job.GraduateSchool}：</td>
       <td>
         <input type="text" name="company" value="" class="input" style="width:300px"  maxlength="50"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">最高学历：</td>
+      <td width="160" align="right">{$lang_job.HighestDegree}：</td>
       <td>
         <input type="text" name="company_address" value="" class="input" style="width:200px"  maxlength="20"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">毕业专业：</td>
+      <td width="160" align="right">{$lang_job.GraduationTime}：</td>
       <td>
         <input type="text" name="products_id" value="" class="input" style="width:200px"  maxlength="50"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">毕业时间：</td>
+      <td width="160" align="right">{$lang_job.GraduationProfessional}：</td>
       <td>
         <input type="text" name="products_name" value="" class="input" style="width:200px"  maxlength="10"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">联系电话：</td>
+      <td width="160" align="right">{$lang_job.Telephone}：</td>
       <td>
         <input type="text" name="tel" value="" class="input" style="width:200px"  maxlength="20"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">手机号码：</td>
+      <td width="160" align="right">{$lang_job.Mobile}：</td>
       <td>
         <input type="text" name="fax" value="" class="input" style="width:200px"  maxlength="20"/>
          <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">通信地址：</td>
+      <td width="160" align="right">{$lang_job.Address}：</td>
       <td>
         <input type="text" name="address" value="" class="input" style="width:300px"  maxlength="250"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">电子邮箱：</td>
+      <td width="160" align="right">{$lang_job.Email}：</td>
       <td>
         <input type="text" name="email" value="" class="input" style="width:300px"  maxlength="100"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
 <tr>
-      <td width="80" align="right">专业特长：</td>
+      <td width="160" align="right">{$lang_job.Expertise}：</td>
       <td>
         <input type="text" name="products_num" value="" class="input" style="width:399px"  maxlength="250"/>
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
 
     <tr>
-      <td width="80" align="right">教育经历：</td>
+      <td width="160" align="right">{$lang_job.EducationExperience}：</td>
       <td>
         <textarea name="content"  rows="10" class="textarea" style="width:399px" ></textarea>
         <font style='color:red'>*</font>
@@ -190,7 +190,7 @@
 
 
     <tr>
-      <td width="80" align="right">工作经历：</td>
+      <td width="160" align="right">{$lang_job.WorkExperience}：</td>
       <td>
         <textarea name="custom2"  rows="10" class="textarea" style="width:399px" ></textarea>
         <font style='color:red'>*</font>
@@ -199,14 +199,14 @@
 
 
     <tr>
-      <td width="80" align="right">验 证 码：</td>
+      <td width="160" align="right">{$lang_job.VerificationCode}：</td>
       <td><div style="height:28px;white-space:nowrap;float:left;margin-right:1px">
 <input type="text" name="ImgCode" style="width:39px"  class="input"  maxlength="4"/>
 </div>
 <div style="height:28px;white-space:nowrap;float:left">
 <img id="codeimg" src="action/random/imgcode.php" width="60" height="20" style="border:1px #dddddd solid">
 </div>
-<span id="getImgCode" style="cursor:pointer;margin-left:10px;line-height:20px">看不清,更换一张.</span>
+<span id="getImgCode" style="cursor:pointer;margin-left:10px;line-height:20px">{$lang_job.Replacement}</span>
 </td>
     </tr>
 	<tr>
@@ -217,7 +217,7 @@
     <tr>
       <td width="80" align="right">&nbsp;</td>
       <td height="30">
-        <input type="submit" name="ccc" value="提交" class="submit">
+        <input type="submit" name="ccc" value="{if ""!=$clang}Submit{else}提交{/if}" class="submit">
         <input type='hidden' name='task' value='formSendByJob'>
         <input name='jobid' type='hidden' id="jobid" value='{$jobinfo.id}'>
 	  </td>
@@ -251,33 +251,33 @@
 <div id="jobcontent">
 
 	<div class="jobitem">
-	职位名称：{$jobinfo.job_name}<br />
-	职位类型：{$jobinfo.job_type}<br />
-	工作经验：{$jobinfo.work_exp}<br />
-	学历要求：{$jobinfo.college}<br />
-	招聘人数：{$jobinfo.job_cnt}名<br />
-	发布时间：{$jobinfo.create_date}<br />
+	{$lang_job.Position}：{$jobinfo.job_name}<br />
+	{$lang_job.PositionType}：{$jobinfo.job_type}<br />
+	{$lang_job.WorkExperience}：{$jobinfo.work_exp}<br />
+	{$lang_job.Degree}：{$jobinfo.college}<br />
+	{$lang_job.Number}：{$jobinfo.job_cnt}名<br />
+	{$lang_job.CreateTime}：{$jobinfo.create_date}<br />
 
   </div>
 
    <div class="jobtit">
-  职位描述
+  {$lang_job.JobDesc}
    </div>
   <div class="jobintro">
   {$jobinfo.job_desc}
   </div>
 
   <div class="jobtit">
-  招聘要求
+  {$lang_job.Requirement}
    </div>
   <div class="jobintro">
   {$jobinfo.work_need}
   </div>
 
 	<div class="jobcontact">
-	联 系 人：{$jobinfo.link_man}<br />
-	联系电话：{$jobinfo.link_phone}<br />
-	电子邮件：{$jobinfo.link_mail}<br />
+	{$lang_job.LinkMan}：{$jobinfo.link_man}<br />
+	{$lang_job.LinkTelephone}：{$jobinfo.link_phone}<br />
+	{$lang_job.LinkEmail}：{$jobinfo.link_mail}<br />
   </div>
 </div>
 

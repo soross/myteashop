@@ -8,8 +8,8 @@
 <div id='spdv_13493' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_aboutme.gif) no-repeat">
-		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_aboutme.gif) -850px 0px no-repeat;"><a href="page/html/company.php" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:19px;" /></a></div>
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_aboutme{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_aboutme{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;"><a href="aboutus.php" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:19px;" /></a></div>
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 &nbsp;
@@ -26,8 +26,8 @@
 <div id='spdv_10809' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_product.gif) no-repeat">
-		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_product.gif) -850px 0px no-repeat;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_product{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_product{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;">
 			<a href="product/class" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:22px;" /></a></div>
 </div>
 <div style="margin:9px 1px 0px 5px;padding:0px;">
@@ -137,8 +137,8 @@ $().picFit("auto");
 <div id='spdv_13492' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_contactus.gif) no-repeat">
-		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_contactus.gif) -850px 0px no-repeat;"></div>
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_contactus{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_contactus{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;"></div>
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -169,18 +169,18 @@ $().picFit("auto");
 <div style="padding:0px">
 {literal}
 <style>
-.pw_mainc1{width:124px;height:59px;float:left;background:url(images/diy.gif) 0px 0px no-repeat;position:relative;}
-.pw_mainc2{width:139px;height:59px;float:left;background:url(images/diy.gif) -124px 0px no-repeat;position:relative;}
+.pw_mainc1{width:124px;height:59px;float:left;background:url(images/diy{/literal}{if ""!=$clang}_{$clang}{/if}{literal}.gif) 0px 0px no-repeat;position:relative;}
+.pw_mainc2{width:139px;height:59px;float:left;background:url(images/diy{/literal}{if ""!=$clang}_{$clang}{/if}{literal}.gif) -124px 0px no-repeat;position:relative;}
 .pw_main_c2{height:100%;margin:0px;font:12px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;color:#505050;}
 a.pw_main_c3,a.pw_main_c3:link,a.pw_main_c3:active,a.pw_main_c3:visited{height:100%;display:block;font:12px/18px 'Microsoft YaHei','SimSun',Arial,Sans-Serif;color:#ffffff; text-decoration:none}
 a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 </style>
 {/literal}
 <div class="pw_mainc1">
-<div class="pw_main_c2"><a href="#" class="pw_main_c3"></a></div>
+<div class="pw_main_c2"><a href="contactus.php" class="pw_main_c3"></a></div>
 </div>
 <div class="pw_mainc2">
-<div class="pw_main_c2"><a href="#" class="pw_main_c3"></a></div>
+<div class="pw_main_c2"><a href="message.php" class="pw_main_c3"></a></div>
 </div>
 </div>
 </div>
@@ -194,8 +194,8 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 <div id='spdv_13938' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_news.gif) no-repeat">
-		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_news.gif) -850px 0px no-repeat;"><a href="news/class/" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:15px;" /></a></div>
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_news{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;width:50px;height:37px;background:url(images/title/title_index_news{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;"><a href="news/class/" style="margin-left:18px;display:inline"><img src="images/more.gif" style="border:0px;padding-top:15px;" /></a></div>
 </div>
 <div style="margin:5px 1px 0px;padding:0px;">
 
@@ -222,8 +222,8 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 <div id='spdv_13937' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_prod_type.gif) no-repeat">
-		<div style="float:right;height:37px;background:url(images/title/title_index_prod_type.gif) -850px 0px no-repeat;"></div>
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_prod_type{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;height:37px;background:url(images/title/title_index_prod_type{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;"></div>
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -231,14 +231,13 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 <div class="producttwo_dolphin">
 
 
-
 {section name=list loop=$typelist}
 {if $typelist[list].pid==0}
-<div class="producttwo_dolphin_top"><a href="product.php?typeid={$typelist[list].id}" target="_self" >{$typelist[list].product_type}</a></div>
+<div class="producttwo_dolphin_top"><a href="product.php?typeid={$typelist[list].id}" title="{$typelist[list].product_type}" target="_self" >{$typelist[list].product_type|truncate:20:".."}</a></div>
 <ul>
 	{section name=lt loop=$typelist}
 	{if $typelist[list].id==$typelist[lt].pid}
-		<li><a href="product.php?typeid={$typelist[lt].id}" target="_self">{$typelist[lt].product_type}</a></li>
+		<li><a href="product.php?typeid={$typelist[lt].id}" title="{$typelist[lt].product_type}" target="_self">{$typelist[lt].product_type|truncate:20:".."}</a></li>
 	{/if}
 	{/section}
 </ul>
@@ -258,7 +257,7 @@ a.pw_main_c3:hover{color:#ffffff;text-decoration:underline}
 
 <div id='pdv_13941' class='pdv_class'  title='×îÐÂÍ¼Æ¬' style='width:258px;height:175px;top:299px;left:662px; z-index:15'>
 <div id='spdv_13941' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
-<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_index_case.gif) 0 0 no-repeat">
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_index_case{if ""!=$clang}_{$clang}{/if}.gif) 0 0 no-repeat">
 <div style="margin:0px 1px 0px 46px;padding:0px;">
 
 <link href="css/photopic_dolphin.css" rel="stylesheet" type="text/css" />

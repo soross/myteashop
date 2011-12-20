@@ -80,7 +80,7 @@
 <div id="nav">
 
 {$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
-</a> &gt; {$lang.Message}
+</a> &gt; {$lang.Advise}
 
 </div>
 
@@ -111,56 +111,49 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="3" >
 
 <tr>
-      <td width="120" align="right">{$lang_ms.Title}£º</td>
+      <td width="120" align="right">{$lang_ms.YourName}£º</td>
       <td>
-        <input type="text" name="title" maxlength="100" value="" class="input" style="width:399px" />
+        <input type="text" name="company" maxlength="50" class="input" style="width:399px" />
         <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
-
-    <tr>
-      <td width="120" align="right">{$lang_ms.Content}£º</td>
+<tr>
+      <td width="120" align="right">{$lang_ms.Telephone}£º</td>
+      <td>
+        <input type="text" name="tel" class="input" maxlength="50" style="width:399px" />
+        <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+    </tr>
+<tr>
+      <td width="120" align="right">{$lang_ms.LinkMan}£º</td>
+      <td>
+        <input type="text" name="title" class="input" maxlength="50" style="width:399px" />
+        <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+    </tr>
+<tr>
+      <td width="120" align="right">{$lang_ms.Address}£º</td>
+      <td>
+        <input type="text" name="address" maxlength="250" class="input" style="width:399px" />
+        <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+    </tr>
+<tr>
+      <td width="120" align="right">{$lang_ms.MSN}£º</td>
+      <td>
+        <input type="text" name="qq"  class="input" maxlength="50" style="width:399px" />
+         <div style="padding-top:3px;color:#666"></div>  </td>
+    </tr>
+ <tr>
+      <td width="120" align="right">{$lang_ms.AdviseContent}£º</td>
       <td>
         <textarea name="content"  rows="10" class="textarea" style="width:399px" ></textarea>
         <font style='color:red'>*</font>
         <div style="padding-top:3px;color:#666"></div>  </td>
     </tr>
-
-
-<tr>
-      <td width="120" align="right">{$lang_ms.CustomerName}£º</td>
-      <td>
-        <input type="text" name="company" value="" maxlength="50" class="input" style="width:399px" />
-        <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
-    </tr>
-
-<tr>
-      <td width="120" align="right">{$lang_ms.LinkMan}£º</td>
-      <td>
-        <input type="text" name="name" value="" maxlength="50" class="input" style="width:399px" />
-         <div style="padding-top:3px;color:#666"></div>  </td>
-    </tr>
-
-<tr>
-      <td width="120" align="right">{$lang_ms.Telephone}£º</td>
-      <td>
-        <input type="text" name="tel" value="" maxlength="50" class="input" style="width:399px" />
-        <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
-    </tr>
-
-<tr>
-      <td width="120" align="right">{$lang_ms.MSN}£º</td>
-      <td>
-        <input type="text" name="qq" value="" maxlength="50" class="input" style="width:399px" />
-         <div style="padding-top:3px;color:#666"></div>  </td>
-    </tr>
-
-    <tr>
+ <tr>
       <td width="120" align="right">{$lang_ms.VerificationCode}£º</td>
       <td><div style="height:28px;white-space:nowrap;float:left;margin-right:1px">
-<input type="text" name="ImgCode" style="width:39px"  class="input" />
+<input type="text" name="ImgCode" style="width:39px" maxlength="4"  class="input" />
 </div>
 <div style="height:28px;white-space:nowrap;float:left">
-<img id="codeimg" src="action/random/imgcode.php" maxlength="4" width="60" height="20" style="border:1px #dddddd solid">
+<img id="codeimg" src="action/random/imgcode.php" width="60" height="20" style="border:1px #dddddd solid">
 </div>
 <span id="getImgCode" style="cursor:pointer;margin-left:10px;line-height:20px">{$lang_ms.Replacement}</span>
 </td>
@@ -174,7 +167,7 @@
       <td width="120" align="right">&nbsp;</td>
       <td height="30">
         <input type="submit" name="Submit" value="{if ""!=$clang}Submit{else}Ìá½»{/if}" class="submit">
-        <input type='hidden' name='act' value='formSendMessage'>
+        <input type='hidden' name='task' value='formSendAdvise'>
         <input type='hidden' name='lang' value='{$clang}'>
 	  </td>
     </tr>

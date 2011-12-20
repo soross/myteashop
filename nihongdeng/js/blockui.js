@@ -18,7 +18,7 @@ $.fn.block = function(opts) {
     return this.each(function() {
         if ($.css(this,'position') == 'static')
             this.style.position = 'relative';
-        if ($.browser.msie) 
+        if ($.browser.msie)
             this.style.zoom = 1; // force 'hasLayout'
         install(this, opts);
     });
@@ -37,55 +37,55 @@ $.blockUI.version = 2.09; // 2nd generation blocking at no extra cost!
 $.blockUI.defaults = {
     // message displayed when blocking (use null for no message)
     message:  'Please wait...',
-    
+
     // styles for the message when blocking; if you wish to disable
     // these and use an external stylesheet then do this in your code:
     // $.blockUI.defaults.css = {};
-    css: { 
+    css: {
         padding:        0,
         margin:         0,
-        width:          '300px', 
-        top:            '30%', 
-        left:           '50%', 
-		marginLeft:     '-150', 
-        textAlign:      'center', 
-        color:          '#000', 
+        width:          '300px',
+        top:            '30%',
+        left:           '50%',
+		marginLeft:     '-150',
+        textAlign:      'center',
+        color:          '#000',
         border:         '1px solid #3b555c',
         backgroundColor:'#cbddef',
 		padding:        '10px',
         cursor:         'wait'
     },
-    
+
     // styles for the overlay
-    overlayCSS:  { 
-        backgroundColor:'#000', 
-        opacity:        '0.3' 
+    overlayCSS:  {
+        backgroundColor:'#000',
+        opacity:        '0.3'
     },
-    
+
     // z-index for the blocking overlay
     baseZ: 1000,
-    
+
     // set these to true to have the message automatically centered
     centerX: true, // <-- only effects element blocking (page block controlled via css above)
     centerY: true,
-    
+
     // allow body element to be stetched in ie6; this makes blocking look better
     // on "short" pages.  disable if you wish to prevent changes to the body height
     allowBodyStretch: true,
-    
+
     // be default blockUI will supress tab navigation from leaving blocking content;
     constrainTabKey: true,
-    
+
     // fadeOut time in millis; set to 0 to disable fadeout on unblock
     fadeOut:  400,
-    
+
     // if true, focus will be placed in the first available input field when
     // page blocking
     focusInput: true,
-    
+
     // suppresses the use of overlay styles on FF/Linux (due to performance issues with opacity)
     applyPlatformOpacityRules: true,
-    
+
     // callback method invoked when unblocking has completed; the callback is
     // passed the element that has been unblocked (which is the window object for page
     // blocks) and the options that were passed to the unblock call:
@@ -108,9 +108,9 @@ function install(el, opts) {
     msg = msg === undefined ? opts.message : msg;
 
     // remove the current block (if there is one)
-    if (full && pageBlock) 
-        remove(window, {fadeOut:0}); 
-    
+    if (full && pageBlock)
+        remove(window, {fadeOut:0});
+
     // if an existing element is being used as the blocking content then we capture
     // its current place in the DOM (and current display style) so we can restore
     // it when we unblock
@@ -124,14 +124,14 @@ function install(el, opts) {
         data.position = node.style.position;
         data.parent.removeChild(node);
     }
-    
+
     var z = opts.baseZ;
-    
+
     // blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
     // layer1 is the iframe layer which is used to supress bleed through of underlying content
     // layer2 is the overlay layer which has opacity and a wait cursor
     // layer3 is the message content that is displayed while blocking
-    
+
     var lyr1 = ($.browser.msie) ? $('<iframe class="blockUI" style="z-index:'+ z++ +';border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="javascript:false;"></iframe>')
                                 : $('<div class="blockUI" style="display:none"></div>');
     var lyr2 = $('<div class="blockUI blockOverlay" style="z-index:'+ z++ +';cursor:wait;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>');
@@ -139,23 +139,23 @@ function install(el, opts) {
                     : $('<div class="blockUI blockMsg blockElement" style="z-index:'+z+';display:none;position:absolute"></div>');
 
     // if we have a message, style it
-    if (msg){ 
+    if (msg){
 		lyr3.css(css);
 		lyr3.css('left', $.browser.msie ? '50%' : (document.body.offsetWidth-parseInt(css.width))/2 + "px");
 		lyr3.css('marginLeft', $.browser.msie ? -parseInt(css.width)/2 + "px" : '');
 	}
 
     // style the overlay
-    if (!opts.applyPlatformOpacityRules || !($.browser.mozilla && /Linux/.test(navigator.platform))) 
+    if (!opts.applyPlatformOpacityRules || !($.browser.mozilla && /Linux/.test(navigator.platform)))
         lyr2.css(opts.overlayCSS);
 		lyr2.css('position', full ? 'fixed' : 'absolute');
-    
+
     // make iframe layer transparent in IE
-    if ($.browser.msie) 
+    if ($.browser.msie)
         lyr1.css('opacity','0.0');
 
     $([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
-    
+
     // ie7 must use absolute positioning in quirks mode and to account for activex issues (when scrolling)
     var expr = $.browser.msie && (!$.boxModel || $('object,embed', full ? null : el).length > 0);
     if (ie6 || expr) {
@@ -188,7 +188,7 @@ function install(el, opts) {
             }
         });
     }
-    
+
     // show the message
     lyr3.append(msg).show();
     if (msg && (msg.jquery || msg.nodeType))
@@ -196,7 +196,7 @@ function install(el, opts) {
 
     // bind key and mouse events
     bind(1, el, opts);
-        
+
     if (full) {
         pageBlock = lyr3[0];
         pageBlockEls = $(':input:enabled:visible',pageBlock);
@@ -214,8 +214,8 @@ function remove(el, opts) {
     opts = $.extend({}, $.blockUI.defaults, opts || {});
     bind(0, el, opts); // unbind events
     var els = full ? $('body').children().filter('.blockUI') : $('.blockUI', el);
-    
-    if (full) 
+
+    if (full)
         pageBlock = pageBlockEls = null;
 
     if (opts.fadeOut) {
@@ -230,7 +230,7 @@ function remove(el, opts) {
 function reset(els,data,opts,el) {
     els.each(function(i,o) {
         // remove via DOM calls so we don't lose event handlers
-        if (this.parentNode) 
+        if (this.parentNode)
             this.parentNode.removeChild(this);
     });
     if (data && data.el) {
@@ -246,13 +246,13 @@ function reset(els,data,opts,el) {
 // bind/unbind the handler
 function bind(b, el, opts) {
     var full = el == window, $el = $(el);
-    
+
     // don't bother unbinding if there is nothing to unbind
-    if (!b && (full && !pageBlock || !full && !$el.data('blockUI.isBlocked'))) 
+    if (!b && (full && !pageBlock || !full && !$el.data('blockUI.isBlocked')))
         return;
-    if (!full) 
+    if (!full)
         $el.data('blockUI.isBlocked', b);
-        
+
     // bind anchors and inputs for mouse and key events
     var events = 'mousedown mouseup keydown keypress click';
     b ? $(document).bind(events, opts, handler) : $(document).unbind(events, handler);
@@ -279,16 +279,16 @@ function handler(e) {
     // allow events within the message content
     if ($(e.target).parents('div.blockMsg').length > 0)
         return true;
-        
+
     // allow events for content that is not being blocked
     return $(e.target).parents().children().filter('div.blockUI').length == 0;
 };
 
 function focus(back) {
-    if (!pageBlockEls) 
+    if (!pageBlockEls)
         return;
     var e = pageBlockEls[back===true ? pageBlockEls.length-1 : 0];
-    if (e) 
+    if (e)
         e.focus();
 };
 
@@ -300,37 +300,37 @@ function center(el, x, y) {
     if (y) s.top  = t > 0 ? (t+'px') : '0';
 };
 
-function sz(el, p) { 
-    return parseInt($.css(el,p))||0; 
+function sz(el, p) {
+    return parseInt($.css(el,p))||0;
 };
 
 })(jQuery);
 
 
-//浠縜lert
+//仿alert
 (function($){
 	$.fn.alertwindow = function(ntc,url){
-		
+
 		$('div#alert').remove();
 		$('html').append("<div  id='alert'></div>");
-		$('div#alert').append("<div class='topBar'>鎻愮ず淇℃伅<div class='pwClose'></div></div><div class='border'><div class='ntc'>"+ntc+"</div><div class='buttonzone'><input type='button' class='button' id='ok' value='纭畾' /></div></div>");
-		
-		$.blockUI({message: $('div#alert'),css:{width:'300px'}}); 
-		
-		$('#ok').click(function() { 
-			$.unblockUI(); 
+		$('div#alert').append("<div class='topBar'>提示信息<div class='pwClose'></div></div><div class='border'><div class='ntc'>"+ntc+"</div><div class='buttonzone'><input type='button' class='button' id='ok' value='确定' /></div></div>");
+
+		$.blockUI({message: $('div#alert'),css:{width:'300px'}});
+
+		$('#ok').click(function() {
+			$.unblockUI();
 			if(url!=""){
 				setTimeout("self.location='"+url+"'",300);
 			}
-			
-		}); 
-		$('.pwClose').click(function() { 
-			$.unblockUI(); 
+
+		});
+		$('.pwClose').click(function() {
+			$.unblockUI();
 			if(url!=""){
 				setTimeout("self.location='"+url+"'",300);
 			}
-		}); 
-		
+		});
+
 	};
 })(jQuery);
 

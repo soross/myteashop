@@ -10,8 +10,8 @@
 <div id='spdv_14019' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_product_type.gif) no-repeat">
-		<div style="float:right;height:37px;background:url(images/title_product_type.gif) -850px 0px no-repeat;"></div>
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_index_prod_type{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+		<div style="float:right;height:37px;background:url(images/title/title_index_prod_type{if ""!=$clang}_{$clang}{/if}.gif) -850px 0px no-repeat;"></div>
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -20,11 +20,11 @@
 
 {section name=list loop=$titleRows}
 	{if $titleRows[list].pid==0}
-		<div class="producttwo_dolphin_top"><a href="product.php?typeid={$titleRows[list].id}" target="_self" >{$titleRows[list].prod_type}</a></div>
+		<div class="producttwo_dolphin_top"><a href="product.php?typeid={$titleRows[list].id}" title="{$typeRows[list].product_type}" target="_self" >{$titleRows[list].prod_type|truncate:20:".."}</a></div>
 		<ul>
 			{section name=lt loop=$titleRows}
 				{if $titleRows[list].id==$titleRows[lt].pid}
-					<li><a href="product.php?typeid={$titleRows[lt].id}" target="_self">{$titleRows[lt].prod_type}</a></li>
+					<li><a href="product.php?typeid={$titleRows[lt].id}" title="{$typeRows[lt].product_type}" target="_self">{$titleRows[lt].prod_type|truncate:20:".."}</a></li>
 				{/if}
 			{/section}
 		</ul>
@@ -113,7 +113,7 @@ $().picFit("auto");
 <div id='spdv_14033' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:38px;border:0px;padding:0;margin:0;background:url(images/title/title_product_search.gif) no-repeat">
+<div style="height:38px;border:0px;padding:0;margin:0;background:url(images/title/title_product_search{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 <link href="css/product_searchform_dolphin.css" rel="stylesheet" type="text/css" />
@@ -123,7 +123,7 @@ $().picFit("auto");
 
    <div class="productsearchform">
     <select name="typeid" id="typeid" class="box" style="display:none; background:#ffffff; width:140px; height:19px;">
-      <option value="" >请选择分类</option>
+      <option value="" >{$lang.PleaseChoose}</option>
 
 	    {section name=list loop=$titleRows}
 			{if $titleRows[list].pid==0}
@@ -144,7 +144,7 @@ $().picFit("auto");
     <input name="key" type="text" id="key" value="" style="width:138px;" class="inputtext">
   </div>
   <div class="productsearchform2">
-  <input name="imageField" id="button" type="image" src="images/search5.gif" >
+  <input name="imageField" id="button" type="image" src="images/search5{if ""!=$clang}_{$clang}{/if}.gif" >
   </div>
 </form>
 </div>
@@ -165,9 +165,9 @@ $().picFit("auto");
 
 <link href="css/nav.css" rel="stylesheet" type="text/css" />
 <div id="nav">
-您现在的位置：<a href="index.php">深圳市琢典标识有限公司</a>
 
-&gt; <a href="product.php" >产品展示</a>
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; {$lang.Product}
 
 </div>
 

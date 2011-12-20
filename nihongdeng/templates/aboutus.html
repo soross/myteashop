@@ -12,10 +12,12 @@
 <div id='spdv_13520' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 
 {include file="inc/aboutus_left.html"}
+
+
 
 </div>
 </div>
@@ -29,7 +31,7 @@
 <div id='spdv_13521' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -53,8 +55,9 @@
 
 <link href="css/nav.css" rel="stylesheet" type="text/css" />
 <div id="nav">
-您现在的位置：<a href="index.php">深圳市琢典标识有限公司
-</a> &gt; 关于琢典
+
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; {$lang.AboutUs}
 
 </div>
 

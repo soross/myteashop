@@ -10,7 +10,7 @@
 <div id='spdv_12661' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -39,9 +39,9 @@
 
 <link href="css/nav.css" rel="stylesheet" type="text/css" />
 <div id="nav">
-您现在的位置：<a href="index.php">深圳市琢典标识有限公司</a>
 
-&gt; <a href="news.php" >新闻中心</a>
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; {$lang.News}
 
 </div>
 
@@ -100,7 +100,7 @@
 <div id='spdv_12663' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:38px;border:0px;padding:0;margin:0;background:url(images/title/title_news_search.gif) no-repeat">
+<div style="height:38px;border:0px;padding:0;margin:0;background:url(images/title/title_news_search{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 <link href="css/news_search_dolphin.css" rel="stylesheet" type="text/css" />
@@ -109,7 +109,9 @@
 <form id="newssearchform" method="get" action="news.php">
   <div class="newssearchform">
     <select name="typeid" id="typeid" class="box" style="display:none; background:#ffffff; width:140px; height:19px;">
-      <option value="0" >请选择分类</option>
+
+    <option value="0" >{$lang.PleaseChoose}</option>
+
       {section name=list loop=$titleRows}
 	  <option value='{$titleRows[list].id}'>{$titleRows[list].news_type}</option>
 	  {/section}
@@ -123,7 +125,7 @@
     <input name="key" type="text" id="key" value="" style="width:138px;" class="inputtext">
   </div>
   <div class="newssearchform2">
-  <input name="imageField" id="button" type="image" src="images/search5.gif" >
+  <input name="imageField" id="button" type="image" src="images/search5{if ""!=$clang}_{$clang}{/if}.gif" >
   </div>
 </form>
 </div>

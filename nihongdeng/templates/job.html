@@ -10,7 +10,7 @@
 <div id='spdv_14152' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 
 {include file="inc/aboutus_left.html"}
@@ -27,7 +27,7 @@
 <div id='spdv_14149' class='pdv_content' style='overflow:visible;width:100%;'>
 <div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
 <div style="height:100%;">
-<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus.gif) no-repeat">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
 </div>
 <div style="margin:15px 1px 0px;padding:0px;">
 
@@ -63,10 +63,10 @@
 <ul >
 	<li class="cap">
 
-	<div class="bt"><strong>招聘职位</strong></div>
-	<div class="cl"><strong>详情</strong></div>
-	<div class="au"><strong>招聘人数</strong></div>
-	<div class="bk"><strong>工作地点</strong></div>
+	<div class="bt"><strong>{$lang.JobPosition}</strong></div>
+	<div class="cl"><strong>{$lang.JobInfo}</strong></div>
+	<div class="au"><strong>{$lang.JobCnt}</strong></div>
+	<div class="bk"><strong>{$lang.JobWorkAdd}</strong></div>
 
 	</li>
 </ul>
@@ -117,8 +117,9 @@
 
 <link href="css/nav.css" rel="stylesheet" type="text/css" />
 <div id="nav">
-您现在的位置：<a href="index.php">深圳市琢典标识有限公司
-</a> &gt; 诚聘英才</a>
+
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; {$lang.JobList}
 
 </div>
 

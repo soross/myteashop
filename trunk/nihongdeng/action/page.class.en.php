@@ -62,7 +62,7 @@ $pagenav = "
 $pagenav = $pagenav."All&nbsp;". $totle."/". $displaypg ."&nbsp;Rows Page£º". $page ."/".$lastpg;
 
 $pagenav = $pagenav."</DIV>
-		<<div id='pages'>
+		<div id='pages'>
 			<UL>";
 
 if($page==1){

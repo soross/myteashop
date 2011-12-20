@@ -17,6 +17,7 @@ if(!isset($_GET[jobid])||empty($_GET[jobid])){
 	$jobInfo = getInfo("job where id='".$_GET[jobid]."'",$db);
 	$smarty->assign("jobinfo",$jobInfo);
 
+	$smarty->assign("lang_job",$lang[$currlang]['job']);
 
 	$smarty->display("jobinfo.html");
 }

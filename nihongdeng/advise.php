@@ -13,8 +13,10 @@ $smarty->assign("contactUsInfoAll",$contactUsInfoAll[info]);
 
 
 //产品类型目录
-$titleRow = getRows("product_type where remark='1' ",$db,"id,pid, product_type_".$currlang." as prod_type ");
-$smarty->assign("titleRows",$titleRow);
+//$titleRow = getRows("product_type where remark='1' ",$db,"id,pid, product_type_".$currlang." as prod_type ");
+//$smarty->assign("titleRows",$titleRow);
 
-$smarty->display("contactus.html");
+$smarty->assign("lang_ms",$lang[$currlang]['message']);
+
+$smarty->display("advise.html");
 ?>

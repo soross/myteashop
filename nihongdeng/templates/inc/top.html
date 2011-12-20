@@ -7,6 +7,7 @@
 <meta content="深圳市琢典标识有限公司" name=keywords />
 <meta content="深圳市琢典标识有限公司" name=description />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/form.js"></script>
@@ -104,7 +105,14 @@ var PDV_PAGENAME='index';
 {section name=list loop=$menulist}
 <a href="{$menulist[list].menu_url}" target="_self" class="menumain">{$menulist[list].menu_name}</a>
 {/section}
+{if $clang==en}
+<a href="changeLang.php?lang=zh_cn" target="_self" class="menumain">中文</a>
+{else}
+<a href="changeLang.php?lang=en" target="_self" class="menumain">English</a>
+{/if}
+
 <!--
+
 <a href="aboutme.php" target="_self" class="menumain">关于琢典</a>
 
 <a href="news.php?typeid=1" target="_self" class="menumain">公司动态/a>

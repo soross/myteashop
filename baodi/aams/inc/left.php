@@ -124,6 +124,12 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../addcollege.php" target="dataFrame">新增知识</a></p>
 	    </div>
 	  </li>
+	  <li>
+	    <h2>+&nbsp;在线留言</h2>
+	    <div class="content">
+	      <p>-&nbsp;<a href="../zxly.php" target="dataFrame">留言列表</a></p>
+	    </div>
+	  </li>
 	   <li>
 	    <h2>+&nbsp;帐号管理</h2>
 	    <div class="content">

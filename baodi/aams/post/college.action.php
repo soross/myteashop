@@ -12,8 +12,24 @@ if(isset($_POST[task]) && "addCollege"==$_POST[task]){
 		echo "<script>alert('该知识类型+语言种类已经存在,添加失败,请到知识列表中查看修改!');location.href='../addcollege.php';</script>";
 	}
 }else if(isset($_POST[task]) && "updateCollege"==$_POST[task]){
+	$query = $db->query("select * from college where  lang='".$_POST[lang]."'  and type_id='".$_POST[type]."' ");
+	$cnt = $db->db_num_rows();
+	while($info=$db->fetch_array($query)){
+   	$id = $info[id];
+	}
+
+	if($cnt==1&&$id==$_POST[newid]){
 	$db->query("update college set type_id='$_POST[type]',content='".addslashes($_POST[content])."',lang='$_POST[lang]' where id='".$_POST[newid]."'");
 	echo "<script>if(confirm('宝迪学院知识修改成功,是否继续修改?')){location.href='../updatecollege.php?task=toUpdateCollege&collegeid=".$_POST[newid]."';}else{location.href='../college.php';}</script>";
+	}
+	else if($cnt<1){
+	$db->query("update college set type_id='$_POST[type]',content='".addslashes($_POST[content])."',lang='$_POST[lang]' where id='".$_POST[newid]."'");
+	echo "<script>if(confirm('宝迪学院知识修改成功,是否继续修改?')){location.href='../updatecollege.php?task=toUpdateCollege&collegeid=".$_POST[newid]."';}else{location.href='../college.php';}</script>";
+
+	}
+	else{
+	echo "<script>alert('该知识类型+语言种类已经存在,更新失败,请到知识列表中查看修改!');location.href='../updatecollege.php?task=toUpdateCollege&collegeid=".$_POST[newid]."';</script>";
+	}
 }
 else if(isset($_GET[task])&&"deleteCollege" ==$_GET[task]){
 	$db->query("delete from college where id = '$_GET[newsid]'");

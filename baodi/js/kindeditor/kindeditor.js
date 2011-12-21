@@ -5,13 +5,19 @@
 * @author Roddy <luolonghao@gmail.com>
 * @website http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
-* @version 4.0.2 (2011-10-30)
+* @version 4.0.4 (2011-12-11)
 *******************************************************************************/
 (function (window, undefined) {
 	if (window.KindEditor) {
 		return;
 	}
-var _VERSION = '4.0.2 (2011-10-30)',
+if (!window.console) {
+	window.console = {};
+}
+if (!console.log) {
+	console.log = function () {};
+}
+var _VERSION = '4.0.4 (2011-12-11)',
 	_ua = navigator.userAgent.toLowerCase(),
 	_IE = _ua.indexOf('msie') > -1 && _ua.indexOf('opera') == -1,
 	_GECKO = _ua.indexOf('gecko') > -1 && _ua.indexOf('khtml') == -1,
@@ -196,7 +202,7 @@ var K = {
 	json : _json
 };
 var _INLINE_TAG_MAP = _toMap('a,abbr,acronym,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,img,input,ins,kbd,label,map,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'),
-	_BLOCK_TAG_MAP = _toMap('address,applet,blockquote,body,center,dd,del,dir,div,dl,dt,fieldset,form,frameset,h1,h2,h3,h4,h5,h6,head,hr,html,iframe,ins,isindex,li,map,menu,meta,noframes,noscript,object,ol,p,pre,script,style,table,tbody,td,tfoot,th,thead,title,tr,ul'),
+	_BLOCK_TAG_MAP = _toMap('address,applet,blockquote,body,center,dd,dir,div,dl,dt,fieldset,form,frameset,h1,h2,h3,h4,h5,h6,head,hr,html,iframe,ins,isindex,li,map,menu,meta,noframes,noscript,object,ol,p,pre,script,style,table,tbody,td,tfoot,th,thead,title,tr,ul'),
 	_SINGLE_TAG_MAP = _toMap('area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,embed'),
 	_STYLE_TAG_MAP = _toMap('b,basefont,big,del,em,font,i,s,small,span,strike,strong,sub,sup,u'),
 	_CONTROL_TAG_MAP = _toMap('img,table,input,textarea,button'),
@@ -290,7 +296,8 @@ K.options = {
 			'.font-weight', '.font-style', '.text-decoration', '.vertical-align', '.text-indent', '.margin-left'
 		],
 		pre : ['class'],
-		'hr,br,tbody,tr,strong,b,sub,sup,em,i,u,strike' : []
+		hr : ['class', '.page-break-after'],
+		'br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del' : []
 	},
 	layout : '<div class="container"><div class="toolbar"></div><div class="edit"></div><div class="statusbar"></div></div>'
 };
@@ -836,6 +843,7 @@ function _formatHtml(html, htmlTags, urlType, wellFormatted, indentChar) {
 				if (key === 'style' && val === '') {
 					return;
 				}
+				val = val.replace(/"/g, '&quot;');
 				attr += ' ' + key + '="' + val + '"';
 			});
 		}
@@ -938,7 +946,7 @@ function _getAttr(el, key) {
 	if (_IE && _V < 8 && el.nodeName.toLowerCase() != 'script') {
 		var div = el.ownerDocument.createElement('div');
 		div.appendChild(el.cloneNode(false));
-		var list = _getAttrList(div.innerHTML.toLowerCase());
+		var list = _getAttrList(_unescape(div.innerHTML));
 		if (key in list) {
 			val = list[key];
 		}
@@ -2349,6 +2357,19 @@ _extend(KRange, {
 		enlargePos(self.endContainer, self.endOffset, false);
 		return self;
 	},
+	shrink : function() {
+		var self = this, child, collapsed = self.collapsed;
+		while (self.startContainer.nodeType == 1 && (child = self.startContainer.childNodes[self.startOffset]) && child.nodeType == 1 && !K(child).isSingle()) {
+			self.setStart(child, 0);
+		}
+		if (collapsed) {
+			return self.collapse(collapsed);
+		}
+		while (self.endContainer.nodeType == 1 && self.endOffset > 0 && (child = self.endContainer.childNodes[self.endOffset - 1]) && child.nodeType == 1 && !K(child).isSingle()) {
+			self.setEnd(child, child.childNodes.length);
+		}
+		return self;
+	},
 	createBookmark : function(serialize) {
 		var self = this, doc = self.doc, endNode,
 			startNode = K('<span style="display:none;"></span>', doc)[0];
@@ -2610,12 +2631,13 @@ _extend(KCmd, {
 		}
 		return self;
 	},
-	select : function() {
-		var self = this, sel = self.sel, range = self.range.cloneRange(),
+	select : function(hasDummy) {
+		hasDummy = _undef(hasDummy, true);
+		var self = this, sel = self.sel, range = self.range.cloneRange().shrink(),
 			sc = range.startContainer, so = range.startOffset,
 			ec = range.endContainer, eo = range.endOffset,
-			doc = _getDoc(sc), win = self.win, rng;
-		if (sc.nodeType == 1 && range.collapsed) {
+			doc = _getDoc(sc), win = self.win, rng, hasU200b = false;
+		if (hasDummy && sc.nodeType == 1 && range.collapsed) {
 			if (_IE) {
 				var dummy = K('<span>&nbsp;</span>', doc);
 				range.insertNode(dummy[0]);
@@ -2633,6 +2655,7 @@ _extend(KCmd, {
 				var children = sc.childNodes;
 				if (K(sc).isInline() || so > 0 && K(children[so - 1]).isInline() || children[so] && K(children[so]).isInline()) {
 					range.insertNode(doc.createTextNode('\u200B'));
+					hasU200b = true;
 				}
 			}
 		}
@@ -2642,6 +2665,9 @@ _extend(KCmd, {
 				rng.select();
 			} catch(e) {}
 		} else {
+			if (hasU200b) {
+				range.collapse(false);
+			}
 			rng = range.get(true);
 			sel.removeAllRanges();
 			sel.addRange(rng);
@@ -2653,6 +2679,7 @@ _extend(KCmd, {
 		var self = this, doc = self.doc, range = self.range, wrapper;
 		wrapper = K(val, doc);
 		if (range.collapsed) {
+			range.shrink();
 			range.insertNode(wrapper[0]).selectNodeContents(wrapper[0]);
 			return self;
 		}
@@ -2747,11 +2774,6 @@ _extend(KCmd, {
 	},
 	remove : function(map) {
 		var self = this, doc = self.doc, range = self.range;
-		if (range.collapsed) {
-			self.split(true, map);
-			range.collapse(true);
-			return self;
-		}
 		range.enlarge();
 		if (range.startOffset === 0) {
 			var ksc = K(range.startContainer), parent;
@@ -2767,6 +2789,29 @@ _extend(KCmd, {
 			if (kscp && kscp.isBlock()) {
 				_removeAttrOrCss(kscp, map);
 			}
+		}
+		var sc, so;
+		if (range.collapsed) {
+			self.split(true, map);
+			sc = range.startContainer;
+			so = range.startOffset;
+			if (so > 0) {
+				var sb = K(sc.childNodes[so - 1]);
+				if (sb && _isEmptyNode(sb)) {
+					sb.remove();
+					range.setStart(sc, so - 1);
+				}
+			}
+			var sa = K(sc.childNodes[so]);
+			if (sa && _isEmptyNode(sa)) {
+				sa.remove();
+			}
+			if (_isEmptyNode(sc)) {
+				range.startBefore(sc);
+				sc.remove();
+			}
+			range.collapse(true);
+			return self;
 		}
 		self.split(true, map);
 		self.split(false, map);
@@ -2788,8 +2833,9 @@ _extend(KCmd, {
 		});
 		K(startDummy).remove();
 		K(endDummy).remove();
-		var sc = range.startContainer, so = range.startOffset,
-			ec = range.endContainer, eo = range.endOffset;
+		sc = range.startContainer;
+		so = range.startOffset;
+		var ec = range.endContainer, eo = range.endOffset;
 		if (so > 0) {
 			var startBefore = K(sc.childNodes[so - 1]);
 			if (startBefore && _isEmptyNode(startBefore)) {
@@ -2820,7 +2866,6 @@ _extend(KCmd, {
 	},
 	commonNode : function(map) {
 		var range = this.range;
-		range.enlarge();
 		var ec = range.endContainer, eo = range.endOffset,
 			node = (ec.nodeType == 3 || eo === 0) ? ec : ec.childNodes[eo - 1];
 		function find(node) {
@@ -2838,9 +2883,9 @@ _extend(KCmd, {
 			}
 			return null;
 		}
-		var commonNode = find(node);
-		if (commonNode) {
-			return commonNode;
+		var cNode = find(node);
+		if (cNode) {
+			return cNode;
 		}
 		if (node.nodeType == 1 || (ec.nodeType == 3 && eo === 0)) {
 			var prev = K(node).prev();
@@ -3029,7 +3074,7 @@ _extend(KCmd, {
 			var newRange = _toRange(rng);
 			range.setEnd(newRange.endContainer, newRange.endOffset);
 			range.collapse(false);
-			self.select();
+			self.select(false);
 		}
 		function insertHtml(range, val) {
 			var doc = range.doc,
@@ -3040,7 +3085,7 @@ _extend(KCmd, {
 			range.deleteContents();
 			range.insertNode(frag);
 			range.collapse(false);
-			self.select();
+			self.select(false);
 		}
 		if (_IE) {
 			try {
@@ -3088,24 +3133,31 @@ _extend(KCmd, {
 			range.selectNode(a.get());
 			self.select();
 		}
-		if (range.collapsed) {
-			var html = '<a href="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
-			if (type) {
-				html += ' target="' + _escape(type) + '"';
-			}
-			html += '>' + _escape(url) + '</a>';
-			self.inserthtml(html);
-		} else {
-			_nativeCommand(doc, 'createlink', '__kindeditor_temp_url__');
-			K('a[href="__kindeditor_temp_url__"]', doc).each(function() {
-				K(this).attr('href', url).attr('data-ke-src', url);
-				if (type) {
-					K(this).attr('target', type);
-				} else {
-					K(this).removeAttr('target');
-				}
-			});
+		var html = '<a href="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
+		if (type) {
+			html += ' target="' + _escape(type) + '"';
 		}
+		if (range.collapsed) {
+			html += '>' + _escape(url) + '</a>';
+			return self.inserthtml(html);
+		}
+		if (range.isControl()) {
+			var node = K(range.startContainer.childNodes[range.startOffset]);
+			html += '></a>';
+			node.after(K(html, doc));
+			node.next().append(node);
+			range.selectNode(node[0]);
+			return self.select();
+		}
+		_nativeCommand(doc, 'createlink', '__kindeditor_temp_url__');
+		K('a[href="__kindeditor_temp_url__"]', doc).each(function() {
+			K(this).attr('href', url).attr('data-ke-src', url);
+			if (type) {
+				K(this).attr('target', type);
+			} else {
+				K(this).removeAttr('target');
+			}
+		});
 		return self;
 	},
 	unlink : function() {
@@ -3274,6 +3326,9 @@ _extend(KWidget, {
 		if (options.cls) {
 			self.div.addClass(options.cls);
 		}
+		if (options.shadowMode) {
+			self.div.addClass('ke-shadow');
+		}
 		if (options.css) {
 			self.div.css(options.css);
 		}
@@ -3380,6 +3435,7 @@ _extend(KWidget, {
 function _widget(options) {
 	return new KWidget(options);
 }
+K.WidgetClass = KWidget;
 K.widget = _widget;
 function _iframeDoc(iframe) {
 	iframe = _get(iframe);
@@ -3827,7 +3883,7 @@ _extend(KMenu, KWidget, {
 			leftDiv = K('<div class="ke-inline-block ke-menu-item-left"></div>'),
 			rightDiv = K('<div class="ke-inline-block ke-menu-item-right"></div>'),
 			height = _addUnit(item.height),
-			iconClass = item.iconClass;
+			iconClass = _undef(item.iconClass, '');
 		self.div.append(itemDiv);
 		if (height) {
 			itemDiv.css('height', height);
@@ -3864,7 +3920,9 @@ _extend(KMenu, KWidget, {
 		if (item.checked) {
 			iconClass = 'ke-icon-checked';
 		}
-		leftDiv.html('<span class="ke-inline-block ke-toolbar-icon ke-toolbar-icon-url ' + iconClass + '"></span>');
+		if (iconClass !== '') {
+			leftDiv.html('<span class="ke-inline-block ke-toolbar-icon ke-toolbar-icon-url ' + iconClass + '"></span>');
+		}
 		rightDiv.html(item.title);
 		return self;
 	},
@@ -3995,11 +4053,18 @@ _extend(KUploadButton, {
 			iframe = self.iframe;
 		iframe.bind('load', function() {
 			iframe.unbind();
-			var data, str = K.iframeDoc(iframe).body.innerHTML;
+			var doc = K.iframeDoc(iframe),
+				pre = doc.getElementsByTagName('pre')[0],
+				str = '', data;
+			if (pre) {
+				str = pre.innerHTML;
+			} else {
+				str = doc.body.innerHTML;
+			}
 			try {
 				data = K.json(str);
 			} catch (e) {
-				self.options.afterError.call(self, str);
+				self.options.afterError.call(self, '<!doctype html><html>' + doc.body.parentNode.innerHTML + '</html>');
 			}
 			if (data) {
 				self.options.afterUpload.call(self, data);
@@ -4044,7 +4109,9 @@ function KDialog(options) {
 _extend(KDialog, KWidget, {
 	init : function(options) {
 		var self = this;
+		var shadowMode = options.shadowMode;
 		options.z = options.z || 811213;
+		options.shadowMode = false;
 		KDialog.parent.init.call(self, options);
 		var title = options.title,
 			body = K(options.body, self.doc),
@@ -4052,13 +4119,18 @@ _extend(KDialog, KWidget, {
 			yesBtn = options.yesBtn,
 			noBtn = options.noBtn,
 			closeBtn = options.closeBtn,
-			shadowMode = _undef(options.shadowMode, true),
 			showMask = _undef(options.showMask, true);
 		self.div.addClass('ke-dialog').bind('click,mousedown', function(e){
 			e.stopPropagation();
-		}).addClass('ke-dialog-' + (shadowMode ? '' : 'no-') + 'shadow');
+		});
+		var contentDiv = K('<div class="ke-dialog-content"></div>').appendTo(self.div);
+		if (_IE && _V < 7) {
+			self.iframeMask = K('<iframe src="about:blank" class="ke-dialog-shadow"></iframe>').appendTo(self.div);
+		} else if (shadowMode) {
+			K('<div class="ke-dialog-shadow"></div>').appendTo(self.div);
+		}
 		var headerDiv = K('<div class="ke-dialog-header"></div>');
-		self.div.append(headerDiv);
+		contentDiv.append(headerDiv);
 		headerDiv.html(title);
 		self.closeIcon = K('<span class="ke-dialog-icon-close" title="' + closeBtn.name + '"></span>').click(closeBtn.click);
 		headerDiv.append(self.closeIcon);
@@ -4067,11 +4139,11 @@ _extend(KDialog, KWidget, {
 			beforeDrag : options.beforeDrag
 		});
 		var bodyDiv = K('<div class="ke-dialog-body"></div>');
-		self.div.append(bodyDiv);
+		contentDiv.append(bodyDiv);
 		bodyDiv.append(body);
 		var footerDiv = K('<div class="ke-dialog-footer"></div>');
 		if (previewBtn || yesBtn || noBtn) {
-			self.div.append(footerDiv);
+			contentDiv.append(footerDiv);
 		}
 		_each([
 			{ btn : previewBtn, name : 'preview' },
@@ -4087,6 +4159,8 @@ _extend(KDialog, KWidget, {
 		if (self.height) {
 			bodyDiv.height(_removeUnit(self.height) - headerDiv.height() - footerDiv.height());
 		}
+		self.div.width(self.div.width());
+		self.div.height(self.div.height());
 		self.mask = null;
 		if (showMask) {
 			var docEl = _docElement(self.doc),
@@ -4100,11 +4174,6 @@ _extend(KDialog, KWidget, {
 				width : docWidth,
 				height : docHeight
 			});
-			if (_IE && _V < 7) {
-				self.iframeMask = K('<iframe src="about:blank" style="position:absolute;top:0;left:0;z-index:' +
-					(self.z - 2) + ';width:' + docWidth + 'px;height:' + docHeight +
-					'px;filter:alpha(opacity=0)"></iframe>').appendTo(document.body);
-			}
 		}
 		self.autoPos(self.div.width(), self.div.height());
 		self.footerDiv = footerDiv;
@@ -4114,11 +4183,11 @@ _extend(KDialog, KWidget, {
 	setMaskIndex : function(z) {
 		var self = this;
 		self.mask.div.css('z-index', z);
-		self.iframeMask && self.iframeMask.css('z-index', z - 1);
 	},
-	showLoading : function() {
+	showLoading : function(msg) {
+		msg = _undef(msg, '');
 		var self = this, body = self.bodyDiv;
-		self.loading = K('<div class="ke-dialog-loading"></div>')
+		self.loading = K('<div class="ke-dialog-loading"><div class="ke-inline-block ke-dialog-loading-content" style="margin-top:' + Math.round(body.height() / 3) + 'px;">' + msg + '</div></div>')
 			.width(body.width()).height(body.height())
 			.css('top', self.headerDiv.height() + 'px');
 		body.css('visibility', 'hidden').after(self.loading);
@@ -4306,6 +4375,10 @@ function _lang(mixed, langType) {
 	});
 }
 function _getImageFromRange(range, fn) {
+	if (range.collapsed) {
+		return;
+	}
+	range = range.cloneRange().up();
 	var sc = range.startContainer, so = range.startOffset;
 	if (!_WEBKIT && !range.isControl()) {
 		return;
@@ -4364,7 +4437,8 @@ function _bindContextmenuEvent() {
 					x : pos.x + e.clientX,
 					y : pos.y + e.clientY,
 					width : maxWidth,
-					css : { visibility: 'hidden' }
+					css : { visibility: 'hidden' },
+					shadowMode : self.shadowMode
 				});
 			_each(items, function() {
 				if (this.title) {
@@ -4454,13 +4528,19 @@ function _bindNewlineEvent() {
 	});
 }
 function _bindTabEvent() {
-	var self = this;
-	K(self.edit.doc).keydown(function(e) {
+	var self = this, doc = self.edit.doc;
+	K(doc).keydown(function(e) {
 		if (e.which == 9) {
 			e.preventDefault();
 			if (self.afterTab) {
 				self.afterTab.call(self, e);
 				return;
+			}
+			var cmd = self.cmd, range = cmd.range;
+			range.shrink();
+			if (range.collapsed && range.startContainer.nodeType == 1) {
+				range.insertNode(K('@&nbsp;', doc)[0]);
+				cmd.select();
 			}
 			self.insertHtml('&nbsp;&nbsp;&nbsp;&nbsp;');
 		}
@@ -4480,6 +4560,9 @@ function _bindFocusEvent() {
 }
 function _removeBookmarkTag(html) {
 	return _trim(html.replace(/<span [^>]*id="?__kindeditor_bookmark_\w+_\d+__"?[^>]*><\/span>/ig, ''));
+}
+function _removeTempTag(html) {
+	return html.replace(/<div[^>]+class="?__kindeditor_paste__"?[^>]*>[\s\S]*?<\/div>/ig, '');
 }
 function _addBookmarkToStack(stack, bookmark) {
 	if (stack.length === 0) {
@@ -4681,7 +4764,9 @@ KEditor.prototype = {
 				top : 0,
 				'z-index' : 811211
 			});
-			self._scrollPos = _getScrollPos();
+			if (!_GECKO) {
+				self._scrollPos = _getScrollPos();
+			}
 			window.scrollTo(0, 0);
 			K(document.body).css({
 				'height' : '1px',
@@ -4703,10 +4788,10 @@ KEditor.prototype = {
 			if (name == '|') {
 				htmlList.push('<span class="ke-inline-block ke-separator"></span>');
 			} else if (name == '/') {
-				htmlList.push('<br />');
+				htmlList.push('<div class="ke-hr"></div>');
 			} else {
-				htmlList.push('<span class="ke-inline-block ke-outline" data-name="' + name + '" title="' + self.lang(name) + '" unselectable="on">');
-				htmlList.push('<span class="ke-inline-block ke-toolbar-icon ke-toolbar-icon-url ke-icon-' + name + '" unselectable="on"></span></span>');
+				htmlList.push('<span class="ke-outline" data-name="' + name + '" title="' + self.lang(name) + '" unselectable="on">');
+				htmlList.push('<span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-' + name + '" unselectable="on"></span></span>');
 			}
 		});
 		var toolbar = self.toolbar = _toolbar({
@@ -4725,8 +4810,9 @@ KEditor.prototype = {
 				self.clickToolbar(name);
 			}
 		});
+		var editHeight = _removeUnit(height) - toolbar.div.height();
 		var edit = self.edit = _edit({
-			height : _removeUnit(height) - toolbar.div.height(),
+			height : editHeight > 0 && _removeUnit(height) > self.minHeight ? editHeight : self.minHeight,
 			src : editDiv,
 			srcElement : self.srcElement,
 			designMode : self.designMode,
@@ -4823,6 +4909,11 @@ KEditor.prototype = {
 			statusbar.first().css('visibility', 'hidden');
 			statusbar.last().css('visibility', 'hidden');
 		} else {
+			if (_GECKO) {
+				K(window).bind('scroll', function(e) {
+					self._scrollPos = _getScrollPos();
+				});
+			}
 			if (self.resizeType > 0) {
 				_drag({
 					moveEl : container,
@@ -4877,11 +4968,13 @@ KEditor.prototype = {
 	resize : function(width, height) {
 		var self = this;
 		if (width !== null) {
-			self.container.css('width', _addUnit(width));
+			if (_removeUnit(width) > self.minWidth) {
+				self.container.css('width', _addUnit(width));
+			}
 		}
 		if (height !== null) {
 			height = _removeUnit(height) - self.toolbar.div.height() - self.statusbar.height();
-			if (height > 0) {
+			if (height > 0 && _removeUnit(height) > self.minHeight) {
 				self.edit.setHeight(height);
 			}
 		}
@@ -4923,7 +5016,7 @@ KEditor.prototype = {
 		var self = this;
 		mode = (mode || 'html').toLowerCase();
 		if (mode === 'html') {
-			return _removeBookmarkTag(self.html()).length;
+			return _removeBookmarkTag(_removeTempTag(self.html())).length;
 		}
 		if (mode === 'text') {
 			return self.text().replace(/<(?:img|embed).*?>/ig, 'K').replace(/\r\n|\n|\r/g, '').length;
@@ -4980,7 +5073,7 @@ KEditor.prototype = {
 		checkSize = _undef(checkSize, true);
 		var self = this, edit = self.edit,
 			body = edit.doc.body,
-			html = body.innerHTML, bookmark;
+			html = _removeTempTag(body.innerHTML), bookmark;
 		if (checkSize && self._undoStack.length > 0) {
 			var prev = self._undoStack[self._undoStack.length - 1];
 			if (Math.abs(html.length -  _removeBookmarkTag(prev.html).length) < self.minChangeSize) {
@@ -4990,11 +5083,11 @@ KEditor.prototype = {
 		if (edit.designMode && !self._firstAddBookmark) {
 			var range = self.cmd.range;
 			bookmark = range.createBookmark(true);
-			bookmark.html = body.innerHTML;
+			bookmark.html = html;
 			range.moveToBookmark(bookmark);
 		} else {
 			bookmark = {
-				html : body.innerHTML
+				html : html
 			};
 		}
 		self._firstAddBookmark = false;
@@ -5035,6 +5128,7 @@ KEditor.prototype = {
 			pos = knode.pos();
 		options.x = pos.x;
 		options.y = pos.y + knode.height();
+		options.shadowMode = _undef(options.shadowMode, self.shadowMode);
 		if (options.selectedColor !== undefined) {
 			options.cls = 'ke-colorpicker-' + self.themeType;
 			options.noColor = self.lang('noColor');
@@ -5103,6 +5197,21 @@ KEditor.prototype = {
 				parentDialog = self.dialogs[self.dialogs.length - 1];
 			firstDialog.setMaskIndex(parentDialog.z - 1);
 		}
+		return self;
+	},
+	errorDialog : function(html) {
+		var self = this;
+		var dialog = self.createDialog({
+			width : 750,
+			title : self.lang('uploadError'),
+			body : '<div style="padding:10px 20px;"><iframe frameborder="0" style="width:708px;height:400px;"></iframe></div>'
+		});
+		var iframe = K('iframe', dialog.div), doc = K.iframeDoc(iframe);
+		doc.open();
+		doc.write(html);
+		doc.close();
+		K(doc.body).css('background-color', '#FFF');
+		iframe[0].contentWindow.focus();
 		return self;
 	}
 };
@@ -5287,7 +5396,7 @@ _plugin('core', function(K) {
 		});
 	});
 	self.clickToolbar('fontsize', function() {
-		var curVal = self.cmd.val('fontsize');
+		var curVal = self.cmd.val('fontsize'),
 			menu = self.createMenu({
 				name : 'fontsize',
 				width : 150
@@ -5470,7 +5579,6 @@ _plugin('core', function(K) {
 			pasting = true;
 			K('div.' + cls, doc).remove();
 			cmd = self.cmd.selection();
-			cmd.range.dump();
 			bookmark = cmd.range.createBookmark();
 			div = K('<div class="' + cls + '"></div>', doc).css({
 				position : 'absolute',
@@ -5512,7 +5620,7 @@ _plugin('core', function(K) {
 			return '<a name="' + unescape(imgAttrs['data-ke-name']) + '"></a>';
 		})
 		.replace(/<div\s+[^>]*data-ke-script-attr="([^"]*)"[^>]*>([\s\S]*?)<\/div>/ig, function(full, attr, code) {
-			return '<script' + unescape(attr) + '>' + code + '</script>';
+			return '<script' + unescape(attr) + '>' + unescape(code) + '</script>';
 		})
 		.replace(/(<[^>]*)data-ke-src="([^"]*)"([^>]*>)/ig, function(full, start, src, end) {
 			full = full.replace(/(\s+(?:href|src)=")[^"]*(")/i, '$1' + src + '$2');
@@ -5539,7 +5647,7 @@ _plugin('core', function(K) {
 			return '<img class="ke-anchor" src="' + self.themesPath + 'common/anchor.gif" data-ke-name="' + escape(attrs.name) + '" />';
 		})
 		.replace(/<script([^>]*)>([\s\S]*?)<\/script>/ig, function(full, attr, code) {
-			return '<div class="ke-script" data-ke-script-attr="' + escape(attr) + '">' + code + '</div>';
+			return '<div class="ke-script" data-ke-script-attr="' + escape(attr) + '">' + escape(code) + '</div>';
 		})
 		.replace(/(<[^>]*)(href|src)="([^"]*)"([^>]*>)/ig, function(full, start, key, src, end) {
 			if (full.match(/\sdata-ke-src="[^"]*"/i)) {

@@ -57,6 +57,7 @@ function showSonMenu(flag){
 	for(var i=0;i<lis.length;i++){
 		if(lis[i].style.display=="none"){
 			lis[i].style.display="block";
+
 		}else{
 			lis[i].style.display="none";
 		}

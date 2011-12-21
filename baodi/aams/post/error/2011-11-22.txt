@@ -1,0 +1,75 @@
+错误SQL语句：
+insert into lm_news(title,type,author,content,create_date) values('eqweqw','6','eqweqw','ewqeqwe',now())
+客户IP:127.0.0.1
+时间 :2011-11-22 14:36:26
+
+错误SQL语句：
+select * from aams_user where username = 'admin'
+客户IP:127.0.0.1
+时间 :2011-11-22 15:00:37
+
+错误SQL语句：
+insert into news(title,type_id,author,content,create_date,lang) values('12121','6','2121','21212',now(),'zh_cn',)
+客户IP:127.0.0.1
+时间 :2011-11-22 15:12:51
+
+错误SQL语句：
+insert into news(title,type_id,author,content,create_date,lang) values('213213','6','321321','3213',now(),'zh_cn',)
+客户IP:127.0.0.1
+时间 :2011-11-22 15:13:35
+
+错误SQL语句：
+update news set title='',type='',author='',content='',lang='' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:33:27
+
+错误SQL语句：
+update news set title='',type='',author='',content='',lang='' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:33:33
+
+错误SQL语句：
+update news set title='daDASDASD',type='69',author='DASDSAD',content='DSAD' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:34:07
+
+错误SQL语句：
+update news set title='daDASDASD',type='69',author='DASDSAD',content='DSADfsafsadf' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:36:10
+
+错误SQL语句：
+update news set title='daDASDASD',type='',author='DASDSAD',content='DSADfsadfsdaf',lang='zh_cn' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:37:21
+
+错误SQL语句：
+update news set title='',type='',author='',content='',lang='' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:37:44
+
+错误SQL语句：
+update news set title='daDASDASD',type='',author='DASDSAD',content='DSADesfasdfas',lang='zh_cn' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:37:49
+
+错误SQL语句：
+update news set title='qweqwe',type='6',author='qweqwe',content='ewqeqwfsadfsadf' where id=''
+客户IP:127.0.0.1
+时间 :2011-11-22 15:38:13
+
+错误SQL语句：
+update news set title='qweqwe',type='',author='qweqwe',content='ewqeqwsadfasfd', lang='zh_cn', where id='19'
+客户IP:127.0.0.1
+时间 :2011-11-22 15:53:08
+
+错误SQL语句：
+update news set title='qweqwe',type='',author='qweqwe',content='ewqeqweqeqweqw', lang='zh_cn', where id='19'
+客户IP:127.0.0.1
+时间 :2011-11-22 15:54:06
+
+错误SQL语句：
+update news set title='qweqwe',type='',author='qweqwe',content='ewqeqwwrqrwqwer', lang='zh_cn' where id='19'
+客户IP:127.0.0.1
+时间 :2011-11-22 15:54:21
+

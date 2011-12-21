@@ -1,0 +1,55 @@
+{include file="inc/top.html"}
+
+<!-- w位置
+<div id="bcwrapper">
+	<div id="breadcrumbs">
+		<a href="/">首页</a> >
+		<a href="#">产品中心</a> >
+		<a href="#">Essential Nutrition</a> >
+		<strong>Antioxidants</strong>
+	</div>
+
+	<div id="addthis">
+	</div>
+	<div class=clear></div>
+</div>
+ -->
+
+<div id="content" class="columns180720">
+	<div id="leftColumn" class="column column180">
+		<a id="sectionHeader" href="product.php" style="background:url({if $clang=='English'}images/title/company_en.gif{else}images/title/company_cn.gif{/if});"><span>Products</span></a>
+		<ul id="subNav">
+			<li><a href="aboutme.php">{$lang_company.GongSiJianJie}</a></li>
+			<li><a href="culture.php">{$lang_company.GongSiWenHua}</a></li>
+			<li><a href="brand.php">{$lang_company.PinPaiQuanShi}</a></li>
+		</ul>
+	</div>
+
+
+	<div id="editor" class="column column520">
+
+		<!--文章内容Start-->
+		<div id="galleryList" class="showinfo">
+			<!--返回顶部-->
+			<a name="top" id="top"></a>
+		    <div id="maintext" class="maintext">
+		    	<div style="background:#ececec;"><h1 style="padding:5px 0 5px 5px;">{$lang_company.GongSiWenHua}</h1></div>
+
+		    	{$content}
+
+				<p>&nbsp;</p></div>
+			    <!--文章toolbar-->
+			    <div class="toolbar">
+			    </div>
+			    <!--上下篇文章-->
+			    <div class="context"></div>
+		</div>
+		<!--文章内容End-->
+
+	</div>
+	<!-- end #content -->
+</div>
+
+
+
+{include file="inc/buttom.html"}

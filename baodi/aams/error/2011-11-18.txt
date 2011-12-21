@@ -1,0 +1,105 @@
+错误SQL语句：
+select content from lm_comm_code where type_name='AboutSjAgent'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:26:07
+
+错误SQL语句：
+select content from lm_comm_code where type_name='AboutAgentAgent'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:26:07
+
+错误SQL语句：
+select content from comm_code where type_name='AboutSjAgent'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:26:22
+
+错误SQL语句：
+select * from from comm_code where lang='en' and type_name='AboutUs'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:31:54
+
+错误SQL语句：
+select * from from comm_code where lang='zh_cn' and type_name='AboutUs'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:31:54
+
+错误SQL语句：
+select * from from comm_code where lang='en' and type_name='AboutUs'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:31:59
+
+错误SQL语句：
+select * from from comm_code where lang='zh_cn' and type_name='AboutUs'
+客户IP:127.0.0.1
+时间 :2011-11-18 02:31:59
+
+错误SQL语句：
+select * from lm_comm_code where type_name='LoginAdCode'
+客户IP:127.0.0.1
+时间 :2011-11-18 06:18:08
+
+错误SQL语句：
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:32
+
+SQL语句错误
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:32
+
+错误SQL语句：
+select * from lm_news order by create_date desc limit 0, 10
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:32
+
+错误SQL语句：
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:40
+
+SQL语句错误
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:40
+
+错误SQL语句：
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:43
+
+SQL语句错误
+select id from lm_news
+客户IP:127.0.0.1
+时间 :2011-11-18 06:58:43
+
+错误SQL语句：
+select n.*,m.menu_name_zh_cn,m.menu_name.en from news n,menu m where n.type_id=m.id order by create_date desc limit 0, 10
+客户IP:127.0.0.1
+时间 :2011-11-18 07:00:41
+
+错误SQL语句：
+select * from lm_news where id = '2'
+客户IP:127.0.0.1
+时间 :2011-11-18 07:12:42
+
+错误SQL语句：
+select * from lm_news where id = '2'
+客户IP:127.0.0.1
+时间 :2011-11-18 07:12:45
+
+错误SQL语句：
+select * from  menu where (remark='EDU' and id not in(select type_id from college) or pid='9' 
+客户IP:127.0.0.1
+时间 :2011-11-18 09:04:30
+
+错误SQL语句：
+select * from  menu where (remark='EDU' and id not in(select type_id from college) or pid='9' 
+客户IP:127.0.0.1
+时间 :2011-11-18 09:05:49
+
+错误SQL语句：
+select * from  menu where (remark='EDU' and id not in(select type_id from college) or pid='9' 
+客户IP:127.0.0.1
+时间 :2011-11-18 09:06:01
+

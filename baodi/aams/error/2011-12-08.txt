@@ -1,0 +1,10 @@
+错误SQL语句：
+select n.* from dlzxly n where n.type_id=m.id order by create_date desc limit 0, 12
+客户IP:127.0.0.1
+时间 :2011-12-08 15:10:47
+
+错误SQL语句：
+select n.* from dlzxly n where n.type_id=m.id order by create_date desc limit 0, 12
+客户IP:127.0.0.1
+时间 :2011-12-08 15:47:00
+

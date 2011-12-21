@@ -1,0 +1,10 @@
+错误SQL语句：
+update lm_aams_user set password='21232f297a57a5a743894a0e4a801fc3' where id ='1'
+客户IP:127.0.0.1
+时间 :2011-11-23 08:31:09
+
+错误SQL语句：
+update lm_aams_user set password='d41d8cd98f00b204e9800998ecf8427e' where id ='1'
+客户IP:127.0.0.1
+时间 :2011-11-23 08:31:14
+

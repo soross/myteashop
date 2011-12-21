@@ -1,0 +1,60 @@
+错误SQL语句：
+select id,pid,menu_name_en as menu_name   from college c,menu m where pid='9'
+客户IP:127.0.0.1
+时间 :2011-12-14 09:21:20
+
+错误SQL语句：
+select id,pid,menu_name_en as menu_name   from college c,menu m where m.pid='9'
+客户IP:127.0.0.1
+时间 :2011-12-14 09:21:25
+
+错误SQL语句：
+select c.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' where lang='en' and c.type_id=m.id and type_id=
+客户IP:127.0.0.1
+时间 :2011-12-14 09:22:09
+
+错误SQL语句：
+select c.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id and type_id=
+客户IP:127.0.0.1
+时间 :2011-12-14 09:22:27
+
+错误SQL语句：
+select c.*,m.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id and type_id=
+客户IP:127.0.0.1
+时间 :2011-12-14 09:23:04
+
+错误SQL语句：
+select c.*,m.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id and type_id=
+客户IP:127.0.0.1
+时间 :2011-12-14 09:23:15
+
+错误SQL语句：
+select c.*,m.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id 
+客户IP:127.0.0.1
+时间 :2011-12-14 09:23:48
+
+错误SQL语句：
+select c.*,m.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id 
+客户IP:127.0.0.1
+时间 :2011-12-14 09:23:59
+
+错误SQL语句：
+select c.*,m.*,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id 
+客户IP:127.0.0.1
+时间 :2011-12-14 09:24:41
+
+错误SQL语句：
+select m.id as id,m.pid as pid,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id 
+客户IP:127.0.0.1
+时间 :2011-12-14 09:25:12
+
+错误SQL语句：
+select m.id as id,m.pid as pid,menu_name_en as menu_name   from college c,menu m where m.pid='9' lang='en' and c.type_id=m.id 
+客户IP:127.0.0.1
+时间 :2011-12-14 09:25:17
+
+错误SQL语句：
+select c.*,menu_name_en as menu_name   from college c,menu m where lang='en' and c.type_id=m.id and type_id=
+客户IP:127.0.0.1
+时间 :2011-12-14 10:52:55
+

@@ -5,16 +5,17 @@ include_once("action/mysql.class.php");
 include_once("action/public_info.php");
 
 //一级目录
-$eduTitleRow = getRows("menu where pid='9'",$db,"id,menu_name_".$currlang." as menu_name  ");
+$eduTitleRow = getRows("menu where pid='9'",$db,"id,pid,menu_name_".$currlang." as menu_name  ");
 $smarty->assign("titleRows",$eduTitleRow);
 
 //小百科
-$eduSonTitleRow = getRows("menu where pid='13'",$db,"id,menu_name_".$currlang." as menu_name  ");
+$eduSonTitleRow = getRows("menu where pid='13'",$db,"id,pid,menu_name_".$currlang." as menu_name  ");
 $smarty->assign("titleSonRows",$eduSonTitleRow);
 
 //使用方法
-$eduSonTitleRow2 = getRows("menu where pid='16'",$db,"id,menu_name_".$currlang." as menu_name  ");
+$eduSonTitleRow2 = getRows("college c,menu m where lang='".$currlang."' and c.type_id=m.id",$db,"c.type_id as type_id,m.id as id,m.pid as pid,menu_name_".$currlang." as menu_name  ");
 $smarty->assign("titleSonRows2",$eduSonTitleRow2);
+
 
 //详细信息
 $typeid=12;

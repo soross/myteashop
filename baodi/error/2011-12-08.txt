@@ -1,5 +1,0 @@
-错误SQL语句：
-insert into dlzxly(jlqysf,jlqycs,yxqd,dwgrmz,sf,lxr,lxdh,lxdz,lxqq,dzyx,lynr) values('','','fsadf','个人','','','','','','')
-客户IP:127.0.0.1
-时间 :2011-12-08 09:41:44
-

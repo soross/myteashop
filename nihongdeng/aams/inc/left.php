@@ -96,18 +96,31 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
 	      <p>-&nbsp;<a href="../culture.php" target="dataFrame">公司文化配置</a></p>
-	      <p>-&nbsp;<a href="../brand.php" target="dataFrame">品牌诠释配置</a></p>
+	      <p>-&nbsp;<a href="../brand.php" target="dataFrame">领导致辞配置</a></p>
+	      <p>-&nbsp;<a href="../agent.php" target="dataFrame">发展历程配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
-	      <p>-&nbsp;<a href="../agent.php" target="dataFrame">加盟代理配置</a></p>
-	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页广告配置</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;新闻管理</h2>
+	    <h2>+&nbsp;荣誉资质管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
-	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
+		  <p>-&nbsp;<a href="#" target="dataFrame">荣誉资质列表</a></p>
+	      <p>-&nbsp;<a href="#" target="dataFrame">添加荣誉资质</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;设备环境管理</h2>
+	    <div class="content">
+		  <p>-&nbsp;<a href="#" target="dataFrame">设备环境列表</a></p>
+	      <p>-&nbsp;<a href="#" target="dataFrame">添加设备环境</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;公司动态管理</h2>
+	    <div class="content">
+		  <p>-&nbsp;<a href="#" target="dataFrame">公司动态</a></p>
+	      <p>-&nbsp;<a href="#" target="dataFrame">添加公司动态</a></p>
 	    </div>
 	  </li>
 	  <li>
@@ -117,11 +130,25 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../addprod.php" target="dataFrame">添加产品</a></p>
 	    </div>
 	  </li>
-	   <li>
-	    <h2>+&nbsp;宝迪学院</h2>
+	  <li>
+	    <h2>+&nbsp;新闻管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../college.php" target="dataFrame">知识列表</a></p>
-	      <p>-&nbsp;<a href="../addcollege.php" target="dataFrame">新增知识</a></p>
+		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
+	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
+	    </div>
+	  </li>
+	   <li>
+	    <h2>+&nbsp;案例管理</h2>
+	    <div class="content">
+	      <p>-&nbsp;<a href="#" target="dataFrame">案例列表</a></p>
+	      <p>-&nbsp;<a href="#" target="dataFrame">添加案例</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;招聘管理</h2>
+	    <div class="content">
+		  <p>-&nbsp;<a href="../news.php" target="dataFrame">招聘列表</a></p>
+	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加招聘</a></p>
 	    </div>
 	  </li>
 	   <li>

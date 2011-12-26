@@ -550,7 +550,7 @@ class mysql {
 	}
 
 }
-$db=new mysql("localhost", "root", "root", "baodi", ALL_PS, "GBK");
+$db=new mysql("localhost", "root", "root", "nihongdeng", ALL_PS, "GBK");
 
 //获取数组集
 function getRows($table,$db,$field = "*"){

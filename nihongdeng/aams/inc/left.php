@@ -96,8 +96,8 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
 	      <p>-&nbsp;<a href="../culture.php" target="dataFrame">公司文化配置</a></p>
-	      <p>-&nbsp;<a href="../brand.php" target="dataFrame">领导致辞配置</a></p>
-	      <p>-&nbsp;<a href="../agent.php" target="dataFrame">发展历程配置</a></p>
+	      <p>-&nbsp;<a href="../ldzc.php" target="dataFrame">领导致辞配置</a></p>
+	      <p>-&nbsp;<a href="../fzlc.php" target="dataFrame">发展历程配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
 	    </div>

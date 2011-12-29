@@ -550,7 +550,7 @@ class mysql {
 	}
 
 }
-$db=new mysql("localhost", "root", "root", "lianmeng", ALL_PS, "GBK");
+$db=new mysql("lxt765.w82.dns87.com", "lxt765", "lxt7650", "lxt765", ALL_PS, "GBK");
 //判断是否继续跑数据
 $remarkQuery = $db->query("select * from lm_remark where name='IsRunData'");
 $remarInfo = $db->fetch_array($remarkQuery);
@@ -572,16 +572,16 @@ if(date('Ymd')>$remarInfo[remark]){
 				"values('LmFenHong',now(),'0','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
 						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')");
 
-			//循环不可用金额大于500的用户
+			//循环不可用金额大于50的用户
 			$db2 = $db;
-			$loopQuery = $db->query("select id,not_money from lm_mb_limit where not_money>=500");
+			$loopQuery = $db->query("select id,not_money from lm_mb_limit where not_money>=50");
 			$hongli = 0;
 			while($loop = $db->fetch_array($loopQuery)){
-				$hongli = $hongli + floor($loop[not_money]/500);//统计兑换的总红利权数
+				$hongli = $hongli + (floor($loop[not_money]/50)/10);//统计兑换的总红利权数
 				//更新会员信息
-				$db2->query("update lm_mb_limit set money = money+FLOOR(not_money/500)*500 ,
-													hongli= hongli - FLOOR(not_money/500) ,
-													not_money = not_money - FLOOR(not_money/500)*500 where id='".$loop[id]."'");
+				$db2->query("update lm_mb_limit set money = money+FLOOR(not_money/50)*50 ,
+													hongli= hongli - (FLOOR(not_money/50)/10) ,
+													not_money = not_money - FLOOR(not_money/50)*50 where id='".$loop[id]."'");
 			}
 			$db2->query("update lm_limit set hongli = hongli-".$hongli." where id=1");//联盟总红利权数减去分红红利权数
 			//$db2->query("update lm_mb_limit set hongli=0 where hongli<0");//修复脏数据

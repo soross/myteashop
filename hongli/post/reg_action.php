@@ -66,7 +66,8 @@ if($_POST[agreement]==1){
 							setcookie('WEB_USER_LOGIN_COOKIE',md5($_POST[username] .md5($_POST[password]) . "TKBK"),(time()+ (20*60)),'/');
 							setcookie('WEB_USER_LOGIN_ONTIME_COOKIE',mktime(),(time()+ (20*60)),'/') ;
 							//header("location: ../index.php");
-							echo "<script>alert('注册成功,将进入会员中心!');location.href='../index.php'</script>";
+							echo "<script>alert('注册成功,将进入会员中心!');location.href='../index.php?".SID."';</script>";
+							//header("location: ../index.php"."?".);
 						}catch (Exception $e){
 							//用户已存在
 							echo "<script>location.href='../reg.php?error=-3'</script>";

@@ -112,7 +112,7 @@ else if(isset($_POST['task'])&&"getMoney"==$_POST['task']){
 		$query = $db->query($sql);
 		$us = is_array($row = $db->fetch_array($query));
 		$ps = $us ? md5($_POST[password]) == $row[second_password] : FALSE;
-		if ($ps && $_POST[num] >= 400) {
+		if ($ps && $_POST[num] >= 40) {
 			$cnt = $_POST[num];
 			$query = $db->query("select * from lm_mb_limit where mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."'");
 			$limit = $db->fetch_array($query);

@@ -20,7 +20,7 @@ if (isset ($_POST[randomCode]) && strtoupper($_POST["randomCode"]) == strtoupper
 			setcookie('WEB_USER_LOGIN_COOKIE',md5($row[mb_name] . $row[password] . "TKBK"),(time()+ (20*60)),'/');
 			setcookie('WEB_USER_LOGIN_ONTIME_COOKIE',mktime(),(time()+ (20*60)),'/') ;
 
-			header("location: ../index.php");
+			header("location: ../index.php"."?".SID);
 
 /**
 			setcookie("WEB_USER_LOGIN_COOKIE", md5($row[mb_name] . $row[password] . "TKBK"));

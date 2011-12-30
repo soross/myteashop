@@ -26,7 +26,9 @@ $lang = array(
 			"JobInfo"=>"详情",
 			"ContactUs"=>"联系方式",
 			"Message"=>"信息反馈",
-			"Advise"=>"投诉建议"
+			"Advise"=>"投诉建议",
+			"Cert"=>"荣誉资质",
+			"Environment"=>"设备环境"
 		),
 		"job"=>array(
 			"Position"=>"职位名称",
@@ -113,7 +115,9 @@ $lang = array(
 			"JobInfo"=>"Info",
 			"ContactUs"=>"Contact Us",
 			"Message"=>"FeedBack",
-			"Advise"=>"Advise"
+			"Advise"=>"Advise",
+			"Cert"=>"Certificate Of Honor",
+			"Environment"=>"Environment"
 		),
 		"job"=>array(
 			"Position"=>"Position",//职位名称

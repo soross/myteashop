@@ -6,5 +6,5 @@ require_once("action/mysql.class.php");
 $rows = getRows(" news_type where pid=0 ",$db);
 $smarty->assign("typeRows",$rows);
 
-$smarty->display("addnews.html");
+$smarty->display("addjob.html");
 ?>

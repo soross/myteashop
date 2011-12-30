@@ -147,8 +147,8 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;招聘管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">招聘列表</a></p>
-	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加招聘</a></p>
+		  <p>-&nbsp;<a href="../job.php" target="dataFrame">招聘列表</a></p>
+	      <p>-&nbsp;<a href="../addjob.php" target="dataFrame">添加招聘</a></p>
 	    </div>
 	  </li>
 	   <li>

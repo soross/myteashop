@@ -7,22 +7,22 @@ require_once("action/page.class.aams.php");
 
 $pagesize = 15;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from news");
+$queryTotal = $db->query("select id from job");
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
-//新闻列表
-$newsQuery = $db->query("select n.*,m.news_type_zh_cn,m.news_type_en from news n,news_type m where n.type_id=m.id order by create_date desc limit $firstcount, $displaypg");
-$newsRow = array();
-while($rownews = $db->fetch_array($newsQuery)){
-	$newsRow[] = $rownews;
+//工作列表
+$jobQuery = $db->query("select id,job_name,job_type,work_exp,college,job_cnt,create_date from job order by create_date desc limit $firstcount, $displaypg");
+$jobRow = array();
+while($rowjob = $db->fetch_array($jobQuery)){
+	$jobRow[] = $rowjob;
 }
-$smarty->assign("newsRow",$newsRow);
+$smarty->assign("jobRow",$jobRow);
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);
 
 
-$smarty->display("news.html");
+$smarty->display("job.html");
 ?>

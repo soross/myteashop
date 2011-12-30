@@ -102,7 +102,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-新闻列表</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">招聘管理-招聘列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -152,25 +152,27 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="6%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="35%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言</div></td>
-            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">类型</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">作者</div></td>
+            <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">职位名称</div></td>
+            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">职位类型</div></td>
+            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工作经历</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历要求</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招聘人数</div></td>
             <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$newsRow}
+          {section name=list loop=$jobRow}
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$newsRow[list].title}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" {if $newsRow[list].lang=='en'}style="color:blue;"{/if}>{if $newsRow[list].lang=='en'}英文{else}中文{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].news_type_zh_cn}<br>{$newsRow[list].news_type_en}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].author}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].create_date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}">编辑</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?taks=deleteNews&newsid={$newsRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?taks=deleteNews&newsid={$newsRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].id}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$jobRow[list].job_name}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].job_type}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].work_exp}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].college}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].job_cnt}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$jobRow[list].create_date}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateNews&jobid={$jobRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="post/job.action.php?task=toUpdateJob&jobid={$jobRow[list].id}">编辑</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/job.action.php?taks=deleteJob&jobid={$jobRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/job.action.php?taks=deleteJob&jobid={$jobRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}
 			<tr>

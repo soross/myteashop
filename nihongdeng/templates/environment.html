@@ -1,0 +1,136 @@
+
+
+{include file="inc/top.html"}
+
+
+
+<div id='content' style='width:950px;height:471px;background:url(images/1263271146.gif);margin:0px auto'>
+
+
+<!-- 网页标题(菜单) -->
+
+<div id='pdv_13990' class='pdv_class'  title='栏目导航' style='width:163px;height:221px;top:23px;left:21px; z-index:4'>
+<div id='spdv_13990' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_nav{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+</div>
+
+{include file="inc/aboutus_left.html"}
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 多行文字 -->
+
+<div id='pdv_13987' class='pdv_class'  title='联系我们' style='width:163px;height:206px;top:254px;left:21px; z-index:7'>
+<div id='spdv_13987' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;">
+<div style="height:100%;">
+<div style="height:37px;border:0px;padding:0;margin:0;background:url(images/title/title_contactus_contactus{if ""!=$clang}_{$clang}{/if}.gif) no-repeat">
+</div>
+<div style="margin:15px 1px 0px;padding:0px;">
+
+<div style="padding:0px 0px 14px 3px;color:#333;font:12px/20px Verdana, Arial, Helvetica, sans-serif;">
+{$contactUsInfo}
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_13983' class='pdv_class'  title='当前位置' style='width:670px;height:40px;top:24px;left:248px; z-index:8'>
+<div id='spdv_13983' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:url(images/title/title_contactus_address.gif) no-repeat">
+	<div style="float:right;width:8px;height:43px;background:url(images/title/title_contactus_address.gif) -892px 0px no-repeat;"></div>
+
+<link href="css/nav.css" rel="stylesheet" type="text/css" />
+<div id="nav">
+
+{$lang.SiteAddress}:<a href="index.php">{$lang.ComparyName}
+</a> &gt; {$lang.Environment}
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- 全站翻页图片列表 -->
+
+<div id='pdv_13994' class='pdv_class'  title='最新图片' style='width:665px;height:364px;top:105px;left:251px; z-index:11'>
+<div id='spdv_13994' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		最新图片
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="-1" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<link href="css/productquery.css" rel="stylesheet" type="text/css" />
+{literal}
+<style>
+.text-overflow-prod {
+display:block;/*内联对象需加*/
+width:135px;
+word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+</style>
+{/literal}
+{section name=list loop=$enviRows}
+<div id="productquery">
+	<div class="fang" style="width:140px;height:110px">
+		<div class="picFit" style="width:140px;height:110px">
+		<a href="environmentinfo.php?enviid={$enviRows[list].id}" target="_self" >
+			<img src="images/environment/{$enviRows[list].path}" style="width:140px;height:110px" border="0" /></a>
+		</div>
+	</div>
+	<a href="environmentinfo.php?enviid={$enviRows[list].id}" target="_self"   class="prodtitle"><span class="text-overflow-prod">{$enviRows[list].envi_name}</span></a>
+</div>
+{sectionelse}
+<div id="productquery">
+	<div class="fang" style="width:140px;height:110px">
+		<div class="picFit" style="width:140px;height:110px">
+			没有所要查询的数据...
+		</div>
+	</div>
+</div>
+{/section}
+
+{literal}
+<script>
+$(function() {
+$().picFit("auto");
+});
+</script>
+{/literal}
+<div id="showpages" >
+{$page}
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+{include file="inc/buttom.html"}

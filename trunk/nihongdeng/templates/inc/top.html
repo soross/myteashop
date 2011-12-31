@@ -106,9 +106,9 @@ var PDV_PAGENAME='index';
 <a href="{$menulist[list].menu_url}" target="_self" class="menumain">{$menulist[list].menu_name}</a>
 {/section}
 {if $clang==en}
-<a href="changeLang.php?lang=zh_cn" target="_self" class="menumain">中文</a>
+<a href="changeLang.php?lang=zh_cn&url={$CURL}" target="_self" class="menumain">中文</a>
 {else}
-<a href="changeLang.php?lang=en" target="_self" class="menumain">English</a>
+<a href="changeLang.php?lang=en&url={$CURL}" target="_self" class="menumain">English</a>
 {/if}
 
 <!--

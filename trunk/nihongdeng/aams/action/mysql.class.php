@@ -551,6 +551,7 @@ class mysql {
 
 }
 $db=new mysql("localhost", "root", "root", "nihongdeng", ALL_PS, "GBK");
+//$db=new mysql("zhdsign.gotoftp3.com", "zhdsign", "b5j4i6", "zhdsign", ALL_PS, "GBK");
 
 //获取数组集
 function getRows($table,$db,$field = "*"){

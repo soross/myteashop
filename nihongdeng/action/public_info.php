@@ -22,6 +22,10 @@ if($currlang=="en"){
 $smarty->assign("clang",$clang);
 
 
+$url=$_SERVER["REQUEST_URI"];
+$smarty->assign("CURL",$url);
+
+
 $smarty->assign("lang",$lang[$currlang]['public']);
 
 ?>

@@ -20,11 +20,11 @@
 
 {section name=list loop=$titleRows}
 	{if $titleRows[list].pid==0}
-		<div class="producttwo_dolphin_top"><a href="product.php?typeid={$titleRows[list].id}" title="{$typeRows[list].product_type}" target="_self" >{$titleRows[list].prod_type|truncate:20:".."}</a></div>
+		<div class="producttwo_dolphin_top"><a href="product.php?typeid={$titleRows[list].id}" title="{$typeRows[list].product_type}" target="_self" >{$titleRows[list].prod_type|truncate:18:".."}</a></div>
 		<ul>
 			{section name=lt loop=$titleRows}
 				{if $titleRows[list].id==$titleRows[lt].pid}
-					<li><a href="product.php?typeid={$titleRows[lt].id}" title="{$typeRows[lt].product_type}" target="_self">{$titleRows[lt].prod_type|truncate:20:".."}</a></li>
+					<li><a href="product.php?typeid={$titleRows[lt].id}" title="{$typeRows[lt].product_type}" target="_self">{$titleRows[lt].prod_type|truncate:18:".."}</a></li>
 				{/if}
 			{/section}
 		</ul>

@@ -65,7 +65,7 @@ function selectBoxBlur(thisId) {
 }
 
 function makeSelectBox(thisId, imgsrc) {
-    var downArrowSrc = imgsrc + "/nihongdeng/images/down.gif";
+    var downArrowSrc = imgsrc + "/images/down.gif";
     var downArrowSrcWidth = 16;
     var optionHeight = 16;
     var optionMaxNum = 5;

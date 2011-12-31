@@ -181,9 +181,13 @@ $lang = array(
 );
 session_start();
 $currlang = "".$_SESSION["Lang"];
-//print_r($currlang);
+
 if(empty($currlang) || ""==$currlang){
-	$currlang="zh_cn";
+	if(isset($_GET[lang]) && !empty($_GET[lang])){
+		$currlang=$_GET[lang];
+	}else{
+		$currlang="zh_cn";
+	}
 }
 
 ?>

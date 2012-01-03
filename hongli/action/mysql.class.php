@@ -550,7 +550,9 @@ class mysql {
 	}
 
 }
+//$db=new mysql("localhost", "root", "root", "lianmeng", ALL_PS, "GBK");
 $db=new mysql("lxt765.w82.dns87.com", "lxt765", "lxt7650", "lxt765", ALL_PS, "GBK");
+
 //判断是否继续跑数据
 $remarkQuery = $db->query("select * from lm_remark where name='IsRunData'");
 $remarInfo = $db->fetch_array($remarkQuery);
@@ -559,34 +561,65 @@ if(date('Ymd')>$remarInfo[remark]){
 	$info = $db->fetch_array($query);
 	if($info[hongli]>0){
 		if(((($info[sale_money]+$info[exchange])*0.05)/$info[hongli])<0.1){
-			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
+			$sql = "insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
 				"values('LmFenHong',now(),'0','联盟当前红利".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."'," .
-						"'".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."','Error','$info[sale_money]','$info[exchange]','$info[hongli]')");
+						"'".(($info[sale_money]+$info[exchange])*0.05)/$info[hongli]."','Error','$info[sale_money]','$info[exchange]','$info[hongli]')";
+			$db->query($sql);
 		}else{
 			//计算用户的分红
-			$db->query("update lm_mb_limit set not_money=not_money+(hongli*".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2).") where id > 0");
+			$sql="update lm_mb_limit set not_money=not_money+(hongli*".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2).") where id > 0";
+			$db->query($sql);
 			//重新计算一天联盟的收益和红利
-			$db->query("update lm_limit set sale_money='0',exchange='0',dayhongli='0' where id='1'");
-
-			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
+			$db->query("update lm_limit set sale_money='0',exchange='0' where id='1'");
+			$sql = "insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
 				"values('LmFenHong',now(),'0','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
-						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')");
+						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')";
+			$db->query($sql);
 
 			//循环不可用金额大于50的用户
-			$db2 = $db;
+			//$db2 = $db;
+			//$db2=new mysql("lxt765.w82.dns87.com", "lxt765", "lxt7650", "lxt765", ALL_PS, "GBK");
+
 			$loopQuery = $db->query("select id,not_money from lm_mb_limit where not_money>=50");
 			$hongli = 0;
+			$tmparr = array();
+			$index = 0;
 			while($loop = $db->fetch_array($loopQuery)){
 				$hongli = $hongli + (floor($loop[not_money]/50)/10);//统计兑换的总红利权数
-				//更新会员信息
-				$db2->query("update lm_mb_limit set money = money+FLOOR(not_money/50)*50 ,
-													hongli= hongli - (FLOOR(not_money/50)/10) ,
-													not_money = not_money - FLOOR(not_money/50)*50 where id='".$loop[id]."'");
+
+				$objarr = array();
+				$objarr[0] = $loop[id];
+				$objarr[1] = $loop[not_money];
+				$objarr[2] = $loop[mb_id];
+
+				$tmparr[$index] = $objarr;
+				$index = $index+1;
 			}
-			$db2->query("update lm_limit set hongli = hongli-".$hongli." where id=1");//联盟总红利权数减去分红红利权数
+
+
+			for ($i = 0; $i < sizeof($tmparr); $i++) {
+				//更新会员信息
+				$sql = "update lm_mb_limit set money = money+FLOOR(not_money/50)*50 ,
+							hongli= hongli - (FLOOR(not_money/50)/10) ,
+							not_money = not_money - FLOOR(not_money/50)*50 where id='".$tmparr[$i][0]."'";
+				$db->query($sql);
+				//$db2->query("insert into lm_remark(name,remark) values('SQL_lm_mb_limit','".str_replace("'","\'",$sql)."')");
+
+				//日志
+				$sql = "insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
+							"values('LmFenHong',now(),'".$tmparr[$i][2]."','会员账户红利权数减去".(floor($tmparr[$i][1]/50)/10)."','0','OK','0','0','0')";
+				$db->query($sql);
+				//$db2->query("insert into lm_remark(name,remark) values('SQL_lm_mb_limit','".str_replace("'","\'",$sql)."')");
+
+			}
+
+			$db->query("update lm_limit set hongli = hongli-".$hongli." where id=1");//联盟总红利权数减去分红红利权数
 			//$db2->query("update lm_mb_limit set hongli=0 where hongli<0");//修复脏数据
 			//$db2->query("update lm_limit set hongli=0 where hongli<0");//修复脏数据
-			$db2=null;
+
+
+			$db->query("insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
+				"values('LmFenHong',now(),'0','联盟当前红利权数减去".$hongli."','0','OK','0','0','0')");
 
 		}
 	}

@@ -43,7 +43,7 @@ else if(isset($_POST['task'])&&"getHongLi"==$_POST['task']){
 			$db->query($sql);
 			$db->query("update lm_card set use_date=now(), state=1,use_mb_id='".$_SESSION[WEB_USER_LOGIN_UID_SESSION]."' where id='$row[id]'");
 
-			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"100ºìÀû¿¨¶Ò»»",$num,"OK",$cardNo,"+","A");
+			Save_log($db,$service_code,$_SESSION['WEB_USER_LOGIN_UID_SESSION'],"ºìÀû¿¨¶Ò»»",$num,"OK",$cardNo,"+","A");
 
 			echo "<script>alert('".$msg."');location.href='../index.php?divNo=2&flag=mb'</script>";
 		}else{

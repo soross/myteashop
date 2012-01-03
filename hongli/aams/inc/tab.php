@@ -159,7 +159,7 @@ for(i=0;i<cs.length;i++){
           </tr>
           <tr>
             <td width="30%" height="26" background="../images/tab/tab_14.gif" class="STYLE1"><div align="right" class="STYLE2 STYLE1">½סּל÷לְû</div></td>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[dayhongli]),2);?></div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;<?php echo round(((($lmTopInfo[sale_money]+$lmTopInfo[exchange])*0.05)/$lmTopInfo[hongli]),2);?></div></td>
           </tr>
 
           <!--

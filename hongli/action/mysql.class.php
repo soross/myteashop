@@ -570,7 +570,7 @@ if(date('Ymd')>$remarInfo[remark]){
 			$sql="update lm_mb_limit set not_money=not_money+(hongli*".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2).") where id > 0";
 			$db->query($sql);
 			//重新计算一天联盟的收益和红利
-			$db->query("update lm_limit set sale_money='0',exchange='0' where id='1'");
+			$db->query("update lm_limit set sale_money='0',exchange='0',dayhongli='0' where id='1'");
 			$sql = "insert into lm_mb_log(service_code,create_Date,mb_id,remark,num,result,cardno,domode,orderNo) " .
 				"values('LmFenHong',now(),'0','联盟当前红利".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."'," .
 						"'".round((($info[sale_money]+$info[exchange])*0.05)/$info[hongli],2)."','OK','$info[sale_money]','$info[exchange]','$info[hongli]')";

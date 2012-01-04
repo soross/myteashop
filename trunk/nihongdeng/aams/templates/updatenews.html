@@ -168,7 +168,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/news.action.php" method="post">
+        	<form action="post/news.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言</div></td>
@@ -207,9 +207,9 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="发布新闻">
-						<input type="hidden" id="task" name="task" value="addNews">
-						<input type="hidden" id="newid" name="newid" value="{$newsinfo.id}">
+						<input type="submit" value="修改新闻">
+						<input type="hidden" id="task" name="task" value="updateNews">
+						<input type="hidden" id="newsid" name="newsid" value="{$newsinfo.id}">
 		            </div></td>
 		          </tr>
 		        </table>

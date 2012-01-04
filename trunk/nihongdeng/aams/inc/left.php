@@ -126,6 +126,7 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;产品管理</h2>
 	    <div class="content">
+	      <p>-&nbsp;<a href="../prodtype.php" target="dataFrame">产品类型管理</a></p>
 	      <p>-&nbsp;<a href="../product.php" target="dataFrame">产品列表</a></p>
 	      <p>-&nbsp;<a href="../addprod.php" target="dataFrame">添加产品</a></p>
 	    </div>
@@ -133,6 +134,7 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;新闻管理</h2>
 	    <div class="content">
+		  <p>-&nbsp;<a href="../newstype.php" target="dataFrame">新闻类型管理</a></p>
 		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
 	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
 	    </div>

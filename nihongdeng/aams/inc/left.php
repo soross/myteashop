@@ -99,6 +99,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../ldzc.php" target="dataFrame">领导致辞配置</a></p>
 	      <p>-&nbsp;<a href="../fzlc.php" target="dataFrame">发展历程配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
+	      <p>-&nbsp;<a href="../envlist.php" target="dataFrame">设备环境列表</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
 	    </div>
 	  </li>
@@ -107,13 +108,6 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 		  <p>-&nbsp;<a href="../ryzz.php" target="dataFrame">荣誉资质列表</a></p>
 	      <p>-&nbsp;<a href="../addryzz.php" target="dataFrame">添加荣誉资质</a></p>
-	    </div>
-	  </li>
-	  <li>
-	    <h2>+&nbsp;设备环境管理</h2>
-	    <div class="content">
-		  <p>-&nbsp;<a href="envlist.php" target="dataFrame">设备环境列表</a></p>
-	      <p>-&nbsp;<a href="addenv.php" target="dataFrame">添加设备环境</a></p>
 	    </div>
 	  </li>
 	  <!--

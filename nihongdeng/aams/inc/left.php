@@ -140,8 +140,8 @@ function MM_swapImage() { //v3.0
 	   <li>
 	    <h2>+&nbsp;案例管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="#" target="dataFrame">案例列表</a></p>
-	      <p>-&nbsp;<a href="#" target="dataFrame">添加案例</a></p>
+	      <p>-&nbsp;<a href="../case.php" target="dataFrame">案例列表</a></p>
+	      <p>-&nbsp;<a href="../addcase.php" target="dataFrame">添加案例</a></p>
 	    </div>
 	  </li>
 	  <li>

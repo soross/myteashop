@@ -17,7 +17,7 @@ if(!isset($_GET[enviid])||empty($_GET[enviid])){
 
 
 	$enviInfo = getInfo("cp where id='".$_GET[enviid]."'",$db,"id,cp_info_type_".$currlang." as envi_name,cp_info_value_".$currlang." as envi_desc,path");
-	$smarty->assign("enviinfo",html_entity_decode($enviInfo));
+	$smarty->assign("enviinfo",$enviInfo);
 
 
 	$smarty->display("environmentinfo.html");

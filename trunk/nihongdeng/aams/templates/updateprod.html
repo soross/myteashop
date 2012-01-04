@@ -108,30 +108,6 @@ for(i=0;i<cs.length;i++){
 				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
 		});
 	});
-	var editor2;
-	KindEditor.ready(function(K) {
-		editor2 = K.create('textarea[name="content2"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
-	var editor3;
-	KindEditor.ready(function(K) {
-		editor3 = K.create('textarea[name="content3"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
 </script>
 
 
@@ -192,7 +168,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/prod.action.php" method="post">
+        	<form action="post/prod.action.php" method="post" enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言</div></td>
@@ -203,7 +179,7 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="prod_name" name="prod_name" size="40" maxlength="50" value="{$info.prod_name}"><font style="color:red;">*</font>
+		            	<input type="text" id="prod_name" name="prod_name" size="40" maxlength="50" value="{$info.product_name}"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
@@ -211,11 +187,11 @@ for(i=0;i<cs.length;i++){
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <select id="type" name="type">
 		            	{section name=list loop=$typeRows}
-			            	{if $typeRows[list].show=='1'}
-				            	<option value="{$typeRows[list].id}" {if $info.type_id==$typeRows[list].id}selected{/if}>{$typeRows[list].menu_name_zh_cn}-{$typeRows[list].menu_name_en}</option>
+			            	{if $typeRows[list].pid=='0'}
+				            	<option value="{$typeRows[list].id}" {if $info.type_id==$typeRows[list].id}selected{/if}>{$typeRows[list].product_type_zh_cn}-{$typeRows[list].product_type_en}</option>
 				            	{section name=lt loop=$typeRows}
 					            	{if $typeRows[lt].pid== $typeRows[list].id}
-					            		<option value="{$typeRows[lt].id}" {if $info.type_id==$typeRows[lt].id}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].menu_name_zh_cn}-{$typeRows[lt].menu_name_en}</option>
+					            		<option value="{$typeRows[lt].id}" {if $info.type_id==$typeRows[lt].id}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].product_type_zh_cn}-{$typeRows[lt].product_type_en}</option>
 					            	{/if}
 				            	{/section}
 			            	{/if}
@@ -227,49 +203,26 @@ for(i=0;i<cs.length;i++){
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<table>
 		            	<tr>
-		            		<td width="110px"><img src='../{$info.prod_pic}' width="100px" height='100px'></td>
-		            		<td><input type="file" id="prod_pic" name="prod_pic"><font style="color:red;">*</font></td>
+		            		<td width="110px"><img src='../images/product/{$info.product_pic}' width="100px" height='100px'></td>
+		            		<td><input type="file" id="prod_picture" name="prod_picture"><font style="color:red;">*</font></td>
 		            	</tr>
 		            	</table>
 
 		            </div></td>
 		          </tr>
-
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">价格</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="price" name="price" size="20" maxlength="20" value="{$info.price}"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">会员价格</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="vip_price" name="vip_price" size="20" maxlength="10" value="{$info.vip_price}"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品描述</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content" style="width:700px;height:150px;visibility:hidden;">{$info.prod_desc}</textarea><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">使用方法</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content2" name="content2" style="width:700px;height:150px;visibility:hidden;">{$info.prod_use}</textarea><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品成分</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content3" name="content3" style="width:700px;height:150px;visibility:hidden;">{$info.ingredients}</textarea><font style="color:red;">*</font>
+		            <textarea id="content" name="content" style="width:700px;height:150px;visibility:hidden;">{$info.product_desc}</textarea><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="发布产品">
-						<input type="hidden" id="task" name="task" value="addProd">
+						<input type="submit" value="修改产品">
+						<input type="hidden" id="task" name="task" value="updateProd">
+						<input type="hidden" id="prodpic" name="prodpic" value="{$info.product_pic}">
+						<input type="hidden" id="prodid" name="prodid" value="{$info.id}">
 		            </div></td>
 		          </tr>
 		        </table>

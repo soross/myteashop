@@ -108,30 +108,6 @@ for(i=0;i<cs.length;i++){
 				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
 		});
 	});
-	var editor2;
-	KindEditor.ready(function(K) {
-		editor2 = K.create('textarea[name="content2"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
-	var editor3;
-	KindEditor.ready(function(K) {
-		editor3 = K.create('textarea[name="content3"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
 </script>
 
 
@@ -211,11 +187,11 @@ for(i=0;i<cs.length;i++){
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <select id="type" name="type">
 		            	{section name=list loop=$typeRows}
-			            	{if $typeRows[list].show=='1'}
-				            	<option value="{$typeRows[list].id}">{$typeRows[list].menu_name_zh_cn}-{$typeRows[list].menu_name_en}</option>
+			            	{if $typeRows[list].pid=='0'}
+				            	<option value="{$typeRows[list].id}">{$typeRows[list].product_type_zh_cn}-{$typeRows[list].product_type_en}</option>
 				            	{section name=lt loop=$typeRows}
 					            	{if $typeRows[lt].pid== $typeRows[list].id}
-					            		<option value="{$typeRows[lt].id}">&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].menu_name_zh_cn}-{$typeRows[lt].menu_name_en}</option>
+					            		<option value="{$typeRows[lt].id}">&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].product_type_zh_cn}-{$typeRows[lt].product_type_en}</option>
 					            	{/if}
 				            	{/section}
 			            	{/if}

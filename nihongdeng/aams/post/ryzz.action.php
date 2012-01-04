@@ -1,77 +1,50 @@
 <?php
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
-if(isset($_GET[mbid]) && !empty($_GET[mbid])
- &&isset($_GET[result])&& !empty($_GET[result])){
-	//passAuth backAuth
-	$state = -1;
-	$msg ="代理商审核退回";
-	if(isset($_GET[result])&&"passAuth"==$_GET[result]){
-		$state = 0;
-		$msg = "审核通过!";
-	}
+if(isset($_POST[task]) && "addrzyy"== $_POST[task]){
 
-	$db->query("update lm_member set state='".$state."' where id ='".$_GET[mbid]."' ");
-	echo "<script>alert('".$msg."');location.href='../auth.php';</script>";
-}else if(isset($_POST[task]) && "SjHeTong"== $_POST[task]){
 		//文件保存目录URL
-		$save_path = '../../file/';
-		//定义允许上传的文件扩展名
-		$ext_arr = array('doc', 'wps', 'txt');
-		require "../action/FileUpload.class.php";
-		$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>5100000));
-		if($up->uploadFile('htfile')){
-			$query = $db->query("select type_code from lm_comm_code where type_name='SjHeTong'");
-			$info= $db->fetch_array($query);
-
-			$filename = "../file/".$up->getNewFileName();
-			$srcFileName=$up->getSrcFileName();
-			$sql="update lm_comm_code set type_code='".$filename."',content='".$srcFileName."' where type_name='SjHeTong'";
-			$db->query($sql);
-
-			unlink("../".$info[type_code]);
-
-	  		echo "<script>alert('上传成功!');location.href='../uploadht.php';</script>";
-		}else{
-			print_r($up->getErrorMsg());
-			echo "<script>alert('上传失败!');location.href='../uploadht.php';</script>";
-		}
-
-}else if(isset($_POST[task]) && "AgentHeTong"== $_POST[task]){
-	//文件保存目录URL
-	$save_path = '../../file/';
+	$save_path = '../../images/product/';
 	//定义允许上传的文件扩展名
-	$ext_arr = array('doc', 'wps', 'txt');
+	$ext_arr = array('gif', 'jpg', 'png');
 	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>5100000));
-	if($up->uploadFile('htfile')){
-		$query = $db->query("select type_code from lm_comm_code where type_name='AgentHeTong'");
-		$info= $db->fetch_array($query);
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*500)));
+	if($up->uploadFile('ryzz_pic')){
+		//上传后产品图片名称 放到数据库
+		$filename = "images/product/".$up->getNewFileName();
+		$db->query("insert into cp(cp_info_type_en,cp_info_type_zh_cn,cp_info_value_en,cp_info_value_zh_cn,remark,seq,path,create_date) values('$_POST[ryzz_name_en]','$_POST[ryzz_name_zh_cn]','".addslashes($_POST[content2])."','".addslashes($_POST[content])."','Honour',null,'$filename',now())");
 
-
-		$filename = "../file/".$up->getNewFileName();
-		$srcFileName=$up->getSrcFileName();
-		$sql="update lm_comm_code set type_code='".$filename."',content='".$srcFileName."' where type_name='AgentHeTong'";
-		$db->query($sql);
-
-
-		unlink("../".$info[type_code]);
-  		echo "<script>alert('上传成功!');location.href='../uploadht.php';</script>";
+		echo "<script>alert('增加荣誉资质成功');location.href='../ryzz.php';</script>";
 	}else{
-		print_r($up->getErrorMsg());
-		echo "<script>alert('上传失败!');location.href='../uploadht.php';</script>";
-	}
-}else if(isset($_GET[txid]) && !empty($_GET[txid])
- &&isset($_GET[result])&& !empty($_GET[result])){
-	//passAuth backAuth
-	$state = 0;
-	$msg ="提现审核成功退回";
-	if(isset($_GET[result])&&"passAuthTx"==$_GET[result]){
-		$state = 1;
-		$msg = "提现审核通过,请汇款!";
+		echo "<script>alert('增加荣誉资质失败');location.href='../addryzz.php';</script>";
 	}
 
-	$db->query("update lm_mb_money set state='".$state."' where id ='".$_GET[txid]."' ");
-	echo "<script>alert('".$msg."');location.href='../authtx.php';</script>";
+
 }
+else if(isset($_GET[task]) && "deleteryzz"==$_GET[task]){
+	$db->query("delete from cp where id = '$_GET[ryzzid]'");
+	echo "<script>alert('荣誉资质删除成功?');location.href='../ryzz.php';</script>";
+}
+
+ else if(isset($_POST[task]) && "updateryzz"== $_POST[task]){
+
+	//文件保存目录URL
+	$save_path = '../../images/product/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif', 'jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*500)));
+	if($up->uploadFile('ryzz_pic')){
+	$query = $db->query("select path from cp where id='$_POST[prod_id]'");
+	$info= $db->fetch_array($query);
+	$filename = "images/product/".$up->getNewFileName();
+	$db->query("update cp set cp_info_type_zh_cn='$_POST[ryzz_name_zh_cn]',cp_info_type_en='$_POST[ryzz_name_en]',cp_info_value_zh_cn='".addslashes($_POST[content])."',cp_info_value_en='".addslashes($_POST[content2])."',path='$filename' where id='$_POST[ryzz_id]'");
+	//unlink("../../".$info[path]);
+	   echo "<script>alert('修改成功!');location.href='../ryzz.php';</script>";
+	}else{
+	$db->query("update cp set cp_info_type_zh_cn='$_POST[ryzz_name_zh_cn]',cp_info_type_en='$_POST[ryzz_name_en]',cp_info_value_zh_cn='".addslashes($_POST[content])."',cp_info_value_en='".addslashes($_POST[content2])."' where id='$_POST[ryzz_id]'");
+	echo "<script>alert('图片修改失败或者图片没有修改,广告其他信息修改成功!');location.href='../ryzz.php';</script>";
+}
+}
+
 ?>

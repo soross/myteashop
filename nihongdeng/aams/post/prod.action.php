@@ -49,6 +49,28 @@ else if(isset($_POST[task]) && "updateProd"==$_POST[task]){
 }
 
 
+
+else if(isset($_POST[task]) && "updateProdType"==$_POST[task]){
+	$db->query("update product_type set product_type_zh_cn='$_POST[zh_cn]',product_type_en='$_POST[en]' where id='".$_POST[typeid]."'");
+	echo "<script>alert('修改成功!');location.href='../prodtype.php';</script>";
+}
+
+else if(isset($_POST[task]) && "addProdType"==$_POST[task]){
+	$db->query("insert into product_type(product_type_zh_cn,product_type_en,pid,create_date,remark) values('$_POST[zh_cn]','$_POST[en]','$_POST[pid]',now(),'1')");
+	echo "<script>alert('添加产品类型成功!');location.href='../prodtype.php';</script>";
+}
+else if(isset($_GET[task]) && "deleteProdType"==$_GET[task]){
+	$db->query("select id from product_type where pid='$_GET[typeid]'");
+	$cnt = $db->db_num_rows();
+	if($cnt>0){
+		echo "<script>alert('无法删除该产品类型,请先删除它的子类!');location.href='../prodtype.php';</script>";
+	}else{
+		$db->query("delete from product_type where id = '$_GET[typeid]'");
+		echo "<script>alert('删除产品类型成功!');location.href='../prodtype.php';</script>";
+	}
+}
+
+
 function replaceContent($str){
 	return str_replace("'","&acute;",$str);
 }

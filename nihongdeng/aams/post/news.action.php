@@ -16,6 +16,20 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 	echo "<script>if(confirm('新闻修改成功,是否继续修改?')){location.href='../updatenews.php?newsid=".$_POST[newsid]."';}else{location.href='../news.php';}</script>";
 }
 
+else if(isset($_POST[task]) && "updateNewsType"==$_POST[task]){
+	$db->query("update news_type set news_type_zh_cn='$_POST[zh_cn]',news_type_en='$_POST[en]' where id='".$_POST[typeid]."'");
+	echo "<script>alert('修改成功!');location.href='../newstype.php';</script>";
+}
+
+else if(isset($_POST[task]) && "addNewsType"==$_POST[task]){
+	$db->query("insert into news_type(news_type_zh_cn,news_type_en,create_date) values('$_POST[zh_cn]','$_POST[en]',now())");
+	echo "<script>alert('添加新闻类型成功!');location.href='../newstype.php';</script>";
+}
+else if(isset($_GET[task]) && "deleteNewsType"==$_GET[task]){
+	$db->query("delete from news_type where id = '$_GET[typeid]'");
+	echo "<script>alert('删除新闻类型成功!');location.href='../newstype.php';</script>";
+}
+
 
 function replaceContent($str){
 	return str_replace("'","&acute;",$str);

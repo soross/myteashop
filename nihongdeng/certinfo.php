@@ -10,10 +10,10 @@ if(!isset($_GET[certid])||empty($_GET[certid])){
 
 	//联系我们ContactUs
 	$contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-	$smarty->assign("contactUsInfo",$contactusInfo[info]);
+	$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 	$aboutUsInfoAll = getInfo("cp where remark='AboutUs'",$db,"cp_info_value_".$currlang." as info");
-	$smarty->assign("AboutUsInfoAll",$aboutUsInfoAll[info]);
+	$smarty->assign("AboutUsInfoAll",html_entity_decode($aboutUsInfoAll[info]));
 
 
 	$certInfo = getInfo("cp where id='".$_GET[certid]."'",$db,"id,cp_info_type_".$currlang." as cert_name,cp_info_value_".$currlang." as cert_desc,path");

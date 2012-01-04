@@ -119,8 +119,8 @@ for(i=0;i<cs.length;i++){
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><a href="#" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="#" target="dataFarme">新增</a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addenv.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addenv.php" target="dataFarme">新增</a></div></td>
                   </tr>
               	</table>
 
@@ -145,85 +145,39 @@ for(i=0;i<cs.length;i++){
       </tr>
     </table></td>
   </tr>
-   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          	<form action="post/env.action.php" method="post"  enctype="multipart/form-data">
-      <tr>
-        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-        <td bgcolor="#f3ffe3">
-        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-          <tr>
-            <td colspan="2" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">新增设备环境</div></td>
-          </tr>
-          <tr>
-            <td width="40%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">图片</div></td>
-			<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-				<input type="file" id="envpic" name="envpic"></div>
-			</td>
-          </tr>
-          <tr>
-			<td colspan="2"  height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
-				<br><input type="submit" value="新增设备环境">
-				<input type="hidden" value="addEnv" id="task" name="task">
-			</div></td>
-			</td>
-          </tr>
-        </table></td>
-      </tr>
-      </form>
-    </table>
-	<br>
-	<br>
-  </td>
-  </tr>
-
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="6%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
-            <td width="30%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">设备环境图片</div></td>
-            <td width="30%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">设备环境图片</div></td>
+            <td width="6%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">编号</div></td>
+            <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">中文标题</div></td>
+            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">英语标题</div></td>
+            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$cpRows}
-      	<form action="post/env.action.php" method="post"  enctype="multipart/form-data">
+          {section name=list loop=$ryzzRow}
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$cpRows[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            	<img src="../images/environment/{$cpRows[list].path}" width="150px" height="100px">
-            	</div>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$ryzzRow[list].id}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$ryzzRow[list].cp_info_type_zh_cn}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$ryzzRow[list].cp_info_type_en}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$ryzzRow[list].create_date}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="updateenv.php?task=toUpdateenv&envid={$ryzzRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updateenv.php?task=toUpdateenv&envid={$ryzzRow[list].id}">编辑</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
+            	<a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/env.action.php?task=deleteEnv&envid={$ryzzRow[list].id}&path={$ryzzRow[list].path}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/env.action.php?task=deleteEnv&envid={$ryzzRow[list].id}&path={$ryzzRow[list].path}';">删除</a><span class="STYLE1">]</span></div>
             </td>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-				<input type="file" id="envpic" name="envpic">
-				</div>
-			</td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center">
-				<input type="submit" value="修改">
-				<input type="hidden" id="task" name="task" value="updateEnv">
-				<input type="hidden" id="envid" name="envid" value="{$cpRows[list].id}">
-				<input type="hidden" id="env_pic" name="env_pic" value="{$cpRows[list].path}">
-			</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center">
-            	<span class="STYLE2">
-            		<a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/env.action.php?task=deleteEnv&envid={$cpRows[list].id}&path={$cpRows[list].path}';">
-            		<img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span>
-            	<span class="STYLE1">[</span>
-            		<a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/env.action.php?task=deleteEnv&envid={$cpRows[list].id}&path={$cpRows[list].path}';">删除</a>
-            	<span class="STYLE1">]</span></div></td>
           </tr>
-          </form>
           {sectionelse}
 			<tr>
-				<td colspan=5 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=9 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
 
         </table></td>
-        <td width="5" background="images/tab/tab_16.gif">&nbsp;</td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
     </table>
     </td>

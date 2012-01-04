@@ -42,7 +42,7 @@ else if(isset($_POST[task]) && "updateCase"==$_POST[task]){
 	$db->query("update obj_case set case_name='$_POST[title]',case_desc='".replaceContent($_POST[content])."',case_pic='$filename'," .
 			"lang='$_POST[lang]' where id='".$_POST[caseid]."'");
 
-	echo "<script>if(confirm('招聘信息修改成功,是否继续修改?')){location.href='../updatecase.php?caseid=".$_POST[caseid]."';}else{location.href='../case.php';}</script>";
+	echo "<script>if(confirm('案例信息修改成功,是否继续修改?')){location.href='../updatecase.php?caseid=".$_POST[caseid]."';}else{location.href='../case.php';}</script>";
 }
 
 

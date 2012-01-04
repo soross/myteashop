@@ -36,10 +36,10 @@ $smarty->assign("enviRows",$enviRow);
 
 //联系我们ContactUs
 $contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("contactUsInfo",$contactusInfo[info]);
+$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 $aboutUsInfoAll = getInfo("cp where remark='AboutUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("AboutUsInfoAll",$aboutUsInfoAll[info]);
+$smarty->assign("AboutUsInfoAll",html_entity_decode($aboutUsInfoAll[info]));
 
 
 $smarty->display("environment.html");

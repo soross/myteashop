@@ -24,11 +24,11 @@ $smarty->assign("prodlist",$prodlist);
 
 //简介AboutUs
 $aboutusInfo = getInfo("comm_code where type_name='AboutUsInfo'",$db,"type_value_".$currlang." as info");
-$smarty->assign("aboutUsInfo",$aboutusInfo[info]);
+$smarty->assign("aboutUsInfo",html_entity_decode($aboutusInfo[info]));
 
 //联系我们ContactUs
 $contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("contactUsInfo",$contactusInfo[info]);
+$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 
 

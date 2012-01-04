@@ -13,7 +13,7 @@ if($currlang=="en"){
 
 //联系我们ContactUs
 $contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("contactUsInfo",$contactusInfo[info]);
+$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 
 $pagesize =6;//一页显示多少条

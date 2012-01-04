@@ -10,11 +10,11 @@ $smarty->assign("NavLeft",$nav_left);
 
 //联系我们ContactUs
 $contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("contactUsInfo",$contactusInfo[info]);
+$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 //信息
 $historyInfoAll = getInfo("cp where remark='History'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("HistoryInfoAll",$historyInfoAll[info]);
+$smarty->assign("HistoryInfoAll",html_entity_decode($historyInfoAll[info]));
 
 
 $smarty->display("history.html");

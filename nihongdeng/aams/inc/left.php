@@ -105,7 +105,7 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;荣誉资质管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="#" target="dataFrame">荣誉资质列表</a></p>
+		  <p>-&nbsp;<a href="../ryzz.php" target="dataFrame">荣誉资质列表</a></p>
 	      <p>-&nbsp;<a href="#" target="dataFrame">添加荣誉资质</a></p>
 	    </div>
 	  </li>

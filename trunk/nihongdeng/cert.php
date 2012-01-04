@@ -32,12 +32,6 @@ $certRow = getRows("cp ".$where ."order by create_date desc limit $firstcount, $
 $smarty->assign("certRows",$certRow);
 
 
-
-
-
-
-
-
 //联系我们ContactUs
 $contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
 $smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));

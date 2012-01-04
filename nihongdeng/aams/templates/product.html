@@ -155,8 +155,7 @@ for(i=0;i<cs.length;i++){
             <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
             <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品类别</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言种类</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品价格</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">会员价格</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品描述</div></td>
             <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
@@ -165,14 +164,13 @@ for(i=0;i<cs.length;i++){
           {section name=list loop=$prodRow}
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$prodRow[list].prod_name}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].menu_name_zh_cn}<br>{$prodRow[list].menu_name_en}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$prodRow[list].product_name}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].product_type_zh_cn}<br>{$prodRow[list].product_type_en}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" {if $prodRow[list].lang=='en'}style="color:blue;"{/if}>{if $prodRow[list].lang=='en'}英文{else}中文{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].price}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].vip_price}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].product_desc|strip_tags|truncate:200:""}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].create_date}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="updateprod.php?task=toUpdateProduct&prodid={$prodRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updateprod.php?task=toUpdateProduct&prodid={$prodRow[list].id}">编辑</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/prod.action.php?taks=deleteProd&prodid={$prodRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/prod.action.php?taks=deleteProd&prodid={$prodRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/prod.action.php?task=deleteProd&prodid={$prodRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/prod.action.php?task=deleteProd&prodid={$prodRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}
 			<tr>

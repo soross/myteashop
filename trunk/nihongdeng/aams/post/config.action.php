@@ -13,6 +13,17 @@ if(isset($_POST[task]) && "updateAboutUsZh_cn"==$_POST[task]){
 	$db->query("update cp set cp_info_value_en='".htmlentities($_POST[content2])."' where remark='AboutUs' ");
 	echo "<script>alert('公司简介[英文]信息修改成功?');location.href='../aboutme.php';</script>";
 
+//首页简介中文
+}else if(isset($_POST[task]) && "updateAboutUsIndexZh_cn"==$_POST[task]){
+
+	$db->query("update comm_code set type_value_zh_cn='".htmlentities($_POST[content])."' where type_name='AboutUsInfo' ");
+	echo "<script>alert('首页简介[中文]信息修改成功?');location.href='../aboutme_index.php';</script>";
+
+//首页简介英文
+}else if(isset($_POST[task]) && "updateAboutUsIndexEn"==$_POST[task]){
+	$db->query("update comm_code set type_value_en='".htmlentities($_POST[content2])."' where  type_name='AboutUsInfo' ");
+	echo "<script>alert('首页简介[英文]信息修改成功?');location.href='../aboutme_index.php';</script>";
+
 //公司文化中文
 }else if(isset($_POST[task]) && "updateCultureZh_cn"==$_POST[task]){
 	$db->query("update cp set cp_info_value_zh_cn='".htmlentities($_POST[content])."' where remark='Culture' ");
@@ -51,6 +62,33 @@ if(isset($_POST[task]) && "updateAboutUsZh_cn"==$_POST[task]){
 	echo "<script>alert('联系我们[英文]信息修改成功?');location.href='../contactus.php';</script>";
 
 }
+
+
+//版权信息
+else if(isset($_POST[task]) && "updateCopyZh_cn"==$_POST[task]){
+	$db->query("update comm_code set type_value_zh_cn='".htmlentities($_POST[content])."' where type_name='ButtomCopyInfo' ");
+	echo "<script>alert('版权信息[中文]信息修改成功!');location.href='../copy.php';</script>";
+
+}else if(isset($_POST[task]) && "updateCopyEn"==$_POST[task]){
+	$db->query("update comm_code set type_value_en='".htmlentities($_POST[content2])."' where type_name='ButtomCopyInfo' ");
+	echo "<script>alert('版权信息[英文]信息修改成功!');location.href='../copy.php';</script>";
+
+}
+
+//底部导航信息
+else if(isset($_POST[task]) && "updateNavButtonZh_cn"==$_POST[task]){
+	$db->query("update comm_code set type_value_zh_cn='".htmlentities($_POST[content])."' where type_name='ButtomNavInfo' ");
+	echo "<script>alert('底部导航[中文]信息修改成功!');location.href='../nav_buttom.php';</script>";
+
+}else if(isset($_POST[task]) && "updateNavButtonEn"==$_POST[task]){
+	$db->query("update comm_code set type_value_en='".htmlentities($_POST[content2])."' where type_name='ButtomNavInfo' ");
+	echo "<script>alert('底部导航[英文]信息修改成功!');location.href='../nav_buttom.php';</script>";
+
+}
+
+
+
+
 //首页广告
 else if(isset($_POST[task]) && "Index_AD"==$_POST[task]){
 	//文件保存目录URL

@@ -116,6 +116,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="#" target="dataFrame">添加设备环境</a></p>
 	    </div>
 	  </li>
+	  <!--
 	  <li>
 	    <h2>+&nbsp;公司动态管理</h2>
 	    <div class="content">
@@ -123,6 +124,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="#" target="dataFrame">添加公司动态</a></p>
 	    </div>
 	  </li>
+	  -->
 	  <li>
 	    <h2>+&nbsp;产品管理</h2>
 	    <div class="content">

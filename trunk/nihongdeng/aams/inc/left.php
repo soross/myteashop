@@ -112,8 +112,8 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;设备环境管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="#" target="dataFrame">设备环境列表</a></p>
-	      <p>-&nbsp;<a href="#" target="dataFrame">添加设备环境</a></p>
+		  <p>-&nbsp;<a href="envlist.php" target="dataFrame">设备环境列表</a></p>
+	      <p>-&nbsp;<a href="addenv.php" target="dataFrame">添加设备环境</a></p>
 	    </div>
 	  </li>
 	  <!--

@@ -94,15 +94,24 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
+	      <p>-&nbsp;<a href="../aboutme_index.php" target="dataFrame">首页简介配置</a></p>
+	      <p>-&nbsp;<a href="../envlist.php" target="dataFrame">设备环境列表</a></p>
+	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
+	      <p>-&nbsp;<a href="../nav_buttom.php" target="dataFrame">页脚链接配置</a></p>
+	      <p>-&nbsp;<a href="../copy.php" target="dataFrame">版权信息配置</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;简介配置</h2>
+	    <div class="content">
 	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
 	      <p>-&nbsp;<a href="../culture.php" target="dataFrame">公司文化配置</a></p>
 	      <p>-&nbsp;<a href="../ldzc.php" target="dataFrame">领导致辞配置</a></p>
 	      <p>-&nbsp;<a href="../fzlc.php" target="dataFrame">发展历程配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
-	      <p>-&nbsp;<a href="../envlist.php" target="dataFrame">设备环境列表</a></p>
-	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
 	    </div>
 	  </li>
+
 	  <li>
 	    <h2>+&nbsp;荣誉资质管理</h2>
 	    <div class="content">

@@ -99,7 +99,7 @@ text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hid
 	<div class="fang" style="width:140px;height:110px">
 		<div class="picFit" style="width:140px;height:110px">
 		<a href="certinfo.php?certid={$certRows[list].id}" target="_self" >
-			<img src="images/cert/{$certRows[list].path}" style="width:140px;height:110px" border="0" /></a>
+			<img src="{$certRows[list].path}" style="width:140px;height:110px" border="0" /></a>
 		</div>
 	</div>
 	<a href="certinfo.php?certid={$certRows[list].id}" target="_self"   class="prodtitle"><span class="text-overflow-prod">{$certRows[list].cert_name}</span></a>

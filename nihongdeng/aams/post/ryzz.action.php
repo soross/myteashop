@@ -29,7 +29,7 @@ else if(isset($_GET[task]) && "deleteryzz"==$_GET[task]){
  else if(isset($_POST[task]) && "updateryzz"== $_POST[task]){
 
 	//文件保存目录URL
-	$save_path = '../../images/product/';
+	$save_path = '../../images/cert/';
 	//定义允许上传的文件扩展名
 	$ext_arr = array('gif', 'jpg', 'png');
 	require "../action/FileUpload.class.php";
@@ -37,7 +37,7 @@ else if(isset($_GET[task]) && "deleteryzz"==$_GET[task]){
 	if($up->uploadFile('ryzz_pic')){
 	$query = $db->query("select path from cp where id='$_POST[prod_id]'");
 	$info= $db->fetch_array($query);
-	$filename = "images/product/".$up->getNewFileName();
+	$filename = "images/cert/".$up->getNewFileName();
 	$db->query("update cp set cp_info_type_zh_cn='$_POST[ryzz_name_zh_cn]',cp_info_type_en='$_POST[ryzz_name_en]',cp_info_value_zh_cn='".addslashes($_POST[content])."',cp_info_value_en='".addslashes($_POST[content2])."',path='$filename' where id='$_POST[ryzz_id]'");
 	//unlink("../../".$info[path]);
 	   echo "<script>alert('修改成功!');location.href='../ryzz.php';</script>";

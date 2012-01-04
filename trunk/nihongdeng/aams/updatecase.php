@@ -1,14 +1,14 @@
 <?php
-if(isset($_GET[jobid])&& !empty($_GET[jobid])){
+if(isset($_GET[caseid])&& !empty($_GET[caseid])){
 	require_once("action/checkAamsLogin.php");
 	require_once("action/smarty_inc.php");
 	require_once("action/mysql.class.php");
-	$query = $db->query("select * from job where id = '$_GET[jobid]'");
+	$query = $db->query("select * from obj_case where id = '$_GET[caseid]'");
 	$info = $db->fetch_array($query);
-	$smarty->assign("jobinfo",$info);
+	$smarty->assign("caseinfo",$info);
 
 
-	$smarty->display("updatejob.html");
+	$smarty->display("updatecase.html");
 }else{
 	echo "<script>window.history.back();</script>";
 	exit;

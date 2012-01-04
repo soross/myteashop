@@ -5,20 +5,20 @@ require_once("action/mysql.class.php");
 require_once("action/page.class.aams.php");
 
 
-$pagesize = 5;//一页显示多少条
+$pagesize = 12;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from cp where remark='DeviceContext' and seq is null ");
+$queryTotal = $db->query("select id from cp where remark='DeviceContext' and seq is null");
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
-//产品列表
-$cpQuery = $db->query("select * from cp where remark='DeviceContext' and seq is null order by create_date desc limit $firstcount, $displaypg");
-$cpRow = array();
-while($rowcp = $db->fetch_array($cpQuery)){
-	$cpRow[] = $rowcp;
+//荣誉资质
+$ryzzQuery = $db->query("select id,cp_info_type_en,cp_info_type_zh_cn,create_date from cp where remark='DeviceContext' and seq is null order by create_date desc limit $firstcount, $displaypg");
+$ryzzRow = array();
+while($rowprod = $db->fetch_array($ryzzQuery)){
+	$ryzzRow[] = $rowprod;
 }
-$smarty->assign("cpRows",$cpRow);
+$smarty->assign("ryzzRow",$ryzzRow);
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);

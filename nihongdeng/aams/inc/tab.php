@@ -205,6 +205,18 @@ for(i=0;i<cs.length;i++){
                 ?>
            	</div></td>
           </tr>
+           <tr>
+          	<td width="50%" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+          	&nbsp;</div></td>
+          </tr>
+           <tr>
+          	<td width="50%" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+          	&nbsp;	</div></td>
+          </tr>
+           <tr>
+          	<td width="50%" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+          	<span style="color:red;font-size:20px;">注意：本后台系统上传的图片大小必须小于100k,格式为gif|jpg|png.</span>  	</div></td>
+          </tr>
           <!--
           <tr>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE1">

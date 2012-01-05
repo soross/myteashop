@@ -72,14 +72,14 @@ function MM_swapImage() { //v3.0
 	        <td height="80" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">
 		        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 		          <tr>
-		            <td height="45"><div align="center"><a href="../config.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td height="45"><div align="center"><a href="../aboutme_index.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		            <td><div align="center"><a href="../addnews.php" target="dataFrame"><img src="../images/main_28.gif" name="Image2" width="40" height="40" border="0" id="Image2" onmouseover="MM_swapImage('Image2','','../images/main_29_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
-		            <td><div align="center"><a href="../addproduct.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td><div align="center"><a href="../addprod.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		          </tr>
 		          <tr>
-		            <td height="25"><div align="center" class="STYLE2"><a href="../config.php" target="dataFrame">系统配置</a></div></td>
+		            <td height="25"><div align="center" class="STYLE2"><a href="../aboutme_index.php" target="dataFrame">系统配置</a></div></td>
 		            <td><div align="center" class="STYLE2"><a href="../addnews.php" target="dataFrame">新闻发布</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addproduct.php" target="dataFrame">产品发布</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../addprod.php" target="dataFrame">产品发布</a></div></td>
 		          </tr>
 		        </table>
 	        </td>
@@ -97,6 +97,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../aboutme_index.php" target="dataFrame">首页简介配置</a></p>
 	      <p>-&nbsp;<a href="../envlist.php" target="dataFrame">设备环境列表</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
+	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">简要联系方式配置</a></p>
 	      <p>-&nbsp;<a href="../nav_buttom.php" target="dataFrame">页脚链接配置</a></p>
 	      <p>-&nbsp;<a href="../copy.php" target="dataFrame">版权信息配置</a></p>
 	    </div>
@@ -108,7 +109,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../culture.php" target="dataFrame">公司文化配置</a></p>
 	      <p>-&nbsp;<a href="../ldzc.php" target="dataFrame">领导致辞配置</a></p>
 	      <p>-&nbsp;<a href="../fzlc.php" target="dataFrame">发展历程配置</a></p>
-	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
+	      <p>-&nbsp;<a href="../contactusall.php" target="dataFrame">详细联系我们配置</a></p>
 	    </div>
 	  </li>
 

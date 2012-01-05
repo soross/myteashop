@@ -64,6 +64,18 @@ if(isset($_POST[task]) && "updateAboutUsZh_cn"==$_POST[task]){
 }
 
 
+//详细联系我们
+else if(isset($_POST[task]) && "updateAllContactUsZh_cn"==$_POST[task]){
+	$db->query("update comm_code set type_value_zh_cn='".htmlentities($_POST[content])."' where type_name='ContactUsInfo' ");
+	echo "<script>alert('详细联系我们[中文]信息修改成功?');location.href='../contactusall.php';</script>";
+
+}else if(isset($_POST[task]) && "updateAllContactUsEn"==$_POST[task]){
+	$db->query("update comm_code set type_value_en='".htmlentities($_POST[content2])."' where type_name='ContactUsInfo' ");
+	echo "<script>alert('详细联系我们[英文]信息修改成功?');location.href='../contactusall.php';</script>";
+
+}
+
+
 //版权信息
 else if(isset($_POST[task]) && "updateCopyZh_cn"==$_POST[task]){
 	$db->query("update comm_code set type_value_zh_cn='".htmlentities($_POST[content])."' where type_name='ButtomCopyInfo' ");

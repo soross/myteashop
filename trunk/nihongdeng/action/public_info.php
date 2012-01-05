@@ -6,11 +6,11 @@ $smarty->assign("menulist",$menulist);
 
 //底部导航
 $nav_buttom_info = getInfo("comm_code where type_name='ButtomNavInfo'",$db,"type_value_".$currlang." as type_value");
-$smarty->assign("ButtomNavInfo",$nav_buttom_info[type_value]);
+$smarty->assign("ButtomNavInfo",html_entity_decode($nav_buttom_info[type_value]));
 
 //版权信息
 $copy_buttom_info = getInfo("comm_code where type_name='ButtomCopyInfo'",$db,"type_value_".$currlang." as type_value");
-$smarty->assign("ButtomCopyInfo",$copy_buttom_info[type_value]);
+$smarty->assign("ButtomCopyInfo",html_entity_decode($copy_buttom_info[type_value]));
 
 
 //语言

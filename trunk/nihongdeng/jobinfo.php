@@ -11,7 +11,7 @@ if(!isset($_GET[jobid])||empty($_GET[jobid])){
 	//类型目录
 	//联系我们ContactUs
 	$contactusInfo = getInfo("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-	$smarty->assign("contactUsInfo",$contactusInfo[info]);
+	$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 
 
 	$jobInfo = getInfo("job where id='".$_GET[jobid]."'",$db);

@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('#feedbackform').submit(function(){
 		$('#feedbackform').ajaxSubmit({
 			target: 'div#notice',
-			url: '/nihongdeng/post/message.action.php',
+			url: '/post/message.action.php',
 			success: function(msg) {
 				if(msg=="OK"){
 					$('div#notice').hide();
@@ -29,7 +29,7 @@ $(document).ready(function(){
 	$('#feedbacksmallform').submit(function(){
 		$('#feedbacksmallform').ajaxSubmit({
 			target: 'div#notice',
-			url: '/nihongdeng/post/message.action.php',
+			url: '/post/message.action.php',
 			success: function(msg) {
 				if(msg=="OK"){
 					$('div#notice').hide();

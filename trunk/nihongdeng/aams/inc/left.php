@@ -120,15 +120,13 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../addryzz.php" target="dataFrame">添加荣誉资质</a></p>
 	    </div>
 	  </li>
-	  <!--
 	  <li>
-	    <h2>+&nbsp;公司动态管理</h2>
+	    <h2>+&nbsp;在线留言管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="#" target="dataFrame">公司动态</a></p>
-	      <p>-&nbsp;<a href="#" target="dataFrame">添加公司动态</a></p>
+		  <p>-&nbsp;<a href="../message.php" target="dataFrame">信息反馈</a></p>
+	      <p>-&nbsp;<a href="../advise.php" target="dataFrame">投诉建议</a></p>
 	    </div>
 	  </li>
-	  -->
 	  <li>
 	    <h2>+&nbsp;产品管理</h2>
 	    <div class="content">

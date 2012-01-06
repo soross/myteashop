@@ -40,5 +40,14 @@ if(isset($_POST[task]) && "LoginADCode"==$_POST[task]){
 		echo "<script>alert('图片修改失败或者图片没有修改,广告其他信息修改成功!');location.href='../ad.php';</script>";
 	}
 }
-
+//backMessage
+else if(isset($_GET[task]) && "backMessage"==$_GET[task]){
+	$db->query("update message set remark='已处理' where id='$_GET[msid]'");
+	echo "<script>alert('信息处理成功!');location.href='../message.php';</script>";
+}
+//backAdvise
+else if(isset($_GET[task]) && "backAdvise"==$_GET[task]){
+	$db->query("update message set remark='已处理' where id='$_GET[msid]'");
+	echo "<script>alert('投诉建议处理成功!');location.href='../advise.php';</script>";
+}
 ?>

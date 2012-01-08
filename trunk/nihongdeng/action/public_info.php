@@ -13,6 +13,13 @@ $copy_buttom_info = getInfo("comm_code where type_name='ButtomCopyInfo'",$db,"ty
 $smarty->assign("ButtomCopyInfo",html_entity_decode($copy_buttom_info[type_value]));
 
 
+////modify by 1-8 flash«–ªª
+$flashPic = getRows("comm_code where type_name='TopFlashImage' order by remark",$db);
+$smarty->assign("TopFlashImage",$flashPic);
+
+
+
+
 //”Ô—‘
 if($currlang=="en"){
 	$clang = 'en';

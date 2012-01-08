@@ -95,6 +95,7 @@ function MM_swapImage() { //v3.0
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
 	      <p>-&nbsp;<a href="../aboutme_index.php" target="dataFrame">首页简介配置</a></p>
+	      <p>-&nbsp;<a href="../flash.php" target="dataFrame">Flash图片配置</a></p>
 	      <p>-&nbsp;<a href="../envlist.php" target="dataFrame">设备环境列表</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">简要联系方式配置</a></p>

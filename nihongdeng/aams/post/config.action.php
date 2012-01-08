@@ -99,6 +99,28 @@ else if(isset($_POST[task]) && "updateNavButtonZh_cn"==$_POST[task]){
 }
 
 
+//顶部图片切换
+else if(isset($_POST[task]) && "updateFlash"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif', 'jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('flash')){
+		$filename = "images/".$up->getNewFileName();
+		unlink("../../".$_POST[path]);
+	}else{
+		$filename=$_POST[path];
+	}
+	$db->query("update comm_code set type_code='$filename',remark='$_POST[remark]' where type_name='TopFlashImage' and id='$_POST[flashid]'");
+	echo "<script>alert('Flash图片修改成功!');location.href='../flash.php';</script>";
+}
+
+
+
+
+
 
 
 //首页广告

@@ -1,0 +1,88 @@
+{include file="inc/top.html"}
+
+
+<div id='content' style='width:990px;height:511px;background:url(images/cbg.gif);margin:0px auto'>
+
+{include file="inc/prod_left.html"}
+
+
+
+
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_16938' class='pdv_class'  title='当前位置' style='width:743px;height:32px;top:0px;left:247px; z-index:13'>
+<div id='spdv_16938' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;background:url(images/title_add.gif) no-repeat;padding:0px;margin:0px;height:39px">
+	<div style="float:right;width:10px;height:39px;background:url(images/title_add.gif) -890px 0px no-repeat;">
+	</div>
+
+<link href="page/templates/css/nav.css" rel="stylesheet" type="text/css" />
+<div id="nav">
+您现在的位置：<a href="index.htm" >华锋茶叶</a> &gt; 产品中心
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- 网页内容详情 -->
+
+<div id='pdv_16939' class='pdv_class'  title='内容标题' style='width:600px;height:421px;top:90px;left:316px; z-index:14'>
+<div id='spdv_16939' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		内容标题
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="#" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<link href="photo/templates/css/photoquery.css" rel="stylesheet" type="text/css" />
+<div id="photoquery">
+<ul >
+
+{section name=list loop=$prodRows}
+<li>
+	<div class="fang" style="width:150px;height:115px">
+		<div class="picFit" style="width:150px;height:115px">
+		<a href="prodinfo.php?prodid={$prodRows[list].id}"  target="_self" ><img src="{$prodRows[list].prod_pic}" style="width:150px;height:115px" border="0" /></a>
+		</div>
+	</div>
+	<div class="title"><a href="prodinfo.php?prodid={$prodRows[list].id}"  target="_self"   >{$prodRows[list].prod_name}</a></div>
+</li>
+{/section}
+
+
+
+</ul>
+{literal}
+<script>
+$(function() {
+$().picFit("auto");
+});
+</script>
+</div>
+{/literal}
+
+
+<div id="showpages" >
+	  {$page}
+</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+{include file="inc/buttom.html"}

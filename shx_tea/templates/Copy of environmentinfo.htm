@@ -1,0 +1,188 @@
+{include file="inc/top.html"}
+
+
+{literal}
+
+<div id='content' style='width:990px;height:496px;background:url(images/cbg.gif);margin:0px auto'>
+
+
+<!-- 图片搜索表单 -->
+
+<div id='pdv_16987' class='pdv_class'  title='图片搜索' style='width:230px;height:151px;top:200px;left:0px; z-index:12'>
+<div id='spdv_16987' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:#8d8b6a url(images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(images/bg.gif) right repeat-y;">
+<div style="height:32px;border:0px;padding:0;margin:0;background:url(images/title_ss.gif) no-repeat">
+	<div style="float:right;width:5px;height:32px;text-align:right;background:url(images/title_ss.gif) -885px 0px no-repeat">
+	</div>
+</div>
+<div style="margin:0px;padding:0px;">
+<link href="photo/templates/css/photo_search_dolphin.css" rel="stylesheet" type="text/css" />
+<SCRIPT language="javascript" src="photo/js/selectbox.js" ></SCRIPT>
+<div class="photosearchformzone">
+<form id="photosearchform" method="get" action="#">
+  <div class="photosearchform">
+    <select name="catid" id="catid" class="box" style="display:none; background:#ffffff; width:140px; height:19px;">
+      <option value="0" >请选择分类</option>
+
+	  <option value='1'>茶楼环境</option><option value='3'>名茶品鉴</option><option value='4'>精美茶点</option><option value='5'>活动影集</option>
+
+    </select>
+	<script>
+	makeSelectBox('catid','');
+	</script>
+  </div>
+
+    <div class="photosearchform">
+    <input name="key" type="text" id="photosearchform_key" value="" style="width:138px;" class="inputtext">
+  </div>
+  <div class="photosearchform2">
+  <input name="imageField" id="button" type="image" src="photo/templates/images/search5.gif">
+  </div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-8px;height:8px;line-height:8px;background:url(images/title_ss.gif) 0px -223px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-8px;line-height:8px;width:12px;height:8px;background:url(images/title_ss.gif) -888px -223px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+
+<!-- 图片详情 -->
+
+<div id='pdv_17003' class='pdv_class'  title='图片详情' style='width:600px;height:404px;top:90px;left:316px; z-index:13'>
+<div id='spdv_17003' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+	<div style="height:25px;margin:1px;display:none;background:;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
+		图片详情
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a href="#" style="line-height:25px;color:">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<link href="photo/templates/css/photocontent.css" rel="stylesheet" type="text/css" />
+<script type=text/javascript src="photo/js/photocontent.js" ></script>
+
+<div id="piccontent">
+	<div class="fcenter">
+		<table align="center" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>
+					<div id="contentpages"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="photozone">
+		<table align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align="center">
+					<div id="photoview">
+						<img src="photo/pics/20100322/1269226694.jpg" border="0" id="photopic" class="photopic">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="introzone">
+	<div class="title">茶楼包厢</div>
+	<div id="memo" class="memo" style="display:block">茶楼环境</div>
+	<div class="bzone">
+	  <input type="hidden" id="photoid" value="6">
+	<div class="tags" style="display:none">标签：</div>
+	<div id="banzhu" class="banzhu"></div>
+	</div>
+	</div>
+
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_17002' class='pdv_class'  title='当前位置' style='width:743px;height:32px;top:0px;left:247px; z-index:14'>
+<div id='spdv_17002' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+<div class="pdv_border" style="border:0px;background:url(images/title_add.gif) no-repeat;padding:0px;margin:0px;height:39px">
+	<div style="float:right;width:10px;height:39px;background:url(images/title_add.gif) -890px 0px no-repeat;">
+	</div>
+
+<link href="photo/templates/css/nav.css" rel="stylesheet" type="text/css" />
+<div id="nav">
+您现在的位置：<a href="index.htm">茶楼</a>
+
+&gt; <a href="photo/index.htm">图片展示</a>
+
+&gt; 茶楼包厢
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- 图片分类（列表） -->
+
+<div id='pdv_17184' class='pdv_class'  title='' style='width:230px;height:188px;top:0px;left:0px; z-index:15'>
+<div id='spdv_17184' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:#8d8b6a url(images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(images/bg.gif) right repeat-y;">
+<div style="height:32px;border:0px;padding:0;margin:0;background:url(images/title_nav.gif) no-repeat">
+	<div style="float:right;width:5px;height:32px;text-align:right;background:url(images/title_nav.gif) -885px 0px no-repeat">
+	</div>
+</div>
+<div style="margin:0px;padding:0px;">
+
+<link href="photo/templates/css/photoclass_dolphin.css" rel="stylesheet" type="text/css" />
+<ul class="photoclass_dolphin">
+
+
+<li class="photoclass_dolphin">
+<a href="photo/class/-1.html"  target="_self" class="photoclass_dolphin">茶楼环境</a>
+</li>
+
+
+<li class="photoclass_dolphin">
+<a href="photo/class/-3.html"   target="_self" class="photoclass_dolphin">名茶品鉴</a>
+</li>
+
+
+<li class="photoclass_dolphin">
+<a href="photo/class/-4.html"  target="_self" class="photoclass_dolphin">精美茶点</a>
+</li>
+
+
+<li class="photoclass_dolphin">
+<a href="photo/class/-5.html"  target="_self" class="photoclass_dolphin">活动影集</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-8px;height:8px;line-height:8px;background:url(images/title_nav.gif) 0px -223px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-8px;line-height:8px;width:12px;height:8px;background:url(images/title_nav.gif) -888px -223px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+</div>
+
+{/literal}
+
+
+{include file="inc/buttom.html"}

@@ -1,0 +1,75 @@
+
+<!-- 文章搜索表单 -->
+
+<div id='pdv_17077' class='pdv_class'  title='新闻搜索' style='width:230px;height:151px;top:233px;left:0px; z-index:13'>
+<div id='spdv_17077' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:#8d8b6a url(images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(images/bg.gif) right repeat-y;">
+<div style="height:32px;border:0px;padding:0;margin:0;background:url(images/title_news_ss.gif) no-repeat">
+	<div style="float:right;width:5px;height:32px;text-align:right;background:url(images/title_news_ss.gif) -885px 0px no-repeat">
+	</div>
+</div>
+<div style="margin:0px;padding:0px;">
+<link href="news/templates/css/news_search_dolphin.css"  rel="stylesheet" type="text/css" />
+<SCRIPT language="javascript" src="news/js/selectbox.js" ></SCRIPT>
+<div class="newssearchformzone">
+<form id="newssearchform" method="get" action="news.php">
+  <div class="newssearchform">
+    <select name="catid" id="catid" class="box" style="display:none; background:#ffffff; width:140px; height:19px;">
+      <option value="" >请选择分类</option>
+	 {section name=list loop=$newsType}
+	  <option value='{$newsType[list].id}'>{$newsType[list].type_name}</option>
+	  {/section}
+    </select>
+	<script>
+	makeSelectBox('catid','');
+	</script>
+  </div>
+
+    <div class="newssearchform">
+    <input name="key" type="text" id="newssearchform_key" value="" style="width:138px;" class="inputtext">
+  </div>
+  <div class="newssearchform2">
+  <input name="imageField" id="button" type="image" src="news/templates/images/search5.gif">
+  </div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-8px;height:8px;line-height:8px;background:url(images/title_news_ss.gif) 0px -223px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-8px;line-height:8px;width:12px;height:8px;background:url(images/title_news_ss.gif) -888px -223px no-repeat">&nbsp;</div>
+
+</div>
+</div>
+
+<!-- 文章一级分类 -->
+
+<div id='pdv_17076' class='pdv_class'  title='' style='width:230px;height:221px;top:0px;left:0px; z-index:14'>
+<div id='spdv_17076' class='pdv_content' style='overflow:visible;width:100%;'>
+<div class="pdv_border" style="border:0px;height:100%;padding:0;margin:0;background:#8d8b6a url(images/bg.gif) repeat-y;">
+<div style="height:100%;background:url(images/bg.gif) right repeat-y;">
+<div style="height:32px;border:0px;padding:0;margin:0;background:url(images/title_nav.gif) no-repeat">
+	<div style="float:right;width:5px;height:32px;text-align:right;background:url(images/title_nav.gif) -885px 0px no-repeat">
+	</div>
+</div>
+<div style="margin:0px;padding:0px;">
+
+<link href="news/templates/css/newsclass_dolphin.css"  rel="stylesheet" type="text/css" />
+<div class="newsclass_dolphin">
+
+ {section name=list loop=$newsType}
+ <a href="news.php?typeid={$newsType[list].id}" target="_self" class="newsclass_dolphin">{$newsType[list].type_name}</a>
+ {/section}
+
+</div>
+
+</div>
+</div>
+</div>
+<div style="margin-top:-8px;height:8px;line-height:8px;background:url(images/title_nav.gif) 0px -223px no-repeat">&nbsp;</div>
+<div style="float:right;margin-top:-8px;line-height:8px;width:12px;height:8px;background:url(images/title_nav.gif) -888px -223px no-repeat">&nbsp;</div>
+
+</div>
+</div>

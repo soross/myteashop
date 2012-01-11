@@ -1,5 +1,6 @@
 <?php
 require_once ("../action/mysql.class.php");
+ini_set('session.use_trans_sid', '1');
 if(!isset($_SESSION)){
 	session_start();
 }
@@ -15,11 +16,12 @@ if (isset ($_POST[randomCode]) && strtoupper($_POST["randomCode"]) == strtoupper
 			$_SESSION['WEB_USER_LOGIN_SESSION'] = md5($row[mb_name] . $row[password] . "TKBK");
 			$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = mktime();
 
+			/*
 			setcookie('WEB_USER_LOGIN_UID_COOKIE',$row[id],(time()+ (20*60)),'/');//s
 			setcookie('WEB_USER_LOGIN_UID_TYPE_COOKIE',$row[mb_type],(time()+ (20*60)),'/');
 			setcookie('WEB_USER_LOGIN_COOKIE',md5($row[mb_name] . $row[password] . "TKBK"),(time()+ (20*60)),'/');
 			setcookie('WEB_USER_LOGIN_ONTIME_COOKIE',mktime(),(time()+ (20*60)),'/') ;
-
+			*/
 			header("location: ../index.php"."?".SID);
 
 /**

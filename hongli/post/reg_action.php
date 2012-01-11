@@ -1,5 +1,6 @@
 <?php
 require_once ("../action/mysql.class.php");
+ini_set('session.use_trans_sid', '1');
 if(!isset($_SESSION)){
 	session_start();
 }
@@ -60,12 +61,13 @@ if($_POST[agreement]==1){
 							$_SESSION['WEB_USER_LOGIN_SESSION'] = md5($_POST[username] .md5($_POST[password]) . "TKBK");
 							$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = mktime();
 
-
+							/**
 							setcookie('WEB_USER_LOGIN_UID_COOKIE',$id,(time()+ (20*60)),'/');//s
 							setcookie('WEB_USER_LOGIN_UID_TYPE_COOKIE',$_POST[mb_type],(time()+ (20*60)),'/');
 							setcookie('WEB_USER_LOGIN_COOKIE',md5($_POST[username] .md5($_POST[password]) . "TKBK"),(time()+ (20*60)),'/');
 							setcookie('WEB_USER_LOGIN_ONTIME_COOKIE',mktime(),(time()+ (20*60)),'/') ;
 							//header("location: ../index.php");
+							 **/
 							echo "<script>alert('注册成功,将进入会员中心!');location.href='../index.php?".SID."';</script>";
 							//header("location: ../index.php"."?".);
 						}catch (Exception $e){

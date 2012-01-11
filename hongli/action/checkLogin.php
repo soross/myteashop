@@ -1,9 +1,11 @@
 <?php
-session_id(SID);
+ini_set('display_errors', 'Off');
+ini_set('session.use_trans_sid', '1');
+//session_id($_GET[s]);
 if(!isset($_SESSION)){
 	session_start();
 }
-ini_set('display_errors', 'Off');
+
 
 if (!isset ($_SESSION['WEB_USER_LOGIN_UID_SESSION']) || !isset($_SESSION['WEB_USER_LOGIN_UID_TYPE']) ||
     !isset ($_SESSION['WEB_USER_LOGIN_SESSION']) || !isset ($_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'])) {

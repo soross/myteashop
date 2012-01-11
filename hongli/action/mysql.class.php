@@ -550,8 +550,8 @@ class mysql {
 	}
 
 }
-//$db=new mysql("localhost", "root", "root", "lianmeng", ALL_PS, "GBK");
-$db=new mysql("lxt765.w82.dns87.com", "lxt765", "lxt7650", "lxt765", ALL_PS, "GBK");
+$db=new mysql("localhost", "root", "root", "lianmeng", ALL_PS, "GBK");
+//$db=new mysql("lxt765.w82.dns87.com", "lxt765", "lxt7650", "lxt765", ALL_PS, "GBK");
 
 //判断是否继续跑数据
 $remarkQuery = $db->query("select * from lm_remark where name='IsRunData'");

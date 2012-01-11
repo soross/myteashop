@@ -5,7 +5,7 @@ $smarty->assign("leftmenu",$leftMenu);
 
 
 $guide_left  = getInfo("comm_code where type_name='Guide_Left'",$db);
-$smarty->assign("GuideInfoLeft",$guide_left[type_value]);
+$smarty->assign("GuideInfoLeft",html_entity_decode($guide_left[type_value]));
 
 
 $flashPic = getRows("comm_code where type_name='TopFlashImage'",$db);

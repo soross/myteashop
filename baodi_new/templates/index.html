@@ -1,0 +1,119 @@
+{include file="inc/top.html"}
+{literal}
+<style type="text/css">
+    <!--
+    *{font-family:Arial, Helvetica, sans-serif;}
+	body,html{text-align:center;background:#DAC893 url(images/back.jpg) top left repeat-x;margin:0;padding:0;font-size:12px;color:#221F1F;}
+	a{text-decoration:none;}
+    #header{height:150px;}
+	#logo{top:8px;left:50px;width:480px;height:80px;background:url(images/logoLarge-en.png);}
+	#selectText{/*right:15px;text-align:center;top:46px;*/top:45px;}
+	#languageSelect{top:40px;}
+	#languageList{position:absolute;top:61px;right:15px;width:152px;display:none;}
+	#joinSocialMedia{position:absolute;float:right;top:70px;right:15px;width:250px;text-align:right;}
+	#joinSocialMedia a {padding: 0 0 0 10px;height: 20px; width:20px;}
+	#joinSocialMedia img {height: 20px; width:20px;}
+	#mainNav{top:95px;}
+	#searchField{top:115px;}
+	#go{top:115px;}
+	#homeMainImage{height:14px;width:900px;background:url(images/homeMainImage.png);}
+	#homeSwf{padding:10px 0 10px 0;background:#F8F9EB}
+	#content{border-top:none;border-bottom:20px solid #F8F9EB;width:100%;overflow:auto;background:#F8F9EB}
+	.columns280310310{background:url(images/columns280310310.gif) top left repeat-y !important;}
+	.column280{width:260px;padding:0 10px 0 10px;}
+	.column310{width:290px;padding:0 10px;overflow:hidden;}
+	#leftColumn h1{margin:0;padding:0;width:240px;height:25px;}
+	#leftColumn h1 span{display:none;}
+	.homeItem{margin:10px 0;}
+	.homeItem span,.homeItem a{color:#221F1F;}
+	.homeItem span{font-weight:bold;float:left;}
+	.homeItem a{width:180px;margin:0 0 0 80px;display:block;}
+	.homeItem a:hover{color:#B2B2B2;}
+	#subTop{position:absolute;top:145px;left:0;height:4px;width:700px;background:#781d7e;overflow:hidden;z-index:999;}
+	body {
+		background-color: #dbe055;
+	}
+    -->
+</style>
+{/literal}
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+
+	<!--content-->
+	<div id="content" class="columns280310310">
+		<div id="leftColumn" class="column column280">
+			<h1 style="background:url(images/newsAndEvents.gif) top left no-repeat;">
+			{if $clang=='English'}
+				<span>News & Events</span><img src="images/nw.jpg" width="240" height="30" />
+			{else}
+				<span>News & Events</span><img src="images/NEWS.jpg" width="240" height="30" />
+			{/if}
+			</h1>
+			{section name=list loop=$newRows}
+			<div class='homeItem'>
+				<span>{$newRows[list].create_date|truncate:10:""}</span>
+				<a href='newsinfo.php?newsid={$newRows[list].id}' title="{$newRows[list].title}">{$newRows[list].title|truncate:28:""}</a>
+			</div>
+			{/section}
+			{if $clang=='English'}
+			<div class="horizontalDotRepeat" style="width:240px;height:30px;">
+				<img src="images/zl.jpg" width="240" height="30" />
+			</div>
+			{else}
+			<div class="horizontalDotRepeat" style="width:240px;height:30px;">
+				<img src="images/baodzhuanglan.jpg" width="240" height="30" />
+			</div>
+			{/if}
+			{section name=list loop=$blRows}
+			<div class='homeItem'>
+				<span>{$blRows[list].create_date|truncate:10:""}</span>
+				<a href='newsinfo.php?newsid={$blRows[list].id}' title="{$blRows[list].title}">{$blRows[list].title|truncate:28:""}</a>
+			</div>
+			{/section}
+		</div>
+		<!--leftColumn-->
+
+		<div id="featureLeft">
+			{assign var=tmp value=0}
+			{section name=adlist loop=$adRows}
+			<a target='_self' href='{$adRows[adlist].type_content}'>
+				<img src='{$adRows[adlist].type_code}' alt='{$adRows[adlist].remark}' style="width:290px;height:266px;"/>
+			</a>
+			{assign var=tmp value=$tmp+1}
+			{if $tmp==3}
+			</div>
+			<div id="featureRight">
+			{/if}
+			{/section}
+		<!--
+			<a target='_self' href='/en_US/products/catalogs.html?ic=holidayCatalog'>
+				<img src='images/Q4_banner_holiday.jpg' alt='Feature'/>
+			</a>
+			<a target='_self' href='/en_US/news/2012glc/index.html?ic=GLCDoublePointsUS'>
+				<img src='images/GLC_banner_doublepts_english.jpg' alt='Feature'/>
+			</a>
+		</div>
+		<div id="featureRight">
+			<a target='_self' href='#'>
+				<img src='images/InnerDefense-ThievesHandSanitizer-PV.jpg' alt='Feature'/>
+			</a>
+			<a target='_self' href='#'>
+				<img src='images/Immupower-10percent.jpg' alt='Feature'/>
+			</a>-->
+		</div>
+	</div>
+	<!--content end-->
+	{literal}
+	<script language="javascript">
+		var interval = 7;
+		interval = interval * 1000;
+		//$("#featureLeft").hide();
+		//$("#featureRight").hide();
+		$("#featureLeft").cycle({fx: 'fade', speed: 300, timeout: interval});
+		$("#featureRight").cycle({fx: 'fade', speed: 300, timeout: interval});
+	</script>
+	{/literal}
+
+
+ 	{include file="inc/buttom.html"}
+

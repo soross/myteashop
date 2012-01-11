@@ -1,0 +1,72 @@
+{include file="inc/top.html"}
+
+
+<!-- w位置
+<div id="bcwrapper">
+	<div id="breadcrumbs">
+		<a href="/">首页</a> >
+		<a href="#">产品中心</a> >
+		<a href="#">Essential Nutrition</a> >
+		<strong>Antioxidants</strong>
+	</div>
+
+	<div id="addthis">
+	</div>
+	<div class=clear></div>
+</div>
+ -->
+<link rel="stylesheet" type="text/css" href="css/dl.css">
+<script type="text/javascript" src="js/dlzxly.js"></script>
+<div id="content" class="columns180720">
+	<div id="leftColumn" class="column column180">
+		<a id="sectionHeader" href="product.php" style="background:url({if $clang=='English'}images/title/agent_en.gif{else}images/title/agent_cn.gif{/if});"><span>Products</span></a>
+		<ul id="subNav">
+			<li><a href="agent.php">{$lang_company.JiaMengDaiLi}</a></li>
+		</ul>
+	</div>
+
+
+	<div id="editor" class="column column520">
+
+		<!--文章内容Start-->
+		<div id="galleryList" class="showinfo">
+			<!--返回顶部-->
+			<a name="top" id="top"></a>
+		    <div id="maintext" class="maintext">
+		    	<div style="background:#ececec;"><h1 style="padding:5px 0 5px 5px;">{$lang_company.JiaMengDaiLi}</h1></div>
+
+		    	{$content|stripslashes}
+
+				<p>&nbsp;</p></div>
+			    <!--文章toolbar-->
+			    <div class="toolbar">
+			    </div>
+			    {if $clang!='English'}
+			     <div>
+			    	<div id="offerdetail_bord">
+						<h5><font color="#49A810" >我想代理、加盟此品牌 (发送在线留言)</font></h5>
+						<div class="henry-content-bg" style="padding:5px 0px;">
+							<a name="sendly" rel="nofollow"></a><font color="#49A810" >对宝迪产品感兴趣，发送在线留言</font>(<font color="#FF0000">*</font>必填)
+							<form method="POST" action="adddlly.php" onsubmit="return ongqinfo();"  name="gqinfo">
+								<div id="strdl"></div>
+							</form>
+						</div>
+					</div>
+					<div id=space5></div>
+					<br>
+					<div style="padding:2px;font-size:12px"></div>
+					<SCRIPT src="js/dlsend.js"></SCRIPT>
+			    </div>
+			    {/if}
+			    <!--上下篇文章-->
+			    <div class="context"></div>
+		</div>
+		<!--文章内容End-->
+
+	</div>
+	<!-- end #content -->
+</div>
+
+
+
+{include file="inc/buttom.html"}

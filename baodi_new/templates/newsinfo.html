@@ -1,0 +1,56 @@
+{include file="inc/top.html"}
+	<div id="content" class="columns180520200">
+		<div id="leftColumn" class="column column180">
+		<a id='sectionHeader' href='news.php' style='background:url({if $clang=='English'}images/title/news_en.gif{else}images/title/news_cn.gif{/if});'><span>新闻中心</span></a>
+		<ul id="subNav">
+			{section name=titleList loop=$titleRows}
+			<li><a href="news.php?typeid={$titleRows[titleList].id}">{$titleRows[titleList].menu_name}</a></li>
+			{/section}
+		</ul>
+
+		<div id="testimonial"></div>
+
+		</div>
+		<div id="editor" class="column column520">
+
+		<!--文章内容Start-->
+		<div id="galleryList" class="showinfo">
+			<!--返回顶部-->
+			<a name="top" id="top"></a>
+		    <div id="maintext" class="maintext">
+		    	<div style="background:#ececec;"><h1 style="padding:5px 0 5px 5px;">{$newsinfo.title}</h1></div>
+		    	{$newsinfo.content|stripslashes}
+				<p>&nbsp;</p></div>
+			    <!--文章toolbar-->
+			    <div class="toolbar">
+			    【 <a href="#top">返回顶部</a> 】
+			    <!--
+			    【 <a href="javascript:copyText(document.all.maintext)">复制</a> 】
+			    【 <a href="javascript:window.print();">打印</a> 】 -->
+			    【 <a href="javascript:window.close();">关闭</a> 】
+		    </div>
+		    <!--上下篇文章-->
+		    <div class="context"></div>
+		</div>
+		<!--文章内容End-->
+
+		</div>
+		<!-- end #content -->
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+{include file="inc/buttom.html"}

@@ -1,0 +1,62 @@
+{include file="inc/top.html"}
+	<div id="content" class="columns180520200">
+		<div id="leftColumn" class="column column180">
+		<a id='sectionHeader' href='#' style='background:url({if $clang=='English'}images/title/baodiedu_en.gif{else}images/title/baodiedu_cn.gif{/if});'><span>宝迪学院</span></a>
+		<ul id="subNav">
+			{section name=list loop=$titleRows}
+				{if $titleRows[list].pid==0}
+				<li><a href="{$titleRows[list].link_url}">&dagger;{$titleRows[list].menu_name}</a></li>
+					{section name=lt loop=$titleRows}
+						{if $titleRows[list].id==$titleRows[lt].pid}
+							<li id="li{$titleRows[list].id}" name="li{$titleRows[list].id}" style="display:none;padding-left:30px;"><a href="{$titleRows[lt].link_url}&show={$titleRows[list].id}" >&raquo;{$titleRows[lt].menu_name}</a></li>
+						{/if}
+					{/section}
+				{/if}
+			{/section}
+		</ul>
+		<div id="testimonial"></div>
+		{$script}
+		</div>
+		<div id="editor" class="column column520">
+
+		<!--文章内容Start-->
+		<div id="galleryList" class="showinfo">
+			<!--返回顶部-->
+			<a name="top" id="top"></a>
+		    <div id="maintext" class="maintext">
+		    	<div style="background:#ececec;"><h1 style="padding:5px 0 5px 5px;">{$eduInfo.menu_name}</h1></div>
+		    	{$eduInfo.content}
+				<p>&nbsp;</p></div>
+			    <!--文章toolbar-->
+			    <div class="toolbar">
+			    【 <a href="#top">返回顶部</a> 】
+			   			    <!--
+			    【 <a href="javascript:copyText(document.all.maintext)">复制</a> 】
+			    【 <a href="javascript:window.print();">打印</a> 】 -->
+			    【 <a href="javascript:window.close();">关闭</a> 】
+		    </div>
+		    <!--上下篇文章-->
+		    <div class="context"></div>
+		</div>
+		<!--文章内容End-->
+
+		</div>
+		<!-- end #content -->
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+{include file="inc/buttom.html"}

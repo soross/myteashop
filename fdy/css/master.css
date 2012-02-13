@@ -1,0 +1,61 @@
+img {
+	margin:0;
+	padding:0;
+	border:0;
+}
+/* 记得定义focus样式 */
+:focus {
+	outline:0;
+}
+
+*{ padding:0; margin:0;}
+
+/*主体框架样式*/
+#box{ width:100%; margin:0 auto;}
+#nyheader,#nycontainer,#nyfooter{ width:100%;}
+#nyheader_mainer{ width:960px; margin:0 auto;}
+/*nyheader*/
+#nyheader_mainer{padding-top:17px;}
+.nybanner{ width:960px; height:300px; float:left; display:inline;}
+.nybanner_mainer{ width:960px; height:300px; border:0px #cb9f41 solid; margin:5px auto; background:#fff;}
+
+
+.mt14{ margin-left:14px; }
+
+
+.hdp{width:960px; height:300px; overflow:hidden;position:relative;}
+
+.slider{position:absolute;}
+.slider li{ list-style:none;display:inline;}
+.slider img{ width:960px; height:300px; display:block;}
+
+.slider2{width:2000px;}
+.slider2 li{float:left;}
+
+.num{ position:absolute; right:5px; bottom:5px;}
+.num li{
+	float: left;
+	color: #fff;
+	text-align: center;
+	line-height: 16px;
+	width: 16px;
+	height: 16px;
+	font-family: Arial;
+	font-size: 12px;
+	cursor: pointer;
+	overflow: hidden;
+	margin: 3px 1px;
+	border: 1px solid #FF7300;
+	background-color: #855323;
+}
+.num li.on{
+	color: #fff;
+	line-height: 21px;
+	width: 21px;
+	height: 21px;
+	font-size: 16px;
+	margin: 0 1px;
+	border: 0;
+	background-color: #FF7300;
+	font-weight: bold;
+}

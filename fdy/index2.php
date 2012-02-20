@@ -29,6 +29,26 @@ lytebox_doAnimations=true;
 	$(window).load(function() {
 		$('#Efdbanner').nivoSlider();
 	});
+
+
+	var max=5;
+
+		function timer(){
+			clearTimeout(t);
+			t=setTimeout('clear()',100);
+		}
+		function clearTimer(){
+			clearTimeout(t);
+		}
+		function clear(){
+			clearTimer();
+			for(i=0;i<max;i++){
+				document.getElementById("sub_"+i).style.display="none";
+			}
+			document.getElementById('languageSelect').className="off";
+		}
+
+
 </script>
 
 <body id="homePage">
@@ -52,8 +72,8 @@ lytebox_doAnimations=true;
 		    <ul>
 		      <li id="hello">欢迎访问本网站!</li>
 		      <li id="navigation_home"><a href="/index.html">网站首页</a></li>
-		      <li id='navigation_193'><a href='/html/case.html' class='menulink'>案例</a>
-		      	<ul>
+		      <li id='navigation_193' onmouseover="timer()" onmouseout="clear(1)"><a href='/html/case.html' class='menulink' >案例</a>
+		      	<ul id='sub_1'>
 		      		<li id='module198'><a href='/html/case_web.html'>企业品牌网站建设</a></li>
 		      		<li id='module199'><a href='/html/case_design.html'>界面风格设计</a></li>
 		      		<li id='module200'><a href='/html/case_portal.html'>行业门户构建</a></li>
@@ -61,7 +81,7 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_196'><a href='/html/service.html' class='menulink'>服务</a>
-		      	<ul>
+		      	<ul id='sub_2'>
 		      		<li id='module238'><a href='/html/service_web.html'>企业品牌网站建设</a></li>
 		      		<li id='module261'><a href='/html/service_design.html'>界面风格设计</a></li>
 			      	<li id='module262'><a href='/html/service_portal.html'>行业门户构建</a></li>
@@ -70,7 +90,7 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_212'><a href='/html/about.html' class='menulink'>关于</a>
-		      	<ul>
+		      	<ul id='sub_3'>
 		      		<li id='module235'><a href='/html/about_info.html'>简介</a></li>
 		      		<li id='module236'><a href='/html/about_view.html'>观点</a></li>
 		      		<li id='module237'><a href='/html/about_advantage.html'>优势</a></li>
@@ -78,12 +98,12 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_197'><a href='/html/contact.html' class='menulink'>联络</a>
-		      	<ul>
+		      	<ul id='sub_4'>
 		      		<li id='module232'><a href='/html/faq.html'>常见问题</a></li>
 		      	</ul>
 		      </li>
 		      <li id='navigation_265'><a href='/html/wiki.html' class='menulink'>知识</a>
-		      	<ul>
+		      	<ul id='sub_5'>
 		      		<li id='module270'><a href='/html/main_270.html'>网站策划</a></li>
 		      		<li id='module272'><a href='/html/main_272.html'>网页设计</a></li>
 		      		<li id='module267'><a href='/html/main_267.html'>系统开发</a></li>

@@ -162,7 +162,7 @@
 	background:#1D506F;
 }
 #navigation ul li.over ul {
-	/*display:block;*/
+	display:block;
 }
 
 #navigation ul li ul li {

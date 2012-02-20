@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+* {
+	margin:0px;
+	padding:0px;
+	line-height:150%;
+	font-family:verdana, Arial, sans-serif, 宋体;
+	font-size: 12px;
+}
+body {
+	text-align: center;
+}
+#container {
+	background:url("../images/headBg.jpg") repeat-x center 0;
+}
+#innerContainer {
+
+}
+p,ul,ol {
+	margin-bottom:1em;
+	color: #6A6D72;
+}
+table {
+	border-collapse:collapse;
+	width:100%;
+}
+
+img {
+	border-width:0px;
+}
+textarea {
+	width:100%;
+}
+ul {
+	list-style-type:none;
+}
+a {
+	text-decoration:none;
+	color:#6A6D72;
+}
+
+
+table.map div {
+	background:#eeeeee;
+	margin:15px;
+	padding:5px;
+}
+
+
+
+
+.clearfloat {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+
+.required {
+	color:red;
+}
+.keyword {
+	color:red;
+}
+.emphasize {
+	color:red;
+}
+.times {
+	font-size:11px;
+	color:#6A6D72;
+	margin-right:5px;
+	text-align:right;
+}
+
+
+
+
+
+#toolBar {
+	clear:both;
+	height:20px;
+	margin-top:15px;
+	padding-top:10px;
+	text-align:right;
+}
+#toolBar ul {
+	text-align:right;
+}
+#toolBar ul li {
+	display:inline;
+	margin:0 5px;
+	height:25px;
+}
+#toolBar ul li a, #toolBar ul li button {
+	background:transparent;
+	border-width:0px;
+	display:inline-block;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	background:url("../images/btnBg.gif") no-repeat 0 -25px;
+	text-align:center;
+	cursor:hand;
+	text-decoration:none;
+}
+#toolBar ul li a:hover, #toolBar ul li.over button {
+	background-position:0 0;
+	color:#ffffff;
+}
+
+
+.pageBar {
+	clear:both;
+	height:20px;
+	padding:2px 5px;
+	margin-top:10px;
+}
+
+.btn_download {
+	margin-top:15px;
+}
+.btn_download a {
+	display:block;
+	text-decoration:none;
+	width:90px;
+	padding-left:40px;
+	height:48px;
+	line-height:48px;
+	font-weight:bold;
+	background:url("../images/btn_download.gif") no-repeat 0 0;
+}
+#searchResult {
+	margin:15px 10px 5px 10px;
+	padding-left:35px;
+	height:32px;
+	line-height:40px;
+	background:url("../images/icon_tips.gif") no-repeat 0 0;
+	border-bottom:solid 1px red;
+}
+
+#content .buttonBar {
+	text-align:right;
+	margin-top:15px;
+}
+#content .buttonBar button, #content .buttonBar a {
+	background:url("../images/btnBg.gif") no-repeat 0 0;
+	border-width:0px;
+	width:100px;
+	height:48px;
+	overflow:hidden;
+	margin-left:10px;
+	font-weight:bold;
+	color:#6A6D72;
+	text-align:center;
+}
+#content .buttonBar a {
+	display:block;
+	padding-top:13px;
+}

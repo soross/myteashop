@@ -1,0 +1,448 @@
+@charset "utf-8";
+
+
+#content  {
+	clear:both;
+	float:none;
+}
+
+
+
+#content ul {
+
+}
+#content ul li {
+	list-style-type:none;
+}
+#content ul li {
+	list-style-type:none;
+}
+
+
+
+#content .content {
+	margin-top:10px;
+}
+#content .content h1 {
+	background:url("../images/icon_arrow.gif") no-repeat 10px 8px #ECECEC;
+	padding:3px 0px 0px 20px;
+	margin:20px 0px 15px 0px;
+	font-weight:bold;
+}
+#content .title {
+	font-weight:bold;
+	font-size:18px;
+	color:#333333;
+	padding-top:10px;
+	background:url("../images/icon_tips.gif") no-repeat 0px 0px;
+	padding-left:30px;
+}
+#content .content hr {
+	height:0;
+	border-top:solid 1px red;
+}
+#content .content h2 {
+	background:url("../images/subTitleBg.jpg") no-repeat left bottom;
+	height:35px;
+	margin:10px 0;
+	font-weight:bold;
+	color: #6A6D72;
+}
+#content .content blockquote {
+	background:url("../images/pic_dot.gif") no-repeat right 0;
+}
+#content .content #buttonContact {
+	position:absolute;
+	left:-240px;
+	top:250px;
+}
+#content .content #buttonContact a {
+	display:block;
+	background:url("../images/btn_contactOnline.gif") no-repeat 0 0;
+	width:170px;
+	height:52px;
+	text-indent:-1000px;
+	overflow:hidden;
+}
+
+
+#content .content ol {
+	margin:10px 0px;
+}
+#content .content ol li {
+	margin:10px 0px;
+	padding-left:10px;
+	list-style-type:none;
+	background:url("../images/arrow_dot.gif") no-repeat 0px 6px;
+}
+
+
+
+/*
+信息列表类显示：textList_sum\picList_sum\picList_simple
+*/
+#textList_simple ul li {
+	clear:both;
+	padding:7px 0;
+	padding-left:20px;
+	border-bottom:solid 1px #cccccc;
+	background:url("../images/arrow_right.gif") no-repeat 3px 10px;
+}
+#textList_simple ul li.over {
+	background-color:#eeeeee;
+
+}
+
+#textList_simple ul li .module {
+	display:none;
+}
+#textList_simple ul li .times {
+	display:none;
+}
+
+
+
+
+
+
+#textList_sum ul li {
+	clear:both;
+	margin:10px 0;
+	border-bottom:solid 1px red;
+	background:url("../images/pic_dot.gif") no-repeat right 0;
+	height:130px;
+}
+#textList_sum ul li.over {
+
+}
+#textList_sum ul li a.listTitle  {
+	padding-left:20px;
+	font-weight:bold;
+	background:url("../images/icon_faq.gif") no-repeat 0 0;
+}
+#textList_sum ul li .module {
+	display:none;
+}
+#textList_sum ul li p.readme {
+
+	padding-top:10px;
+}
+#textList_sum ul li .times {
+	display:none;
+}
+#textList_sum ul li .detailBtn {
+	clear:both;
+}
+
+
+
+/*
+>>>> picList_sum >>>>
+*/
+
+#picList_sum {
+	clear:both;
+}
+#picList_sum ul li {
+	clear:both;
+	margin-bottom:10px;
+	height:90px;
+	overflow: hidden;
+	border-bottom:solid 1px #cccccc;
+}
+#picList_sum ul li .pic {
+	float:left;
+}
+#picList_sum ul li .pic a {
+	display:block;
+	background:none no-repeat 0 0;
+	width:200px;
+	height:160px;
+}
+
+#picList_sum ul li .pic img {
+
+}
+
+#picList_sum ul li .text {
+	float:right;
+	width:400px;
+}
+#picList_sum ul li .text .readme {
+	height:75px;
+	margin-top:10px;
+	margin-bottom:5px;
+	overflow:hidden;
+}
+#picList_sum ul li .text p {
+	margin:0;
+	margin-top:2px;
+}
+.detailBtn {
+	width:80px;
+	height:25px;
+	float:right;
+}
+.detailBtn a {
+	display:block;
+	background:url("../images/btnBg.gif") no-repeat 0 -25px;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	text-decoration:none;
+}
+.detailBtn a:hover {
+	background-position:0 0;
+	color:#ffffff;
+}
+
+
+
+/*
+>>>> picList_simple >>>>
+*/
+#picList_simple {
+	padding-left:30px;
+}
+#picList_simple ul li {
+	float:left;
+	width:210px;
+	height:200px;
+	overflow:hidden;
+	margin-right:20px;
+	margin-bottom:20px;
+}
+#picList_simple ul li .pic {
+	margin:0;
+	padding:5px;
+	text-align:center;
+	background:#333333;
+}
+#picList_simple ul li .pic a {
+	display:block;
+	width:200px;
+	height:120px;
+	background:none no-repeat 0 0;
+	filter:alpha(opacity=100);
+	-moz-opacity:1;
+}
+#picList_simple ul li .pic img {
+	width:200px;
+	height:120px;
+}
+#picList_simple ul li .text {
+	height:70px;
+	padding-left:10px;
+	padding-top:10px;
+	background:url("../images/case_infoBg.gif") repeat-x top;
+}
+
+#picList_simple ul li .text h4 a {
+	font-weight:normal;
+	color:white;
+
+}
+#picList_simple ul li .text * {
+	color:#B9B9B9;
+	margin:0;
+}
+
+
+
+
+
+/*
+>>>> picShow_thumbs	图片组显示 >>>>
+*/
+#picShow_thumbs {
+	height:110px;
+	margin-bottom:20px;
+}
+#picShow_thumbs ul li {
+	margin-right:10px;
+	float:left;
+}
+
+#picShow_thumbs ul li .pic {
+	margin:0;
+}
+#picShow_thumbs ul li .pic a {
+	display:block;
+	border:solid 1px #eeeeee;
+	width:145px;
+	height:110px;
+	overflow:hidden;
+	background:none no-repeat 0 0 white;
+}
+
+#picShow_thumbs ul li .pic img {
+	width:200px;
+	height:110px;
+}
+#picShow_thumbs ul li .text {
+	display:none;
+}
+
+
+#picShow_source ul li {
+	margin:10px;
+}
+#picShow_source ul li .pic {
+
+}
+#picShow_source ul li .text {
+	background:url("../images/arrow_2.gif") no-repeat 0 3px;
+	padding-left:15px;
+}
+
+
+
+
+#fileBar {
+	background:url("../images/fileBarBg.jpg") no-repeat 0 0;
+	padding:0 10px;
+	padding-top:50px;
+}
+
+#fileBar ul {
+	margin-left:38px;
+}
+
+#fileBar ul li {
+	margin-top:5px;
+}
+#fileBar ul li a {
+	text-decoration:underline;
+}
+#fileBar ul li a img {
+	position:relative;
+	top:3px;
+}
+
+
+table#edit {
+	border-right:solid 1px #032445;
+	border-bottom:solid 1px #032445;
+	margin-top:10px;
+	background:url("../images/titleBg.jpg") repeat-y 0 0 #081F31;
+}
+
+table#edit caption {
+	background:#032445;
+	border:solid 1px #032445;
+	border-bottom-width:0;
+	text-align:left;
+	font-weight:bold;
+	color:#ABD1E7;
+	padding:5px;
+}
+table#edit tr th {
+	padding:3px 5px;
+	border-top:solid 1px #032445;
+	border-left:solid 1px #032445;
+	font-weight:normal;
+	text-align:right;
+	color:#cccccc;
+}
+table#edit tr td {
+	padding:3px 5px;
+	border-top:solid 1px #032445;
+	color:#cccccc;
+}
+table#edit tr.over td {
+
+}
+
+table#edit tbody.options th, table#edit tbody.options td {
+	background:green;
+	color:white;
+}
+
+
+
+
+table#list {
+	border-collapse: collapse;
+	margin-top:20px;
+	width:95%;
+}
+table#list caption {
+	text-align:left;
+	background:url("../images/arrow_6.gif") no-repeat 5px 10px;
+	padding:5px;
+	padding-left:25px;
+	font-weight:bold;
+	border-bottom:solid 1px #333333;
+}
+
+table#list th, table#list td {
+	vertical-align:top;
+	padding:5px 5px 5px 0px;
+	border-bottom:solid 1px #cccccc;
+}
+table#list th {
+	width:25%;
+	text-align:right;
+	font-weight:normal;
+	color:black;
+}
+
+
+/*
+>>>> summary	提要式说明,目前应用在职位浏览页 >>>>
+*/
+.summary {
+	margin:15px 0;
+	padding:15px;
+	background:#032445;
+}
+.summary * {
+	color:#cccccc;
+}
+.summary h4 {
+	margin:10px 0 5px 0;
+	background:url("../images/arrow.gif") no-repeat 0 8px;
+	padding-left:10px;
+}
+.summary blockquote {
+	padding:5px;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+.summary blockquote {
+	padding:5px;
+	padding-left:10px;
+	border-bottom:solid 1px #05417C;
+	margin-bottom:10px;
+}
+.summary blockquote u {
+	text-decoration:none;
+}
+
+
+.linkToQQ {
+	display:block;
+	padding-left:20px;
+	background:url("../images/icon_qq.gif") no-repeat 0 0;
+	float:left;
+	margin-right:10px;
+}.linkToMSN {
+	display:block;
+	padding-left:20px;
+	background:url("../images/icon_msn.gif") no-repeat 0 0;
+	float:left;
+	margin-right:10px;
+}
+
+
+
+
+
+
+#mainPage.page264 #mainBody #picList_sum ul li {
+	height:120px;
+}
+#mainPage.page264 #mainBody #picList_sum ul li .text {
+	width:460px;
+}

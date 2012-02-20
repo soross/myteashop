@@ -16,14 +16,40 @@
 lytebox_doAnimations=true;
 </script>
 <link rel="stylesheet" href="css/lytebox.css" type="text/css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="css/master.css"/>
 
 </head>
 
-
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
 <script src="js/common.js" type="text/javascript"></script>
 <script src="js/mt.js" type="text/javascript"></script>
 <script src="js/lytebox.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/hdp.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$('#Efdbanner').nivoSlider();
+	});
+
+
+	var max=5;
+
+		function timer(){
+			clearTimeout(t);
+			t=setTimeout('clear()',100);
+		}
+		function clearTimer(){
+			clearTimeout(t);
+		}
+		function clear(){
+			clearTimer();
+			for(i=0;i<max;i++){
+				document.getElementById("sub_"+i).style.display="none";
+			}
+			document.getElementById('languageSelect').className="off";
+		}
+
+
+</script>
 
 <body id="homePage">
 
@@ -39,15 +65,15 @@ lytebox_doAnimations=true;
 		  </div>
 		  <div id="quickBar">
 		    <ul>
-		      <li id="quickBar_home" ><a href="/index.html">网站首页</a></li>
+		      <li id="quickBar_home"><a href="/index.html">网站首页</a></li>
 		    </ul>
 		  </div>
 		  <div id="navigation">
 		    <ul>
 		      <li id="hello">欢迎访问本网站!</li>
 		      <li id="navigation_home"><a href="/index.html">网站首页</a></li>
-		      <li id='navigation_193'><a href='/html/case.html' class='menulink'>案例</a>
-		      	<ul>
+		      <li id='navigation_193' onmouseover="timer()" onmouseout="clear(1)"><a href='/html/case.html' class='menulink' >案例</a>
+		      	<ul id='sub_1'>
 		      		<li id='module198'><a href='/html/case_web.html'>企业品牌网站建设</a></li>
 		      		<li id='module199'><a href='/html/case_design.html'>界面风格设计</a></li>
 		      		<li id='module200'><a href='/html/case_portal.html'>行业门户构建</a></li>
@@ -55,7 +81,7 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_196'><a href='/html/service.html' class='menulink'>服务</a>
-		      	<ul>
+		      	<ul id='sub_2'>
 		      		<li id='module238'><a href='/html/service_web.html'>企业品牌网站建设</a></li>
 		      		<li id='module261'><a href='/html/service_design.html'>界面风格设计</a></li>
 			      	<li id='module262'><a href='/html/service_portal.html'>行业门户构建</a></li>
@@ -64,7 +90,7 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_212'><a href='/html/about.html' class='menulink'>关于</a>
-		      	<ul>
+		      	<ul id='sub_3'>
 		      		<li id='module235'><a href='/html/about_info.html'>简介</a></li>
 		      		<li id='module236'><a href='/html/about_view.html'>观点</a></li>
 		      		<li id='module237'><a href='/html/about_advantage.html'>优势</a></li>
@@ -72,12 +98,12 @@ lytebox_doAnimations=true;
 		      	</ul>
 		      </li>
 		      <li id='navigation_197'><a href='/html/contact.html' class='menulink'>联络</a>
-		      	<ul>
+		      	<ul id='sub_4'>
 		      		<li id='module232'><a href='/html/faq.html'>常见问题</a></li>
 		      	</ul>
 		      </li>
 		      <li id='navigation_265'><a href='/html/wiki.html' class='menulink'>知识</a>
-		      	<ul>
+		      	<ul id='sub_5'>
 		      		<li id='module270'><a href='/html/main_270.html'>网站策划</a></li>
 		      		<li id='module272'><a href='/html/main_272.html'>网页设计</a></li>
 		      		<li id='module267'><a href='/html/main_267.html'>系统开发</a></li>
@@ -115,21 +141,25 @@ lytebox_doAnimations=true;
 
 
 	    <div id="body">
-			<div id='banner'>
-				<p>专业@专注——多年来，“视点网络(视点工作室)”全心致力于企业品牌网站建设、界面风格设计和WEB应用系统开发，用我们的专业技术和专注精神为众多客户提供了量身定做的解决方案。</p>
-				<p>技术@美术——我们不赞成设计公司轻视技术的态度和技术公司不重视美术的做法，在我们看来，鱼与熊掌是可以兼得的。</p>
-				<p>信任@合作——缺乏信任的合作，往往使项目陷入困境。获得您的信任是我们最大的追求，信任比合作更重要！</p>
+			<div id="banner">
+				<div class="nybanner">
+					<div class="nybanner_mainer">
+						<div class="hdp" id="idTransformView">
+							  <ul class="slider" id="idSlider">
+								<li><img src="images/siteConfig9_201052112622.jpg"/></li>
+								<li><img src="images/siteConfig9_2010221201512.jpg"/></li>
+								<li><img src="images/siteConfig9_2010221201658.jpg"/></li>
+							  </ul>
+							  <ul class="num" id="idNum">
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>
+							  </ul>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<script src="js/swfobject.js" type="text/javascript" ></script>
-			<script type="text/javascript">
-
-				var flashvars = {xml: escape("xml/bcastr.xml")};
-
-				var params = {bgcolor: "#010E1E", allowFullScreen: "true", wmode: "transparent"};
-				swfobject.embedSWF("images/bcastr4.swf", "banner","960", "300", "9.0.0",false, flashvars, params);
-			</script>
-			<!--end banner-->
 
 
 	      	<div id="indexBody">

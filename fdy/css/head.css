@@ -100,7 +100,7 @@
 	height:35px;
 	overflow:hidden;
 	text-indent:-200px;
-	background:url("../images/naviBtn.gif") no-repeat 0 0;
+	background:url("../images/naviBtn.png") no-repeat 0 0;
 }
 .en #navigation ul li a {
 	background-image:url("images/naviBtn_en.gif");
@@ -159,32 +159,41 @@
 	left:0;
 	top:39px;
 	padding-top:1px;
-	background:#1D506F;
+	background:#6f6e6e;
+	width:140px;
 }
 #navigation ul li.over ul {
 	display:block;
+	/**add**/
+	position:absolute;
+	top:35px;
+	left:0;
+	border:1px solid #252324;
+	border-top:none;
+	width:140px;
 }
 
 #navigation ul li ul li {
 	margin-left:0px;
-	height:23px;
-	background-color:#032445;
+	height:30px;
+	background-color:#6f6e6e;
 	margin-bottom:1px;
+	width:140px;
 }
 #navigation ul li ul li a {
-	height:23px;
-	line-height:23px;
+	height:30px;
+	line-height:30px;
 	text-indent:0;
 	text-align:center;
 	background:none;
-}
-.en #navigation ul li ul li a {
-	text-align:left;
-	background:none;
-	padding-left:5px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:'微软雅黑', Helvetica, sans-serif;
+	font-wight:bold;
+	font-size:14px;
+	color:#FFFFFF;
+	width:140px;
 }
 
 #navigation ul li ul li.over {
-	background:#1D506F;
+	background:#252324;
+	width:140px;
 }

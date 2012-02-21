@@ -15,7 +15,6 @@ lytebox_doAnimations=true;
 </script>
 <link rel="stylesheet" href="css/lytebox.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/master.css"/>
-
 </head>
 
 <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
@@ -27,26 +26,6 @@ lytebox_doAnimations=true;
 	$(window).load(function() {
 		$('#Efdbanner').nivoSlider();
 	});
-
-
-	var max=5;
-
-		function timer(){
-			clearTimeout(t);
-			t=setTimeout('clear()',100);
-		}
-		function clearTimer(){
-			clearTimeout(t);
-		}
-		function clear(){
-			clearTimer();
-			for(i=0;i<max;i++){
-				document.getElementById("sub_"+i).style.display="none";
-			}
-			document.getElementById('languageSelect').className="off";
-		}
-
-
 </script>
 
 <body id="homePage">
@@ -54,7 +33,7 @@ lytebox_doAnimations=true;
 <div id="container">
 	<div id="innerContainer">
 
-		<div id="head">
+		<div id="head"  style="z-index:9999">
 		  <div id="logo">
 		  	<!--
 		  	<a href="#"><img src='images/siteConfig9_2010217162228.gif'/></a>
@@ -66,94 +45,125 @@ lytebox_doAnimations=true;
 		      <li id="quickBar_home"><a href="/index.html">网站首页</a></li>
 		    </ul>
 		  </div>
-		  <div id="navigation">
-		    <ul>
+		  <div id="navigation" style="z-index:9900">
+			<ul>
+			{/literal}
 		      <li id="hello">欢迎访问本网站!</li>
-		      <li id="navigation_home"><a href="/index.html">网站首页</a></li>
-		      <li id='navigation_193' onmouseover="timer()" onmouseout="clear(1)">
-		      	<a href='/html/case.html' class='menulink' >案例</a>
-		      	<ul id='sub_1'>
-		      		<li id='module198'><a href='/html/case_web.html'>企业品牌网站建设</a></li>
-		      		<li id='module199'><a href='/html/case_design.html'>界面风格设计</a></li>
-		      		<li id='module200'><a href='/html/case_portal.html'>行业门户构建</a></li>
-		      		<li id='module263'><a href='/html/case_system.html'>WEB系统开发</a></li>
+		      {section name=list loop=$menulist}
+		      	  {assign var=params value=1}
+			      {if $menulist[list].pid=='-1'}
+				      <li id="navigation_{$menulist[list].remark}"><a href="{$menulist[list].url}">{$menulist[list].name}</a>
+
+					        {section name=lt loop=$menulist}
+				      			{if $menulist[lt].pid==$menulist[list].id}
+						      		{assign var=params value=0}
+					      		{/if}
+				      		{/section}
+
+							{if $params==0}
+					        <ul id='sub_{$menulist[list].id}' style="z-index:9900">
+					        {/if}
+					        {section name=lt loop=$menulist}
+				      			{if $menulist[lt].pid==$menulist[list].id}
+						      		<li><a href='{$menulist[lt].url}'>{$menulist[lt].name}</a></li>
+					      		{/if}
+				      		{/section}
+				      		{if $params==0}
+					      	</ul>
+					      	{/if}
+				      </li>
+			      {/if}
+		      {/section}
+		      {literal}
+		      <!--
+		      <li id="navigation_home"><a  class="hide" href="/index.html">解决方案</a>
+		        <ul id='sub_0' style="z-index:9900">
+		      		<li><a href='/html/case_web.html'>集成部署解决方案</a></li>
+		      		<li><a href='/html/case_design.html'>数据中心外包解决方案</a></li>
+		      		<li><a href='/html/case_portal.html'>网络安全解决方案</a></li>
+		      		<li><a href='/html/case_system.html'>IT运维管理咨询</a></li>
+		      		<li><a href='/html/case_system.html'>IT整合优化咨询</a></li>
+		      		<li><a href='/html/case_system.html'>系统高可用性架构咨询</a></li>
 		      	</ul>
 		      </li>
-		      <li id='navigation_196'><a href='/html/service.html' class='menulink'>服务</a>
+		      <li id='navigation_193'>
+		      	<a href='/html/case.html' class='menulink hide' >IT技术服务</a>
+		      	<ul id='sub_1' style="z-index:9900">
+		      		<li><a href='/html/case_web.html'>IT技术服务</a></li>
+		      		<li><a href='/html/case_design.html'>IT技术服务</a></li>
+		      		<li><a href='/html/case_portal.html'>IT技术服务</a></li>
+		      		<li><a href='/html/case_system.html'>IT技术服务</a></li>
+		      	</ul>
+		      </li>
+		      <li id='navigation_196'><a href='/html/service.html' class='menulink hide'>IT培训</a>
 		      	<ul id='sub_2'>
-		      		<li id='module238'><a href='/html/service_web.html'>企业品牌网站建设</a></li>
-		      		<li id='module261'><a href='/html/service_design.html'>界面风格设计</a></li>
-			      	<li id='module262'><a href='/html/service_portal.html'>行业门户构建</a></li>
-			      	<li id='module264'><a href='/html/service_system.html'>WEB系统开发</a></li>
-			      	<li id='module266'><a href='/html/service_flow.html'>服务流程</a></li>
+		      		<li><a href='/html/service_web.html'>企业品牌网站建设</a></li>
+		      		<li><a href='/html/service_design.html'>界面风格设计</a></li>
+			      	<li><a href='/html/service_portal.html'>行业门户构建</a></li>
+			      	<li><a href='/html/service_system.html'>WEB系统开发</a></li>
+			      	<li><a href='/html/service_flow.html'>服务流程</a></li>
 		      	</ul>
 		      </li>
-		      <li id='navigation_212'><a href='/html/about.html' class='menulink'>关于</a>
+		      <li id='navigation_212'><a href='/html/about.html' class='menulink hide'>产品与配件</a>
 		      	<ul id='sub_3'>
-		      		<li id='module235'><a href='/html/about_info.html'>简介</a></li>
-		      		<li id='module236'><a href='/html/about_view.html'>观点</a></li>
-		      		<li id='module237'><a href='/html/about_advantage.html'>优势</a></li>
-		      		<li id='module260'><a href='/html/about_cooperation.html'>加盟&合作</a></li>
+		      		<li><a href='/html/about_info.html'>简介</a></li>
+		      		<li><a href='/html/about_view.html'>观点</a></li>
+		      		<li><a href='/html/about_advantage.html'>优势</a></li>
+		      		<li><a href='/html/about_cooperation.html'>加盟&合作</a></li>
 		      	</ul>
 		      </li>
-		      <li id='navigation_197'><a href='/html/contact.html' class='menulink'>联络</a>
+		      <li id='navigation_197'><a href='/html/contact.html' class='menulink hide'>技术支持</a>
 		      	<ul id='sub_4'>
-		      		<li id='module232'><a href='/html/faq.html'>常见问题</a></li>
+		      		<li><a href='/html/faq.html'>常见问题</a></li>
 		      	</ul>
 		      </li>
-		      <li id='navigation_265'><a href='/html/wiki.html' class='menulink'>知识</a>
-		      	<ul id='sub_5'>
-		      		<li id='module270'><a href='/html/main_270.html'>网站策划</a></li>
-		      		<li id='module272'><a href='/html/main_272.html'>网页设计</a></li>
-		      		<li id='module267'><a href='/html/main_267.html'>系统开发</a></li>
-		      		<li id='module269'><a href='/html/main_269.html'>推广优化</a></li>
-		      		<li id='module271'><a href='/html/main_271.html'>其他分类</a></li>
-		      	</ul>
-		      </li>
+		      <li id='navigation_265'><a href='/html/wiki.html' class='menulink hide'>项目洽谈</a></li>
+		       -->
 		    </ul>
 		  </div>
 		</div>
-
-
-		<script type="text/javascript">
-			window.addEvent('domready', function(){
-				if ($("navigation_")) {
-					$("navigation_").className="navigationOverStyle";
-				}
-				if ($("menu_")) {
-					$("menu_").className="menuOverStyle";
-				}
-				if ($$("#menu #module").length>0) {
-					$$("#menu #module")[0].className="moduleOverStyle noOverStyle";
-				}
-			});
-			tagEventEffect(sfHover,"li", "navigation");
-		</script>
-
-	    <script type="text/javascript">
-			window.addEvent('domready', function(){
-				$("navigation_home").className="navigationOverStyle";
-			});
-		</script>
-
+			<script type="text/javascript">
+				window.addEvent('domready', function(){
+					if ($("navigation_")) {
+						$("navigation_").className="navigationOverStyle";
+					}
+				});
+				tagEventEffect(sfHover,"li", "navigation");
+			</script>
+	 		<script type="text/javascript">
+				window.addEvent('domready', function(){
+					$("navigation_home").className="navigationOverStyle";
+				});
+			</script>
 		<!---end head-->
 
 
-	    <div id="body">
+
+
+	    <div id="body"  style="z-index:200">
 			<div id="banner">
 				<div class="nybanner">
 					<div class="nybanner_mainer">
-						<div class="hdp" id="idTransformView">
+						<div class="hdp" id="idTransformView"  style="z-index:100">
 							  <ul class="slider" id="idSlider">
-   							    <li><img src="images/ad/201109281154581.jpg"/></li>
+							  {/literal}
+							  {section name=list loop=$adlist}
+   							    <li><img src="{$adlist[list].comm_code}"/></li>
+   							    {/section}
+   							    <!--
 								<li><img src="images/ad/201109281154452.jpg"/></li>
 								<li><img src="images/ad/201109281155123.jpg"/></li>
+								 -->
 							  </ul>
 							  <ul class="num" id="idNum">
-								<li>1</li>
+							  {section name=list loop=$adlist}
+								<li>{$adlist[list].comm_value}</li>
+								 {/section}
+								 <!--
 								<li>2</li>
-								<li>3</li>
+								<li>3</li> -->
 							  </ul>
+							  {literal}
 						</div>
 					</div>
 				</div>
@@ -167,25 +177,26 @@ lytebox_doAnimations=true;
 		            <li class="web">
 		              <dl>
 		                <dt><a href="/html/service.html">企业品牌网站</a></dt>
-		                <dd><a href="/html/service.html">创建美观与实用并重且与企业形象及文化相符的可用性网站，全面提升企业网络形象和产品竞争力一直是“视点”努力和发展的方向… </a></dd>
+		                <dd>
+		                <a href="/html/service.html"><h1 style='color:#ff7c00;font-size:14px;'>泛地缘简介</h1>创建美观与实用并重且与企业形象及文化相符的可用性网站，全面提升企业网络形象和产品竞争力一直是… </a></dd>
 		              </dl>
 		            </li>
 		            <li class="design">
 		              <dl>
 		                <dt><a href="/html/service_design.html">界面风格设计</a></dt>
-		                <dd><a href="/html/service_design.html">我们始终坚持可用性设计原则，协调界面风格的一致性，强调人性化设计理念，准确把握风格定位并设计出恰如其分的用户界面… </a></dd>
+		                <dd><a href="/html/service_design.html"><h1 style='color:#ff7c00;font-size:14px;'>泛地缘优势</h1>我们始终坚持可用性设计原则，协调界面风格的一致性，强调人性化设计理念，准确把… </a></dd>
 		              </dl>
 		            </li>
 		            <li class="portal">
 		              <dl>
 		                <dt><a href="/html/service_portal.html">信息门户构建</a></dt>
-		                <dd><a href="/html/service_portal.html">行业门户网站是一个汇聚大量该行业供需信息、行业信息与相关人士的互联平台。“油画网”等案例的成功，增强了我们继续在该服务领域前行的信心… </a></dd>
+		                <dd><a href="/html/service_portal.html"><h1 style='color:#ff7c00;font-size:14px;'>合作伙伴</h1>行业门户网站是一个汇聚大量该行业供需信息、行业信息与相关人士的互联平台。“油… </a></dd>
 		              </dl>
 		            </li>
 		            <li class="system">
 		              <dl>
 		                <dt><a href="/html/service_system.html">WEB系统开发</a></dt>
-		                <dd><a href="/html/service_system.html">我们拥有多年WEB系统开发经验，主要提供以数据库为基础的信息应用系统的设计、开发和后期技术支援服务，以及相应的系统集成服务… </a></dd>
+		                <dd><a href="/html/service_system.html"><h1 style='color:#ff7c00;font-size:14px;'>成功案例</h1>我们拥有多年WEB系统开发经验，主要提供以数据库为基础的信息应用系统的设计、开… </a></dd>
 		              </dl>
 		            </li>
 		          </ul>

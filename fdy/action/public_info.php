@@ -1,7 +1,7 @@
 <?php
 
 //²Ëµ¥
-$menulist = getList("menu order by seq", $db ," id,url,name");
+$menulist = getList("menu order by seq", $db ," id,url,name,pid,remark");
 $smarty->assign("menulist",$menulist);
 
 /**

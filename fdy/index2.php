@@ -3,11 +3,12 @@ include_once("action/smarty_inc.php");
 include_once("action/mysql.class.php");
 include_once("action/public_info.php");
 
-/**
-//产品类型
-$typelist = getList("product_type t where remark='1'",$db,"id,product_type_".$currlang." as product_type,pid");
-$smarty->assign("typelist",$typelist);
 
+//轮放
+$adList = getList("comm_code where comm_type='Index_AD' order by id",$db,"comm_type,comm_value,comm_code ");
+$smarty->assign("adlist",$adList);
+
+/**
 //新闻
 $newslist = getList("news where lang='".$currlang."' order by create_date limit 0,8",$db);
 $smarty->assign("newslist",$newslist);

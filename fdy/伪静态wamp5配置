@@ -1,0 +1,13 @@
+加载Rewrite模块：
+
+在conf目录下httpd.conf中找到
+LoadModule rewrite_module modules/mod_rewrite.so
+这句，去掉前边的注释符号“#”，或添加这句。
+
+# AllowOverride controls what directives may be placed in .htaccess files.
+# It can be “All”, “None”, or any combination of the keywords:
+# Options FileInfo AuthConfig Limit
+#
+AllowOverride All
+#
+#

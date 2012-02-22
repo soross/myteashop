@@ -50,11 +50,11 @@ width:960px;
 	background:url("../images/service_icon.jpg") no-repeat 0 30px;
 	height:120px;
 	text-indent:-1000px;
-	filter:gray(enabled=true);
+	filter:gray(enabled=false);
 	overflow:hidden;
 }
 #indexBody #service li dt a:hover  {
-	filter:gray(enabled=false);
+	filter:gray(enabled=true);
 }
 #indexBody #service li.design dt a {
 	background-position:-230px 30px;

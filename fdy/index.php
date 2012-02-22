@@ -9,7 +9,7 @@ $adList = getList("comm_code where comm_type='Index_AD' order by id",$db,"comm_t
 $smarty->assign("adlist",$adList);
 
 /**
-//新闻
+//
 $newslist = getList("news where lang='".$currlang."' order by create_date limit 0,8",$db);
 $smarty->assign("newslist",$newslist);
 
@@ -21,16 +21,20 @@ $smarty->assign("caselist",$caselist);
 //产品
 $prodlist = getList("product where lang='".$currlang."' order by create_date limit 0,6",$db);
 $smarty->assign("prodlist",$prodlist);
-
-//简介AboutUs
-$aboutusInfo = getObject("comm_code where type_name='AboutUsInfo'",$db,"type_value_".$currlang." as info");
-$smarty->assign("aboutUsInfo",html_entity_decode($aboutusInfo[info]));
-
-//联系我们ContactUs
-$contactusInfo = getObject("cp where remark='ContactUs'",$db,"cp_info_value_".$currlang." as info");
-$smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 **/
 
+
+//简介About
+$aboutusInfo = getObject("comm_code where comm_code='About'",$db,"comm_value");
+$smarty->assign("aboutInfo",html_entity_decode($aboutusInfo[comm_value]));
+
+//优势Superiority
+$superiorityInfo = getObject("comm_code where comm_code='Superiority'",$db,"comm_value");
+$smarty->assign("superiorityInfo",html_entity_decode($superiorityInfo[comm_value]));
+
+//合作伙伴Partner
+$parentInfo = getObject("comm_code where comm_code='Partner'",$db,"comm_value");
+$smarty->assign("parentInfo",html_entity_decode($superiorityInfo[comm_value]));
 
 $smarty->display("index.htm");
 ?>

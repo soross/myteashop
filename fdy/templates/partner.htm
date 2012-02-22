@@ -60,12 +60,23 @@ window.addEvent('domready', function(){
           <div class='content'>
 
           {section name=list loop=$partnerList}
-          <h2>{$partnerList[list].comm_type}</h2>
-<blockquote>
-{$partnerList[list].comm_value}
-</blockquote>
-<hr />
-{/section}
+     		<!--<h2>{$partnerList[list].comm_type}</h2>
+			<blockquote>
+			{$partnerList[list].comm_value}
+			</blockquote>
+			<hr /> -->
+
+				<div id="contactTag" class="Page_Text" style="margin-bottom:15px;">
+				<!--
+				<b style=" font-size:14px;">&nbsp;&nbsp;&nbsp;{$contactList[list].comm_type}</b>
+				-->
+				<div class="Content_DIV" style="margin-bottom:15px;">
+				{$partnerList[list].comm_value}
+				</div>
+			{/section}
+
+			</div>
+
  <!--
           <h2>良好的合作关系</h2>
 <blockquote>

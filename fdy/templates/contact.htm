@@ -56,12 +56,11 @@ window.addEvent('domready', function(){
         <div id="position"><a href='about.html'>关于泛地缘</a> &gt; 联系我们</div>
         <div id="title">合作伙伴</div>
         <div id="content">
-			<link href="css/contact.css" rel="stylesheet" type="text/css" />
 			{include file="inc/map.html"}
 			<div id="contactTag" class="Page_Text" style="margin-bottom:15px;">
 			{section name=list loop=$contactList}
 				<b style=" font-size:14px;">&nbsp;&nbsp;&nbsp;{$contactList[list].comm_type}</b>
-				<div class="Content" style="margin-bottom:15px;">
+				<div class="Content_DIV" style="margin-bottom:15px;">
 				{$contactList[list].comm_value}
 				</div>
 			{/section}

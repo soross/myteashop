@@ -49,7 +49,7 @@ window.addEvent('domready', function(){
 
 });
 </script>
-
+{/literal}
       </div>
       <div id="mainBody">
               <div class='clearfloat'></div>
@@ -58,8 +58,17 @@ window.addEvent('domready', function(){
         <div id="content">
 
           <div class='content'>
-		  <h3>平台、团队、管理、智慧</h3>
-          <hr />
+			<div id="contactTag" class="Page_Text" style="margin-bottom:15px;">
+			{section name=list loop=$superList}
+				<!-- <b style=" font-size:14px;">&nbsp;&nbsp;&nbsp;{$superList[list].comm_type}</b> -->
+				<h2>{$superList[list].comm_type}</h2>
+				<div class="Content_DIV" style="margin-bottom:15px;">
+				{$superList[list].comm_value}
+				</div>
+			{/section}
+
+
+<!--
           <h2>优秀的信息化管理平台</h2>
 <blockquote>
 <p>先进的工作流系统</p>
@@ -83,6 +92,7 @@ window.addEvent('domready', function(){
 <blockquote>
 <p>为了融合多方面的优势资源，发挥高端人才的价值，泛地缘科技成立了泛地缘智库。泛地缘智库成员均为各个领域的专家、精英、顶尖人才。泛地缘智库的团队智慧为泛地缘服务提供了强有力的专业技术保障和高含金量的运营、管理及发展建议。 泛地缘智库目前已经引入了30多名行业专家，其中12名泛地缘工程师经过严格审核后，加入了泛地缘智库。泛地缘智库成员为泛地缘客户提供必要的免费咨询，以让泛地缘服务可以更多的了解客户在工作中遇到的问题和困惑，通过简洁的咨询为客户问题的解决提供有效帮助。泛地缘智库不断引入高端人才，力求创造一个良好的生态环境，为智库成员在技术、管理、经营等领域提供一个良好的交流圈和成长平台。</p>
 </blockquote>
+ -->
 </div><div class='content'></div>
         </div>
       </div>
@@ -90,7 +100,7 @@ window.addEvent('domready', function(){
     </div>
     <br class="clearfloat" />
 
-{/literal}
+
 	{include file="inc/buttom.html"}
 
 

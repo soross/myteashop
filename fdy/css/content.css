@@ -39,7 +39,7 @@
 }
 #content .content hr {
 	height:0;
-	border-top:solid 1px red;
+	border-top:solid 1px #ff7c00;
 }
 #content .content h2 {
 	background:url("../images/subTitleBg.jpg") no-repeat left bottom;

@@ -36,5 +36,9 @@ $smarty->assign("superiorityInfo",html_entity_decode($superiorityInfo[comm_value
 $parentInfo = getObject("comm_code where comm_code='Partner'",$db,"comm_value");
 $smarty->assign("parentInfo",html_entity_decode($superiorityInfo[comm_value]));
 
+//³É¹¦°¸Àý
+$caseList = getList("`case` order by create_date desc limit 0,3",$db,"id,case_name");
+$smarty->assign('caseList',$caseList);
+
 $smarty->display("index.htm");
 ?>

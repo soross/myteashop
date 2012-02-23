@@ -1,6 +1,6 @@
 
 	{include file="inc/top.html"}
-{literal}
+x
 <div id='body'>
 
 <div id='banner'><div id='picShow_source'><ul><li><p class='pic'><img src='images/content/typeSet393_2012223211851.jpg'/></p><p class='text'>重视用户体验的可用性设计原则，高效的项目流程管理和质量控制体系，以及对工作持续的爱好与专注，一直在帮助我们成就更多成功案例...</p></li></ul></div></div>
@@ -16,21 +16,29 @@
         	<div class="Access_Item">
             	<div class="Access_Title">邮件接入</div>
                 <ul class="Mail">
-                	<li><img src="images/List_Icon02.gif"><a href="mailto:huaxin@huaxinservice.com">售前咨询</a></li>
+                	{section name=list loop=$mail}
+                	<li><img src="{$mail[list].comm_value}"><a href="mailto:{$mail[list].comm_code}">{$mail[list].remark}</a></li>
+                	{/section}
+                	<!--
                     <li><img src="images/List_Icon02.gif"><a href="mailto:huaxin@huaxinservice.com">售后服务</a></li>
                     <li><img src="images/List_Icon02.gif"><a href="mailto:huaxin@huaxinservice.com">客户投诉</a></li>
+                     -->
                 </ul>
             </div>
             <div class="Access_Item">
             	<div class="Access_Title">网站留言板</div>
-                <a target="_blank" href="/msg/" class="Massage"></a>
+                <a target="_blank" href="msg.html" class="Massage"></a>
             </div>
             <div class="Access_Item" style="margin:0">
             	<div class="Access_Title">在线客服</div>
                 <ul class="Online">
-                	<li ><img src="images/List_Icon03.gif"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=67801239&site=qq&menu=yes">QQ在线客服</a></li>
+                	{section name=list loop=$im}
+                	<li ><img src="{$im[list].comm_value}"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$im[list].comm_code}&site=qq&menu=yes">{$im[list].remark}</a></li>
+                	{/section}
+                	<!--
                     <li ><img src="images/List_Icon03.gif"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=67801239&site=qq&menu=yes">QQ在线客服</a></li>
                     <li><img src="images/List_Icon04.gif"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=67801239&site=qq&menu=yes">Msn在线客服</a></li>
+                     -->
                 </ul>
             </div>
         <!--接入　结束-->
@@ -57,8 +65,8 @@
     	<div class="New" style="text-align: left;">
         	<div class="Page_Title"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">技术文档</span></div>
             <ul>
-            	<li>aaa</li>
-            	<li>aaa</li>
+            	<li><a target="_blank" href="#">aaa</a></li>
+            	<li><a target="_blank" href="#">aaa</a></li>
             </ul>
         </div>
 
@@ -68,7 +76,6 @@
 <!--内容 结束-->
 
     <br class="clearfloat" />
-{/literal}
 	{include file="inc/buttom.html"}
 
 

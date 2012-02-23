@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-02-23 18:02:14
+Date: 2012-02-23 22:50:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,6 +102,25 @@ INSERT INTO `comm_code` VALUES ('36', 'SupportIM', 'images/List_Icon03.gif', '67
 INSERT INTO `comm_code` VALUES ('37', 'SupportIM', 'images/List_Icon04.gif', '67801239', 'Msn在线客服', null);
 
 -- ----------------------------
+-- Table structure for `file`
+-- ----------------------------
+DROP TABLE IF EXISTS `file`;
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL auto_increment,
+  `filename` varchar(255) default NULL,
+  `filepath` varchar(255) default NULL,
+  `filetype` varchar(255) default NULL COMMENT 'CASE PRODUCT',
+  `fid` int(11) default NULL,
+  `create_date` datetime default NULL,
+  `remark` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of file
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `menu`
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
@@ -112,34 +131,58 @@ CREATE TABLE `menu` (
   `url` varchar(100) character set gbk default NULL,
   `seq` int(11) default NULL,
   `remark` varchar(255) character set gbk default NULL,
+  `picture` varchar(100) character set gbk default NULL,
+  `desc` longtext character set gbk,
+  `desc2` longtext character set gbk,
+  `type` enum('SP','PROD') character set gbk default 'PROD',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '解决方案', '-1', 'solution.php', '1', 'home');
-INSERT INTO `menu` VALUES ('2', '集成部署解决方案', '1', null, '2', '');
-INSERT INTO `menu` VALUES ('3', '数据中心外包解决方案', '1', null, '3', '');
-INSERT INTO `menu` VALUES ('4', '网络安全解决方案', '1', null, '4', null);
-INSERT INTO `menu` VALUES ('5', 'IT运维管理咨询', '1', null, '5', null);
-INSERT INTO `menu` VALUES ('6', 'IT整合优化咨询', '1', null, '6', null);
-INSERT INTO `menu` VALUES ('7', '系统高可用性架构咨询', '1', null, '7', null);
-INSERT INTO `menu` VALUES ('8', 'IT技术服务', '-1', 'itservice.php', '8', '193');
-INSERT INTO `menu` VALUES ('9', '维保服务', '8', null, '10', null);
-INSERT INTO `menu` VALUES ('10', '数据中心迁移服务', '8', null, '11', null);
-INSERT INTO `menu` VALUES ('11', 'IT系统运维服务', '8', null, '12', null);
-INSERT INTO `menu` VALUES ('12', '系统安全加固服务', '8', null, '13', null);
-INSERT INTO `menu` VALUES ('13', 'Case-by-case技术服务', '8', null, '14', null);
-INSERT INTO `menu` VALUES ('14', 'IT培训', '-1', 'training.php', '15', '196');
-INSERT INTO `menu` VALUES ('15', '网络及网络安全培训', '14', null, '16', null);
-INSERT INTO `menu` VALUES ('16', '小型机与存储技术培训', '14', null, '17', null);
-INSERT INTO `menu` VALUES ('17', '数据库培训', '14', null, '18', null);
-INSERT INTO `menu` VALUES ('18', '产品与备件', '-1', 'product.php', '22', '212');
-INSERT INTO `menu` VALUES ('19', '网络与视频', '18', null, '24', null);
-INSERT INTO `menu` VALUES ('20', '小型机存储产品', '18', null, '25', null);
-INSERT INTO `menu` VALUES ('21', '服务器产品', '18', null, '26', null);
-INSERT INTO `menu` VALUES ('22', '备件销售', '18', null, '28', null);
-INSERT INTO `menu` VALUES ('23', '备件维修', '18', null, '30', null);
-INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.php', '50', '197');
-INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.php', '66', '265');
+INSERT INTO `menu` VALUES ('1', '解决方案', '-1', 'solution.php', '1', 'home', null, '<p>华信服务为帮助客户实现IT价值，依据客户提供的需求和客户实际的IT环境，</p>\r\n<p>组织技术专家、项目管理专家、服务质量保证师进行整体解决方案的讨论和输出。</p>', null, null);
+INSERT INTO `menu` VALUES ('2', '集成部署解决方案', '1', null, '2', '', '201109200109530.gif', ' <p>系统集成的本质是最优化的综合统筹设计，一个大型的综合计算机网络系统，系统集成包括计算机软件、硬件、操作系统技术、数据库技术、网络通讯技术等的集成，以及不同厂家产品选型，搭配的集成，系统集成所要达到的目标-整体性能最优，即所有部件和成分合在一起后不但能工作，而且全系统是低成本的、高效率的、性能匀称的、可扩充性和可维护的系统。华信技术团队不仅具有精通小型机、存储和服务器，包括IBM、DELL、SUN、H3C、CISCO等一线厂商的产品和技术的专业人才，熟悉各类成熟和先进的系统模式和技术解决方案。对于运营商及各类企业用户的业务模式、组织结构等有较好的理解，能够熟练运用现代工程学和ITIL项目管理的方式，对信息系统各个流程进行统一的进程和质量控制，并提供完善的服务。</p>', null, null);
+INSERT INTO `menu` VALUES ('3', '数据中心外包解决方案', '1', null, '3', '', '201109202343070.gif', ' <p>现代大型企业往往由于企业规模的日益壮大，企业为了专注于自己的核心业务，而将其IT系统的全部或<br />\r\n部分外包给专业的信息技术服务公司。常见的数据中心外包涉及信息技术设备的引进和维护、通信网络<br />\r\n的管理、数据中心的运作、信息系统的开发和维护、备份和灾难恢复、信息技术培训等。<br />\r\n外包对于企业的好处是明显的，首先资源在商业战略和企业部门中被重新分配，非IT业务的投资得到加<br />\r\n强，有利于强化企业核心竞争力，获得对市场做出有效反应的能力；同时，有利于信息技术人才不足的<br />\r\n企业获取最好最新的技术，与技术退化有关的难题得到解决；由于是信息技术厂商提供专业化服务，信<br />\r\n息技术服务的效率会得到较大提高，服务的成本也会得到一定的节约。</p> ', null, null);
+INSERT INTO `menu` VALUES ('4', '网络安全解决方案', '1', null, '4', null, '201109221410030.jpg', '  <p>企业网络系统往往受到非法访问、宕机、病毒、负载过高或闲置、硬件故障、配置丢失等各类繁杂问题<br />\r\n的挑战，高成本但低质量的运维结构是目前很多企业面临的主要难题。华信服务拥有丰富的网络系统运<br />\r\n维经验，结合先进的管理思想和专业的服务技术，通过成熟的项目运作方式，向客户提供低成本、高效<br />\r\n率、高满意度的网络安全解决方案，确保客户的网络稳定和安全。<br />\r\n典型的CISCO网络安全解决方案包括：在交换机上使用访问列表过滤流量；实施安全功能；配置<br />\r\nCiscolOS路由器防火墙功能．部署ASA和PIX防火墙设备；AAA安全访问管理；利用多因素验证<br />\r\n技术的安全访问控制：实施基于身份的网络访问控制：应用最新的无线局域网安全解决方案；遵循<br />\r\nCiscoNAC 来执行安全策略；实施lPSecVPN、DMVPN、GETVPN、SSL．VPN和MPt-<br />\r\nSVPN技术：使用网络和主机入侵防御、异常检测和安全监控及相关技术，监控网络活动和安全事件响<br />\r\n应；部署Cisco安全管理器、SDM、ADSM、PDM和IDM等安全管理解决方案等等。</p>  ', null, null);
+INSERT INTO `menu` VALUES ('5', 'IT运维管理咨询', '1', null, '5', null, '201109252301300.jpg', ' <p>　IT运维是IT管理的核心和重点部分，华信服务可提供的管理咨询内容包括：<br />\r\n第一、设备管理：对网络设备、服务器设备、操作系统运行状况进行监控，对各种应用支持软件如<br />\r\n数据库、中间件、群件以及各种通用或特定服务的监控管理，如邮件系统、DNS、Web等的监控与管<br />\r\n理；<br />\r\n第二、数据/存储/容灾管理：对系统和业务数据进行统一存储、备份和恢复；<br />\r\n第三、业务管理：包含对企业自身核心业务系统运行情况的监控与管理，<br />\r\n第四、信息安全管理：包括企业安全组织方式、资产分类与控制、人员安全、物理与环境安全、通<br />\r\n信与运营安全、访问控制、业务连续性管理等；</p> ', null, null);
+INSERT INTO `menu` VALUES ('6', 'IT整合优化咨询', '1', null, '6', null, '201109252303180.jpg', '<p><span class=\"Orange16B\">IT整合优化咨询</span><br /></p>\r\n       	    <p>企业信息化架构由各种关键因素有效组合而成，如何使各时期采购的各厂家的设备有效部署，为企业提供安全稳定的环境是每个运维管理人员必须考虑的问题，华信服务立足与企业自身的发展需求，可对各类系统运行关键性能和指标做出评价，为企业提供整合优化方案</p>  ', null, null);
+INSERT INTO `menu` VALUES ('7', '系统高可用性架构咨询', '1', null, '7', null, '201109252302010.jpg', ' <p>系统&ldquo;高可用性&rdquo;（High Availability）通常用于减少停工时间，保持其服务的高度可用性。华信服<br />\r\n务可针对企业的系统现状，提供可行的高可用性架构方案，为企业运行稳定提供助力。高可用性一般通<br />\r\n过　　负载均衡和主备模式两种方式实现。</p>  ', null, null);
+INSERT INTO `menu` VALUES ('8', 'IT技术服务', '-1', 'itservice.php', '8', '193', null, '华信服务可提供各类IT技术服务，业务范围涵盖传统的硬件维保、整体数据中心迁移、各类技术支撑服务、系统评估和加固等', null, null);
+INSERT INTO `menu` VALUES ('9', '维保服务', '8', null, '10', null, '201109252221390.jpg', '  <p>华信维保服务主要提供IBM、HP、SUN、EMC、DELL、NETAPP、Cisco、H3C等厂商的小型机、存储、PC服务器、网络设备的硬件维保和技术支持服务。<br />\r\n服务内容包括全方位的系统硬件技术支持、系统健康检查、系统软件补丁更新、系统性能优化、漏洞修补、机房值守、系统现状评估、故障定位、高可用性软件，数据库维护优化等。<br />\r\n华信服务对客户的报障电话响应时间小于5分钟。<br />\r\n维保服务中的备件响应等级和工程师现场响应等级主要分为如下几种：</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;<img width=\"523\" height=\"170\" src=\"images/20111013230249.png\" alt=\"\" /></p> ', null, null);
+INSERT INTO `menu` VALUES ('10', '数据中心迁移服务', '8', null, '11', null, '201109202345090.gif', ' <p>数据中心迁移服务主要为客户提供有技术和数据安全保障的迁移服务。针对客户在数据中心迁移过程中的各个环节进行把控，保证迁移过程对客户业务系统的影响程度降到最低。<br />\r\n华信服务团队拥有丰富的数据中心搬迁经验，对搬迁项目管理各关键环节，包括信息采集、机房设计、系统优化、架构调整、物流保障、技术支撑、备份实施、网络割接有一系列规范的实施流程，通过一系列细致入微的准备工作和详实的保障计划，为客户的业务系统迁移项目提供有力的支持和完美的实施。</p>  ', null, null);
+INSERT INTO `menu` VALUES ('11', 'IT系统运维服务', '8', null, '12', null, '201109252227480.jpg', ' <p>华信服务为客户提供IT运维托管服务，在可靠的安全保密制度规范下，全权帮助客户处理的数据中心、中小型信息中心、分支机房等的运维服务。</p>   ', null, null);
+INSERT INTO `menu` VALUES ('12', '系统安全加固服务', '8', null, '13', null, '201109252241490.jpg', ' <p>?UNIX/LINUX系统加固</p>\r\n<p>操作系统平台安全加固，排除各类系统漏洞和安全死角</p>\r\n<div style=\"page-break-after: always;\"><span style=\"display: none;\">&nbsp;</span></div>\r\n<hr />\r\n<p>?数据库加固</p>\r\n<p>SQLserver、Oracle数据库用户/权限/配置文件/系统补丁/关键SQL脚本/日志管理策略等措施设计实施</p>\r\n<div style=\"page-break-after: always;\"><span style=\"display: none;\">&nbsp;</span></div>\r\n<hr />\r\n<p>?网络安全加固</p>\r\n<p>服务控制/网络接入控制/交换路由策略等安全措施设计实施</p>  ', null, null);
+INSERT INTO `menu` VALUES ('13', 'Case-by-case技术服务', '8', null, '14', null, '201110112246390.jpg', '  <p>Case-by-case 技术服务为客户提供单次或短周期的技术支持服务，以帮助客户进行短周期的项目实施。Case-by-case技术服务范围广阔，包含集成安装部署、系统安装调整及优化、网络优化、存储扩容、存储性能优化、数据库优化与升级、数据备份及备份策略指导、故障定位与排除等多项服务。如需获取Case-by-case 服务，您可以通过&ldquo;项目洽谈&rdquo;中的方式跟我们取得联系。</p> ', null, null);
+INSERT INTO `menu` VALUES ('14', 'IT培训', '-1', 'training.php', '15', '196', '', '<p>华信IT培训部门拥有多名具备丰富的项目管理和实战经验的讲师,并建立了相对完善的实验环境，提供贴近实战的IT培训服务。</p>', null, null);
+INSERT INTO `menu` VALUES ('15', '网络及网络安全培训', '14', null, '16', null, '201109252235180.jpg', '<p>为客户提供全方位的网络培训。课程内容涵盖路由、交换、安全、MPLS/VPN、Qos等网络技术，由多名思科认证的CCIE为您授课。</p>   ', null, null);
+INSERT INTO `menu` VALUES ('16', '小型机与存储技术培训', '14', null, '17', null, '201109252308150.jpg', '  <p>为客户提供包含AIX/HP-UX/Solaris基础UNIX/LINUX日常管理和维护培训、DS系列、MSA/EVA系列/Clariion系列存储日常管理和维护培训、HACMP/MCSG等系统高可用性配置部署及虚拟化构建等中高级培训。</p> ', null, null);
+INSERT INTO `menu` VALUES ('17', '数据库培训', '14', null, '18', null, '201109271330430.jpg', ' <p>为客户提供Oracle数据库从数据库安装入门到数据库的高级优化等全系列培训。由知名的Oracle讲师带领您进入数据库世界。</p>   ', null, null);
+INSERT INTO `menu` VALUES ('18', '产品与备件', '-1', 'product.php', '22', '212', null, '凭借与众多IT厂商多年的良好合作，华信取得了多个IT产品的销售资质，可以为您提供高性价比的IT产品销售和售后服务。借助华信服务在IT服务领域多年的经验和高质量的工程师服务团队，客户从华信购买的IT产品将享受原厂保修服务+华信\r\n技术服务，在华信双重服务保障下，您的IT系统将得到强有力的支撑。  ', ' 我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。\r\n同时我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。', null);
+INSERT INTO `menu` VALUES ('19', '网络与视频', '18', null, '24', null, '201109252144230.jpg', ' <p>Cisco</p>\r\n<p>H3C</p>\r\n<p>Huawei</p>\r\n<p>Juniper</p>\r\n<p>Polycom</p>\r\n<p>&nbsp;</p>   ', null, 'PROD');
+INSERT INTO `menu` VALUES ('20', '小型机存储产品', '18', null, '25', null, '201109252146050.gif', '<p>IBM小型机</p>\r\n<p>IBM 存储</p>\r\n<p>EMC存储</p>\r\n<p>HP小机</p>\r\n<p>HP存储</p>\r\n<p>DELL 存储</p>\r\n<p>&nbsp;华赛存储</p>\r\n<p>H3C存储</p>   ', null, 'PROD');
+INSERT INTO `menu` VALUES ('21', '服务器产品', '18', null, '26', null, '201109252145430.png', '  <p>IBM 服务器</p>\r\n<p>HP 服务器</p>\r\n<p>DELL 服务器</p> ', null, 'PROD');
+INSERT INTO `menu` VALUES ('22', '备件销售', '18', null, '28', null, '201109202348230.gif', ' <p>我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。</p>  ', null, 'SP');
+INSERT INTO `menu` VALUES ('23', '备件维修', '18', null, '30', null, '201110100943040.jpg', '  <p>我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。</p>   ', null, 'SP');
+INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.php', '50', '197', null, null, null, null);
+INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.php', '66', '265', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for `news`
+-- ----------------------------
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) default NULL,
+  `content` longtext,
+  `author` varchar(50) default NULL,
+  `src` varchar(255) default NULL,
+  `create_date` datetime default NULL,
+  `typeid` int(11) default NULL,
+  `remark` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of news
+-- ----------------------------

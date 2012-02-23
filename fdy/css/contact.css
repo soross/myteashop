@@ -27,7 +27,7 @@ a.Map{ background:url(../images/Map.gif) no-repeat; width:550px; height:376px; m
 .New ul{ border-top:1px solid #dadcde}
 .New li{ list-style:none; background:url(../images/List_Icon.gif) no-repeat 0px 10px ; border-bottom:1px dashed #dadcde; padding:4px 4px 4px 17px; }
 .New a:link,.New a:visited{ color:#333; text-decoration:none; line-height:22px;}
-.New a:hover{ text-decoration:underline}
+.New a:hover{ text-decoration:underline;color:#ff7c00;}
 .Content_support{ background:#fbfbfb; border:1px solid #dadcde; padding:30px 30px 10px 35px;_padding:30px 0px 30px 35px ;font-size:14px; line-height:24px; margin-top:18px; clear:both;}
 .Orange16B{ font-size:16px; font-weight:bold; color:#ff962f; line-height:30px}
 .Content_support b{ line-height:30px}

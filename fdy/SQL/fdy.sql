@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-02-23 17:40:59
+Date: 2012-02-23 18:02:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,7 +60,7 @@ CREATE TABLE `comm_code` (
   `remark` longtext,
   `fkid` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of comm_code
@@ -94,6 +94,12 @@ INSERT INTO `comm_code` VALUES ('28', 'PartnerLogo', null, 'images/partner/10050
 INSERT INTO `comm_code` VALUES ('29', '联系方式', null, 'Contact', null, null);
 INSERT INTO `comm_code` VALUES ('30', '[福州]-福州泛地缘技术有限公司', '4000服务热线：4000-480-580<br />\r\n				泛地缘科技网站：www.xxxxx.com<br />\r\n				泛地缘科技邮箱：xxxxx@xxxxx.com<br />\r\n				公司地址：福建福州市台江区五一路大利嘉城', null, null, '29');
 INSERT INTO `comm_code` VALUES ('31', '[厦门]-福州泛地缘技术有限公司厦门分公司', '4000服务热线：4000-480-580<br />\r\n				泛地缘科技网站：www.xxxxx.com<br />\r\n				泛地缘科技邮箱：xxxxx@xxxxx.com<br />\r\n				公司地址：福建福州市台江区五一路大利嘉城', null, null, '29');
+INSERT INTO `comm_code` VALUES ('32', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '售前咨询', null);
+INSERT INTO `comm_code` VALUES ('33', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '售后服务', null);
+INSERT INTO `comm_code` VALUES ('34', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '客户投诉', null);
+INSERT INTO `comm_code` VALUES ('35', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
+INSERT INTO `comm_code` VALUES ('36', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
+INSERT INTO `comm_code` VALUES ('37', 'SupportIM', 'images/List_Icon04.gif', '67801239', 'Msn在线客服', null);
 
 -- ----------------------------
 -- Table structure for `menu`

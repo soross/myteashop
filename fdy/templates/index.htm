@@ -196,7 +196,14 @@ lytebox_doAnimations=true;
 		            <li class="system">
 		              <dl>
 		                <dt><a href="successful_case.html">成功案例</a></dt>
-		                <dd><a href="successful_case.html"><h1 style='color:#ff7c00;font-size:14px;'>成功案例</h1>我们拥有多年WEB系统开发经验，主要提供以数据库为基础的信息应用系统的设计、开… </a></dd>
+		                <dd><a href="successful_case.html">
+			                	<h1 style='color:#ff7c00;font-size:14px;'>成功案例</h1>
+			                	{section name=list loop=$caseList}
+			                	<span style="padding:0px 0px 0px 20px; cursor: hand;"">{$caseList[list].case_name}</span><br>
+			                	{/section}
+			                	<!--  onclick="javascript:location.href='caseinfo/{$caseList[list].id}.html' -->
+							</a>
+		                </dd>
 		              </dl>
 		            </li>
 		          </ul>

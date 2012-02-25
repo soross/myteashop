@@ -5,20 +5,26 @@
 <!--内容-->
 <div class="Hs_Middle">
 	<!--内页动画-->
-    <div class="PageBanner"><img width="1010" height="170" src="{$sol.picture}"></div>
+    <div class="PageBanner"><img width="1010" height="170" src="{$solution.fpicture}"></div>
     <!--内页动画 结束-->
     <!--左区域-->
     <div class="Page_left">
-    	<div class="Page_Text">
-    	<div class="Page_Title"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">{$sol.name}</span></div>
-    		{$sol.desc}</div>
+
+    	<div class="Content_DIV">
+    		<p><span class="Orange16B">{$solution.name}</span><br /></p>
+       	    {$solution.desc}
+       	</div>
+
+		<div class="Page_Text"  style="margin-bottom: -20px;">
+    		<div class="Page_Title"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">其他IT技术服务</span></div>
+ 		 </div>
     		<hr>
 			{section name=list loop=$solList}
 			 <div class="Page_Item">
-	        	<a href="training_{$solList[list].id}_info.html" class="Page_Item_Img">
+	        	<a href="solution_{$solList[list].id}_info.html" class="Page_Item_Img">
 	        	<img width="156" height="121" src="{$solList[list].picture}"></a>
 	            <div class="Page_Item_Text">
-	            <a href="training_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
+	            <a href="solution_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
 	           	<div style="height:92px;overflow: hidden;width:455px;">
 	           	{$solList[list].desc|strip_tags}
 				</div>

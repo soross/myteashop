@@ -1,7 +1,7 @@
 .Page_Text{ width:600px; height:100%; overflow:hidden; padding:26px 10px  18px 10px; line-height:22px;}
 .Content_DIV{ background:#fbfbfb; border:1px solid #dadcde; padding:30px 30px 30px 35px;_padding:30px 0px 30px 35px ;font-size:14px; line-height:24px; margin-top:18px; clear:both;}
 .Content_DIV b{ line-height:30px}
-
+.Content_DIV p{ line-height:30px;font-size:14px;}
 
 
 /*Ǣ̸*/
@@ -44,3 +44,9 @@ a.Map{ background:url(../images/Map.gif) no-repeat; width:550px; height:376px; m
 a.Massage:link,a.Massage:visited{ background:url(../images/Message.gif) no-repeat; width:200px; height:102px; display:block}
 a.Massage:hover{ background-position:bottom}
 
+/*��Ʒҳ*/
+.Products{ width:180px; height:250px; float:left; overflow:hidden; margin:26px 0 0 24px;_margin:26px 12px 0 12px; line-height:22px;}
+a.Products_Img:link,a.Products_Img:visited{ border:7px solid #d3e4e3; display:block; width:165px; height:118px; margin-bottom:6px}
+a.Products_Img:hover{border:7px solid #aad5d2}
+.Products a:link,.Products a:visited{ text-decoration:none; line-height:22px; color:#333}
+.Products a:hover{ text-decoration:underline}

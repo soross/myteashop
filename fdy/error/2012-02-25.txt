@@ -1,0 +1,130 @@
+错误SQL语句：
+select name,desc,id from menu where menu_code='solution'
+客户IP:127.0.0.1
+时间 :2012-02-25 05:22:15
+
+错误SQL语句：
+select `name`,`desc`,`id`,``picture from menu where menu_code='solution'
+客户IP:127.0.0.1
+时间 :2012-02-25 05:56:14
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 05:56:14
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:38:57
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:39:21
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:39:33
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:39:51
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:40:41
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:40:51
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:40:53
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:40:55
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:41:43
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:42:04
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:42:06
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:42:37
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:42:46
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:43:43
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:43:45
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:43:47
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:45:03
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:45:20
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:46:44
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:46:45
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:46:47
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:47:52
+
+错误SQL语句：
+select * from news where typeid in(select id from menu where id = or pid= ) order by create_date desc limit 0,10
+客户IP:127.0.0.1
+时间 :2012-02-25 06:47:59
+

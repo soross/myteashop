@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-02-25 15:43:19
+Date: 2012-02-25 22:59:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -182,11 +182,18 @@ CREATE TABLE `news` (
   `typeid` int(11) default NULL,
   `remark` varchar(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of news
 -- ----------------------------
-INSERT INTO `news` VALUES ('1', '测试测试测试', '测试测试测试', '测试', '测试', '2012-02-25 13:47:01', '2', null);
-INSERT INTO `news` VALUES ('2', '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:22', '3', null);
-INSERT INTO `news` VALUES ('3', '测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:24', '3', null);
+INSERT INTO `news` VALUES ('1', '测试测试测试', '测试测试测试', '测试', '测试', '2012-02-25 13:47:01', '2', 'NEWS');
+INSERT INTO `news` VALUES ('2', '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:22', '3', 'NEWS');
+INSERT INTO `news` VALUES ('3', '测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:24', '3', 'NEWS');
+INSERT INTO `news` VALUES ('4', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:38', null, 'DOC');
+INSERT INTO `news` VALUES ('5', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:35', null, 'DOC');
+INSERT INTO `news` VALUES ('6', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:32', null, 'DOC');
+INSERT INTO `news` VALUES ('7', '今天好吗', null, null, null, '2012-02-25 16:22:30', null, 'MSG');
+INSERT INTO `news` VALUES ('8', '今天好吗', null, null, null, '2012-02-25 16:22:25', null, 'MSG');
+INSERT INTO `news` VALUES ('9', '今天好吗', null, null, null, '2012-02-25 16:22:20', null, 'MSG');
+INSERT INTO `news` VALUES ('10', '今天好吗', null, null, null, '2012-02-25 16:22:28', null, 'MSG');

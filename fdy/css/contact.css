@@ -14,9 +14,9 @@ a.Map{ background:url(../images/Map.gif) no-repeat; width:550px; height:376px; m
 .Page_left{text-align:left; width:650px; height:100%; overflow:hidden; float:left; margin-right:18px; padding-bottom:18px}
 .Page_Text_Support{ width:660px; height:100%; overflow:hidden;padding:26px 10px  18px 10px; line-height:22px; }
 .Page_Title{ margin-bottom:16px;}
-.Page_Item{ width:660px; height:131px; overflow:hidden; padding:30px 20px 0 12px; line-height:22px; }
-.Page_Item_Img{ width:156px; height:121px; float:left; margin-right:28px;}
-.Page_Item_Text{ float:left; width:485px; height:auto; margin-top:6px}
+.Page_Item{ width:660px; height:131px; overflow:hidden; padding:30px 20px 0 12px; line-height:22px; position:relative;}
+.Page_Item_Img{ width:156px; height:121px; float:left; margin-right:28px;position:absolute;}
+.Page_Item_Text{float:left; width:485px; height:auto; margin-top:6px;}
 .Page_Item_Text a:link,.Page_Item_Text a:visited{ font-weight:bold; color:#ff962f; font-size:14px; text-decoration:none}
 .Page_Item_Text a:hover{ text-decoration:underline}
 

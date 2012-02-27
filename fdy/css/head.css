@@ -161,6 +161,8 @@
 	padding-top:1px;
 	background:#6f6e6e;
 	width:140px;
+	height:auto;
+
 }
 #navigation ul li.over ul {
 	display:block;

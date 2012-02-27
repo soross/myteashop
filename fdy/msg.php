@@ -1,8 +1,10 @@
 <?php
-/*
- * Created on 2012-2-23
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+include_once("action/smarty_inc.php");
+include_once("action/mysql.class.php");
+include_once("action/public_info.php");
+
+$smarty->assign('nav_style','265');
+$smarty->assign('nav_son_style','235');
+
+$smarty->display("contact_bak.htm");
 ?>

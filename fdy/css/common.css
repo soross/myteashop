@@ -106,7 +106,7 @@ table.map div {
 	line-height:25px;
 	background:url("../images/btnBg.gif") no-repeat 0 -25px;
 	text-align:center;
-	cursor:hand;
+	cursor:pointer;
 	text-decoration:none;
 }
 #toolBar ul li a:hover, #toolBar ul li.over button {

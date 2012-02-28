@@ -24,7 +24,7 @@ $smarty->assign('solList',$son_sol);
 
 
 //相关新闻
-$newsList = getList("news where typeid in(select id from menu where id =$solution[pid] or pid=$solution[pid] ) order by create_date desc limit 0,10",$db);
+$newsList = getList("news where typeid='$_GET[traid]' order by create_date desc limit 0,10",$db);
 $smarty->assign('newsList',$newsList);
 
 $smarty->display("govprocinfo.htm");

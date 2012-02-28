@@ -22,9 +22,8 @@ $son_sol = getList("menu where pid='$solution[pid]' and id!='$solution[id]' orde
 $smarty->assign('solList',$son_sol);
 
 
-
 //相关新闻
-$newsList = getList("news where typeid in(select id from menu where id =$solution[pid] or pid=$solution[pid] ) order by create_date desc limit 0,10",$db);
+$newsList = getList("news where typeid ='$_GET[solid]' order by create_date desc limit 0,10",$db);
 $smarty->assign('newsList',$newsList);
 
 $smarty->display("solutioninfo.htm");

@@ -15,6 +15,14 @@ $im = getList("comm_code where comm_type='SupportIM' order by id",$db);
 $smarty->assign('im',$im);
 
 
+//message
+$msg = getList("message order by create_date desc limit 0,5",$db);
+$smarty->assign('msg',$msg);
+
+//doc
+$doc = getList("news where remark='NEWS' order by create_date desc limit 0,10",$db,'title,src,id');
+$smarty->assign('doc',$doc);
+
 $smarty->display("support.htm");
 ?>
 

@@ -3,8 +3,8 @@ include_once("action/smarty_inc.php");
 include_once("action/mysql.class.php");
 include_once("action/public_info.php");
 
-//$smarty->assign('nav_style','193');
-//$smarty->assign('nav_son_style','193');
+$smarty->assign('nav_style','265');
+$smarty->assign('nav_son_style','265');
 
 //ÓÊ¼þ
 $mail = getList("comm_code where comm_type='SupportEmail' order by id",$db);

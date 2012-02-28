@@ -1,9 +1,13 @@
 	<div id="foot">
 	  <div id='link'>
 	  	<ul>
+	  		{section name=list loop=$navList}
+	  		<li><a href='{$navList[list].comm_code}' target='{$navList[list].remark}'>{$navList[list].comm_value}</a></li>
+	  		{/section}
+	  		<!--
 	  		<li><a href='http://www.vdesign.net' target='_blank'>法律声明</a></li>
 	  		<li><a href='http://www.vdesign.net' target='_blank'>联系我们</a></li>
-	  		<li><a href='http://www.vdesign.net' target='_blank'>关于泛地缘</a></li>
+	  		<li><a href='http://www.vdesign.net' target='_blank'>关于泛地缘</a></li> -->
 	  	</ul>
 	  </div>
 	  <div id="copyRight">

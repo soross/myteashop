@@ -15,10 +15,10 @@
     		<hr>
 			{section name=list loop=$solList}
 			 <div class="Page_Item">
-	        	<a href="training_{$solList[list].id}_info.html" class="Page_Item_Img">
+	        	<a href="govproc_{$solList[list].id}_info.html" class="Page_Item_Img">
 	        	<img width="156" height="121" src="{$solList[list].picture}"></a>
 	            <div class="Page_Item_Text">
-	            <a href="training_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
+	            <a href="govproc_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
 	           	<div style="height:92px;overflow: hidden;width:455px;">
 	           	{$solList[list].desc|strip_tags}
 				</div>

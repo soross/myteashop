@@ -16,15 +16,15 @@
        	</div>
 
 		<div class="Page_Text"  style="margin-bottom: -20px;">
-    		<div class="Page_Title"><span style="font-size:18px;font-family:'Î¢ÈíÑÅºÚ';color:#ff7c00;">ÆäËûITÅàÑµ</span></div>
+    		<div class="Page_Title"><span style="font-size:18px;font-family:'Î¢ÈíÑÅºÚ';color:#ff7c00;">Õş¸®²É¹º</span></div>
  		 </div>
     		<hr>
 			{section name=list loop=$solList}
 			 <div class="Page_Item">
-	        	<a href="solution_{$solList[list].id}_info.html" class="Page_Item_Img">
+	        	<a href="govproc_{$solList[list].id}_info.html" class="Page_Item_Img">
 	        	<img width="156" height="121" src="{$solList[list].picture}"></a>
 	            <div class="Page_Item_Text">
-	            <a href="solution_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
+	            <a href="govproc_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
 	           	<div style="height:92px;overflow: hidden;width:455px;">
 	           	{$solList[list].desc|strip_tags}
 				</div>

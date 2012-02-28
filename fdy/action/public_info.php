@@ -15,5 +15,12 @@ $seo['desc']=$desc[comm_value];
 
 $smarty->assign("seo",$seo);
 
+//µ×²¿µ¼º½
+$navlist = getList("comm_code where comm_type='Buttom_Nav' order by fkid", $db ,"comm_value,comm_code,remark");
+$smarty->assign("navList",$navlist);
+
+
+$hotPhone = getObject("comm_code where comm_type='Hot_Phone'",$db,"comm_value");
+$smarty->assign("hotPhone",$hotPhone[comm_value]);
 
 ?>

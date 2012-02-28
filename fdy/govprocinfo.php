@@ -27,7 +27,7 @@ $smarty->assign('solList',$son_sol);
 $newsList = getList("news where typeid in(select id from menu where id =$solution[pid] or pid=$solution[pid] ) order by create_date desc limit 0,10",$db);
 $smarty->assign('newsList',$newsList);
 
-$smarty->display("traininginfo.htm");
+$smarty->display("govprocinfo.htm");
 }else{
 		echo "<script>window.history.back(-1);</script>" ;
 }

@@ -16,5 +16,5 @@ $smarty->assign('solList',$son_sol);
 $newsList = getList("news where typeid in(select id from menu where id =$sol[id] or pid=$sol[id] ) order by create_date desc limit 0,10",$db);
 $smarty->assign('newsList',$newsList);
 
-$smarty->display("training.htm");
+$smarty->display("govproc.htm");
 ?>

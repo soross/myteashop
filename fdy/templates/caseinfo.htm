@@ -1,19 +1,12 @@
-
-
-
-{literal}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
-<meta name='keywords' content='视点工作室（深圳,广州,上海,东莞）-专业网站建设,品牌网站建设,界面风格设计,信息门户构建,WEB系统开发,网站建设知名品牌,网站建设工作室' />
-<meta name='description' content='多年来，“视点工作室”全心致力于企业品牌网站建设、界面风格设计和WEB应用系统开发，用我们的专业技术和专注精神为众多客户提供了量身定做的解决方案。' />
 
-<title>企业品牌网站建设 &lt; 案例 &lt; 视点网络(视点工作室)——深圳、广州、上海、杭州、东莞地区专业网站建设服务商,网页设计知名品牌,服务范围涉及企业品牌网站建设、界面风格设计、行业门户构建、WEB系统开发等</title>
-
-<meta name="keywords" content="视点工作室（深圳,广州,上海,东莞）-专业网站建设,品牌网站建设,界面风格设计,信息门户构建,WEB系统开发,网站建设知名品牌,网站建设工作室" />
-<meta name="description" content="多年来，“视点工作室”全心致力于企业品牌网站建设、界面风格设计和WEB应用系统开发，用我们的专业技术和专注精神为众多客户提供了量身定做的解决方案。" />
+<title>{$seo.title}</title>
+<meta name="keywords" content="{$seo.keyword}" />
+<meta name="description" content="{$seo.desc}" />
+{literal}
 <link href="css/css.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 #body #menu dl ul li#module198 {
@@ -160,7 +153,7 @@ window.addEvent('domready', function(){
 			  <p class='text'>附图</p>
 		  </li>
 		  {/if}
-		  {if $case.case_pic!=""}
+		  {if $case.case_pic_a!=""}
           <li>
           	<p class='pic'>
           		<a href='{$case.case_pic_a}' title='附图' rel='lytebox[plants]' style="background-image:url('{$case.case_pic_a}')">
@@ -170,7 +163,7 @@ window.addEvent('domready', function(){
           	<p class='text'>附图</p>
           </li>
           {/if}
-          {if $case.case_pic!=""}
+          {if $case.case_pic_b!=""}
           <li>
 
           	<p class='pic'>
@@ -181,7 +174,7 @@ window.addEvent('domready', function(){
           	<p class='text'>附图</p>
           </li>
           {/if}
-          {if $case.case_pic!=""}
+          {if $case.case_pic_c!=""}
           <li>
           	<p class='pic'>
           		<a href='{$case.case_pic_c}' title='附图' rel='lytebox[plants]' style="background-image:url('{$case.case_pic_c}')">

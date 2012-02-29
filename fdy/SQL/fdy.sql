@@ -10,10 +10,31 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-02-25 22:59:50
+Date: 2012-02-29 17:18:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `aams_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `aams_user`;
+CREATE TABLE `aams_user` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(20) default NULL,
+  `password` varchar(60) default NULL,
+  `role` varchar(255) default NULL,
+  `realname` varchar(20) default NULL,
+  `create_date` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `aams_user_username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of aams_user
+-- ----------------------------
+INSERT INTO `aams_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '100', 'aaa', '2012-02-29 11:20:44');
+INSERT INTO `aams_user` VALUES ('2', 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '3', 'aaa', '2012-02-29 11:20:46');
+
 -- ----------------------------
 -- Table structure for `case`
 -- ----------------------------
@@ -60,7 +81,7 @@ CREATE TABLE `comm_code` (
   `remark` longtext,
   `fkid` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of comm_code
@@ -73,7 +94,7 @@ INSERT INTO `comm_code` VALUES ('5', '合作伙伴', '泛地缘科技经过在IT
 INSERT INTO `comm_code` VALUES ('6', 'Index_AD', '1', 'images/ad/201109281154581.jpg', null, null);
 INSERT INTO `comm_code` VALUES ('7', 'Index_AD', '2', 'images/ad/201109281154452.jpg', null, null);
 INSERT INTO `comm_code` VALUES ('8', 'Index_AD', '3', 'images/ad/201109281155123.jpg', null, null);
-INSERT INTO `comm_code` VALUES ('11', '泛地缘简介', '<p>&ldquo;泛地缘科技&rdquo;是一个融创意、软件、硬件、集成于一体的专业IT服务商，业务内容涉及软件部署、硬件架构等。</p>\\r\\n<p>我们有着丰富的实践经验、精良的专业技术和高度的敬业精神，在网络服务陷入白热化竞争的今天，我们依然遵循可用性原则，坚持为企业搭建可用性高、成本低的自动化系统。</p>\\r\\n<p>我们的专业工程师在各项集成技能上均有超卓的表现。在每一个重要的工序上，我们均会和您有紧密的联系，务使每一个细节均能尽善尽美。</p>', null, null, '3');
+INSERT INTO `comm_code` VALUES ('11', '泛地缘简介', '<p>&ldquo;泛地缘科技&rdquo;是一个融创意、软件、硬件、集成于一体的专业IT服务商，业务内容涉及软件部署、硬件架构等。</p><p>我们有着丰富的实践经验、精良的专业技术和高度的敬业精神，在网络服务陷入白热化竞争的今天，我们依然遵循可用性原则，坚持为企业搭建可用性高、成本低的自动化系统。</p><p>我们的专业工程师在各项集成技能上均有超卓的表现。在每一个重要的工序上，我们均会和您有紧密的联系，务使每一个细节均能尽善尽美。</p>', null, null, '3');
 INSERT INTO `comm_code` VALUES ('12', '泛地缘文化', '<p>积极主动追求卓越 <br />泛地缘科技从不以现有的成就自满，精益求精是每位成员面对自己工作时的基本态度，也是泛地缘科技得以不断成长的原动力。</p>\r\n<p>重视团队合作精神 <br />泛地缘科技以专业团队来完成每位客户的托付，团队成员彼此间的默契与合作精神是泛地缘科技赢取客户信任以及成功的重要关键因素。</p>\r\n<p>客户服务导向 <br />泛地缘科技所提供的产品及服务，向来以协助客户提升网络形象及竞争优势为核心宗旨，不仅是解决客户问题的好伙伴，更是支持客户成长的忠诚力量。</p>\r\n<p>勇于面对市场挑战 <br />泛地缘科技兢兢业业地面对市场变化，以专业素养、坚定的毅力以及迅速的应变能力，面对市场不断的变化与挑战。</p>', null, null, '3');
 INSERT INTO `comm_code` VALUES ('13', '服务宗旨', '<p>\"更高、更快、更贴心\" 是我们的服务宗旨，也是對客户的承诺。</p>\r\n<p>「更高」 <br />我们的专业工程师及富有经验的架构师均有十足信心为客户提供高品质的系统集成建设服务，让客户的投入物超所值！</p>\r\n<p>「更快」 <br />急客户之所急，出色而高效率的完成客户交付的任务。</p>\r\n<p>「更贴心」 <br />凭借我们丰富的经验，针对不同客户不同需求，给予专业意见配合他们的经营手法，用我们的创意及技术诚意地为每一位客户创建出贴心的自动化系统，促使企业的高效运作。</p>', null, null, '3');
 INSERT INTO `comm_code` VALUES ('14', '优秀的信息化管理平台', '<p>先进的工作流系统</p>\r\n<p>标准的项目管理信息系统</p>\r\n<p>透明的备件查询系统</p>\r\n<p>在线的客户服务档案系统</p>\r\n<p>开放的、高质量的文档共享平台</p>', null, null, '4');
@@ -100,6 +121,14 @@ INSERT INTO `comm_code` VALUES ('34', 'SupportEmail', 'images/List_Icon02.gif', 
 INSERT INTO `comm_code` VALUES ('35', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
 INSERT INTO `comm_code` VALUES ('36', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
 INSERT INTO `comm_code` VALUES ('37', 'SupportIM', 'images/List_Icon04.gif', '67801239', 'Msn在线客服', null);
+INSERT INTO `comm_code` VALUES ('38', 'SEO_Title', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
+INSERT INTO `comm_code` VALUES ('39', 'SEO_Keyword', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
+INSERT INTO `comm_code` VALUES ('40', 'SEO_Desc', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
+INSERT INTO `comm_code` VALUES ('41', 'Buttom_Nav', '关于我们', 'about.html', '_seft', null);
+INSERT INTO `comm_code` VALUES ('42', 'Buttom_Nav', '联系我们', 'contact.html', '_seft', null);
+INSERT INTO `comm_code` VALUES ('43', 'Buttom_Nav', '成功案例', 'successful_case.html', '_seft', null);
+INSERT INTO `comm_code` VALUES ('44', 'Buttom_Nav', '主页', 'index.html', '_seft', null);
+INSERT INTO `comm_code` VALUES ('45', 'Hot_Phone', '4000-480-580', null, null, null);
 
 -- ----------------------------
 -- Table structure for `file`
@@ -137,7 +166,7 @@ CREATE TABLE `menu` (
   `type` enum('SP','PROD') character set gbk default 'PROD',
   `menu_code` varchar(50) character set gbk default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of menu
@@ -155,18 +184,45 @@ INSERT INTO `menu` VALUES ('10', '数据中心迁移服务', '8', 'itservice_10_
 INSERT INTO `menu` VALUES ('11', 'IT系统运维服务', '8', 'itservice_11_info.html', '12', null, 'images/pic/201109252227480.jpg', ' <p>华信服务为客户提供IT运维托管服务，在可靠的安全保密制度规范下，全权帮助客户处理的数据中心、中小型信息中心、分支机房等的运维服务。</p>   ', null, null, 'itservice');
 INSERT INTO `menu` VALUES ('12', '系统安全加固服务', '8', 'itservice_12_info.html', '13', null, 'images/pic/201109252241490.jpg', ' <p>?UNIX/LINUX系统加固</p>\r\n<p>操作系统平台安全加固，排除各类系统漏洞和安全死角</p>\r\n<div style=\"page-break-after: always;\"><span style=\"display: none;\">&nbsp;</span></div>\r\n<hr />\r\n<p>?数据库加固</p>\r\n<p>SQLserver、Oracle数据库用户/权限/配置文件/系统补丁/关键SQL脚本/日志管理策略等措施设计实施</p>\r\n<div style=\"page-break-after: always;\"><span style=\"display: none;\">&nbsp;</span></div>\r\n<hr />\r\n<p>?网络安全加固</p>\r\n<p>服务控制/网络接入控制/交换路由策略等安全措施设计实施</p>  ', null, null, 'itservice');
 INSERT INTO `menu` VALUES ('13', 'Case-by-case技术服务', '8', 'itservice_13_info.html', '14', null, 'images/pic/201110112246390.jpg', '  <p>Case-by-case 技术服务为客户提供单次或短周期的技术支持服务，以帮助客户进行短周期的项目实施。Case-by-case技术服务范围广阔，包含集成安装部署、系统安装调整及优化、网络优化、存储扩容、存储性能优化、数据库优化与升级、数据备份及备份策略指导、故障定位与排除等多项服务。如需获取Case-by-case 服务，您可以通过&ldquo;项目洽谈&rdquo;中的方式跟我们取得联系。</p> ', null, null, 'itservice');
-INSERT INTO `menu` VALUES ('14', 'IT培训', '-1', 'training.html', '15', '196', 'images/content/201109281226550.jpg', '<p>华信IT培训部门拥有多名具备丰富的项目管理和实战经验的讲师,并建立了相对完善的实验环境，提供贴近实战的IT培训服务。</p>', null, null, 'training');
-INSERT INTO `menu` VALUES ('15', '网络及网络安全培训', '14', 'training_15_info.html', '16', null, 'images/pic/201109252235180.jpg', '<p>为客户提供全方位的网络培训。课程内容涵盖路由、交换、安全、MPLS/VPN、Qos等网络技术，由多名思科认证的CCIE为您授课。</p>   ', null, null, 'training');
-INSERT INTO `menu` VALUES ('16', '小型机与存储技术培训', '14', 'training_16_info.html', '17', null, 'images/pic/201109252308150.jpg', '  <p>为客户提供包含AIX/HP-UX/Solaris基础UNIX/LINUX日常管理和维护培训、DS系列、MSA/EVA系列/Clariion系列存储日常管理和维护培训、HACMP/MCSG等系统高可用性配置部署及虚拟化构建等中高级培训。</p> ', null, null, 'training');
-INSERT INTO `menu` VALUES ('17', '数据库培训', '14', 'training_17_info.html', '18', null, 'images/pic/201109271330430.jpg', ' <p>为客户提供Oracle数据库从数据库安装入门到数据库的高级优化等全系列培训。由知名的Oracle讲师带领您进入数据库世界。</p>   ', null, null, 'training');
+INSERT INTO `menu` VALUES ('14', '政府采购', '-1', 'govproc.html', '15', '196', 'images/content/201109281226550.jpg', '<p>华信IT培训部门拥有多名具备丰富的项目管理和实战经验的讲师,并建立了相对完善的实验环境，提供贴近实战的IT培训服务。</p>', null, null, 'training');
+INSERT INTO `menu` VALUES ('15', '网络及网络安全培训', '14', 'govproc_15_info.html', '16', null, 'images/pic/201109252235180.jpg', '<p>为客户提供全方位的网络培训。课程内容涵盖路由、交换、安全、MPLS/VPN、Qos等网络技术，由多名思科认证的CCIE为您授课。</p>   ', null, null, 'training');
+INSERT INTO `menu` VALUES ('16', '小型机与存储技术培训', '14', 'govproc_16_info.html', '17', null, 'images/pic/201109252308150.jpg', '  <p>为客户提供包含AIX/HP-UX/Solaris基础UNIX/LINUX日常管理和维护培训、DS系列、MSA/EVA系列/Clariion系列存储日常管理和维护培训、HACMP/MCSG等系统高可用性配置部署及虚拟化构建等中高级培训。</p> ', null, null, 'training');
+INSERT INTO `menu` VALUES ('17', '数据库培训', '14', 'govproc_17_info.html', '18', null, 'images/pic/201109271330430.jpg', ' <p>为客户提供Oracle数据库从数据库安装入门到数据库的高级优化等全系列培训。由知名的Oracle讲师带领您进入数据库世界。</p>   ', null, null, 'training');
 INSERT INTO `menu` VALUES ('18', '产品与备件', '-1', 'product.html', '22', '212', 'images/content/201109281227210.jpg', '凭借与众多IT厂商多年的良好合作，华信取得了多个IT产品的销售资质，可以为您提供高性价比的IT产品销售和售后服务。借助华信服务在IT服务领域多年的经验和高质量的工程师服务团队，客户从华信购买的IT产品将享受原厂保修服务+华信\r\n技术服务，在华信双重服务保障下，您的IT系统将得到强有力的支撑。  ', ' 我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。\r\n同时我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。', null, 'product');
 INSERT INTO `menu` VALUES ('19', '网络与视频', '18', 'product_19_info.html', '24', null, 'images/pic/201109252144230.jpg', ' <p>Cisco</p>\r\n<p>H3C</p>\r\n<p>Huawei</p>\r\n<p>Juniper</p>\r\n<p>Polycom</p>\r\n<p>&nbsp;</p>   ', 'Cisco\r\nH3C\r\nHuawei\r\nJuniper\r\nPolycom\r\n&nbsp;	', 'PROD', 'product');
 INSERT INTO `menu` VALUES ('20', '小型机存储产品', '18', 'product_20_info.html', '25', null, 'images/pic/201109252146050.gif', '<p>IBM小型机</p>\r\n<p>IBM 存储</p>\r\n<p>EMC存储</p>\r\n<p>HP小机</p>\r\n<p>HP存储</p>\r\n<p>DELL 存储</p>\r\n<p>&nbsp;华赛存储</p>\r\n<p>H3C存储</p>   ', 'IBM小型机\r\nIBM 存储\r\nEMC存储\r\nHP小机\r\nHP存储\r\nDELL 存储\r\n&nbsp;华赛存储\r\nH3C存储	', 'PROD', 'product');
 INSERT INTO `menu` VALUES ('21', '服务器产品', '18', 'product_21_info.html', '26', null, 'images/pic/201109252145430.png', '  <p>IBM 服务器</p>\r\n<p>HP 服务器</p>\r\n<p>DELL 服务器</p> ', '				IBM 服务器\r\nHP 服务器\r\nDELL 服务器', 'PROD', 'product');
 INSERT INTO `menu` VALUES ('22', '备件销售', '18', 'product_22_info.html', '28', null, 'images/pic/201109202348230.gif', ' <p>我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。</p>  ', null, 'SP', 'product');
 INSERT INTO `menu` VALUES ('23', '备件维修', '18', 'product_23_info.html', '30', null, 'images/pic/201110100943040.jpg', '  <p>我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。</p>   ', null, 'SP', 'product');
-INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.html', '50', '197', null, null, null, null, 'support');
-INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.html', '66', '265', null, null, null, null, 'project');
+INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.html', '66', '265', null, null, null, null, 'support');
+INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.html', '50', '197', null, null, null, null, 'project');
+INSERT INTO `menu` VALUES ('26', '成功案例', '25', 'successful_case.html', '2', null, null, null, null, '', 'project');
+INSERT INTO `menu` VALUES ('27', '关于我们', '25', 'about.html', '4', null, null, null, null, '', 'project');
+
+-- ----------------------------
+-- Table structure for `message`
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) default NULL,
+  `content` longtext,
+  `reply` longtext,
+  `create_date` datetime default NULL,
+  `reply_date` datetime default NULL,
+  `remark` varchar(20) default NULL,
+  `link` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('1', '测试留言', 'fdaf', 'afdfsd', '2012-02-28 16:57:16', '2012-02-28 16:57:18', null, null);
+INSERT INTO `message` VALUES ('2', 'safdsf', 'dsfadsf', 'dsfad', '2012-02-28 16:57:26', '2012-02-28 16:57:28', null, null);
+INSERT INTO `message` VALUES ('3', 'fasdfd', 'sfads', 'fdsafds', '2012-02-28 16:57:35', '2012-02-28 16:57:37', null, null);
+INSERT INTO `message` VALUES ('4', 'fadfds', 'afds', 'fdsaf', '2012-02-28 16:57:43', '2012-02-28 16:57:45', null, null);
+INSERT INTO `message` VALUES ('5', 'sfadsf', 'fsadsf', 'dfads', '2012-02-28 16:57:52', '2012-02-28 16:57:54', null, null);
 
 -- ----------------------------
 -- Table structure for `news`
@@ -193,7 +249,7 @@ INSERT INTO `news` VALUES ('3', '测试测试测试', '测试测试测试', '测
 INSERT INTO `news` VALUES ('4', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:38', null, 'DOC');
 INSERT INTO `news` VALUES ('5', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:35', null, 'DOC');
 INSERT INTO `news` VALUES ('6', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:32', null, 'DOC');
-INSERT INTO `news` VALUES ('7', '今天好吗', null, null, null, '2012-02-25 16:22:30', null, 'MSG');
-INSERT INTO `news` VALUES ('8', '今天好吗', null, null, null, '2012-02-25 16:22:25', null, 'MSG');
-INSERT INTO `news` VALUES ('9', '今天好吗', null, null, null, '2012-02-25 16:22:20', null, 'MSG');
-INSERT INTO `news` VALUES ('10', '今天好吗', null, null, null, '2012-02-25 16:22:28', null, 'MSG');
+INSERT INTO `news` VALUES ('7', '今天好吗', null, null, 'file/aaaa.doc', '2012-02-25 16:22:30', null, 'DOC');
+INSERT INTO `news` VALUES ('8', '今天好吗', null, null, null, '2012-02-25 16:22:25', '2', 'NEWS');
+INSERT INTO `news` VALUES ('9', '今天好吗', null, null, null, '2012-02-25 16:22:20', '2', 'NEWS');
+INSERT INTO `news` VALUES ('10', '今天好吗', null, null, null, '2012-02-25 16:22:28', '2', 'NEWS');

@@ -107,35 +107,6 @@ for(i=0;i<cs.length;i++){
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
-
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -151,75 +122,30 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	{section name=list loop=$infoen}
-        	<form action="post/config.action.php" method="post" enctype="multipart/form-data">
+		   {section name=list loop=$info}
+        	<form action="post/config.action.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('是否确定修改?\n修改前请先保存旧文件。'); ">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-			        <td width="100px" height="26" bgcolor="#FFFFFF" class="STYLE1" rowspan="2"><div align="center" class="STYLE2 STYLE1">
-					<strong>首页中文广告</strong>
+					<td width="100px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">播放顺序</div></td>
+		            <td width="200px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
+						<input type="text" id="seq" name="seq" value="{$info[list].comm_value}" maxlength="50" size="25">
+						<br>[从小到大排序]
 					</div></td>
-					<td width="60px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">广告链接</div></td>
-		            <td width="200px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input type="text" id="type_content" name="type_content" value="{$infoen[list].type_content}" maxlength="50" size="25">
-					</div></td>
+					<td width="60px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
 
-					<td width="80px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片文字提示</div></td>
-		            <td width="50px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input type="text" id="remark" name="remark" value="{$infoen[list].remark}" maxlength="50" size="13">
-					</div></td>
-
-					<td width="40px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
-
-		            <td width="260px" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;&nbsp;大小：100Kb]<font style="color:red;">*</font>
+		            <td width="320px" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;&nbsp;长宽960px*333px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 		            </div></td>
-		            <td width="" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
+		            <td height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
    					<input type="hidden" id="task" name="task" value="Index_AD">
-		            <input type="hidden" id="adid" name="adid" value="{$infoen[list].id}">
+		            <input type="hidden" id="adid" name="adid" value="{$info[list].id}">
 		            <input type="submit" value="修改该条信息">
 		            </div></td>
 		          </tr>
 		          <tr>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">广告图片</div></td>
-		          	<td colspan="6" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
-					<img src="../{$infoen[list].type_code}">
-					</div></td>
-		          </tr>
-				</table>
-			</form>
-		   {/section}
-		   {section name=list loop=$infocn}
-        	<form action="post/config.action.php" method="post" enctype="multipart/form-data">
-		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-		          <tr>
-			        <td width="100px" height="26" bgcolor="#FFFFFF" class="STYLE1" rowspan="2"><div align="center" class="STYLE2 STYLE1">
-					<strong>首页英文广</strong>
-					</div></td>
-					<td width="60px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">广告链接</div></td>
-		            <td width="200px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input type="text" id="type_content" name="type_content" value="{$infocn[list].type_content}" maxlength="50" size="25">
-					</div></td>
-
-					<td width="80px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片文字提示</div></td>
-		            <td width="50px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input type="text" id="remark" name="remark" value="{$infocn[list].remark}" maxlength="50" size="13">
-					</div></td>
-
-					<td width="40px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
-
-		            <td width="260px" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;&nbsp;大小：100Kb]<font style="color:red;">*</font>
-		            </div></td>
-		            <td width="" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
-   					<input type="hidden" id="task" name="task" value="Index_AD">
-		            <input type="hidden" id="adid" name="adid" value="{$infocn[list].id}">
-		            <input type="submit" value="修改该条信息">
-		            </div></td>
-		          </tr>
-		          <tr>
-		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">广告图片</div></td>
-		          	<td colspan="6" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
-					<img src="../{$infocn[list].type_code}" width="290px" height="226px" >
+		          	<td colspan="5" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
+					<img src="../{$info[list].comm_code}" width="597px" height="207px" >
 					</div></td>
 		          </tr>
 				</table>

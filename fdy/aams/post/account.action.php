@@ -33,9 +33,23 @@ if(isset($_GET[task]) && "toUpdateAamsUser"==$_GET[task]){
 }else if(isset($_GET[task]) && "deleteAamsUser"==$_GET[task]){
 	if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 		$db->query("delete from  aams_user where id ='".$_GET[aamsid]."'" );
-			echo "<script>alert('帐号删除成功!');location.href='../aamsuser.php';</script>";
+		echo "<script>alert('帐号删除成功!');location.href='../aamsuser.php';</script>";
 	}else{
 		echo "<script>alert('您不是管理员,无法删除账户!');location.href='../aamsuser.php';</script>";
 	}
+}
+
+
+//更新信息
+else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
+	$sql = "update aams_user set ";
+	if(isset($_POST[password]) &&  !empty($_POST[password]) && $_POST[password]==$_POST[password_confirm]){
+		$sql = $sql." password='".md5($_POST[password])."' , realname='".$_POST[realname]."' ";
+	}else{
+		$sql = $sql." realname='".$_POST[realname]."' ";
+	}
+	$sql = $sql." where id=' ". $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']." '";
+	$db->query($sql);
+	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
 }
 ?>

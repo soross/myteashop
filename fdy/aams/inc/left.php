@@ -95,12 +95,17 @@ function MM_swapImage() { //v3.0
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
 	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
-	      <p>-&nbsp;<a href="../culture.php" target="dataFrame">公司文化配置</a></p>
-	      <p>-&nbsp;<a href="../brand.php" target="dataFrame">品牌诠释配置</a></p>
+	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">优势内容配置</a></p>
 	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
-	      <p>-&nbsp;<a href="../agent.php" target="dataFrame">加盟代理配置</a></p>
 	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页广告配置</a></p>
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;合作伙伴管理</h2>
+	    <div class="content">
+		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
+	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
 	    </div>
 	  </li>
 	  <li>

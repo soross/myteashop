@@ -107,14 +107,7 @@ for(i=0;i<cs.length;i++){
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td> -->
+
               <td width="60">
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
@@ -125,17 +118,7 @@ for(i=0;i<cs.length;i++){
               	</table>
 
               </td>
-             <!--  <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
+
               </table>
 
               </td>
@@ -153,28 +136,22 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">中文名称</div></td>
-             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">英文文名称</div></td>
+             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">链接</div></td>
              <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">级数</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否显示</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">左导航类别</div></td>
-            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">跳转URL</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">顺序</div></td>
             <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">更新/删除</div>
             </td>
           </tr>
           {/literal}
           {section name=list loop=$menuRows}
-          {if $menuRows[list].pid ==0}
+          {if $menuRows[list].pid ==-1}
           <tr>
           	<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$menuRows[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">{$menuRows[list].menu_name_zh_cn}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$menuRows[list].menu_name_en}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">{$menuRows[list].name}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$menuRows[list].url}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" style="color:red;">顶级</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $menuRows[list].show==1}是{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[list].remark}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[list].url}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center">
-            	<a href="#" onclick="alert('顶级目录无法删除!');"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="#" onclick="alert('顶级目录无法删除!');">删除</a><span class="STYLE1">]</span>
-            	<!--<a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[list].id}';"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[list].id}';">删除</a><span class="STYLE1">]</span> -->
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[list].seq}</div></td>
+           <td height="18" bgcolor="#FFFFFF"><div align="center">
 				<a href="editnav.php?task=toUpdateNav&navid={$menuRows[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="editnav.php?task=toUpdateNav&navid={$menuRows[list].id}">更新</a><span class="STYLE1">]</span>
             </div></td>
           </tr>
@@ -182,32 +159,14 @@ for(i=0;i<cs.length;i++){
 			{if $menuRows[list].id ==$menuRows[lt].pid}
 				<tr>
 		          	<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$menuRows[lt].id}</div></td>
-		            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[lt].menu_name_zh_cn}</div></td>
-		            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[lt].menu_name_en}</div></td>
+		            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[lt].name}</div></td>
+		            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[lt].url}</div></td>
 		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" style="color:blue;">二级</div></td>
-		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $menuRows[lt].show==1}是{/if}</div></td>
-		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[lt].remark}</div></td>
-		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[lt].url}</div></td>
+		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[lt].seq}</div></td>
 		            <td height="18" bgcolor="#FFFFFF"><div align="center">
-		            <a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[lt].id}';"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[lt].id}';">删除</a><span class="STYLE1">]</span>
+		            <a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[lt].id}&path={$menuRows[lt].picture}';"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[lt].id}&path={$menuRows[lt].picture}';">删除</a><span class="STYLE1">]</span>
 		            <a href="editnav.php?task=toUpdateNav&navid={$menuRows[lt].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="editnav.php?task=toUpdateNav&navid={$menuRows[lt].id}">更新</a><span class="STYLE1">]</span></div></td>
 		          </tr>
-		          {section name=l loop=$menuRows}
-					{if $menuRows[lt].id ==$menuRows[l].pid}
-					  <tr>
-			          	<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$menuRows[l].id}</div></td>
-			            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[l].menu_name_zh_cn}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[l].menu_name_en}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">三级</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $menuRows[l].show==1}是{/if}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[l].remark}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$menuRows[l].url}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center">
-			            <a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[l].id}';"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/nav.action.php?task=deleteNav&navid={$menuRows[l].id}';">删除</a><span class="STYLE1">]</span>
-			            <a href="editnav.php?task=toUpdateNav&navid={$menuRows[l].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1"> [</span><a href="editnav.php?task=toUpdateNav&navid={$menuRows[l].id}">更新</a><span class="STYLE1">]</span></div></td>
-			          </tr>
-					{/if}
-				  {/section}
 			{/if}
 			{/section}
           {/if}
@@ -235,17 +194,7 @@ for(i=0;i<cs.length;i++){
 	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- page共120条纪录，当前第1/10页，每页10条纪录--></span></td>
 	            <td width="75%" valign="top" class="STYLE1"><div align="right">
 	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-	                <tr><!--
-	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
-	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
-	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
-	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
-	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
-	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
-	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
-	                  </span></td>
-	                  <td width="23" height="22" valign="middle">页</td>
-	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td>-->
+	                <tr>
 	                </tr>
 	              </table>
 	            </div></td>

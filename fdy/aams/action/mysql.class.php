@@ -552,7 +552,7 @@ class mysql {
 }
 
 //获取数组集
-function getRows($table,$db,$field = "*"){
+function getList($table,$db,$field = "*"){
 	$query = $db->query("select ".$field." from ".$table);
 	$returnRow = array();
 	while($row = $db->fetch_array($query)){
@@ -562,11 +562,14 @@ function getRows($table,$db,$field = "*"){
 }
 
 //获取一条记录信息
-function getInfo($table,$db,$field = "*"){
+function getObject($table,$db,$field = "*"){
 	$query = $db->query("select ".$field." from ".$table);
 	return $info = $db->fetch_array($query);
 }
 
 $db=new mysql("localhost", "wjc", "wjc", "fdy", ALL_PS, "GBK");
 //$db=new mysql("hdm-004.hichina.com", "hdm0040706", "c7b3m1a6z9", "hdm0040706_db", ALL_PS, "GBK");
+
+
+require_once("public.fun.class.php");
 ?>

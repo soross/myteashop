@@ -3,17 +3,8 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("../action/mysql.class.php");
 
-
-
-$infoen = getRows(" comm_code where lang='en' and type_name='AboutUs'" ,$db," type_content ");
-$infoen_str = $infoen[0];
-$smarty->assign("infoen",html_entity_decode($infoen_str[type_content]));
-
-$infocn = getRows(" comm_code where lang='zh_cn' and type_name='AboutUs'" ,$db," type_content ");
-$infocn_str = $infocn[0];
-$smarty->assign("infocn",html_entity_decode($infocn_str[type_content]));
-
-//print_r($infocn[0]);
+$list = getList(" comm_code a,comm_code b where a.id=b.fkid and a.comm_code='About'" ,$db,"a.id as fkid,a.comm_value as info,b.comm_type,b.comm_value as descinfo,b.id");
+$smarty->assign("aboutList",$list);
 
 $smarty->display("aboutme.html");
 ?>

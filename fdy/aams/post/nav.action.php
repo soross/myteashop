@@ -5,10 +5,11 @@ if(isset($_GET[task]) && "deleteNav"==$_GET[task]){
 	$query = $db->query("select id from menu where pid = '$_GET[navid]'");
 	$cnt = $db->db_num_rows($query);
 	if($cnt<1){
- 	$db->query("delete from menu where id='$_GET[navid]'");
- 	echo "<script>alert('删除成功!');location.href='../nav.php';</script>";
+		if(file_exists("../../".$_GET[path]))unlink("../../".$_GET[path]);
+	 	$db->query("delete from menu where id='$_GET[navid]'");
+	 	echo "<script>alert('删除成功!');location.href='../nav.php';</script>";
 	}else{
-	echo "<script>alert('父类菜单不能删除!');location.href='../nav.php';</script>";
+		echo "<script>alert('父类菜单不能删除!');location.href='../nav.php';</script>";
 	}
 
 }else if(isset($_POST[task]) && "updateNav"==$_POST[task]){

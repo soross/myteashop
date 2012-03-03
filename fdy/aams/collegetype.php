@@ -3,7 +3,7 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
-$rows = getRows("college_type ",$db);
+$rows = getList("college_type ",$db);
 $smarty->assign("typeRows",$rows);
 //print_r($rows);
 

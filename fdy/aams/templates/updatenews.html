@@ -44,6 +44,7 @@ a:active {
 
 -->
 </style>
+
 <script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
@@ -105,9 +106,27 @@ for(i=0;i<cs.length;i++){
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link','source', 'wordpaste']
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
+
+
+	function remarkType(obj){
+		if(obj.value=="NEWS"){
+			document.getElementById('newsType').style.display="block";
+			document.getElementById('newsAuthor').style.display="block";
+			document.getElementById('newsSrc').style.display="block";
+			document.getElementById('newsContent').style.display="block";
+			document.getElementById('newsFile').style.display="none";
+
+		}else{
+			document.getElementById('newsType').style.display="none";
+			document.getElementById('newsAuthor').style.display="none";
+			document.getElementById('newsSrc').style.display="none";
+			document.getElementById('newsContent').style.display="none";
+			document.getElementById('newsFile').style.display="block";
+		}
+	}
 </script>
 
 
@@ -120,40 +139,11 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-修改新闻</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-更新新闻</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
-
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -168,54 +158,81 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/news.action.php" method="post">
+        	<form action="post/news.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">发布类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="radio" id="lang" name="lang" value="zh_cn" {if $newsinfo.lang=="zh_cn"}checked{/if}>中文<input type="radio" id="lang" name="lang" value="en" {if $newsinfo.lang=='en'}checked{/if}>英文<font style="color:red;">*</font>
+		            	{if $newsinfo.remark=='NEWS'}新闻{else}技术文档{/if}
+		            	<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="title" name="title" size="40" maxlength="50" value="{$newsinfo.title}"><font style="color:red;">*</font>
+		            	<input type="text" id="title" name="title" value="{$newsinfo.title}" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">时间</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="times" name="times" size="40" maxlength="50" readOnly="true" class="Wdate" value="{$newsinfo.create_dates}"  onClick="WdatePicker()"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
+		          <tr id="newsType" style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">新闻类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <select id="type" name="type">
 		            	{section name=list loop=$typeRows}
-		            	<option value="{$typeRows[list].id}" {if $newsinfo.type_id==$typeRows[list].id}selected{/if}>{$typeRows[list].menu_name_zh_cn}-{$typeRows[list].menu_name_en}</option>
+		            	{if $typeRows[list].pid==-1}
+		            	<option value="{$typeRows[list].id}" {if $newsinfo.typeid==$typeRows[list].id}selected{/if}>{$typeRows[list].name}</option>
+		            	{section name=lt loop=$typeRows}
+		            	{if $typeRows[lt].pid==$typeRows[list].id}
+		            	<option value="{$typeRows[lt].id}"  {if $newsinfo.typeid==$typeRows[lt].id}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].name}</option>
+		            	{/if}
+		            	{/section}
+		            	{/if}
 		            	{/section}
 		            </select><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr>
+		          <tr id="newsAuthor"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">作者</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="author" name="author" size="15" maxlength="20" value="{$newsinfo.author}"><font style="color:red;">*</font>
+		            	<input type="text" id="author" name="author" value="{$newsinfo.author}" size="15" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr>
+		          <tr id="newsSrc"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">来源</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="src" name="src" value="{$newsinfo.src}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		           <tr id="newsFileName"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文件名称</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="filename" name="filename"size="25"  value="{$newsinfo.author}" maxlength="100"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsFilePath"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文件位置</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	{$newsinfo.src}
+		            </div></td>
+		          </tr>
+		          <tr id="newsFile"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">技术文档</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="newsfile" name="newsfile" ><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsContent"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;">{$newsinfo.content|stripslashes}</textarea><font style="color:red;">*</font>
+		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;">{$newsinfo.content}</textarea><font style="color:red;">*</font>
 
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="发布新闻">
+						<input type="submit" value="更新新闻">
+						<input type="hidden" id="newsid" name="newsid" value="{$newsinfo.id}">
+						<input type="hidden" id="remark" name="remark" value="{$newsinfo.remark}">
 						<input type="hidden" id="task" name="task" value="updateNews">
-						<input type="hidden" id="newid" name="newid" value="{$newsinfo.id}">
 		            </div></td>
 		          </tr>
 		        </table>

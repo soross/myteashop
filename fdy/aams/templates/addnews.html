@@ -106,9 +106,27 @@ for(i=0;i<cs.length;i++){
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link','source', 'wordpaste']
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
+
+
+	function remarkType(obj){
+		if(obj.value=="NEWS"){
+			document.getElementById('newsType').style.display="block";
+			document.getElementById('newsAuthor').style.display="block";
+			document.getElementById('newsSrc').style.display="block";
+			document.getElementById('newsContent').style.display="block";
+			document.getElementById('newsFile').style.display="none";
+
+		}else{
+			document.getElementById('newsType').style.display="none";
+			document.getElementById('newsAuthor').style.display="none";
+			document.getElementById('newsSrc').style.display="none";
+			document.getElementById('newsContent').style.display="none";
+			document.getElementById('newsFile').style.display="block";
+		}
+	}
 </script>
 
 
@@ -126,35 +144,6 @@ for(i=0;i<cs.length;i++){
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
-
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -169,12 +158,15 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/news.action.php" method="post">
+        	<form action="post/news.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">语言</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">发布类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="radio" id="lang" name="lang" value="zh_cn" checked>中文<input type="radio" id="lang" name="lang" value="en">英文<font style="color:red;">*</font>
+		            	<select id="remark" name="remark" onchange="remarkType(this)">
+		            	<option value="NEWS">新闻</option>
+		            	<option value="DOC">技术文档</option>
+		            	</select><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
@@ -183,28 +175,41 @@ for(i=0;i<cs.length;i++){
 		            	<input type="text" id="title" name="title" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">时间</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="times" name="times" class="Wdate" size="40" maxlength="50" readOnly="true" onClick="WdatePicker()"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
+		          <tr id="newsType">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">新闻类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <select id="type" name="type">
 		            	{section name=list loop=$typeRows}
-		            	<option value="{$typeRows[list].id}">{$typeRows[list].menu_name_zh_cn}-{$typeRows[list].menu_name_en}</option>
+		            	{if $typeRows[list].pid==-1}
+		            	<option value="{$typeRows[list].id}">{$typeRows[list].name}</option>
+		            	{section name=lt loop=$typeRows}
+		            	{if $typeRows[lt].pid==$typeRows[list].id}
+		            	<option value="{$typeRows[lt].id}">&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].name}</option>
+		            	{/if}
+		            	{/section}
+		            	{/if}
 		            	{/section}
 		            </select><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr>
+		          <tr id="newsAuthor">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">作者</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="author" name="author" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<input type="text" id="author" name="author" value="泛地缘科技" size="15" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr>
+		          <tr id="newsSrc">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">来源</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="src" name="src" value="泛地缘" size="15" maxlength="20"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsFile" style="display:none;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">技术文档</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="newsfile" name="newsfile" ><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsContent">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;"></textarea><font style="color:red;">*</font>

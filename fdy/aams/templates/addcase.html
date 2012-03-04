@@ -105,20 +105,7 @@ for(i=0;i<cs.length;i++){
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link','source', 'wordpaste']
-		});
-	});
-
-	var editor1;
-	KindEditor.ready(function(K) {
-		editor1 = K.create('textarea[name="content1"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link','source', 'wordpaste']
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
 </script>
@@ -133,40 +120,11 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">宝迪学院管理-添加知识</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">案例管理-新增案例</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
-
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -181,44 +139,90 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/college.action.php" method="post">
+        	<form action="post/case.action.php" method="post" enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">可用知识类型</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">案例名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <select id="type" name="type">
-		            	{section name=list loop=$typeRows}
-		            	{if $typeRows[list].pid=='0'}
-		            	<option value="{$typeRows[list].id}">{$typeRows[list].remark}-{$typeRows[list].college_title_zh_cn}-{$typeRows[list].college_title_en}</option>
-			            	{section name=lt loop=$typeRows}
-				            	{if $typeRows[lt].pid==$typeRows[list].id}
-				            		<option value="{$typeRows[lt].id}">&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].college_title_zh_cn}-{$typeRows[lt].college_title_en}</option>
-				            	{/if}
-			            	{/section}
-		            	{/if}
-		            	{/section}
-		            </select><br><font style="color:red;">请不要选择父类类型*</font></div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容【中文】</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content" style="width:700px;height:200px;visibility:hidden;"></textarea><font style="color:red;">*</font>
-
+		            	<input type="text" id="name" name="name"  size="40" maxlength="100"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">Content【英文】</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">案例类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content1" style="width:700px;height:200px;visibility:hidden;"></textarea><font style="color:red;">*</font>
+		           <input type="text" id="type" name="type"  size="20" maxlength="50"><font style="color:red;">*</font></div></td>
+		          </tr>
+					<tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">案例客户</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="cust" name="cust"  size="40" maxlength="100" ><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
 
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户网址</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="url" name="url"  size="30" maxlength="100"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片1</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<table>
+		            	<td><input type="file" id="case1" name="case1"><font style="color:red;">*</font><br>
+		            	[格式支持:gif|jpg|png&nbsp;长*高：200px*178px&nbsp;大小:100K]
+		            	</td>
+		            	</tr>
+		            	</table>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片2</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<table>
+		            	<tr>
+		            	<td><input type="file" id="case2" name="case2"><font style="color:red;">*</font><br>
+		            	[格式支持:gif|jpg|png&nbsp;长*高：200px*178px&nbsp;大小:100K]
+		            	</td>
+		            	</tr>
+		            	</table>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片3</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<table>
+		            	<tr>
+		            	<td><input type="file" id="case3" name="case3"><font style="color:red;">*</font><br>
+		            	[格式支持:gif|jpg|png&nbsp;长*高：200px*178px&nbsp;大小:100K]
+		            	</td>
+		            	</tr>
+		            	</table>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片4</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<table>
+		            	<tr>
+		            	<td><input type="file" id="case4" name="case4"><font style="color:red;">*</font><br>
+		            	[格式支持:gif|jpg|png&nbsp;长*高：200px*178px&nbsp;大小:100K]
+		            	</td>
+		            	</tr>
+		            	</table>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">案例描述</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <textarea id="content" name="content" style="width:700px;height:150px;visibility:hidden;"></textarea><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="发布知识">
-						<input type="hidden" id="remark" name="remark" value="{$typeRows[list].remark}">
-						<input type="hidden" id="task" name="task" value="addCollege">
+						<input type="hidden" id="task" name="task" value="addCase">
+						<input type="submit" value="新增案例">
 		            </div></td>
 		          </tr>
 		        </table>

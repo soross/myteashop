@@ -92,6 +92,37 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+
+function showProdTr(obj,eleID,urlID){
+	if("18"==obj.value){
+		document.getElementById(eleID).style.display="block";
+	}else{
+		document.getElementById(eleID).style.display="none";
+	}
+
+	if("24"==obj.value || "25"==obj.value){
+		document.getElementById(urlID).style.display="block";
+	}else{
+		document.getElementById(urlID).style.display="none";
+	}
+
+}
+</script>
+<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|','image', 'link','source', 'wordpaste']
+		});
+	});
 </script>
 </head>
 {/literal}
@@ -102,40 +133,11 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-更新导航目录</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-更新导航目录信息</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
-
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -150,67 +152,78 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/nav.action.php" method="post">
+        	<form action="post/nav.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航目录中文名</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="name_cn" name="name_cn" size="40" maxlength="50" value="{$menuInfo.menu_name_zh_cn}"><font style="color:red;">*</font>
+		            	<input type="text" id="name" name="name" value="{$menuInfo.name}" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航目录英文名</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">显示顺序</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="text" id="name_en" name="name_en" size="40" maxlength="50" value="{$menuInfo.menu_name_en}"><font style="color:red;">*</font>
-		           </div></td>
+		            	<input type="text" id="seq" name="seq" value="{$menuInfo.seq}"  maxlength="5"><font style="color:red;">*</font>
+		            </div></td>
 		          </tr>
+		          {if $menuInfo.pid !=-1}
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航目录父级</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航父级</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	 <select id="type" name="type">
-		            	 <option value="0" {if $menuInfo.pid == 0}selected{/if}>=顶级导航目录=</option>
+		            	 <select id="pid" name="pid" onchange="showProdTr(this,'prodTr','urlTr')">
+		            	 <option value="-1">=父级导航目录=</option>
 		            	  {section name=list loop=$menuRows}
-				          {if $menuRows[list].pid ==0}
-				         	<option value="{$menuRows[list].id}" {if $menuInfo.pid == $menuRows[list].id}selected{/if}>{$menuRows[list].menu_name_zh_cn}-{$menuRows[list].menu_name_en}</option>
-							{section name=lt loop=$menuRows}
-							{if $menuRows[list].id ==$menuRows[lt].pid}
-								<option value="{$menuRows[lt].id}" {if $menuInfo.pid == $menuRows[lt].id}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;{$menuRows[lt].menu_name_zh_cn}-{$menuRows[lt].menu_name_en}</option>
-							{/if}
-							{/section}
+				          {if $menuRows[list].pid ==-1}
+				         	<option value="{$menuRows[list].id}" {if $menuRows[list].id==$menuInfo.pid}selected{/if}>{$menuRows[list].name}</option>
 				          {/if}
-
 				          {/section}
-
 		            </select><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否在顶部导航显示</div></td>
+		          <tr id="prodTr" style="display:{if $menuInfo.pid==18}black{else}none{/if};">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">子类选择</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="radio" id="show" name="show" value="1" {if $menuInfo.show == 1}checked{/if}>是<input type="radio" id="show" name="show" value="" {if $menuInfo.show != 1}checked{/if}>否<font style="color:red;">*</font>
+		            <select id="type" name="type">
+		            	 <option value="PROD" {if $menuInfo.type=='PROD'}selected{/if}>产品</option>
+		            	 <option value="SP" {if $menuInfo.type=='SP'}selected{/if}>备件</option>
+		            </select>
+		            </div></td>
+		          </tr>
+		           {/if}
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		           <table>
+		           	<tr>
+		           		<td>
+		           		<img src="../{$menuInfo.picture}" width="156px" height="121px">
+		           		</td>
+		           		<td>
+		           		<input type="file" id="picture" name="picture">
+		           		<br>
+				           [支持格式：gif|jpg|png&nbsp;&nbsp;长宽156px*121px&nbsp;大小：100Kb&nbsp;]
+				            <font style="color:red;">*</font>
+		           		</td>
+		           	</tr>
+		           </table>
+
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">左导航类别</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="radio" id="remark" name="remark" value="PRODUCT" {if $menuInfo.remark == 'PRODUCT'}checked{/if}>产品左导航
-		            <input type="radio" id="remark" name="remark" value="NEWS" {if $menuInfo.remark == 'NEWS'}checked{/if}>新闻左导航
-		            <input type="radio" id="remark" name="remark" value="EDU" {if $menuInfo.remark == 'EDU'}checked{/if}>宝迪学院左导航
-		            <font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">跳转URL</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="text" id="url" name="url" size="40" maxlength="50" value="{$menuInfo.url}"><font style="color:red;">*</font>
+
+						<textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;">{$menuInfo.desc}</textarea><font style="color:red;">*换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<br><input type="submit" value="新增导航目录">
+						<br><input type="submit" value="更新导航目录">
 						<input type="hidden" id="task" name="task" value="updateNav">
 						<input type="hidden" id="navid" name="navid" value="{$menuInfo.id}">
+						<input type="hidden" id="path" name="path" value="{$menuInfo.picture}">
 		            </div></td>
 		          </tr>
 		        </table>
@@ -230,20 +243,10 @@ for(i=0;i<cs.length;i++){
     	<!-- page -->
 	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	          <tr>
-	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
 	            <td width="75%" valign="top" class="STYLE1"><div align="right">
 	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-	                <tr><!--
-	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
-	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
-	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
-	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
-	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
-	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
-	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
-	                  </span></td>
-	                  <td width="23" height="22" valign="middle">页</td>
-	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td>-->
+	                <tr>
 	                </tr>
 	              </table>
 	            </div></td>

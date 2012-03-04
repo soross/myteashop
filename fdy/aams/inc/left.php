@@ -74,12 +74,12 @@ function MM_swapImage() { //v3.0
 		          <tr>
 		            <td height="45"><div align="center"><a href="../nav.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		            <td><div align="center"><a href="../addnews.php" target="dataFrame"><img src="../images/main_28.gif" name="Image2" width="40" height="40" border="0" id="Image2" onmouseover="MM_swapImage('Image2','','../images/main_29_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
-		            <td><div align="center"><a href="../addprod.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td><div align="center"><a href="../addcase.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		          </tr>
 		          <tr>
 		            <td height="25"><div align="center" class="STYLE2"><a href="../nav.php" target="dataFrame">系统配置</a></div></td>
 		            <td><div align="center" class="STYLE2"><a href="../addnews.php" target="dataFrame">新闻发布</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addprod.php" target="dataFrame">产品发布</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../addcase.php" target="dataFrame">添加案例</a></div></td>
 		          </tr>
 		        </table>
 	        </td>
@@ -116,24 +116,18 @@ function MM_swapImage() { //v3.0
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;产品管理</h2>
+	    <h2>+&nbsp;案例管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../product.php" target="dataFrame">产品列表</a></p>
-	      <p>-&nbsp;<a href="../addprod.php" target="dataFrame">添加产品</a></p>
-	    </div>
-	  </li>
-	   <li>
-	    <h2>+&nbsp;宝迪学院</h2>
-	    <div class="content">
-	      <p>-&nbsp;<a href="../college.php" target="dataFrame">知识列表</a></p>
-	      <p>-&nbsp;<a href="../collegetype.php" target="dataFrame">知识类型管理</a></p>
-	      <p>-&nbsp;<a href="../addcollege.php" target="dataFrame">新增知识</a></p>
+	      <p>-&nbsp;<a href="../case.php" target="dataFrame">案例列表</a></p>
+	      <p>-&nbsp;<a href="../addcase.php" target="dataFrame">添加案例</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;在线留言</h2>
+	    <h2>+&nbsp;技术支持管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../zxly.php" target="dataFrame">留言列表</a></p>
+	      <p>-&nbsp;<a href="../msg.php" target="dataFrame">留言列表</a></p>
+	      <p>-&nbsp;<a href="../imconfig.php" target="dataFrame">在线客服配置</a></p>
+	      <p>-&nbsp;<a href="../emailconfig.php" target="dataFrame">邮件配置接入</a></p>
 	    </div>
 	  </li>
 	   <li>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-02-29 17:18:07
+Date: 2012-03-04 23:09:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,8 +32,8 @@ CREATE TABLE `aams_user` (
 -- ----------------------------
 -- Records of aams_user
 -- ----------------------------
-INSERT INTO `aams_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '100', 'aaa', '2012-02-29 11:20:44');
-INSERT INTO `aams_user` VALUES ('2', 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '3', 'aaa', '2012-02-29 11:20:46');
+INSERT INTO `aams_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'aaasaaaa', '2012-02-29 11:20:44');
+INSERT INTO `aams_user` VALUES ('2', 'user', 'ee11cbb19052e40b07aac0ca060c23ee', null, 'user', '2012-03-04 23:04:01');
 
 -- ----------------------------
 -- Table structure for `case`
@@ -53,21 +53,22 @@ CREATE TABLE `case` (
   `case_pic_c` varchar(255) default NULL,
   `case_cust` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of case
 -- ----------------------------
-INSERT INTO `case` VALUES ('1', '顺虹电子股份', '电子', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.sunhomeinc.com', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('2', '海星船舶(中英文)', '船舶', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.kingworld.com.cn/cn/common/', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('3', '金活医药集团', '药业', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.heysea.com', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('4', '深圳湾游艇会(中英文)', '船舶', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.salesworld.cn', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('5', '顺络电子', '电子', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.chinamarina.com', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('6', '中国项目网', '互联网', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.sunlordinc.com.cn/chinese/common/index.asp', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('7', '首届中国大学生游艇设计大赛', '互联网', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.china-project.com', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('8', '瑞霖医药', '药业', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.yachtsdesign.com', null, null, 'images/case/picNews3259_2011114142449.jpg', null, 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('9', '力度品牌顾问', '网络', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.ntoptical.com', null, null, 'images/case/picNews3259_2011114142449.jpg', null, 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
-INSERT INTO `case` VALUES ('10', 'China Nature Optical', '网络', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.ntoptical.com', null, null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('1', '顺虹电子股份', '电子', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.sunhomeinc.com', '2012-03-04 15:32:52', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('2', '海星船舶(中英文)', '船舶', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.kingworld.com.cn/cn/common/', '2012-03-04 15:32:54', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('3', '金活医药集团', '药业', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.heysea.com', '2012-03-04 15:33:14', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('4', '深圳湾游艇会(中英文)', '船舶', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.salesworld.cn', '2012-03-04 15:33:17', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('5', '顺络电子', '电子', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.chinamarina.com', '2012-03-04 15:33:00', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('6', '中国项目网', '互联网', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.sunlordinc.com.cn/chinese/', '2012-03-04 15:33:10', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('7', '首届中国大学生游艇设计大赛', '互联网', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.china-project.com', '2012-03-04 15:33:07', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', null, '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('8', '瑞霖医药', '药业', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.yachtsdesign.com', '2012-03-04 15:32:57', null, 'images/case/picNews3259_2011114142449.jpg', null, 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('9', '力度品牌顾问', '网络', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.ntoptical.com', '2012-03-04 15:33:02', null, 'images/case/picNews3259_2011114142449.jpg', null, 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('10', 'China Nature Optical', '网络', '<p>深圳顺虹电子股份有限公司从创立伊始，便秉持着&ldquo;诚信、创新、专业、专注&rdquo;的经营理念，并致力于成为全球具有领先技术和核心竞争优势的国际化企业！今天，在竞争日益激烈的电子元器件制造业，顺虹电子必将凭借自己非凡的魄力、卓越的胆识、执着的创新精神、先进的管理体系、雄厚的开发能力、优异的产品质量和完善的服务，开创出属于自己的广阔天地！</p>\r\n<p>深圳市顺虹电子股份有限公司成立于2011年，是一家集研发、生产和销售各类SMD功率电感、插件电感、磁环电感和变压器的高技术型企业，公司已通过ISO9001、ISO14001等相关国际管理体系认证。</p>\r\n<p>公司主要管理者均拥有该行业10年以上的从业经验，并拥有一只从产品研发、生产到销售的完整、高效的管理团队，主要产品有40多个系列，1000多个品种，广泛应用于通讯、计算机、消费类电子、汽车电子、智能化、工业自动化、医疗器械、安防器材及其他新兴产业领域。深圳工厂厂房面积1200平方米，员工200余人。为促进公司更加快速蓬勃的发展，公司已决定在内地兴建大型工业园，内地工业园目前正在建设中。</p>\r\n<p>公司秉承&ldquo;诚信、创新、专业、专注&rdquo;的宗旨，竭诚为全球客户提供优质产品和完善服务！</p>', 'images/case/picNews3259_2011114142449.jpg', 'http://www.ntoptical.com', '2012-03-04 15:33:05', null, 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', 'images/case/picNews3259_2011114142449.jpg', '深圳顺虹电子股份有限公司');
+INSERT INTO `case` VALUES ('11', 'sdafdsf', 'safsd', 'dfadsfdsafdsfsdfdsf', 'images/case/20120304100253723.jpg', 'fsdafdsf', '2012-03-04 18:02:53', null, 'images/case/20120304100253817.jpg', '', '', 'fsdafsd');
 
 -- ----------------------------
 -- Table structure for `comm_code`
@@ -89,9 +90,9 @@ CREATE TABLE `comm_code` (
 INSERT INTO `comm_code` VALUES ('1', '法律声明', 'LegalNotices', 'LegalNotices', null, null);
 INSERT INTO `comm_code` VALUES ('2', '隐私保护', 'PrivacyProtection', 'PrivacyProtection', null, null);
 INSERT INTO `comm_code` VALUES ('3', '泛地缘简介', '创建可用性高与高性价比并重且与企业业务及发展相符的可用性平台，全面提升企业效益和竞争力一直是我们…', 'About', null, null);
-INSERT INTO `comm_code` VALUES ('4', '泛地缘优势', '我们始终坚持可用性设计原则，协调性能与价格的可比性，强调人性化设计理念，准确把…', 'Superiority ', null, null);
+INSERT INTO `comm_code` VALUES ('4', '泛地缘优势', '我们始终坚持可用性设计原则，协调性能与价格的可比性，强调人性化设计理念，准确把…', 'Superiority', null, null);
 INSERT INTO `comm_code` VALUES ('5', '合作伙伴', '泛地缘科技经过在IT服务领域多年的积累，同各大厂商，集成商，IT服务友商建立了良好的合作伙伴…', 'Partner', null, null);
-INSERT INTO `comm_code` VALUES ('6', 'Index_AD', '1', 'images/ad/201109281154581.jpg', null, null);
+INSERT INTO `comm_code` VALUES ('6', 'Index_AD', '1', 'images/ad/20120303124357838.jpg', 'images/ad/201109281154581.jpg', null);
 INSERT INTO `comm_code` VALUES ('7', 'Index_AD', '2', 'images/ad/201109281154452.jpg', null, null);
 INSERT INTO `comm_code` VALUES ('8', 'Index_AD', '3', 'images/ad/201109281155123.jpg', null, null);
 INSERT INTO `comm_code` VALUES ('11', '泛地缘简介', '<p>&ldquo;泛地缘科技&rdquo;是一个融创意、软件、硬件、集成于一体的专业IT服务商，业务内容涉及软件部署、硬件架构等。</p><p>我们有着丰富的实践经验、精良的专业技术和高度的敬业精神，在网络服务陷入白热化竞争的今天，我们依然遵循可用性原则，坚持为企业搭建可用性高、成本低的自动化系统。</p><p>我们的专业工程师在各项集成技能上均有超卓的表现。在每一个重要的工序上，我们均会和您有紧密的联系，务使每一个细节均能尽善尽美。</p>', null, null, '3');
@@ -101,26 +102,26 @@ INSERT INTO `comm_code` VALUES ('14', '优秀的信息化管理平台', '<p>先�
 INSERT INTO `comm_code` VALUES ('15', '高水平的工程师服务团队', '<p>泛地缘科技工程师团队人数众多、专业化水平高，由泛地缘科技项目部门统一调度。工程师均接受泛地缘科技内部培训并均持有原厂技术认证。其中80%以上的工程师来自于泛地缘科技内部的工程师培养计划，在泛地缘科技经历大量的项目磨练，具备丰富技术支持经验和项目实施经验。</p>', null, null, '4');
 INSERT INTO `comm_code` VALUES ('16', '经验丰富的项目管理团队', '<p>泛地缘科技项目管理团队是公司的又一核心团队，负责泛地缘科技所有项目的资源调度，进度计划安排，项目风险监控，项目质量保证等项目管理事务，凭借泛地缘科技一直以来规范的项目管理模式，泛地缘科技项目管理团队的丰富项目经验和项目管理能力饱受客户赞赏。</p>', null, null, '4');
 INSERT INTO `comm_code` VALUES ('17', '精英云集的泛地缘智库', '<p>为了融合多方面的优势资源，发挥高端人才的价值，泛地缘科技成立了泛地缘智库。泛地缘智库成员均为各个领域的专家、精英、顶尖人才。泛地缘智库的团队智慧为泛地缘服务提供了强有力的专业技术保障和高含金量的运营、管理及发展建议。 泛地缘智库目前已经引入了30多名行业专家，其中12名泛地缘工程师经过严格审核后，加入了泛地缘智库。泛地缘智库成员为泛地缘客户提供必要的免费咨询，以让泛地缘服务可以更多的了解客户在工作中遇到的问题和困惑，通过简洁的咨询为客户问题的解决提供有效帮助。泛地缘智库不断引入高端人才，力求创造一个良好的生态环境，为智库成员在技术、管理、经营等领域提供一个良好的交流圈和成长平台。</p>', null, null, '4');
-INSERT INTO `comm_code` VALUES ('18', '良好的合作企业积累', '<p>泛地缘科技经过在IT服务领域多年的积累，同各大厂商，集成商，IT服务友商建立了良好的合作伙伴关系。泛地缘科技坚持服务客户，服务伙伴的理念，与广大合作伙伴一起共同发展。</p>', null, null, '5');
-INSERT INTO `comm_code` VALUES ('19', 'PartnerLogo', null, 'images/partner/10012_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('20', 'PartnerLogo', null, 'images/partner/10013_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('21', 'PartnerLogo', null, 'images/partner/10050_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('22', 'PartnerLogo', null, 'images/partner/10096_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('23', 'PartnerLogo', null, 'images/partner/10097_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('24', 'PartnerLogo', null, 'images/partner/10183_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('25', 'PartnerLogo', null, 'images/partner/10012_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('26', 'PartnerLogo', null, 'images/partner/10011_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('27', 'PartnerLogo', null, 'images/partner/10096_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('28', 'PartnerLogo', null, 'images/partner/10050_130_40.png', null, null);
-INSERT INTO `comm_code` VALUES ('29', '联系方式', null, 'Contact', null, null);
+INSERT INTO `comm_code` VALUES ('18', '良好的合作企业积累', '<p>\r\n	泛地缘科技经过在IT服务领域多年的积累，同各大厂商，集成商，IT服务友商建立了良好的合作伙伴关系。泛地缘科技坚持服务客户，服务伙伴的理念，与广大合作伙伴一起共同发展。\r\n</p>', null, null, '5');
+INSERT INTO `comm_code` VALUES ('19', 'PartnerLogo', 'sfadsf', 'images/partner/10012_130_40.png', 'faf', null);
+INSERT INTO `comm_code` VALUES ('20', 'PartnerLogo', 'dsfd', 'images/partner/10013_130_40.png', 'dsfads', null);
+INSERT INTO `comm_code` VALUES ('21', 'PartnerLogo', 'sfds', 'images/partner/10050_130_40.png', 'fsdfd', null);
+INSERT INTO `comm_code` VALUES ('22', 'PartnerLogo', 'sdfa', 'images/partner/10096_130_40.png', 'fds', null);
+INSERT INTO `comm_code` VALUES ('23', 'PartnerLogo', 'sdf', 'images/partner/10097_130_40.png', 'fsdaf', null);
+INSERT INTO `comm_code` VALUES ('24', 'PartnerLogo', 'dsfa', 'images/partner/10183_130_40.png', 'sdaf', null);
+INSERT INTO `comm_code` VALUES ('25', 'PartnerLogo', 'dsfads', 'images/partner/10012_130_40.png', 'dsf', null);
+INSERT INTO `comm_code` VALUES ('26', 'PartnerLogo', 'fds', 'images/partner/10011_130_40.png', 'fdsfds', null);
+INSERT INTO `comm_code` VALUES ('27', 'PartnerLogo', 'fdsf', 'images/partner/10096_130_40.png', 'dsf', null);
+INSERT INTO `comm_code` VALUES ('28', 'PartnerLogo', 'sdaf', 'images/partner/10050_130_40.png', 'dsfa', null);
+INSERT INTO `comm_code` VALUES ('29', '联系方式', 'sdf', 'Contact', null, null);
 INSERT INTO `comm_code` VALUES ('30', '[福州]-福州泛地缘技术有限公司', '4000服务热线：4000-480-580<br />\r\n				泛地缘科技网站：www.xxxxx.com<br />\r\n				泛地缘科技邮箱：xxxxx@xxxxx.com<br />\r\n				公司地址：福建福州市台江区五一路大利嘉城', null, null, '29');
 INSERT INTO `comm_code` VALUES ('31', '[厦门]-福州泛地缘技术有限公司厦门分公司', '4000服务热线：4000-480-580<br />\r\n				泛地缘科技网站：www.xxxxx.com<br />\r\n				泛地缘科技邮箱：xxxxx@xxxxx.com<br />\r\n				公司地址：福建福州市台江区五一路大利嘉城', null, null, '29');
-INSERT INTO `comm_code` VALUES ('32', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '售前咨询', null);
-INSERT INTO `comm_code` VALUES ('33', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '售后服务', null);
-INSERT INTO `comm_code` VALUES ('34', 'SupportEmail', 'images/List_Icon02.gif', 'huaxin@huaxinservice.com', '客户投诉', null);
-INSERT INTO `comm_code` VALUES ('35', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
-INSERT INTO `comm_code` VALUES ('36', 'SupportIM', 'images/List_Icon03.gif', '67801239', 'QQ在线客服', null);
-INSERT INTO `comm_code` VALUES ('37', 'SupportIM', 'images/List_Icon04.gif', '67801239', 'Msn在线客服', null);
+INSERT INTO `comm_code` VALUES ('32', 'SupportEmail', 'images/20120304142049660.gif', 'huaxin@huaxinservice.com', '售前咨询', null);
+INSERT INTO `comm_code` VALUES ('33', 'SupportEmail', 'images/20120304142139188.gif', 'huaxin@huaxinservice.com', '售后服务', null);
+INSERT INTO `comm_code` VALUES ('34', 'SupportEmail', 'images/20120304142148550.gif', 'huaxin@huaxinservice.com', '客户投诉', null);
+INSERT INTO `comm_code` VALUES ('35', 'SupportIM', 'images/20120304142208971.gif', '67801239', 'QQ在线客服a', null);
+INSERT INTO `comm_code` VALUES ('36', 'SupportIM', 'images/20120304142220479.gif', '67801239', 'QQ在线客服', null);
+INSERT INTO `comm_code` VALUES ('37', 'SupportIM', 'images/20120304142230747.gif', '67801239', 'Msn在线客服', null);
 INSERT INTO `comm_code` VALUES ('38', 'SEO_Title', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
 INSERT INTO `comm_code` VALUES ('39', 'SEO_Keyword', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
 INSERT INTO `comm_code` VALUES ('40', 'SEO_Desc', '泛地缘科技-办公设备|系统集成|医疗软件|政府采购', null, null, null);
@@ -166,7 +167,7 @@ CREATE TABLE `menu` (
   `type` enum('SP','PROD') character set gbk default 'PROD',
   `menu_code` varchar(50) character set gbk default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of menu
@@ -188,16 +189,18 @@ INSERT INTO `menu` VALUES ('14', '政府采购', '-1', 'govproc.html', '15', '19
 INSERT INTO `menu` VALUES ('15', '网络及网络安全培训', '14', 'govproc_15_info.html', '16', null, 'images/pic/201109252235180.jpg', '<p>为客户提供全方位的网络培训。课程内容涵盖路由、交换、安全、MPLS/VPN、Qos等网络技术，由多名思科认证的CCIE为您授课。</p>   ', null, null, 'training');
 INSERT INTO `menu` VALUES ('16', '小型机与存储技术培训', '14', 'govproc_16_info.html', '17', null, 'images/pic/201109252308150.jpg', '  <p>为客户提供包含AIX/HP-UX/Solaris基础UNIX/LINUX日常管理和维护培训、DS系列、MSA/EVA系列/Clariion系列存储日常管理和维护培训、HACMP/MCSG等系统高可用性配置部署及虚拟化构建等中高级培训。</p> ', null, null, 'training');
 INSERT INTO `menu` VALUES ('17', '数据库培训', '14', 'govproc_17_info.html', '18', null, 'images/pic/201109271330430.jpg', ' <p>为客户提供Oracle数据库从数据库安装入门到数据库的高级优化等全系列培训。由知名的Oracle讲师带领您进入数据库世界。</p>   ', null, null, 'training');
-INSERT INTO `menu` VALUES ('18', '产品与备件', '-1', 'product.html', '22', '212', 'images/content/201109281227210.jpg', '凭借与众多IT厂商多年的良好合作，华信取得了多个IT产品的销售资质，可以为您提供高性价比的IT产品销售和售后服务。借助华信服务在IT服务领域多年的经验和高质量的工程师服务团队，客户从华信购买的IT产品将享受原厂保修服务+华信\r\n技术服务，在华信双重服务保障下，您的IT系统将得到强有力的支撑。  ', ' 我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。\r\n同时我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。', null, 'product');
-INSERT INTO `menu` VALUES ('19', '网络与视频', '18', 'product_19_info.html', '24', null, 'images/pic/201109252144230.jpg', ' <p>Cisco</p>\r\n<p>H3C</p>\r\n<p>Huawei</p>\r\n<p>Juniper</p>\r\n<p>Polycom</p>\r\n<p>&nbsp;</p>   ', 'Cisco\r\nH3C\r\nHuawei\r\nJuniper\r\nPolycom\r\n&nbsp;	', 'PROD', 'product');
-INSERT INTO `menu` VALUES ('20', '小型机存储产品', '18', 'product_20_info.html', '25', null, 'images/pic/201109252146050.gif', '<p>IBM小型机</p>\r\n<p>IBM 存储</p>\r\n<p>EMC存储</p>\r\n<p>HP小机</p>\r\n<p>HP存储</p>\r\n<p>DELL 存储</p>\r\n<p>&nbsp;华赛存储</p>\r\n<p>H3C存储</p>   ', 'IBM小型机\r\nIBM 存储\r\nEMC存储\r\nHP小机\r\nHP存储\r\nDELL 存储\r\n&nbsp;华赛存储\r\nH3C存储	', 'PROD', 'product');
-INSERT INTO `menu` VALUES ('21', '服务器产品', '18', 'product_21_info.html', '26', null, 'images/pic/201109252145430.png', '  <p>IBM 服务器</p>\r\n<p>HP 服务器</p>\r\n<p>DELL 服务器</p> ', '				IBM 服务器\r\nHP 服务器\r\nDELL 服务器', 'PROD', 'product');
+INSERT INTO `menu` VALUES ('18', '产品与备件', '-1', 'product.html', '22', '212', 'images/content/201109281227210.jpg', '凭借与众多IT厂商多年的良好合作，华信取得了多个IT产品的销售资质，可以为您提供高性价比的IT产品销售和售后服务。借助华信服务在IT服务领域多年的经验和高质量的工程师服务团队，客户从华信购买的IT产品将享受原厂保修服务+华信技术服务，在华信双重服务保障下，您的IT系统将得到强有力的支撑。', ' 我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。\r\n同时我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。', '', 'product');
+INSERT INTO `menu` VALUES ('19', '网络与视频', '18', 'product_19_info.html', '22', null, 'images/pic/201109252144230.jpg', '<p>\r\n	Cisco\r\n</p>\r\n<p>\r\n	H3C\r\n</p>\r\n<p>\r\n	Huawei\r\n</p>\r\n<p>\r\n	Juniper\r\n</p>\r\n<p>\r\n	Polycom\r\n</p>\r\n<p>\r\n	&nbsp;\r\n</p>', null, 'PROD', 'product');
+INSERT INTO `menu` VALUES ('20', '小型机存储产品', '18', 'product_20_info.html', '25', null, 'images/pic/201109252146050.gif', '<p>IBM小型机</p>\r\n<p>IBM 存储</p>\r\n<p>EMC存储</p>\r\n<p>HP小机</p>\r\n<p>HP存储</p>\r\n<p>DELL 存储</p>\r\n<p>&nbsp;华赛存储</p>\r\n<p>H3C存储</p>   ', null, 'PROD', 'product');
+INSERT INTO `menu` VALUES ('21', '服务器产品', '18', 'product_21_info.html', '26', null, 'images/pic/201109252145430.png', '  <p>IBM 服务器</p>\r\n<p>HP 服务器</p>\r\n<p>DELL 服务器</p> ', null, 'PROD', 'product');
 INSERT INTO `menu` VALUES ('22', '备件销售', '18', 'product_22_info.html', '28', null, 'images/pic/201109202348230.gif', ' <p>我们提供有质量保证的IT产品备件销售服务，对所销售备件产品提供高于原厂服务级别的保修服务。</p>  ', null, 'SP', 'product');
 INSERT INTO `menu` VALUES ('23', '备件维修', '18', 'product_23_info.html', '30', null, 'images/pic/201110100943040.jpg', '  <p>我们为客户提供过保产品的故障检测服务和故障维修服务。细致的检测和精湛的维修技术，可以更低成本的保证客户对IT产品的持续使用。避免了IT产品过度采购，节省客户投资，降低IT成本。</p>   ', null, 'SP', 'product');
 INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.html', '66', '265', null, null, null, null, 'support');
 INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.html', '50', '197', null, null, null, null, 'project');
-INSERT INTO `menu` VALUES ('26', '成功案例', '25', 'successful_case.html', '2', null, null, null, null, '', 'project');
-INSERT INTO `menu` VALUES ('27', '关于我们', '25', 'about.html', '4', null, null, null, null, '', 'project');
+INSERT INTO `menu` VALUES ('26', '成功案例', '25', 'successful_case.html', '2', null, null, null, null, null, 'project');
+INSERT INTO `menu` VALUES ('27', '关于我们', '25', 'about.html', '4', null, null, null, null, null, 'project');
+INSERT INTO `menu` VALUES ('28', 'test', '1', 'solution_28_info.html', '33', null, 'images/pic/20120303170151111.gif', '<p>\r\n	fadfadsfsdf\r\n</p>\r\n<p>\r\n	afdsfdsfds\r\n</p>', null, '', null);
+INSERT INTO `menu` VALUES ('30', 'dfas', '18', '', '123', null, 'images/pic/20120304071557217.gif', 'safdsfdsfsdafd', null, 'SP', null);
 
 -- ----------------------------
 -- Table structure for `message`
@@ -218,11 +221,11 @@ CREATE TABLE `message` (
 -- ----------------------------
 -- Records of message
 -- ----------------------------
-INSERT INTO `message` VALUES ('1', '测试留言', 'fdaf', 'afdfsd', '2012-02-28 16:57:16', '2012-02-28 16:57:18', null, null);
-INSERT INTO `message` VALUES ('2', 'safdsf', 'dsfadsf', 'dsfad', '2012-02-28 16:57:26', '2012-02-28 16:57:28', null, null);
-INSERT INTO `message` VALUES ('3', 'fasdfd', 'sfads', 'fdsafds', '2012-02-28 16:57:35', '2012-02-28 16:57:37', null, null);
+INSERT INTO `message` VALUES ('1', '测试留言', 'fdaf', 'afdfsd', '2012-02-28 16:57:16', '2012-02-28 16:57:18', null, '2432');
+INSERT INTO `message` VALUES ('2', 'safdsf', 'dsfads fdsfa dsfd sfadsfds fadsfdsfadsfdsfa dsf dsfa dsfdsfa dsfds fadsfdsfad sfdsfad sfdsfadsf dsfadsf dsfadsf dsfads fdsf  adsf', 'dsfad', '2012-02-28 16:57:26', '2012-02-28 16:57:28', null, '3423');
+INSERT INTO `message` VALUES ('3', 'fasdfd', 'sfads<hr>saf', 'fdsafds', '2012-02-28 16:57:35', null, null, '4234');
 INSERT INTO `message` VALUES ('4', 'fadfds', 'afds', 'fdsaf', '2012-02-28 16:57:43', '2012-02-28 16:57:45', null, null);
-INSERT INTO `message` VALUES ('5', 'sfadsf', 'fsadsf', 'dfads', '2012-02-28 16:57:52', '2012-02-28 16:57:54', null, null);
+INSERT INTO `message` VALUES ('5', 'sfadsf', 'fsadsf', 'aaaaaaaaaaaaaaa', '2012-02-28 16:57:52', '2012-03-04 23:02:54', null, null);
 
 -- ----------------------------
 -- Table structure for `news`
@@ -238,7 +241,7 @@ CREATE TABLE `news` (
   `typeid` int(11) default NULL,
   `remark` varchar(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of news
@@ -246,10 +249,10 @@ CREATE TABLE `news` (
 INSERT INTO `news` VALUES ('1', '测试测试测试', '测试测试测试', '测试', '测试', '2012-02-25 13:47:01', '2', 'NEWS');
 INSERT INTO `news` VALUES ('2', '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:22', '3', 'NEWS');
 INSERT INTO `news` VALUES ('3', '测试测试测试', '测试测试测试', '测试测试测试', '测试测试测试', '2012-02-25 13:47:24', '3', 'NEWS');
-INSERT INTO `news` VALUES ('4', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:38', null, 'DOC');
+INSERT INTO `news` VALUES ('4', 'fdsafds.doc', null, 'fdsafds', 'file/aaa.doc', '2012-02-25 16:21:38', null, 'DOC');
 INSERT INTO `news` VALUES ('5', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:35', null, 'DOC');
 INSERT INTO `news` VALUES ('6', 'fdsafds.doc', null, null, 'file/aaaa.doc', '2012-02-25 16:21:32', null, 'DOC');
 INSERT INTO `news` VALUES ('7', '今天好吗', null, null, 'file/aaaa.doc', '2012-02-25 16:22:30', null, 'DOC');
-INSERT INTO `news` VALUES ('8', '今天好吗', null, null, null, '2012-02-25 16:22:25', '2', 'NEWS');
-INSERT INTO `news` VALUES ('9', '今天好吗', null, null, null, '2012-02-25 16:22:20', '2', 'NEWS');
-INSERT INTO `news` VALUES ('10', '今天好吗', null, null, null, '2012-02-25 16:22:28', '2', 'NEWS');
+INSERT INTO `news` VALUES ('8', '今天好吗', 'dsff', 'sdfaf', 'dsafd', '2012-02-25 16:22:25', '2', 'NEWS');
+INSERT INTO `news` VALUES ('9', '今天好吗', 'sdaf', 'fdsf', 'fsdfa', '2012-02-25 16:22:20', '2', 'NEWS');
+INSERT INTO `news` VALUES ('10', '今天好吗', 'dsfdsf', 'dsfa', 'sdfadsf', '2012-02-25 16:22:28', '2', 'NEWS');

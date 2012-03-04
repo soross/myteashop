@@ -157,6 +157,49 @@ else if(isset($_POST[task]) && "Index_AD"==$_POST[task]){
 		$db->query("update comm_code set comm_value='$_POST[seq]' where comm_type='Index_AD' and id='$_POST[adid]'");
 		echo "<script>alert('首页广告【顺序】修改成功!');location.href='../indexad.php';</script>";
 	}
+}
+
+else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/';//201109281154581.jpg
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('comm_value')){
+		$filename = "images/".$up->getNewFileName();
+		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
+		if(file_exists("../../".$_POST[path]))
+		unlink("../../".$_POST[path]);
+  		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
+	}else{
+		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
+		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
+	}
+}
+
+else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/';//201109281154581.jpg
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('comm_value')){
+		$filename = "images/".$up->getNewFileName();
+		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
+		if(file_exists("../../".$_POST[path]))
+		unlink("../../".$_POST[path]);
+  		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+	}else{
+		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
+		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+	}
+}
+else if(isset($_POST[task])&&"replyMsg"==$_POST[task]){
+	$db->query("update message set reply='".replace($_POST[content])."',reply_date=now() where id='$_POST[msgid]'");
+	echo "<script>alert('回复/回复修改成功!');location.href='../msginfo.php?msgid=$_POST[msgid]';</script>";
+
 }else{
 	//echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }

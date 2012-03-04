@@ -3,8 +3,8 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
-$rows = getList(" menu order by seq",$db);
-$smarty->assign("typeRows",$rows);
+$list = getList("comm_code where comm_type='SupportEmail'",$db);
+$smarty->assign("imList",$list);
 
-$smarty->display("addnews.html");
+$smarty->display("emailconfig.html");
 ?>

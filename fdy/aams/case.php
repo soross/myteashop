@@ -7,25 +7,22 @@ require_once("action/page.class.aams.php");
 
 $pagesize = 12;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from dlzxly");
+$queryTotal = $db->query("select id from `case`");
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //产品列表
-$zxlyQuery = $db->query("select n.* from dlzxly n order by create_date desc limit $firstcount, $displaypg");
-$prodRow = array();
-while($rowprod = $db->fetch_array($prodQuery)){
-	$zxlyRow[] = $rowprod;
+$caseQuery = $db->query("select * from `case` order by create_date desc limit $firstcount, $displaypg");
+$caseRow = array();
+while($rowcase = $db->fetch_array($caseQuery)){
+	$caseRow[] = $rowcase;
 }
-$smarty->assign("zxlyRow",$zxlyRow);
+$smarty->assign("caseList",$caseRow);
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);
 
-//显示分页的内容
-$smarty->assign("page",$pagenav);
 
-
-$smarty->display("zxly.html");
+$smarty->display("case.html");
 ?>

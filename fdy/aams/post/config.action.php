@@ -128,9 +128,11 @@ else if(isset($_POST[task]) && "updatePartnerInfo"==$_POST[task]){
 	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
 	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
 
-}else if(isset($_POST[task]) && "updateContactUsEn"==$_POST[task]){
-	$db->query("update comm_code set type_content='".htmlentities($_POST[content2])."' where lang='en' and type_name='ContactUs' ");
-	echo "<script>alert('联系我们[英文]信息修改成功?');location.href='../contactus.php';</script>";
+}
+//热线号码
+else if(isset($_POST[task]) && "updateHotPhone"==$_POST[task]){
+	$db->query("update comm_code set comm_value='$_POST[hotphone]' where comm_type='Hot_Phone' ");
+	echo "<script>alert('热线号码修改成功!');location.href='../hotphone.php';</script>";
 
 }
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-03-04 23:09:55
+Date: 2012-03-05 18:06:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -164,10 +164,10 @@ CREATE TABLE `menu` (
   `picture` varchar(100) character set gbk default NULL,
   `desc` longtext character set gbk,
   `desc2` longtext character set gbk,
-  `type` enum('SP','PROD') character set gbk default 'PROD',
+  `type` enum('SP','PROD') character set gbk default NULL,
   `menu_code` varchar(50) character set gbk default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of menu
@@ -199,8 +199,9 @@ INSERT INTO `menu` VALUES ('24', '技术支持', '-1', 'support.html', '66', '26
 INSERT INTO `menu` VALUES ('25', '项目洽谈', '-1', 'project.html', '50', '197', null, null, null, null, 'project');
 INSERT INTO `menu` VALUES ('26', '成功案例', '25', 'successful_case.html', '2', null, null, null, null, null, 'project');
 INSERT INTO `menu` VALUES ('27', '关于我们', '25', 'about.html', '4', null, null, null, null, null, 'project');
-INSERT INTO `menu` VALUES ('28', 'test', '1', 'solution_28_info.html', '33', null, 'images/pic/20120303170151111.gif', '<p>\r\n	fadfadsfsdf\r\n</p>\r\n<p>\r\n	afdsfdsfds\r\n</p>', null, '', null);
+INSERT INTO `menu` VALUES ('28', 'test', '1', 'solution_28_info.html', '33', null, 'images/pic/20120303170151111.gif', '<p>\r\n	fadfadsfsdf\r\n</p>\r\n<p>\r\n	afdsfdsfds\r\n</p>', null, null, null);
 INSERT INTO `menu` VALUES ('30', 'dfas', '18', '', '123', null, 'images/pic/20120304071557217.gif', 'safdsfdsfsdafd', null, 'SP', null);
+INSERT INTO `menu` VALUES ('31', '新闻动态', '25', 'news.html', '3', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `message`
@@ -216,7 +217,7 @@ CREATE TABLE `message` (
   `remark` varchar(20) default NULL,
   `link` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of message
@@ -226,6 +227,13 @@ INSERT INTO `message` VALUES ('2', 'safdsf', 'dsfads fdsfa dsfd sfadsfds fadsfds
 INSERT INTO `message` VALUES ('3', 'fasdfd', 'sfads<hr>saf', 'fdsafds', '2012-02-28 16:57:35', null, null, '4234');
 INSERT INTO `message` VALUES ('4', 'fadfds', 'afds', 'fdsaf', '2012-02-28 16:57:43', '2012-02-28 16:57:45', null, null);
 INSERT INTO `message` VALUES ('5', 'sfadsf', 'fsadsf', 'aaaaaaaaaaaaaaa', '2012-02-28 16:57:52', '2012-03-04 23:02:54', null, null);
+INSERT INTO `message` VALUES ('6', 'test', 'dfadsf', null, '2012-03-05 10:10:53', null, null, 'sfads');
+INSERT INTO `message` VALUES ('7', 'test22', 'fadfds', null, '2012-03-05 10:11:13', null, null, 'test22');
+INSERT INTO `message` VALUES ('8', 'saf', '<span style=\"background-color:#337fe5;color:#006600;\">fafdsf</span>', null, '2012-03-05 10:16:54', null, null, 'fdssaf');
+INSERT INTO `message` VALUES ('9', 'aaaa', '', null, '2012-03-05 10:59:25', null, null, 'aaaa');
+INSERT INTO `message` VALUES ('10', 'bbbbb', 'bbbbb', null, '2012-03-05 11:01:15', null, null, 'bbbbb');
+INSERT INTO `message` VALUES ('11', 'ccc', 'ccccc', null, '2012-03-05 11:02:29', null, null, 'cccc');
+INSERT INTO `message` VALUES ('12', 'dfsadsf', 'sdfadsf', null, '2012-03-05 11:05:01', null, null, 'dsfsdaf');
 
 -- ----------------------------
 -- Table structure for `news`
@@ -241,7 +249,7 @@ CREATE TABLE `news` (
   `typeid` int(11) default NULL,
   `remark` varchar(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of news
@@ -256,3 +264,4 @@ INSERT INTO `news` VALUES ('7', '今天好吗', null, null, 'file/aaaa.doc', '20
 INSERT INTO `news` VALUES ('8', '今天好吗', 'dsff', 'sdfaf', 'dsafd', '2012-02-25 16:22:25', '2', 'NEWS');
 INSERT INTO `news` VALUES ('9', '今天好吗', 'sdaf', 'fdsf', 'fsdfa', '2012-02-25 16:22:20', '2', 'NEWS');
 INSERT INTO `news` VALUES ('10', '今天好吗', 'dsfdsf', 'dsfa', 'sdfadsf', '2012-02-25 16:22:28', '2', 'NEWS');
+INSERT INTO `news` VALUES ('11', 'test', null, '方案.txt', 'file/20120305095209393.txt', '2012-03-05 17:52:09', null, 'DOC');

@@ -85,6 +85,6 @@ body {
 	<area shape="rect" coords="102,2,144,21" href="javascript:window.parent..mainFrame.dataFrame.location.history.go(1);" />
 	<area shape="rect" coords="150,1,197,22" href="javascript:window.parent.mainFrame.dataFrame.location.reload();" />
 	<area shape="rect" coords="210,2,304,20" href="javascript:window.parent.location.href='../main.php';" />
-	<area shape="rect" coords="314,1,361,23" href="javascript:if(confirm('提示：您确定要退出系统吗？'))window.parent.location.href='../admin.php';" />
+	<area shape="rect" coords="314,1,361,23" href="javascript:if(confirm('提示：您确定要退出系统吗？'))window.parent.location.href='../admin.php?task=logout';" />
 </map></body>
 </html>

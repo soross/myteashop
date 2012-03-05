@@ -128,6 +128,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../msg.php" target="dataFrame">留言列表</a></p>
 	      <p>-&nbsp;<a href="../imconfig.php" target="dataFrame">在线客服配置</a></p>
 	      <p>-&nbsp;<a href="../emailconfig.php" target="dataFrame">邮件配置接入</a></p>
+	      <p>-&nbsp;<a href="../hotphone.php" target="dataFrame">热线配置</a></p>
 	    </div>
 	  </li>
 	   <li>

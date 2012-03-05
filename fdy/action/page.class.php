@@ -60,67 +60,66 @@ $firstcount=($page-1)*$displaypg;
 
 //开始分页导航条代码：
 $pagenav = "
-<DIV id=pagesinfo>共". $totle."条 每页". $displaypg ."条 页次：". $page ."/".$lastpg."</DIV>
-			<div id='pages'><UL>";
+<div class='pageBar'>
+          		<p class='left'>".((($page-1)*$displaypg)+1) ."-".$page*$displaypg." of ".$totle.", ".$displaypg."条/页, 当前 ". $page ."/".$lastpg."页&nbsp;
+  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 if($page==1){
-	$pagenav = $pagenav."<LI class=pagesnow>首页</LI><LI class=pagesnow>上一页</LI>";
+	$pagenav = $pagenav."&nbsp;<span class='first'>首页</span>&nbsp;<span class='previous'>上页</span>&nbsp;";
 
 }else{
 	$pagenav = $pagenav."
-				<LI class=pbutton>
-					<A href='$url=1'>首页</A>
-				</LI>
-				<LI class=pbutton><a href='$url=$prepg'>上一页</a></LI>";
+				&nbsp;<a href='$url=1' class='first'>首页</a>	&nbsp;<a href='$url=$prepg' class='previous'>上页</a>&nbsp;<span class='number'>";
 }
 
 	//如果总页数小于6 全部显示
 if($lastpg<6){
 	for($i=1; $i<$lastpg+1 ;$i++){
 		if($page == $i){
-			$pagenav = $pagenav."<LI class=pagesnow>$i</LI>";
+			$pagenav = $pagenav."&nbsp;<strong>$i</strong>&nbsp;";
 		}else{
-			$pagenav = $pagenav."<LI class=pbutton><A href='$url=$i'>$i</A></LI>";
+			$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>&nbsp;";
 		}
 	}
 }else{ //如果总页数大于5页 则显示当前页的前2页和后2页
 	if($page<4){ //12345...
 		for($i=1; $i<6 ;$i++){
 			if($page == $i){
-				$pagenav = $pagenav."<LI class=pagesnow> $i</LI>";
+				$pagenav = $pagenav."&nbsp;<strong>$i</strong>&nbsp;";
 			}else{
-				$pagenav = $pagenav."<LI class=pbutton><A href='$url=$i'>$i</A></LI>";
+				$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>&nbsp;";
 			}
 		}
-		$pagenav = $pagenav."<LI class=pbutton><A href='$url=6'>...</A></LI>";
+		$pagenav = $pagenav."&nbsp;<a href='$url=6'>...</a>&nbsp;";
 	}else if ($page> $lastpg -3){//...n-4,n-3,n-2,n-1,n
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($lastpg-5)."'>...</A></LI>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($lastpg-5)."'>...</a>&nbsp;";
 		for($i=$lastpg-4 ; $i<$lastpg+1 ;$i++){
 			if($page == $i){
-				$pagenav = $pagenav."<LI class=pagesnow>$i</LI>";
+				$pagenav = $pagenav."&nbsp;<strong>$i</strong>&nbsp;";
 			}else{
-				$pagenav = $pagenav."<LI class=pbutton><A href='$url=$i'>$i</A></LI>";
+				$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>&nbsp;";
 
 			}
 		}
 	}else{//...n-2,n-1,n,n+1,n+2...
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page-3)."'>...</A></LI>";
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page-2)."'>".($page-2)."</A></LI>";
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page-1)."'>".($page-1)."</A></LI>";
-		$pagenav = $pagenav."<LI class=pagesnow><A href='".$url."=".($page)."'>".($page)."</A></LI>";
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page+1)."'>".($page+1)."</A></LI>";
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page+2)."'>".($page+2)."</A></LI>";
-		$pagenav = $pagenav."<LI class=pbutton><A href='".$url."=".($page+3)."'>...</A></LI>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-3)."'>...</a>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-2)."'>".($page-2)."</a>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-1)."'>".($page-1)."</a>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<strong>$page</strong>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+1)."'>".($page+1)."</a>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+2)."'>".($page+2)."</a>&nbsp;";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+3)."'>...</a>&nbsp;";
 	}
 }
 
 if($page== $lastpg){
-	$pagenav = $pagenav."<LI class=pagesnow>下一页</LI>";
+	$pagenav = $pagenav."	</span>&nbsp;<span class='next'>下页</span>&nbsp;<span class='last'>尾页</span>&nbsp;";
 
 }else{
-	$pagenav = $pagenav."<LI class=pbutton><a href='".$url."=".($page+1)."'>下一页</a></LI>";
+	$pagenav = $pagenav."</span>&nbsp;<a href='".$url."=".($page+1)."' class='next'>下页</a>&nbsp;<a href='$url=$lastpg' class='last'>尾页</a>&nbsp;";
 }
-
+/**
 $pagenav = $pagenav."<LI class=opt><SELECT onchange='if(-1!=this.value)location.href=\"".$url."=\"+this.value;'>";
 for($i=1; $i<$lastpg +1 ;$i++){
 	if($page == $i){
@@ -138,9 +137,10 @@ if($page== $lastpg){
 					<A href='$url=$lastpg'>尾页</A>
 				</LI>";
 }
+*/
 $pagenav = $pagenav."
-			</UL>
-	</DIV>";
+			</p>
+			</div>";
 
 
 /*

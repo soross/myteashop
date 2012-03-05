@@ -10,8 +10,8 @@
 	<li id="menu_home"><a href="/index.html">网站首页</a></li>
 	<li id='menu_212'><a href='#' class='menulink'>栏目导航</a>
 		<ul>
-			<li id='module235'><a href='news.html?type=NEWS'>新闻动态</a></li>
-			<li id='module236'><a href='news.html?type=DOC'>技术文档</a></li>
+			<li id='module235'><a href='news_NEWS_type.html'>新闻动态</a></li>
+			<li id='module236'><a href='news_DOC_type.html'>技术文档</a></li>
 		</ul>
 	</li>
 </ul>
@@ -51,7 +51,7 @@ window.addEvent('domready', function(){
       </div>
       <div id="mainBody">
               <div class='clearfloat'></div>
-        <div id="position"><a href='about.html'>资讯中心</a> &gt; 站内新闻</div>
+        <div id="position"><a href='news.html'>资讯中心</a> &gt; {if $newsType=='NEWS'}新闻动态{else}技术文档{/if}</div>
         <div id="title">泛地缘简介</div>
         <div id="content">
           <div class='content'>
@@ -61,7 +61,7 @@ window.addEvent('domready', function(){
           	 		<li>
           	 			<a class='times'>[{$newsList[list].create_date|truncate:10:""}]</a>
           	 			<a href="news_{$newsList[list].id}_info.html" class='module'>[推广优化]</a>
-          	 			<a href='news_{$newsList[list].id}_info.html' title='{$newsList[list].title}' class='listTitle' >{$newsList[list].title}</a>
+          	 			<a href='news_{$newsList[list].id}_info.html' title='{$newsList[list].title}' class='listTitle' >{$newsList[list].title}&nbsp;[{$newsList[list].create_date|truncate:10:""}]</a>
           	 		</li>
           	 		{sectionelse}
           	 		<li>
@@ -79,21 +79,7 @@ window.addEvent('domready', function(){
         	 	</ul>
           	</div>
           	<div class='clearfloat'></div>
-          	<div class='pageBar'>
-          		<p class='left'>1-15 of 46, 15条/页, 当前 1/4页</p>
-          		<p class='right'>
-          			<span class='first'>首页</span>
-					<span class='previous'>上页</span>
-					<span class='number'>
-						<strong>1</strong>
-						<a href='main_265_2.html' title='跳到第2页'>2</a>
-						<a href='main_265_3.html' title='跳到第3页'>3</a>
-						<a href='main_265_4.html' title='跳到第4页'>4</a>
-					</span>
-					<a href='main_265_2.html' class='next' title='跳到下页'>下页</a>
-					<a href='main_265_4.html' class='last' title='跳到最后页'>尾页</a>
-				</p>
-			</div>
+          	{$page}
           </div>
       </div>
       <div class="clearfloat"></div>

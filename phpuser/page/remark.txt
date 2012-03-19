@@ -1,0 +1,2 @@
+客服客户端脚本
+<script type='text/javascript' src='http://chat.53kf.com/kf.php?arg=dns65&style=1'></script>

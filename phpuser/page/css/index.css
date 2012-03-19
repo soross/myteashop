@@ -1,0 +1,240 @@
+@charset "gb2312";
+/* CSS Document */
+.banner_index{width:980px;margin:0 auto;height:243px;padding-left:16px;}
+.yuming{width:700px;float:left;}
+.yuming_l{width:463px;height:209px;background:url(../images/yumingbj.png) no-repeat center;float:left;}
+.yuming_l p{width:448px;height:41px;line-height:41px;padding-left:15px;}
+.yuming_l p a{font-size:14px;font-family:"Œ¢»Ì—≈∫⁄";font-weight:bold;color:#6d0404;}
+.yuming_l p font{color:#6d0404;margin-left:125px;font-size:12px;}
+form{margin:0;padding:0;}
+.cn{width:437px;height:146px;margin:0 auto;clear:both;background:#FFF;border:1px #CCC solid;padding-top:12px;}
+.sou{width:317px;height:28px;background:url(../images/www.png) no-repeat 25px;padding-left:120px;line-height:28px;}
+.sou input{width:129px;height:24px;border:1px #7f9db9 solid;float:left;line-height:24px;}
+.sou a{float:left;margin-left:8px;width:75px;text-align:center;}
+.sou a:hover{color:#F00;}
+.botton_duo{width:437px;height:110px;}
+.botton_duo span{width:64px;float:left;margin-left:36px;font-size:12px;margin-top:8px;}
+.yuming_r{width:226px;float:right;height:205px;padding-top:4px;}
+.yuming_r a{float:left;display:block;width:113px;height:205px;}
+.jianzhan{width:700px;float:left;margin-top:14px;background:url(../images/jianzhanbj.png) no-repeat center;height:296px;margin-bottom:13px;}
+.jianzhan p{width:683px;height:29px;line-height:29px;padding-left:17px;margin: 0 0 0 0;}
+.jianzhan p a{color:#900;font-size:16px;font-family:"Œ¢»Ì—≈∫⁄";font-weight:bold;}
+.jianzhan p font{font-size:12px;color:#FFF;margin-left:280px;}
+.jz_button{width:700px;height:33px;padding-top:10px;}
+.jz_button a{display:block;float:left;width:80px;height:23px;line-height:23px;background:url(../images/jz_buttonbj.png) no-repeat center;margin-left:17px;
+				text-align:center;color:#780303;}
+.jz_button a:hover{font-weight:bold;}
+.jz_map{width:679px;
+		height:192px;
+		background:#FFF;
+		clear:both;
+		margin:0 auto;
+		margin-top:5px;
+		padding:8px 0 8px 0;}
+.jz_map dl{width:144px;
+			float:left;
+			height:192px;
+			margin-top:10px;
+			_margin-top:5px;
+			margin-left:20px;}
+.jz_map dl dt{width:144px;
+				height:142px;
+				float:left;}
+.jz_map dl dd{width:144px;
+				height:25px;
+				_padding-top:4px;}
+.jz_map dl dd a{display:block;
+				float:left;
+				width:68px;
+				height:25px;
+				text-align:center;
+				margin-top:12px;
+				_margin-top:6px;}
+.zhuji{width:693px;
+		height:243px;
+		float:left;
+		border:#8A0508 1px solid;
+		margin:0 auto;}	
+.zhuji_adv{width:680px;
+			height:40px;
+			background:url(../images/zhujibj.png) no-repeat center;
+			padding-top:3px;
+			padding-left:13px;}
+			
+.zhuji_adv ul{width:680px;
+				float:left;}
+.zhuji_adv ul li{width:73px;
+				float:left;}
+.zhuji_adv a{width:73px;
+			height:29px;
+			display:block;
+			float:left;
+			margin-left:15px;
+			line-height:29px;
+			text-align:center;
+			font-size:14px;
+			font-weight:bold;
+			color:#CDCBCE;
+			background:url(../images/zhuji_buttonbj1.png) no-repeat center;}
+.zhuji_adv a:hover{background:url(../images/zhuji_buttonbj.png) no-repeat center;
+					color:#880100;}	
+.Con_cen {
+			height:198px;
+			width:690px;
+			}
+.con_cen a:hover{}
+
+.zhuji_l{
+	width:229px;
+	height:191px;
+	float:left;
+	margin-top:5px;
+	background:#FFF;
+}
+.cuxiao{width:178px;
+	height:31px;
+	line-height:31px;
+	padding-left:50px;}					
+.cuxiao font{font-size:14px;
+			font-family:"Œ¢»Ì—≈∫⁄";
+			font-weight:bold;
+			color:#900;}
+.zhuji_map{
+	width:228px;
+	float:left;
+	height:98px;
+}
+.zhuji_map span{display:block;
+				float:left;
+				width:61px;}
+.zhuji_map ul{
+	width:140px;
+	float:right;
+}
+.zhuji_map ul li{width:114px;
+				height:24px;
+				line-height:24px;
+				background:url(../images/heige.png) no-repeat 10px;
+				padding-left:20px;}
+.zhuji_map ul li font{color:#ff6c00;}
+.huodong{font-size:14px;
+		color:#F00;
+		font-family:"ÀŒÃÂ-PUA";
+		height:20px;
+		font-weight:bold;
+		line-height:20px;
+		float:left;
+		width:163px;
+		padding-left:50px;}
+.anniu{width:213px;
+		height:35px;
+		padding-top:8px;
+		float:left;}
+.anniu a{float:left;
+		margin-left:30px;}
+					
+.shujuku{width:700px;
+		height:203px;
+		float:left;
+		margin-top:13px;}
+.shujuku_l{width:288px;
+			height:120px;
+			float:left;
+			background:url(../images/shujuk.jpg) no-repeat center;
+			padding:84px 0 0 67px;}	
+.shujuku_r{width:333px;
+			height:204px;
+			float:right;}				
+								
+
+							
+								
+#demo {
+	BORDER-BOTTOM: #ccc 1px dashed; BORDER-LEFT: #ccc 1px dashed; WIDTH: 680px; BACKGROUND: #fff; OVERFLOW: hidden; BORDER-TOP: #ccc 1px dashed; BORDER-RIGHT: #ccc 1px dashed
+}
+#demo IMG {
+	BORDER-BOTTOM: #f2f2f2 3px solid; BORDER-LEFT: #f2f2f2 3px solid; BORDER-TOP: #f2f2f2 3px solid; BORDER-RIGHT: #f2f2f2 3px solid
+}
+#indemo {
+	WIDTH: 800%; FLOAT: left
+}
+#demo1 {
+	FLOAT: left
+}
+#demo2 {
+	FLOAT: left
+}
+
+.float-left {
+	FLOAT: left
+}
+.float-right {
+	FLOAT: right
+}
+.t12hei {
+	LINE-HEIGHT: 200%; COLOR: #333333
+}
+.t12hei A {
+	COLOR: #333333
+}
+.t12-hei {
+	LINE-HEIGHT: 200%; COLOR: #333333; FONT-WEIGHT: 700
+}
+.t12bai {
+	LINE-HEIGHT: 200%; COLOR: #ffffff
+}
+.t12lan {
+	LINE-HEIGHT: 180%; COLOR: #333333
+}
+.t12-he {
+	COLOR: #b10b0b; FONT-WEIGHT: 700
+}
+.t12qq {
+	LINE-HEIGHT: 200%; COLOR: #b10b0b
+}
+.t-14ju {
+	LINE-HEIGHT: 200%; COLOR: #b10b0b; FONT-SIZE: 14px; FONT-WEIGHT: 700
+}
+.t14-lan {
+	LINE-HEIGHT: 180%; COLOR: #03246e; FONT-SIZE: 14px; FONT-WEIGHT: 700
+}
+.t12hong {
+	LINE-HEIGHT: 180%; COLOR: #ff6600
+}
+.t12tlan {
+	LINE-HEIGHT: 200%; COLOR: #03246e
+}
+.t14-hong {
+	LINE-HEIGHT: 30px; COLOR: #b10b0b; FONT-SIZE: 14px; FONT-WEIGHT: 700
+}
+.t14 {
+	COLOR: #ff0000; FONT-SIZE: 14px; FONT-WEIGHT: 700
+}		
+
+.qqhei {
+		margin-top:5px;
+		LINE-HEIGHT: 24px; 
+		COLOR: #333333;
+}
+.qqhei A {
+	COLOR: #333333
+}
+.news-bor {
+	width:217px;
+	padding:4px;
+}
+.banner .focus{
+	width:966px;
+	height:245px;
+	}
+/*ÂπªÁÅØÁâáÂõæÁâáCSS*/
+.c-h1{ position:relative; margin:0px 0px 0px 0px; width:966px; height:245px; overflow:hidden; cursor:pointer; float:left;}
+.c-h1img{ position:absolute;}
+.c-h1img IMG{ vertical-align:middle; float:left;}
+.c-h1nav {position:absolute;font-size:12px;bottom:-2px;left:2px;}
+.c-h1nav current { color:#F33;}
+.c-h1nav LI {
+	text-align:center; line-height:28px; float:left; color:#FFFFFF; 
+	background:#000; opacity:0.8; filter:alpha(opacity=60);padding:0px; width:241px;
+}
+.c-h1nav LI.on {background:#ffffff; line-height:30px; color:#000;}

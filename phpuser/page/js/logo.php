@@ -1,0 +1,13 @@
+document.writeln("<form action=\"user\/userlogin.asp\" method=\"post\" name=\"gof\" id=\"gof\">");
+document.writeln("	<div class=\"left_t\">	");
+document.writeln("		<p>用户名:<input name=\"username\" type=\"text\"  class=\"button\" id=\"username\"\/>");
+document.writeln("	 密码:<input name=\"password\" type=\"password\"  class=\"button\" id=\"password\"\/><\/p>");
+document.writeln("	 <a href=\"#\"><img style=\"CURSOR: hand;\" onclick=gof.submit() src=\"images\/denglu.png\"  width=\"53px\" height=\"23px\"><\/a>");
+document.writeln("	 <a href=\"/User\/register.asp\"><img src=\"images\/zhuce.png\" \/><\/a>");
+document.writeln("	 <\/div><\/form><div class=\"left_b\">");
+document.writeln("	<a href=\"User\/forget.asp\">找回密码<\/a>");
+document.writeln("	<span>\|<\/span>");
+document.writeln("	<a href=\"http:\/\/dns87.com\">独立面版<\/a><span>\|<\/span>");
+document.writeln("	 <a href=\"User\/logininfo.asp\">用户管理<\/a><span>\|<\/span>");
+document.writeln("	<a href=\"agent\/default.asp\">代理管理<\/a><span>\|<\/span>");
+document.writeln("	<a href=\"contact\/\">联系方法<\/a><\/div>");

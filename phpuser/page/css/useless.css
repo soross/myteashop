@@ -1,0 +1,10 @@
+@charset "gb2312";
+* { margin:0; padding:0; word-break:break-all; }
+
+fieldset, img { border:none; }
+legend { display:none; }
+em, strong, cite, th { font-style:normal; font-weight:normal; }
+input, textarea, select, button { font:12px Helvetica, Arial, sans-serif; }
+table {
+	border-collapse:collapse;
+}

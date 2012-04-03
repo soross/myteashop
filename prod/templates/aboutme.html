@@ -12,6 +12,7 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+
 .STYLE1 {font-size: 12px}
 .STYLE4 {
 	font-size: 12px;
@@ -188,7 +189,7 @@ for(i=0;i<cs.length;i++){
 		          </tr>
 		          <tr>
 		            <td align="center" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
-						<input type="submit" value="首页公司简介简要信息修改">
+						<input class="submit" type="submit" value="首页公司简介简要信息修改">
 						<input type="hidden" id="task" name="task" value="updateAboutIndex">
 		            </div></td>
 		          </tr>
@@ -226,7 +227,7 @@ for(i=0;i<cs.length;i++){
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" value="新增公司简介详细内容栏目">
+					<input class="submit" type="submit" value="新增公司简介详细内容栏目">
 
 					<input type="hidden" value="{$aboutList[0].fkid}" id="fkid" name="fkid">
 					<input type="hidden" value="addAbout" id="task" name="task">
@@ -284,7 +285,7 @@ for(i=0;i<cs.length;i++){
 		            		<a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a>
 		            		<span class="STYLE1">[</span><a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();">编辑</a><span class="STYLE1">]</span>
 		            		 -->
-		            		<input type="submit" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
+		            		<input class="submit" type="submit" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
 		            	</div>
 		            </td>
 		            <td height="25" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteAbout&aboutid={$aboutList[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteAbout&aboutid={$aboutList[list].id}';">删除</a><span class="STYLE1">]</span></div></td>

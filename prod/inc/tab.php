@@ -14,6 +14,11 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+
+.submit{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
 .STYLE1 {font-size: 12px}
 .STYLE4 {
 	font-size: 12px;
@@ -180,7 +185,7 @@ for(i=0;i<cs.length;i++){
            <tr>
           	<td colspan="2" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 				<input type="hidden" id="task" name="task" value="updateAdminUserInfo">
- 				 <input type="submit" name="updateAdminUserInfo" value="更新管理员信息" />
+ 				 <input class="submit" type="submit" name="updateAdminUserInfo" value="更新管理员信息" />
 
            	</div></td>
           </tr>

@@ -12,6 +12,10 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
 .STYLE1 {font-size: 12px}
 .STYLE4 {
 	font-size: 12px;
@@ -213,8 +217,8 @@ for(i=0;i<cs.length;i++){
 
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
-					<input type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" value="新增联系方式栏目">
+					<input class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
+					<input class="submitButton" type="submit" value="新增联系方式栏目">
 
 					<input type="hidden" value="{$aboutList[0].fkid}" id="fkid" name="fkid">
 					<input type="hidden" value="addContact" id="task" name="task">
@@ -272,7 +276,7 @@ for(i=0;i<cs.length;i++){
 		            		<a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a>
 		            		<span class="STYLE1">[</span><a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();">编辑</a><span class="STYLE1">]</span>
 		            		 -->
-		            		<input type="submit" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
+		            		<input type="submit"  class="submitButton" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
 		            	</div>
 		            </td>
 		            <td height="25" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteContact&contactid={$aboutList[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteContact&contactid={$aboutList[list].id}';">删除</a><span class="STYLE1">]</span></div></td>

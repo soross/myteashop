@@ -5,7 +5,7 @@ require_once("action/mysql.class.php");
 require_once("action/page.class.aams.php");
 
 
-$pagesize = 15;//一页显示多少条
+$pagesize = 20;//一页显示多少条
 //分页
 $queryTotal = $db->query("select id from news");
 $total = $db->db_num_rows($queryTotal);

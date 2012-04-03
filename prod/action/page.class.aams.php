@@ -72,6 +72,87 @@ $firstcount=($page-1)*$displaypg;
 
 
 
+//如果总页数小于6 全部显示
+$pagenav = '';
+if($lastpg<6){
+	for($i=1; $i<$lastpg+1 ;$i++){
+		if($page == $i){
+			$pagenav = $pagenav."&nbsp;$i";
+		}else{
+			$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>";
+		}
+	}
+}else{ //如果总页数大于5页 则显示当前页的前2页和后2页
+	if($page<4){ //12345...
+		for($i=1; $i<6 ;$i++){
+			if($page == $i){
+				$pagenav = $pagenav."&nbsp;$i";
+			}else{
+				$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>";
+			}
+		}
+		$pagenav = $pagenav."&nbsp;<a href='$url=6'>..</a>";
+	}else if ($page> $lastpg -3){//...n-4,n-3,n-2,n-1,n
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($lastpg-5)."'>..</a>";
+		for($i=$lastpg-4 ; $i<$lastpg+1 ;$i++){
+			if($page == $i){
+				$pagenav = $pagenav."&nbsp;$i";
+			}else{
+				$pagenav = $pagenav."&nbsp;<a href='$url=$i'>$i</a>";
+
+			}
+		}
+	}else{//...n-2,n-1,n,n+1,n+2...
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-3)."'>..</a>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-2)."'>".($page-2)."</a>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page-1)."'>".($page-1)."</a>";
+		$pagenav = $pagenav."&nbsp;$page";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+1)."'>".($page+1)."</a>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+2)."'>".($page+2)."</a>";
+		$pagenav = $pagenav."&nbsp;<a href='".$url."=".($page+3)."'>..</a>";
+	}
+}
+
+
+
+$pageSelect = '';
+if($lastpg<101){
+	for($i=1;$i<$lastpg+1;$i++){
+		if($i==$page){
+			$pageSelect = $pageSelect.'<option value="'.$i.'" selected>第'.$i.'页</option>';
+		}else{
+			$pageSelect = $pageSelect.'<option value="'.$i.'" >第'.$i.'页</option>';
+		}
+	}
+}else{
+	if($page>50 && $page<$lastpg-50){
+		for($i=$page-50;$i<$page+50+1;$i++){
+			if($i==$page){
+				$pageSelect = $pageSelect.'<option value="'.$i.'" selected>第'.$i.'页</option>';
+			}else{
+				$pageSelect = $pageSelect.'<option value="'.$i.'" >第'.$i.'页</option>';
+			}
+		}
+	}else if($page>50&& $page>=$lastpg-50){
+		for($i=$lastpg-100;$i<$lastpg+1;$i++){
+			if($i==$page){
+				$pageSelect = $pageSelect.'<option value="'.$i.'" selected>第'.$i.'页</option>';
+			}else{
+				$pageSelect = $pageSelect.'<option value="'.$i.'" >第'.$i.'页</option>';
+			}
+		}
+
+	}else{
+		for($i=1;$i<101;$i++){
+			if($i==$page){
+				$pageSelect = $pageSelect.'<option value="'.$i.'" selected>第'.$i.'页</option>';
+			}else{
+				$pageSelect = $pageSelect.'<option value="'.$i.'" >第'.$i.'页</option>';
+			}
+		}
+	}
+}
+
 
 
 //开始分页导航条代码：
@@ -81,22 +162,31 @@ $pagenav='<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<span class="STYLE1">共'.$totle.'条纪录，当前第'. $page .'/'.$lastpg.'页，每页'.$displaypg.'条纪录</span></td>
 				<td width="75%" valign="top" class="STYLE1">
 					<div align="right">
-						<table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+						<table height="20" border="0" cellpadding="0" cellspacing="0">
 							<tr>
-							  <td width="62" height="22" valign="middle"><div align="right">
+							  <td width="40" height="22" valign="middle"><div align="right">
 								<A href='.$url.'=1><img src="images/tab/first.gif" width="37" height="15" border="0"/></A></div></td>
-							  <td width="50" height="22" valign="middle"><div align="right">
+							  <td width="45" height="22" valign="middle"><div align="right">
 								<a href='.$url.'='.($page-1>0?$page-1:1).'><img src="images/tab/back.gif" width="43" height="15" border="0"/></a></div></td>
-							  <td width="54" height="22" valign="middle"><div align="right">
+							  <td align="center">'.$pagenav.'</td>
+							  <td width="45" height="22" valign="middle"><div align="right">
 								<a href='.$url.'='.($page+1>$lastpg?$lastpg:$page+1).'><img src="images/tab/next.gif" width="43" height="15" border="0" /></a></div></td>
-							  <td width="49" height="22" valign="middle"><div align="right">
+							  <td width="40" height="22" valign="middle"><div align="right">
 								<A href='.$url.'='.$lastpg.'><img src="images/tab/last.gif" width="37" height="15" border="0" /></div></td>
+							  <td width="30" height="22" valign="middle" align="right"><strong>GO:</strong></td>
+							  <td width="90" height="22" valign="middle" align="left"><select onchange="javascript:gotopage(this);">'.$pageSelect.'</select></td>
 							</tr>
 					    </table>
 					</div>
 				</td>
 			</tr>
-		</table>';
+		</table>
+	    <script>
+	    function gotopage(obj){
+	       location.href="'.$url.'="+obj.value;
+	    }
+	    </script>
+		';
 }
 }
 ?>

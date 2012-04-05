@@ -1,0 +1,116 @@
+<table width="234" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" valign="middle"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">最新公告</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+						{section name=list loop=$newNews}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a
+									href="newsinfo.php?newsid={$newNews[list].id}" target="_blank"
+									class="top_m_txt01">{$newNews[list].title|truncate:"30":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				<table width="234" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="4"></td>
+					</tr>
+				</table>
+				<table width="234" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" valign="middle"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">热门专业</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+
+						 {section name=list loop=$hotNews}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a
+									href="newsinfo.php?newsid={$hotNews[list].id}" target="_blank"
+									class="top_m_txt01">{$hotNews[list].title|truncate:"30":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}</td>
+					</tr>
+				</table>
+				<table width="234" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="4"></td>
+					</tr>
+				</table>
+				<table width="234" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" valign="middle"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">资料下载</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						 {section name=list loop=$downloadNews}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a
+									href="newsinfo.php?newsid={$downloadNews[list].id}"
+									target="_blank" class="top_m_txt01">{$downloadNews[list].title|truncate:"30":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section} </td>
+					</tr>
+				</table>

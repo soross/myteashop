@@ -1,0 +1,336 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.STYLE1 {font-size: 12px}
+.STYLE4 {
+	font-size: 12px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 12}
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
+-->
+</style>
+
+<script>
+var  highlightcolor='#eafcd5';
+//此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+var  clickcolor='#51b2f6';
+function  changeto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=highlightcolor;
+}
+}
+
+function  changeback(){
+if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+return
+if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+function  clickto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=clickcolor;
+}
+else
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+</script>
+<script charset="utf-8" src="js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editorIndex;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="contentIndex"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|','source', 'wordpaste']
+		});
+	});
+	var editorAdd;
+	KindEditor.ready(function(K) {
+		editor2 = K.create('textarea[name="contentAdd"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
+		});
+	});
+{/literal}
+{section name=list loop=$aboutList}
+
+	var editor{$aboutList[list].id};
+	{literal}
+	KindEditor.ready(function(K) {
+		editor2 = K.create('textarea[name="content{/literal}{$aboutList[list].id}{literal}"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
+		});
+	});
+{/literal}
+{/section}
+{literal}
+</script>
+
+
+</head>
+{/literal}
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab/tab_05.gif">
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统配置-优势信息配置</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
+
+        	<table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              </table>
+
+              </td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td>
+    <!-- 首页简介 -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/config.action.php" method="post">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		          <tr>
+		            <td colspan="2" align="center" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+		            <strong>首页优势简要信息修改</strong>
+		            </div></td>
+		          </tr>
+		          <tr>
+		           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
+		            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <textarea id="contentIndex" name="contentIndex" style="width:700px;height:100px;visibility:hidden;">{$aboutList[0].info}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td align="center" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+						<input class="submitButton" type="submit" value="首页优势简要信息修改">
+						<input type="hidden" id="task" name="task" value="updateSupIndex">
+		            </div></td>
+		          </tr>
+		        </table>
+
+        	</form>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+     <!-- 新增栏目 -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+   	 <form action="post/config.action.php" method="post" enctype="multipart/form-data" >
+		<tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3" align="center">
+        	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+			  <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新增优势详细内容栏目</strong></td>
+	          </tr>
+	          <tr  height="30">
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="10%" align="right">标题：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
+					&nbsp;<input text="text" size="35" name="title" id="title">
+				</td>
+	          </tr>
+	         <tr>
+	           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
+	            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+	            <textarea id="contentAdd" name="contentAdd" style="width:700px;height:100px;visibility:hidden;"></textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+	            </div></td>
+	          </tr>
+
+	          <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
+					<input  class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
+					<input  class="submitButton" type="submit" value="新增公司简介详细内容栏目">
+
+					<input type="hidden" value="{$aboutList[0].fkid}" id="fkid" name="fkid">
+					<input type="hidden" value="addSup" id="task" name="task">
+				</td>
+	          </tr>
+         	</table>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+      </form>
+    </table>
+    <!-- 栏目列表 -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3" align="center">
+        	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+			  <tr height="50px">
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>栏目列表</strong></td>
+	          </tr>
+         	</table>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+          <tr>
+            <td width="50px" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
+            <td width="200px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
+            <td  height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
+            <td width="60px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
+            <td width="60px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
+          </tr>
+
+          {section name=list loop=$aboutList}
+          <tr>
+	          <form method="post" action="post/config.action.php" enctype="multipart/form-data" >
+		            <td height="25" bgcolor="#FFFFFF" class="STYLE2">
+		            	<div align="center" class="STYLE2 STYLE1">{$aboutList[list].id}</div>
+		            	<input type="hidden" value="{$aboutList[list].id}" id="supid" name="supid">
+		            	<input type="hidden" value="updateSup" id="task" name="task"></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="title" size="23" name="title" value="{$aboutList[list].comm_type}"></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1" >
+
+		            <textarea id="content{$aboutList[list].id}" name="content{$aboutList[list].id}" style="width:470px;height:200px;visibility:hidden;">{$aboutList[list].descinfo}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+		            </div></td>
+		            <td height="25" bgcolor="#FFFFFF">
+		            	<div align="center">
+							<!--
+		            		<a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a>
+		            		<span class="STYLE1">[</span><a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();">编辑</a><span class="STYLE1">]</span>
+		            		 -->
+		            		<input  class="submitButton" type="submit" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
+		            	</div>
+		            </td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteSup&supid={$aboutList[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteSup&supid={$aboutList[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+	          </form>
+          </tr>
+          {sectionelse}
+			<tr>
+				<td colspan=5 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+			</tr>
+          {/section}
+        </table></td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+    </td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab/tab_21.gif">
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr>
+	                  <td  width="352"> &nbsp;</td>
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

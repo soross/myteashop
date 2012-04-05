@@ -1,0 +1,1042 @@
+
+
+
+	{include file="inc/top.html"}
+
+
+
+
+
+<table width="970" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td>
+				{section name=list loop=$adlist}
+				{if $adlist[list].remark==1}
+				<a href='{$adlist[list].flag}' target='_blank'><img
+					src='{$adlist[list].comm_code}' width='950' height='90' border='0'
+					alt='{$adlist[list].comm_value}'></a>
+				{/if}
+				{/section}
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="3"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td valign="top">
+				<table width="309" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="38" background="images/index_r7_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="18%">&nbsp;</td>
+								<td width="82%" height="23" valign="bottom"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">快速导航</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<table width="309" border="0" cellpadding="0" cellspacing="1"
+							bgcolor="#1B4F7E">
+							<tr>
+								<td bgcolor="#FFFFFF">
+
+{literal}
+<script type="text/javascript">
+var pics="";
+var links="";
+var texts="";
+{/literal}
+{assign var=text value=1}
+{section name=list loop=$navlist}
+{if $text==5}
+{literal}
+	pics=pics+"{/literal}{$navlist[list].path}{literal}";
+	links=links+"newsinfo.php?newsid={/literal}{$navlist[list].id}{literal}";
+	texts=texts+"5";
+{/literal}
+{else}
+{literal}
+	pics=pics+"{/literal}{$navlist[list].path}{literal}"+"|";
+	links=links+"newsinfo.php?newsid={/literal}{$navlist[list].id}{literal}"+"|";
+	texts=texts+"{/literal}{$text}{literal}"+"|";
+{/literal}
+{/if}
+{assign var=text value=$text+1}
+{/section}
+{literal}
+ var focus_width=307;
+ var focus_height=185;
+ var text_height=0;
+ var swf_height = focus_height+text_height;
+
+
+ document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+ document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="images/play.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+ document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+ document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+ document.write('<embed src="images/play.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#443927" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');  document.write('</object>');
+
+  </script>
+ {/literal}
+  </td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="3"></td>
+				<td width="315" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="1"
+					bgcolor="#CCCCCC">
+					<tr>
+						<td height="36" background="images/index_r8_c5.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="3%">&nbsp;</td>
+								<td width="97%"><a href="news.php?type=15"
+									target="_blank"
+									style="font-size:10pt; font-weight:bold; color: #FF0000">最新公告</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#FFFFFF">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="2"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$newlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$newlist[list].id}"
+									target="_blank" class="top_m_txt01">{$newlist[list].title|truncate:"44":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="315" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="1"
+					bgcolor="#CCCCCC">
+					<tr>
+						<td height="36" background="images/index_r8_c5.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="3%">&nbsp;</td>
+								<td width="97%"><a href="NewsClass.asp?ClassID=fwzq"
+									target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#1A4D8E">服务专区</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#FFFFFF">
+						<table width="95%" border="0" align="center" cellpadding="3"
+							cellspacing="3">
+							<tr>
+							    {assign var=i value=0}
+							    {section name=list loop=$servicelist}
+								<td align="center">
+								<table border="0" cellpadding="0" cellspacing="0"
+									background="images/fwzq.jpg">
+									<tr>
+										<td width="68" height="25" align="center"><a
+											href="news.php?type={$servicelist[list].id}" target="_blank">{$servicelist[list].type_name}</a></td>
+									</tr>
+								</table>
+								</td>
+								{assign var=i value=$i+1}
+								{if $i%3==0}
+								</tr><tr>
+								{/if}
+								{/section}
+
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="4"></td>
+					</tr>
+				</table>
+				<table width="100%" border="0" align="center" cellpadding="0"
+					cellspacing="0" bgcolor="#FFFFFF">
+					<tr>
+						<td>
+						{section name=list loop=$adlist}
+						{if $adlist[list].remark==2}
+						<a href='{$adlist[list].flag}' target='_blank'><img
+							src='{$adlist[list].comm_code}' width='315' height='78' border='0'
+							alt='{$adlist[list].comm_value}'></a>
+						{/if}
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td width="234">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" align="center" valign="middle"><a
+									href="news.php?type=1" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">热门专业</a><a
+									href="news.php?type=1" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF"></a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$hotlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$hotlist[list].id}"
+									target="_blank" class="top_m_txt01">{$hotlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=2" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">自学考试</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$selflist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$selflist[list].id}"
+									target="_blank" class="top_m_txt01">{$selflist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="5"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=3" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">成人高考</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$crlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$crlist[list].id}"
+									target="_blank" class="top_m_txt01">{$crlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=4" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">远程教育</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$remotelist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$remotelist[list].id}"
+									target="_blank" class="top_m_txt01">{$remotelist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td width="234">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" align="center" valign="middle"><a
+									href="news.php?type=5" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">其它热门</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$otherlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$otherlist[list].id}"
+									target="_blank" class="top_m_txt01">{$otherlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=6" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">考研培训</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$kylist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$kylist[list].id}"
+									target="_blank" class="top_m_txt01">{$kylist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="5"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=7" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">会计培训</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$kjlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$kjlist[list].id}"
+									target="_blank" class="top_m_txt01">{$kjlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+
+
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=8" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">计算机培训</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$jsjlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$jsjlist[list].id}"
+									target="_blank" class="top_m_txt01">{$jsjlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td>
+				{section name=list loop=$adlist}
+				{if $adlist[list].remark==3}
+				<a href='{$adlist[list].flag}' target='_blank'><img
+					src='{$adlist[list].comm_code}' width='950' height='90' border='0'
+					alt='{$adlist[list].comm_value}'></a>
+				{/if}
+				{/section}
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td width="234">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" align="center" valign="middle"><a
+									href="news.php?type=9" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">资料下载</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$downloadlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$downloadlist[list].id}"
+									target="_blank" class="top_m_txt01">{$downloadlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=10" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">职称评审</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$zcpslist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$zcpslist[list].id}"
+									target="_blank" class="top_m_txt01">{$zcpslist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="5"></td>
+				<td width="234" align="center" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td style="border:1px solid #1A4D8E; ">
+						<table width="100%" border="0" align="center" cellpadding="0"
+							cellspacing="3">
+							<tr>
+							{section name=list loop=$schoollist}
+								<td align="center">
+								   <a href='{$schoollist[list].flag}'
+									target='_blank'><img src='{$schoollist[list].comm_code}'
+									width='109' height='103' border='0' alt='{$schoollist[list].comm_value}'></a></td>
+							 {if $schoollist[list].remark==2}
+							 </tr>
+							<tr>
+							 {/if}
+							{/section}
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td width="234" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%" height="23" align="center"><a
+									href="news.php?type=11" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">关于学历</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$xllist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$xllist[list].id}"
+									target="_blank" class="top_m_txt01">{$xllist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td width="234">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="29" background="images/index_r11_c1.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="8%">&nbsp;</td>
+								<td width="92%" height="23" align="center" valign="middle"><a
+									href="news.php?type=12" target="_blank"
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">合作院校</a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #1A4D8E; border-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+
+						{section name=list loop=$parterlist}
+						<table width="100%" border="0" cellpadding="0" cellspacing="1">
+							<tr>
+								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$parterlist[list].id}"
+									target="_blank" class="top_m_txt01">{$parterlist[list].title|truncate:"32":".."}</a></td>
+							</tr>
+							<tr>
+								<td width="80%" valign="top" background="img_home/xn.gif"
+									height="1"></td>
+							</tr>
+						</table>
+						{/section}
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td width="4"></td>
+				<td valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="1"
+					bgcolor="#CCCCCC">
+					<tr>
+						<td height="36" bgcolor="#FFFFFF">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0"
+							background="images/index_r8_c8.jpg">
+							<tr>
+								<td width="40%" background="images/index_r8_c5.jpg">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="3%">&nbsp;</td>
+										<td width="97%"
+											style="font-size:10pt; font-weight:bold; color:#1A4D8E">证书样本</td>
+									</tr>
+								</table>
+								</td>
+								<td width="60%" height="36">&nbsp;</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#FFFFFF">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="2" align="center">
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tr>
+										<td height="9"></td>
+									</tr>
+								</table>
+								<!--最新图文代码开始-->
+
+							{literal}
+								<script language="JavaScript">
+<!--
+var flag=false;
+function DrawImage(ImgD){
+ var image=new Image();
+ image.src=ImgD.src;
+ if(image.width>0 && image.height>0){
+  flag=true;
+  if(image.width/image.height>= 105/80){
+   if(image.width>105){
+    ImgD.width=105;
+    ImgD.height=(image.height*105)/image.width;
+   }else{
+    ImgD.width=image.width;
+    ImgD.height=image.height;
+   }
+   ImgD.alt="点击查看详细信息...";
+  }
+  else{
+   if(image.height>80){
+    ImgD.height=80;
+    ImgD.width=(image.width*80)/image.height;
+   }else{
+    ImgD.width=image.width;
+    ImgD.height=image.height;
+   }
+   ImgD.alt="点击查看详细信息...";
+  }
+ }
+}
+//-->
+</script>
+{/literal}
+								<div align='center' id='demo'
+									style='overflow:hidden;height:140px;width:690px;'><!--滚动区的高度和宽度-->
+								<table border='0' cellpadding='0' cellspacing="0" cellspace='0'>
+									<tr>
+										<td id='demo1' valign='top'>
+										<table width='100%' cellpadding='0' cellspacing='0' border='0'
+											align='center'>
+											<tr valign='top'>
+
+												{section name=list loop=$certlist}
+												<td align='center'>
+												<table width=76% border=0 align=center cellpadding=0
+													cellspacing=0>
+													<tr>
+														<td width="18">
+														<table width="10" border="0" cellpadding="0"
+															cellspacing="3">
+															<tr>
+																<td>&nbsp;</td>
+															</tr>
+														</table>
+														</td>
+														<td width="158" height="85" align="center"><a
+															href='certinfo.php?id={$certlist[list].id}' target=_blank
+															title='{$certlist[list].cert_name}'> <img
+															src="{$certlist[list].path}" alt="{$certlist[list].cert_name}"
+															width="200" height="140" border="0" /> </a></td>
+													</tr>
+												</table>
+												</td>
+												{/section}
+
+											</tr>
+										</table>
+										</td>
+										<td id=demo2 valign=top></td>
+									</tr>
+								</table>
+								</div>
+{literal}
+								<script>
+var Picspeed=15
+demo2.innerHTML=demo1.innerHTML
+function Marquee1(){
+if(demo2.offsetWidth-demo.scrollLeft<=0)
+demo.scrollLeft-=demo1.offsetWidth
+else{
+demo.scrollLeft++
+}
+}
+var MyMar1=setInterval(Marquee1,Picspeed)
+demo.onmouseover=function() {clearInterval(MyMar1)}
+demo.onmouseout=function() {MyMar1=setInterval(Marquee1,Picspeed)}
+</script> {/literal}<!--最新图文代码结束-->
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tr>
+										<td height="9"></td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="4"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="1" bgcolor="#CCCCCC">
+			<tr>
+				<td height="36" bgcolor="#FFFFFF">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0"
+					background="images/index_r8_c8.jpg">
+					<tr>
+						<td width="35%" background="images/index_r8_c5.jpg">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="3%">&nbsp;</td>
+								<td width="97%"
+									style="font-size:10pt; font-weight:bold; color: #FF0000">友情链接</td>
+							</tr>
+						</table>
+						</td>
+						<td width="65%" height="36">&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="2" align="center">
+						<table width="100%" border="0" align="center" cellpadding="0"
+							cellspacing="5">
+							<tr>
+								<td height="5">
+								<table width='100%' cellSpacing='5'>
+									<tr align='center'>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+								<table width='100%' cellSpacing='5'>
+									<tr align='center'>
+										{assign var=j value=0}
+										{section name=list loop=$linklist}
+										<td width='88'><a href='{$linklist[list].url}'
+											target='_blank'
+											title='{$linklist[list].link_name}'><img
+											src='{$linklist[list].path}' width='88' height='31'
+											border='0'></a></td>
+										{assign var=j value=$j+1}
+										{if $j%10==0}
+										</tr><tr align="center">
+										{/if}
+										{/section}
+
+									</tr>
+								</table>
+								</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="5"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<div align="center">
+<map name="Map">
+	<area shape="rect" coords="181,7,220,18" href="Product.asp">
+</map>
+<table width="970" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="5"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td height="1" bgcolor="#9EC9EC"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="5"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="4"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td height="70" align="center">
+				<p> {$copyInfo}</p>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript" src="js/online/qq.php"></script>
+
+<!-- JiaThis Button BEGIN -->
+<script	type="text/javascript"
+	src="http://v2.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+
+</body>
+
+
+</html>

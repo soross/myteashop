@@ -1,0 +1,127 @@
+A{TEXT-DECORATION: none;}
+A:hover{COLOR: #CC0000;}
+A:link {color: #000000;}
+A:visited {color: #000000;}
+BODY
+{
+FONT-SIZE: 9pt;background-position:center;
+}
+TD
+{
+FONT-FAMILY:ËÎÌו;FONT-SIZE: 9pt;line-height: 150%;
+}
+Input
+{
+
+COLOR: ##69321B;
+ font-size: 9pt
+
+}
+Button
+{
+FONT-SIZE: 9pt;HEIGHT: 20px;
+
+}
+Select
+{
+FONT-SIZE: 9pt;HEIGHT: 20px;
+
+}
+.border
+{
+border: 1px solid #9E9B9D;
+
+}
+.border2
+{
+background:#ffffff;BORDER-bottom: #bfbfbf 1px solid;
+}
+.FootBg
+{
+background:#DFDDDE;
+}
+.title
+{
+background:url(Skin/3/head_bg.GIF);height: 30;
+
+}
+.tdbg
+{
+background:#DFDDDE;
+}
+.txt_css
+{
+background:url(Skin/3/txt_css.gif);height: 36;
+}
+.title_lefttxt
+{
+
+}
+.title_left
+{
+background:url(Skin/3/left_bg.gif);height: 34;
+}
+.tdbg_left
+{
+background:#ECEBEC;
+border: 1px solid #9E9B9D;
+
+}
+.title_left2
+{
+background: url(SKIN/3/tdbg_left2.gif);height:26;
+}
+.tdbg_left2
+{
+background: url(SKIN/3/bg_1.gif);
+}
+.tdbg_leftall
+{
+background:#f7f7f7;
+}
+.title_righttxt
+{
+filter:DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1)
+
+}
+.title_right
+{
+background:url(Skin/3/Right_bg.gif);height: 32;
+}
+.tdbg_right
+{
+background:url(Skin/3/tdbg_main2.GIF);line-height: 100%;
+
+}
+.title_right2
+{
+background:url(Skin/3/maintop.gif);height: 202;
+}
+.tdbg_right2
+{
+background:url(Skin/3/tdbg_main3.GIF);height: 27;
+}
+.tdbg_rightall
+{
+height: 27;background:url(Skin/3/kt01-p1.GIF);
+}
+
+
+.ww1 {width:500px;background-color:#D1E7FC;border-top:1px solid #9EC9EC;border-left:1px solid #9EC9EC;}
+.ww1 td {border-right:1px solid #9EC9EC;border-bottom:1px solid #9EC9EC;height:28px;text-align:center;width:125px;font-size:12px;cursor:hand;}
+.ww1 td.s {border-bottom:1px solid #FFFFFF;font-weight:bold;background-color:#FFFFFF;}
+.ww2 {width:500px;border-right:1px solid #9EC9EC;border-top:none;border-left:1px solid #9EC9EC;border-bottom:1px solid #9EC9EC;font-size:12px;}
+.ww2 a:link {color:#00007f;text-decoration:none;}
+.ww2 a:visited {color:#800080;text-decoration:none;}
+.ww2 a:hover {color:#00007f;text-decoration:underline;}
+.ww2 a:active {color:#00007f;text-decoration:underline;}
+.dis {display:block}
+.undis {display:none}
+
+.STYLE2 {color: #FFFFFF; }
+body {
+	background-color: #0083D1;
+}
+
+
+input{BORDER: #cccccc 1px  solid; FONT-SIZE: 9pt;  "}

@@ -1,0 +1,521 @@
+
+
+
+	{include file="inc/top.html"}
+
+
+
+
+
+
+<table width="970" height="5" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td></td>
+	</tr>
+</table>
+<table width="970" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td width="185" valign="top">
+
+				{include file="inc/left.html"}
+
+
+				</td>
+				<td width="5"></td>
+				<td valign="top" bgcolor="#F5F5F5"
+					style="border: 1px solid #1A4D8E;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0"
+					bgcolor="#9EC9EC">
+					<tr>
+						<td bgcolor="#4288DD" height="25">&nbsp;&nbsp;当前位置：{$addressNav}</td>
+					</tr>
+				</table>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="1" bgcolor="1A4D8E"></td>
+					</tr>
+				</table>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<form action="post/msg.action.php" method="post"
+					name="zxbj" id="zxbj" onsubmit="return CheckForm();">
+				<table width="90%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="100%">
+						<div align="center">
+						<table width="600" height="409" id="formcss" border="0"
+							align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td align="center">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</td>
+								<td align="left"><input name="xm" type="text" id="xm" value="{$user.xm}"
+									style="font-size: 14px" size="10" maxlength="5"> *</td>
+								<td align="center">出生年月：</td>
+								<td align="left"><INPUT id=birth title=点击选择
+									readonly="readonly"  value="{$user.ny}"
+									style="BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 9pt; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; COLOR: #cccccc; BORDER-BOTTOM: #cccccc 1px solid; FONT-STYLE: normal; FONT-VARIANT: normal"
+									onclick=javascript:ShowCalendar(this.id) type=title size=18
+									name=ny>&nbsp;<INPUT
+									style="BORDER-RIGHT: #cccccc 1px groove; FONT-WEIGHT: normal; FONT-SIZE: 9pt; LINE-HEIGHT: normal; BORDER-BOTTOM: #cccccc 1px groove; FONT-STYLE: normal; HEIGHT: 20px; BACKGROUND-COLOR: #eeeeee; FONT-VARIANT: normal"
+									onClick="javascript:ShowCalendar('birth')" type=button
+									value="选 择" name=Submit2>&nbsp;*</td>
+							</tr>
+							<tr>
+								<td align="center">民&nbsp;&nbsp;&nbsp;&nbsp;族：</td>
+								<td align="left"><input name="mz" type="text" id="mz" value="{$user.mz}"
+									style="font-size: 14px" value="" size="10" maxlength="10">*</td>
+								<td align="center">籍&nbsp;&nbsp;&nbsp;&nbsp;贯：</td>
+								<td align="left"><input name="jg" type="text" id="jg"  value="{$user.jg}"
+									style="font-size: 14px" value="" size="10" maxlength="20">*</td>
+							</tr>
+							<tr>
+								<td align="center">文化程度：</td>
+								<td align="left"><select name=wh size=1 id="wh"
+									style="BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #333333 1px solid; BORDER-LEFT: #333333 1px solid; COLOR: #333333; BORDER-BOTTOM: #333333 1px solid">
+									{section name=list loop=$list} {if
+									$list[list].comm_type=='Culture'}
+									<option value='{$list[list].comm_code}'{if $user.wh==$list[list].comm_code}selected{/if}>{$list[list].comm_code}</option>
+									{/if} {/section}
+								</select>&nbsp;*</td>
+								<td align="center">有何特长：</td>
+								<td align="left"><input name="tc" type="text" id="tc"  value="{$user.tc}"
+									style="font-size: 14px" value="" size="20" maxlength="20">*</td>
+							</tr>
+							<tr>
+								<td align="center">政治面貌：</td>
+								<td align="left"><input name="zzmm" type="text" id="zzmm"  value="{$user.zzmm}"
+									style="font-size: 14px" value="" size="10" maxlength="10">*</td>
+								<td align="center">身份证号：</td>
+								<td align="left"><input name="sfzh" type="text" id="sfzh"  value="{$user.sfzh}"
+									style="font-size: 14px" value="" size="20" maxlength="20">*</td>
+							</tr>
+							<tr>
+								<td align="center">毕业学校：</td>
+								<td align="left"><input name="byyx" type="text" id="byyx"  value="{$user.byyx}"
+									style="font-size: 14px" value="" size="30" maxlength="30">*</td>
+								<td align="center">电子信箱：</td>
+								<td align="left"><input type="text" name="email" size="20"  value="{$user.email}"
+									maxlength="30" value="" style="font-size: 14px"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td rowspan="2" align="center">联系方法：</td>
+								<td height="-2" colspan="3" align="left">通信地址：<input
+									name="dz" type="text" id="dz" style="font-size: 14px"  value="{$user.dz}"
+									size="38" maxlength="50">*</td>
+							</tr>
+							<tr>
+								<td height="-1" colspan="3" align="left">邮政编码：<input
+									name="yb" type="text" id="yb" style="font-size: 14px"  value="{$user.yb}"
+									size="10" maxlength="10">*&nbsp;联系电话：<input name="dh"
+									type="text" id="dh" style="font-size: 14px"  value="{$user.dh}" size="15"
+									maxlength="15">*&nbsp;<font style="font-size: 12px">QQ号：</font><input
+									name="qq" type="text" id="qq" style="font-size: 14px"  value="{$user.qq}"
+									size="15" maxlength="15"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan="3">&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center">报考院校：</td>
+								<td align="left"><input name="bkyx" type="text" id="bkyx"  value="{$user.bkyx}"
+									style="font-size: 14px" size="18" maxlength="36"></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center">报考层次：</td>
+								<td align="left"><select name=bkcc size=1 id="bkcc"
+									style="COLOR: #333333">
+									{section name=list loop=$list} {if
+									$list[list].comm_type=='Level'}
+									<option value='{$list[list].comm_code}' {if $user.bkcc==$list[list].comm_code}selected{/if}>{$list[list].comm_code}</option>
+									{/if} {/section}
+								</select></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center">报考专业：</td>
+								<td align="left"><font> <input name="bkzy"
+									type="text" id="bkzy" style="font-size: 14px"  value="{$user.bkzy}"
+									size="18" maxlength="36">* <br></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center">报考性质：</td>
+								<td align="left"><select name=bkxz size=1 id="bkxz"
+									style="BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #333333 1px solid; BORDER-LEFT: #333333 1px solid; COLOR: #333333; BORDER-BOTTOM: #333333 1px solid">
+									{section name=list loop=$list} {if
+									$list[list].comm_type=='Properties'}
+									<option value='{$list[list].comm_code}' {if $user.bkxz==$list[list].comm_code}selected{/if}>{$list[list].comm_code}</option>
+									{/if} {/section}
+								</select></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center">备&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+								<td colspan="3" align="left"><textarea name="bz" cols="45"
+									rows="10" id="bz" style="font-size: 14px">{$user.bz}</textarea></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td align="left">注：* 为必填项 <input name="Publish"
+									type="hidden" value="0" checked></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan="3">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="0" valign="top"></td>
+								<td height="0" valign="top"><input type="reset"
+									value="清空重填" name="cmdReset">&nbsp;&nbsp;<input
+									type="submit" value="提交报名" name="cmdOk">
+									<input name="task"
+									type="hidden" value="addOnlineReg">
+									</td>
+								<td valign="top">&nbsp;</td>
+								<td valign="top">&nbsp;</td>
+							</tr>
+							{literal}
+						</table>
+						</div>
+						</td>
+					</tr>
+				</table>
+				</form>
+				</td>
+			</tr>
+		</table>
+		<table width="970" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td>
+				<table width="950" border="0" align="center" cellpadding="0"
+					cellspacing="0" bgcolor="#FFFFFF">
+					<tr>
+						<td height="5"></td>
+					</tr>
+				</table>
+				<table width="950" border="0" align="center" cellpadding="0"
+					cellspacing="0">
+					<tr>
+						<td height="1" bgcolor="#9EC9EC"></td>
+					</tr>
+				</table>
+				<table width="950" border="0" align="center" cellpadding="0"
+					cellspacing="0" bgcolor="#FFFFFF">
+					<tr>
+						<td height="5"></td>
+					</tr>
+				</table>
+				<table width="950" border="0" align="center" cellpadding="0"
+					cellspacing="0" bgcolor="#FFFFFF">
+					<tr>
+						<td>
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="4"></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="70" align="center">
+						{/literal}<p> {$copyInfo}</p>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+
+{$script}
+{literal}
+<script src="js/AC_RunActiveContent.js" type="text/javascript"></script>
+
+
+<script>
+// 日期选择
+// By Ziyue(http://www.web-v.com/)
+var months = new Array("一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月");
+var daysInMonth = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+var days = new Array("日","一", "二", "三", "四", "五", "六");
+var today;
+
+document.writeln("<div id='Calendar' style='position:absolute; z-index:1; visibility: hidden; filter:\"progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#999999,strength=3)\"'></div>");
+
+function getDays(month, year)
+{
+//下面的这段代码是判断当前是否是闰年的
+if (1 == month)
+return ((0 == year % 4) && (0 != (year % 100))) || (0 == year % 400) ? 29 : 28;
+else
+return daysInMonth[month];
+}
+
+function getToday()
+{
+//得到今天的年,月,日
+this.now = new Date();
+this.year = this.now.getFullYear();
+this.month = this.now.getMonth();
+this.day = this.now.getDate();
+}
+
+function getStringDay(str)
+{
+//得到输入框的年,月,日
+var str=str.split("-")
+
+this.now = new Date(parseFloat(str[0]),parseFloat(str[1])-1,parseFloat(str[2]));
+this.year = this.now.getFullYear();
+this.month = this.now.getMonth();
+this.day = this.now.getDate();
+}
+
+function newCalendar() {
+var parseYear = parseInt(document.all.Year.options[document.all.Year.selectedIndex].value);
+var newCal = new Date(parseYear, document.all.Month.selectedIndex, 1);
+var day = -1;
+var startDay = newCal.getDay();
+var daily = 0;
+
+if ((today.year == newCal.getFullYear()) &&(today.month == newCal.getMonth()))
+day = today.day;
+
+var tableCal = document.all.calendar;
+var intDaysInMonth =getDays(newCal.getMonth(), newCal.getFullYear());
+
+for (var intWeek = 1; intWeek < tableCal.rows.length;intWeek++)
+for (var intDay = 0;intDay < tableCal.rows[intWeek].cells.length;intDay++)
+{
+var cell = tableCal.rows[intWeek].cells[intDay];
+if ((intDay == startDay) && (0 == daily))
+daily = 1;
+
+if(day==daily) //今天，调用今天的Class
+{
+cell.style.background='#6699CC';
+cell.style.color='#FFFFFF';
+//cell.style.fontWeight='bold';
+}
+else if(intDay==6) //周六
+cell.style.color='green';
+else if (intDay==0) //周日
+cell.style.color='red';
+
+if ((daily > 0) && (daily <= intDaysInMonth))
+{
+cell.innerText = daily;
+daily++;
+}
+else
+cell.innerText = "";
+}
+}
+
+function GetDate(InputBox)
+{
+var sDate;
+//这段代码处理鼠标点击的情况
+if (event.srcElement.tagName == "TD")
+if (event.srcElement.innerText != "")
+{
+sDate = document.all.Year.value + "-" + document.all.Month.value + "-" + event.srcElement.innerText;
+eval("document.all."+InputBox).value=sDate;
+HiddenCalendar();
+}
+}
+
+function HiddenCalendar()
+{
+//关闭选择窗口
+document.all.Calendar.style.visibility='hidden';
+}
+
+function ShowCalendar(InputBox)
+{
+var x,y,intLoop,intWeeks,intDays;
+var DivContent;
+var year,month,day;
+var o=eval("document.all."+InputBox);
+var thisyear; //真正的今年年份
+
+thisyear=new getToday();
+thisyear=thisyear.year;
+
+today = o.value;
+if(isDate(today))
+today = new getStringDay(today);
+else
+today = new getToday();
+
+//显示的位置
+x=o.offsetLeft;
+y=o.offsetTop;
+while(o=o.offsetParent)
+{
+x+=o.offsetLeft;
+y+=o.offsetTop;
+}
+document.all.Calendar.style.left=x+2;
+document.all.Calendar.style.top=y+20;
+document.all.Calendar.style.visibility="visible";
+
+//下面开始输出日历表格(border-color:#9DBAF7)
+DivContent="<table border='0' cellspacing='0' style='border:1px solid #0066FF; background-color:#EDF2FC'>";
+DivContent+="<tr>";
+DivContent+="<td style='border-bottom:1px solid #0066FF; background-color:#C7D8FA'>";
+
+//年
+DivContent+="<select name='Year' id='Year' onChange='newCalendar()' style='font-family:Verdana; font-size:12px'>";
+for (intLoop = thisyear - 60; intLoop < (thisyear + 1); intLoop++)
+DivContent+="<option value= " + intLoop + " " + (today.year == intLoop ? "Selected" : "") + ">" + intLoop + "</option>";
+DivContent+="</select>";
+
+//月
+DivContent+="<select name='Month' id='Month' onChange='newCalendar()' style='font-family:Verdana; font-size:12px'>";
+for (intLoop = 0; intLoop < months.length; intLoop++)
+DivContent+="<option value= " + (intLoop + 1) + " " + (today.month == intLoop ? "Selected" : "") + ">" + months[intLoop] + "</option>";
+DivContent+="</select>";
+
+DivContent+="</td>";
+
+DivContent+="<td style='border-bottom:1px solid #0066FF; background-color:#C7D8FA; font-weight:bold; font-family:Wingdings 2,Wingdings,Webdings; font-size:16px; padding-top:2px; color:#4477FF; cursor:hand' align='center' title='关闭' onClick='javascript:HiddenCalendar()'>S</td>";
+DivContent+="</tr>";
+
+DivContent+="<tr><td align='center' colspan='2'>";
+DivContent+="<table id='calendar' border='0' width='100%'>";
+
+//星期
+DivContent+="<tr>";
+for (intLoop = 0; intLoop < days.length; intLoop++)
+DivContent+="<td align='center' style='font-size:12px'>" + days[intLoop] + "</td>";
+DivContent+="</tr>";
+
+//天
+for (intWeeks = 0; intWeeks < 6; intWeeks++)
+{
+DivContent+="<tr>";
+for (intDays = 0; intDays < days.length; intDays++)
+DivContent+="<td onClick='GetDate(\"" + InputBox + "\")' style='cursor:hand; border-right:1px solid #BBBBBB; border-bottom:1px solid #BBBBBB; color:#215DC6; font-family:Verdana; font-size:12px' align='center'></td>";
+DivContent+="</tr>";
+}
+DivContent+="</table></td></tr></table>";
+
+document.all.Calendar.innerHTML=DivContent;
+newCalendar();
+}
+
+function isDate(dateStr)
+{
+var datePat = /^(\d{4})(\-)(\d{1,2})(\-)(\d{1,2})$/;
+var matchArray = dateStr.match(datePat);
+if (matchArray == null) return false;
+var month = matchArray[3];
+var day = matchArray[5];
+var year = matchArray[1];
+if (month < 1 || month > 12) return false;
+if (day < 1 || day > 31) return false;
+if ((month==4 || month==6 || month==9 || month==11) && day==31) return false;
+if (month == 2)
+{
+var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+if (day > 29 || (day==29 && !isleap)) return false;
+}
+return true;
+}
+
+
+function CheckForm()
+{
+	if (document.zxbj.xm.value.length == 0) {
+		alert("姓名没有填写.请重新输入！");
+		document.zxbj.xm.focus();
+		return false;
+	}
+		if (document.zxbj.ny.value.length == 0) {
+		alert("出生年月没有填写.请重新输入！");
+		document.zxbj.ny.focus();
+		return false;
+	}
+		if (document.zxbj.mz.value.length == 0) {
+		alert("民族没有填写.请重新输入！");
+		document.zxbj.mz.focus();
+		return false;
+	}
+		if (document.zxbj.jg.value.length == 0) {
+		alert("籍贯没有填写.请重新输入！");
+		document.zxbj.jg.focus();
+		return false;
+	}
+		if (document.zxbj.wh.value.length == 0) {
+		alert("文化程度没有填写.请重新输入！");
+		document.zxbj.wh.focus();
+		return false;
+	}
+		if (document.zxbj.zzmm.value.length == 0) {
+		alert("政治面貌没有填写.请重新输入！");
+		document.zxbj.zzmm.focus();
+		return false;
+	}
+		if (document.zxbj.sfzh.value.length == 0) {
+		alert("身份证号没有填写.请重新输入！");
+		document.zxbj.sfzh.focus();
+		return false;
+	}
+		if (document.zxbj.bytx.value.length == 0) {
+		alert("毕业学校没有填写.请重新输入！");
+		document.zxbj.bytx.focus();
+		return false;
+	}
+		if (document.zxbj.dz.value.length == 0) {
+		alert("家庭通信地址没有填写.请重新输入！");
+		document.zxbj.dz.focus();
+		return false;
+	}
+		if (document.zxbj.yb.value.length == 0) {
+		alert("邮政编码没有填写.请重新输入！");
+		document.zxbj.yb.focus();
+		return false;
+	}
+		if (document.zxbj.dh.value.length == 0) {
+		alert("联系电话没有填写.请重新输入！");
+		document.zxbj.dh.focus();
+		return false;
+	}
+		if (document.zxbj.bkzy.value.length == 0) {
+		alert("报考专业没有填写.请重新输入！（请慎重选择专业！！）");
+		document.zxbj.bkzy.focus();
+		return false;
+	}
+	return true;
+}
+
+</script>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v2.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</BODY>
+</HTML>
+{/literal}

@@ -1,0 +1,257 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
+.STYLE1 {font-size: 12px}
+.STYLE4 {
+	font-size: 12px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 12}
+
+-->
+</style>
+
+<script>
+var  highlightcolor='#eafcd5';
+//此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+var  clickcolor='#51b2f6';
+function  changeto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=highlightcolor;
+}
+}
+
+function  changeback(){
+if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+return
+if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+function  clickto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=clickcolor;
+}
+else
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+function showProdTr(obj,eleID,urlID){
+	if("18"==obj.value){
+		document.getElementById(eleID).style.display="block";
+	}else{
+		document.getElementById(eleID).style.display="none";
+	}
+
+	if("24"==obj.value || "25"==obj.value){
+		document.getElementById(urlID).style.display="block";
+	}else{
+		document.getElementById(urlID).style.display="none";
+	}
+
+}
+</script>
+<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|','image', 'link','source', 'wordpaste']
+		});
+	});
+</script>
+</head>
+{/literal}
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab/tab_05.gif">
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-新增导航目录</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
+
+        	<table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              </table>
+
+              </td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/nav.action.php" method="post"  enctype="multipart/form-data">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航名称</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="name" name="name" size="40" maxlength="50"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">显示顺序</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="seq" name="seq"  maxlength="5"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航父级</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	 <select id="pid" name="pid" onchange="showProdTr(this,'prodTr','urlTr')">
+		            	 <option value="-1">=父级导航目录=</option>
+		            	  {section name=list loop=$menuRows}
+				          {if $menuRows[list].pid ==-1}
+				         	<option value="{$menuRows[list].id}">{$menuRows[list].name}</option>
+				          {/if}
+				          {/section}
+		            </select><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="prodTr" style="display:none;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">子类选择</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <select id="type" name="type">
+		            	 <option value="PROD">产品</option>
+		            	 <option value="SP">备件</option>
+		            </select>
+		            </div></td>
+		          </tr>
+		           <tr id="urlTr" style="display:black;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">链接地址</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="url" name="url"  maxlength="5"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		           <input type="file" id="picture" name="picture"><br>
+		           [支持格式：gif|jpg|png&nbsp;&nbsp;长宽156px*121px&nbsp;大小：100Kb&nbsp;]
+		            <font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+
+						<textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;"></textarea><font style="color:red;">*换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<br><input class="submitButton" type="submit" value="新增导航目录">
+						<input type="hidden" id="task" name="task" value="addNav">
+		            </div></td>
+		          </tr>
+		        </table>
+
+        	</form>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab/tab_21.gif">
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr>
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

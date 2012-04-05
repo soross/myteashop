@@ -1,0 +1,125 @@
+
+ {include file="inc/top.html"}
+
+<script type="text/javascript"	src="js/jquery.js"></script>
+
+
+<table width="970" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+
+				<td width="185" valign="top">{include file="inc/left.html"}</td>
+				<td width="5"></td>
+				<td valign="top" bgcolor="#F5F5F5"
+					style="border: 1px solid #1A4D8E;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0"
+					bgcolor="#9EC9EC">
+					<tr>
+						<td bgcolor="#4288DD" height="25">&nbsp;&nbsp;当前位置：{$addressNav}</td>
+					</tr>
+				</table>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="1" bgcolor="1A4D8E"></td>
+					</tr>
+				</table>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<table width="90%" border="0" align="center" cellpadding="0"
+					cellspacing="0">
+					{section name=list loop=$newslist}
+					<tr>
+						<td width="6%" height="24" align="center">·</td>
+						<td width="65%" height="24"
+							style="BORDER-bottom: #ffffff 0px dotted"><a
+							href="newsinfo.php?newsid={$newslist[list].id}" target="_blank">{$newslist[list].title}</a>
+						</td>
+						<td width="29%" style="BORDER-bottom: #ffffff 0px dotted">[{$newslist[list].create_date}]
+						(点击<font id="click{$newslist[list].id}" color="#ff0000">{$newslist[list].click}</font>)
+						</td>
+						</tr>
+						{/section}
+
+					<tr valign="bottom">
+						<td height="50" colspan="3">
+						{$page}
+						<!--
+						<form method=Post action="NewsClass.asp?BigClass=&SmallClass=">
+						<div align="center">首页 上一页&nbsp;下一页 尾页&nbsp;页次：<strong><font
+							color=red>1</font>/1</strong>页 &nbsp;共<b><font color='#FF0000'>9</font></b>条记录
+						<b>20</b>条记录/页 转到：<input type='text' name='page' size=4
+							maxlength=10 class=input value=1> <input class=input
+							type='submit' value='跳转 ' name='cndok'></span>
+						</p>
+						</div>
+						</form>
+						 -->
+						</td>
+					</tr>
+
+				</table>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<table width="970" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="5"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td height="1" bgcolor="#9EC9EC"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td height="5"></td>
+			</tr>
+		</table>
+		<table width="950" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+				<td>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="4"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td height="70" align="center">
+				<p>{$copyInfo}</p>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript"
+	src="http://v2.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+</body>
+</html>

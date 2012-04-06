@@ -106,7 +106,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-顶部导航配置</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-新闻类型配置</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -137,35 +137,40 @@ for(i=0;i<cs.length;i++){
   <tr>
     <td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <form action="post/config.action.php" method="post" enctype="multipart/form-data" >
+    <form action="post/news.action.php" method="post" enctype="multipart/form-data" >
 		<tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3" align="center">
         	<table width="70%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 			  <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新增顶部导航</strong></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新增新闻类型</strong></td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">导航名称：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">类型名称：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
 					&nbsp;<input text="text" size="20" name="name" id="name" maxlength="10">
 				</td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">是否在服务专区展示：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
-					&nbsp;<input type="text" size="35" name="url" id="url" maxlength="50"></td>
+					&nbsp;<input type="radio" name="remark" id="remark" value="1">是&nbsp;<input type="radio" name="remark" id="remark" value="0">否</td>
+	          </tr>
+	           <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">服务专区顺序：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
+					&nbsp;<input text="text" size="4" name="seq" id="seq" maxlength="10"></td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">顺序：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">是否为新闻类型：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
-					&nbsp;<input type="text" size="4" name="seq" id="seq"  maxlength="4"></td>
+					&nbsp;<input type="radio" name="flag" id="flag" value="1">是&nbsp;<input type="radio" name="flag" id="flag" value="0">否</td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input  class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
 					<input  class="submitButton" type="submit" value="新增">
-					<input type="hidden" value="AddNav" id="task" name="task">
+					<input type="hidden" value="AddType" id="task" name="task">
 				</td>
 	          </tr>
          	</table>
@@ -187,29 +192,33 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="30%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">菜单名称</div></td>
-             <td width="35%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">链接</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">顺序</div></td>
+            <td width="30%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">类型名称</div></td>
+             <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否为服务专区</div></td>
+             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">服务专区顺序</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否为新闻类型</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">更新</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">删除</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$menuRows}
-          <form action="post/nav.action.php" method="post">
+          {section name=list loop=$type}
+          <form action="post/news.action.php" method="post">
           <tr>
           	<td height="18" bgcolor="#FFFFFF" class="STYLE2">
           		<div align="center" class="STYLE2 STYLE1">
-          			<input type="hidden" name="navid" value="{$menuRows[list].id}">
-          			{$menuRows[list].id}</div></td>
+          			<input type="hidden" name="typeid" value="{$menuRows[list].id}">
+          			{$type[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2">
             	<div align="center" class="STYLE2 STYLE1">
-            		<input type="text" name="nav_name" value="{$menuRows[list].flag}" maxlength="8" size="20"></div></td>
-            <td height="18" bgcolor="#FFFFFF">
-            	<div align="left" class="STYLE2 STYLE1">
-            		<input type="text" name="nav_url" value="{$menuRows[list].comm_code}" maxlength="50" size="35"></div></td>
+            		<input type="text" name="type_name" value="{$type[list].type_name}" maxlength="8" size="20"></div></td>
             <td height="18" bgcolor="#FFFFFF">
             	<div align="center" class="STYLE2 STYLE1">
-            		<input type="text" name="nav_seq" value="{$menuRows[list].remark}" maxlength="4" size="5"></div></td>
+            		<input type="radio" name="remark" id="remark" value="1" {if $type[list].remark==''}{else}checked{/if}><span {if $type[list].remark==''}{else}style="color:blue;"{/if}>是</span>&nbsp;&nbsp;&nbsp;<input type="radio" name="remark" id="remark" value="0" {if $type[list].remark==''}checked{/if}><span {if $type[list].remark==''}style="color:blue;"{/if}>否</span></div></td>
+            <td height="18" bgcolor="#FFFFFF">
+            	<div align="center" class="STYLE2 STYLE1">
+            		<input type="text" name="remark" value="{$type[list].remark}" maxlength="10" size="10"></div></td>
+            <td height="18" bgcolor="#FFFFFF">
+            	<div align="center" class="STYLE2 STYLE1">
+            		<input type="radio" name="flag" id="flag" value="1" {if $type[list].flag=='1' }checked{/if}><span {if $type[list].flag=='1'}style="color:blue;"{/if}>是</span>&nbsp;&nbsp;&nbsp;<input type="radio" name="flag" id="flag" value="0" {if $type[list].flag=='0'}checked{/if}><span {if $type[list].flag=='0'}style="color:blue;"{/if}>否</span></div></td>
             <td height="18" bgcolor="#FFFFFF">
             	<div align="center" class="STYLE2 STYLE1">
             		<input class="submitButton" type="submit" name="navSubmit" value="更新"></div></td>

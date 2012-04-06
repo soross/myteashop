@@ -3,8 +3,9 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
-$rows = getList(" type where flag='1'",$db);
-$smarty->assign("typeRows",$rows);
+$info = getList(" comm_code where comm_type='School_Logo'" ,$db);
+$smarty->assign("info",$info);
 
-$smarty->display("addnews.html");
+
+$smarty->display("schoollogo.html");
 ?>

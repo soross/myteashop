@@ -140,14 +140,12 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">合作伙伴管理-合作伙伴Logo管理</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-友情链接</span></td>
         <td width="281" background="images/tab/tab_05.gif">
-
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="60">
-              </td>
-              </table>
+              <td width="60">&nbsp;
+
               </td>
             </tr>
         </table></td>
@@ -160,7 +158,7 @@ for(i=0;i<cs.length;i++){
     <table height="20px" width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-	<td>&nbsp;</td>
+	<td bgcolor="#f3ffe3">&nbsp;</td>
 	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
 	</tr>
 	</table>
@@ -172,26 +170,30 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3" align="center">
         	<table width="70%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 			  <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新增合作伙伴</strong></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新增友情链接</strong></td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">合作伙伴名称：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">友情链接名称：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
-					&nbsp;<input text="text" size="35" name="name" id="name">
+					&nbsp;<textarea id="name" name="name" rows='3' cols="30"></textarea>
 				</td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接：</td>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="text" size="35" name="url" id="url"></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接跳转地址：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="text" size="35" maxlength="50" name="url" id="url"></td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">图片：</td>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="file" name="picture" id="picture"><br>[支持格式：gif|png&nbsp;&nbsp;长宽130px*40px&nbsp;大小：100Kb&nbsp;背景：透明]</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接图片：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="file" name="picture" id="picture"><br>[支持格式：gif|png&nbsp;&nbsp;长宽88px*31px&nbsp;大小：100Kb]</td>
+	          </tr>
+	          <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">显示顺序：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="text" size="10" maxlength="10" name="seq" id="seq"></td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input  class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
-					<input  class="submitButton" type="submit" value="新增合作伙伴">
+					<input  class="submitButton" type="submit" value="添加链接">
 					<input type="hidden" value="AddPartner" id="task" name="task">
 				</td>
 	          </tr>
@@ -205,7 +207,7 @@ for(i=0;i<cs.length;i++){
 	<table height="20px" width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-	<td>&nbsp;</td>
+	<td bgcolor="#f3ffe3">&nbsp;</td>
 	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
 	</tr>
 	</table>
@@ -215,11 +217,12 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="50px" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="170px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">合作伙伴名称</div></td>
-            <td width="170px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">链接</div></td>
-            <td width="135px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
-            <td height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">修改图片</div></td>
+            <td width="40px" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
+            <td width="300px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">友情链接名称</div></td>
+            <td width="200px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">跳转地址</div></td>
+            <td width="90px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
+            <td width="60px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">显示顺序</div></td>
+            <td background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">修改图片</div></td>
             <td width="50px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
             <td width="50px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
@@ -229,27 +232,30 @@ for(i=0;i<cs.length;i++){
 	          <form method="post" action="post/config.action.php" enctype="multipart/form-data" >
 		            <td height="25" bgcolor="#FFFFFF" class="STYLE2">
 		            	<div align="center" class="STYLE2 STYLE1">{$logoList[list].id}</div>
-		            	<input type="hidden" value="{$logoList[list].id}" id="logoid" name="logoid">
-		            	<input type="hidden" value="updatePartner" id="task" name="task"></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1"><input type="text" id="name" size="25" name="name" value="{$logoList[list].remark}"></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1"><input type="text" id="url" size="25" name="url" value="{$logoList[list].comm_value}"></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><img src="../{$logoList[list].comm_code}" /></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><input type="file" id="path" name="path"><br>[支持格式：gif|png&nbsp;&nbsp;长宽130px*40px&nbsp;大小：100Kb&nbsp;背景：透明]</div></td>
+		            	<input type="hidden" value="{$logoList[list].id}" id="linkid" name="linkid">
+		            	<input type="hidden" value="updateLink" id="task" name="task"></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
+		            	<textarea id="name" name="name"  rows='3' cols="35">{$logoList[list].link_name}</textarea>
+		            </div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1"><input type="text" id="url" size="25" maxlength="50" name="url" value="{$logoList[list].url}"></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><img src="../{$logoList[list].path}" width="88px" height="31px"/></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><input type="text" id="seq" size="5" maxlength="50" name="seq" value="{$logoList[list].remark}"></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><input type="file" id="path" name="path"><br>[支持格式：gif|png&nbsp;&nbsp;长宽130px*40px&nbsp;大小：100Kb]</div></td>
 		            <td height="25" bgcolor="#FFFFFF">
 		            	<div align="center">
-							<!--
-		            		<a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a>
-		            		<span class="STYLE1">[</span><a href="javascript:" onclick="javascript:document.all.form{$typeRows[list].id}.submit();">编辑</a><span class="STYLE1">]</span>
-		            		 -->
 		            		<input type="submit"  class="submitButton" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
 		            	</div>
 		            </td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deletePartner&logoid={$logoList[list].id}&path={$logoList[list].comm_code}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deletePartner&logoid={$logoList[list].id}&path={$logoList[list].comm_code}';">删除</a><span class="STYLE1">]</span></div></td>
+		            <td height="25" bgcolor="#FFFFFF">
+		            	<div align="center">
+							<input type="button"  class="submitButton" value="删除" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deletePartner&logoid={$logoList[list].id}&path={$logoList[list].comm_code}';">
+		            	</div>
+		            </td>
 	          </form>
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
         </table></td>

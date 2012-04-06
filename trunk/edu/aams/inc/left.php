@@ -94,18 +94,13 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
+	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">顶部导航配置</a></p>
 	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
-	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">优势内容配置</a></p>
-	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
-	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页广告配置</a></p>
-	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
-	    </div>
-	  </li>
-	  <li>
-	    <h2>+&nbsp;合作伙伴管理</h2>
-	    <div class="content">
-		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
-	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
+	      <p>-&nbsp;<a href="../cert.php" target="dataFrame">证书管理</a></p>
+	      <p>-&nbsp;<a href="../schoollogo.php" target="dataFrame">学校Logo管理</a></p>
+	      <p>-&nbsp;<a href="../link.php" target="dataFrame">友情链接配置</a></p>
+	      <p>-&nbsp;<a href="../logo.php" target="dataFrame">Logo配置</a></p>
+	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页Banner配置</a></p>
 	    </div>
 	  </li>
 	  <li>
@@ -113,6 +108,14 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
 	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
+	      <p>-&nbsp;<a href="../type.php" target="dataFrame">新闻类型配置</a></p>
+	    </div>
+	  </li>
+	  <li>
+	    <h2>+&nbsp;证书管理</h2>
+	    <div class="content">
+		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
+	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
 	    </div>
 	  </li>
 	  <li>

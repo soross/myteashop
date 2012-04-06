@@ -4,7 +4,7 @@ if(isset($_POST['task']) && "Login"==$_POST['task']){
 		require_once ("../action/mysql.class.php");
 		session_start();
 		$username = str_replace(" ", "", $_POST[username]);
-		$query = $db->query("select * from aams_user where username = '" . $username . "'");
+		$query = $db->query("select * from user where username = '" . $username . "'");
 		$us = is_array($row = $db->fetch_array($query));
 		$ps = $us ? md5($_POST[password]) == $row[password] : FALSE;
 		if ($ps) {

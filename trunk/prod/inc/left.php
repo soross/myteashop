@@ -77,9 +77,9 @@ function MM_swapImage() { //v3.0
 		            <td><div align="center"><a href="../addcase.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		          </tr>
 		          <tr>
-		            <td height="25"><div align="center" class="STYLE2"><a href="../nav.php" target="dataFrame">系统配置</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addnews.php" target="dataFrame">新闻发布</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addcase.php" target="dataFrame">添加案例</a></div></td>
+		            <td height="25"><div align="center" class="STYLE2"><a href="../nav.php" target="dataFrame">产品查询</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../addnews.php" target="dataFrame">订单查询</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../addcase.php" target="dataFrame">工资查询</a></div></td>
 		          </tr>
 		        </table>
 	        </td>
@@ -92,50 +92,44 @@ function MM_swapImage() { //v3.0
 	        	<div style="width:144px;" align="center">
 	        		<ul class="rolinList" id="rolin">
 	  <li>
-	    <h2>+&nbsp;系统配置</h2>
+	    <h2>+&nbsp;产品管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
-	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">优势内容配置</a></p>
-	      <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
-	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页广告配置</a></p>
-	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">导航目录配置</a></p>
+	      <p>-&nbsp;<a href="../prolist.php" target="dataFrame">产品列表</a></p>
+
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;合作伙伴管理</h2>
+	    <h2>+&nbsp;订单管理</h2>
 	    <div class="content">
-		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
-	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
+		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">订单明细</a></p>
+	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">订单排单</a></p>
+	      <p>-&nbsp;<a href="../cclist.php" target="dataFrame">出仓情况</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;新闻管理</h2>
+	    <h2>+&nbsp;员工管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
-	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
+	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">员工作业</a></p>
+	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">员工列表</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;案例管理</h2>
+	    <h2>+&nbsp;工资管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../case.php" target="dataFrame">案例列表</a></p>
-	      <p>-&nbsp;<a href="../addcase.php" target="dataFrame">添加案例</a></p>
-	    </div>
-	  </li>
-	  <li>
-	    <h2>+&nbsp;技术支持管理</h2>
-	    <div class="content">
-	      <p>-&nbsp;<a href="../msg.php" target="dataFrame">留言列表</a></p>
-	      <p>-&nbsp;<a href="../imconfig.php" target="dataFrame">在线客服配置</a></p>
-	      <p>-&nbsp;<a href="../emailconfig.php" target="dataFrame">邮件配置接入</a></p>
-	      <p>-&nbsp;<a href="../hotphone.php" target="dataFrame">热线配置</a></p>
+		  <p>-&nbsp;<a href="../news.php" target="dataFrame">工种价格</a></p>
+		  <p>-&nbsp;<a href="../news.php" target="dataFrame">工资查询</a></p>
+	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">预支列表</a></p>
 	    </div>
 	  </li>
 	   <li>
-	    <h2>+&nbsp;帐号管理</h2>
+	    <h2>+&nbsp;系统管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">管理员帐号</a></p>
-	      <p>-&nbsp;<a href="../addaamsuser.php" target="dataFrame">新增管理员帐号</a></p>
+	      <p>-&nbsp;<a href="../customerlist.php" target="dataFrame">客户管理</a></p>
+	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">工种管理</a></p>
+	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">订单密码</a></p>
+	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">材料列表</a></p>
+	      <p>-&nbsp;<a href="../userlist.php" target="dataFrame">管理员帐号</a></p>
+	      <p>-&nbsp;<a href="../adduser.php" target="dataFrame">新增管理员帐号</a></p>
 	    </div>
 	  </li>
 	  <!--

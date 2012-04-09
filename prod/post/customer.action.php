@@ -15,9 +15,9 @@ if(isset($_POST[task]) && "addCustomer"==$_POST[task]){
 	$db->query("delete from customer where id = '$_GET[c_id]'");
 	echo "<script>alert('删除成功?');location.href='../customerlist.php';</script>";
 }else if(isset($_POST[task]) && "updCustomer"==$_POST[task]){
-	print_r(custid);
+	   	print_r(custid);
 		$db->query("update customer set custid='$_POST[custid]',custname='$_POST[custname]',linkman='$_POST[linkman]',tell='$_POST[tell]'," .
-				"yhy='$_POST[yhy]',yhytell='$_POST[yhytell]',bz='$_POST[bz]' where id='$_POST[c_id]'");
+				"yhy='$_POST[yhy]',yhytell='$_POST[yhytell]',bz='$_POST[bz]' where id='$_POST[id]'");
 		echo "<script>alert('修改成功!');location.href='../customerlist.php';";
 
 

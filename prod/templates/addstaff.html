@@ -12,6 +12,10 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
 .STYLE1 {font-size: 12px}
 .STYLE4 {
 	font-size: 12px;
@@ -42,14 +46,9 @@ a:active {
 }
 .STYLE7 {font-size: 12}
 
-.submitButton{
-	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
-}
-
 -->
 </style>
 
-<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -100,6 +99,22 @@ for(i=0;i<cs.length;i++){
 </script>
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : false,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+		});
+	});
+</script>
+
+
 </head>
 {/literal}
 <body>
@@ -109,14 +124,11 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">客户管理-修改客户</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">员工管理-新增员工信息</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-              </table>
-
-              </td>
             </tr>
         </table></td>
         <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
@@ -128,60 +140,42 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/customer.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/staff.action.php" method="post">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户编号</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="custid" name="custid" value="{$cinfo.custid}" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="staffid" name="staffid" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工姓名</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="title" name="custname" value="{$cinfo.custname}" size="40" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="linkman" name="linkman" value="{$cinfo.linkman}" size="15" maxlength="20"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人电话</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="tell" id="src" name="tell" value="{$cinfo.tell}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<input type="txet" id="staffname" name="staffname" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		           <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">验货员</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">岗位</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="yhy" name="yhy" size="25"  value="{$cinfo.yhy}" maxlength="100"><font style="color:red;">*</font>
+		            	<input type="text" id="gwid" name="gwid" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">验货员电话</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="yhytell" name="yhytell" size="25"  value="{$cinfo.yhytell}" maxlength="100"><font style="color:red;">*</font>
-		            </div></td>
+		            <input type="text" id="tell" name="tell" size="40" maxlength="50"><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr>
+		           <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">备注</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="bz" name="bz" size="25"  value="{$cinfo.bz}" maxlength="100"><font style="color:red;">*</font>
-		            </div></td>
+		            <input type="text" id="bz" name="bz" size="40" maxlength="50"><font style="color:red;">*</font></div></td>
 		          </tr>
-
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input  class="submitButton" type="submit" value="修改">
-						<input type="hidden" id="task" name="task" value="updCustomer">
-						<input type="text" id="id" name="id" value="{$cinfo.id}">
-					</td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<a href="#" onclick="location.href='customerlist.php';">取消</a>
-		            </div></td></td>
+						<input  class="submitButton" type="submit" value="新增">
+						<input type="hidden" id="task" name="task" value="addStaff">
+		            </div></td>
 		          </tr>
 		        </table>
 

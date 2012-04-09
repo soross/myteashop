@@ -128,59 +128,47 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/customer.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/staff.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户编号</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="custid" name="custid" value="{$cinfo.custid}" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="staffid" name="staffid" value="{$staffinfo.staffid}" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="title" name="custname" value="{$cinfo.custname}" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="staffname" name="staffname" value="{$staffinfo.staffname}" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">岗位</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="linkman" name="linkman" value="{$cinfo.linkman}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<input type="text" id="gwid" name="gwid" value="{$staffinfo.gwid}" size="15" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人电话</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="tell" id="src" name="tell" value="{$cinfo.tell}" size="15" maxlength="20"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		           <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">验货员</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="yhy" name="yhy" size="25"  value="{$cinfo.yhy}" maxlength="100"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">验货员电话</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="yhytell" name="yhytell" size="25"  value="{$cinfo.yhytell}" maxlength="100"><font style="color:red;">*</font>
+		            	<input type="text" id="tell" name="tell" value="{$staffinfo.tell}" size="15" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">备注</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="bz" name="bz" size="25"  value="{$cinfo.bz}" maxlength="100"><font style="color:red;">*</font>
+		            	<input type="text" id="bz" name="bz" size="25"  value="{$staffinfo.bz}" maxlength="100"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
 						<input  class="submitButton" type="submit" value="修改">
-						<input type="hidden" id="task" name="task" value="updCustomer">
-						<input type="text" id="id" name="id" value="{$cinfo.id}">
+						<input type="hidden" id="task" name="task" value="updStaff">
+						<input type="text" id="id" name="id" value="{$staffinfo.id}">
 					</td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<a href="#" onclick="location.href='customerlist.php';">取消</a>
+						<a href="#" onclick="location.href='stafflist.php';">取消</a>
 		            </div></td></td>
 		          </tr>
 		        </table>

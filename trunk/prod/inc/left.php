@@ -104,21 +104,23 @@ function MM_swapImage() { //v3.0
 		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">订单明细</a></p>
 	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">订单排单</a></p>
 	      <p>-&nbsp;<a href="../cclist.php" target="dataFrame">出仓情况</a></p>
+	      <p>-&nbsp;<a href="../orderpassword.php" target="dataFrame">订单密码</a></p>
 	    </div>
 	  </li>
 	  <li>
 	    <h2>+&nbsp;员工管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">员工作业</a></p>
-	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">员工列表</a></p>
+	      <p>-&nbsp;<a href="../jobpricelist.php" target="dataFrame">员工作业</a></p>
+	      <p>-&nbsp;<a href="../stafflist.php" target="dataFrame">员工列表</a></p>
+	      <p>-&nbsp;<a href="../gwlist.php" target="dataFrame">岗位列表</a></p>
 	    </div>
 	  </li>
 	  <li>
 	    <h2>+&nbsp;工资管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">工种价格</a></p>
+		  <p>-&nbsp;<a href="../jobpricelist.php" target="dataFrame">工种价格</a></p>
 		  <p>-&nbsp;<a href="../news.php" target="dataFrame">工资查询</a></p>
-	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">预支列表</a></p>
+	      <p>-&nbsp;<a href="../yzlist.php" target="dataFrame">预支列表</a></p>
 	    </div>
 	  </li>
 	   <li>
@@ -127,7 +129,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../customerlist.php" target="dataFrame">客户管理</a></p>
 	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">工种管理</a></p>
 	      <p>-&nbsp;<a href="../aamsuser.php" target="dataFrame">订单密码</a></p>
-	      <p>-&nbsp;<a href="../sup.php" target="dataFrame">材料列表</a></p>
+	      <p>-&nbsp;<a href="../cllist.php" target="dataFrame">材料列表</a></p>
 	      <p>-&nbsp;<a href="../userlist.php" target="dataFrame">管理员帐号</a></p>
 	      <p>-&nbsp;<a href="../adduser.php" target="dataFrame">新增管理员帐号</a></p>
 	    </div>

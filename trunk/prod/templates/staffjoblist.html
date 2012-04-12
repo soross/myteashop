@@ -105,15 +105,15 @@ for(i=0;i<cs.length;i++){
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">工资管理-预支列表</span></td>
+        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">员工管理-工员作业列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
               <td width="60">
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><a href="addyz.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addyz.php" target="dataFarme">新增</a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addstaffjob.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addstaffjob.php" target="dataFarme">新增</a></div></td>
                   </tr>
               	</table>
               </td>
@@ -132,30 +132,40 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">金额</div></td>
-            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">月份</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年度</div></td>
-            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">录入时间</div></td>
-            <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工姓名</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品货号</div></td>
+          	<td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种名</div></td>
+          	<td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">价格</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
+            <td width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">单位</div></td>
+            <td width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">月</div></td>
+            <td width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">年</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">创建时间</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$yzRow}
+          {section name=list loop=$staffjobRow}
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].staffid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].money}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].m_yz}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].y_yz}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].create_date}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].id}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].staffid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].staffname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].prodid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].jobname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].jobprice}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].amount}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].unit}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].m_job}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].y_job}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjobRow[list].create_date}</div></td>
       		<td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
-            	<a href="#" onclick="location.href='updcustomer.php?c_id={$yzRow[list].id}';">修改</a> ||
-            	<a href="#" onclick="if(confirm('确定删除?'))location.href='post/yz.action.php?task=delYz&id={$yzRow[list].id}';">删除</a>
+            	<a href="#" onclick="location.href='updcustomer.php?c_id={$staffjobRow[list].id}';">修改</a> ||
+            	<a href="#" onclick="if(confirm('确定删除?'))location.href='post/staffjob.action.php?task=delStaffjob&id={$staffjobRow[list].id}';">删除</a>
             </td>
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=12 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
         </table></td>

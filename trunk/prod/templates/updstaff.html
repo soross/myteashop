@@ -145,7 +145,12 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">岗位</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="gwid" name="gwid" value="{$staffinfo.gwid}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	 <select name="gwid" id="gwid">
+		               {section name=list loop=$gwlist}
+		               <option value="{$gwlist[list].gwid}" {if $gwlist[list].gwid==$staffinfo.gwid}selected{/if}>{$gwlist[list].gwname}</option>
+		               {/section}
+		               </select>
+		               <font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
@@ -162,13 +167,12 @@ for(i=0;i<cs.length;i++){
 		          </tr>
 
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input  class="submitButton" type="submit" value="修改">
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2" colspan=2><div align="center" class="STYLE2 STYLE1">
+		            	<input  class="submitButton" type="reset" value="清空">
+		            	<input  class="submitButton" type="submit" value="修改">
 						<input type="hidden" id="task" name="task" value="updStaff">
-						<input type="text" id="id" name="id" value="{$staffinfo.id}">
-					</td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<a href="#" onclick="location.href='stafflist.php';">取消</a>
+						<input type="hidden" id="id" name="id" value="{$staffinfo.id}">
+
 		            </div></td></td>
 		          </tr>
 		        </table>

@@ -146,13 +146,13 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffRow[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffRow[list].staffid}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffRow[list].staffname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1"></div>
-            <!--  select name="11" id="11" disabled=true >
-	             {section name=list loop=$gwRow}
-				   <option value="{$gwRow[list].gwid}">{$gwRow[list].gwname}</option>
-	             {/section}
- 			</select-->
-            </td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            {section name=lt loop=$gwRow}
+				{if $gwRow[lt].gwid==$staffRow[list].gwid}
+					{$gwRow[lt].gwname}
+			    {/if}
+	        {/section}
+            </div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffRow[list].tell}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffRow[list].bz}</div></td>
       		<td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">

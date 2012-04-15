@@ -49,6 +49,7 @@ a:active {
 -->
 </style>
 
+<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -105,13 +106,31 @@ for(i=0;i<cs.length;i++){
 		editor = K.create('textarea[name="content"]', {
 			resizeType : 1,
 			allowPreviewEmoticons : false,
-			allowImageUpload : false,
+			allowImageUpload : true,
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
+
+
+	function remarkType(obj){
+		if(obj.value=="NEWS"){
+			document.getElementById('newsType').style.display="block";
+			document.getElementById('newsAuthor').style.display="block";
+			document.getElementById('newsSrc').style.display="block";
+			document.getElementById('newsContent').style.display="block";
+			document.getElementById('newsFile').style.display="none";
+
+		}else{
+			document.getElementById('newsType').style.display="none";
+			document.getElementById('newsAuthor').style.display="none";
+			document.getElementById('newsSrc').style.display="none";
+			document.getElementById('newsContent').style.display="none";
+			document.getElementById('newsFile').style.display="block";
+		}
+	}
 </script>
 
 
@@ -124,11 +143,14 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">工资管理-新增预支信息</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-修改材料</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
+              </table>
+
+              </td>
             </tr>
         </table></td>
         <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
@@ -140,30 +162,43 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/yz.action.php" method="post">
+        	<form action="post/cl.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料编号</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<select id="staffid" name="staffid">
-		            	<option value="-1">请选择</option>
-		            	{section name=list loop=$stafflist}
-		            	<option value="{$stafflist[list].id}">{$stafflist[list].staffname}[{$stafflist[list].staffid}]</option>
-		            	{/section}
-		            	</select><font style="color:red;">*</font>
+		            	<input type="text" id="clid" name="clid" size="20" value="{$clinfo.clid}" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">金额</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="money" name="money" size="20" maxlength="10"><font style="color:red;">*</font>
+		            	<input type="text" id="clname" name="clname" value="{$clinfo.clname}" size="40" maxlength="50"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsType">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料规格</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="clgg" name="clgg" size="25" value="{$clinfo.clgg}" maxlength="30"><font style="color:red;">*</font></div></td>
+		          </tr>
+		          <tr id="newsAuthor">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">单位</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="unit" name="unit" size="15" value="{$clinfo.unit}" maxlength="20"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsSrc">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">单价</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="price" name="price" size="15" value="{$clinfo.price}" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input  class="submitButton" type="submit" value="新增">
-						<input type="hidden" id="task" name="task" value="addYz">
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<input class="submitButton" type="submit" value="修改材料">
+						<input type="hidden" id="task" name="task" value="updateCl">
+						<input type="hidden" id="id" name="id" value="{$clinfo.id}">
 		            </div></td>
 		          </tr>
 		        </table>

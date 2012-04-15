@@ -1,0 +1,315 @@
+/*
+MySQL Data Transfer
+Source Host: localhost
+Source Database: msg
+Target Host: localhost
+Target Database: msg
+Date: 2012-4-15 17:15:01
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for cc
+-- ----------------------------
+CREATE TABLE `cc` (
+  `id` int(11) NOT NULL auto_increment,
+  `orderid` int(11) default NULL COMMENT '订单id',
+  `cctime` datetime default NULL COMMENT '出仓时间',
+  `staffid` int(11) default NULL,
+  `yhy` varchar(100) default NULL COMMENT '验货员',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for cl
+-- ----------------------------
+CREATE TABLE `cl` (
+  `id` int(11) NOT NULL auto_increment,
+  `clid` varchar(50) default NULL,
+  `clname` varchar(100) default NULL COMMENT '材料名称',
+  `clgg` varchar(100) default NULL COMMENT '材料规格',
+  `unit` varchar(20) default NULL COMMENT '单位',
+  `price` double(10,2) default NULL COMMENT '单价',
+  `create_date` datetime default NULL COMMENT '创建时间',
+  `edit_date` datetime default NULL COMMENT '编辑时间',
+  `edit_user` varchar(100) default NULL,
+  `create_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for customer
+-- ----------------------------
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL auto_increment,
+  `custid` varchar(50) default NULL,
+  `custname` varchar(100) default NULL,
+  `linkman` varchar(100) default NULL,
+  `tell` varchar(20) default NULL,
+  `yhy` varchar(100) default NULL,
+  `yhytell` varchar(20) default NULL,
+  `bz` varchar(255) default NULL,
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for gw
+-- ----------------------------
+CREATE TABLE `gw` (
+  `gwid` int(11) NOT NULL auto_increment,
+  `gwname` varchar(50) default NULL COMMENT '岗位名称',
+  PRIMARY KEY  (`gwid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for job
+-- ----------------------------
+CREATE TABLE `job` (
+  `id` int(11) NOT NULL auto_increment,
+  `jobname` varchar(100) default NULL COMMENT '工种名称',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for jobprice
+-- ----------------------------
+CREATE TABLE `jobprice` (
+  `id` int(11) NOT NULL auto_increment,
+  `jobid` int(11) default NULL COMMENT '工种id',
+  `prodid` int(11) default NULL COMMENT '产品id',
+  `jobprice` double(12,2) default NULL COMMENT '工种价格',
+  `create_date` datetime default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `create_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for order
+-- ----------------------------
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL auto_increment,
+  `orderid` varchar(50) default NULL COMMENT '订单编号',
+  `pddate` datetime default NULL COMMENT '排单生成时间',
+  `jcdate` datetime default NULL COMMENT '进仓时间',
+  `custid` int(11) default NULL COMMENT '客户id',
+  `orderprice` double(12,2) default NULL COMMENT '订单价格',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `edit_reason` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for orderlist
+-- ----------------------------
+CREATE TABLE `orderlist` (
+  `id` int(11) NOT NULL auto_increment,
+  `prodid` varchar(50) default NULL,
+  `cnt` int(11) default NULL COMMENT '订单数量',
+  `itemprice` double(12,2) default NULL COMMENT '价格',
+  `isfinish` varchar(10) default NULL COMMENT '是否完成',
+  `finsh_date` datetime default NULL COMMENT '完成时间',
+  `bz` varchar(255) default NULL,
+  `over_date` datetime default NULL COMMENT '在这个时间前完成',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for pd
+-- ----------------------------
+CREATE TABLE `pd` (
+  `id` int(11) NOT NULL auto_increment,
+  `jobpriceid` int(11) default NULL,
+  `amount` int(11) default NULL,
+  `istime` datetime default NULL,
+  `isfinish` varchar(10) default NULL COMMENT '是否完成',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `finishamount` int(11) default NULL COMMENT '完成数量',
+  `reason` varchar(255) default NULL COMMENT '原因',
+  `orderid` int(11) default NULL COMMENT '订单id',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for prod
+-- ----------------------------
+CREATE TABLE `prod` (
+  `id` int(11) NOT NULL auto_increment,
+  `prodid` varchar(50) collate utf8_unicode_ci default NULL,
+  `picname` varchar(50) collate utf8_unicode_ci default NULL,
+  `picpath` varchar(150) collate utf8_unicode_ci default NULL,
+  `picsize` varchar(12) collate utf8_unicode_ci default NULL,
+  `bz` varchar(150) collate utf8_unicode_ci default NULL,
+  `create_date` datetime default NULL,
+  `edit_user` varchar(100) collate utf8_unicode_ci default NULL,
+  `edit_date` datetime default NULL,
+  `create_user` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for prodlist
+-- ----------------------------
+CREATE TABLE `prodlist` (
+  `id` int(11) NOT NULL auto_increment,
+  `prodid` varchar(50) default NULL COMMENT '产品编号',
+  `clid` varchar(50) default NULL COMMENT '材料ID',
+  `amount` int(11) default NULL COMMENT '总数量',
+  `sumamount` int(11) default NULL,
+  `bz` varchar(255) default NULL COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for sal
+-- ----------------------------
+CREATE TABLE `sal` (
+  `id` int(11) NOT NULL auto_increment,
+  `staffid` int(11) default NULL COMMENT '员工id',
+  `sal` double(12,2) default NULL COMMENT '工资',
+  `m_sal` varchar(2) default NULL COMMENT '工资月份',
+  `y_sal` varchar(4) default NULL COMMENT '工资年份',
+  `ispay` varchar(10) default NULL COMMENT '是否支付',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `edit_reason` varchar(255) default NULL COMMENT '修改原因',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for staff
+-- ----------------------------
+CREATE TABLE `staff` (
+  `id` int(11) NOT NULL auto_increment,
+  `staffid` varchar(30) default NULL COMMENT '员工编号',
+  `staffname` varchar(30) default NULL COMMENT '员工名称',
+  `gwid` int(11) default NULL COMMENT '岗位ID',
+  `tell` varchar(20) default NULL COMMENT '联系电话',
+  `bz` varchar(255) default NULL COMMENT '备注',
+  `create_date` datetime default NULL,
+  `edit_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for staffjob
+-- ----------------------------
+CREATE TABLE `staffjob` (
+  `id` int(11) NOT NULL auto_increment,
+  `staffid` int(11) default NULL COMMENT '员工id',
+  `jobpriceid` int(11) default NULL COMMENT '工种价格',
+  `amount` int(11) default NULL COMMENT '数量',
+  `unit` varchar(10) default NULL COMMENT '单位',
+  `m_job` varchar(2) default NULL COMMENT '作业月份',
+  `y_job` varchar(4) default NULL COMMENT '作业年份',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(30) default '' COMMENT '帐号',
+  `password` varchar(60) default NULL COMMENT '密码',
+  `realname` varchar(10) default NULL COMMENT '用户名称',
+  `create_date` datetime default NULL COMMENT '注册时间',
+  `bz` varchar(255) default NULL COMMENT '备注',
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `orderpass` varchar(60) default NULL COMMENT '订单密码',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Table structure for yz
+-- ----------------------------
+CREATE TABLE `yz` (
+  `id` int(11) NOT NULL auto_increment,
+  `staffid` int(11) default NULL COMMENT '员工id',
+  `money` double(12,2) default NULL COMMENT '预支钱',
+  `m_yz` varchar(2) default NULL COMMENT '预支月份',
+  `y_yz` varchar(4) default NULL COMMENT '预支年份',
+  `create_date` datetime default NULL,
+  `create_user` varchar(100) default NULL,
+  `edit_date` datetime default NULL,
+  `edit_user` varchar(100) default NULL,
+  `edit_reason` varchar(255) default NULL COMMENT '修改原因',
+  `bob_staffid` int(11) default NULL COMMENT '负责人',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records 
+-- ----------------------------
+INSERT INTO `cc` VALUES ('1', '11', '2012-04-29 17:21:55', '11', null, '2012-04-30 17:21:40', null);
+INSERT INTO `cl` VALUES ('1', 'JP0147', '圆套', '1X0.8CM', '个', '34.00', '2012-04-15 13:12:04', null, null, null);
+INSERT INTO `cl` VALUES ('2', 'JP0482', '亚克力底座', '1.8CM', '片', '324.00', '2012-04-15 13:12:06', null, null, null);
+INSERT INTO `cl` VALUES ('3', 'Tx008', '铁线', '8#3.75M', 'KG', '32324.00', '2012-04-15 13:12:09', null, null, null);
+INSERT INTO `cl` VALUES ('5', 'TTT', 'bb', 'bb', 'kg', '43.00', '2012-04-15 13:42:49', null, null, null);
+INSERT INTO `customer` VALUES ('2', 'ww', 'fdasf', 'dasfds', '21', '132', '12', 'safdsf', null, null, null, null);
+INSERT INTO `customer` VALUES ('3', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', null, null, null, null);
+INSERT INTO `customer` VALUES ('4', 'as', '', '', 'fdsf', 'dsaf', 'dsfsdaf', 'dsfdsafd', null, null, null, null);
+INSERT INTO `customer` VALUES ('6', 'dsafds', 'fdsa', 'fds', 'fdsads', 'fdsaf', 'adsf', 'dsfdsaf', null, null, null, null);
+INSERT INTO `gw` VALUES ('1', '2222');
+INSERT INTO `gw` VALUES ('2', '3333');
+INSERT INTO `job` VALUES ('1', '手砂');
+INSERT INTO `job` VALUES ('2', '定型');
+INSERT INTO `job` VALUES ('3', '杂工');
+INSERT INTO `job` VALUES ('4', 'test');
+INSERT INTO `jobprice` VALUES ('1', '1', '1', '200.00', '2012-04-15 15:01:50', null, null, null);
+INSERT INTO `jobprice` VALUES ('3', '2', '1', '100.00', '2012-04-15 15:01:54', null, null, null);
+INSERT INTO `jobprice` VALUES ('4', '1', '3', '111.00', null, null, null, null);
+INSERT INTO `jobprice` VALUES ('5', '2', '3', '3232.00', null, null, null, null);
+INSERT INTO `prod` VALUES ('1', '9A1002', '工艺品2', 'E:\\\\图片\\\\02.jpg', '800', null, null, null, null, null);
+INSERT INTO `prod` VALUES ('2', '9A1001', '工艺品1', 'E:\\\\图片\\\\01.jpg', '900', null, null, null, null, null);
+INSERT INTO `prod` VALUES ('3', '9A1003', '工艺品3', 'E:\\\\图片\\\\03.jpg', '807', null, null, null, null, null);
+INSERT INTO `prodlist` VALUES ('1', '1', '1', '1200', null, null);
+INSERT INTO `prodlist` VALUES ('2', '2', '1', '69000', null, null);
+INSERT INTO `prodlist` VALUES ('3', '3', '1', '21504', null, null);
+INSERT INTO `prodlist` VALUES ('4', '1', '2', '1200', null, null);
+INSERT INTO `prodlist` VALUES ('5', '2', '2', '69000', null, null);
+INSERT INTO `prodlist` VALUES ('6', '3', '2', '21504', null, null);
+INSERT INTO `prodlist` VALUES ('7', '1', '3', '1200', null, null);
+INSERT INTO `prodlist` VALUES ('8', '2', '3', '69000', null, null);
+INSERT INTO `prodlist` VALUES ('9', '3', '3', '21504', null, null);
+INSERT INTO `sal` VALUES ('1', '1', '2100.00', '3', '2012', '0', '2012-04-15 16:03:51', null, null, null, null);
+INSERT INTO `sal` VALUES ('2', '2', '2000.00', '3', '2012', '0', '2012-04-15 16:03:51', null, null, null, null);
+INSERT INTO `staff` VALUES ('1', 'LL', '男找4', '1', '234', '32432', null, null, null, null);
+INSERT INTO `staff` VALUES ('2', 'TT', '3都是', '2', '324', '工', null, null, null, null);
+INSERT INTO `staff` VALUES ('3', 'fad', 'dsafds', '1', 'fadsf', 'dsfa', '2012-04-15 15:26:48', null, null, null);
+INSERT INTO `staffjob` VALUES ('1', '1', '1', '10', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('2', '1', '2', '100', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('3', '1', '3', '1', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('4', '2', '2', '11', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('5', '2', '1', '10', null, '3', '2012', null, null, null, null);
+INSERT INTO `user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', null, null, null, null, null, '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `user` VALUES ('2', 'ling', '24c10be286b009f797d53126790fcfd8', 'ling', '2012-04-06 11:10:42', null, null, null, null, null);
+INSERT INTO `user` VALUES ('3', '123', '68053af2923e00204c3ca7c6a3150cf7', '123', '2012-04-06 11:10:59', null, null, null, null, '123123');
+INSERT INTO `user` VALUES ('4', 'sfadsfds', '594f803b380a41396ed63dca39503542', 'aaaa', '2012-04-15 12:54:57', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('2', '2', '0.00', '', '', '2012-04-15 12:53:34', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('3', '1', '0.00', '', '', '2012-04-15 12:53:45', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('4', '1', '0.00', '', '', '2012-04-15 14:44:53', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('5', '2', '3333.00', '04', '2012', '2012-04-15 14:46:24', null, null, null, null, null);

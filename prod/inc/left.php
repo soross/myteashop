@@ -101,11 +101,9 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;订单管理</h2>
 	    <div class="content">
-		 <p>-&nbsp;<a href="../checkorder.php" target="dataFrame">订单列表</a></p>
-		 <p>-&nbsp;<a href="../staffjoblist.php" target="dataFrame">订单列表</a></p>
+		 <p>-&nbsp;<a href="../orderlist.php" target="dataFrame">订单列表</a></p>
 	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">订单排单</a></p>
 	      <p>-&nbsp;<a href="../cclist.php" target="dataFrame">出仓情况</a></p>
-	      <p>-&nbsp;<a href="../orderpassword.php" target="dataFrame">订单密码</a></p>
 	    </div>
 	  </li>
 	  <li>
@@ -120,7 +118,7 @@ function MM_swapImage() { //v3.0
 	    <h2>+&nbsp;工资管理</h2>
 	    <div class="content">
 		  <p>-&nbsp;<a href="../jobpricelist.php" target="dataFrame">工种价格</a></p>
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">工资查询</a></p>
+		  <p>-&nbsp;<a href="../sallist.php" target="dataFrame">工资查询</a></p>
 	      <p>-&nbsp;<a href="../yzlist.php" target="dataFrame">预支列表</a></p>
 	    </div>
 	  </li>

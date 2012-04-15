@@ -151,7 +151,7 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人电话</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="tell" id="src" name="tell" value="{$cinfo.tell}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<input type="text" id="tell" name="tell" value="{$cinfo.tell}" size="15" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		           <tr>
@@ -175,13 +175,14 @@ for(i=0;i<cs.length;i++){
 
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
-						<input  class="submitButton" type="submit" value="修改">
-						<input type="hidden" id="task" name="task" value="updCustomer">
-						<input type="text" id="id" name="id" value="{$cinfo.id}">
+							&nbsp;
 					</td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<a href="#" onclick="location.href='customerlist.php';">取消</a>
-		            </div></td></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2">
+			            <input  class="submitButton" type="reset" value="清空">
+		            	<input  class="submitButton" type="submit" value="修改">
+						<input type="hidden" id="task" name="task" value="updCustomer">
+						<input type="hidden" id="id" name="id" value="{$cinfo.id}">
+					</td>
 		          </tr>
 		        </table>
 

@@ -49,6 +49,7 @@ a:active {
 -->
 </style>
 
+<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -78,49 +79,77 @@ for(i=0;i<cs.length;i++){
 }
 }
 
-	function  clickto(){
-		source=event.srcElement;
-		if  (source.tagName=="TR"||source.tagName=="TABLE")
-			return;
-			while(source.tagName!="TD")
-				source=source.parentElement;
-				source=source.parentElement;
-				cs  =  source.children;
-			//alert(cs.length);
-		if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
-			for(i=0;i<cs.length;i++){
-				cs[i].style.backgroundColor=clickcolor;
-			}
-		else
-		for(i=0;i<cs.length;i++){
-			cs[i].style.backgroundColor="";
-	}
+function  clickto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=clickcolor;
+}
+else
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
 }
 </script>
-</head>
+<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
+		});
+	});
 
+
+	function remarkType(obj){
+		if(obj.value=="NEWS"){
+			document.getElementById('newsType').style.display="block";
+			document.getElementById('newsAuthor').style.display="block";
+			document.getElementById('newsSrc').style.display="block";
+			document.getElementById('newsContent').style.display="block";
+			document.getElementById('newsFile').style.display="none";
+
+		}else{
+			document.getElementById('newsType').style.display="none";
+			document.getElementById('newsAuthor').style.display="none";
+			document.getElementById('newsSrc').style.display="none";
+			document.getElementById('newsContent').style.display="none";
+			document.getElementById('newsFile').style.display="block";
+		}
+	}
+</script>
+
+
+</head>
+{/literal}
 <body>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">帐号管理-管理员帐号列表</span></td>
+        <td width="1101" background="images/tab/tab_05.gif">
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">订单管理-订单密码验证</span></td>
         <td width="281" background="images/tab/tab_05.gif">
+
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="60">
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                  <td>&nbsp;</td>
-                  <!--
-                    <td class="STYLE1"><div align="center"><a href="adduser.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="adduser.php" target="dataFarme">新增</a></div></td>
-                     -->
-                  </tr>
-              	</table>
-              </td>
               </table>
+
               </td>
             </tr>
         </table></td>
@@ -132,37 +161,27 @@ for(i=0;i<cs.length;i++){
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-          <tr>
-            <td width="15%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">订单密码</div></td>
-            <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
-          </tr>
-          {/literal}
-          {section name=list loop=$orderpassRow}
-          <form action="post/account.action.php" method="post" onsubmit="return confirm('确定修改订单密码？');">
-          <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderpassRow[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderpassRow[list].username}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderpassRow[list].realname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            订单密码：<input type="password" size="10" maxlengt="20" name="orderpass" id="orderpass">
-            </div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center">
-            	<input type="submit" class="submitButton" value="修改">
-            	<input type="hidden" id="id" name="id" value="{$orderpassRow[list].id}">
-            	<input type="hidden" id="task" name="task" value="orderPass">
-            </div></td>
-          </tr>
-          </form>
-          {sectionelse}
-			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
-			</tr>
-          {/section}
-        </table></td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/order.action.php" method="post"  enctype="multipart/form-data">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单密码</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="orderpass" name="orderpass" size="20" maxlength="20"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<input class="submitButton" type="submit" value="验证订单密码">
+						<input type="hidden" id="task" name="task" value="checkOrderPassword">
+						<input type="hidden" id="id" name="id" value="{$userid}">
+		            </div></td>
+		          </tr>
+		        </table>
+
+        	</form>
+        </td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
     </table>
@@ -173,7 +192,28 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
         <td background="images/tab/tab_21.gif">
-    	{$page}
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr><!--
+	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
+	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
+	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
+	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
+	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
+	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
+	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+	                  </span></td>
+	                  <td width="23" height="22" valign="middle">页</td>
+	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
         </td>
         <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
       </tr>

@@ -138,7 +138,7 @@ for(i=0;i<cs.length;i++){
            	<td height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
           	<?php
                 		require_once ("../action/mysql.class.php");
-                		$query = $db->query("select * from aams_user where id='$_SESSION[WEB_AAMS_USER_LOGIN_UID_SESSION]'",$db);
+                		$query = $db->query("select * from user where id='$_SESSION[WEB_AAMS_USER_LOGIN_UID_SESSION]'",$db);
                 		$info = $db->fetch_array($query);
              ?>
                 <strong><?php echo $info[username];?></strong>

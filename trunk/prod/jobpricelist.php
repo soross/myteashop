@@ -15,7 +15,9 @@ if ($firstcount < 0) $firstcount = 0;
 
 
 //未审核会员分类
-$jobpriceQuery = $db->query("select * from jobprice order by prodid,jobid desc limit $firstcount, $displaypg");
+$jobpriceQuery = $db->query("select (select prodid from prod p where p.id = j.prodid) as prodid," .
+		"(select jobname from job b where b.id = j.jobid) as jobname,j.id,j.jobprice,j.create_date " .
+		"from jobprice j order by prodid,jobid desc limit $firstcount, $displaypg");
 $jobpriceRow = array();
 while($rowjobprice = $db->fetch_array($jobpriceQuery)){
 	$jobpriceRow[] = $rowjobprice;

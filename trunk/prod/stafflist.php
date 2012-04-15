@@ -15,12 +15,14 @@ if ($firstcount < 0) $firstcount = 0;
 
 
 //未审核会员分类
-$staffQuery = $db->query("select * from staff order by staffid desc limit $firstcount, $displaypg");
+$staffQuery = $db->query("select * from staff order by id desc limit $firstcount, $displaypg");
 $staffRow = array();
 while($rowstaff = $db->fetch_array($staffQuery)){
 	$staffRow[] = $rowstaff;
 }
 $smarty->assign("staffRow",$staffRow);
+
+//print_r($staffRow);
 
 $gwQuery = $db->query("select * from gw order by gwid");
 $gwRow = array();

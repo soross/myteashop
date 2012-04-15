@@ -52,4 +52,11 @@ else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
 	$db->query($sql);
 	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
 }
+
+//修改订单密码
+else if(isset($_POST[task]) && "orderPass"==($_POST[task])){
+	$sql = "update user set orderpass = '".md5($_POST[orderpass])."' where id = '$_POST[id]'";
+	$db->query($sql);
+	echo "<script>alert('订单密码修改成功!');location.href='../orderpass.php';</script>";
+}
 ?>

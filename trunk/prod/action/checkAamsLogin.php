@@ -33,7 +33,7 @@ function Save_log($db){
 
 
 function randNum(){
-	$str=date("YmdHis").rand(10000,99999);
+	$str=date("YmdHis").rand(100000,999999);
 	return $str;
 }
 

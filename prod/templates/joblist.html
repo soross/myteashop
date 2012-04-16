@@ -96,6 +96,19 @@ for(i=0;i<cs.length;i++){
 			cs[i].style.backgroundColor="";
 	}
 }
+
+    //工种验证
+	function cheackjob() {
+	   var obj=document.getElementById("jobname");
+	   var jobname=obj.value;
+	   if(jobname=="") {
+	      alert("请输入要新增的工种！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+
 </script>
 </head>
 
@@ -135,7 +148,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-          <form action="post/job.action.php" method="post">
+          <form action="post/job.action.php" method="post" onsubmit="return cheackjob();">
           <tr>
             <td height="18" height="40"  bgcolor="#FFFFFF" colspan=2><div align="center" class="STYLE2 STYLE1" style="font-size:14px;">新增工种</div></td>
           </tr>

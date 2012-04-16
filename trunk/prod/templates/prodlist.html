@@ -105,7 +105,7 @@ for(i=0;i<cs.length;i++){
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">帐号管理-管理员帐号列表</span></td>
+        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">产品管理-产品列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
@@ -121,8 +121,8 @@ for(i=0;i<cs.length;i++){
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><a href="adduser.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="adduser.php" target="dataFarme">新增</a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addprod.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addprod.php" target="dataFarme">新增</a></div></td>
                   </tr>
               	</table>
 
@@ -155,50 +155,78 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td width="102px" height="18" " background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品图片</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品货号</div></td>
-			<td height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品材料属性</div></td>
+			<td height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品属性</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
           {/literal}
            {section name=list loop=$prodRow}
-          <tr>
-			<td>
-				<tr  valign="top">
-					<td  valign="middle" height="102px" bgcolor="#FFFFFF" class="STYLE2" rowspan="list"><img src="{$prodRow[list].picpath}" width="100" height="100" ></td>
-					<td  valign="middle" height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].prodid}</div></td>
-	           		<td height="18" bgcolor="#FFFFFF" rowspan="list">
-						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
-						   <tr>
-						    <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料号</div></td>
-				            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料名称</div></td>
-				            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料规格</div></td>
-				            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">用量</div></td>
-				            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">单位</div></td>
-				            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">总用量</div></td>
-				            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
-						   </tr>
-						   {section name=lt loop=$prodList}
-						   {if $prodList[lt].prodid == $prodRow[list].id}
-							<tr>
-								<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clid}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clname}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clgg}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].amount}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].unit}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].sumprice}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
-					            	<a href="post/news.action.php?taks=deleteAams&aamsid={$prodRow[list].prodid}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
-					            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&aamsid={$prodRow[list].prodid}';">删除</a><span class="STYLE1">]</span></div></td>
+			<tr  valign="top">
+				<td  valign="middle" height="102px" bgcolor="#FFFFFF" class="STYLE2" rowspan="list"><img src="{$prodRow[list].picpath}" width="100" height="100" ></td>
+				<td  valign="middle" height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].prodid}</div></td>
+           		<td height="18" bgcolor="#FFFFFF" rowspan="list">
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+					   <tr>
+					    <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料号</div></td>
+			            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料名称</div></td>
+			            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料规格</div></td>
+			            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">用量</div></td>
+			            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">单位</div></td>
+			            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">材料总价</div></td>
+			            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+					   </tr>
+					   {assign var=idx value=0}
+					   {section name=lt loop=$prodList}
+					   {if $prodList[lt].prodid == $prodRow[list].id}
+					   {assign var=idx value=1}
+						<tr>
+							<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clid}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clname}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clgg}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].amount}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].unit}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].sumprice}</div></td>
+				            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
+				            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
+				            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}';">删除</a><span class="STYLE1">]</span></div></td>
+           				</tr>
+           				{/if}
+           			   {/section}
+           				{if $idx==0}
+	           			    <tr>
+								<td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="7"><div align="center" class="STYLE2 STYLE1">没有产品材料属性信息..</div></td>
 	           				</tr>
-	           				{/if}
-	           			  {/section}
-	           			</table>
-	           		</td>
-	           		 <td valign="middle"  height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
-					            	<a href="post/news.action.php?taks=deleteAams&aamsid={$prodRow[list].prodid}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
-					            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&aamsid={$prodRow[list].prodid}';">删除</a><span class="STYLE1">]</span></div></td>
-				</tr>
-			</td>
-           </tr>
+           				{/if}
+           			</table>
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+           			 <tr>
+		           		<td width="10%" height="26" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">所需工种：</div></td>
+		           		<td height="26" bgcolor="#FFFFFF" class="STYLE2">
+		           			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+		           				<tr>
+		           					{assign var=idx value=0}
+									{section name=l loop=$jobList}
+									{if $jobList[l].prodid==$prodRow[list].id}
+						           		<td height="26" width="80px" bgcolor="#FFFFFF" class="STYLE2">
+											<div align="center" class="STYLE2 STYLE1">{$jobList[l].jobname}<span class="STYLE2">
+							            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdJob&jobid={$jobList[l].id}';">
+							            	<img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span></div>
+						           		</td>
+					           			{assign var=idx value=$idx+1}
+						           		{if $idx%8==0}
+						           		</tr><tr>
+						           		{/if}
+					           		{/if}
+					           		{/section}
+		           				</tr>
+		           			</table>
+		           		</td>
+		           	 </tr>
+           			</table>
+           		</td>
+           		 <td valign="middle"  height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
+	            	<a href="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&prodid={$prodRow[list].id}&path={$prodRow[list].picpath}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
+	            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&prodid={$prodRow[list].id}&path={$prodRow[list].picpath}';">删除</a><span class="STYLE1">]</span></div></td>
+			</tr>
           {sectionelse}
 			<tr>
 				<td colspan=4 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>

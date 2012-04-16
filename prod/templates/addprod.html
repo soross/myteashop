@@ -1,0 +1,306 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
+.STYLE1 {font-size: 12px}
+.STYLE4 {
+	font-size: 12px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 12}
+
+-->
+</style>
+
+<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
+<script>
+var  highlightcolor='#eafcd5';
+//此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+var  clickcolor='#51b2f6';
+function  changeto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=highlightcolor;
+}
+}
+
+function  changeback(){
+if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+return
+if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+function  clickto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=clickcolor;
+}
+else
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+</script>
+
+<script>
+var cellcnt = 1;
+	function insertOrderList(tbid){
+		var obj = document.getElementById(tbid);
+		//var vhtml = "";
+		//if(navigator.appName.indexOf("Explorer") > -1){
+		//	vhtml = document.getElementById('htmlDIV').innerHTML;
+		//}else{
+		//	vhtml = document.getElementById('htmlDIV').textContent;
+		//}
+		//alert(vhtml);
+		//document.getElementById("orderlisttbody").innerHTML(vhtml);
+
+		var myTR =obj.insertRow();
+		var myTD=myTR.insertCell();
+		myTD.style.background='#FFFFFF';
+		myTD.setAttribute("align","center");
+		myTD.setAttribute("id","td"+cellcnt);
+
+		myTD.innerHTML='序号：'+cellcnt+'&nbsp;&nbsp;材料名称：<select id="clid[]" name="clid[]">'+
+			'<option value="-1">请选择材料</option>'+{/literal}
+	    	{section name=list loop=$cllist}{literal}
+	    	'<option value="{/literal}{$cllist[list].id}{literal}">{/literal}{$cllist[list].clname}[{$cllist[list].clid}-{$cllist[list].clgg}]{literal}</option>'+{/literal}
+	    	{/section}{literal}
+			'</select><font style="color:red;">*</font>'+
+			'&nbsp;材料数量：<input type="text" id="amount[]" name="amount[]" size="15" maxlength="20"><font style="color:red;">*</font>'+
+			'<input type="button" class="submitButton" value="删除" onclick="javascript:removeOrderList();">';
+
+			//'&nbsp;<input type="hidden" id="price[]" name="price[]" value="{/literal}{$cllist[list].price}{literal}"><font style="color:red;">*</font>';
+		cellcnt++;
+	}
+
+	function removeOrderList(){
+		var obj = document.getElementById('orderlisttable');
+		var cGetRow=window.event.srcElement.parentElement.parentElement.rowIndex;
+		obj.deleteRow(cGetRow);
+	}
+</script>
+
+
+</head>
+{/literal}
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab/tab_05.gif">
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">产品管理-新增产品</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
+
+        	<table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              </table>
+
+              </td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/prod.action.php" method="post"  enctype="multipart/form-data">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="picname" name="picname" size='25' maxlength="50"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品编号</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="prodid" name="prodid" size='15' maxlength="15"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品图片</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="picpath" name="picpath"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">所须工种</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		                <table>
+		                <tr>
+		                {assign var=idx value=1}
+		                {section name=list loop=$joblist}
+		                <td><input type="checkbox" id="job[]" name="job[]" value="{$joblist[list].id}">{$joblist[list].jobname}</td>
+		                {if $idx%8==0}</tr><tr>{/if}
+		                {assign var=idx value=$idx+1}
+		                {/section}
+		                <td><font style="color:red;">*</font></td>
+		                </tr>
+		                </table>
+
+		            </div></td>
+		          </tr>
+
+
+
+<!--
+		           <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<select id="custid" name="custid">
+		            	<option value="-1">请选择客户</option>
+		            	{section name=list loop=$custlist}
+		            	<option value="{$custlist[list].id}">{$custlist[list].custname}[{$custlist[list].custid}]</option>
+		            	{/section}
+		            	</select><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+ -->
+		          <tr>
+		            <td height="26" bgcolor="#FFFFFF" class="STYLE1" colspan="2">
+		            	<table id="orderlisttable" width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+		            		<tr>
+		            			<td width="100%" height="26"  align="center" bgcolor="#FFFFFF" class="STYLE1">
+
+									<input type="button" class="submitButton" value="添加产品材料明细" onclick="javascript:insertOrderList('orderlisttable');">
+
+								</td>
+		            		</tr>
+		            		<tbody id="orderlisttbody">
+		            		</tbody>
+		            	</table>
+		            </td>
+		          </tr>
+				  <tr>
+		            <td width="100%" colspan="2" height="26" bgcolor="#FFFFFF" class="STYLE1">
+		            &nbsp;
+		            </td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<input class="submitButton" type="submit" value="新增产品">
+						<input type="hidden" id="task" name="task" value="addProd">
+		            </div></td>
+		          </tr>
+		        </table>
+
+        	</form>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab/tab_21.gif">
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr><!--
+	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
+	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
+	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
+	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
+	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
+	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
+	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+	                  </span></td>
+	                  <td width="23" height="22" valign="middle">页</td>
+	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<div id="htmlDIV" style="display:none;">
+	<tr id="orderlisthtml">
+		<td width="15%"  align="center" bgcolor="#FFFFFF" class="STYLE1" colspan="2">产品名称：<select id="prodid[]" name="prodid[]">
+			<option value="-1">请选择产品</option>
+	    	{section name=list loop=$prodlist}
+	    	<option value="{$prodlist[list].id}">{$prodlist[list].picname}[{$prodlist[list].prodid}]</option>
+	    	{/section}
+			</select><font style="color:red;">*</font>
+			产品数量：<input type="text" id="cnt[]" name="cnt[]" size="20" maxlength="20"><font style="color:red;">*</font>
+			产品单价：<input type="text" id="itemprice[]" name="itemprice[]" size="20" maxlength="20"><font style="color:red;">*</font>
+		</td>
+	</tr>
+</div>
+</body>
+</html>

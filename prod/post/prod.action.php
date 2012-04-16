@@ -2,7 +2,7 @@
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
-	if(isset($_POST[task]) && "addProd"==$_POST[task]){
+	if(isset($_POST[task]) && "addProdDDD"==$_POST[task]){
 		if($_POST[prodid]==$_POST[prodid]){
 			$db->query("select * from prod where prodid='".$_POST[prodid]."'");
 			$cnt = $db->db_num_rows();
@@ -51,5 +51,45 @@ else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
 	$sql = $sql." where id=' ". $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']." '";
 	$db->query($sql);
 	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
+}
+
+//新增产品
+else if(isset($_POST[task]) && "addProd"==($_POST[task])){
+	//文件保存目录URL
+	$save_path = '../images/prod/';//201109281154581.jpg
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','png','jpg');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('picpath')){
+		$filename = "images/prod/".$up->getNewFileName();
+		$db->query('start transaction');
+		$db->query("insert into prod(prodid,picname,picpath,create_date) values('".$_POST[prodid]."','".$_POST[picname]."','".$filename."',now())");
+		$insertID = $db->insert_id();
+
+		//产品明细
+		$cls = $_POST[clid];
+		$clcnt = $_POST[amount];
+		for($i = 0;$i<count($cls);$i++){
+			$clinfo = getListBySql("select * from cl where id='".$cls[$i]."'",$db);
+			$sumprice = $clcnt[$i]*$clinfo[0][price];
+			$db->query("insert into prodlist(prodid,clid,amount,sumprice) values('".$insertID."','".$cls[$i]."','".$clcnt[$i]."','".$sumprice."')");
+		}
+
+		//工种明细
+		$job = $_POST[job];
+		for($i = 0;$i<count($job);$i++){
+			$db->query("insert into prodjob(prodid,jobid) values('".$insertID."','".$job[$i]."')");
+		}
+		if (mysql_errno()) {
+			$db->query('rollback');
+			echo "<script>alert('产品新增失败!');location.href='../addprod.php'</script>";
+		} else {
+			$db->query('commit');
+			echo "<script>if(confirm('新增产品成功,是否继续新增?')){location.href='../addprod.php';}else{location.href='../prodlist.php';}</script>";
+		}
+	}else{
+		echo "<script>alert('产品新增失败。请检查上传的文件是否符合要求!');location.href='../addprod.php';</script>";
+	}
 }
 ?>

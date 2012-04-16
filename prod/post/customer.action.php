@@ -2,7 +2,7 @@
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 if(isset($_POST[task]) && "addCustomer"==$_POST[task]){
-	$db->query("select * from user where username='".$_POST[username]."'");
+	$db->query("select * from customer where custname='".$_POST[custname]."'");
 	$cnt = $db->db_num_rows();
 	if($cnt<1){
 		$db->query("insert into customer(custid,custname,linkman,tell,yhy,yhytell,bz,create_date)" .

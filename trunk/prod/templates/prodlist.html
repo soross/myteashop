@@ -155,12 +155,7 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td width="102px" height="18" " background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品图片</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品货号</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料号</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料名称</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料规格</div></td>
-            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">用量</div></td>
-            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">单位</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">总用量</div></td>
+			<td height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品材料属性</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
           {/literal}
@@ -168,34 +163,46 @@ for(i=0;i<cs.length;i++){
 
           <tr>
 			<td>
-				<tr>
-					<td height="102px" bgcolor="#FFFFFF" class="STYLE2" rowspan="list"><img src="{$prodRow[list].picpath}" width="100" height="100" ></td>
-					<td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].prodid}</div></td>
+				<tr  valign="top">
+					<td  valign="middle" height="102px" bgcolor="#FFFFFF" class="STYLE2" rowspan="list"><img src="{$prodRow[list].picpath}" width="100" height="100" ></td>
+					<td  valign="middle" height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].prodid}</div></td>
 	           		<td height="18" bgcolor="#FFFFFF" rowspan="list">
-	           		{$prodRow[list].prodlist}
-
-						<table>
-						   {section name=lt loop=$prodRow[list].prodlist}
+						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+						   <tr>
+						    <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料号</div></td>
+				            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料名称</div></td>
+				            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料规格</div></td>
+				            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">用量</div></td>
+				            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">单位</div></td>
+				            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">总用量</div></td>
+				            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+						   </tr>
+						   {section name=lt loop=$prodList}
+						   {if $prodList[lt].prodid == $prodRow[list].id}
 							<tr>
-								<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].clid}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].clname}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].clgg}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].amount}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].unit}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].sumamount}</div></td>
+								<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clid}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clname}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clgg}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].amount}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].unit}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].sumprice}</div></td>
 					            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
 					            	<a href="post/news.action.php?taks=deleteAams&aamsid={$prodRow[list].prodid}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
 					            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&aamsid={$prodRow[list].prodid}';">删除</a><span class="STYLE1">]</span></div></td>
 	           				</tr>
+	           				{/if}
 	           			  {/section}
 	           			</table>
 	           		</td>
+	           		 <td valign="middle"  height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
+					            	<a href="post/news.action.php?taks=deleteAams&aamsid={$prodRow[list].prodid}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
+					            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProd&aamsid={$prodRow[list].prodid}';">删除</a><span class="STYLE1">]</span></div></td>
 				</tr>
 			</td>
            </tr>
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=4 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
         </table></td>

@@ -13,13 +13,18 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //未审核会员分类
-$prodRow = getListBySql("select * from prod order by id desc limit $firstcount, $displaypg",$db);
+$prodlist = getListBySql("select * from prod order by id desc limit $firstcount, $displaypg",$db);
+$smarty->assign("prodRow",$prodlist);
 
-for($i=0;i<3;$i++){
-    $sql="SELECT p.amount,p.sumamount,p.bz,c.clid,c.clname FROM prodlist p, cl c where p.clid = c.id and p.prodid='".$prodRow[$i][id]."'";
-	$prodRow[$i][prodlist] = getListBySql($sql,$db);;
+$in = "";
+for ($i = 0; $i < sizeof($prodlist); $i++) {
+	$in = $in."'".$prodlist[$i][id]."',";
 }
-$smarty->assign("prodRow",$prodRow);
+$in = substr($in,0,strlen($in)-1);
+
+$prodlistlist = getListBySql("select pl.prodid,pl.amount,pl.sumprice,(select c.clid from cl c where c.id = pl.clid) as clid,(select c.unit from cl c where c.id = pl.clid) as unit,(select c.clname from cl c where c.id = pl.clid) as clname,(select c.clgg from cl c where c.id = pl.clid) as clgg from prodlist pl where prodid in(".$in.")",$db);
+$smarty->assign("prodList",$prodlistlist);
+
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);

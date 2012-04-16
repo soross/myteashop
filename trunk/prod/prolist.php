@@ -22,9 +22,12 @@ for ($i = 0; $i < sizeof($prodlist); $i++) {
 }
 $in = substr($in,0,strlen($in)-1);
 
-$prodlistlist = getListBySql("select pl.prodid,pl.amount,pl.sumprice,(select c.clid from cl c where c.id = pl.clid) as clid,(select c.unit from cl c where c.id = pl.clid) as unit,(select c.clname from cl c where c.id = pl.clid) as clname,(select c.clgg from cl c where c.id = pl.clid) as clgg from prodlist pl where prodid in(".$in.")",$db);
+$prodlistlist = getListBySql("SELECT pl.prodid,pl.amount,pl.sumprice,cl.clid,pl.id,cl.clname,cl.clgg,
+	cl.unit,cl.price FROM prodlist AS pl LEFT JOIN cl ON pl.clid = cl.id where pl.prodid in(".$in.") order by pl.prodid",$db);
 $smarty->assign("prodList",$prodlistlist);
 
+//print_r($prodlist);
+//print_r($prodlistlist);
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);

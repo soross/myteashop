@@ -4,16 +4,21 @@ require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 require_once("action/page.class.aams.php");
 
+$case=" where 1=1 ";
+if(isset($_GET[key])&& !empty($_GET[key])){
+	$case = $case." and prodid like '%".$_GET[key]."%'";
+	$smarty->assign("key",$_GET[key]);
+}
 
 $pagesize = 10;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from prod");
+$queryTotal = $db->query("select id from prod ".$case);
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //未审核会员分类
-$prodlist = getListBySql("select * from prod order by id desc limit $firstcount, $displaypg",$db);
+$prodlist = getListBySql("select * from prod ".$case." order by id desc limit $firstcount, $displaypg",$db);
 $smarty->assign("prodRow",$prodlist);
 
 $in = "";

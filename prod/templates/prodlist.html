@@ -122,7 +122,7 @@ for(i=0;i<cs.length;i++){
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td class="STYLE1"><div align="center"><a href="addprod.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addprod.php" target="dataFarme">新增</a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="JavaScript:window.parent.dataFrame.location.href='addprod.php';">新增</a></div></td>
                   </tr>
               	</table>
 
@@ -201,7 +201,7 @@ for(i=0;i<cs.length;i++){
            			 <tr>
 		           		<td width="10%" height="26" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">所需工种：</div></td>
 		           		<td height="26" bgcolor="#FFFFFF" class="STYLE2">
-		           			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+		           			<table border="0" align="left" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
 		           				<tr>
 		           					{assign var=idx value=0}
 									{section name=l loop=$jobList}

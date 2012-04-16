@@ -94,7 +94,7 @@ function MM_swapImage() { //v3.0
 	  <li>
 	    <h2>+&nbsp;产品管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../prolist.php" target="dataFrame">产品列表</a></p>
+	      <p>-&nbsp;<a href="../prodlist.php" target="dataFrame">产品列表</a></p>
 
 	    </div>
 	  </li>

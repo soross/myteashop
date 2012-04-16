@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-04-16 15:03:10
+Date: 2012-04-16 17:38:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -260,10 +260,8 @@ CREATE TABLE `prod` (
 -- ----------------------------
 -- Records of prod
 -- ----------------------------
-INSERT INTO `prod` VALUES ('1', '9A1002', '工艺品2', 'images/prod/20120416060657276.gif', '800', null, null, null, null, null);
-INSERT INTO `prod` VALUES ('2', '9A1001', '工艺品1', 'images/prod/20120416060657276.gif', '900', null, null, null, null, null);
-INSERT INTO `prod` VALUES ('3', '9A1003', '工艺品3', 'images/prod/20120416060657276.gif', '807', null, null, null, null, null);
-INSERT INTO `prod` VALUES ('4', 'TEST', 'test', 'images/prod/20120416060657276.gif', null, null, '2012-04-16 14:06:57', null, null, null);
+INSERT INTO `prod` VALUES ('1', '$$$$$', '工艺品1', 'images/prod/a.gif', null, null, null, null, null, null);
+INSERT INTO `prod` VALUES ('3', '9A1003', '工艺品3', 'images/prod/c.gif', '807', null, null, null, null, null);
 INSERT INTO `prod` VALUES ('5', 'TEST2', 'TEST2', 'images/prod/20120416061035813.gif', null, null, '2012-04-16 14:10:35', null, null, null);
 
 -- ----------------------------
@@ -275,16 +273,20 @@ CREATE TABLE `prodjob` (
   `prodid` int(11) default NULL,
   `jobid` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of prodjob
 -- ----------------------------
-INSERT INTO `prodjob` VALUES ('1', '4', '1');
-INSERT INTO `prodjob` VALUES ('2', '4', '2');
-INSERT INTO `prodjob` VALUES ('3', '4', '3');
-INSERT INTO `prodjob` VALUES ('4', '5', '1');
 INSERT INTO `prodjob` VALUES ('5', '5', '2');
+INSERT INTO `prodjob` VALUES ('6', '1', '1');
+INSERT INTO `prodjob` VALUES ('7', '1', '2');
+INSERT INTO `prodjob` VALUES ('8', '1', '3');
+INSERT INTO `prodjob` VALUES ('10', '1', '3');
+INSERT INTO `prodjob` VALUES ('11', '1', '4');
+INSERT INTO `prodjob` VALUES ('12', '1', '7');
+INSERT INTO `prodjob` VALUES ('14', '1', '2');
+INSERT INTO `prodjob` VALUES ('16', '3', '2');
 
 -- ----------------------------
 -- Table structure for `prodlist`
@@ -298,22 +300,21 @@ CREATE TABLE `prodlist` (
   `sumprice` double(13,2) default NULL,
   `bz` varchar(255) default NULL COMMENT '备注',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of prodlist
 -- ----------------------------
-INSERT INTO `prodlist` VALUES ('1', '1', '1', '1200', '42.00', null);
-INSERT INTO `prodlist` VALUES ('2', '2', '1', '69000', '424.00', null);
 INSERT INTO `prodlist` VALUES ('3', '3', '1', '21504', '342.00', null);
-INSERT INTO `prodlist` VALUES ('4', '1', '2', '1200', '423.00', null);
-INSERT INTO `prodlist` VALUES ('5', '2', '2', '69000', '423.00', null);
 INSERT INTO `prodlist` VALUES ('6', '3', '2', '21504', '4.00', null);
-INSERT INTO `prodlist` VALUES ('7', '1', '3', '1200', '234.00', null);
-INSERT INTO `prodlist` VALUES ('8', '2', '3', '69000', '432.00', null);
 INSERT INTO `prodlist` VALUES ('9', '3', '3', '21504', '423.00', null);
 INSERT INTO `prodlist` VALUES ('10', '5', '5', '100', '4300.00', null);
 INSERT INTO `prodlist` VALUES ('11', '5', '3', '200', '6464800.00', null);
+INSERT INTO `prodlist` VALUES ('13', '1', '3', '22', '33.00', null);
+INSERT INTO `prodlist` VALUES ('14', '3', '1', '22', '22.00', null);
+INSERT INTO `prodlist` VALUES ('15', '3', '1', '22', '32.00', null);
+INSERT INTO `prodlist` VALUES ('16', '3', '3', '2', '33.00', null);
+INSERT INTO `prodlist` VALUES ('17', '3', '2', '2', '33.00', null);
 
 -- ----------------------------
 -- Table structure for `sal`

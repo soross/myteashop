@@ -7,7 +7,7 @@ if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 			$db->query("select * from user where username='".$_POST[username]."'");
 			$cnt = $db->db_num_rows();
 			if($cnt<1){
-				$db->query("insert into user(username,password,realname,create_date) values('".$_POST[username]."','".md5($_POST[password])."','".$_POST[realname]."',now())");
+				$db->query("insert into user(username,password,realname,orderpass,create_date) values('".$_POST[username]."','".md5($_POST[password])."','".$_POST[realname]."','".md5($_POST[password])."',now())");
 				echo "<script>if(confirm('管理员帐号新增成功,是否继续新增?')){location.href='../adduser.php';}else{location.href='../userlist.php';}</script>";
 			}else{
 				echo "<script>alert('该管理员帐号已存在!');location.href='../adduser.php';</script>";

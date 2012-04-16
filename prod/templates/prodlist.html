@@ -160,7 +160,6 @@ for(i=0;i<cs.length;i++){
           </tr>
           {/literal}
            {section name=list loop=$prodRow}
-
           <tr>
 			<td>
 				<tr  valign="top">
@@ -180,12 +179,12 @@ for(i=0;i<cs.length;i++){
 						   {section name=lt loop=$prodList}
 						   {if $prodList[lt].prodid == $prodRow[list].id}
 							<tr>
-								<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clid}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clname}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].clgg}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].amount}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].unit}</div></td>
-					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[list].sumprice}</div></td>
+								<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clid}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clname}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].clgg}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].amount}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].unit}</div></td>
+					            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].sumprice}</div></td>
 					            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
 					            	<a href="post/news.action.php?taks=deleteAams&aamsid={$prodRow[list].prodid}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
 					            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('È·¶¨É¾³ý?'))location.href='post/prod.action.php?task=delProd&aamsid={$prodRow[list].prodid}';">É¾³ý</a><span class="STYLE1">]</span></div></td>

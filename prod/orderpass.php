@@ -5,7 +5,7 @@
 	$userid = $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'];
 	$smarty->assign("userid",$userid);
 
-	print_r($userid);
+	//print_r($userid);
 
 	$smarty->display("orderpass.html");
 ?>

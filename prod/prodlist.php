@@ -26,6 +26,10 @@ $prodlistlist = getListBySql("SELECT pl.prodid,pl.amount,pl.sumprice,cl.clid,pl.
 	cl.unit,cl.price FROM prodlist AS pl LEFT JOIN cl ON pl.clid = cl.id where pl.prodid in(".$in.") order by pl.prodid",$db);
 $smarty->assign("prodList",$prodlistlist);
 
+
+$joblist = getListBySql("SELECT pj.prodid,pj.id,j.jobname FROM prodjob AS pj LEFT JOIN job j ON pj.jobid = j.id where pj.prodid in(".$in.") order by pj.prodid",$db);
+$smarty->assign("jobList",$joblist);
+
 //print_r($prodlist);
 //print_r($prodlistlist);
 

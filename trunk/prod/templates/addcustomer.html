@@ -96,6 +96,32 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+
+    //工种验证
+	function cheackcid() {
+	   var obj=document.getElementById("custid");
+	   var custid=obj.value;
+	   if(custid=="") {
+	      alert("请输入客户编号！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	    //工种验证
+	function cheackcname() {
+	   var obj=document.getElementById("custname");
+	   var custname=obj.value;
+	   if(custname=="") {
+	      alert("请输入客户名称！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	function cheackcustomer(){
+		return cheackcid()&&cheackcname();
+	}
 </script>
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
@@ -172,7 +198,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/customer.action.php" method="post">
+        	<form action="post/customer.action.php" method="post" onsubmit="return cheackcustomer();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户编号</div></td>

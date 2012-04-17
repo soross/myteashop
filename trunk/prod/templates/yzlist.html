@@ -124,9 +124,33 @@ for(i=0;i<cs.length;i++){
         <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
       </tr>
     </table></td>
-  </tr>
+  </tr> {/literal}
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+	      <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+	      <td bgcolor="#f3ffe3">
+	      	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+	          <tr>  <form action="yzlist.php" method="get">
+	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+					<table>
+	            	<tr>
+		            	<td align="right">员工编号：</td><td><input type="text" id="staffid" name="staffid" value="{$staffid}" size="20" maxlength="30"></td>
+		            	<td align="right">员工姓名：</td><td><input type="text" id="staffname" name="staffname" value="{$staffname}" size="20" maxlength="30" ></td>
+		            	<td>&nbsp;</td>
+	            	</tr>
+	            	<tr>
+		            	<td align="right">年份：</td><td><input type="text" id="year" name="year" value="{$year}" size="20" maxlength="30"></td>
+		            	<td align="right">月份：</td><td><input type="text" id="month" name="month" value="{$month}" size="20" maxlength="30"></td>
+		            	<td><input type="submit" value="搜索" class="submitButton"></td>
+		            </tr>
+					</table>
+
+	            </div></td></form>
+	          </tr>
+	          </table>
+	      </td>
+	      </tr>
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
@@ -140,7 +164,7 @@ for(i=0;i<cs.length;i++){
             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">录入时间</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
-          {/literal}
+
           {section name=list loop=$yzRow}
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$yzRow[list].id}</div></td>

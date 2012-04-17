@@ -147,6 +147,9 @@ function MM_swapImage() { //v3.0
 	   <li>
 	    <h2>+&nbsp;系统管理</h2>
 	    <div class="content">
+	      <p>-&nbsp;<a href="../customerlist.php" target="dataFrame">客户管理</a></p>
+	      <p>-&nbsp;<a href="../joblist.php" target="dataFrame">工种管理</a></p>
+	      <p>-&nbsp;<a href="../cllist.php" target="dataFrame">材料列表</a></p>
 	      <p>-&nbsp;<a href="../userlist.php" target="dataFrame">管理员帐号</a></p>
 	      <p>-&nbsp;<a href="../adduser.php" target="dataFrame">新增管理员帐号</a></p>
 	    </div>

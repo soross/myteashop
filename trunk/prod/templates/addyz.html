@@ -96,24 +96,38 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+
+	    // 员工
+	function cheackstaffid() {
+	   var obj=document.getElementById("staffid");
+	   var staffid=obj.value;
+	   if(staffid=="-1") {
+	      alert("请输选择员工！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+    //金额验证
+	function cheackmoney() {
+	   var obj=document.getElementById("money");
+	   var money=obj.value;
+	   if(money=="") {
+	      alert("请输入预支金额！");
+		  return false;
+	   }else if(money.replace(/[0-9]/g,"")>0){
+			alert("输入必须是为数字");
+			return false;
+	   }else {
+	      return true;
+	   }
+	}
+  function checkyz() {
+    return cheackstaffid()&&cheackmoney();
+   }
 </script>
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
-<script>
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : false,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
-</script>
-
 
 </head>
 {/literal}
@@ -140,7 +154,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/yz.action.php" method="post">
+        	<form action="post/yz.action.php" method="post" onsubmit="return checkyz();" >
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>

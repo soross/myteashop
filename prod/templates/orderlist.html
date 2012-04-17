@@ -107,6 +107,7 @@ function showOrderList(trid){
 }
 
 </script>
+
 </head>
 
 <body>
@@ -144,13 +145,17 @@ function showOrderList(trid){
 	      	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 	          <tr>  <form action="orderlist.php" method="get">
 	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
-
-	            	订单流水号：<input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30">&nbsp;<input type="submit" value="搜索" class="submitButton">
+					<table>
+	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30"></td><td></td></tr>
+	            	<tr><td align="right">排单时间：</td><td><input type="text" id="sdate" name="sdate" value="{$sdate}" size="20" maxlength="30" onfocus="javascript:ShowCalendar(this.id)" readonly="readonly"></td>
+	            	<td><input type="submit" value="搜索" class="submitButton"></td></tr>
+					</table>
 
 	            </div></td></form>
 	          </tr>
 	          </table>
 	      </td>
+	      </tr>
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
@@ -254,4 +259,5 @@ function showOrderList(trid){
   </tr>
 </table>
 </body>
+<script src="js/Calendar.js" language="JavaScript" charset="utf-8"></script>
 </html>

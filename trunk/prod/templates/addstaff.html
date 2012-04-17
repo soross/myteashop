@@ -105,7 +105,7 @@ for(i=0;i<cs.length;i++){
 			var obj=document.getElementById("staffid");
 			var staffid=obj.value;
 			if(staffid==""){
-				alert("真实姓名只能为中文！");
+				alert("请填写员工编号！");
 				return false;
 		  	}else{
 		         return true;
@@ -115,20 +115,24 @@ for(i=0;i<cs.length;i++){
 		function cheackstaffname() {
 			var obj=document.getElementById("staffname");
 			var staffname=obj.value;
-			if(staffnamee!=""){
+			if(staffname!=""){
 				if(staffname.replace(/[\u4e00-\u9fa5]/g,"").length>0){
-					alert("真实姓名只能为中文！");
+					alert("员工姓名只能为中文！");
 					return false;
-				}else if(staffname.length<2 && realname.length>10){
-					alert("真实姓名长度应为了2-10个字符！");
+				}else if(staffname.length<2 && staffname.length>10){
+					alert("员工姓名长度应为了2-10个字符！");
 					return false;
 				}else {
 		   	   	 return true;
 		   	    }
 		  	}else{
-		     return true;
+		  		alert("请填写员工姓名！");
+		     return false;
 		   }
 		}
+		function checkstaff() {
+		 	return cheackstaffid()&&cheackstaffname();
+		 }
 </script>
 
 
@@ -157,7 +161,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/staff.action.php" method="post">
+        	<form action="post/staff.action.php" method="post" onsubmit="return checkstaff();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>

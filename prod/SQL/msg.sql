@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-04-16 17:38:43
+Date: 2012-04-17 15:48:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -179,7 +179,7 @@ CREATE TABLE `orderitem` (
 -- ----------------------------
 -- Records of orderitem
 -- ----------------------------
-INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', null, null, '3', '33.00', '2012-04-16 12:38:25', null, null, null, null);
+INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', '2012-04-17 09:17:47', null, '3', '33.00', '2012-04-16 12:38:25', null, null, null, null);
 INSERT INTO `orderitem` VALUES ('5', '20120416044859720837', null, null, '3', '400.00', '2012-04-16 12:48:59', null, null, null, null);
 INSERT INTO `orderitem` VALUES ('6', '20120416045027891592', null, '2012-04-16 13:08:54', '4', '2420.00', '2012-04-16 12:50:27', null, null, null, null);
 
@@ -203,16 +203,12 @@ CREATE TABLE `orderlist` (
 -- ----------------------------
 -- Records of orderlist
 -- ----------------------------
-INSERT INTO `orderlist` VALUES ('14', '4', '2', '22', '0.00', '0', null, null, null);
 INSERT INTO `orderlist` VALUES ('15', '4', '1', '22', '0.00', '0', null, null, null);
 INSERT INTO `orderlist` VALUES ('16', '4', '3', '22', '0.00', '0', null, null, null);
-INSERT INTO `orderlist` VALUES ('17', '5', '2', '10', '10.00', '1', '2012-04-16 13:12:21', null, null);
 INSERT INTO `orderlist` VALUES ('18', '5', '1', '10', '10.00', '0', null, null, null);
 INSERT INTO `orderlist` VALUES ('19', '5', '3', '10', '20.00', '0', null, null, null);
-INSERT INTO `orderlist` VALUES ('20', '6', '2', '22', '22.00', '1', '2012-04-16 13:10:40', null, null);
 INSERT INTO `orderlist` VALUES ('21', '6', '1', '22', '22.00', '1', '2012-04-16 13:10:45', null, null);
 INSERT INTO `orderlist` VALUES ('22', '6', '3', '22', '22.00', '1', '2012-04-16 13:12:35', null, null);
-INSERT INTO `orderlist` VALUES ('23', '6', '2', '22', '22.00', '1', '2012-04-16 13:12:39', null, null);
 INSERT INTO `orderlist` VALUES ('24', '6', '1', '22', '22.00', '1', '2012-04-16 13:12:42', null, null);
 
 -- ----------------------------
@@ -395,6 +391,78 @@ INSERT INTO `staffjob` VALUES ('4', '2', '2', '11', null, '3', '2012', null, nul
 INSERT INTO `staffjob` VALUES ('5', '2', '1', '10', null, '3', '2012', null, null, null, null);
 
 -- ----------------------------
+-- Table structure for `sys_code`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_code`;
+CREATE TABLE `sys_code` (
+  `id` int(11) NOT NULL auto_increment,
+  `sys_code` varchar(20) default NULL,
+  `sys_desc` varchar(255) default NULL,
+  `sys_value` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of sys_code
+-- ----------------------------
+INSERT INTO `sys_code` VALUES ('1', 'CAP01001', '新增产品', '产品');
+INSERT INTO `sys_code` VALUES ('2', 'CAP01002', '删除产品', '产品');
+INSERT INTO `sys_code` VALUES ('3', 'CAP01003', '删除产品材料属性', '产品');
+INSERT INTO `sys_code` VALUES ('4', 'CAP01004', '删除产品工种属性', '产品');
+INSERT INTO `sys_code` VALUES ('5', 'CAP02001', '新增材料', '材料');
+INSERT INTO `sys_code` VALUES ('6', 'CAP02002', '删除材料', '材料');
+INSERT INTO `sys_code` VALUES ('7', 'CAP02003', '修改材料', '材料');
+INSERT INTO `sys_code` VALUES ('8', 'CAP03001', '新增工种', '工种');
+INSERT INTO `sys_code` VALUES ('9', 'CAP03002', '删除工种', '工种');
+INSERT INTO `sys_code` VALUES ('10', 'CAP03003', '修改工种', '工种');
+INSERT INTO `sys_code` VALUES ('11', 'CAP04001', '新增订单', '订单');
+INSERT INTO `sys_code` VALUES ('12', 'CAP04002', '删除订单', '订单');
+INSERT INTO `sys_code` VALUES ('13', 'CAP04003', '删除订单明细', '订单');
+INSERT INTO `sys_code` VALUES ('14', 'CAP04004', '订单进仓', '订单');
+INSERT INTO `sys_code` VALUES ('15', 'CAP04005', '订单明细竣工', '订单');
+INSERT INTO `sys_code` VALUES ('16', 'CAP04006', '订单排单', '订单');
+INSERT INTO `sys_code` VALUES ('17', 'CAP04007', '订单出仓', '订单');
+INSERT INTO `sys_code` VALUES ('18', 'CAP05001', '新增员工', '员工');
+INSERT INTO `sys_code` VALUES ('19', 'CAP05002', '删除员工', '员工');
+INSERT INTO `sys_code` VALUES ('20', 'CAP05003', '修改员工', '员工');
+INSERT INTO `sys_code` VALUES ('21', 'CAP05004', '删除员工作业', '员工');
+INSERT INTO `sys_code` VALUES ('22', 'CAP06001', '新增岗位', '岗位');
+INSERT INTO `sys_code` VALUES ('23', 'CAP06002', '删除岗位', '岗位');
+INSERT INTO `sys_code` VALUES ('24', 'CAP06003', '修改岗位', '岗位');
+INSERT INTO `sys_code` VALUES ('25', 'CAP07001', '新增工种', '工种');
+INSERT INTO `sys_code` VALUES ('26', 'CAP07002', '删除工种', '工种');
+INSERT INTO `sys_code` VALUES ('27', 'CAP07003', '修改工种', '工种');
+INSERT INTO `sys_code` VALUES ('28', 'CAP08001', '新增预支工资', '工资');
+INSERT INTO `sys_code` VALUES ('29', 'CAP08003', '工资打印', '工资');
+INSERT INTO `sys_code` VALUES ('30', 'CAP04008', '订单密码验证', '订单');
+INSERT INTO `sys_code` VALUES ('31', 'CAP08002', '删除预支工资', '工资');
+INSERT INTO `sys_code` VALUES ('32', 'CAP09001', '新增客户', '客户');
+INSERT INTO `sys_code` VALUES ('33', 'CAP09002', '删除客户', '客户');
+INSERT INTO `sys_code` VALUES ('34', 'CAP09003', '修改客户', '客户');
+INSERT INTO `sys_code` VALUES ('35', 'CAP10001', '新增系统用户', '系统用户');
+INSERT INTO `sys_code` VALUES ('36', 'CAP10002', '删除系统用户', '系统用户');
+INSERT INTO `sys_code` VALUES ('37', 'CAP10003', '修改系统用户', '系统用户');
+
+-- ----------------------------
+-- Table structure for `sys_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_log`;
+CREATE TABLE `sys_log` (
+  `id` int(11) NOT NULL auto_increment,
+  `sys_code` varchar(20) default NULL,
+  `sys_user` varchar(20) default NULL,
+  `create_date` datetime default NULL,
+  `result` varchar(20) default NULL,
+  `sys_desc` varchar(255) default NULL,
+  `remark` longtext,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+-- ----------------------------
+-- Records of sys_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -443,7 +511,7 @@ CREATE TABLE `yz` (
 -- ----------------------------
 -- Records of yz
 -- ----------------------------
-INSERT INTO `yz` VALUES ('2', '2', '0.00', '', '', '2012-04-15 12:53:34', null, null, null, null, null);
-INSERT INTO `yz` VALUES ('3', '1', '0.00', '', '', '2012-04-15 12:53:45', null, null, null, null, null);
-INSERT INTO `yz` VALUES ('4', '1', '0.00', '', '', '2012-04-15 14:44:53', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('2', '2', '0.00', '03', '2012', '2012-04-15 12:53:34', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('3', '1', '0.00', '02', '2012', '2012-04-15 12:53:45', null, null, null, null, null);
+INSERT INTO `yz` VALUES ('4', '1', '0.00', '01', '2012', '2012-04-15 14:44:53', null, null, null, null, null);
 INSERT INTO `yz` VALUES ('5', '2', '3333.00', '04', '2012', '2012-04-15 14:46:24', null, null, null, null, null);

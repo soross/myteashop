@@ -19,7 +19,11 @@ if(isset($_GET[year])&& !empty($_GET[year])){
 	$smarty->assign("year",$_GET[year]);
 }
 if(isset($_GET[month])&& !empty($_GET[month])){
-	if(strlen($_GET[month])<2) $m = "0".$_GET[month];
+	if(strlen($_GET[month])<2) {
+		$m = "0".$_GET[month];
+	}else{
+		$m = $_GET[month];
+	}
 	$case = $case." and m_yz = '".$m."' ";
 	$smarty->assign("month",$_GET[month]);
 }
@@ -27,7 +31,7 @@ if(isset($_GET[month])&& !empty($_GET[month])){
 
 $pagesize = 10;//一页显示多少条
 //分页
-$pagesql="SELECT * FROM yz LEFT JOIN staff AS s ON yz.staffid = s.id ";
+$pagesql="SELECT yz.id FROM yz LEFT JOIN staff AS s ON yz.staffid = s.id ";
 $queryTotal = $db->query($pagesql.$case);
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
@@ -49,7 +53,7 @@ yz
 LEFT JOIN staff AS s ON yz.staffid = s.id
 ".$case."
 order by yz.create_date desc limit $firstcount, $displaypg ";
-//print_r($sql);
+print_r($sql);
 $yzQuery = $db->query($sql);
 $yzRow = array();
 while($rowyz = $db->fetch_array($yzQuery)){

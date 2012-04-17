@@ -149,7 +149,7 @@ DivContent+="</select>";
 
 DivContent+="</td>";
 
-DivContent+="<td style='border-bottom:1px solid #0066FF; background-color:#C7D8FA; font-weight:bold; font-family:Wingdings 2,Wingdings,Webdings; font-size:16px; padding-top:2px; color:#4477FF; cursor:hand' align='center' title='关闭' onClick='javascript:HiddenCalendar()'>S</td>";
+DivContent+="<td style='border-bottom:1px solid #0066FF; background-color:#C7D8FA; font-weight:bold; font-family:Wingdings 2,Wingdings,Webdings; font-size:16px; padding-top:2px; color:#4477FF; cursor:hand' align='center' title='关闭' onClick='javascript:clearCalendar(\"" + InputBox + "\")'>S</td>";
 DivContent+="</tr>";
 
 DivContent+="<tr><td align='center' colspan='2'>";
@@ -192,4 +192,9 @@ var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 if (day > 29 || (day==29 && !isleap)) return false;
 }
 return true;
+}
+
+function clearCalendar(InputBox){
+eval("document.all."+InputBox).value="";
+HiddenCalendar();
 }

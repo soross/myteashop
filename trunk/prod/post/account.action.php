@@ -22,8 +22,18 @@ if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 if(isset($_GET[task]) && "toUpdateUser"==$_GET[task]){
 	if(isset($_GET[aamsid]) && !empty($_GET[aamsid])){
 		if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == $_GET[aamsid] || $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
-			$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
-			echo "<script>alert('密码修改成功!');location.href='../userlist.php';</script>";
+			if(!empty($_GET[password])&&empty($_GET[orderpass])){
+				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+				echo "<script>alert('用户密码修改成功!');location.href='../userlist.php';</script>";
+			}else if(empty($_GET[password])&&!empty($_GET[orderpass])){
+				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+				echo "<script>alert('订单密码修改成功!');location.href='../userlist.php';</script>";
+			}else if(isset($_GET[password])&&!empty($_GET[password])&&$_GET[orderpass]&&!empty($_GET[orderpass])){
+				$db->query("update user set password='".md5($_GET[password])."' orderpass='".md5($_GET[orderpass])."' where id ='".$_GET[aamsid]."'" );
+				echo "<script>alert('用户密码和订单密码修改成功!');location.href='../userlist.php';</script>";
+			}else{
+				echo "<script>alert('请输入您要修改的密码!');location.href='../userlist.php';</script>";
+			}
 		}else{
 			echo "<script>alert('您不是管理员,无法修改别人的密码!');location.href='../userlist.php';</script>";
 		}

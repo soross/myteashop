@@ -100,18 +100,35 @@ for(i=0;i<cs.length;i++){
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
 <script>
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : false,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-		});
-	});
+		//员工编号
+		function cheackstaffid() {
+			var obj=document.getElementById("staffid");
+			var staffid=obj.value;
+			if(staffid==""){
+				alert("真实姓名只能为中文！");
+				return false;
+		  	}else{
+		         return true;
+		   }
+		}
+		//员工姓名
+		function cheackstaffname() {
+			var obj=document.getElementById("staffname");
+			var staffname=obj.value;
+			if(staffnamee!=""){
+				if(staffname.replace(/[\u4e00-\u9fa5]/g,"").length>0){
+					alert("真实姓名只能为中文！");
+					return false;
+				}else if(staffname.length<2 && realname.length>10){
+					alert("真实姓名长度应为了2-10个字符！");
+					return false;
+				}else {
+		   	   	 return true;
+		   	    }
+		  	}else{
+		     return true;
+		   }
+		}
 </script>
 
 
@@ -167,7 +184,7 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="text" id="tell" name="tell" size="40" maxlength="50"><font style="color:red;">*</font></div></td>
+		            <input type="text" id="tell" name="tell" size="40" maxlength="13"><font style="color:red;">*</font></div></td>
 		          </tr>
 		           <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">备注</div></td>

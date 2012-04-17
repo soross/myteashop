@@ -101,35 +101,52 @@ for(i=0;i<cs.length;i++){
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
 <script>
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
-		});
-	});
-
-
-	function remarkType(obj){
-		if(obj.value=="NEWS"){
-			document.getElementById('newsType').style.display="block";
-			document.getElementById('newsAuthor').style.display="block";
-			document.getElementById('newsSrc').style.display="block";
-			document.getElementById('newsContent').style.display="block";
-			document.getElementById('newsFile').style.display="none";
-
-		}else{
-			document.getElementById('newsType').style.display="none";
-			document.getElementById('newsAuthor').style.display="none";
-			document.getElementById('newsSrc').style.display="none";
-			document.getElementById('newsContent').style.display="none";
-			document.getElementById('newsFile').style.display="block";
-		}
+	    //材料名称
+	function cheackclname() {
+	   var obj=document.getElementById("clname");
+	   var clname=obj.value;
+	   if(clname=="") {
+	      alert("请输入材料名称！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	    //材料规格
+	function cheackgg() {
+	   var obj=document.getElementById("clgg");
+	   var clgg=obj.value;
+	   if(clgg=="") {
+	      alert("请输入材料规格！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	//单位
+	function cheackunit() {
+	   var obj=document.getElementById("unit");
+	   var unit=obj.value;
+	   if(unit=="") {
+	      alert("请输入单位！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	//单价
+	function cheackprice() {
+	   var obj=document.getElementById("price");
+	   var price=obj.value;
+	   if(price=="") {
+	      alert("请输入单价！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	function cheackcl() {
+		return cheackclname()&&cheackgg()&&cheackunit()&&cheackprice();
 	}
 </script>
 
@@ -162,7 +179,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/cl.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/cl.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackcl();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">材料编号</div></td>

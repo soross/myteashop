@@ -1,0 +1,275 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
+.STYLE1 {font-size: 12px}
+.STYLE4 {
+	font-size: 12px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 12}
+
+-->
+</style>
+
+<script>
+var  highlightcolor='#eafcd5';
+//此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+var  clickcolor='#51b2f6';
+function  changeto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=highlightcolor;
+}
+}
+
+function  changeback(){
+if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+return
+if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+	function  clickto(){
+		source=event.srcElement;
+		if  (source.tagName=="TR"||source.tagName=="TABLE")
+			return;
+			while(source.tagName!="TD")
+				source=source.parentElement;
+				source=source.parentElement;
+				cs  =  source.children;
+			//alert(cs.length);
+		if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+			for(i=0;i<cs.length;i++){
+				cs[i].style.backgroundColor=clickcolor;
+			}
+		else
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor="";
+	}
+}
+
+function showOrderList(trid){
+   var obj = document.getElementById("tr"+trid);
+   if(obj.style.display=="none"){
+      obj.style.display="block";
+   }else{
+      obj.style.display="none";
+   }
+}
+
+</script>
+
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">订单管理-订单排单</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
+        	<table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="60">
+
+              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="STYLE1"><!-- <div align="center"><a href="addorder.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="JavaScript:window.parent.dataFrame.location.href='addorder.php';">新增</a></div> --></td>
+                  </tr>
+              	</table>
+              </td>
+              </table>
+              </td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td> {/literal}
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+	      <td bgcolor="#f3ffe3">
+	      	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+	          <tr>  <form action="orderlist.php" method="get">
+	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+					<table>
+	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30"></td><td></td>
+	            	<td><input type="submit" value="开始排单" class="submitButton"></td></tr>
+					</table>
+
+	            </div></td></form>
+	          </tr>
+	          </table>
+	      </td>
+	      </tr>
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+          <tr>
+            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单流水号</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">排单时间</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">进仓时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单总价</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+          </tr>
+
+          {section name=list loop=$orderlist}
+          <tr style="cursor:hand;">
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].id}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderid}</div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $orderlist[list].pddate==''}
+            	<input type="button" value="排单" class="submitButton"  onclick="javascript:location.href='pd.php?itemid={$orderlist[list].id}';">
+            	{else}
+            	{$orderlist[list].pddate}
+            	{/if}
+            </div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $orderlist[list].jcdate==''}
+            	<input type="button" value="进仓" class="submitButton" onclick="javascript:if(confirm('确定进仓?'))location.href='post/order.action.php?task=orderJC&itemid={$orderlist[list].id}';">
+            	{else}
+            	{$orderlist[list].jcdate}
+            	{/if}
+            </div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].custname}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderprice}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].create_date}</div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderItem&itemid={$orderlist[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderItem&itemid={$orderlist[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+          </tr>
+		  <tr id="tr{$orderlist[list].id}" style="display:none;">
+		     <td colspan="8"  bgcolor="#FFFFFF">
+				<table  width="80%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+	          	  <tr>
+		            <td width="20%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单明细序号</div></td>
+		            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
+		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
+		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">单价</div></td>
+		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否完成</div></td>
+		            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">完成时间</div></td>
+		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+		          </tr>
+	          	{section name=lt loop=$orderlistlist}
+		          {if $orderlistlist[lt].orderid == $orderlist[list].id}
+			          <tr>
+			            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].id}</div></td>
+			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].prodname}</div></td>
+			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].cnt}</div></td>
+			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].itemprice}</div></td>
+			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+			            	{if $orderlistlist[lt].isfinish==1}
+			            	<font style="color:blue;">完成</font>
+			            	{else}
+			            	<font style="color:red;">未完成</font>
+			            	{/if}
+			            </div></td>
+			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+			            	{if $orderlistlist[lt].isfinish==1}
+			            	{$orderlistlist[lt].finish_date}
+			            	{else}
+			            	<input type="button" value="完成" class="submitButton" onclick="javascript:if(confirm('确定已完工?'))location.href='post/order.action.php?task=orderListFinish&listid={$orderlistlist[lt].id}';">
+			            	{/if}
+			            	</div>
+			            </td>
+			            <td height="28" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderList&listid={$orderlistlist[lt].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderList&listid={$orderlistlist[lt].id}';">删除</a><span class="STYLE1">]</span></div></td>
+			          </tr>
+		          {/if}
+
+	         	 {/section}
+			    </table>
+	      	 </td>
+	      </tr>
+          {sectionelse}
+			<tr>
+				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+			</tr>
+          {/section}
+        </table></td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab/tab_21.gif">
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr>
+	                  <td  width="352"> &nbsp;</td>
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+<script src="js/Calendar.js" language="JavaScript" charset="utf-8"></script>
+</html>

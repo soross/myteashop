@@ -153,11 +153,12 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="6%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">密码</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
+            <td width="18%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户密码</div></td>
+            <td width="18%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单密码</div></td>
+            <td width="18%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">修改密码</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
@@ -168,10 +169,11 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].username}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].realname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            新密码：<input type="text" size="10" name="password{$adminRow[list].id}" id="password{$adminRow[list].id}">
-            </div></td>
+            新用户密码：<input type="password" size="10" name="password{$adminRow[list].id}" id="password{$adminRow[list].id}"> </div></td>
+             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            新订单密码：<input type="password" size="10" name="orderpass{$adminRow[list].id}" id="orderpass{$adminRow[list].id}"></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].create_date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateAams&aamsid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定修改密码?'))location.href='post/account.action.php?task=toUpdateUser&aamsid={$adminRow[list].id}&password='+document.getElementById('password{$adminRow[list].id}').value;">修改</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateAams&aamsid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定修改密码?'))location.href='post/account.action.php?task=toUpdateUser&aamsid={$adminRow[list].id}&password='+document.getElementById('password{$adminRow[list].id}').value+'&password='+document.getElementById('orderpass{$adminRow[list].id}').value;">修改</a><span class="STYLE1">]</span></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="post/news.action.php?taks=deleteAams&aamsid={$adminRow[list].id}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/account.action.php?task=deleteAamsUser&aamsid={$adminRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}

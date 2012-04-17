@@ -407,6 +407,12 @@ class mysql {
 		}
 	}
 
+
+	function addLog($sys_code,$sys_user,$result,$sys_desc,$remark){
+		$this->query("insert into sys_log(sys_code,sys_user,result,sys_desc,remark,create_date) " .
+				"values('".$sys_code."','".$sys_user."','".$result."','".$sys_desc."','".$remark."',now())");
+	}
+
 	function makeHtml($file,$content){
 		$fp = fopen($file,'w');
 		fwrite($fp,$content);

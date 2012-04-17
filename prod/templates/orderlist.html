@@ -147,7 +147,8 @@ function showOrderList(trid){
 	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 					<table>
 	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30"></td><td></td></tr>
-	            	<tr><td align="right">排单时间：</td><td><input type="text" id="sdate" name="sdate" value="{$sdate}" size="20" maxlength="30" onfocus="javascript:ShowCalendar(this.id)" readonly="readonly"></td>
+	            	<tr><td align="right">排单时间：</td><td><input type="text" id="sdate" name="sdate" value="{$sdate}" size="20" maxlength="30"
+	            	 onfocus="javascript:ShowCalendar(this.id)" onblur="javascript:HiddenCalendar()" readonly="readonly"></td>
 	            	<td><input type="submit" value="搜索" class="submitButton"></td></tr>
 					</table>
 

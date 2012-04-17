@@ -53,7 +53,7 @@ yz
 LEFT JOIN staff AS s ON yz.staffid = s.id
 ".$case."
 order by yz.create_date desc limit $firstcount, $displaypg ";
-print_r($sql);
+//print_r($sql);
 $yzQuery = $db->query($sql);
 $yzRow = array();
 while($rowyz = $db->fetch_array($yzQuery)){

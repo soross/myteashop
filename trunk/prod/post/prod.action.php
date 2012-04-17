@@ -54,7 +54,7 @@ else
 		echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
 	}
 
-//新增产品
+//新增产品 CAP01001 新增产品
 else
 	if (isset ($_POST[task]) && "addProd" == ($_POST[task])) {
 		//文件保存目录URL
@@ -94,17 +94,24 @@ else
 			}
 			if (mysql_errno()) {
 				$db->query('rollback');
+
+				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败".mysql_errno());
+
 				echo "<script>alert('产品新增失败!');location.href='../addprod.php'</script>";
 			} else {
 				$db->query('commit');
+
+				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增产品","新增产品成功");
+
 				echo "<script>if(confirm('新增产品成功,是否继续新增?')){location.href='../addprod.php';}else{location.href='../prodlist.php';}</script>";
 			}
 		} else {
+			$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败".$up->getErrorMsg());
 			echo "<script>alert('产品新增失败。请检查上传的文件是否符合要求!');location.href='../addprod.php';</script>";
 		}
 	}
 
-//新增产品
+//删除产品 CAP01002 删除产品
 else
 	if (isset ($_GET[task]) && "delProd" == ($_GET[task])) {
 		$db->query('start transaction');
@@ -114,26 +121,30 @@ else
 
 		if (mysql_errno()) {
 			$db->query('rollback');
+			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败".mysql_errno());
 			echo "<script>alert('产品删除失败!');location.href='../prodlist.php'</script>";
 		} else {
 			if (file_exists("../" . $_GET[path]))
 				unlink("../" .
 				$_GET[path]);
 			$db->query('commit');
+			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品","删除产品成功");
 			echo "<script>alert('产品已删除成功!');location.href='../prodlist.php'</script>";
 		}
 	}
 
-//删除产品工种
+//删除产品工种 CAP01004 删除产品工种属性
 else
 	if (isset ($_GET[task]) && "delProdJob" == ($_GET[task])) {
 		$db->query("delete from prodjob where id='" . $_GET[jobid] . "'");
+		$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品工种","删除产品工种成功");
 		echo "<script>alert('产品工种删除成功!');location.href='../prodlist.php'</script>";
 	}
-//删除产品材料delProdList&listid=12
+//删除产品材料delProdList&listid=12 CAP01003 删除产品材料属性
 else
 	if (isset ($_GET[task]) && "delProdList" == ($_GET[task])) {
 		$db->query("delete from prodlist where id='" . $_GET[listid] . "'");
+		$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品材料属性","删除产品材料属性成功");
 		echo "<script>alert('产品材料删除成功!');location.href='../prodlist.php'</script>";
 	}
 ?>

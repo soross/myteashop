@@ -7,9 +7,9 @@
 		if($cnt<1){
 			$db->query("insert into gw(gwname)" .
 					"values('$_POST[gwname]')");
-			echo "<script>if(confirm('新闻新增成功,是否继续新增?')){location.href='../addgw.php';}else{location.href='../gwlist.php';}</script>";
+			echo "<script>if(confirm('岗位增成功,是否继续新增?')){location.href='../addgw.php';}else{location.href='../gwlist.php';}</script>";
 		}else{
-			echo "<script>alert('该客户已存在!');location.href='../addgw.php';</script>";
+			echo "<script>alert('该岗位已存在!');location.href='../addgw.php';</script>";
 		}
 	}else if(isset($_GET[task]) && "delGw"==$_GET[task]){
 		$db->query("delete from gw where gwid = '$_GET[gwid]'");

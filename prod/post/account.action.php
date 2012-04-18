@@ -24,27 +24,34 @@ if(isset($_GET[task]) && "toUpdateUser"==$_GET[task]){
 		if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == $_GET[aamsid] || $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 			if(!empty($_GET[password])&&empty($_GET[orderpass])){
 				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改用户密码","修改用户密码成功");
 				echo "<script>alert('用户密码修改成功!');location.href='../userlist.php';</script>";
 			}else if(empty($_GET[password])&&!empty($_GET[orderpass])){
 				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改订单密码","修改订单密码成功");
 				echo "<script>alert('订单密码修改成功!');location.href='../userlist.php';</script>";
 			}else if(isset($_GET[password])&&!empty($_GET[password])&&$_GET[orderpass]&&!empty($_GET[orderpass])){
 				$db->query("update user set password='".md5($_GET[password])."' orderpass='".md5($_GET[orderpass])."' where id ='".$_GET[aamsid]."'" );
+				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改用户密码和订单密码","修改用户密码和订单密码成功");
 				echo "<script>alert('用户密码和订单密码修改成功!');location.href='../userlist.php';</script>";
 			}else{
 				echo "<script>alert('请输入您要修改的密码!');location.href='../userlist.php';</script>";
 			}
 		}else{
+		$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改用户密码和订单密码","您不是管理员,无法修改别人的密码!");
 			echo "<script>alert('您不是管理员,无法修改别人的密码!');location.href='../userlist.php';</script>";
 		}
 	}else{
+		$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改用户密码和订单密码","非法操作");
 		echo "<script>alert('非法操作!".$_GET[aamsid]."');location.href='../admin.php';</script>";
 	}
 }else if(isset($_GET[task]) && "deleteAamsUser"==$_GET[task]){
 	if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 		$db->query("delete from  user where id ='".$_GET[aamsid]."'" );
+		$db->addLog("CAP10002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除帐号","删除帐号成功！");
 		echo "<script>alert('帐号删除成功!');location.href='../userlist.php';</script>";
 	}else{
+		$db->addLog("CAP10002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除帐号","您不是管理员,无法删除账户!");
 		echo "<script>alert('您不是管理员,无法删除账户!');location.href='../userlist.php';</script>";
 	}
 }
@@ -60,13 +67,7 @@ else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
 	}
 	$sql = $sql." where id=' ". $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']." '";
 	$db->query($sql);
+	$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改管理员信息","管理员信息更新成功!");
 	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
-}
-
-//修改订单密码
-else if(isset($_POST[task]) && "orderPass"==($_POST[task])){
-	$sql = "update user set orderpass = '".md5($_POST[orderpass])."' where id = '$_POST[id]'";
-	$db->query($sql);
-	echo "<script>alert('订单密码修改成功!');location.href='../orderpass.php';</script>";
 }
 ?>

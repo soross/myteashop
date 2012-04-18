@@ -167,7 +167,7 @@ else
 		if (mysql_errno()) {
 			$db->query('rollback');
 			$db->addLog("CAP04006",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","订单排单","订单排单失败！".mysql_errno());
-			echo "DB_ERROR";
+			echo "DB_ERROR".mysql_errno();
 		} else {
 			$db->query('commit');
 			$db->addLog("CAP04006",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单排单","订单排单成功！");

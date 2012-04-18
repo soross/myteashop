@@ -106,7 +106,7 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 		  <p>-&nbsp;<a href="../orderlist.php" target="dataFrame">订单列表</a></p>
 		  <p>-&nbsp;<a href="../addorder.php" target="dataFrame">添加订单</a></p>
-	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">订单排单</a></p>
+	      <p>-&nbsp;<a href="../pd.php" target="dataFrame">订单排单</a></p>
 	      <p>-&nbsp;<a href="../cclist.php" target="dataFrame">出仓情况</a></p>
 	    </div>
 	  </li>

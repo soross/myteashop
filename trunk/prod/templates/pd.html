@@ -142,7 +142,7 @@ for(i=0;i<cs.length;i++){
 		vstaffcnt = "";
 		vcount = 0;
 		vbool = true;
-		alert(staffs.length+"#"+cnts.length);
+		//alert(staffs.length+"#"+cnts.length);
 		for(var i=0;i<staffs.length;i++){
 		  if(staffs[i].value=="-1"){
 		    vbool = false;
@@ -177,12 +177,12 @@ for(i=0;i<cs.length;i++){
 			url: "post/order.action.php",
 			data: vdate,
 			success: function(rs){
-			    alert(rs);
+			    //alert(rs);
 				if("OK"==rs){
-					alert("排单成功!");
+					alert("排单提交成功!");
 					setButtonDisplay(vid);
 				}else{
-					alert("排单失败!");
+					alert("排单提交失败!");
 				}
 			}
 		});

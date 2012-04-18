@@ -182,7 +182,7 @@ for(i=0;i<cs.length;i++){
 					alert("排单提交成功!");
 					setButtonDisplay(vid);
 				}else{
-				    alert(rs);
+				    //alert(rs);
 					alert("排单提交失败!");
 				}
 			}
@@ -190,7 +190,7 @@ for(i=0;i<cs.length;i++){
 	}
 
 	function setButtonDisplay(vid){
-	    alert(vid);
+	    //alert(vid);
 		var btns = document.getElementsByName(vid);
 		for(var i=0;i<btns.length;i++){
 		   btns[i].disabled="disabled";

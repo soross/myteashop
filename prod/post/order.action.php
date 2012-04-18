@@ -160,7 +160,7 @@ else
 			$jobprice = getListBySql("select jobprice from jobprice where jobid='".$_POST[jobid]."' and prodid='".$_POST[prodid]."'",$db);
 			$info = explode("-",$staffcnt[$i]);
 			$sql = "insert into staffjob(staffid,jobpriceid,prodid,orderid,orderlistid,jobid,amount,m_job,y_job,create_date) ".
-					"values('".$info[0]."','".$jobprice[0][jobprice]."','".$_POST[prodid]."','".$_POST[oid]."','".$_POST[olid]."','".$_POST[jobid]."','".$info[1]."',$m,$y,now())";
+					"values('".$info[0]."','".$jobprice[0][jobprice]."','".$_POST[prodid]."','".$_POST[oid]."','".$_POST[olid]."','".$_POST[jobid]."','".$info[1]."','$m','$y',now())";
 			$db->query($sql);
 			$sql="";
 		}

@@ -7,6 +7,7 @@ if(isset($_POST[task]) && "addYz"==$_POST[task]){
 		$y = date( "Y" );
 		$db->query("insert into yz(staffid,money,m_yz,y_yz,create_date)" .
 					"values('$_POST[staffid]','$_POST[money]','$m','$y',now())");
+		//$db->addLog("CAP09001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增预支","预支成功!");
 		echo "<script>if(confirm('预支成功,是否继续新增?')){location.href='../addyz.php';}else{location.href='../yzlist.php';}</script>";
 	}else{
 		echo "<script>alert('预支失败,请选择员工.');location.href='../addyz.php';</script>";

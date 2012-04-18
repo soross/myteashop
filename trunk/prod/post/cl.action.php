@@ -6,6 +6,7 @@ require_once("../action/mysql.class.php");
 if(isset($_POST[task]) && "addCl"==$_POST[task]){
 	$sql = "insert into cl(clid,clname,clgg,unit,price,create_date) values('$_POST[clid]','$_POST[clname]','$_POST[clgg]','$_POST[unit]','$_POST[price]',now())";
 	$db->query($sql);
+	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
 	echo "<script>if(confirm('材料新增成功,是否继续新增?')){location.href='../addcl.php';}else{location.href='../cllist.php';}</script>";
 
 //删除材料

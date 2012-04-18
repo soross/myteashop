@@ -9,6 +9,7 @@
 		exit;
 	}else{
 		require_once("action/smarty_inc.php");
+		require_once("action/mysql.class.php");
 		if(isset($_GET[error])&& !empty($_GET[error])){
 			if(md5("ERROR")==$_GET[error]){
 				$db->addLog("CAP11001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","系统登录","非法提交!");

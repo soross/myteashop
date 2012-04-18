@@ -136,6 +136,43 @@ var cellcnt = 1;
 		var cGetRow=window.event.srcElement.parentElement.parentElement.rowIndex;
 		obj.deleteRow(cGetRow);
 	}
+	//产品名称
+	function cheackpicname() {
+	   var obj=document.getElementById("picname");
+	   var picname=obj.value;
+	   if(picname=="") {
+	      alert("请输产品名称！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	//产品编号
+	function cheackprodid() {
+	   var obj=document.getElementById("prodid");
+	   var prodid=obj.value;
+	   if(prodid=="") {
+	      alert("请输产品编号！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+		//产品图片
+	function cheackpicpath() {
+	   var obj=document.getElementById("picpath");
+	   var picpath=obj.value;
+	   if(picpath=="") {
+	      alert("请输产品图片！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+
+    function cheackprod() {
+    	return cheackpicname()&&cheackprodid()&&cheackpicpath();
+    }
 </script>
 
 
@@ -167,7 +204,7 @@ var cellcnt = 1;
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/prod.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/prod.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackprod();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>

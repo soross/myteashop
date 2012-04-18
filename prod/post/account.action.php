@@ -8,15 +8,19 @@ if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 			$cnt = $db->db_num_rows();
 			if($cnt<1){
 				$db->query("insert into user(username,password,realname,orderpass,create_date) values('".$_POST[username]."','".md5($_POST[password])."','".$_POST[realname]."','".md5($_POST[password])."',now())");
+				$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增管理员帐号","新增管理员帐号成功");
 				echo "<script>if(confirm('管理员帐号新增成功,是否继续新增?')){location.href='../adduser.php';}else{location.href='../userlist.php';}</script>";
 			}else{
+				$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","该管理员帐号已存在!");
 				echo "<script>alert('该管理员帐号已存在!');location.href='../adduser.php';</script>";
 			}
 		}else{
+			$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","两次密码不一致!");
 			echo "<script>alert('两次密码不一致!');location.href='../adduser.php';</script>";
 		}
 	}
 }else{
+	$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","权限不够!");
 	echo "<script>alert('您的权限不够,请联系管理员!');location.href='../adduser.php';</script>";
 }
 if(isset($_GET[task]) && "toUpdateUser"==$_GET[task]){
@@ -38,7 +42,7 @@ if(isset($_GET[task]) && "toUpdateUser"==$_GET[task]){
 				echo "<script>alert('请输入您要修改的密码!');location.href='../userlist.php';</script>";
 			}
 		}else{
-		$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改用户密码和订单密码","您不是管理员,无法修改别人的密码!");
+			$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改用户密码和订单密码","您不是管理员,无法修改别人的密码!");
 			echo "<script>alert('您不是管理员,无法修改别人的密码!');location.href='../userlist.php';</script>";
 		}
 	}else{

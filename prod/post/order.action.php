@@ -5,11 +5,14 @@ if (isset ($_GET[task]) && "orderpass" == $_GET[task]) {
 	if (isset ($_GET[id]) && !empty ($_GET[id])) {
 		if ($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == $_GET[id] || $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == 1) {
 			$db->query("update orderpass set orderpass='" . md5($_GET[orderpass]) . "' where id ='" . $_GET[id] . "'");
+			$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单密码修改","密码修改成功!");
 			echo "<script>alert('密码修改成功!');location.href='../orderpass.php';</script>";
 		} else {
+			$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","订单密码修改","不是管理员,无法修改别人的密码!");
 			echo "<script>alert('您不是管理员,无法修改别人的密码!');location.href='../orderpass.php';</script>";
 		}
 	} else {
+		$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","订单密码修改","非法操作!");
 		echo "<script>alert('非法操作!" . $_GET[id] . "');location.href='../admin.php';</script>";
 	}
 }
@@ -23,8 +26,10 @@ else
 		$ps = $us ? md5($_POST[orderpass]) == $row[orderpass] : FALSE;
 		if ($ps) {
 			$_SESSION['WEB_AAMS_CHECKORDER_ONTIME_SESSION'] = mktime();
+			$db->addLog("CAP11002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单登录","订单登录成功!");
 			echo "<script>location.href='../orderlist.php'</script>";
 		} else {
+			$db->addLog("CAP11002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","订单登录","订单密码错误!");
 			echo "#" . $userid . "#" . md5($_POST[orderpass]) . "#" . $row[orderpass] . "##";
 			echo "<script>alert('订单密码错误!');location.href='../orderpass.php'</script>"; //?error=".md5('PASSWORD')."
 		}
@@ -50,6 +55,7 @@ else
 					$orderprice = $orderprice+($cnt[$i]*$itemprice[$i]);
 				} else {
 					$db->query('rollback');
+					$db->addLog("CAP04008",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增订单明细","没有选择订单明细中的产品名称!");
 					echo "<script>alert('没有选择订单明细中的产品名称!');location.href='../addorder.php'</script>";
 					exit;
 				}
@@ -59,12 +65,15 @@ else
 
 			if (mysql_errno()) {
 				$db->query('rollback');
+				$db->addLog("CAP04001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增订单","新增订单失败!");
 				echo "<script>alert('新增订单失败!');location.href='../addorder.php'</script>";
 			} else {
 				$db->query('commit');
+				$db->addLog("CAP04001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增订单","请选择客户!");
 				echo "<script>if(confirm('新增订单成功,是否继续新增?')){location.href='../addorder.php';}else{location.href='../orderlist.php';}</script>";
 			}
 		} else {
+			$db->addLog("CAP04001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增订单","请选择客户!");
 			echo "<script>alert('请选择客户!');location.href='../addorder.php'</script>";
 		}
 	}
@@ -77,12 +86,15 @@ else
 			$db->query("delete from orderlist where orderid = '".$_GET[itemid]."'");
 			if (mysql_errno()) {
 				$db->query('rollback');
+				$db->addLog("CAP04002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除订单","删除订单失败!");
 				echo "<script>alert('删除订单失败!');location.href='../orderlist.php'</script>";
 			} else {
 				$db->query('commit');
+				$db->addLog("CAP04002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除订单","订单已成功删除!");
 				echo "<script>alert('订单已成功删除!');location.href='../orderlist.php'</script>";
 			}
 		}else{
+			$db->addLog("CAP04002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除订单","非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
 		}
 	}
@@ -92,8 +104,10 @@ else
 	if(isset ($_GET[task]) && $_GET[task] == "deleteOrderList"){
 		if(isset($_GET[listid])&&!empty($_GET[listid])){
 			$db->query("delete from orderlist where id = '".$_GET[listid]."'");
+			$db->addLog("CAP04003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除订单明细","订单明细已成功删除!");
 			echo "<script>alert('订单明细已成功删除!');location.href='../orderlist.php'</script>";
 		}else{
+			$db->addLog("CAP04003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除订单明细","非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
 		}
 	}
@@ -105,12 +119,15 @@ else
 			$db->query("select * from orderlist where isfinish='0' and orderid='".$_GET[itemid]."'");
 			$cnt = $db->db_num_rows();
 			if($cnt>0){
+				$db->addLog("CAP04004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","进仓","订单明细未全部竣工,进仓失败!");
 				echo "<script>alert('订单明细未全部竣工,进仓失败!');location.href='../orderlist.php'</script>";
 			}else{
 				$db->query("update orderitem set jcdate=now() where id = '".$_GET[itemid]."'");
+				$db->addLog("CAP04004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","进仓","订单已成功进仓!");
 				echo "<script>alert('订单已成功进仓!');location.href='../orderlist.php'</script>";
 			}
 		}else{
+			$db->addLog("CAP04004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","进仓","非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
 		}
 	}
@@ -120,8 +137,10 @@ else
 	if(isset ($_GET[task]) && $_GET[task] == "orderListFinish"){
 		if(isset($_GET[listid])&&!empty($_GET[listid])){
 			$db->query("update orderlist set isfinish='1',finish_date=now() where id = '".$_GET[listid]."'");
+			$db->addLog("CAP04005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增订单明细竣工","订单明细已竣工!");
 			echo "<script>alert('订单明细已竣工!');location.href='../orderlist.php'</script>";
 		}else{
+			$db->addLog("CAP04005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增订单明细竣工","非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
 		}
 	}

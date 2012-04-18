@@ -135,6 +135,17 @@ var cellcnt = 1;
 		var cGetRow=window.event.srcElement.parentElement.parentElement.rowIndex;
 		obj.deleteRow(cGetRow);
 	}
+			    //客户名
+	function cheackcustid() {
+	   var obj=document.getElementById("custid");
+	   var custid=obj.value;
+	   if(custid=="-1") {
+	      alert("请选择客户名！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
 </script>
 
 
@@ -166,7 +177,7 @@ var cellcnt = 1;
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/order.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/order.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackcustid();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>

@@ -48,7 +48,7 @@ a:active {
 
 -->
 </style>
-
+<script src="js/jquery.js"  type="text/javascript" language="javasrcipt"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -97,17 +97,105 @@ for(i=0;i<cs.length;i++){
 	}
 }
 
-function showOrderList(trid){
-   var obj = document.getElementById("tr"+trid);
-   if(obj.style.display=="none"){
-      obj.style.display="block";
-   }else{
-      obj.style.display="none";
-   }
-}
-
 </script>
+<script>
+	function insertStaffList(btnid){
+		var obj = document.getElementById(btnid+"stafftbl");
+		var myTR =obj.insertRow(obj.rows.length-1);
 
+		var myTD1=myTR.insertCell();
+		myTD1.style.background='#FFFFFF';
+		myTD1.innerHTML='<div align="left" class="STYLE2 STYLE1">员工：</div>';
+
+		var myTD2=myTR.insertCell();
+		myTD2.style.background='#FFFFFF';
+		myTD2.innerHTML='<div align="left" class="STYLE2 STYLE1"><select id="'+btnid+'staffid" name="'+btnid+'staffid">'+
+  				'<option value="-1">请选择员工</option>'+
+  				'{/literal}{section name=sl loop=$stafflist}{literal}'+
+  				'<option value="{/literal}{$stafflist[sl].id}{literal}">{/literal}{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]{literal}</option>'+
+  				'{/literal}{/section}{literal}'+
+  				'</select></div>';
+
+  		var myTD3=myTR.insertCell();
+		myTD3.style.background='#FFFFFF';
+		myTD3.innerHTML='<div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;数量：</div>';
+
+		var myTD4=myTR.insertCell();
+		myTD4.style.background='#FFFFFF';
+		myTD4.innerHTML='<div align="left" class="STYLE2 STYLE1"><input type="text" id="'+btnid+'cnt" name="'+btnid+'cnt" size="12" maxlength="12"></div>';
+
+		var myTD5=myTR.insertCell();
+		myTD5.style.background='#FFFFFF';
+		myTD5.innerHTML='&nbsp;&nbsp;<input type="button" id="'+btnid+'" name="'+btnid+'" class="submitButton" value="删除" onclick="javascript:removeStaffList();">';
+	}
+
+	function removeStaffList(){
+		var obj = document.getElementById('stafftbl');
+		var cGetRow=window.event.srcElement.parentElement.parentElement.rowIndex;
+		obj.deleteRow(cGetRow);
+	}
+
+	function submitPdInfo(vid){
+		vcnt = document.getElementById(vid+'count').value;
+		staffs = document.getElementsByName(vid+'staffid');
+		cnts = document.getElementsByName(vid+'cnt');
+		vstaffcnt = "";
+		vcount = 0;
+		vbool = true;
+		alert(staffs.length+"#"+cnts.length);
+		for(var i=0;i<staffs.length;i++){
+		  if(staffs[i].value=="-1"){
+		    vbool = false;
+		  	break;
+		  }
+		  vstaffcnt = vstaffcnt+"#"+staffs[i].value+"-"+cnts[i].value;
+		  vcount += parseInt(cnts[i].value);
+		}
+
+
+		if(!vbool){
+			alert("请选择员工!");
+		}else{
+			if(vcount!=vcnt){
+				alert("排单数量"+vcount+"不等于产品的数量"+vcnt+",排单失败!");
+			}else{
+				jobid = document.getElementById(vid+'jobid').value;
+				prodid = document.getElementById(vid+'prodid').value;
+				orderlistid = document.getElementById(vid+'olid').value;
+				orderid = document.getElementById(vid+'oid').value;
+				vstaffcnt = vstaffcnt.substr(1);
+				vdate = "task=addStaffJobMore&jobid="+jobid+"&prodid="+prodid+"&olid="+orderlistid+"&oid="+orderid+"&staffcnt="+vstaffcnt;
+				ajaxSubmit(vdate,vid);
+			}
+		}
+	}
+
+	function ajaxSubmit(vdate,vid){
+	    alert(vdate);
+		$.ajax({
+			type: "POST",
+			url: "post/order.action.php",
+			data: vdate,
+			success: function(rs){
+			    alert(rs);
+				if("OK"==rs){
+					alert("排单成功!");
+					setButtonDisplay(vid);
+				}else{
+					alert("排单失败!");
+				}
+			}
+		});
+	}
+
+	function setButtonDisplay(vid){
+	    alert(vid);
+		var btns = document.getElementsByName(vid);
+		for(var i=0;i<btns.length;i++){
+		   btns[i].disabled="disabled";
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -143,17 +231,18 @@ function showOrderList(trid){
 	      <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
 	      <td bgcolor="#f3ffe3">
 	      	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-	          <tr>  <form action="orderlist.php" method="get">
+	          <tr>  <form action="pd.php" method="get">
 	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 					<table>
-	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30"></td><td></td>
-	            	<td><input type="submit" value="开始排单" class="submitButton"></td></tr>
+	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="orderid" name="orderid" value="{$orderid}" size="20" maxlength="30"></td><td></td>
+	            	<td><input type="submit" value="开始排单" class="submitButton" ></td></tr>
 					</table>
 
 	            </div></td></form>
 	          </tr>
 	          </table>
 	      </td>
+	       <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
 	      </tr>
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
@@ -162,87 +251,117 @@ function showOrderList(trid){
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单流水号</div></td>
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">排单时间</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">进仓时间</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单总价</div></td>
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
 
-          {section name=list loop=$orderlist}
+		  {if $orderinfo.id!=""}
           <tr style="cursor:hand;">
-            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].id}</div></td>
-            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderid}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderinfo.id}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.orderid}</div></td>
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            	{if $orderlist[list].pddate==''}
-            	<input type="button" value="排单" class="submitButton"  onclick="javascript:location.href='pd.php?itemid={$orderlist[list].id}';">
-            	{else}
-            	{$orderlist[list].pddate}
-            	{/if}
+            	{$orderinfo.pddate}
             </div></td>
-            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            	{if $orderlist[list].jcdate==''}
-            	<input type="button" value="进仓" class="submitButton" onclick="javascript:if(confirm('确定进仓?'))location.href='post/order.action.php?task=orderJC&itemid={$orderlist[list].id}';">
-            	{else}
-            	{$orderlist[list].jcdate}
-            	{/if}
-            </div></td>
-            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].custname}</div></td>
-            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderprice}</div></td>
-            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].create_date}</div></td>
-            <td height="28" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderItem&itemid={$orderlist[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderItem&itemid={$orderlist[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.custname}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.orderprice}</div></td>
+            <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.create_date}</div></td>
           </tr>
-		  <tr id="tr{$orderlist[list].id}" style="display:none;">
-		     <td colspan="8"  bgcolor="#FFFFFF">
-				<table  width="80%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-	          	  <tr>
-		            <td width="20%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单明细序号</div></td>
-		            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
-		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
-		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">单价</div></td>
-		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否完成</div></td>
-		            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">完成时间</div></td>
-		            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
-		          </tr>
-	          	{section name=lt loop=$orderlistlist}
-		          {if $orderlistlist[lt].orderid == $orderlist[list].id}
-			          <tr>
-			            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].id}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].prodname}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].cnt}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlistlist[lt].itemprice}</div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-			            	{if $orderlistlist[lt].isfinish==1}
-			            	<font style="color:blue;">完成</font>
-			            	{else}
-			            	<font style="color:red;">未完成</font>
-			            	{/if}
-			            </div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-			            	{if $orderlistlist[lt].isfinish==1}
-			            	{$orderlistlist[lt].finish_date}
-			            	{else}
-			            	<input type="button" value="完成" class="submitButton" onclick="javascript:if(confirm('确定已完工?'))location.href='post/order.action.php?task=orderListFinish&listid={$orderlistlist[lt].id}';">
-			            	{/if}
-			            	</div>
-			            </td>
-			            <td height="28" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderList&listid={$orderlistlist[lt].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="javascript:if(confirm('确定删除?'))location.href='post/order.action.php?task=deleteOrderList&listid={$orderlistlist[lt].id}';">删除</a><span class="STYLE1">]</span></div></td>
-			          </tr>
-		          {/if}
-
-	         	 {/section}
-			    </table>
-	      	 </td>
-	      </tr>
-          {sectionelse}
+	      {else}
 			<tr>
-				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2">
+					<div align="center" class="STYLE2 STYLE1">{if $isOverAllPd==''}没有所要查询的数据....{else}{$isOverAllPd}{/if}</div>
+				</td>
 			</tr>
-          {/section}
+		  {/if}
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
     </table>
+	<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+	    <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+    	<td bgcolor="#f3ffe3">
+    		&nbsp;
+    	</td>
+    	</td>
+    	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    {section name=list loop=$orderlist}
+    <table  width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+	    <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+    	<td bgcolor="#f3ffe3" align="center" >
+    	  <table width="70%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+	          <tr>
+	          	<td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1" colspan="2">
+	          		<div align="left" class="STYLE2 STYLE1">【产品名称：{$orderlist[list].prodname}】【产品数量：{$orderlist[list].cnt}】</div>
+	          	</td>
+	          </tr>
+	          {section name=pl loop=$prodjoblist}
+	          {if $prodjoblist[pl].olid==$orderlist[list].id}
+	          <tr align="left" >
+	          	<td width="10%" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodjoblist[pl].jobname}</div></td>
+	          	<td width="90%" bgcolor="#FFFFFF" class="STYLE2">
+	          		<table id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-stafftbl">
+	          			<tr>
+	          				<td><div align="left" class="STYLE2 STYLE1">员工：</div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1"><select id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-staffid"
+	          				name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-staffid">
+	          				<option value="-1">请选择员工</option>
+	          				{section name=sl loop=$stafflist}
+	          				<option value="{$stafflist[list].id}">{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]</option>
+	          				{/section}
+	          				</select></div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;数量：</div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1"><input type="text" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-cnt"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-cnt" size="12" maxlength="12"></div></td>
+	          				<td>&nbsp;&nbsp;<input type="button" class="submitButton" value="添加员工" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-"
+	          					onclick="javascrip:insertStaffList('{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-');"></td>
+	          			</tr>
+	          			<tr>
+	          			<td colspan="5"  align="center" >
+	          				&nbsp;&nbsp;<input type="button" class="submitButton" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-" value="提交排单"
+	          					onclick="javascrip:if(confirm('排单信息提交后无法修改,是否确定提交?'))submitPdInfo('{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-');">
+	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-jobid"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-jobid" value="{$prodjoblist[pl].jid}">
+	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-prodid"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-prodid" value="{$prodjoblist[pl].pid}">
+	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-olid"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-olid" value="{$prodjoblist[pl].olid}">
+	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-oid"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-oid" value="{$prodjoblist[pl].orderid}">
+	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-count"
+	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-count" value="{$orderlist[list].cnt}">
+	          				</td>
+	          			</tr>
+	          		</table>
+	          	</td>
+	    	  </tr>
+	    	  {/if}
+	    	  {/section}
+    	  </table>
+    	  </td>
+    	</td>
+    	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    {/section}
+    {if $isOverAllPd==''}
+    <table  width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+	    <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+    	<td bgcolor="#f3ffe3" align="center" >
+    		<br><input type="button" value="该订单的排单全部完成" class="submitButton" onclick="JavaScript:if(confirm('该操作无法回退,是否确定排单已经全部排单?'))location.href='post/order.action.php?task=overAllPd&oid={$orderinfo.id}'">
+    	</td>
+    	</td>
+    	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    {/if}
     </td>
   </tr>
   <tr>

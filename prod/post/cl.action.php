@@ -21,7 +21,7 @@ if(isset($_POST[task]) && "addCl"==$_POST[task]){
 	echo "<script>if(confirm('材料修改成功,是否继续修改?')){location.href='../updatecl.php?clid=$_POST[id]';}else{location.href='../cllist.php';}</script>";
 
 }else{
-	$db->addLog("CAP02003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改材料","操作失败!");
+	//$db->addLog("CAP02003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改材料","操作失败!");
 	echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }
 ?>

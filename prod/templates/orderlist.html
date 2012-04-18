@@ -131,6 +131,7 @@ function showOrderList(trid){
               </td>
               </table>
               </td>
+
             </tr>
         </table></td>
         <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
@@ -156,6 +157,7 @@ function showOrderList(trid){
 	          </tr>
 	          </table>
 	      </td>
+	       <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
 	      </tr>
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
@@ -177,7 +179,7 @@ function showOrderList(trid){
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderid}</div></td>
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
             	{if $orderlist[list].pddate==''}
-            	<input type="button" value="ÅÅµ¥" class="submitButton"  onclick="javascript:location.href='pd.php?itemid={$orderlist[list].id}';">
+            	<input type="button" value="ÅÅµ¥" class="submitButton"  onclick="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';">
             	{else}
             	{$orderlist[list].pddate}
             	{/if}

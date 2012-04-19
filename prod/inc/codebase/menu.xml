@@ -39,13 +39,4 @@
 			<item text="管理员列表" id="userlist.php"/>
 			<item text="新增管理员帐号" id="adduser.php"/>
 		</item>
-		<item text="修改菜单样式" id="-1000">
-			<item text="默认样式" id="csh_yellowbooks"/>
-			<item text="样式一" id="csh_books"/>
-			<item text="样式二" id="csh_vista"/>
-			<item text="样式三" id="csh_bluebooks"/>
-			<item text="样式四" id="csh_winstyle"/>
-			<item text="样式五" id="csh_scbrblue"/>
-			<item text="样式六" id="csh_bluefolders"/>
-		</item>
 </tree>

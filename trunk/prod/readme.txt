@@ -36,3 +36,25 @@ mysql> SELECT
 %u 星期(0……52), 这里星期一是星期的第一天
 %% 一个文字“%”
 
+
+
+
+else if(tree.getSelectedItemId()=="csh_vista"){
+				tree.setImagePath("codebase/imgs/csh_vista/");
+				tree.refreshItem(0);
+			}else if(tree.getSelectedItemId()=="csh_bluebooks"){
+				tree.setImagePath("codebase/imgs/csh_bluebooks/");
+				tree.refreshItem(0);
+			}else if(tree.getSelectedItemId()=="csh_winstyle"){
+				tree.setImagePath("codebase/imgs/csh_winstyle/");
+				tree.refreshItem(0);
+			}else if(tree.getSelectedItemId()=="csh_scbrblue"){
+				tree.setImagePath("codebase/imgs/csh_scbrblue/");
+				tree.refreshItem(0);
+			}else if(tree.getSelectedItemId()=="csh_bluefolders")｛
+				tree.setImagePath("codebase/imgs/csh_bluefolders/");
+				tree.refreshItem(0);
+			｝else if(tree.getSelectedItemId()=="csh_yellowbooks"){
+				tree.setImagePath("codebase/imgs/csh_yellowbooks/");
+				tree.refreshItem(0);
+			}

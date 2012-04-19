@@ -3,9 +3,9 @@ session_start();
 if (!isset ($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']) || !isset($_SESSION['WEB_AAMS_USER_LOGIN_UNAME_SESSION'])
 	|| !isset ($_SESSION['WEB_AAMS_USER_LOGIN_SESSION']) || !isset ($_SESSION['WEB_AAMS_USER_LOGIN_ONTIME_SESSION'])) {
 	session_destroy();
-	Get_Return_Page('admin.php', '您还没有登入，请先登入！');
+	Get_Return_Page($path.'admin.php', '您还没有登入，请先登入！');
 }else{
-	Get_user_ontime();
+	Get_user_ontime($path);
 }
 
 function Get_Return_Page($url, $show = '操作已成功！') {
@@ -14,13 +14,13 @@ function Get_Return_Page($url, $show = '操作已成功！') {
 /**
  * 用户登陆超时时间(秒)
  */
-function Get_user_ontime() {
+function Get_user_ontime($path) {
 	$new_time = mktime();
 	$onlinetime = $_SESSION['WEB_AAMS_USER_LOGIN_ONTIME_SESSION'];
 	//echo ($new_time - $onlinetime ).'<br>';
 	if (($new_time - $onlinetime ) > 36000000) {
 		session_destroy();
-		Get_Return_Page("admin.php",'登入超时，请重新登入！');
+		Get_Return_Page($path."admin.php",'登入超时，请重新登入！');
 		exit ();
 	} else {
 		$_SESSION['WEB_USER_LOGIN_ONTIME_SESSION'] = mktime();

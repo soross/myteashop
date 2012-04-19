@@ -38,7 +38,14 @@ if(isset($_GET[jobid])&& !empty($_GET[jobid]) &&"-1"!=$_GET[jobid]){
 	$case = $case." and sj.jobid = '".$_GET[jobid]."'";
 	$smarty->assign("jobid",$_GET[jobid]);
 }
-
+if(isset($_GET[isover])&& !empty($_GET[isover])){
+	$isover = $_GET[isover];
+	if("-1"==$_GET[isover]){
+		$isover= 0;
+	}
+	$case = $case." and sj.isfinish = '".$isover."'";
+	$smarty->assign("isover",$isover);
+}
 
 $pagesize = 15;//一页显示多少条
 //分页
@@ -50,7 +57,7 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //未审核会员分类
-$stafflist = getListBySql("SELECT sj.id,sj.amount,sj.m_job,sj.y_job,j.jobname,p.picname,
+$stafflist = getListBySql("SELECT sj.id,sj.amount,sj.m_job,sj.y_job,sj.isfinish,j.jobname,p.picname,
 p.prodid,oi.orderid,s.staffid,s.staffname,sj.jobpriceid FROM staffjob AS sj
 LEFT JOIN job AS j ON sj.jobid = j.id LEFT JOIN prod AS p ON sj.prodid = p.id
 LEFT JOIN orderitem AS oi ON sj.orderid = oi.id LEFT JOIN staff AS s ON sj.staffid = s.id  ".$case.

@@ -96,6 +96,55 @@ for(i=0;i<cs.length;i++){
 			cs[i].style.backgroundColor="";
 	}
 }
+
+function (){
+alert("aaa");
+}
+
+
+/*
+	全选/反选
+*/
+function selectAllChk(){
+	var c = document.getElementsByName("chk[]");
+	for(var i=0;i<c.length;i++){
+	    if(c[i].disabled==false){
+			c[i].checked=document.getElementById("allchk").checked;
+		}
+	}
+}
+/*
+判断是否选中
+*/
+function selectOneChk(obj){
+	if(obj.checked){
+		document.getElementById("allchk").checked=obj.checked;
+	}else{
+	    var c = document.getElementsByName("chk[]");
+	    var isCheck = false;
+		for(var i=0;i<c.length;i++){
+			if (c[i].checked){
+				isCheck = true;
+				break;
+			}
+		}
+		document.getElementById("allchk").checked=isCheck;
+	}
+	/**
+	var isCheck = true;
+	var c = document.getElementsByName("chk[]");
+	for(var i=0;i<c.length;i++){
+		if (!c[i].checked){
+			isCheck=false;
+		}
+	}
+
+	if(!isCheck){
+		document.getElementById("allchk").checked=isCheck;
+	}else{
+		document.getElementById("allchk").checked=isCheck;
+	}**/
+}
 </script>
 </head>
 
@@ -138,26 +187,35 @@ for(i=0;i<cs.length;i++){
 	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 					<table>
 	            	<tr>
-	            	<td align="right">员工名称：</td><td><input type="text" id="staffname" name="staffname" value="{$staffname}" size="20" maxlength="30"></td>
-	            	<td align="right">员工编号：</td><td><input type="text" id="staffid" name="staffid" value="{$staffid}" size="20" maxlength="30"></td>
-	            	<td align="right">产品名称：</td><td><input type="text" id="prodname" name="prodname" value="{$prodname}" size="20" maxlength="40"></td>
-	            	<td align="right">产品货号：</td><td><input type="text" id="prodid" name="prodid" value="{$prodid}" size="20" maxlength="30"></td>
+	            	<td align="right">员工名称：</td><td><input type="text" id="staffname" name="staffname" value="{$staffname}" size="15" maxlength="30"></td>
+	            	<td align="right">员工编号：</td><td><input type="text" id="staffid" name="staffid" value="{$staffid}" size="15" maxlength="30"></td>
+	            	<td align="right">订单编号：</td><td><input type="text" id="orderid" name="orderid" value="{$orderid}" size="15" maxlength="30"></td>
+					<td align="right">月份：</td><td  align="left"><input type="text" id="m" name="m" value="{$m}" size="5" maxlength="2"></td>
+	            		<td align="right">年份：</td><td><input type="text" id="y" name="y" value="{$y}" size="5" maxlength="4"></td>
 	            	<td></td></tr>
 	            	<tr>
-	            		<td align="right">订单编号：</td><td><input type="text" id="orderid" name="orderid" value="{$orderid}" size="20" maxlength="30"></td>
-	            		<td align="right">年份：</td><td><input type="text" id="y" name="y" value="{$y}" size="20" maxlength="4"></td>
-	            		<td align="right">月份：</td><td><input type="text" id="m" name="m" value="{$m}" size="20" maxlength="2"></td>
+	            		<td align="right">产品名称：</td><td><input type="text" id="prodname" name="prodname" value="{$prodname}" size="15" maxlength="40"></td>
+	            		<td align="right">产品货号：</td><td><input type="text" id="prodid" name="prodid" value="{$prodid}" size="15" maxlength="30"></td>
+
 	            		<td align="right">工种名称：</td>
 	            		<td align="left"><select id="jobid" name="jobid">
-	            				<option value="-1">==请选择工种==</option>
+	            				<option value="-1">请选择工种</option>
 	            				{section name=list loop=$joblist}
 	            				<option value="{$joblist[list].id}" {if $joblist[list].id==$jobid}selected{/if}>{$joblist[list].jobname}</option>
 	            				{/section}
 	            			</select>
 	            		</td>
-	            	<td><input type="submit" value="搜索" class="submitButton"></td></tr>
+	            		<td align="right">是否竣工：</td>
+	            		<td align="left" colspan="3">
+	            		<select id="isover" name="isover">
+	            			<option value="" {if $isover==""}selected{/if}>请选择</option>
+	            			<option value="1" {if $isover=="1"}selected{/if}>已竣工</option>
+	            			<option value="-1" {if $isover=="0"}selected{/if}>未竣工</option>
+	            		</select>
+	            		</td>
+		            	<td>&nbsp;&nbsp;<input type="submit" value="搜索" class="submitButton"></td></tr>
 	            	<tr>
-	            	<td colspan="9">&nbsp;</td></tr>
+	            	<td colspan="11">&nbsp;</td></tr>
 					</table>
 	            </div></td></form>
 	          </tr>
@@ -169,26 +227,35 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
+            <td width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
+            <input type="checkbox" id="allchk" onclick="selectAllChk()">
+            </div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工名称</div></td>
             <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
             <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品货号</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
-            <td width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否竣工</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种</div></td>
             <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种价格</div></td>
-            <td width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">总价</div></td>
-            <td width="16%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单编号</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年月</div></td>
+            <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单编号</div></td>
+            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年月</div></td>
           </tr>
-
+		 <form action="post/staffjob.action.php" method="post">
           {section name=list loop=$stafflist}
           <tr>
+          	<td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+				<input type="checkbox" id="chk[]" name="chk[]" value="{$stafflist[list].id}" onclick="selectOneChk(this)" {if $stafflist[list].isfinish ==1}disabled="disabled"{/if}>
+			</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].staffname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].staffid}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].prodid}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].picname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $stafflist[list].isfinish ==1 }<font style="color:blue;">已竣工</font>{else}<font style="color:red;">未竣工</font>{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].jobname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].jobpriceid}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].amount}</div></td>
@@ -198,12 +265,20 @@ for(i=0;i<cs.length;i++){
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan=11 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=12 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
+      <tr>
+	      <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+	      <td bgcolor="#f3ffe3">
+	      	<br><input type="hidden" value="finishStaffJobMore" id="task" name="task">
+	      	 &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="批量完成作业" class="submitButton"></form>
+	      </td>
+	       <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+	  </tr>
     </table>
     </td>
   </tr>
@@ -212,7 +287,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
         <td background="images/tab/tab_21.gif">
-    	{$page}
+	        {$page}
         </td>
         <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
       </tr>

@@ -132,7 +132,7 @@ for(i=0;i<cs.length;i++){
 		}
 </script>
 </head>
-
+<!--startprint-->
 <body>
 <form action="post/news.action.php" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -171,39 +171,62 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工名称</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年月</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工资</div></td>
             <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">预支</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">结算</div></td>
             <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$sallist}
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$sallist[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].staffid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].staffname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].y_sal}-{$sallist[list].m_sal}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].sal}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-			{if $sallist[list].ispay=='0'}
-				<font style="color:red;">否</font>
-            {else}
-				<font style="color:blue;">是</font>
-            {/if}
-            </div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].create_date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="print.php?salid={$sallist[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="print.php?salid={$sallist[list].id}">打印</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$salinfo.staffid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.staffname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.y_sal}-{$salinfo.m_sal}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.sal}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $yzmoney.money==""}0.00{else}{$yzmoney.money}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $yzmoney.money==""}{$salinfo.sal}{else}{$salinfo.sal-$yzmoney.money}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.create_date}</div></td>
           </tr>
-
+          <tr>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="7"><div align="center" class="STYLE2 STYLE1">&nbsp;</div></td>
+          </tr>
+          <tr>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">订单编号</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品编号</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">工种名称</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品工种价格</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">数量</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">总价</div></td>
+          </tr>
+          {assign var=count value="0.00"}
+          {section name=list loop=$staffjob}
+          <tr>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].orderid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].prodid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].picname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobname}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobpriceid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].amount}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobpriceid * $staffjob[list].amount}</div></td>
+          </tr>
+          {assign var=count value=$staffjob[list].jobpriceid*$staffjob[list].amount+$count}
           {sectionelse}
-			<tr>
-				<td colspan=9 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
-			</tr>
+           <tr>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="7"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据...</div></td>
+          </tr>
           {/section}
+          <tr>
+            <td height="18" bgcolor="#FFFFFF" colspan="6"><div align="right" class="STYLE2 STYLE1">总额：</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$count}</div></td>
+          </tr>
+          <tr>
+            <td height="18" bgcolor="#FFFFFF" colspan="8">
+            	<div align="center" class="STYLE2 STYLE1">
+            		<input type="button" value="打印工资清单" class="submitButton" onclick="print();"></div></td>
+          </tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
@@ -216,7 +239,28 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
         <td background="images/tab/tab_21.gif">
-    	{$page}
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr><!--
+	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
+	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
+	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
+	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
+	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
+	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
+	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+	                  </span></td>
+	                  <td width="23" height="22" valign="middle">页</td>
+	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
         </td>
         <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
       </tr>
@@ -225,4 +269,19 @@ for(i=0;i<cs.length;i++){
 </table>
 </form>
 </body>
+<!--endprint-->
+  {literal}
+<script language="javascript">
+function preview()
+{
+bdhtml=window.document.body.innerHTML;
+sprnstr="<!--startprint-->";
+eprnstr="<!--endprint-->";
+prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);
+prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
+window.document.body.innerHTML=prnhtml;
+window.print();
+}
+</script>
+  {/literal}
 </html>

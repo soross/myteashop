@@ -16,13 +16,18 @@ if($m-1 ==0){
 $querySql = $db->query("select id from sal where m_sal=$m and y_sal=$y");
 $cnt = $db->db_num_rows();
 if($cnt<1){
+	$db->query('start transaction');
 	$db->query("insert into sal(staffid,sal,m_sal,y_sal,ispay,create_date)
-		select t.staffid , t.s,'3','2012','0',now()
-		from (
-		select sj.staffid , sum((select jp.jobprice from jobprice jp where jp.id = sj.jobpriceid)*amount) as s
-		from staffjob  sj
-		where sj.m_job = 3  and sj.y_job = 2012  group by staffid
-		) t");
+		select t.staffid , t.s,'$m','$y','0',now() from (select sj.staffid , sum(sj.jobpriceid*amount) as s
+		from staffjob  sj where sj.isfinish='0' and sj.issal='0'  group by staffid ) t");
+	$db->query("update staffjob sj set sj.issal='1' where sj.isfinish='0' and sj.issal='0'");
+	if (mysql_errno()) {
+		$db->query('rollback');
+		$db->addLog("CAP08004", '', "失败", "生成上一月工资", "工资生成失败!");
+	} else {
+		$db->query('commit');
+		$db->addLog("CAP08004", '', "成功", "生成上一月工资", "工资生成成功!");
+	}
 }
 
 
@@ -34,10 +39,9 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //新闻列表
-$newsQuery = $db->query("select n.*,DATE_FORMAT(n.create_date,'%Y-%m-%d') as create_dates," .
-		"(select staffid  from staff s where s.id = n.staffid)as staffid," .
-		"(select staffname from staff s where s.id = n.staffid)as staffname from sal n " .
-		"order by n.create_date desc limit $firstcount, $displaypg");
+$newsQuery = $db->query("select s.*,DATE_FORMAT(s.create_date,'%Y-%m-%d') as create_date,
+		 sf.id as sfid,sf.staffid,sf.staffname from sal as s left join staff sf
+		 on s.staffid = sf.id order by s.create_date desc limit $firstcount, $displaypg");
 $newsRow = array();
 while($rownews = $db->fetch_array($newsQuery)){
 	$newsRow[] = $rownews;

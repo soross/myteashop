@@ -1,10 +1,11 @@
 <?php
-require_once("../action/checkAamsLogin.php");
+require_once ("../action/checkAamsLogin.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="STYLESHEET" type="text/css" href="codebase/dhtmlxtree.css">
 <title>无标题文档</title>
 <style type="text/css">
 <!--
@@ -68,7 +69,7 @@ function MM_swapImage() { //v3.0
 	      <tr>
 	        <td height="26" background="images/main_21.gif">&nbsp;</td>
 	      </tr>
-	      <tr>
+	      <tr  valign="top">
 	        <td height="80" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">
 		        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 		          <tr>
@@ -88,6 +89,10 @@ function MM_swapImage() { //v3.0
 	        <td  style="line-height:4px; background:url(../images/main_38.gif)">&nbsp;</td>
 	      </tr>
 	      <tr>
+	       <td valign="top"  height="100%" width="195px" style="padding-left:1px;padding-top:5px;">
+ 				<div id="treeboxbox_tree"></div><br>
+ 		  </td>
+	      <!--
 	        <td align="center">
 	        	<div style="width:144px;" align="center">
 	        		<ul class="rolinList" id="rolin">
@@ -151,26 +156,44 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../adduser.php" target="dataFrame">新增管理员帐号</a></p>
 	    </div>
 	  </li>
-	  <!--
+
 	   <li>
 	    <h2>+&nbsp;数据中心</h2>
 	    <div class="content">
 	      <p>-&nbsp;<a href="../autorundata.php?task=toAutoRunData" target="dataFrame">启动定时数据业务</a></p>
 	    </div>
 	  </li>
-	  -->
+
 	</ul>
 
 
 	        	</div>
-			</td>
+			</td>-->
 	      </tr>
 	    </table>
 	   </td>
   </tr>
 </table>
 </body>
-</html>
+
+
+<script  src="codebase/dhtmlxcommon.js"></script>
+<script  src="codebase/dhtmlxtree.js"></script>
+<script>
+	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
+	tree.setImagePath("codebase/imgs/csh_yellowbooks/");
+	tree.loadXML("codebase/menu.xml");
+	tree.enableDragAndDrop(0);
+	tree.setOnClickHandler(tonclick);
+	function tonclick(id){
+		if(tree.getSelectedItemId()<0){
+			tree.openItem(id);
+		}else{
+			//alert(tree.getSelectedItemId());
+			window.parent.dataFrame.location.href="../"+tree.getSelectedItemId();
+		}
+	}
+</script>
 <script type="text/javascript">
 //<![CDATA[
 window.onload = function() {
@@ -295,3 +318,4 @@ return result;
 }
 //]]>
 </script>
+</html>

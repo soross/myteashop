@@ -4,13 +4,15 @@
 			<item text="产品列表" id="prodlist.php"/>
 			<item text="新增产品" id="addprod.php"/>
 			<item text="材料管理" id="cllist.php"/>
+			<item text="新增材料" id="addcl.php"/>
 			<item text="工种管理" id="joblist.php"/>
 		</item>
 		<item text="订单管理" id="-2">
 			<item text="订单列表" id="orderlist.php"/>
 			<item text="新增订单" id="addorder.php"/>
 			<item text="订单排单" id="pd.php"/>
-			<item text="出仓情况" id="cclist.php"/>
+			<item text="出仓记录" id="cclist.php"/>
+			<item text="新增出仓记录" id="addcc.php"/>
 		</item>
 		<item text="员工管理" id="-3">
 			<item text="员工作业" id="staffjob.php"/>
@@ -28,7 +30,7 @@
 		</item>
 		<item text="统计查询管理" id="-5">
 			<item text="订单统计报表查询" id="orderrpt.php"/>
-			<item text="员工工资价格" id="salrpt.php"/>
+			<item text="员工工资查询" id="salrpt.php"/>
 			<item text="报表查询" id="rpt.php"/>
 		</item>
 		<item text="客户管理" id="-6">

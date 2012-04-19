@@ -81,17 +81,24 @@ else
 else
 	if (isset ($_GET[task]) && $_GET[task] == "deleteOrderItem") {
 		if (isset ($_GET[itemid]) && !empty ($_GET[itemid])) {
-			$db->query('start transaction');
-			$db->query("delete from orderitem where id = '" . $_GET[itemid] . "'");
-			$db->query("delete from orderlist where orderid = '" . $_GET[itemid] . "'");
-			if (mysql_errno()) {
-				$db->query('rollback');
+			$db->query("select id from orderitem where pddate is null and id='" . $_GET[itemid] . "'");
+			$cnt = $db->db_num_rows();
+			if($cnt>0){
+				$db->query('start transaction');
+				$db->query("delete from orderitem where id = '" . $_GET[itemid] . "'");
+				$db->query("delete from orderlist where orderid = '" . $_GET[itemid] . "'");
+				if (mysql_errno()) {
+					$db->query('rollback');
+					$db->addLog("CAP04002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单", "删除订单失败!");
+					echo "<script>alert('删除订单失败!');location.href='../orderlist.php'</script>";
+				} else {
+					$db->query('commit');
+					$db->addLog("CAP04002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除订单", "订单已成功删除!");
+					echo "<script>alert('订单已成功删除!');location.href='../orderlist.php'</script>";
+				}
+			}else{
 				$db->addLog("CAP04002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单", "删除订单失败!");
-				echo "<script>alert('删除订单失败!');location.href='../orderlist.php'</script>";
-			} else {
-				$db->query('commit');
-				$db->addLog("CAP04002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除订单", "订单已成功删除!");
-				echo "<script>alert('订单已成功删除!');location.href='../orderlist.php'</script>";
+				echo "<script>alert('订单已排单,无法删除!');location.href='../orderlist.php'</script>";
 			}
 		} else {
 			$db->addLog("CAP04002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单", "非法操作!");
@@ -103,9 +110,23 @@ else
 else
 	if (isset ($_GET[task]) && $_GET[task] == "deleteOrderList") {
 		if (isset ($_GET[listid]) && !empty ($_GET[listid])) {
-			$db->query("delete from orderlist where id = '" . $_GET[listid] . "'");
-			$db->addLog("CAP04003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除订单明细", "订单明细已成功删除!");
-			echo "<script>alert('订单明细已成功删除!');location.href='../orderlist.php'</script>";
+			$db->query("select id from orderitem where pddate is null and id='" . $_GET[itemid] . "'");
+			$cnt = $db->db_num_rows();
+			if($cnt>0){
+				$db->query("select id from orderlist where isfinish='0' and id = '" . $_GET[listid] . "'");
+				$count = $db->db_num_rows();
+				if($count<1){
+					$db->addLog("CAP04003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单明细", "删除订单明细失败,该明细已经竣工!");
+					echo "<script>alert('删除订单明细失败,该明细已经竣工!');location.href='../orderlist.php'</script>";
+				}else{
+					$db->query("delete from orderlist where id = '" . $_GET[listid] . "'");
+					$db->addLog("CAP04003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除订单明细", "订单明细已成功删除!");
+					echo "<script>alert('订单明细已成功删除!');location.href='../orderlist.php'</script>";
+				}
+			}else{
+				$db->addLog("CAP04003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单明细", "删除订单明细失败!");
+				echo "<script>alert('订单已排单,无法删除!');location.href='../orderlist.php'</script>";
+			}
 		} else {
 			$db->addLog("CAP04003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除订单明细", "非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
@@ -132,13 +153,39 @@ else
 		}
 	}
 
+//出仓
+else
+	if (isset ($_POST[task]) && $_POST[task] == "orderCC") {
+		if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
+			$db->query("select * from orderlist where isfinish='0' and orderid='" . $_POST[itemid] . "'");
+			$cnt = $db->db_num_rows();
+			if ($cnt > 0) {
+				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "出仓", "订单明细未全部竣工,出仓失败!");
+				echo "<script>alert('订单明细未全部竣工,出仓失败!');location.href='../orderlist.php'</script>";
+			} else {
+				$db->query("update orderitem set ccdate=now(),staffid='".$_POST[staffid]."',yhy='".$_POST[yhy]."' where id = '" . $_POST[itemid] . "' ");
+				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "出仓", "订单已成功出仓!");
+				echo "<script>alert('订单已成功出仓!');location.href='../orderlist.php'</script>";
+			}
+		} else {
+			$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "出仓", "非法操作!");
+			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";
+		}
+	}
 //订单明细完工
 else
 	if (isset ($_GET[task]) && $_GET[task] == "orderListFinish") {
 		if (isset ($_GET[listid]) && !empty ($_GET[listid])) {
-			$db->query("update orderlist set isfinish='1',finish_date=now() where id = '" . $_GET[listid] . "'");
-			$db->addLog("CAP04005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "新增订单明细竣工", "订单明细已竣工!");
-			echo "<script>alert('订单明细已竣工!');location.href='../orderlist.php'</script>";
+			$db->query("select id from orderitem where pddate is null and id='" . $_GET[itemid] . "'");
+			$cnt = $db->db_num_rows();
+			if($cnt>0){
+				$db->addLog("CAP04005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "订单明细竣工", "订单明细已竣工失败!");
+				echo "<script>alert('该订单未排单,无法操作竣工!');location.href='../orderlist.php'</script>";
+			}else{
+				$db->query("update orderlist set isfinish='1',finish_date=now() where id = '" . $_GET[listid] . "'");
+				$db->addLog("CAP04005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "新增订单明细竣工", "订单明细已竣工!");
+				echo "<script>alert('订单明细已竣工!');location.href='../orderlist.php'</script>";
+			}
 		} else {
 			$db->addLog("CAP04005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "新增订单明细竣工", "非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";

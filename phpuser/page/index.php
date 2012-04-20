@@ -31,22 +31,22 @@
 <span><img src="images/adv_xian.png" alt="" /></span> <a href="netpay/">付款方式</a> </div>
 <div class="center clearfix" style="padding-top:5px;">
 <div class="banner_index">
-        <div id="c-h1" class="c-h1">
-            <ul id="c-h1img" class="c-h1img" style="top: 0px; ">
-              <LI><A href="host/"><IMG src="images/banner1.jpg" width="966" height="245"></A> </LI>
-              <LI><A href="Isite/"><IMG src="images/banner2.jpg" width="966" height="245"></A> </LI>
-              <LI><A href="VPS/"><IMG src="images/banner3.jpg" width="966" height="245"></A> </LI>
-              <LI><A href="ServerColl/"><IMG src="images/banner4.jpg" width="966" height="245"></A> </A> </LI>
-            </ul>
-            <ul id="c-h1nav" class="c-h1nav">
-              <LI class=current>购买虚机立即加送31天，免费协助您备案
-              <LI class=normal>WIN2008最新系统香港空间，现在购买立刻通
-              <LI class=normal>月付也疯狂，每台360元起！
-              <LI class=normal>北京服务器托管，四星级机房任您选择！</LI>
-       		 </ul>
-        </div>
-        <script type="text/javascript">focusjs('c-h1nav li', 'c-h1img', 'c-h1img','c-h1img', '6000', '4', '245');</script></div>
+    <div id="c-h1" class="c-h1">
+        <ul id="c-h1img" class="c-h1img" style="top: 0px; ">
+          <LI><A href="host/"><IMG src="images/banner1.jpg" width="966" height="245"></A> </LI>
+          <LI><A href="Isite/"><IMG src="images/banner2.jpg" width="966" height="245"></A> </LI>
+          <LI><A href="VPS/"><IMG src="images/banner3.jpg" width="966" height="245"></A> </LI>
+          <LI><A href="ServerColl/"><IMG src="images/banner4.jpg" width="966" height="245"></A> </A> </LI>
+        </ul>
+        <ul id="c-h1nav" class="c-h1nav">
+          <LI class=current>购买虚机立即加送31天，免费协助您备案
+          <LI class=normal>WIN2008最新系统香港空间，现在购买立刻通
+          <LI class=normal>月付也疯狂，每台360元起！
+          <LI class=normal>北京服务器托管，四星级机房任您选择！</LI>
+   		 </ul>
     </div>
+    <script type="text/javascript">focusjs('c-h1nav li', 'c-h1img', 'c-h1img','c-h1img', '6000', '4', '245');</script></div>
+</div>
  <div class="center">
    <div class="center_l">
     	<div class="yuming">

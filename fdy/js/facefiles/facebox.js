@@ -46,8 +46,8 @@
   }
 
   $.facebox.settings = {
-    loading_image : '/fdy/js/facefiles/loading.gif',
-    close_image   : '/fdy/js/facefiles/closelabel.gif',
+    loading_image : '/js/facefiles/loading.gif',
+    close_image   : '/js/facefiles/closelabel.gif',
     image_types   : [ 'png', 'jpg', 'jpeg', 'gif' ],
     facebox_html  : '\
   <div id="facebox" style="display:none;"> \

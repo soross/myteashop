@@ -182,8 +182,8 @@ for(i=0;i<cs.length;i++){
 				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].unit}</div></td>
 				            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodList[lt].sumprice}</div></td>
 				            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2">
-				            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
-				            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}';">删除</a><span class="STYLE1">]</span></div></td>
+				            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}&prodid={$prodRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/>
+				            	</a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdList&listid={$prodList[lt].id}&prodid={$prodRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
            				</tr>
            				{/if}
            			   {/section}
@@ -204,7 +204,7 @@ for(i=0;i<cs.length;i++){
 									{if $jobList[l].prodid==$prodRow[list].id}
 						           		<td height="26" width="80px" bgcolor="#FFFFFF" class="STYLE2">
 											<div align="center" class="STYLE2 STYLE1">{$jobList[l].jobname}<span class="STYLE2">
-							            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdJob&jobid={$jobList[l].id}';">
+							            	<a href="javascript:if(confirm('确定删除?'))location.href='post/prod.action.php?task=delProdJob&jobid={$jobList[l].id}&prodid={$prodRow[list].id}';">
 							            	<img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span></div>
 						           		</td>
 					           			{assign var=idx value=$idx+1}

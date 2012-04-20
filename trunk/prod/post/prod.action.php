@@ -114,37 +114,62 @@ else
 //删除产品 CAP01002 删除产品
 else
 	if (isset ($_GET[task]) && "delProd" == ($_GET[task])) {
-		$db->query('start transaction');
-		$db->query("delete from prod where id='" . $_GET[prodid] . "'");
-		$db->query("delete from prodlist where prodid='" . $_GET[prodid] . "'");
-		$db->query("delete from prodjob where prodid='" . $_GET[prodid] . "'");
+		if(isExistsOrder($db,$_GET[prodid])){
+			$db->query('start transaction');
+			$db->query("delete from prod where id='" . $_GET[prodid] . "'");
+			$db->query("delete from prodlist where prodid='" . $_GET[prodid] . "'");
+			$db->query("delete from prodjob where prodid='" . $_GET[prodid] . "'");
 
-		if (mysql_errno()) {
-			$db->query('rollback');
-			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败".mysql_errno());
-			echo "<script>alert('产品删除失败!');location.href='../prodlist.php'</script>";
-		} else {
-			if (file_exists("../" . $_GET[path]))
-				unlink("../" .
-				$_GET[path]);
-			$db->query('commit');
-			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品","删除产品成功");
-			echo "<script>alert('产品已删除成功!');location.href='../prodlist.php'</script>";
+			if (mysql_errno()) {
+				$db->query('rollback');
+				$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败".mysql_errno());
+				echo "<script>alert('产品删除失败!');location.href='../prodlist.php'</script>";
+			} else {
+				if (file_exists("../" . $_GET[path]))
+					unlink("../" .
+					$_GET[path]);
+				$db->query('commit');
+				$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品","删除产品成功");
+				echo "<script>alert('产品已删除成功!');location.href='../prodlist.php'</script>";
+			}
+		}else{
+			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败，产品在订单明显中存在");
+			echo "<script>alert('产品删除失败,因为订单明细中使用了该产品!');location.href='../prodlist.php'</script>";
 		}
 	}
 
 //删除产品工种 CAP01004 删除产品工种属性
 else
 	if (isset ($_GET[task]) && "delProdJob" == ($_GET[task])) {
-		$db->query("delete from prodjob where id='" . $_GET[jobid] . "'");
-		$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品工种","删除产品工种成功");
-		echo "<script>alert('产品工种删除成功!');location.href='../prodlist.php'</script>";
+		if(isExistsOrder($db,$_GET[prodid])){
+			$db->query("delete from prodjob where id='" . $_GET[jobid] . "'");
+			$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品工种","删除产品工种成功");
+			echo "<script>alert('产品工种删除成功!');location.href='../prodlist.php'</script>";
+		}else{
+			$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品工种","删除产品工种失败，因为订单明细中使用了该产品!");
+			echo "<script>alert('删除产品工种失败,因为订单明细中使用了该产品!!');location.href='../prodlist.php'</script>";
+		}
 	}
 //删除产品材料delProdList&listid=12 CAP01003 删除产品材料属性
 else
 	if (isset ($_GET[task]) && "delProdList" == ($_GET[task])) {
-		$db->query("delete from prodlist where id='" . $_GET[listid] . "'");
-		$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品材料属性","删除产品材料属性成功");
-		echo "<script>alert('产品材料删除成功!');location.href='../prodlist.php'</script>";
+		if(isExistsOrder($db,$_GET[prodid])){
+			$db->query("delete from prodlist where id='" . $_GET[listid] . "'");
+			$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品材料属性","删除产品材料属性成功");
+			echo "<script>alert('产品材料删除成功!');location.href='../prodlist.php'</script>";
+		}else{
+			$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品材料属性","删除产品材料属性失败，因为订单明细中使用了该产品!");
+			echo "<script>alert('删除产品材料属性失败,因为订单明细中使用了该产品!!');location.href='../prodlist.php'</script>";
+		}
 	}
+
+function isExistsOrder($db ,$prodid){
+	$db->query("select id from orderlist where prodid ='".$prodid."'");
+	$cnt = $db->db_num_rows();
+	if($cnt>0){
+		return false;
+	}else{
+		return true;
+	}
+}
 ?>

@@ -60,13 +60,13 @@ if(isset($_GET[task]) && "deleteNav"==$_GET[task]){
 			$url='';
 			if("18"==$_POST[pid]){//产品
 				$type=$_POST[type];
-				$str='product_';
+				$str='prodinfo.php?prodid=';
 			}else if('1'==$_POST[pid]){//解决方案
-				$str='solution_';
+				$str='solutioninfo.php?solid=';
 			}else if('8'==$_POST[pid]){//it服务
-				$str='itservice_';
+				$str='itserviceinfo.php?itsid=';
 			}else if('14'==$_POST[pid]){//政府采购
-				$str='govproc_';
+				$str='govprocinfo.php?traid=';
 			}else if("24"==$_POST[pid] || "25"==$_POST[pid]){
 				$url =$_POST[url];
 			}
@@ -75,7 +75,7 @@ if(isset($_GET[task]) && "deleteNav"==$_GET[task]){
 					"values('$_POST[name]','$_POST[pid]','$_POST[seq]','$filename','".replace($_POST[content])."','$type','$url')");
 			if(''!=$str){
 				$newID = $db->insert_id();
-				$db->query("update menu set url='".$str.$newID."_info.html' where id='$newID'");
+				$db->query("update menu set url='".$str.$newID."' where id='$newID'");
 			}
 	  		echo "<script>if(confirm('导航新增成功,是否继续新增?')){location.href='../addnav.php';}else{location.href='../nav.php';}</script>";
 		}else{

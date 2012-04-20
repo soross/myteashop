@@ -1,3 +1,3 @@
 <?php
-echo "<script>location.href='contact.html'</script>";
+echo "<script>location.href='contact.php'</script>";
 ?>

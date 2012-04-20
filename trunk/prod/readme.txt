@@ -58,3 +58,33 @@ else if(tree.getSelectedItemId()=="csh_vista"){
 				tree.setImagePath("codebase/imgs/csh_yellowbooks/");
 				tree.refreshItem(0);
 			}
+
+
+<script language="javascript">
+function preview()
+{
+bdhtml=window.document.body.innerHTML;
+sprnstr="<!--startprint-->";
+eprnstr="<!--endprint-->";
+prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);
+prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
+window.document.body.innerHTML=prnhtml;
+window.print();
+}
+</script>
+
+
+<div>文件头部,不打印出来的内容。。。</div>
+<div>文件头部,不打印出来的内容。。。</div>
+<div>文件头部,不打印出来的内容。。。</div>
+<!--startprint-->
+<div>这是被打印出来的内容</div>
+<div>这是被打印出来的内容</div>
+<div>这是被打印出来的内容</div>
+<div>这是被打印出来的内容</div>
+<!--endprint-->
+<div>文件尾部，不打印出来的内容。。。</div>
+<div>文件尾部，不打印出来的内容。。。</div>
+<div>文件尾部，不打印出来的内容。。。</div>
+
+<input type="button" name="print" value="预览并打印" onclick="preview()">

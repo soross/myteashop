@@ -30,7 +30,7 @@ lytebox_doAnimations=true;
 		  	<!--
 		  	<a href="#"><img src='images/siteConfig9_2010217162228.gif'/></a>
 		  	-->
-		  	<a href="index.html"><img src='images/logo.png'/></a>
+		  	<a href="index.php"><img src='images/logo.png'/></a>
 		  </div>
 		  <div id="quickBar">
 		    <ul>
@@ -128,5 +128,8 @@ window.addEvent('domready', function(){
 });
 tagEventEffect(sfHover,"li", "navigation");
 
+if ($("navigation_{/literal}{$nav_style}{literal}")) {
+	$("navigation_{/literal}{$nav_style}{literal}").className="navigationOverStyle";
+}
 </script>
 {/literal}

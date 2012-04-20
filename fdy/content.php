@@ -31,5 +31,5 @@ $smarty->assign("contactUsInfo",html_entity_decode($contactusInfo[info]));
 **/
 
 
-$smarty->display("aboutus.html");
+$smarty->display("about.html");
 ?>

@@ -1,0 +1,52 @@
+.Page_Text{ width:600px; height:100%; overflow:hidden; padding:26px 10px  18px 10px; line-height:22px;}
+.Content_DIV{ background:#fbfbfb; border:1px solid #dadcde; padding:30px 30px 30px 35px;_padding:30px 0px 30px 35px ;font-size:14px; line-height:24px; margin-top:18px; clear:both;}
+.Content_DIV b{ line-height:30px}
+.Content_DIV p{ line-height:30px;font-size:14px;}
+
+
+/*洽谈*/
+a.Map{ background:url(../images/Map.gif) no-repeat; width:550px; height:376px; margin-top:10px; display:block}
+
+
+/*内容区*/
+.Hs_Middle{ width:960px; height:100%; overflow:hidden; padding-top:7px; margin:0 auto}
+
+.Page_left{text-align:left; width:650px; height:100%; overflow:hidden; float:left; margin-right:18px; padding-bottom:18px}
+.Page_Text_Support{ width:660px; height:100%; overflow:hidden;padding:26px 10px  18px 10px; line-height:22px; }
+.Page_Title{ margin-bottom:16px;}
+.Page_Item{ width:660px; height:131px; overflow:hidden; padding:30px 20px 0 12px; line-height:22px; position:relative;}
+.Page_Item_Img{ width:156px; height:121px; float:left; margin-right:28px;position:absolute;}
+.Page_Item_Text{float:left; width:485px; height:auto; margin-top:6px;}
+.Page_Item_Text a:link,.Page_Item_Text a:visited{ font-weight:bold; color:#ff962f; font-size:14px; text-decoration:none}
+.Page_Item_Text a:hover{ text-decoration:underline}
+
+/*内页 右区*/
+.Page_Right{ width:292px; height:100%; overflow:hidden; float:left}
+.Phone{ color:#358de6; font-size:20px; font-weight:bold; background:url(../images/Phone.gif) no-repeat; width:292px; height:39px; padding:51px 0 0 35px; margin:18px 0px;}
+.New{ width:100%; height:auto; margin-bottom:40px;}
+.New ul{ border-top:1px solid #dadcde}
+.New li{ list-style:none; background:url(../images/List_Icon.gif) no-repeat 0px 10px ; border-bottom:1px dashed #dadcde; padding:4px 4px 4px 17px; }
+.New a:link,.New a:visited{ color:#333; text-decoration:none; line-height:22px;}
+.New a:hover{ text-decoration:underline;color:#ff7c00;}
+.Content_support{ background:#fbfbfb; border:1px solid #dadcde; padding:30px 30px 10px 35px;_padding:30px 0px 30px 35px ;font-size:14px; line-height:24px; margin-top:18px; clear:both;}
+.Orange16B{ font-size:16px; font-weight:bold; color:#ff962f; line-height:30px}
+.Content_support b{ line-height:30px}
+
+
+/*接入*/
+.Access_Item{ width:200px; height:143px; border:1px solid #dadcde; float:left; margin:0 21px 16px 0}
+.Access_Title{ background:url(../images/Frame_Bg.gif) repeat-x; width:200; line-height:41px; font-weight:bold; padding-left:5px; display:block; padding-left:8px}
+.Access_Item ul{ width:183px; margin:10px 0 0 15px; list-style:none}
+.Access_Item li{width:165px; height:25px; border-bottom:1px solid #dadcde; padding-left:5px}
+.Access_Item ul a:link,.Access_Item ul a:visited{ text-decoration:none; line-height:25px; color:#333;}
+.Access_Item ul a:hover{ text-decoration:underline}
+.Access_Item img{ margin-right:8px; vertical-align:middle}
+a.Massage:link,a.Massage:visited{ background:url(../images/Message.gif) no-repeat; width:200px; height:102px; display:block}
+a.Massage:hover{ background-position:bottom}
+
+/*产品页*/
+.Products{ width:180px; height:250px; float:left; overflow:hidden; margin:26px 0 0 24px;_margin:26px 12px 0 12px; line-height:22px;}
+a.Products_Img:link,a.Products_Img:visited{ border:7px solid #d3e4e3; display:block; width:165px; height:118px; margin-bottom:6px}
+a.Products_Img:hover{border:7px solid #aad5d2}
+.Products a:link,.Products a:visited{ text-decoration:none; line-height:22px; color:#333}
+.Products a:hover{ text-decoration:underline}

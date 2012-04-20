@@ -1,0 +1,14 @@
+#<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /fdy/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^news_([A-Z]+)_type.html news.php?type=$1 [L]
+RewriteRule ^news_([0-9]+)_info.html newsinfo.php?newsid=$1 [L]
+RewriteRule ^case_([0-9]+)_info.html caseinfo.php?caseid=$1 [L]
+RewriteRule ^product_([0-9]+)_info.html prodinfo.php?prodid=$1 [L]
+RewriteRule ^govproc_([0-9]+)_info.html govprocinfo.php?traid=$1 [L]
+RewriteRule ^itservice_([0-9]+)_info.html itserviceinfo.php?itsid=$1 [L]
+RewriteRule ^solution_([0-9]+)_info.html solutioninfo.php?solid=$1 [L]
+RewriteRule ^(.*).html(.*)$ $1.php?$2
+#</IfModule>

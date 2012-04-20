@@ -1,0 +1,242 @@
+﻿@charset "utf-8";
+
+#body {
+	text-align:left;
+	width:960px;
+	margin:0 auto;
+	background:url("../images/lineV.gif") repeat-y 280px top;
+}
+#banner {
+	height:200px;
+	overflow:hidden;
+}
+#homePage #banner {
+	height:310px;
+}
+
+#mainPage #banner * {
+	margin:0;
+}
+
+
+#menu {
+	float:left;
+	width:300px;
+	overflow:hidden;
+	margin-top:30px;
+	padding-left:20px;
+	background:url("../images/menu_title.png") no-repeat left top;
+}
+
+#menu li {
+	display:none;
+}
+
+#menu li.menuOverStyle {
+	display:block;
+}
+
+#menu li.menuOverStyle a {
+	display:block;
+	text-decoration:none;
+	font-size:14px;
+	font-weight:bold;
+	height:36px;
+	line-height:36px;
+	padding-left:40px;
+	margin-bottom:15px;
+}
+#menu li.menuOverStyle li {
+	display:block;
+	overflow:hidden;
+	margin-right:30px;
+}
+
+#menu li.menuOverStyle li a {
+	text-align:right;
+	height:30px;
+	line-height:30px;
+	margin-bottom:0;
+	margin-right:10px;
+	padding-right:15px;
+	font-weight:normal;
+	font-size:12px;
+	background:url("../images/arrow.gif") no-repeat right 8px;
+}
+#menu li.menuOverStyle li a:hover, #menu li.menuOverStyle li.moduleOverStyle a {
+	color:black;
+}
+
+#menu li#module266 a {
+	background:url("../images/btn_process.gif") no-repeat 0 0;
+	text-align:left;
+	width:170px;
+	height:52px;
+	text-indent:-1000px;
+	overflow:hidden;
+	margin-left:100px;
+	margin-top:20px;
+}
+
+
+
+
+
+
+
+#mainBody {
+	width:620px;
+	padding-right:10px;
+	float:right;
+	margin-top:30px;
+	margin-bottom:20px;
+}
+
+
+#mainBody #subBanner {
+
+}
+#position  {
+	background:url("../images/positionBg.jpg") repeat-y left top #ffffff;
+	border-bottom:solid 2px #3E3E3E;
+	height:28px;
+	padding-left:10px;
+	margin-bottom:20px;
+}
+#position, #position *  {
+	color:#ff7c00;
+	font-size:14px;
+	font-weight:bold;
+	line-height:28px;
+}
+
+
+
+#title {
+	background:url("../images/titleBg.gif") no-repeat 0 0;
+	height:35px;
+	line-height:35px;
+	display:none;
+}
+#title p {
+	background:url("../images/titleArrow.gif") no-repeat 0 0;
+	color:white;
+	font-size:14px;
+	line-height:35px;
+	font-weight:bold;
+	text-indent:40px;
+	float:left;
+}
+#title a {
+	background:url("../images/arrow2.gif") no-repeat 100% 13px;
+	float:right;
+	color:white;
+	margin-right:15px;
+	display:block;
+	width:35px;
+	height:35px;
+	line-height:35px;
+}
+
+
+
+
+
+
+
+
+
+/*案例页面*/
+#mainPage.page193 #body, #detailPage.typeCode193 #body {
+	background:none;
+}
+#mainPage.page193 #menu, #detailPage.typeCode193 #menu {
+	display:none;
+}
+
+#mainPage.page193 #mainBody {
+	width:auto;
+	float:none;
+	padding-right:0;
+	background:url("../images/case_title.gif") no-repeat 0 0 #484848;
+	padding-top:60px;
+}
+#mainPage.page193 #position, #detailPage.typeCode193 #position {
+	display:none;
+}
+
+
+#mainPage.page193 #mainBody .pageBar {
+	display:none;
+}
+
+
+/*案例详细页面*/
+#detailPage.typeCode193 #position {
+	display:none;
+	border-bottom-width:0;
+	height:50px;
+	padding-left:0px;
+	margin-bottom:20px;
+	text-indent:-1000px;
+	overflow:hidden;
+}
+#detailPage.typeCode193 #mainBody {
+	width:650px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	background:url("../images/case_title2.gif") no-repeat 0 0 #484848;
+	padding-top:60px;
+	position:relative;
+}
+#detailPage.typeCode193 #mainBody .title {
+	height:0;
+	visibility:hidden;
+}
+#detailPage.typeCode193 #mainBody .content {
+	clear:both;
+}
+#detailPage.typeCode193 #mainBody .content p {
+	color:white;
+}
+#detailPage.typeCode193 #content .newsSum {
+	position:absolute;
+	left:-260px;
+	top:0;
+}
+#detailPage.typeCode193 #content .newsSum h4 {
+	margin-bottom:10px;
+}
+#detailPage.typeCode193 #content .newsSum p {
+	margin:0;
+	background:url("../images/arrow_dot.gif") no-repeat 0 7px;
+	padding-left:10px;
+}
+#detailPage.typeCode193 #content .newsSum p a {
+	font-family:Arial, Helvetica, sans-serif;
+}
+#detailPage.typeCode193 #toolBar ul li a, #detailPage.typeCode193 #toolBar ul li button {
+	background-image:url("../images/btnBg2.gif");
+	color:#BBBEC3;
+}
+
+
+/*联络页面*/
+#mainPage.page232 #menu {
+	display:none;
+}
+
+#mainPage.page232 #mainBody {
+	position:relative;
+}
+
+#mainPage.page232 #mainBody table#list {
+	position:absolute;
+	left:-330px;
+	top:-30px;
+	width:260px;
+}
+#mainPage.page232 #mainBody .pageBar {
+	display:none;
+}

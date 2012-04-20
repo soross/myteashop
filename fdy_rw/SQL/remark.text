@@ -1,0 +1,100 @@
+1、
+您可以用记事本打开windows\php.ini
+找到以下内容:
+display_errors = Off
+改成
+display_errors = On
+保存后重启IIS,再访问空白的PHP页,就可以看到真出的原因,找到原因后,一般要将php.ini恢复回原来的display_errors = Off设置,不然有些网站会提示出错.
+
+2、
+还有一种解决方法：出现空白页后修改来宾访问权限即可正常。
+
+3、
+方法一：改PHP.ini中的doc_root行，打开ini文件注释掉此行，然后重启IIS
+方法二：
+请修改php.ini
+找到
+; cgi.force_redirect = 1
+去掉前面分号，把后面的1改为0
+即
+cgi.force_redirect = 0
+
+4、
+error_reporting打开
+
+5、
+PHP 5.2.0 官方下载地址：http://www.php.net/downloads.php
+mysql-5.0.27 官方下载地址：http://dev.mysql.com/downloads/mysql/5.0.html
+phpMyAdmin for Windows V2.9.1 官方下载地址：http://www.phpmyadmin.net/home_page/index.php
+你也可以上天空站下载：http://www.skycn.com/soft/10687.html
+
+第一步：配置PHP
+
+　　如果你下载的是安装版的php，安装的时候可以选择使用IIS，安装完毕就会自动配置好IIS。如果你下载的是zip版的，则按照以下步骤配置：
+
+1、把PHP-5.2.0 zip（目前最新版本）解压放到 D:\php (你可以选择目录，本例以此说明)。
+
+2、将php.ini-dist复制到 C:\Windows 目录下并改名为php.ini，复制 php5ts.dll和 libmysql.dll到 C:\Windows\system32 中。
+
+3、用记事本打开php.ini，查找“extension_dir”，然后把 extension_dir = "./"修改为 extension_dir = "D:\php\ext"　　注意：路径在Win下一定要使用\
+
+4、在记事本中查找“;extension=php_mysql.dll”和“;extension=php_gd2.dll”，然后把前面的“;”去掉，即把 ;extension=php_mysql.dll 改为 extension=php_mysql.dll
+把以下内容前面的;去掉
+;extension=php_mbstring.dll
+;extension=php_gd2.dll
+;extension=php_dbase.dll
+;extension=php_ldap.dll
+将extension_dir =改为你的php_gd2.dll所在目录 要用到GD库时用
+
+5、找到 ;session.save_path = "/tmp"　将';'去掉.设置你保存session的目录。
+如：session.save_path = "C:\Windows\Temp";
+
+6、找到 register_globals 将 Off 改为 On
+
+7、找到 allow_url_include 将 Off 改为 On
+
+8、找到session.use_trans_sid 将其值改为1 为了session值能自由跨页传递
+
+8、保存 php.ini
+
+9、接下来在IIS中进行设置，打开Web服务扩展，添加PHP扩展，扩展名为PHP,要求的文件为d:\php\php5isapi.dll，打开默认网站-〉属性对话框，切换到“主目录”选项卡，然后点“配置”按钮打开“应用程序配置对话框”，点“添加”按钮打开“添加/编辑应用程序扩展名映射”对话框。在“可执行文件”输入框中，指向d:\php\php5isapi.dll，在“扩展名”输入框里面输入“.php”，并选中“脚本引擎”和“检查文件是否存在”两个复选框，一路确定，选择文档，添加默认内容为 index.php ,确定并重启IIS后退出IIS。
+
+此时PHP环境基本已经配置成功
+在WEB根目录（如我的D:\website）里建一个名为test.php的文件内容如下
+<? echo phpinfo(); ?>
+用浏览器打开 http://localhost/test.php
+如果可以看到php配置输出信息就OK了
+
+
+第二步：安装MySql
+
+1、先安装mysql，双击执行 Setup.exe，点Next选择Custom（自定义）安装，然后点Next（下一步），默认安装目录为 C:\Program Files\MySQL\MySQL Server 5.0\ 为了方便进入我们可以安装在D盘根目录下，点Change（改变目录）按钮来更改安装目录为D:\mysql。完成后出现创建 MySQL.com 帐号的界面，简单一点，我们选择Skip Sign-Up跳过这一步，既安装完成。这里有个配置向导的选项Configure the MySQL Server now默认的是选起的，我们就顺便完成配置吧。
+
+　　这里的配置是很简单的，我们只要点Next（下一步）即可，有几个地方要说明：Install As Windows Service默认的是选中的，这一选项要选上，作用是将MySQL作为Windows的服务运行。Service Name（服务名）默认的“MySQL”，可以改你喜欢的服务名。下面的Launch the MySQL Server automatically要勾选，这样Windows启动时，MySQL就会自动启动服务。Include Bin Directory in Windows PATH这一选项是修改环境变量，在PATH的值中增加../bin目录，可以根据怎么的爱好来决定是否选上，如果选上，在CMD下不需要进入bin目录就可以运行mysql。在Manual Selected Default Character Set / Collation 下 Character Set: 选择 gbk 或 gb2312，接着点下一步，Modify Security Settings是设置根帐号的密码，设置后点下一步，excute完成安装。
+
+　　如果是zip文件，用解压缩软件将压缩包直接解压到指定目录，如 D:\mysql；
+
+2、安装完成后，打开“开始”按钮中的“运行”，输入命令：D:\mysql\bin\mysqld-nt.exe --install，并执行；
+
+3、打开“开始”按钮下的“程序”=》“管理工具”=》“服务”，找到“mysql”服务，启动它；
+
+4、至此，mysql安装完成，重启win2003 server。您还可以打开D:\mysql\bin\MySQLInstanceConfig.exe，再次配置MySQL，在Manual Selected Default Character Set / Collation 下 Character Set: 选择 gbk 或 gb2312（我选择的是 gbk ），后面还会要求输入 root 登录密码（如：123456）。
+
+　　至此，mysql安装完成。
+
+
+第三步：PHPMyAdmin 的安装配置
+
+1、将phpMyAdmin-2.9.1.zip解压到WEB根目录(d:\website\中去)，重命名文件夹为myadmin或其它
+打开myadmin 目录中的 config.sample.inc.php
+找到以下这些(以下我已改好):
+
+$cfg['blowfish_secret'] = 'cookie'; //在等号后的单引号内加入 cookie
+
+$cfg['Servers'][$i]['controluser'] = 'root'; //将 pmausr 改为 root
+
+$cfg['Servers'][$i]['controlpass'] = '123456'; //分别填上你mysql的用户和密码即可
+
+改好了保存并将config.sample.inc.php改为config.inc.php,在浏览器打开http://localhost/myadmin 输入你的用户名和密码,便可以管理mysql了。
+
+　　如果以上都正常的话，开始建网站吧 ^-^

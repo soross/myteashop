@@ -1,0 +1,85 @@
+
+	{include file="inc/top.html"}
+{literal}
+
+    <div id="body">
+      <div id='banner'><div id='picShow_source'><ul><li><p class='pic'><img src='images/content/typeSet212_2010217163051.jpg'/></p><p class='text'>专注@从不懈怠——我们深知，满足您的真正需求并非易事，我们始终以您的角度关注用户的内心所需，凭借专业技术和项目质量控制体系，想你所未想，以领先业界的专业见解为您制定专属方案...这就是我们的态度：专注@从不懈怠。</p></li></ul></div></div>
+      <div id="menu">
+
+<ul>
+	<li id="menu_home"><a href="/index.html">网站首页</a></li>
+	<li id='menu_212'><a href='#' class='menulink'>栏目导航</a>
+		<ul>
+			<li id='module235'><a href='about.html'>泛地缘简介</a></li>
+			<li id='module236'><a href='superiority.html'>泛地缘优势</a></li>
+			<li id='module237'><a href='partner.html'>合作伙伴</a></li>
+			<li id='module260'><a href='contact.html'>联系方式</a></li>
+		</ul>
+	</li>
+</ul>
+
+<script type="text/javascript">
+window.addEvent('domready', function(){
+
+	//左边菜单的动态效果
+	var menuAction = $$('#menu li.menuOverStyle li a');
+	menuAction.each(function(element) {
+		var fx = new Fx.Styles(element, {duration:200, wait:false});
+
+		element.addEvent('mouseleave', function(){
+			fx.start({
+				'margin-right': 10
+			});
+		});
+
+		element.addEvent('mouseenter', function(){
+			fx.start({
+				'margin-right': 0
+			});
+		});
+	});
+	//为信息列表添加动态事件
+	if ($("textList_simple")) {
+		tagEventEffect(sfHover,"li", "textList_simple");
+	}
+	if ($("picList_sum")) {
+		tagEventEffect(sfHover,"li", "picList_sum");
+	}
+
+
+});
+</script>
+{/literal}
+      </div>
+      <div id="mainBody">
+        <div class='clearfloat'></div>
+        <div id="position"><a href='about.html'>关于泛地缘</a> &gt; 联系我们</div>
+        <div id="title">合作伙伴</div>
+        <div id="content">
+			{include file="inc/map.html"}
+			<div id="contactTag" class="Page_Text" style="margin-bottom:15px;">
+			{section name=list loop=$contactList}
+				<b style=" font-size:14px;">&nbsp;&nbsp;&nbsp;{$contactList[list].comm_type}</b>
+				<div class="Content_DIV" style="margin-bottom:15px;">
+				{$contactList[list].comm_value}
+				</div>
+			{/section}
+
+			</div>
+
+        </div>
+      </div>
+
+    </div>
+    <br class="clearfloat" />
+
+	{include file="inc/buttom.html"}
+
+
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -34,7 +34,7 @@
             </div>
             <div class="Access_Item">
             	<div class="Access_Title">网站留言板</div>
-                <a href="msg.html" class="Massage"></a>
+                <a href="msg.php" class="Massage"></a>
             </div>
             <div class="Access_Item" style="margin:0">
             	<div class="Access_Title">在线客服</div>
@@ -86,7 +86,7 @@
         	<div class="Page_Title"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">技术文档</span></div>
             <ul>
             {section name=list loop=$doc}
-            	<li><a target="_blank" href="news_{$doc[list].id}_info.html">{$doc[list].title}</a></li>
+            	<li><a target="_blank" href="newsinfo.php?newsid={$doc[list].id}">{$doc[list].title}</a></li>
             {/section}
             <!--
             	<li><a target="_blank" href="#">aaa</a></li> -->

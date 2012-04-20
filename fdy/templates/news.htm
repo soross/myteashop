@@ -7,11 +7,11 @@
       <div id="menu">
 
 <ul>
-	<li id="menu_home"><a href="/index.html">网站首页</a></li>
+	<li id="menu_home"><a href="/index.php">网站首页</a></li>
 	<li id='menu_212'><a href='#' class='menulink'>栏目导航</a>
 		<ul>
-			<li id='module235'><a href='news_NEWS_type.html'>新闻动态</a></li>
-			<li id='module236'><a href='news_DOC_type.html'>技术文档</a></li>
+			<li id='module235'><a href='news.php?type=NEWS'>新闻动态</a></li>
+			<li id='module236'><a href='news.php?type=DOC'>技术文档</a></li>
 		</ul>
 	</li>
 </ul>
@@ -51,7 +51,7 @@ window.addEvent('domready', function(){
       </div>
       <div id="mainBody">
               <div class='clearfloat'></div>
-        <div id="position"><a href='news.html'>资讯中心</a> &gt; {if $newsType=='NEWS'}新闻动态{else}技术文档{/if}</div>
+        <div id="position"><a href='news.php'>资讯中心</a> &gt; {if $newsType=='NEWS'}新闻动态{else}技术文档{/if}</div>
         <div id="title">泛地缘简介</div>
         <div id="content">
           <div class='content'>
@@ -60,14 +60,14 @@ window.addEvent('domready', function(){
           	 		{section name=list loop=$newsList}
           	 		<li>
           	 			<a class='times'>[{$newsList[list].create_date|truncate:10:""}]</a>
-          	 			<a href="news_{$newsList[list].id}_info.html" class='module'>[推广优化]</a>
-          	 			<a href='news_{$newsList[list].id}_info.html' title='{$newsList[list].title}' class='listTitle' >{$newsList[list].title}&nbsp;[{$newsList[list].create_date|truncate:10:""}]</a>
+          	 			<a href="newsinfo.php?newsid={$newsList[list].id}" class='module'>[推广优化]</a>
+          	 			<a href='newsinfo.php?newsid={$newsList[list].id}' title='{$newsList[list].title}' class='listTitle' >{$newsList[list].title}&nbsp;[{$newsList[list].create_date|truncate:10:""}]</a>
           	 		</li>
           	 		{sectionelse}
           	 		<li>
           	 			<a class='times'>[00-00-00]</a>
-          	 			<a href="news.html" class='module'>[资讯中心]</a>
-          	 			<a href='news.html' title='没有所要查询的数据...' class='listTitle' >没有所要查询的数据...</a>
+          	 			<a href="news.php" class='module'>[资讯中心]</a>
+          	 			<a href='news.php' title='没有所要查询的数据...' class='listTitle' >没有所要查询的数据...</a>
           	 		</li>
           	 		{/section}
           	 		<!-- -

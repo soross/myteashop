@@ -15,10 +15,10 @@
     		<hr>
 			{section name=list loop=$solList}
 			 <div class="Page_Item">
-	        	<a href="govproc_{$solList[list].id}_info.html" class="Page_Item_Img">
+	        	<a href="govprocinfo.php?traid={$solList[list].id}" class="Page_Item_Img">
 	        	<img width="156" height="121" src="{$solList[list].picture}"></a>
 	            <div class="Page_Item_Text">
-	            <a href="govproc_{$solList[list].id}_info.html">{$solList[list].name}</a><br>
+	            <a href="govprocinfo.php?traid={$solList[list].id}">{$solList[list].name}</a><br>
 	           	<div style="height:92px;overflow: hidden;width:455px;">
 	           	{$solList[list].desc|strip_tags}
 				</div>
@@ -66,7 +66,7 @@
         	<div class="Page_Title" style="text-align: left;"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">相关新闻</span></div>
             <ul style="text-align: left;">
             	{section name=list loop=$newsList}
-       			<li><a href="news_{$newsList[list].id}_info.html">{$newsList[list].title|strip_tags}</a></li>
+       			<li><a href="newsinfo.php?newsid={$newsList[list].id}">{$newsList[list].title|strip_tags}</a></li>
        			{sectionelse}
        			<li><a href="#">没有相关新闻...</a></li>
        			{/section}

@@ -30,7 +30,7 @@ lytebox_doAnimations=true;
   <div id="quickBar">
     <ul>
 
-      <li id="quickBar_home"><a href="/index.html">网站首页</a></li>
+      <li id="quickBar_home"><a href="/index.php">网站首页</a></li>
 
     </ul>
   </div>
@@ -91,12 +91,12 @@ tagEventEffect(sfHover,"li", "navigation");
 
 
 <ul>
-<li id="menu_home"><a href="/index.html">网站首页</a></li>
-<li id='menu_193'><a href='/html/case.html' class='menulink'>案例</a><ul>
-<li id='module198'><a href='/html/case_web.html'>企业品牌网站建设</a></li>
-<li id='module199'><a href='/html/case_design.html'>界面风格设计</a></li>
-<li id='module200'><a href='/html/case_portal.html'>行业门户构建</a></li>
-<li id='module263'><a href='/html/case_system.html'>WEB系统开发</a></li>
+<li id="menu_home"><a href="/index.php">网站首页</a></li>
+<li id='menu_193'><a href='/successful_case.php' class='menulink'>案例</a><ul>
+<li id='module198'><a href='/html/case_web.php'>企业品牌网站建设</a></li>
+<li id='module199'><a href='/html/case_design.php'>界面风格设计</a></li>
+<li id='module200'><a href='/html/case_portal.php'>行业门户构建</a></li>
+<li id='module263'><a href='/html/case_system.php'>WEB系统开发</a></li>
 </ul></li>
 </ul>
 
@@ -190,13 +190,13 @@ window.addEvent('domready', function(){
 {section name=list loop=$caseList}
 <li>
 	<p class='pic'>
-		<a href='case_{$caseList[list].id}_info.html' title='{$caseList[list].case_name}' style="background-image:url('{$caseList[list].case_pic}')">
+		<a href='caseinfo.php?caseid={$caseList[list].id}' title='{$caseList[list].case_name}' style="background-image:url('{$caseList[list].case_pic}')">
 			<img title='{$caseList[list].case_name}' alt='{$caseList[list].case_name}' src='images/spacer.gif'/>
 		</a>
 	</p>
 	<blockquote class='text'>
 		<h4>
-			<a href='case_{$caseList[list].id}_info.html' title='{$caseList[list].case_name}'>{$caseList[list].case_name}</a>
+			<a href='caseinfo.php?caseid={$caseList[list].id}' title='{$caseList[list].case_name}'>{$caseList[list].case_name}</a>
 		</h4>
 		<p>类型：企业品牌网站建设</p>
 		<p>

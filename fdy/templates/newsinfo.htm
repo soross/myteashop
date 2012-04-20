@@ -7,11 +7,11 @@
       <div id="menu">
 
 <ul>
-	<li id="menu_home"><a href="/index.html">网站首页</a></li>
+	<li id="menu_home"><a href="/index.php">网站首页</a></li>
 	<li id='menu_212'><a href='#' class='menulink'>栏目导航</a>
 		<ul>
-			<li id='module235'><a href='news_NEWS_type.html'>新闻动态</a></li>
-			<li id='module236'><a href='news_DOC_type.html'>技术文档</a></li>
+			<li id='module235'><a href='news.php?type=NEWS'>新闻动态</a></li>
+			<li id='module236'><a href='news.php?type=DOC'>技术文档</a></li>
 		</ul>
 	</li>
 </ul>
@@ -57,7 +57,7 @@ function fontZoom(size)
       </div>
       <div id="mainBody">
               <div class='clearfloat'></div>
-        <div id="position"><a href='news.html'>资讯中心</a> &gt; {if $newsInfo.remark=='NEWS'}<a href='news.html?type=NEWS'>新闻动态</a>{else}<a href='news.html?type=DOC'>技术文档</a>{/if}&gt;{$newsInfo.title|truncate:"50":".."}</div>
+        <div id="position"><a href='news.php'>资讯中心</a> &gt; {if $newsInfo.remark=='NEWS'}<a href='news.php?type=NEWS'>新闻动态</a>{else}<a href='news.php?type=DOC'>技术文档</a>{/if}&gt;{$newsInfo.title|truncate:"50":".."}</div>
         <div id="title">泛地缘简介</div>
         <div id="content">
           <div class='content'>

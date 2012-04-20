@@ -15,9 +15,9 @@
     		<hr>
 			{section name=list loop=$solList}
 			<div class="Products">
-	        	<a href="product_{$solList[list].id}_info.html" class="Products_Img">
+	        	<a href="prodinfo.php?prodid={$solList[list].id}" class="Products_Img">
 	        	<img width="165" height="118" src="{$solList[list].picture}"></a>
-	            <a href="product_{$solList[list].id}_info.html"><b>{$solList[list].name}</b><br>
+	            <a href="prodinfo.php?prodid={$solList[list].id}"><b>{$solList[list].name}</b><br>
 				{$solList[list].desc|strip_tags}		</a>
 	        </div>
 
@@ -29,9 +29,9 @@
 <hr>
 			{section name=list loop=$solList2}
 			<div class="Products">
-	        	<a href="product_{$solList2[list].id}_info.html" class="Products_Img">
+	        	<a href="prodinfo.php?prodid={$solList2[list].id}" class="Products_Img">
 	        	<img width="165" height="118" src="{$solList2[list].picture}"></a>
-	            <a href="product_{$solList[list].id}_info.html"><b>{$solList2[list].name}</b><br>
+	            <a href="prodinfo.php?prodid={$solList2[list].id}"><b>{$solList2[list].name}</b><br>
 				{$solList2[list].desc|strip_tags}		</a>
 	        </div>
 
@@ -76,7 +76,7 @@
         	<div class="Page_Title" style="text-align: left;"><span style="font-size:18px;font-family:'微软雅黑';color:#ff7c00;">相关新闻</span></div>
             <ul style="text-align: left;">
             	{section name=list loop=$newsList}
-       			<li><a href="news_{$newsList[list].id}_info.html">{$newsList[list].title|strip_tags}</a></li>
+       			<li><a href="newsinfo.php?newsid={$newsList[list].id}">{$newsList[list].title|strip_tags}</a></li>
        			{sectionelse}
        			<li><a href="#">没有相关新闻...</a></li>
        			{/section}

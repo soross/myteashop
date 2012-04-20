@@ -105,18 +105,10 @@ for(i=0;i<cs.length;i++){
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">帐号管理-管理员帐号列表</span></td>
+        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-管理员帐号列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td> -->
               <td width="60">
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
@@ -127,17 +119,6 @@ for(i=0;i<cs.length;i++){
               	</table>
 
               </td>
-             <!--  <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -164,18 +145,26 @@ for(i=0;i<cs.length;i++){
           </tr>
           {/literal}
           {section name=list loop=$adminRow}
+          <form action="post/account.action.php" method="post">
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].username}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].realname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            新用户密码：<input type="password" size="10" name="password{$adminRow[list].id}" id="password{$adminRow[list].id}"> </div></td>
+            新用户密码：<input type="password" size="10" name="password" id="password"></div></td>
              <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            新订单密码：<input type="password" size="10" name="orderpass{$adminRow[list].id}" id="orderpass{$adminRow[list].id}"></div></td>
+            新订单密码：<input type="password" size="10" name="orderpass" id="orderpass"></div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].create_date}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateAams&aamsid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定修改密码?'))location.href='post/account.action.php?task=toUpdateUser&aamsid={$adminRow[list].id}&password='+document.getElementById('password{$adminRow[list].id}').value+'&password='+document.getElementById('orderpass{$adminRow[list].id}').value;">修改</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="post/news.action.php?taks=deleteAams&aamsid={$adminRow[list].id}"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除?'))location.href='post/account.action.php?task=deleteAamsUser&aamsid={$adminRow[list].id}';">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF">
+            	<div align="center">
+            		<input type="submit" name="modifyPass" value="修改" class="submitButton">
+            		<input type="hidden" name="task" id="task" value="UpdateUserPassword">
+            		<input type="hidden" name="aamsid" id="aamsid" value="{$adminRow[list].id}">
+            	</div>
+            </td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><input type="button" name="modifyPass" value="删除" class="submitButton" onclick="if(confirm('确定删除?'))location.href='post/account.action.php?task=deleteAamsUser&aamsid={$adminRow[list].id}';"></div></td>
           </tr>
+          </form>
           {sectionelse}
 			<tr>
 				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>

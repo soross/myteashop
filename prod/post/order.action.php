@@ -156,14 +156,14 @@ else
 //出仓
 else
 	if (isset ($_POST[task]) && $_POST[task] == "orderCC") {
-		if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
-			$db->query("select * from orderlist where isfinish='0' and orderid='" . $_POST[itemid] . "'");
+		if (isset ($_POST[orderid]) && !empty ($_POST[orderid])) {
+			$db->query("select * from orderlist where isfinish='0' and orderid=(select id from orderitem where orderid='" . $_POST[orderid] . "')");
 			$cnt = $db->db_num_rows();
 			if ($cnt > 0) {
 				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "出仓", "订单明细未全部竣工,出仓失败!");
 				echo "<script>alert('订单明细未全部竣工,出仓失败!');location.href='../orderlist.php'</script>";
 			} else {
-				$db->query("update orderitem set ccdate=now(),staffid='".$_POST[staffid]."',yhy='".$_POST[yhy]."' where id = '" . $_POST[itemid] . "' ");
+				$db->query("update orderitem set ccdate=now(),staffid='".$_POST[staffid]."',yhy='".$_POST[yhy]."' where orderid = '" . $_POST[orderid] . "' ");
 				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "出仓", "订单已成功出仓!");
 				echo "<script>alert('订单已成功出仓!');location.href='../orderlist.php'</script>";
 			}

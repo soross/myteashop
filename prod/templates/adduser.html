@@ -132,31 +132,33 @@ for(i=0;i<cs.length;i++){
 	function cheackpassword2() {
 	   var obj=document.getElementById("password2");
 	   var password=obj.value;
-	   if(password=="") {
-	      alert("请输入用户确认密码！");
-		  return false;
-	   }else {
-	      return true;
+	   var obj2=document.getElementById("password");
+   	  if(password==obj2.value){
+      	return true;
+      }else{
+        alert("用户密码不一致!");
+      	return false;
+      }
+
+	}
+	//真实姓名
+	function cheackrealname() {
+		var obj=document.getElementById("realname");
+		var realname=obj.value;
+		if(realname!=""){
+			if(realname.replace(/[\u4e00-\u9fa5]/g,"").length>0){
+				alert("真实姓名只能为中文！");
+				return false;
+			}else if(realname.length<2 && realname.length>10){
+				alert("真实姓名长度应为了2-10个字符！");
+				return false;
+			}else {
+	   	   	 return true;
+	   	    }
+	  	}else{
+	     return true;
 	   }
 	}
-		//真实姓名
-		function cheackrealname() {
-			var obj=document.getElementById("realname");
-			var realname=obj.value;
-			if(realname!=""){
-				if(realname.replace(/[\u4e00-\u9fa5]/g,"").length>0){
-					alert("真实姓名只能为中文！");
-					return false;
-				}else if(realname.length<2 && realname.length>10){
-					alert("真实姓名长度应为了2-10个字符！");
-					return false;
-				}else {
-		   	   	 return true;
-		   	    }
-		  	}else{
-		     return true;
-		   }
-		}
 	//密码
 	function cheackorderpass() {
 	   var obj=document.getElementById("orderpass");
@@ -169,8 +171,22 @@ for(i=0;i<cs.length;i++){
 	   }
 	}
 
+	//密码
+	function cheackorderpass2() {
+	   var obj=document.getElementById("orderpass2");
+	   var obj2=document.getElementById("orderpass");
+	   var orderpass=obj.value;
+	  if(orderpass==obj2.value){
+      	return true;
+      }else{
+        alert("订单密码不一致!");
+      	return false;
+      }
+
+	}
+
 	function cheackuser(){
-		return cheackusername()&&cheackpassword()&&cheackpassword2()&&cheackrealname()&&cheackorderpass();
+		return cheackusername()&&cheackpassword()&&cheackpassword2()&&cheackrealname()&&cheackorderpass()&&cheackorderpass2();
 	}
 
 </script>
@@ -206,38 +222,7 @@ for(i=0;i<cs.length;i++){
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td>
-              <td width="60">
 
-              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="addnews.php" target="dataFarme">新增</a></div></td>
-                  </tr>
-              	</table>
-
-              </td>
-              <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr>
-              </table>
-
-              </td>-->
             </tr>
         </table></td>
         <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
@@ -252,33 +237,39 @@ for(i=0;i<cs.length;i++){
         	<form action="post/account.action.php" method="post" onsubmit="return cheackuser();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">用户名</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">用户名：</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="username" name="username" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="username" name="username" size="25" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">密码</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">用户密码：</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="password" id="password" name="password" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="password" id="password" name="password" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		           <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">确定密码</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">确定用户密码：</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="password" id="password2" name="password2" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="password" id="password2" name="password2" size="20" maxlength="50"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		           <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">订单密码：</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="password" id="orderpass" name="orderpass" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">真实姓名</div></td>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">确定订单密码：</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <input type="text" id="realname" name="realname" size="40" maxlength="50"><font style="color:red;">*</font></div></td>
-		          </tr>
-		           <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单密码</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="password" id="orderpass" name="orderpass" size="40" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="password" id="orderpass2" name="orderpass2" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="right" class="STYLE2 STYLE1">真实姓名：</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="realname" name="realname" size="25" maxlength="50"><font style="color:red;">*</font></div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>

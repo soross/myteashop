@@ -4,38 +4,43 @@ require_once("../action/mysql.class.php");
 if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
 	if(isset($_POST[task]) && "addUser"==$_POST[task]){
 		if($_POST[password]==$_POST[password2]){
-			$db->query("select * from user where username='".$_POST[username]."'");
-			$cnt = $db->db_num_rows();
-			if($cnt<1){
-				$db->query("insert into user(username,password,realname,orderpass,create_date) values('".$_POST[username]."','".md5($_POST[password])."','".$_POST[realname]."','".md5($_POST[password])."',now())");
-				$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增管理员帐号","新增管理员帐号成功");
-				echo "<script>if(confirm('管理员帐号新增成功,是否继续新增?')){location.href='../adduser.php';}else{location.href='../userlist.php';}</script>";
+			if( $_POST[orderpass]==$_POST[orderpass2]){
+				$db->query("select * from user where username='".$_POST[username]."'");
+				$cnt = $db->db_num_rows();
+				if($cnt<1){
+					$db->query("insert into user(username,password,realname,orderpass,create_date) values('".$_POST[username]."','".md5($_POST[password])."','".$_POST[realname]."','".md5($_POST[password])."',now())");
+					$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增管理员帐号","新增管理员帐号成功");
+					echo "<script>if(confirm('管理员帐号新增成功,是否继续新增?')){location.href='../adduser.php';}else{location.href='../userlist.php';}</script>";
+				}else{
+					$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","该管理员帐号已存在!");
+					echo "<script>alert('该管理员帐号已存在!');location.href='../adduser.php';</script>";
+				}
 			}else{
-				$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","该管理员帐号已存在!");
-				echo "<script>alert('该管理员帐号已存在!');location.href='../adduser.php';</script>";
+				$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","订单密码不一致!");
+				echo "<script>alert('订单密码不一致!');location.href='../adduser.php';</script>";
 			}
 		}else{
-			$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","两次密码不一致!");
-			echo "<script>alert('两次密码不一致!');location.href='../adduser.php';</script>";
+			$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","用户密码不一致!");
+			echo "<script>alert('用户密码不一致!');location.href='../adduser.php';</script>";
 		}
 	}
 }else{
 	$db->addLog("CAP10001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增管理员帐号","权限不够!");
 	echo "<script>alert('您的权限不够,请联系管理员!');location.href='../adduser.php';</script>";
 }
-if(isset($_GET[task]) && "toUpdateUser"==$_GET[task]){
-	if(isset($_GET[aamsid]) && !empty($_GET[aamsid])){
-		if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == $_GET[aamsid] || $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
-			if(!empty($_GET[password])&&empty($_GET[orderpass])){
-				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+if(isset($_POST[task]) && "UpdateUserPassword"==$_POST[task]){
+	if(isset($_POST[aamsid]) && !empty($_POST[aamsid])){
+		if($_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'] == $_POST[aamsid] || $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']==1){
+			if(!empty($_POST[password])&& empty($_POST[orderpass])){
+				$db->query("update user set password='".md5($_POST[password])."' where id ='".$_POST[aamsid]."'" );
 				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改用户密码","修改用户密码成功");
 				echo "<script>alert('用户密码修改成功!');location.href='../userlist.php';</script>";
-			}else if(empty($_GET[password])&&!empty($_GET[orderpass])){
-				$db->query("update user set password='".md5($_GET[password])."' where id ='".$_GET[aamsid]."'" );
+			}else if(empty($_POST[password])&&!empty($_POST[orderpass])){
+				$db->query("update user set password='".md5($_POST[orderpass])."' where id ='".$_POST[aamsid]."'" );
 				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改订单密码","修改订单密码成功");
 				echo "<script>alert('订单密码修改成功!');location.href='../userlist.php';</script>";
-			}else if(isset($_GET[password])&&!empty($_GET[password])&&$_GET[orderpass]&&!empty($_GET[orderpass])){
-				$db->query("update user set password='".md5($_GET[password])."' orderpass='".md5($_GET[orderpass])."' where id ='".$_GET[aamsid]."'" );
+			}else if(isset($_POST[password])&&!empty($_POST[password])&&isset($_POST[orderpass])&&!empty($_POST[orderpass])){
+				$db->query("update user set password='".md5($_POST[password])."', orderpass='".md5($_POST[orderpass])."' where id ='".$_POST[aamsid]."'" );
 				$db->addLog("CAP10003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改用户密码和订单密码","修改用户密码和订单密码成功");
 				echo "<script>alert('用户密码和订单密码修改成功!');location.href='../userlist.php';</script>";
 			}else{

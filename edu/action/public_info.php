@@ -1,7 +1,7 @@
 <?php
 
 //²Ëµ¥
-$menulist = getListBySql("select flag,comm_code from comm_code where comm_type='Menu' order by remark ", $db );
+$menulist = getListBySql("select flag,comm_code from comm_code where comm_type='Menu' order by (remark+0) ", $db );
 $smarty->assign("menulist",$menulist);
 
 //SEO

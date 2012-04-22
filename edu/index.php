@@ -22,57 +22,53 @@ $smarty->assign('certlist',$certList);
 $serviceList = getListBySql("select id,type_name from type where remark is not null order by remark limit 0,9",$db);
 $smarty->assign('servicelist',$serviceList);
 
-//最新公告
-$newList = getListBySql("select id,title from news where type_id='15' order by create_date limit 0,8",$db);
+//热点推荐
+$newList = getListBySql("select id,title from news where type_id in(select id from type where id='1' or pid='1') order by create_date limit 0,8",$db);
 $smarty->assign('newlist',$newList);
 
-//热门专业1
-$hotList = getListBySql("select id,title from news where type_id='1' order by create_date limit 0,8",$db);
+//新闻中心
+$hotList = getListBySql("select id,title from news where type_id in(select id from type where id='15' or pid='15') order by create_date limit 0,8",$db);
 $smarty->assign('hotlist',$hotList);
 
 //自学考试2
-$selfList = getListBySql("select id,title from news where type_id='2' order by create_date limit 0,8",$db);
+$selfList = getListBySql("select id,title from news where type_id in(select id from type where id='2' or pid='2') order by create_date limit 0,8",$db);
 $smarty->assign('selflist',$selfList);
 
 ////成人高考3
-$crList = getListBySql("select id,title from news where type_id='3' order by create_date limit 0,8",$db);
+$crList = getListBySql("select id,title from news where type_id in(select id from type where id='3' or pid='3') order by create_date limit 0,8",$db);
 $smarty->assign('crlist',$crList);
 
 //远程教育4
-$remoteList = getListBySql("select id,title from news where type_id='4' order by create_date limit 0,8",$db);
+$remoteList = getListBySql("select id,title from news where type_id in(select id from type where id='4' or pid='4') order by create_date limit 0,8",$db);
 $smarty->assign('remotelist',$remoteList);
 
-//其他热门5
-$otherList = getListBySql("select id,title from news where type_id='5' order by create_date limit 0,8",$db);
+//民办教育5
+$otherList = getListBySql("select id,title from news where type_id in(select id from type where id='5' or pid='5') order by create_date limit 0,8",$db);
 $smarty->assign('otherlist',$otherList);
 
-//考研培训6
-$kyList = getListBySql("select id,title from news where type_id='6' order by create_date limit 0,8",$db);
+//在职研究生6
+$kyList = getListBySql("select id,title from news where type_id in(select id from type where id='6' or pid='6') order by create_date limit 0,8",$db);
 $smarty->assign('kylist',$kyList);
 
-//会计培训7
-$kjList = getListBySql("select id,title from news where type_id='7' order by create_date limit 0,8",$db);
+//思科认证8
+$kjList = getListBySql("select id,title from news where type_id in(select id from type where id='8' or pid='8') order by create_date limit 0,8",$db);
 $smarty->assign('kjlist',$kjList);
 
-//计算机培训8
-$jsjList = getListBySql("select id,title from news where type_id='8' order by create_date limit 0,8",$db);
+
+$jsjList = getListBySql("select id,title from news where type_id in(select id from type where id='10' or pid='10') order by create_date limit 0,8",$db);
 $smarty->assign('jsjlist',$jsjList);
 
 //资料下载9
-$downloadList = getListBySql("select id,title from news where type_id='9' order by create_date limit 0,8",$db);
+$downloadList = getListBySql("select id,title from news where type_id in(select id from type where id='9' or pid='9') order by create_date limit 0,8",$db);
 $smarty->assign('downloadlist',$downloadList);
 
-//关于学历11
-$xlList = getListBySql("select id,title from news where type_id='11' order by create_date limit 0,8",$db);
+//就业专区7
+$xlList = getListBySql("select id,title from news where type_id in(select id from type where id='7' or pid='7') order by create_date limit 0,8",$db);
 $smarty->assign('xllist',$xlList);
 
-//职称评审10
-$zcpsList = getListBySql("select id,title from news where type_id='10' order by create_date limit 0,8",$db);
-$smarty->assign('zcpslist',$zcpsList);
-
 //合作院校12
-$parterList = getListBySql("select id,title from news where type_id='12' order by create_date limit 0,8",$db);
-$smarty->assign('parterlist',$parterList);
+$zcpsList = getListBySql("select id,title from news where type_id in(select id from type where id='12' or pid='12') order by create_date limit 0,8",$db);
+$smarty->assign('zcpslist',$zcpsList);
 
 //友情链接
 $links = getListBySql("select * from link order by remark",$db);

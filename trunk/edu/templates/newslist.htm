@@ -39,9 +39,11 @@
 						<td width="6%" height="24" align="center">¡¤</td>
 						<td width="65%" height="24"
 							style="BORDER-bottom: #ffffff 0px dotted"><a
-							href="newslist.php?type={$newslist[list].id}" target="_blank">{$newslist[list].type_name}</a>
+							href="newsinfo.php?newsid={$newslist[list].id}" target="_blank">{$newslist[list].title}</a>
 						</td>
-						<td width="29%" style="BORDER-bottom: #ffffff 0px dotted">&nbsp;{$err}</td>
+						<td width="29%" style="BORDER-bottom: #ffffff 0px dotted">[{$newslist[list].create_date}]
+						(µã»÷<font id="click{$newslist[list].id}" color="#ff0000">{$newslist[list].click}{$err}</font>)
+						</td>
 						</tr>
 						{/section}
 

@@ -110,7 +110,7 @@ var texts="";
 								<td width="3%">&nbsp;</td>
 								<td width="97%"><a href="news.php?type=15"
 									target="_blank"
-									style="font-size:10pt; font-weight:bold; color: #FF0000">最新公告</a></td>
+									style="font-size:10pt; font-weight:bold; color: #FF0000">热点推荐</a></td>
 							</tr>
 						</table>
 						</td>
@@ -224,7 +224,7 @@ var texts="";
 								<td width="8%">&nbsp;</td>
 								<td width="92%" height="23" align="center" valign="middle"><a
 									href="news.php?type=1" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">热门专业</a><a
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">新闻中心</a><a
 									href="news.php?type=1" target="_blank"
 									style="font-size:10pt; font-weight:bold; color:#FFFFFF"></a></td>
 							</tr>
@@ -395,7 +395,7 @@ var texts="";
 								<td width="8%">&nbsp;</td>
 								<td width="92%" height="23" align="center" valign="middle"><a
 									href="news.php?type=5" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">其它热门</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">民办教育</a></td>
 							</tr>
 						</table>
 						</td>
@@ -433,7 +433,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=6" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">考研培训</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">在职研究生</a></td>
 							</tr>
 						</table>
 						</td>
@@ -472,7 +472,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=7" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">会计培训</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">思科认证培训</a></td>
 							</tr>
 						</table>
 						</td>
@@ -512,7 +512,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=8" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">计算机培训</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">职业资格证书培训</a></td>
 							</tr>
 						</table>
 						</td>
@@ -619,7 +619,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=10" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">职称评审</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">合作院校</a></td>
 							</tr>
 						</table>
 						</td>
@@ -681,7 +681,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=11" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">关于学历</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">就业专区</a></td>
 							</tr>
 						</table>
 						</td>
@@ -715,51 +715,12 @@ var texts="";
 		<table width="950" border="0" align="center" cellpadding="0"
 			cellspacing="0" bgcolor="#FFFFFF">
 			<tr>
-				<td height="4"></td>
+				<td height="8"></td>
 			</tr>
 		</table>
 		<table width="950" border="0" align="center" cellpadding="0"
 			cellspacing="0" bgcolor="#FFFFFF">
 			<tr>
-				<td width="234">
-				<table width="100%" border="0" cellpadding="0" cellspacing="0">
-					<tr>
-						<td height="29" background="images/index_r11_c1.jpg">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td width="8%">&nbsp;</td>
-								<td width="92%" height="23" align="center" valign="middle"><a
-									href="news.php?type=12" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">合作院校</a></td>
-							</tr>
-						</table>
-						</td>
-					</tr>
-					<tr>
-						<td style="border:1px solid #1A4D8E; border-top:0px;">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td height="4"></td>
-							</tr>
-						</table>
-
-						{section name=list loop=$parterlist}
-						<table width="100%" border="0" cellpadding="0" cellspacing="1">
-							<tr>
-								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$parterlist[list].id}"
-									target="_blank" class="top_m_txt01">{$parterlist[list].title|truncate:"32":".."}</a></td>
-							</tr>
-							<tr>
-								<td width="80%" valign="top" background="img_home/xn.gif"
-									height="1"></td>
-							</tr>
-						</table>
-						{/section}
-						</td>
-					</tr>
-				</table>
-				</td>
-				<td width="4"></td>
 				<td valign="top">
 				<table width="100%" border="0" cellpadding="0" cellspacing="1"
 					bgcolor="#CCCCCC">
@@ -830,7 +791,7 @@ function DrawImage(ImgD){
 </script>
 {/literal}
 								<div align='center' id='demo'
-									style='overflow:hidden;height:140px;width:690px;'><!--滚动区的高度和宽度-->
+									style='overflow:hidden;height:140px;width:940px;'><!--滚动区的高度和宽度-->
 								<table border='0' cellpadding='0' cellspacing="0" cellspace='0'>
 									<tr>
 										<td id='demo1' valign='top'>
@@ -901,7 +862,7 @@ demo.onmouseout=function() {MyMar1=setInterval(Marquee1,Picspeed)}
 		<table width="950" border="0" align="center" cellpadding="0"
 			cellspacing="0" bgcolor="#FFFFFF">
 			<tr>
-				<td height="4"></td>
+				<td height="10"></td>
 			</tr>
 		</table>
 		<table width="950" border="0" align="center" cellpadding="0"

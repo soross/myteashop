@@ -19,17 +19,15 @@ $smarty->assign("seo",$seo);
 $copyInfo = getObject("comm_code where comm_type='Copy_Info'", $db ,"comm_value");
 $smarty->assign("copyInfo",$copyInfo[comm_value]);
 
+//热点推荐1
+$newList = getListBySql("select id,title from news where type_id in(select id from type where id='1' or pid='1') order by create_date limit 0,8",$db);
+$smarty->assign('newNews',$newList);
 
-//最新公告
-$newNews = getListBySql("select title,id from news order by create_date desc limit 0,8",$db);
-$smarty->assign("newNews",$newNews);
+//新闻中心15
+$hotList = getListBySql("select id,title from news where type_id in(select id from type where id='15' or pid='15') order by create_date limit 0,8",$db);
+$smarty->assign('hotNews',$hotList);
 
-// 热门专业
-$hotNews = getListBySql("select title,id from news where type_id='1' order by create_date desc limit 0,8",$db);
-$smarty->assign("hotNews",$hotNews);
-
-//资料下载
-$downloadNews = getListBySql("select title,id from news where type_id='9' order by create_date desc limit 0,8",$db);
-$smarty->assign("downloadNews",$downloadNews);
-
+//资料下载9
+$downloadList = getListBySql("select id,title from news where type_id in(select id from type where id='9' or pid='9') order by create_date limit 0,8",$db);
+$smarty->assign('downloadNews',$downloadList);
 ?>

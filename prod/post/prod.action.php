@@ -70,7 +70,7 @@ else
 			'isRandName' => true,
 			'allowType' => $ext_arr,
 			'FilePath' => $save_path,
-			'MAXSIZE' => (1024 * 100
+			'MAXSIZE' => (1024 * 1000
 		)));
 		if ($up->uploadFile('picpath')) {
 			$filename = "images/prod/" . $up->getNewFileName();

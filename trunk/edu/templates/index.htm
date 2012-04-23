@@ -672,17 +672,38 @@ var texts="";
 
 
 						<table width="100%" border="0" cellpadding="0" cellspacing="1">
-							<tr>
-								<td align="center" style="display:block;">
-								   <a href='{$schoollist[0].flag}'
-									target='_blank'><img id="schoollogo" src='{$schoollist[0].comm_code}'
-									width='240' height='180' border='0' alt='{$schoollist[0].comm_value}'></a></td>
+							<tr id="schoolTr">
+								{section name=list loop=$schoollist}
+								<td id="" align="center" style="display:{if ($smarty.section.list.index)==0}block{else}none{/if};">
+								   <a href='{$schoollist[list].flag}'
+									target='_blank'><img id="schoollogo" src='{$schoollist[list].comm_code}'
+									width='240' height='180' border='0' alt='{$schoollist[list].comm_value}'></a></td>
+								{/section}
 							</tr>
 							<tr>
 								<td width="80%" valign="top" background="img_home/xn.gif"
 									height="1"></td>
 							</tr>
 						</table>
+						{literal}
+						<script type="text/javascript">
+							setInterval(changImageSrc,4000);
+							var src=-1;
+							function changImageSrc(){
+								var tds=document.getElementById("schoolTr").getElementsByTagName('td');
+								for(var i=0;i<tds.length;i++){
+									tds[i].style.display="none";
+								}
+								var idx = parseInt(Math.random()*(0-(tds.length+1)+1)+(tds.length+1));
+								if(idx==src){
+									idx = parseInt(Math.random()*(0-(tds.length+1)+1)+(tds.length+1));
+								}else{
+									src=idx;
+								}
+								tds[idx-1].style.display="block";
+							}
+						</script>
+						{/literal}
 						</td>
 					</tr>
 				</table>

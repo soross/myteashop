@@ -19,7 +19,7 @@ $certList = getListBySql("select id,cert_name,path from cert order by create_dat
 $smarty->assign('certlist',$certList);
 
 //服务专区
-$serviceList = getListBySql("select id,type_name from type where remark is not null order by remark limit 0,9",$db);
+$serviceList = getListBySql("select id,type_name from type where remark !='-1' order by remark limit 0,9",$db);
 $smarty->assign('servicelist',$serviceList);
 
 //热点推荐

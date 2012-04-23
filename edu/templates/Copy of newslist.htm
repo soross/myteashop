@@ -35,16 +35,6 @@
 				<table width="90%" border="0" align="center" cellpadding="0"
 					cellspacing="0">
 					{section name=list loop=$newslist}
-					{if $newslist[list].type_name!=""}
-					<tr>
-						<td width="6%" height="24" align="center">¡¤</td>
-						<td width="65%" height="24"
-							style="BORDER-bottom: #ffffff 0px dotted"><a
-							href="{if $newslist[list].isnewslist=='0'}newsinfo.php?type={$newslist[list].id}{else}news.php?type={$newslist[list].id}{/if}" target="_blank">{$newslist[list].type_name}</a>
-						</td>
-						<td width="29%" style="BORDER-bottom: #ffffff 0px dotted">&nbsp;</td>
-					</tr>
-					{else}
 					<tr>
 						<td width="6%" height="24" align="center">¡¤</td>
 						<td width="65%" height="24"
@@ -54,9 +44,8 @@
 						<td width="29%" style="BORDER-bottom: #ffffff 0px dotted">[{$newslist[list].create_date}]
 						(µã»÷<font id="click{$newslist[list].id}" color="#ff0000">{$newslist[list].click}{$err}</font>)
 						</td>
-					</tr>
-					{/if}
-					{/section}
+						</tr>
+						{/section}
 
 					<tr valign="bottom">
 						<td height="50" colspan="3">

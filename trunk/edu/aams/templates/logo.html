@@ -131,19 +131,20 @@ for(i=0;i<cs.length;i++){
 		           <tr>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
-					<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;长宽：960px*150px&nbsp;大小：100Kb]<font style="color:red;">*</font>
+					<input type="file"  id="filePath" name="filePath"><br>[支持格式：gif|jpg|png&nbsp;长宽：960px*150px&nbsp;大小：300Kb]<font style="color:red;">*</font>
 					</div></td>
 		          </tr>
 		          <tr>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
-					<img src="../images/tou.gif" width="480px" height="75px">
+					<img src="../{$info.comm_code}" width="480px" height="75px">
 					</div></td>
 		          </tr>
 		          <tr>
 		          	<td colspan="2" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
 		          	<br>&nbsp;<input class="submitButton" type="submit" value="修改Logo">&nbsp;<br>&nbsp;
-		            <input type="hidden" id="task" name="task" value="Logo">
+		          	<input type="hidden" id="logoid" name="logoid" value="{$info.id}">
+		            <input type="hidden" id="task" name="task" value="modifyLogo">
 		          	</div></td>
 		          </tr>
 				</table>

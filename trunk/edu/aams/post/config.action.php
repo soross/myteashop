@@ -3,15 +3,14 @@ require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 
 //首页公司简介简要信息修改
-if(isset($_POST[task]) && "updateAboutIndex"==$_POST[task]){
-	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='About' ");
-	echo "<script>alert('首页公司简介简要信息修改成功!');location.href='../aboutme.php';</script>";
+if(isset($_POST[task]) && "updateAboutInfo"==$_POST[task]){
+	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='about.php' and comm_type='Menu' ");
+	echo "<script>alert('机构简介信息修改成功!');location.href='../aboutme.php';</script>";
 
 //新增公司简介详细内容栏目
-}else if(isset($_POST[task]) && "addAbout"==$_POST[task]){
-	$db->query("insert into comm_code(comm_type,comm_value,fkid) " .
-			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
-	echo "<script>alert('新增公司简介详细内容栏目成功!');location.href='../aboutme.php';</script>";
+}else if(isset($_POST[task]) && "updateContactInfo"==$_POST[task]){
+	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='contact.php' and comm_type='Menu' ");
+	echo "<script>alert('联系我们修改成功!');location.href='../contactus.php';</script>";
 
 //公司简介栏目信息修改
 }else if(isset($_POST[task]) && "updateAbout"==$_POST[task]){
@@ -68,49 +67,46 @@ if(isset($_POST[task]) && "updateAboutIndex"==$_POST[task]){
 
 
 
-//新增合作伙伴
-}else if(isset($_POST[task]) && "AddPartner"==$_POST[task]){
+//新增证书
+}else if(isset($_POST[task]) && "addCert"==$_POST[task]){
 	//文件保存目录URL
-	$save_path = '../../images/partner/';//201109281154581.jpg
+	$save_path = '../../images/cert/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('gif','png');
+	$ext_arr = array('gif', 'png','jpg');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('picture')){
-		$filename = "images/partner/".$up->getNewFileName();
-		$db->query("insert into comm_code(comm_type,comm_value,comm_code,remark) " .
-			"values('PartnerLogo','$_POST[url]','$filename','$_POST[name]') ");
-		echo "<script>alert('合作伙伴新增成功!');location.href='../partnerlogo.php';</script>";
+	if($up->uploadFile('certPic')){
+		$filename = "images/cert/".$up->getNewFileName();
+		$db->query("insert into cert(cert_name,path) values('$_POST[name]','$filename') ");
+		echo "<script>alert('证书新增成功!');location.href='../cert.php';</script>";
 	}else{
-		echo "<script>alert('合作伙伴新增失败。请检查上传的文件是否符合要求!');location.href='../partnerlogo.php';</script>";
+		echo "<script>alert('证书新增失败。请检查上传的文件是否符合要求!');location.href='../cert.php';</script>";
 	}
 }
-//修改合作伙伴
-else if(isset($_POST[task]) && "updatePartner"==$_POST[task]){
+//修改证书
+else if(isset($_POST[task]) && "updateCert"==$_POST[task]){
 	//文件保存目录URL
-	$save_path = '../../images/partner/';//201109281154581.jpg
+	$save_path = '../../images/cert/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('gif', 'png');
+	$ext_arr = array('gif', 'png','jpg');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('path')){
-		$query = $db->query("select comm_code from comm_code where comm_type='PartnerLogo' and id='$_POST[logoid]'");
-		$info= $db->fetch_array($query);
-		$filename = "images/partner/".$up->getNewFileName();
-		$db->query("update comm_code set comm_code='$filename',comm_value='$_POST[url]',remark='$_POST[name]' where comm_type='PartnerLogo' and id='$_POST[logoid]'");
-		if(file_exists("../../".$info[comm_code]))
+	if($up->uploadFile('certPic')){
+		$filename = "images/cert/".$up->getNewFileName();
+		$db->query("update cert set path='$filename',cert_name='$_POST[name]' where id='$_POST[certid]'");
+		if(file_exists("../../".$_POST[path]))
 		unlink("../../".$info[comm_code]);
-  		echo "<script>alert('合作伙伴修改成功!');location.href='../partnerlogo.php';</script>";
+  		echo "<script>alert('证书信息、图片修改成功!');location.href='../cert.php';</script>";
 	}else{
-		$db->query("update comm_code set comm_value='$_POST[url]',remark='$_POST[name]' where comm_type='PartnerLogo' and id='$_POST[logoid]'");
-		echo "<script>alert('合作伙伴修改成功!');location.href='../partnerlogo.php';</script>";
+		$db->query("update cert set cert_name='$_POST[name]' where  id='$_POST[certid]'");
+		echo "<script>alert('证书信息修改成功!');location.href='../cert.php';</script>";
 	}
 }
-//删除合作伙伴
-else if(isset($_GET[task]) && "deletePartner"==$_GET[task]){
-	$db->query("delete from comm_code where id='$_GET[logoid]' ");
+//删除证书http://localhost/edu/aams/post/config.action.php?task=deleteCert&certid=11&path=images/cert/20120424033514216.jpg
+else if(isset($_GET[task]) && "deleteCert"==$_GET[task]){
 	if(file_exists("../../".$_GET[path]))unlink("../../".$_GET[path]);
-	echo "<script>alert('合作伙伴删除成功?');location.href='../partnerlogo.php';</script>";
+	$db->query("delete from cert where id='$_GET[certid]' ");
+	echo "<script>alert('证书删除成功?');location.href='../cert.php';</script>";
 
 
 }
@@ -123,86 +119,145 @@ else if(isset($_POST[task]) && "updatePartnerInfo"==$_POST[task]){
 	$db->query("update comm_code set comm_type='".replace($_POST[title])."',comm_value='".replace($_POST[content2])."' where id='$_POST[id]'");
 	echo "<script>alert('合作伙伴详细信息修改成功?');location.href='../partner.php';</script>";
 
-//联系我们
-}else if(isset($_POST[task]) && "updateContactUsZh_cn"==$_POST[task]){
-	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
-	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
-
-}
-//热线号码
-else if(isset($_POST[task]) && "updateHotPhone"==$_POST[task]){
-	$db->query("update comm_code set comm_value='$_POST[hotphone]' where comm_type='Hot_Phone' ");
-	echo "<script>alert('热线号码修改成功!');location.href='../hotphone.php';</script>";
 
 }
 
 
 
 
-//首页广告
-else if(isset($_POST[task]) && "Index_AD"==$_POST[task]){
+
+//更新校企图片
+else if(isset($_POST[task]) && "updateSchoolLogo"==$_POST[task]){
 	//文件保存目录URL
-	$save_path = '../../images/ad/';//201109281154581.jpg
+	$save_path = '../../images/school/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
 	$ext_arr = array('gif', 'jpg', 'png');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('adimage')){
-		$query = $db->query("select comm_code from comm_code where comm_type='Index_AD' and id='$_POST[adid]'");
-		$info= $db->fetch_array($query);
-		$filename = "images/ad/".$up->getNewFileName();
-		$db->query("update comm_code set comm_code='$filename',comm_value='$_POST[seq]' where comm_type='Index_AD' and id='$_POST[adid]'");
-		if(file_exists("../../".$info[comm_code]))
-		unlink("../../".$info[comm_code]);
-  		echo "<script>alert('首页广告【信息】修改成功!');location.href='../indexad.php';</script>";
+	if($up->uploadFile('filePath')){
+		$filename = "images/school/".$up->getNewFileName();
+		$db->query("update comm_code set comm_code='$filename',comm_value='$_POST[comm_value]',flag='$_POST[flag]' where comm_type='School_Logo' and id='$_POST[schoolid]'");
+		if(file_exists("../../".$_POST[path]))
+		unlink("../../".$_POST[path]);
+  		echo "<script>alert('校企合作信息、图片修改成功!');location.href='../schoollogo.php';</script>";
 	}else{
-		$db->query("update comm_code set comm_value='$_POST[seq]' where comm_type='Index_AD' and id='$_POST[adid]'");
-		echo "<script>alert('首页广告【顺序】修改成功!');location.href='../indexad.php';</script>";
+		$db->query("update comm_code set comm_value='$_POST[comm_value]',flag='$_POST[flag]' where comm_type='School_Logo' and id='$_POST[schoolid]'");
+		echo "<script>alert('校企合作信息修改成功!');location.href='../schoollogo.php';</script>";
 	}
 }
-
-else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
+//添加校企图片
+else if(isset($_POST[task]) && "addSchoolLogo"==$_POST[task]){
 	//文件保存目录URL
-	$save_path = '../../images/';//201109281154581.jpg
+	$save_path = '../../images/school/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
 	$ext_arr = array('gif','jpg', 'png');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('comm_value')){
-		$filename = "images/".$up->getNewFileName();
-		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
-		if(file_exists("../../".$_POST[path]))
-		unlink("../../".$_POST[path]);
-  		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
+	if($up->uploadFile('filePath')){
+		$filename = "images/school/".$up->getNewFileName();
+		$db->query("insert into  comm_code(comm_type,comm_value,comm_code,flag) values('School_Logo','$_POST[comm_value]','$filename','$_POST[flag]')");
+  		echo "<script>if(confirm('校企合作图片新增成功,是否继续添加!')){location.href='../addschoollogo.php';}else{location.href='../schoollogo.php';}</script>";
 	}else{
-		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
-		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
+		print_r($up->getErrorMsg());
+		echo "<script>alert('校企合作图片新增失败,请检查图片是否符合要求!');location.href='../addschoollogo.php';</script>";
 	}
 }
+//删除校企图片post/config.action.php?task=deleteSchoolLogo&schoolid=50&path=images/school/20120424052727424.jpg
+else if(isset($_GET[task]) && "deleteSchoolLogo"==$_GET[task]){
+	$db->query("delete from comm_code where comm_type='School_Logo' and id='$_GET[schoolid]' ");
+	if(file_exists("../../".$_GET[path]))
+		unlink("../../".$_GET[path]);
+	echo "<script>alert('校企合作图片删除成功!');location.href='../schoollogo.php';</script>";
 
-else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
+}
+//添加友情链接
+else if(isset($_POST[task]) && "addLink"==$_POST[task]){
 	//文件保存目录URL
-	$save_path = '../../images/';//201109281154581.jpg
+	$save_path = '../../images/link/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
 	$ext_arr = array('gif','jpg', 'png');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('comm_value')){
-		$filename = "images/".$up->getNewFileName();
-		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
-		if(file_exists("../../".$_POST[path]))
-		unlink("../../".$_POST[path]);
-  		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+	if($up->uploadFile('filePath')){
+		$filename = "images/link/".$up->getNewFileName();
+		$db->query("insert into link(link_name,url,path,remark) values('$_POST[link_name]','$_POST[url]','$filename','$_POST[remark]')");
+  		echo "<script>alert('友情连接添加成功!');location.href='../link.php';</script>";
 	}else{
-		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
-		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+		echo "<script>alert('友情连接添加失败,请检查文件是否符合要求!');location.href='../link.php';</script>";
 	}
 }
-else if(isset($_POST[task])&&"replyMsg"==$_POST[task]){
-	$db->query("update message set reply='".replace($_POST[content])."',reply_date=now() where id='$_POST[msgid]'");
-	echo "<script>alert('回复/回复修改成功!');location.href='../msginfo.php?msgid=$_POST[msgid]';</script>";
+//修改友情链接
+else if(isset($_POST[task]) && "updateLink"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/link/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('filePath')){
+		$filename = "images/link/".$up->getNewFileName();
+		$db->query("update link set link_name='$_POST[link_name]',url='$_POST[url]',remark='$_POST[remark]',path='$filename' where id='$_POST[linkid]'");
+		if(file_exists("../../".$_POST[path]))
+		unlink("../../".$_POST[path]);
+  		echo "<script>alert('友情链接信息、图片修改成功!');location.href='../link.php';</script>";
+	}else{
+		$db->query("update link set link_name='$_POST[link_name]',url='$_POST[url]',remark='$_POST[remark]' where id='$_POST[linkid]'");
+		echo "<script>alert('友情链接信息修改成功!');location.href='../link.php';</script>";
+	}
+}
+//删除友情连接
+else if(isset($_GET[task])&&"deleteLink"==$_GET[task]){
+	$db->query("delete from link where id='$_GET[linkid]'");
+	if(file_exists("../../".$_GET[path]))
+		unlink("../../".$_GET[path]);
+	echo "<script>alert('友情链接删除成功!');location.href='../link.php';</script>";
 
-}else{
-	//echo "<script>alert('操作失败!');window.history.back(-1);</script>";
+
+//修改Logo ../images/tou.gif
+}else if(isset($_POST[task]) && "modifyLogo"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*300)));
+	if($up->uploadFile('filePath')){
+		$filename = "images/".$up->getNewFileName();
+		$db->query("update comm_code set comm_code='$filename' where comm_type='Logo' and id='$_POST[logoid]'");
+  		echo "<script>alert('Logo修改成功!');location.href='../logo.php';</script>";
+	}else{
+		echo "<script>alert('Logo修改失败!');location.href='../logo.php';</script>";
+	}
+
+	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
+	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
+
+
+//修改modifyBanner
+}else if(isset($_POST[task]) && "modifyBanner"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/banner/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*150)));
+	if($up->uploadFile('filePath')){
+		$filename = "images/banner/".$up->getNewFileName();
+		$db->query("update comm_code set comm_code='$filename',flag='$_POST[flag]',comm_value='$_POST[comm_value]' where comm_type='Index_AD' and id='$_POST[adid]'");
+
+		if(file_exists("../../".$_POST[path]))
+			unlink("../../".$_POST[path]);
+  		echo "<script>alert('Banner信息、图片修改成功!');location.href='../indexad.php';</script>";
+	}else{
+		$db->query("update comm_code set flag='$_POST[flag]',comm_value='$_POST[comm_value]' where comm_type='Index_AD' and id='$_POST[adid]'");
+		echo "<script>alert('Banner信息修改成功!');location.href='../indexad.php';</script>";
+	}
+
+	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
+	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
+
+}
+else{
+	echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }
 ?>

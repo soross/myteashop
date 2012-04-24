@@ -2,89 +2,27 @@
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 if(isset($_GET[task]) && "deleteNav"==$_GET[task]){
-	$query = $db->query("select id from menu where pid = '$_GET[navid]'");
+	$query = $db->query("select id from comm_code where id = '$_GET[navid]'");
 	$cnt = $db->db_num_rows($query);
-	if($cnt<1){
-		if(file_exists("../../".$_GET[path]))unlink("../../".$_GET[path]);
-	 	$db->query("delete from menu where id='$_GET[navid]'");
+	if($cnt>0){
+	 	$db->query("delete from comm_code where comm_type='Menu' and id='$_GET[navid]'");
 	 	echo "<script>alert('删除成功!');location.href='../nav.php';</script>";
 	}else{
-		echo "<script>alert('父类菜单不能删除!');location.href='../nav.php';</script>";
+		echo "<script>alert('非法操作!');location.href='../nav.php';</script>";
 	}
 
 }else if(isset($_POST[task]) && "updateNav"==$_POST[task]){
-	//文件保存目录URL
-	$save_path = '../../images/pic/';//201109281154581.jpg
-	//定义允许上传的文件扩展名
-	$ext_arr = array('gif', 'png');
-	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-
-	$type='';
-	if("18"==$_POST[pid]){//产品
-		$type=$_POST[type];
-	}
-	$pid = -1;
-	if($_POST[pid]!=0){
-		$pid =$_POST[pid];
-	}
-
-	if($up->uploadFile('picture')){
-		$filename = "images/pic/".$up->getNewFileName();
-		$db->query("update menu set name='$_POST[name]',picture='$filename',seq='$_POST[seq]',pid='$pid',type='$type',`desc`='".replace($_POST[content])."' where id='$_POST[navid]'");
-		if(file_exists("../../".$_POST[path]))
-		unlink("../../".$_POST[path]);
-  		echo "<script>if(confirm('更新成功,是否继续更新?')){location.href='../editnav.php?task=toUpdateNav&navid=$_POST[navid]';}else{location.href='../nav.php';}</script>";
+	if(isset($_POST[navid])&&!empty($_POST[navid])){
+		$db->query("update comm_code set comm_code='$_POST[nav_url]',flag='$_POST[nav_name]',remark='$_POST[nav_seq]' where id='$_POST[navid]'");
+		echo "<script>alert('修改成功!');location.href='../nav.php';</script>";
 	}else{
-		$db->query("update menu set name='$_POST[name]',seq='$_POST[seq]',pid='$pid',type='$type',`desc`='".replace($_POST[content])."' where id='$_POST[navid]'");
-		echo "<script>if(confirm('更新成功,是否继续更新?')){location.href='../editnav.php?task=toUpdateNav&navid=$_POST[navid]';}else{location.href='../nav.php';}</script>";
+		echo "<script>alert('非法操作!');location.href='../nav.php';</script>";
 	}
-
-
-	//$db->query("update menu set menu_name_zh_cn='$_POST[name_cn]',menu_name_en='$_POST[name_en]',pid='$_POST[type]',`show`='$_POST[show]',remark='$_POST[remark]',url='$_POST[url]' where id='$_POST[navid]'");
-	echo "<script>if(confirm('更新成功,是否继续更新?')){location.href='../editnav.php?task=toUpdateNav&navid=$_POST[navid]';}else{location.href='../nav.php';}</script>";
-
 }else if(isset($_POST[task]) && "addNav"==$_POST[task]){
-	if($_POST[pid]!=-1){
-
-		//文件保存目录URL
-		$save_path = '../../images/pic/';//201109281154581.jpg
-		//定义允许上传的文件扩展名
-		$ext_arr = array('gif','jpg', 'png');
-		require "../action/FileUpload.class.php";
-		$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-		if($up->uploadFile('picture')){
-			$filename = "images/pic/".$up->getNewFileName();
-			$type='';
-			$str='';
-			$url='';
-			if("18"==$_POST[pid]){//产品
-				$type=$_POST[type];
-				$str='product_';
-			}else if('1'==$_POST[pid]){//解决方案
-				$str='solution_';
-			}else if('8'==$_POST[pid]){//it服务
-				$str='itservice_';
-			}else if('14'==$_POST[pid]){//政府采购
-				$str='govproc_';
-			}else if("24"==$_POST[pid] || "25"==$_POST[pid]){
-				$url =$_POST[url];
-			}
-
-			$db->query("insert into menu(name,pid,seq,picture,`desc`,type,url) " .
-					"values('$_POST[name]','$_POST[pid]','$_POST[seq]','$filename','".replace($_POST[content])."','$type','$url')");
-			if(''!=$str){
-				$newID = $db->insert_id();
-				$db->query("update menu set url='".$str.$newID."_info.html' where id='$newID'");
-			}
-	  		echo "<script>if(confirm('导航新增成功,是否继续新增?')){location.href='../addnav.php';}else{location.href='../nav.php';}</script>";
-		}else{
-			echo "<script>alert('导航新增失败,请重试!');location.href='../addnav.php';</script>";
-		}
-	}else{
-		echo "<script>alert('无法新增顶级目录,如有修改请联系技术人员!');location.href='../addnav.php';</script>";
-	}
+	$db->query("insert into comm_code(comm_type,comm_code,flag,remark) values( 'Menu','$_POST[url]','$_POST[name]','$_POST[seq]')");
+	echo "<script>alert('新增成功!');location.href='../nav.php';</script>";
 }else{
+	echo "<script>alert('非法操作!');location.href='../nav.php';</script>";
 	//文件保存目录URL
 	//$save_path = '../../images/partner/';//201109281154581.jpg
 	//定义允许上传的文件扩展名

@@ -175,26 +175,29 @@ for(i=0;i<cs.length;i++){
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">友情链接名称：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
-					&nbsp;<textarea id="name" name="name" rows='3' cols="30"></textarea>
+					&nbsp;<textarea id="link_name" name="link_name" rows='3' cols="30"></textarea>
 				</td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接跳转地址：</td>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="text" size="35" maxlength="50" name="url" id="url"></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
+					&nbsp;<input type="text" size="35" maxlength="50" name="url" id="url"></td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">链接图片：</td>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="file" name="picture" id="picture"><br>[支持格式：gif|png&nbsp;&nbsp;长宽88px*31px&nbsp;大小：100Kb]</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
+					&nbsp;<input type="file" name="filePath" id="filePath"><br>[支持格式：gif|png&nbsp;&nbsp;长宽132px*42px&nbsp;大小：100Kb]</td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">显示顺序：</td>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">&nbsp;<input type="text" size="10" maxlength="10" name="seq" id="seq"></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
+					&nbsp;<input type="text" size="10" maxlength="10" name="remark" id="remark"></td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input  class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
 					<input  class="submitButton" type="submit" value="添加链接">
-					<input type="hidden" value="AddPartner" id="task" name="task">
+					<input type="hidden" value="addLink" id="task" name="task">
 				</td>
 	          </tr>
          	</table>
@@ -220,10 +223,10 @@ for(i=0;i<cs.length;i++){
             <td width="40px" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="300px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">友情链接名称</div></td>
             <td width="200px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">跳转地址</div></td>
-            <td width="90px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
+            <td width="132px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
             <td width="60px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">显示顺序</div></td>
             <td background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">修改图片</div></td>
-            <td width="50px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
+            <td width="50px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">修改</div></td>
             <td width="50px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
 
@@ -233,14 +236,19 @@ for(i=0;i<cs.length;i++){
 		            <td height="25" bgcolor="#FFFFFF" class="STYLE2">
 		            	<div align="center" class="STYLE2 STYLE1">{$logoList[list].id}</div>
 		            	<input type="hidden" value="{$logoList[list].id}" id="linkid" name="linkid">
+		            	<input type="hidden" value="{$logoList[list].path}" id="path" name="path">
 		            	<input type="hidden" value="updateLink" id="task" name="task"></td>
 		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-		            	<textarea id="name" name="name"  rows='3' cols="35">{$logoList[list].link_name}</textarea>
+		            	<textarea id="link_name" name="link_name"  rows='3' cols="35">{$logoList[list].link_name}</textarea>
 		            </div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1"><input type="text" id="url" size="25" maxlength="50" name="url" value="{$logoList[list].url}"></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><img src="../{$logoList[list].path}" width="88px" height="31px"/></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><input type="text" id="seq" size="5" maxlength="50" name="seq" value="{$logoList[list].remark}"></div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><input type="file" id="path" name="path"><br>[支持格式：gif|png&nbsp;&nbsp;长宽130px*40px&nbsp;大小：100Kb]</div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="url" size="25" maxlength="50" name="url" value="{$logoList[list].url}"></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" >
+		            	<img src="../{$logoList[list].path}" width="132px" height="42px"/></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" >
+		            	<input type="text" id="remark" size="5" maxlength="50" name="remark" value="{$logoList[list].remark}"></div></td>
+		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" >
+		            	<input type="file" id="filePath" name="filePath"><br>[支持格式：gif|png&nbsp;&nbsp;长宽132px*42px&nbsp;大小：100Kb]</div></td>
 		            <td height="25" bgcolor="#FFFFFF">
 		            	<div align="center">
 		            		<input type="submit"  class="submitButton" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
@@ -248,7 +256,7 @@ for(i=0;i<cs.length;i++){
 		            </td>
 		            <td height="25" bgcolor="#FFFFFF">
 		            	<div align="center">
-							<input type="button"  class="submitButton" value="删除" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deletePartner&logoid={$logoList[list].id}&path={$logoList[list].comm_code}';">
+							<input type="button"  class="submitButton" value="删除" onclick="if(confirm('确定要删除吗?'))location.href='post/config.action.php?task=deleteLink&linkid={$logoList[list].id}&path={$logoList[list].path}';">
 		            	</div>
 		            </td>
 	          </form>
@@ -258,6 +266,11 @@ for(i=0;i<cs.length;i++){
 				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
+          <tr>
+				<td colspan=8 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+				注：友情链接包括信息和图片2个内容，如果图片修改失败或者没有修改提示友情链接信息修改成功，如果图片修改成功提示友情链接信息、图片修改成功。
+				</div></td>
+			</tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>

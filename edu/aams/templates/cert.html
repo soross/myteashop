@@ -145,13 +145,13 @@ for(i=0;i<cs.length;i++){
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">证书图片：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
-					&nbsp;<input type="file"  id="certimage" name="certimage"><br>[支持格式：gif|jpg|png&nbsp;长宽200px*140px&nbsp;大小：100Kb]</td>
+					&nbsp;<input type="file"  id="certPic" name="certPic"><br>[支持格式：gif|jpg|png&nbsp;长宽200px*140px&nbsp;大小：100Kb]</td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input  class="submitButton" type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
 					<input  class="submitButton" type="submit" value="新增证书">
-					<input type="hidden" value="AddCert" id="task" name="task">
+					<input type="hidden" value="addCert" id="task" name="task">
 				</td>
 	          </tr>
          	</table>
@@ -172,7 +172,7 @@ for(i=0;i<cs.length;i++){
             <td width="200px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">证书名称</div></td>
             <td width="300px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">证书图片</div></td>
             <td height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片修改</div></td>
-            <td width="80px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+            <td width="120px" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           {section name=list loop=$info}
           <tr>
@@ -180,6 +180,7 @@ for(i=0;i<cs.length;i++){
 	            <td height="25" bgcolor="#FFFFFF" class="STYLE2">
 	            	<div align="center" class="STYLE2 STYLE1">{$info[list].id}</div>
 	            	<input type="hidden" value="{$info[list].id}" id="certid" name="certid">
+	            	<input type="hidden" value="{$info[list].path}" id="path" name="path">
 	            	<input type="hidden" value="updateCert" id="task" name="task"></td>
 	            <td height="25" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
 	            	<input type="text" id="name" name="name" value="{$info[list].cert_name}" maxlength="50" size="25">
@@ -187,10 +188,11 @@ for(i=0;i<cs.length;i++){
 	            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 	            	<img src="../{$info[list].path}" width="200px" height="140px"></div></td>
 	            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" >
-	            	<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;长宽200px*140px&nbsp;大小：100Kb]</div></td>
+	            	<input type="file"  id="certPic" name="certPic"><br>[支持格式：gif|jpg|png&nbsp;长宽200px*140px&nbsp;大小：100Kb]</div></td>
 	            <td height="25" bgcolor="#FFFFFF">
 	            	<div align="center">
-	            		<input type="submit"  class="submitButton" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">
+	            		&nbsp;<input type="submit"  class="submitButton" value="修改" onclick="if(!confirm('是否确定修改?'))return false;">&nbsp;&nbsp;
+	            		<input type="button"  class="submitButton" value="删除" onclick="if(confirm('是否确定修改?'))location.href='post/config.action.php?task=deleteCert&certid={$info[list].id}&path={$info[list].path}';">&nbsp;
 	            	</div>
 	            </td>
 	          </form>

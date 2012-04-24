@@ -49,6 +49,7 @@ a:active {
 -->
 </style>
 
+<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -100,18 +101,53 @@ for(i=0;i<cs.length;i++){
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
 <script>
-	var editorIndex;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="contentIndex"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|','source', 'wordpaste']
-		});
-	});
+	    //材料名称
+	function cheackclname() {
+	   var obj=document.getElementById("clname");
+	   var clname=obj.value;
+	   if(clname=="") {
+	      alert("请输入材料名称！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	    //材料规格
+	function cheackgg() {
+	   var obj=document.getElementById("clgg");
+	   var clgg=obj.value;
+	   if(clgg=="") {
+	      alert("请输入材料规格！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	//单位
+	function cheackunit() {
+	   var obj=document.getElementById("unit");
+	   var unit=obj.value;
+	   if(unit=="") {
+	      alert("请输入单位！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	//单价
+	function cheackprice() {
+	   var obj=document.getElementById("price");
+	   var price=obj.value;
+	   if(price=="") {
+	      alert("请输入单价！");
+		  return false;
+	   }else {
+	      return true;
+	   }
+	}
+	function cheackcl() {
+		return cheackclname()&&cheackgg()&&cheackunit()&&cheackprice();
+	}
 </script>
 
 
@@ -124,8 +160,8 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统配置-机构简介配置</span></td>
-        	<td width="281" background="images/tab/tab_05.gif">
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-添加校企合作图片</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
@@ -139,25 +175,35 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
   <tr>
-    <td>
-    <!-- 首页简介 -->
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/config.action.php" method="post">
+        	<form action="post/config.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
-		            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="contentIndex" name="contentIndex" style="width:700px;height:500px;visibility:hidden;">{$aboutInfo}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
-
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片标题</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="comm_value" name="comm_value" size="20" maxlength="20"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td align="center" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
-						<br><input class="submitButton" class="submitButton" type="submit" value="简介信息修改"><br>&nbsp;
-						<input type="hidden" id="task" name="task" value="updateAboutInfo">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片跳转地址</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="flag" name="flag" size="40" maxlength="50"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsSrc">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="filePath" name="filePath"><br>[支持格式：gif|jpg|png&nbsp;长宽240px*180px&nbsp;大小：100Kb]<font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<input class="submitButton" type="submit" value="新增校企合作图片">
+						<input type="hidden" id="task" name="task" value="addSchoolLogo">
 		            </div></td>
 		          </tr>
 		        </table>
@@ -177,12 +223,20 @@ for(i=0;i<cs.length;i++){
     	<!-- page -->
 	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	          <tr>
-	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
 	            <td width="75%" valign="top" class="STYLE1"><div align="right">
-
 	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-	                <tr>
-	                  <td  width="352"> &nbsp;</td>
+	                <tr><!--
+	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
+	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
+	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
+	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
+	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
+	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
+	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+	                  </span></td>
+	                  <td width="23" height="22" valign="middle">页</td>
+	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
 	                </tr>
 	              </table>
 	            </div></td>

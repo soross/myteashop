@@ -125,7 +125,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">技术支持管理-在线留言详细信息</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">在线报名管理-在线报名详细信息</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -147,36 +147,129 @@ for(i=0;i<cs.length;i++){
         	<form action="post/config.action.php" method="post">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">留言标题</div></td>
-		            <td width="85%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            {$info.title}
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">姓名</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.name}
+					</div></td>
+					<td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">出生年月</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.birthdate}
 					</div></td>
 		          </tr>
 		          <tr>
-		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系方式</div></td>
-		            <td width="85%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            {$info.link}
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">民族</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.nation}
+					</div></td>
+					 <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">籍贯</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.birth_add}
 					</div></td>
 		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文化程度</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.culture}
+					</div></td>
+					 <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">特长</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.speciality}
+					</div></td>
+		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">政治面貌</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.pol_state}
+					</div></td>
+					 <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">身份证号码</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.idcode}
+					</div></td>
+		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">毕业学校</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.school}
+					</div></td>
+					 <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">e-mail</div></td>
+		            <td width="35%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.email}
+					</div></td>
+		          </tr>
+		          <tr>
+		          <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系方式</div></td>
+		          <td colspan="3"  width="85%" bgcolor="#FFFFFF" class="STYLE2">
+		              <table>
+				          <tr>
+				            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">通信地址</div></td>
+				            <td width="85%" colspan="5" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+				            {$info.address}
+							</div></td>
+				          </tr>
+				          <tr>
+				            <td width="10%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">邮政编码</div></td>
+				            <td width="22%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+				            {$info.zipcode}
+							</div></td>
+							 <td width="10%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
+				            <td width="22%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+				            {$info.tell}
+							</div></td>
+							<td width="10%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ</div></td>
+				            <td width="26%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+				            {$info.qq}
+							</div></td>
+
+			         	 </tr>
+			     	   </table>
+			      </td>
+		          </tr>
+		           <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报考院校</div></td>
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.enter_school}
+					</div></td>
+		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报考层次</div></td>
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.enter_level}
+					</div></td>
+		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报考专业</div></td>
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.enter_major}
+					</div></td>
+		          </tr>
+		          <tr>
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报考性质</div></td>
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            {$info.enter_prop}
+					</div></td>
+		          </tr>
+
 		          <tr>
 		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">留言内容</div></td>
-		            <td width="85%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-					{$info.content}
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+					{$info.remark}
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">回复内容</div></td>
-		            <td width="85%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content" style="width:700px;height:200px;visibility:hidden;">{$info.reply}</textarea><font style="color:red;">*</font>
-
+		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">状态</div></td>
+		            <td width="85%" colspan="3" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+					{if $info.state==0}新增{else}已处理{/if}
 		            </div></td>
 		          </tr>
+
 		          <tr>
 		            <td width="15%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
-		            <td width="85%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input class="submitButton" type="submit" value="回复/修改回复">
-						<input type="hidden" id="msgid" name="msgid" value="{$info.id}">
-						<input type="hidden" id="task" name="task" value="replyMsg">
+		            <td width="85%"  colspan="3"  height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						{if $info.state==0}
+						<br><input class="submitButton" type="button" value="处理" onclick="JavaScript:location.href='post/msg.action.php?task=updateState&msgid={$info.id}&mode=info';"><br>&nbsp;
+						{else}
+						<br><input class="submitButton" type="button" value="处理" disabled="disabled" onclick="JavaScript:location.href='post/msg.action.php?task=updateState&msgid={$info.id}&mode=info';"><br>&nbsp;
+						{/if}
 		            </div></td>
 		          </tr>
 		        </table>

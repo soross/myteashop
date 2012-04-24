@@ -15,6 +15,10 @@ $seo['desc']=$desc[comm_value];
 
 $smarty->assign("seo",$seo);
 
+//logo
+$logoInfo = getListBySql("select comm_code from comm_code where comm_type='Logo'",$db);
+$smarty->assign("logoinfo",$logoInfo[0][comm_code]);
+
 //µ×²¿ÐÅÏ¢
 $copyInfo = getObject("comm_code where comm_type='Copy_Info'", $db ,"comm_value");
 $smarty->assign("copyInfo",$copyInfo[comm_value]);

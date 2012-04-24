@@ -141,7 +141,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">技术支持管理-在线留言列表</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">在线报名管理-在线报名列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -162,23 +162,37 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="8%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">编号</div></td>
-            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div>
-            <td width="27%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系人</div></td>
+            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">编号</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">姓名</div>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">身份证号码</div>
+			<td width="21%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报考信息</div></td>
+		    <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">状态</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">e-mail</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">电话</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ</div></td>
             <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
-            <td width="14%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">回复时间</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">详细</div></td>
+            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">详细</div></td>
           </tr>
           {/literal}
           {section name=list loop=$msg}
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$msg[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$msg[list].title}</div>
-           <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$msg[list].content|strip_tags|truncate:"70":".."}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].link}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$msg[list].name}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$msg[list].idcode}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
+            	报考学校：{$msg[list].enter_school}<br>
+            	报考层次：{$msg[list].enter_level}<br>
+            	报考专业：{$msg[list].enter_major}<br>
+            	报考性质：{$msg[list].enter_prop}<br>
+            </div>
+           <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+           	{if $msg[list].state==0}<a href="post/msg.action.php?task=updateState&msgid={$msg[list].id}&cpage={$cpage}">新增</a>{else}已处理{/if}
+
+           	</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].email}</div></td>
+             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].tell}</div></td>
+              <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].qq}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].create_date}</div></td>
-             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$msg[list].reply_date}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="msginfo.php?msgid={$msg[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="msginfo.php?msgid={$msg[list].id}">详细</a><span class="STYLE1">]</span></div></td>
           </tr>
           {sectionelse}

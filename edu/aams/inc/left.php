@@ -95,43 +95,38 @@ function MM_swapImage() { //v3.0
 	    <h2>+&nbsp;系统配置</h2>
 	    <div class="content">
 	      <p>-&nbsp;<a href="../nav.php" target="dataFrame">顶部导航配置</a></p>
-	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">公司简介配置</a></p>
-	      <p>-&nbsp;<a href="../cert.php" target="dataFrame">证书管理</a></p>
-	      <p>-&nbsp;<a href="../schoollogo.php" target="dataFrame">学校Logo管理</a></p>
-	      <p>-&nbsp;<a href="../link.php" target="dataFrame">友情链接配置</a></p>
+	      <p>-&nbsp;<a href="../aboutme.php" target="dataFrame">机构简介配置</a></p>
+	       <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
 	      <p>-&nbsp;<a href="../logo.php" target="dataFrame">Logo配置</a></p>
 	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页Banner配置</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;新闻管理</h2>
+	    <h2>+&nbsp;文章管理</h2>
 	    <div class="content">
-		  <p>-&nbsp;<a href="../news.php" target="dataFrame">新闻列表</a></p>
-	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加新闻</a></p>
-	      <p>-&nbsp;<a href="../type.php" target="dataFrame">新闻类型配置</a></p>
+		  <p>-&nbsp;<a href="../news.php" target="dataFrame">文章列表</a></p>
+	      <p>-&nbsp;<a href="../addnews.php" target="dataFrame">添加文章</a></p>
+	      <p>-&nbsp;<a href="../type.php" target="dataFrame">文章类型配置</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;证书管理</h2>
+	    <h2>+&nbsp;证书\友情链接管理</h2>
 	    <div class="content">
-		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
-	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
+		 <p>-&nbsp;<a href="../cert.php" target="dataFrame">证书管理</a></p>
+		 <p>-&nbsp;<a href="../link.php" target="dataFrame">友情链接配置</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;案例管理</h2>
+	    <h2>+&nbsp;校企合作管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../case.php" target="dataFrame">案例列表</a></p>
-	      <p>-&nbsp;<a href="../addcase.php" target="dataFrame">添加案例</a></p>
+	       <p>-&nbsp;<a href="../schoollogo.php" target="dataFrame">校企合作图片列表</a></p>
+	       <p>-&nbsp;<a href="../addschoollogo.php" target="dataFrame">新增校企合作图片</a></p>
 	    </div>
 	  </li>
 	  <li>
-	    <h2>+&nbsp;技术支持管理</h2>
+	    <h2>+&nbsp;报名信息管理</h2>
 	    <div class="content">
-	      <p>-&nbsp;<a href="../msg.php" target="dataFrame">留言列表</a></p>
-	      <p>-&nbsp;<a href="../imconfig.php" target="dataFrame">在线客服配置</a></p>
-	      <p>-&nbsp;<a href="../emailconfig.php" target="dataFrame">邮件配置接入</a></p>
-	      <p>-&nbsp;<a href="../hotphone.php" target="dataFrame">热线配置</a></p>
+	      <p>-&nbsp;<a href="../msg.php" target="dataFrame">报名列表</a></p>
 	    </div>
 	  </li>
 	   <li>

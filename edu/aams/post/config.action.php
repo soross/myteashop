@@ -25,17 +25,24 @@ if(isset($_POST[task]) && "updateAboutInfo"==$_POST[task]){
 
 
 
-//首页优势简要信息修改
+//更新Copy信息
 }else if(isset($_POST[task]) && "updateCopyInfo"==$_POST[task]){
 	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_type='Copy_Info' ");
 	echo "<script>alert('Copy信息修改成功!');location.href='../copy.php';</script>";
 
-//新增公司简介详细内容栏目
-}else if(isset($_POST[task]) && "addSup"==$_POST[task]){
-	$db->query("insert into comm_code(comm_type,comm_value,fkid) " .
-			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
-	echo "<script>alert('新增优势详细内容栏目成功!');location.href='../sup.php';</script>";
-
+//更新SEO信息
+}else if(isset($_POST[task]) && "updateSEOInfo"==$_POST[task]){
+	$db->query('start transaction');
+	$db->query("update comm_code set comm_value='$_POST[title]' where comm_type = 'SEO_Title'");
+	$db->query("update comm_code set comm_value='$_POST[keyword]' where comm_type = 'SEO_Keyword'");
+	$db->query("update comm_code set comm_value='$_POST[desc]' where comm_type = 'SEO_DESC'");
+	if (mysql_errno()) {
+		$db->query('rollback');
+		echo "<script>alert('SEO信息修改失败!');location.href='../seo.php'</script>";
+	} else {
+		$db->query('commit');
+		echo "<script>alert('SEO信息修改成功!');location.href='../seo.php'</script>";
+	}
 //公司简介栏目信息修改
 }else if(isset($_POST[task]) && "updateSup"==$_POST[task]){
 	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[supid]])."' where id='$_POST[supid]' ");

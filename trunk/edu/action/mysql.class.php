@@ -416,7 +416,8 @@ class mysql {
 	}
 
 }
-$db=new mysql("localhost", "wjc", "wjc", "edu", ALL_PS, "GBK");
+$db=new mysql("localhost", "wjc", "wjc", "edu", ALL_PS, "GBK"); //hbccedu.gotoftp1.com
+//$db=new mysql("localhost", "hbccedu", "b2a4n4", "hbccedu", ALL_PS, "GBK");
 
 //获取数组集
 function getList($table,$db,$field = "*"){

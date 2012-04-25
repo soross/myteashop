@@ -24,3 +24,14 @@ var d=new initArray("ĞÇÆÚÈÕ","ĞÇÆÚÒ»","ĞÇÆÚ¶ş","ĞÇÆÚÈı","ĞÇÆÚËÄ","ĞÇÆÚÎå","ĞÇÆÚÁ
 document.write(today.getYear(),"Äê",today.getMonth()+1,"ÔÂ",today.getDate(),"ÈÕ ",d[today.getDay()+1]," ");
 //-->
 </SCRIPT></td>
+
+
+
+
+---¸üĞÂ
+aams/inc/left.php
+aams/post/config.action.php
+aams/templates/seo.html
+aams/seo.php
+
+ÔÚÏß¿Í·ş

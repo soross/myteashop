@@ -664,20 +664,15 @@ var texts="";
 					</tr>
 					<tr>
 						<td style="border:1px solid #1A4D8E; border-top:0px;">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td height="4"></td>
-							</tr>
-						</table>
-
-
 						<table width="100%" border="0" cellpadding="0" cellspacing="1">
 							<tr id="schoolTr">
 								{section name=list loop=$schoollist}
 								<td id="" align="center" style="display:{if ($smarty.section.list.index)==0}block{else}none{/if};">
-								   <a href='{$schoollist[list].flag}'
-									target='_blank'><img id="schoollogo" src='{$schoollist[list].comm_code}'
-									width='240' height='180' border='0' alt='{$schoollist[list].comm_value}'></a></td>
+								   <a href='{$schoollist[list].flag}' target='_blank'>
+								   		<img id="schoollogo" src='{$schoollist[list].comm_code}' width='240px' height='180px'
+								   			border='0' alt='{$schoollist[list].comm_value}'>
+								   	</a>
+								</td>
 								{/section}
 							</tr>
 							<tr>
@@ -971,49 +966,15 @@ demo.onmouseout=function() {MyMar1=setInterval(Marquee1,Picspeed)}
 									</tr>
 								</table>
 								<table width='100%' cellSpacing='5'>
-									<tr align='center' height="45px">
-									<!--
-										{assign var=j value=0}
-										{section name=list loop=$linklist}
-										<td width='115px'><a href='{$linklist[list].url}'
-											target='_blank'
-											title='{$linklist[list].link_name}'><img
-											src='{$linklist[list].path}' width='88' height='31'
-											border='0'></a></td>
-										{assign var=j value=$j+1}
-										{if $j%8==0}
-										</tr><tr align="center">
-										{/if}
-										{/section}
-										{if $j==1}
-											<td colspan="7"  width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==2}
-											<td colspan="6" width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==3}
-											<td colspan="5" width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==4}
-											<td colspan="4" width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==5}
-											<td colspan="3" width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==6}
-											<td colspan="2" width='115px'>&nbsp;</td>
-										{/if}
-										{if $j==7}
-											<td colspan="1" width='115px'>&nbsp;</td>
-										{/if}-->
+									<tr align='center' height="46px">
 										{section name=list loop=$linklist}
 										<td width="134px">
-											<div style="width:132px;height:42px;" onmouseover="javascript:this.style.border='solid 1px #FF0000';"
-											onmouseout="javascript:this.style.border='';">
+											<div style="width:132px;height:44px;border:solid 1px #FFFFFF;" onmouseover="javascript:this.style.border='solid 1px #FF0000';"
+											onmouseout="javascript:this.style.border='solid 1px #FFFFFF';">
 											<img src='{$linklist[list].path}' style="width:132px;height:42px;"/></div></td>
 										{if ($smarty.section.list.index+1)%6==0}
 										</tr>
-										<tr height="45px">
+										<tr height="46px">
 										{/if}
 										{/section}
 									</tr>

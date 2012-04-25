@@ -12,6 +12,10 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
 .STYLE1 {font-size: 12px}
 .STYLE4 {
 	font-size: 12px;
@@ -41,10 +45,6 @@ a:active {
 	text-decoration: none;
 }
 .STYLE7 {font-size: 12}
-
-.submitButton{
-	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
-}
 
 -->
 </style>
@@ -115,19 +115,11 @@ for(i=0;i<cs.length;i++){
 	});
 
 
-	function remarkType(obj){
-		if(obj.value=="NEWS"){
-			document.getElementById('newsType').style.display="block";
-			document.getElementById('newsAuthor').style.display="block";
-			document.getElementById('newsSrc').style.display="block";
-			document.getElementById('newsContent').style.display="block";
+	function checkRadio(obj){
+		if(obj.value=="0"){
 			document.getElementById('newsFile').style.display="none";
 
 		}else{
-			document.getElementById('newsType').style.display="none";
-			document.getElementById('newsAuthor').style.display="none";
-			document.getElementById('newsSrc').style.display="none";
-			document.getElementById('newsContent').style.display="none";
 			document.getElementById('newsFile').style.display="block";
 		}
 	}
@@ -143,7 +135,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-更新新闻</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">文章管理-发布文章</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -165,65 +157,58 @@ for(i=0;i<cs.length;i++){
         	<form action="post/news.action.php" method="post"  enctype="multipart/form-data">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">发布类型</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	{if $newsinfo.remark=='NEWS'}新闻{else}技术文档{/if}
-		            	<font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="text" id="title" name="title" value="{$newsinfo.title}" size="40" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsType" style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">新闻类型</div></td>
+		          <tr id="newsType">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文章类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <select id="type" name="type">
-		            	{section name=list loop=$typeRows}
-		            	{if $typeRows[list].pid==-1}
-		            	<option value="{$typeRows[list].id}" {if $newsinfo.typeid==$typeRows[list].id}selected{/if}>{$typeRows[list].name}</option>
-		            	{section name=lt loop=$typeRows}
-		            	{if $typeRows[lt].pid==$typeRows[list].id}
-		            	<option value="{$typeRows[lt].id}"  {if $newsinfo.typeid==$typeRows[lt].id}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;{$typeRows[lt].name}</option>
-		            	{/if}
-		            	{/section}
-		            	{/if}
-		            	{/section}
+		            	{section name=list loop=$typelist}
+							{if $typelist[list].pid==-1}
+								<option value="{$typelist[list].id}" {if $newsinfo.type_id==$typelist[list].id}selected{/if}>{$typelist[list].type_name}</option>
+								{section name=lt loop=$typelist}
+									{if $typelist[list].id==$typelist[lt].pid}
+									<option value="{$typelist[lt].id}" {if $newsinfo.type_id==$typelist[lt].id}selected{/if}>&nbsp;&nbsp;{$typelist[lt].type_name}</option>
+									{/if}
+								{/section}
+							{/if}
+						{/section}
 		            </select><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr id="newsAuthor"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">作者</div></td>
+		          <tr id="newsAuthor">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否为快速导航</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="author" name="author" value="{$newsinfo.author}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<input type="radio" id="isshow" name="isshow" value="1" onclick="javascript:checkRadio(this);"
+		            	 {if $newsinfo.isshow=='1'}checked{/if}>是&nbsp;&nbsp;<input type="radio" id="isshow" name="isshow" value="0"
+		            	 onclick="javascript:checkRadio(this);" {if $newsinfo.isshow==''}checked{/if}>否&nbsp;[是否在首页"快递导航"模块展示]<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsSrc"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">来源</div></td>
+		          {if $newsinfo.isshow=='1'}
+		          <tr style="display:block;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="src" name="src" value="{$newsinfo.src}" size="15" maxlength="20"><font style="color:red;">*</font>
+		            	<img src="../{$newsinfo.path}" width="150px" height="90px">
 		            </div></td>
 		          </tr>
-		           <tr id="newsFileName"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文件名称</div></td>
+				 {/if}
+		          <tr id="newsFile" style="display:{if $newsinfo.isshow=='1'}block{else}none{/if};">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="filename" name="filename"size="25"  value="{$newsinfo.author}" maxlength="100"><font style="color:red;">*</font>
+		            	<input type="file" id="filepath" name="filepath" ><br>
+		            	[支持格式：gif|png|jpg&nbsp;&nbsp;长宽307px*185px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsFilePath"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文件位置</div></td>
+
+		          <tr id="newsAuthor">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">初始点击数</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	{$newsinfo.src}
+		            	<input type="text" id="click" name="click" value="{$newsinfo.click}" size="10" maxlength="10"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsFile"  style="display:{if $newsinfo.remark=='NEWS'}none{else}block{/if}">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">技术文档</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file" id="newsfile" name="newsfile" ><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr id="newsContent"  style="display:{if $newsinfo.remark=='NEWS'}block{else}none{/if}">
+		          <tr id="newsContent">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;">{$newsinfo.content}</textarea><font style="color:red;">*</font>
@@ -233,10 +218,12 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input class="submitButton" type="submit" value="更新新闻">
-						<input type="hidden" id="newsid" name="newsid" value="{$newsinfo.id}">
-						<input type="hidden" id="remark" name="remark" value="{$newsinfo.remark}">
+						&nbsp;<input class="submitButton" type="reset" value="清空重填">&nbsp;&nbsp;<input class="submitButton" type="submit" value="更新文章">
 						<input type="hidden" id="task" name="task" value="updateNews">
+						<input type="hidden" name="srcisshow" name="srcisshow" value="{$newsinfo.isshow}">
+		            	<input type="hidden" name="path" name="path" value="{$newsinfo.path}">
+		            	<input type="hidden" name="newsid" name="newsid" value="{$newsinfo.id}">
+		            	<input type="hidden" name="srctypeid" name="srctypeid" value="{$newsinfo.type_id}">
 		            </div></td>
 		          </tr>
 		        </table>

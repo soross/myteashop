@@ -95,7 +95,7 @@ else if(isset($_POST[task]) && "updateCert"==$_POST[task]){
 		$filename = "images/cert/".$up->getNewFileName();
 		$db->query("update cert set path='$filename',cert_name='$_POST[name]' where id='$_POST[certid]'");
 		if(file_exists("../../".$_POST[path]))
-		unlink("../../".$info[comm_code]);
+			unlink("../../".$info[path]);
   		echo "<script>alert('证书信息、图片修改成功!');location.href='../cert.php';</script>";
 	}else{
 		$db->query("update cert set cert_name='$_POST[name]' where  id='$_POST[certid]'");

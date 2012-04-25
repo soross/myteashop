@@ -586,8 +586,7 @@ function getObjectBySql($sql,$db){
 
 
 $db=new mysql("localhost", "wjc", "wjc", "edu", ALL_PS, "GBK");
-//$db=new mysql("hdm-004.hichina.com", "hdm0040706", "c7b3m1a6z9", "hdm0040706_db", ALL_PS, "GBK");
-
+//$db=new mysql("localhost", "hbccedu", "b2a4n4", "hbccedu", ALL_PS, "GBK");
 
 require_once("public.fun.class.php");
 ?>

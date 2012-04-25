@@ -8,7 +8,7 @@ $case=' 1=1 ';
 if(isset($_GET[task])&&"SearchNews"==$_GET[task]){
 	$search = array();
 	if(!empty($_GET[type])&&"-1"!=$_GET[type]){
-		$case = $case." and type_id=".$_GET[type]." ";
+		$case = $case." and type_id in(select id from type where id='".$_GET[type]."' or pid='".$_GET[type]."') ";
 		$search[type]=$_GET[type];
 	}
 	if(isset($_GET[kw])&&!empty($_GET[kw])){
@@ -19,7 +19,7 @@ if(isset($_GET[task])&&"SearchNews"==$_GET[task]){
 
 }
 
-$pagesize = 5;//一页显示多少条
+$pagesize = 15;//一页显示多少条
 //分页
 $queryTotal = $db->query("select id from news where ".$case);
 $total = $db->db_num_rows($queryTotal);
@@ -40,6 +40,7 @@ $smarty->assign("typelist",$list);
 
 //显示分页的内容
 $smarty->assign("page",$pagenav);
+$smarty->assign("cpage",$page);
 
 $smarty->display("news.html");
 ?>

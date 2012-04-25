@@ -140,19 +140,11 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">新闻管理-新闻列表</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">文章管理-文章列表</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-             <!-- <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center">
-                        <input type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
-                  </tr>
-              </table></td> -->
               <td width="60">
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
@@ -163,17 +155,6 @@ for(i=0;i<cs.length;i++){
               	</table>
 
               </td>
-             <!--  <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/114.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
-              </table></td>
-              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="STYLE1"><div align="center"><img src="images/tab/083.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">删除</div></td>
-                  </tr> -->
               </table>
 
               </td>
@@ -192,7 +173,7 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3" align="center">
         	<table width="70%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 			  <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>新闻搜索</strong></td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px"><strong>文章搜索</strong></td>
 	          </tr>
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">关键字：</td>
@@ -201,12 +182,19 @@ for(i=0;i<cs.length;i++){
 				</td>
 	          </tr>
 	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">新闻类型：</td>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" width="30%" align="right">文章类型：</td>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left">
 					&nbsp;<select name="type">
 					<option value="-1">==请选择==</option>
 					{section name=list loop=$typelist}
-					<option value="{$typelist[list].id}" {if $search.type==$typelist[list].id}selected{/if}>{$typelist[list].type_name}</option>
+						{if $typelist[list].pid==-1}
+							<option value="{$typelist[list].id}" {if $search.type==$typelist[list].id}selected{/if}>{$typelist[list].type_name}</option>
+							{section name=lt loop=$typelist}
+								{if $typelist[list].id==$typelist[lt].pid}
+								<option value="{$typelist[lt].id}" {if $search.type==$typelist[lt].id}selected{/if}>&nbsp;&nbsp;{$typelist[lt].type_name}</option>
+								{/if}
+							{/section}
+						{/if}
 					{/section}
 					</select>
 				</td>
@@ -238,10 +226,11 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td width="10%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="34%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
+
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">类型</div></td>
         	<td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">点击数</div></td>
             <td width="11%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
           </tr>
@@ -250,12 +239,13 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">{$newsRow[list].title}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $newsRow[list].isshow==1}<img src='../{$newsRow[list].path}' witdth="90" height="54">{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].type_name}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].click}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].create_dates}</div></td>
+			<td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $newsRow[list].isshow==1}<img src='../{$newsRow[list].path}' witdth="90" height="54">{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}">编辑</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].src}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].src}';">删除</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&cpage={$cpage}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定删除吗?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&cpage={$cpage}';">删除</a><span class="STYLE1">]</span></div></td>
+
           </tr>
 
           {sectionelse}

@@ -7,8 +7,9 @@ if(isset($_GET[newsid])&& !empty($_GET[newsid])){
 	$info = $db->fetch_array($query);
 	$smarty->assign("newsinfo",$info);
 
-	$rows = getList(" menu ",$db);
-	$smarty->assign("typeRows",$rows);
+	//not EXISTS( SELECT 1 from news n where n.type_id=t.id and t.isnewslist = 0 ) and
+	$rows = getList(" type AS t where  t.flag='1'",$db);
+	$smarty->assign("typelist",$rows);
 
 	$smarty->display("updatenews.html");
 }else{

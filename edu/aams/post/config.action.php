@@ -26,9 +26,9 @@ if(isset($_POST[task]) && "updateAboutInfo"==$_POST[task]){
 
 
 //首页优势简要信息修改
-}else if(isset($_POST[task]) && "updateSupIndex"==$_POST[task]){
-	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='Superiority' ");
-	echo "<script>alert('首页优势简要信息修改成功!');location.href='../sup.php';</script>";
+}else if(isset($_POST[task]) && "updateCopyInfo"==$_POST[task]){
+	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_type='Copy_Info' ");
+	echo "<script>alert('Copy信息修改成功!');location.href='../copy.php';</script>";
 
 //新增公司简介详细内容栏目
 }else if(isset($_POST[task]) && "addSup"==$_POST[task]){

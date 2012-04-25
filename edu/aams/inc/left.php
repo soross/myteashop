@@ -99,6 +99,7 @@ function MM_swapImage() { //v3.0
 	       <p>-&nbsp;<a href="../contactus.php" target="dataFrame">联系我们配置</a></p>
 	      <p>-&nbsp;<a href="../logo.php" target="dataFrame">Logo配置</a></p>
 	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页Banner配置</a></p>
+	      <p>-&nbsp;<a href="../copy.php" target="dataFrame">底部Copy配置</a></p>
 	    </div>
 	  </li>
 	  <li>

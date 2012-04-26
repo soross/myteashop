@@ -16,8 +16,20 @@ $seo['desc']=$desc[comm_value];
 $smarty->assign("seo",$seo);
 
 //logo
-$logoInfo = getListBySql("select comm_code from comm_code where comm_type='Logo'",$db);
-$smarty->assign("logoinfo",$logoInfo[0][comm_code]);
+$logoInfo = getListBySql("select comm_code,remark from comm_code where comm_type='Logo'",$db);
+$logo = array();
+for ($i = 0; $i < sizeof($logoInfo); $i++) {
+	if($logoInfo[$i][remark]=="Logo"){
+		$logo["logo"]=$logoInfo[$i][comm_code];
+	}
+	if($logoInfo[$i][remark]=="KouHao"){
+		$logo["kh"]=$logoInfo[$i][comm_code];
+	}
+	if($logoInfo[$i][remark]=="LinkInfo"){
+		$logo["linkinfo"]=$logoInfo[$i][comm_code];
+	}
+}
+$smarty->assign("logoinfo",$logo);
 
 //µ×²¿ÐÅÏ¢
 $copyInfo = getObject("comm_code where comm_type='Copy_Info'", $db ,"comm_value");

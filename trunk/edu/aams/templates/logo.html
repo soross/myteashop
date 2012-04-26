@@ -97,6 +97,22 @@ for(i=0;i<cs.length;i++){
 }
 }
 </script>
+<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editorIndex;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|','source', 'wordpaste']
+		});
+	});
+</script>
 </head>
 {/literal}
 <body>
@@ -129,22 +145,87 @@ for(i=0;i<cs.length;i++){
         	<form action="post/config.action.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('是否确定修改?\n修改前请先保存旧文件。'); ">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		           <tr>
-		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1" width="20%"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
-					<input type="file"  id="filePath" name="filePath"><br>[支持格式：gif|jpg|png&nbsp;长宽：960px*150px&nbsp;大小：300Kb]<font style="color:red;">*</font>
+					<input type="file"  id="filePath" name="filePath"><br>[支持格式：gif|jpg|png&nbsp;长宽：450px*150px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 					</div></td>
 		          </tr>
 		          <tr>
-		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1" width="20%"><div align="center" class="STYLE2 STYLE1">Logo图片</div></td>
 		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
-					<img src="../{$info.comm_code}" width="480px" height="75px">
+					<img src="../{$info.logo}" width="225px" height="75px">
 					</div></td>
 		          </tr>
 		          <tr>
 		          	<td colspan="2" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
 		          	<br>&nbsp;<input class="submitButton" type="submit" value="修改Logo">&nbsp;<br>&nbsp;
-		          	<input type="hidden" id="logoid" name="logoid" value="{$info.id}">
+		          	<input type="hidden" id="path" name="path" value="{$info.logo}">
 		            <input type="hidden" id="task" name="task" value="modifyLogo">
+		          	</div></td>
+		          </tr>
+				</table>
+			</form>
+
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/config.action.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('是否确定修改?\n修改前请先保存旧文件。'); ">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		           <tr>
+		          	<td bgcolor="#FFFFFF" class="STYLE1" width="20%"><div align="center" class="STYLE2 STYLE1">口号图片</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
+					<input type="file"  id="filePath" name="filePath"><br>[支持格式：gif|jpg|png&nbsp;长宽：313px*77px&nbsp;大小：100Kb]<font style="color:red;">*</font>
+					</div></td>
+		          </tr>
+		          <tr>
+		          	<td bgcolor="#FFFFFF" class="STYLE1" width="20%"><div align="center" class="STYLE2 STYLE1">口号图片</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
+					<img src="../{$info.kh}" width="313px" height="77px">
+					</div></td>
+		          </tr>
+		          <tr>
+		          	<td colspan="2" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
+		          	<br>&nbsp;<input class="submitButton" type="submit" value="修改口号">&nbsp;<br>&nbsp;
+		          	<input type="hidden" id="path" name="path" value="{$info.kh}">
+		            <input type="hidden" id="task" name="task" value="modifyKH">
+		          	</div></td>
+		          </tr>
+				</table>
+			</form>
+
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        	<form action="post/config.action.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('是否确定修改?\n修改前请先保存旧文件。'); ">
+		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		           <tr>
+		          	<td bgcolor="#FFFFFF" class="STYLE1" width="20%"><div align="center" class="STYLE2 STYLE1">Logo联系方式</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
+		          	<textarea id="content" name="content" style="width:500px;height:100px;visibility:hidden;">{$info.linkinfo}</textarea>
+					</div></td>
+		          </tr>
+		          <tr>
+		          	<td colspan="2" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">
+		          	<br>&nbsp;<input class="submitButton" type="submit" value="Logo联系方式修改">&nbsp;<br>&nbsp;
+		            <input type="hidden" id="task" name="task" value="modifyLinkInfo">
 		          	</div></td>
 		          </tr>
 				</table>

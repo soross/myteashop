@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<body>
+<div class='QQbox' id='divQQbox' >
+<div class='Qlist' id='divOnline' style='display : none;'>
+<div class='t'></div>
+<div class='infobox'>
+{section name=list loop=$online}
+{if $online[list].key=="Tell"}
+{$online[list].text}<br>{$online[list].value}
+{/if}
+{/section}
+</div>
+<div class='con'>
+<ul>
+{section name=list loop=$online}
+{if $online[list].key=="QQ"}
+<li class=odd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$online[list].text}&site=qq&menu=yes">
+	<img border="0" src="http://wpa.qq.com/pa?p=2:{$online[list].text}:42" alt="{$online[list].value}" title="{$online[list].value}"></a></li>
+{/if}
+{/section}
+<!--
+<li class=odd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=849003764&site=qq&menu=yes">
+	<img border="0" src="http://wpa.qq.com/pa?p=2:849003764:42" alt="Boiling/恒康" title="Boiling/恒康"></a></li>
+<li class=odd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=626628381&site=qq&menu=yes">
+	<img border="0" src="http://wpa.qq.com/pa?p=2:626628381:42" alt="进口滑板" title="进口滑板"></a></li>
+<li class=odd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2547252687&site=qq&menu=yes">
+	<img border="0" src="http://wpa.qq.com/pa?p=2:2547252687:42" alt="Ipath/Globe" title="Ipath/Globe"></a></li>
+-->
+{section name=list loop=$online}
+{if $online[list].key=="Tell"}
+<li>{$online[list].text}</li>
+{/if}
+{/section}
+
+<!--
+<li style="text-align:center" id="closeli"><a href="javascript:;" onclick='hideMsgBox(event);'>关闭客服</a></li>
+-->
+</ul>
+</div>
+<div class='b'></div>
+</div>
+<div id='divMenu' onmouseover='OnlineOver();'><img src='images/qq/qq_1.gif' class='press' alt='在线咨询'></div>
+</div>
+</body>
+</html>
+ {literal}
+<script type="text/javascript">
+$().ready(function(){
+
+　 var browser=navigator.userAgent; //取得浏览器属性
+　 if (browser.indexOf("Chrome")>0){ //如果是google
+ 	$("#closeli").show();
+   }
+   else
+   {
+	 $("#divOnline").bind('mouseout',function(event) {hideMsgBox(event)});
+	 $("#closeli").hide();
+   }
+	$(window).scroll(function() {
+		window.setTimeout(function(){
+		var bodyTop = 0;
+		if (typeof window.pageYOffset != 'undefined') {
+			bodyTop = window.pageYOffset;
+		} else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') {
+			bodyTop = document.documentElement.scrollTop;
+		}
+		else if (typeof document.body != 'undefined') {
+			bodyTop = document.body.scrollTop;
+		}
+
+		$("#divQQbox").css("top", 100 + bodyTop)
+		//$("#divQQbox").text(bodyTop);
+		},300)
+	})
+});
+function OnlineOver(){
+
+document.getElementById("divMenu").style.display = "none";
+
+document.getElementById("divOnline").style.display = "block";
+
+document.getElementById("divQQbox").style.width = "170px";
+
+}
+
+
+
+function OnlineOut(){
+
+document.getElementById("divMenu").style.display = "block";
+
+document.getElementById("divOnline").style.display = "none";
+
+
+
+}
+
+function hideMsgBox(theEvent){ //theEvent用来传入事件，Firefox的方式
+
+　 if (theEvent){
+
+　 var browser=navigator.userAgent; //取得浏览器属性
+
+
+　 if (browser.indexOf("Firefox")>0){ //如果是Firefox
+
+　　 if (document.getElementById('divOnline').contains(theEvent.relatedTarget)) { //如果是子元素
+
+　　 return; //结束函式
+
+    }
+
+   }
+   if (browser.indexOf("MSIE")>0){ //如果是IE
+
+		if (document.getElementById('divOnline').contains(event.toElement)) { //如果是子元素
+
+		 return; //结束函式
+
+		}
+
+	}
+
+}
+/*要执行的操作*/
+document.getElementById("divMenu").style.display = "block";
+document.getElementById("divOnline").style.display = "none";
+}
+
+</script>
+ {/literal}

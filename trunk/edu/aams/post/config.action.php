@@ -2,28 +2,15 @@
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 
-//首页公司简介简要信息修改
+//机构简介
 if(isset($_POST[task]) && "updateAboutInfo"==$_POST[task]){
 	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='about.php' and comm_type='Menu' ");
 	echo "<script>alert('机构简介信息修改成功!');location.href='../aboutme.php';</script>";
 
-//新增公司简介详细内容栏目
+//联系方式信息
 }else if(isset($_POST[task]) && "updateContactInfo"==$_POST[task]){
 	$db->query("update comm_code set comm_value='".replace($_POST[contentIndex])."' where comm_code='contact.php' and comm_type='Menu' ");
 	echo "<script>alert('联系我们修改成功!');location.href='../contactus.php';</script>";
-
-//公司简介栏目信息修改
-}else if(isset($_POST[task]) && "updateAbout"==$_POST[task]){
-	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[aboutid]])."' where id='$_POST[aboutid]' ");
-	echo "<script>alert('公司简介栏目信息修改成功!');location.href='../aboutme.php';</script>";
-
-//删除公司简介栏目信息
-}else if(isset($_GET[task]) && "deleteAbout"==$_GET[task]){
-	$db->query("delete from comm_code where id='$_GET[aboutid]' ");
-	echo "<script>alert('公司简介栏目信息删除成功?');location.href='../aboutme.php';</script>";
-
-
-
 
 //更新Copy信息
 }else if(isset($_POST[task]) && "updateCopyInfo"==$_POST[task]){
@@ -43,37 +30,6 @@ if(isset($_POST[task]) && "updateAboutInfo"==$_POST[task]){
 		$db->query('commit');
 		echo "<script>alert('SEO信息修改成功!');location.href='../seo.php'</script>";
 	}
-//公司简介栏目信息修改
-}else if(isset($_POST[task]) && "updateSup"==$_POST[task]){
-	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[supid]])."' where id='$_POST[supid]' ");
-	echo "<script>alert('优势栏目信息修改成功!');location.href='../sup.php';</script>";
-
-//删除公司简介栏目信息
-}else if(isset($_GET[task]) && "deleteSup"==$_GET[task]){
-	$db->query("delete from comm_code where id='$_GET[supid]' ");
-	echo "<script>alert('优势栏目信息删除成功?');location.href='../sup.php';</script>";
-
-
-//新增联系方式栏目
-}else if(isset($_POST[task]) && "addContact"==$_POST[task]){
-	$db->query("insert into comm_code(comm_type,comm_value,fkid) " .
-			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
-	echo "<script>alert('新增联系方式栏目成功!');location.href='../contactus.php';</script>";
-
-//联系方式信息修改
-}else if(isset($_POST[task]) && "updateContact"==$_POST[task]){
-	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[contactid]])."' where id='$_POST[contactid]' ");
-	echo "<script>alert('联系方式栏目信息修改成功!');location.href='../contactus.php';</script>";
-
-//删除联系方式信息
-}else if(isset($_GET[task]) && "deleteContact"==$_GET[task]){
-	$db->query("delete from comm_code where id='$_GET[contactid]' ");
-	echo "<script>alert('联系方式栏目信息删除成功?');location.href='../contactus.php';</script>";
-
-
-
-
-
 //新增证书
 }else if(isset($_POST[task]) && "addCert"==$_POST[task]){
 	//文件保存目录URL
@@ -117,22 +73,6 @@ else if(isset($_GET[task]) && "deleteCert"==$_GET[task]){
 
 
 }
-//首页合作伙伴简要信息
-else if(isset($_POST[task]) && "updatePartnerInfo"==$_POST[task]){
-	$db->query("update comm_code set comm_value='".replace($_POST[content])."' where comm_code='Partner' ");
-	echo "<script>alert('首页合作伙伴简要信息修改成功?');location.href='../partner.php';</script>";
-
-}else if(isset($_POST[task]) && "updatePartnerDesc"==$_POST[task]){
-	$db->query("update comm_code set comm_type='".replace($_POST[title])."',comm_value='".replace($_POST[content2])."' where id='$_POST[id]'");
-	echo "<script>alert('合作伙伴详细信息修改成功?');location.href='../partner.php';</script>";
-
-
-}
-
-
-
-
-
 //更新校企图片
 else if(isset($_POST[task]) && "updateSchoolLogo"==$_POST[task]){
 	//文件保存目录URL
@@ -230,15 +170,34 @@ else if(isset($_GET[task])&&"deleteLink"==$_GET[task]){
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*300)));
 	if($up->uploadFile('filePath')){
 		$filename = "images/".$up->getNewFileName();
-		$db->query("update comm_code set comm_code='$filename' where comm_type='Logo' and id='$_POST[logoid]'");
+		$db->query("update comm_code set comm_code='$filename' where comm_type='Logo' and remark='Logo'");
+		if(file_exists("../../".$_POST[path]))
+			unlink("../../".$_POST[path]);
   		echo "<script>alert('Logo修改成功!');location.href='../logo.php';</script>";
 	}else{
 		echo "<script>alert('Logo修改失败!');location.href='../logo.php';</script>";
 	}
-
-	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
-	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
-
+//修改口号 ../images/tou.gif
+}else if(isset($_POST[task]) && "modifyKH"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/';
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif','jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*300)));
+	if($up->uploadFile('filePath')){
+		$filename = "images/".$up->getNewFileName();
+		$db->query("update comm_code set comm_code='$filename' where comm_type='Logo' and remark='KouHao'");
+		if(file_exists("../../".$_POST[path]))
+			unlink("../../".$_POST[path]);
+  		echo "<script>alert('口号修改成功!');location.href='../logo.php';</script>";
+	}else{
+		echo "<script>alert('口号修改失败!');location.href='../logo.php';</script>";
+	}
+//修改联系方式 ../images/tou.gif
+}else if(isset($_POST[task]) && "modifyLinkInfo"==$_POST[task]){
+		$db->query("update comm_code set comm_code='$_POST[content]' where comm_type='Logo' and remark='LinkInfo'");
+  		echo "<script>alert('Logo联系方式修改成功!');location.href='../logo.php';</script>";
 
 //修改modifyBanner
 }else if(isset($_POST[task]) && "modifyBanner"==$_POST[task]){

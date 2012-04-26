@@ -222,6 +222,11 @@ else if(isset($_GET[task])&&"deleteLink"==$_GET[task]){
 	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
 	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
 
+//更新在线客服信息
+}else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
+		$db->query("update comm_code set comm_code='$_POST[comm_code]',comm_value='$_POST[comm_value]' where comm_type='OnlineService' and id='$_POST[onlineid]'");
+  		echo "<script>alert('在线客户信息更新成功!');location.href='../imconfig.php';</script>";
+
 }
 else{
 	echo "<script>alert('操作失败!');window.history.back(-1);</script>";

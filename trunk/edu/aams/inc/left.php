@@ -100,6 +100,7 @@ function MM_swapImage() { //v3.0
 	      <p>-&nbsp;<a href="../logo.php" target="dataFrame">Logo配置</a></p>
 	      <p>-&nbsp;<a href="../indexad.php" target="dataFrame">首页Banner配置</a></p>
 	      <p>-&nbsp;<a href="../copy.php" target="dataFrame">底部Copy配置</a></p>
+	      <p>-&nbsp;<a href="../imconfig.php" target="dataFrame">在线客服配置</a></p>
 	      <p>-&nbsp;<a href="../seo.php" target="dataFrame">SEO信息配置</a></p>
 	    </div>
 	  </li>

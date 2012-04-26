@@ -31,6 +31,29 @@ for ($i = 0; $i < sizeof($logoInfo); $i++) {
 }
 $smarty->assign("logoinfo",$logo);
 
+//onlineService
+$service = getListBySql("select comm_code,remark,comm_value from comm_code where comm_type='OnlineService'",$db);
+$online = array();
+for ($i = 0; $i < sizeof($service); $i++) {
+	$tmp = array();
+	if($service[$i][remark]=="Time"){
+		$tmp["text"]=$service[$i][comm_code];
+		$tmp["value"]=$service[$i][comm_value];
+		$tmp["key"]='Time';
+	}
+	if($service[$i][remark]=="Tell"){
+		$tmp["text"]=$service[$i][comm_code];
+		$tmp["key"]='Tell';
+	}
+	if($service[$i][remark]=="QQ"){
+		$tmp["text"]=$service[$i][comm_code];
+		$tmp["value"]=$service[$i][comm_value];
+		$tmp["key"]='QQ';
+	}
+	$online[$i]=$tmp;
+}
+$smarty->assign("online",$online);
+
 //µ×²¿ÐÅÏ¢
 $copyInfo = getObject("comm_code where comm_type='Copy_Info'", $db ,"comm_value");
 $smarty->assign("copyInfo",$copyInfo[comm_value]);

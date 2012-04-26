@@ -140,7 +140,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">技术支持管理-在线客服配置</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-在线客服配置</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -166,27 +166,22 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="20%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ/MSN号码</div></td>
-            <td width="40%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图标</div></td>
-            <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文字</div></td>
-            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
+            <td width="40%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ/MSN号码</div></td>
+            <td width="40%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">提示信息</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
           </tr>
           {/literal}
-          {section name=list loop=$imList}
+          {section name=list loop=$online}
           <tr>
           <form action="post/config.action.php" method="post"  enctype="multipart/form-data">
             <td height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
-            	&nbsp;<input type="text" id="comm_code" name="comm_code" value="{$imList[list].comm_code}"></div></td>
-            <td height="30" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-            	&nbsp;<img src="../{$imList[list].comm_value}">&nbsp;
-            	<input type="file" id="comm_value" name="comm_value"></div></td>
-            <td height="30" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-            	&nbsp;<input type="text" id="remark" name="remark" value="{$imList[list].remark}"></div></td>
+            	&nbsp;<input type="text" id="comm_code" name="comm_code" value="{$online[list].text}" size="40"></div></td>
+            <td height="30" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	&nbsp;<input type="text" id="comm_value" name="comm_value" value="{$online[list].value}"></div></td></div></td>
             <td height="30" bgcolor="#FFFFFF"><div align="center">
             	<input type="hidden" id="task" name="task" value="updateImConfig">
-            	<input type="hidden" id="imId" name="imId" value="{$imList[list].id}">
-            	<input type="hidden" id="path" name="path" value="{$imList[list].comm_value}">
-            	<input type="submit" value="更新">
+            	<input type="hidden" id="onlineid" name="onlineid" value="{$online[list].id}">
+            	<input type="submit" class="submitButton" value="更新">
             </div></td>
           </form>
           </tr>

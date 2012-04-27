@@ -1,0 +1,136 @@
+<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+
+
+<input class="Wdate" type="text" onClick="WdatePicker()"> <font color=red>&lt;- 点我弹出日期控件</font>
+<br>
+
+<input type="text" id="d241" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" style="width:100px"/>
+<br>
+	日期格式表
+        <table width="100%" border="0" cellspacing="1">
+          <tr>
+            <th width="12%">格式</th>
+            <th width="88%">说明</th>
+          </tr>
+          <tr>
+            <td align="center">y</td>
+            <td>将年份表示为最多两位数字。如果年份多于两位数，则结果中仅显示两位低位数。</td>
+          </tr>
+          <tr>
+            <td align="center">yy </td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">yyy</td>
+            <td>将年份表示为三位数字。如果少于三位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">yyyy</td>
+            <td>将年份表示为四位数字。如果少于四位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">M</td>
+            <td>将月份表示为从 1 至 12 的数字</td>
+          </tr>
+          <tr>
+            <td align="center">MM</td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">MMM</td>
+            <td>返回月份的缩写 一月 至 十二月 (英文状态下 Jan to Dec) 。</td>
+          </tr>
+          <tr>
+            <td align="center">MMMM</td>
+            <td>返回月份的全称 一月 至 十二月 (英文状态下 January to December) 。</td>
+          </tr>
+          <tr>
+            <td align="center">d</td>
+            <td>将月中日期表示为从 1 至 31 的数字。</td>
+          </tr>
+          <tr>
+            <td align="center">dd</td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">H </td>
+            <td>将小时表示为从 0 至 23 的数字。</td>
+          </tr>
+          <tr>
+            <td align="center">HH</td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">m</td>
+            <td>将分钟表示为从 0 至 59 的数字。</td>
+          </tr>
+          <tr>
+            <td align="center">mm</td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">s</td>
+            <td>将秒表示为从 0 至 59 的数字。</td>
+          </tr>
+          <tr>
+            <td align="center">ss</td>
+            <td>同上，如果小于两位数，前面补零。</td>
+          </tr>
+          <tr>
+            <td align="center">w</td>
+            <td>返回星期对应的数字 0 (星期天) - 6 (星期六) 。</td>
+          </tr>
+          <tr>
+            <td align="center">D</td>
+            <td>返回星期的缩写 一 至 六 (英文状态下 Sun to Sat) 。</td>
+          </tr>
+          <tr>
+            <td align="center">DD</td>
+            <td>返回星期的全称 星期一 至 星期六 (英文状态下 Sunday to Saturday) 。</td>
+          </tr>
+          <tr>
+            <td align="center">W</td>
+            <td>返回周对应的数字 (1 - 53) 。</td>
+          </tr>
+          <tr>
+            <td align="center">WW</td>
+            <td>同上，如果小于两位数，前面补零 (01 - 53) 。</td>
+          </tr>
+        </table>
+        <br />
+    示例<br />
+        <table width="100%" border="0" cellspacing="1">
+          <tr>
+            <th width="191">格式字符串</th>
+            <th width="460">值</th>
+          </tr>
+          <tr>
+            <td>yyyy-MM-dd HH:mm:ss</td>
+            <td>2008-03-12 19:20:00</td>
+          </tr>
+          <tr>
+            <td>yy年M月</td>
+            <td>08年3月</td>
+          </tr>
+          <tr>
+            <td>yyyyMMdd</td>
+            <td>20080312</td>
+          </tr>
+          <tr>
+            <td>今天是:yyyy年M年d HH时mm分 </td>
+            <td>今天是:2008年3月12日 19时20分</td>
+          </tr>
+          <tr>
+            <td>H:m:s</td>
+            <td>19:20:0</td>
+          </tr>
+          <tr>
+            <td>y年</td>
+            <td>8年</td>
+          </tr>
+          <tr>
+            <td>MMMM d, yyyy</td>
+            <td>三月 12, 2008</td>
+          </tr>
+        </table>
+

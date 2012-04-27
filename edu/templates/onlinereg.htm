@@ -59,9 +59,9 @@
 								<td align="left"><input name="xm" type="text" id="xm" value="{$user.xm}"
 									style="font-size: 14px" size="10" maxlength="5"> *</td>
 								<td align="center">出生年月：</td>
-								<td align="left"><INPUT id=birth value="{$user.ny}"
-									style="BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 9pt; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; COLOR: #cccccc; BORDER-BOTTOM: #cccccc 1px solid; FONT-STYLE: normal; FONT-VARIANT: normal"
-									 size=18x name=ny>&nbsp;*</td>
+								<td align="left"><INPUT id=birth value="{$user.ny}" readonly="readonly"
+									style="width:150px;BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 9pt; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; COLOR: #cccccc; BORDER-BOTTOM: #cccccc 1px solid; FONT-STYLE: normal; FONT-VARIANT: normal"
+									size=18x name=ny onfocus="{literal}WdatePicker({dateFmt:'yyyy-MM-dd'}){/literal}" class="Wdate">*</td>
 							</tr>
 							<tr>
 								<td align="center">民&nbsp;&nbsp;&nbsp;&nbsp;族：</td>
@@ -510,7 +510,7 @@ function CheckForm()
 {/literal}
 
 {include file="inc/qq.html"}
-
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 {literal}
 <script language="JavaScript" type="text/javascript" src="js/online/qq.php"></script>
 <!-- JiaThis Button BEGIN -->

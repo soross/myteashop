@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<link rel="stylesheet" type="text/css" href="css/thickbox.css"/>
 <title>无标题文档</title>
 <style type="text/css">
 <!--
@@ -149,7 +150,7 @@ function showOrderList(trid){
 					<table>
 	            	<tr><td align="right">合同号：</td><td><input type="text" id="key" name="key" value="{$key}" size="20" maxlength="30"></td><td></td></tr>
 	            	<tr><td align="right">排单时间：</td><td><input type="text" id="sdate" name="sdate" value="{$sdate}" size="20" maxlength="30"
-	            	 onfocus="javascript:ShowCalendar(this.id)"  readonly="readonly"></td>
+	            	 onfocus="{literal}WdatePicker({dateFmt:'yyyy-MM-dd'}){/literal}" class="Wdate"  readonly="readonly"></td>
 	            	<td><input type="submit" value="搜索" class="submitButton"></td></tr>
 					</table>
 
@@ -180,14 +181,22 @@ function showOrderList(trid){
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderid}</div></td>
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
             	{if $orderlist[list].pddate==''}
+            	<!--
             	<input type="button" value="排单" class="submitButton"  onclick="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';">
+            	 -->
+            	<div align="center"><a href="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';">去排单</a><span class="STYLE1">]</span></div>
             	{else}
             	{$orderlist[list].pddate}
             	{/if}
             </div></td>
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
             	{if $orderlist[list].jcdate==''}
+            	<!--
             	<input type="button" value="进仓" class="submitButton" onclick="javascript:if(confirm('确定进仓?'))location.href='post/order.action.php?task=orderJC&itemid={$orderlist[list].id}';">
+
+            	<a href="ShowLogin.php?height=50;width=300&itemid={$orderlist[list].id}" name="{$orderlist[list].id}" title="{$orderlist[list].id}" class="thickbox">进仓</a>
+            	 -->
+            	<div align="center"><a href="ShowLogin.php?height=50;width=300&itemid={$orderlist[list].id}" title="{$orderlist[list].id}" class="thickbox"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="ShowLogin.php?height=50;width=300&itemid={$orderlist[list].id}" title="{$orderlist[list].id}" class="thickbox">进仓时间</a><span class="STYLE1">]</span></div>
             	{else}
             	{$orderlist[list].jcdate}
             	{/if}
@@ -270,5 +279,7 @@ function showOrderList(trid){
   </tr>
 </table>
 </body>
-<script src="js/Calendar.js" language="JavaScript" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/thickbox_plus.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 </html>

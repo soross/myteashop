@@ -123,6 +123,24 @@ for(i=0;i<cs.length;i++){
 			document.getElementById('newsFile').style.display="block";
 		}
 	}
+	function checkRadioFile(obj){
+		if(obj.value=="0"){
+			document.getElementById('isNewsFile').style.display="none";
+			document.getElementById('newsContent').style.display="block";
+		}else{
+			document.getElementById('isNewsFile').style.display="block";
+			document.getElementById('newsContent').style.display="none";
+		}
+	}
+	function isFileNews(obj){
+		if(obj.value=="9"){
+			document.getElementById('isFile').style.display="block";
+			document.getElementById('newsFastNav').style.display="none";
+		}else{
+			document.getElementById('isFile').style.display="none";
+			document.getElementById('newsFastNav').style.display="block";
+		}
+	}
 </script>
 
 
@@ -135,7 +153,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">文章管理-发布文章</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">文章管理-文章更新</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -165,7 +183,7 @@ for(i=0;i<cs.length;i++){
 		          <tr id="newsType">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文章类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <select id="type" name="type">
+		            <select id="type" name="type"  onchange="javascript:isFileNews(this);">
 		            	{section name=list loop=$typelist}
 							{if $typelist[list].pid==-1}
 								<option value="{$typelist[list].id}" {if $newsinfo.type_id==$typelist[list].id}selected{/if}>{$typelist[list].type_name}</option>
@@ -178,7 +196,27 @@ for(i=0;i<cs.length;i++){
 						{/section}
 		            </select><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr id="newsAuthor">
+		          <tr id="isFile" style="display:{if $newsinfo.filepath==""}none{else}block{/if};">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否直接上传文件</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="radio" id="isfilenews" name="isfilenews" value="1" onclick="javascript:checkRadioFile(this);" {if $newsinfo.filepath!=""}checked{/if}>是&nbsp;&nbsp;<input type="radio" id="isfilenews" name="isfilenews" value="0"  {if $newsinfo.filepath==""}checked{/if}  onclick="javascript:checkRadioFile(this);">否&nbsp;[可以直接提供文档供下载]<font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="filename" style="display:{if $newsinfo.filepath==""}none{else}block{/if};">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文件名称</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	&nbsp;{$newsinfo.filename}
+		            </div></td>
+		          </tr>
+		          <tr id="isNewsFile" style="display:{if $newsinfo.filepath==""}none{else}block{/if};">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">请选择文件</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="uploadfile" name="uploadfile" ><br>
+		            	[支持格式：word|excel|ppt|txt&nbsp;&nbsp;大小：500K]<font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+
+		          <tr id="newsFastNav" style="display:{if $newsinfo.filepath!=""}none{else}block{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否为快速导航</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="radio" id="isshow" name="isshow" value="1" onclick="javascript:checkRadio(this);"
@@ -186,14 +224,12 @@ for(i=0;i<cs.length;i++){
 		            	 onclick="javascript:checkRadio(this);" {if $newsinfo.isshow==''}checked{/if}>否&nbsp;[是否在首页"快递导航"模块展示]<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          {if $newsinfo.isshow=='1'}
-		          <tr style="display:block;">
+		          <tr style="display:{if $newsinfo.isshow=='1'}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<img src="../{$newsinfo.path}" width="150px" height="90px">
 		            </div></td>
 		          </tr>
-				 {/if}
 		          <tr id="newsFile" style="display:{if $newsinfo.isshow=='1'}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">快速导航图片</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
@@ -201,14 +237,14 @@ for(i=0;i<cs.length;i++){
 		            	[支持格式：gif|png|jpg&nbsp;&nbsp;长宽307px*185px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-
-		          <tr id="newsAuthor">
+		          <tr id="newsClick">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">初始点击数</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="text" id="click" name="click" value="{$newsinfo.click}" size="10" maxlength="10"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsContent">
+
+		          <tr id="newsContent" style="display:{if $newsinfo.filepath!=""}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;">{$newsinfo.content}</textarea><font style="color:red;">*</font>
@@ -223,6 +259,7 @@ for(i=0;i<cs.length;i++){
 						<input type="hidden" name="srcisshow" name="srcisshow" value="{$newsinfo.isshow}">
 		            	<input type="hidden" name="path" name="path" value="{$newsinfo.path}">
 		            	<input type="hidden" name="newsid" name="newsid" value="{$newsinfo.id}">
+		            	<input type="hidden" name="srcfilepath" name="srcfilepath" value="{$newsinfo.filepath}">
 		            	<input type="hidden" name="srctypeid" name="srctypeid" value="{$newsinfo.type_id}">
 		            </div></td>
 		          </tr>

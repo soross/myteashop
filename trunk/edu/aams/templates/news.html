@@ -242,9 +242,13 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].type_name}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].click}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$newsRow[list].create_dates}</div></td>
-			<td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $newsRow[list].isshow==1}<img src='../{$newsRow[list].path}' witdth="90" height="54">{/if}</div></td>
+			<td height="18" bgcolor="#FFFFFF">
+				<div align="center" class="STYLE2 STYLE1">
+				{if $newsRow[list].isshow==1}<img src='../{$newsRow[list].path}' witdth="90" height="54">{/if}
+				{if $newsRow[list].filepath!=""}{$newsRow[list].filename}{/if}
+				</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center"><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="post/news.action.php?task=toUpdateNews&newsid={$newsRow[list].id}">±à¼­</a><span class="STYLE1">]</span></div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('È·¶¨É¾³ýÂð?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&cpage={$cpage}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('È·¶¨É¾³ýÂð?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&cpage={$cpage}';">É¾³ý</a><span class="STYLE1">]</span></div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('È·¶¨É¾³ýÂð?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&file={$newsRow[list].filepath}&cpage={$cpage}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('È·¶¨É¾³ýÂð?'))location.href='post/news.action.php?task=deleteNews&newsid={$newsRow[list].id}&path={$newsRow[list].path}&file={$newsRow[list].filepath}&cpage={$cpage}';">É¾³ý</a><span class="STYLE1">]</span></div></td>
 
           </tr>
 

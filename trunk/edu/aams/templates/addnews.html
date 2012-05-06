@@ -123,6 +123,24 @@ for(i=0;i<cs.length;i++){
 			document.getElementById('newsFile').style.display="block";
 		}
 	}
+	function checkRadioFile(obj){
+		if(obj.value=="0"){
+			document.getElementById('isNewsFile').style.display="none";
+			document.getElementById('newsContent').style.display="block";
+		}else{
+			document.getElementById('isNewsFile').style.display="block";
+			document.getElementById('newsContent').style.display="none";
+		}
+	}
+	function isFileNews(obj){
+		if(obj.value=="9"){
+			document.getElementById('isFile').style.display="block";
+			document.getElementById('newsFastNav').style.display="none";
+		}else{
+			document.getElementById('isFile').style.display="none";
+			document.getElementById('newsFastNav').style.display="block";
+		}
+	}
 </script>
 
 
@@ -165,7 +183,7 @@ for(i=0;i<cs.length;i++){
 		          <tr id="newsType">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文章类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <select id="type" name="type">
+		            <select id="type" name="type" onchange="javascript:isFileNews(this);">
 		            	{section name=list loop=$typelist}
 							{if $typelist[list].pid==-1}
 								<option value="{$typelist[list].id}" {if $search.type==$typelist[list].id}selected{/if}>{$typelist[list].type_name}</option>
@@ -178,7 +196,20 @@ for(i=0;i<cs.length;i++){
 						{/section}
 		            </select><font style="color:red;">*</font></div></td>
 		          </tr>
-		          <tr id="newsAuthor">
+		          <tr id="isFile" style="display:none;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否直接上传文件</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="radio" id="isfilenews" name="isfilenews" value="1" onclick="javascript:checkRadioFile(this);">是&nbsp;&nbsp;<input type="radio" id="isfilenews" name="isfilenews" value="0" checked  onclick="javascript:checkRadioFile(this);">否&nbsp;[可以直接提供文档供下载]<font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="isNewsFile" style="display:none;">
+		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">请选择文件</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="file" id="uploadfile" name="uploadfile" ><br>
+		            	[支持格式：word|excel|ppt|txt&nbsp;&nbsp;大小：500K]<font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr id="newsFastNav">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否为快速导航</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="radio" id="isshow" name="isshow" value="1" onclick="javascript:checkRadio(this);">是&nbsp;&nbsp;<input type="radio" id="isshow" name="isshow" value="0" checked  onclick="javascript:checkRadio(this);">否&nbsp;[是否在首页"快递导航"模块展示]<font style="color:red;">*</font>
@@ -191,7 +222,7 @@ for(i=0;i<cs.length;i++){
 		            	[支持格式：gif|png|jpg&nbsp;&nbsp;长宽307px*185px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="newsAuthor">
+		          <tr id="newsClick">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">初始点击数</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="text" id="click" name="click" size="10" maxlength="10"><font style="color:red;">*</font>

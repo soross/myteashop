@@ -40,8 +40,8 @@ else
 	if (isset ($_POST[task]) && $_POST[task] == "addOrder") {
 		if (isset ($_POST[custid]) && $_POST[custid] != -1) {
 			$db->query('start transaction');
-			$orderid = randNum();
-			$db->query("insert into orderitem(orderid,custid,create_date) values('" . $orderid . "','$_POST[custid]',now())");
+			//$orderid = randNum();//流水号生成，改成手工录入
+			$db->query("insert into orderitem(orderid,custid,create_date) values('" . $_POST[orderid] . "','".$_POST[custid]."',now())");
 			$insertID = $db->insert_id();
 
 			$prodid = $_POST[prodid];
@@ -135,15 +135,15 @@ else
 
 //进仓
 else
-	if (isset ($_GET[task]) && $_GET[task] == "orderJC") {
-		if (isset ($_GET[itemid]) && !empty ($_GET[itemid])) {
-			$db->query("select * from orderlist where isfinish='0' and orderid='" . $_GET[itemid] . "'");
+	if (isset ($_POST[task]) && $_POST[task] == "orderJC") {
+		if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
+			$db->query("select * from orderlist where isfinish='0' and orderid='" . $_POST[itemid] . "'");
 			$cnt = $db->db_num_rows();
 			if ($cnt > 0) {
 				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "订单明细未全部竣工,进仓失败!");
 				echo "<script>alert('订单明细未全部竣工,进仓失败!');location.href='../orderlist.php'</script>";
 			} else {
-				$db->query("update orderitem set jcdate=now() where id = '" . $_GET[itemid] . "'");
+				$db->query("update orderitem set jcdate='".$_POST[sdate]."' where id = '" . $_POST[itemid] . "'");
 				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "进仓", "订单已成功进仓!");
 				echo "<script>alert('订单已成功进仓!');location.href='../orderlist.php'</script>";
 			}
@@ -163,7 +163,7 @@ else
 				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "出仓", "订单明细未全部竣工,出仓失败!");
 				echo "<script>alert('订单明细未全部竣工,出仓失败!');location.href='../orderlist.php'</script>";
 			} else {
-				$db->query("update orderitem set ccdate=now(),staffid='".$_POST[staffid]."',yhy='".$_POST[yhy]."' where orderid = '" . $_POST[orderid] . "' ");
+				$db->query("update orderitem set ccdate='".$_POST[sdate]."',staffid='".$_POST[staffid]."',yhy='".$_POST[yhy]."' where orderid = '" . $_POST[orderid] . "' ");
 				$db->addLog("CAP04007", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "出仓", "订单已成功出仓!");
 				echo "<script>alert('订单已成功出仓!');location.href='../orderlist.php'</script>";
 			}
@@ -221,10 +221,52 @@ else
 			echo "OK";
 		}
 	}
+
+//修改排单
+else
+	if (isset ($_POST[task]) && "updateStaffJobMore" == $_POST[task]) {
+		$db->query('start transaction');
+		//$staffcnt = $_POST[staffcnt];
+		//将会用到implode() 函数进行PHP数组转字符串。而在PHP里，explode() 函数则是用来实现PHP字符串转数组的。
+		//$text = implode(",", $vegetables);
+		//$vegetables = explode(", ", $text);
+		$staffcnt = explode("#",$_POST[staffcnt]);
+		$m = date( "m" );
+		$y = date( "Y" );
+		for($i=0;$i<count($staffcnt);$i++){
+			$jobprice = getListBySql("select jobprice from jobprice where jobid='".$_POST[jobid]."' and prodid='".$_POST[prodid]."'",$db);
+			$info = explode("-",$staffcnt[$i]);
+			$sql = "insert into staffjob(staffid,jobpriceid,prodid,orderid,orderlistid,jobid,amount,m_job,y_job,create_date) ".
+					"values('".$info[0]."','".$jobprice[0][jobprice]."','".$_POST[prodid]."','".$_POST[oid]."','".$_POST[olid]."','".$_POST[jobid]."','".$info[1]."','$m','$y',now())";
+			$db->query($sql);
+			$sql="";
+		}
+		$db->query("delete from staffjob where id='$_POST[sjid]'");
+		if (mysql_errno()) {
+			$db->query('rollback');
+			$db->addLog("CAP14003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改员工作业","修改员工作业失败！".mysql_errno());
+			echo "DB_ERROR".mysql_errno();
+		} else {
+			$db->query('commit');
+			$db->addLog("CAP14003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改员工作业","修改员工作业成功！");
+			echo "OK";
+		}
+	}
 //完成全部排单
 else if(isset($_GET[task])&&"overAllPd"==$_GET[task]){
 	$db->query("update orderitem set pddate = now() where id = '".$_GET[oid]."'");
 	$db->addLog("CAP04006",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单排单","订单排单全部完成！");
 	echo "<script>alert('订单排单全部完成!');location.href='../orderlist.php'</script>";
 }
+//排单时间
+else if(isset($_POST[task])&&"orderPDdate"==$_POST[task]){
+	if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
+		$db->query("update orderitem set pddate ='".$_POST[sdate]."' where id = '".$_POST[itemid]."'");
+		$db->addLog("CAP04009",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单排单时间","订单排单时间录入成功！");
+		echo "<script>alert('订单排单时间录入时间!');location.href='../orderlist.php'</script>";
+	}else{
+		echo "<script>alert('非法操作!');location.href='../pd.php?orderid=$_POST[orderid]'</script>";
+	}
+}
+
 ?>

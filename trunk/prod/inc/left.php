@@ -74,14 +74,14 @@ function MM_swapImage() { //v3.0
 	        <td height="80" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">
 		        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 		          <tr>
-		            <td height="45"><div align="center"><a href="../nav.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
-		            <td><div align="center"><a href="../addnews.php" target="dataFrame"><img src="../images/main_28.gif" name="Image2" width="40" height="40" border="0" id="Image2" onmouseover="MM_swapImage('Image2','','../images/main_29_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
-		            <td><div align="center"><a href="../addcase.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td height="45"><div align="center"><a href="../prodlist.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td><div align="center"><a href="../orderlist.php" target="dataFrame"><img src="../images/main_28.gif" name="Image2" width="40" height="40" border="0" id="Image2" onmouseover="MM_swapImage('Image2','','../images/main_29_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
+		            <td><div align="center"><a href="../sallist.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		          </tr>
 		          <tr>
-		            <td height="25"><div align="center" class="STYLE2"><a href="../nav.php" target="dataFrame">产品查询</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addnews.php" target="dataFrame">订单查询</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../addcase.php" target="dataFrame">工资查询</a></div></td>
+		            <td height="25"><div align="center" class="STYLE2"><a href="../prodlist.php" target="dataFrame">产品查询</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../orderlist.php" target="dataFrame">订单查询</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../sallist.php" target="dataFrame">工资查询</a></div></td>
 		          </tr>
 		        </table>
 	        </td>

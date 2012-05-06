@@ -29,8 +29,7 @@
 			<item text="员工预支" id="addyz.php"/>
 		</item>
 		<item text="统计查询管理" id="-5">
-			<item text="订单统计报表查询" id="orderrpt.php"/>
-			<item text="员工工资查询" id="salrpt.php"/>
+			<item text="订单统计查询" id="orderrpt.php"/>
 			<item text="报表查询" id="rpt.php"/>
 		</item>
 		<item text="客户管理" id="-6">

@@ -3,9 +3,27 @@ require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
 if(isset($_POST[task]) && "addNews"==$_POST[task]){
 	if($_POST[isshow]=='0'){
-		$db->query("insert into news(title,click,content,create_date,type_id)" .
-				"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]')");
-		echo "<script>if(confirm('文章发布成功,是否继续发布?')){location.href='../addnews.php';}else{location.href='../news.php';}</script>";
+		if($_POST[isfilenews]=='0'){
+			$db->query("insert into news(title,click,content,create_date,type_id)" .
+					"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]')");
+			echo "<script>if(confirm('文章发布成功,是否继续发布?')){location.href='../addnews.php';}else{location.href='../news.php';}</script>";
+		}else{
+			//文件保存目录URL
+			$save_path = '../../file/';//201109281154581.jpg
+			//定义允许上传的文件扩展名
+			$ext_arr = array('word','excel', 'ppt','txt');
+			require "../action/FileUpload.class.php";
+			$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(500*1024)));//500k
+			if($up->uploadFile('uploadfile')){
+				$filename = "file/".$up->getNewFileName();
+				$srcfilename=$up->getSrcFileName();
+				$db->query("insert into news(title,click,content,create_date,type_id,filename,filepath)" .
+					"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]','$filename','$srcfilename')");
+		  		echo "<script>if(confirm('文章发布成功,是否继续发布?')){location.href='../addnews.php';}else{location.href='../news.php';}</script>";
+			}else{
+				echo "<script>alert('文章发布失败,请检查上传文件是否符合要求!');location.href='../addnews.php';</script>";
+			}
+		}
 	}else{
 		//文件保存目录URL
 		$save_path = '../../images/upload/';//201109281154581.jpg
@@ -27,6 +45,9 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 	if(file_exists("../../".$_GET[path])){
 		unlink("../../".$_GET[path]);
 	}
+	if(file_exists("../../".$_GET['file'])){
+		unlink("../../".$_GET['file']);
+	}
 	$db->query("delete from news where id = '$_GET[newsid]'");
 	echo "<script>alert('文章删除成功?');location.href='../news.php?page=$_GET[cpage]';</script>";
 
@@ -41,13 +62,39 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 		echo "<script>alert('文章更新失败,该类型文章已存在!');location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';</script>";
 	}else{
 		if($_POST[isshow]=='0'){
-			$db->query("update news set title='$_POST[title]',click='$_POST[click]',content='".replace($_POST[content])."'," .
-					"type_id='$_POST[type]',isshow=null where id='$_POST[newsid]'");
-			if($_POST[srcisshow]=='1'){
-				if(file_exists("../../".$_POST[path]))
-					unlink("../../".$info[path]);
+			if($_POST[isfilenews]=='0'){
+				$db->query("update news set title='$_POST[title]',click='$_POST[click]',content='".replace($_POST[content])."'," .
+						"type_id='$_POST[type]',isshow=null,filepath=null,filename=null where id='$_POST[newsid]'");
+				if($_POST[srcisshow]=='1'){
+					if(file_exists("../../".$_POST[path]))
+						unlink("../../".$info[path]);
+				}
+				if($_POST[srcfilepath]!=""){
+					if(file_exists("../../".$_POST[srcfilepath]))
+						unlink("../../".$info[srcfilepath]);
+				}
+				echo "<script>if(confirm('文章更新成功,是否继续更新?')){location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';}else{location.href='../news.php';}</script>";
+			}else{
+				//文件保存目录URL
+				$save_path = '../../file/';//201109281154581.jpg
+				//定义允许上传的文件扩展名
+				$ext_arr = array('word','excel', 'ppt','txt');
+				require "../action/FileUpload.class.php";
+				$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(500*1024)));//500k
+				if($up->uploadFile('uploadfile')){
+					$filename = "file/".$up->getNewFileName();
+					$srcfilename=$up->getSrcFileName();
+					if($_POST[srcfilepath]!=""){
+						if(file_exists("../../".$_POST[srcfilepath]))
+							unlink("../../".$_POST[srcfilepath]);
+					}
+					$db->query("update news set title='$_POST[title]',click='$_POST[click]',content='".replace($_POST[content])."',type_id='$_POST[type]',filename='$srcfilename',filepath='$filename' where id='$_POST[newsid]'");
+					echo "<script>if(confirm('文章内容、文件更新成功,是否继续更新?')){location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';}else{location.href='../news.php';}</script>";
+				}else{
+					$db->query("update news set title='$_POST[title]',click='$_POST[click]',content='".replace($_POST[content])."',type_id='$_POST[type]' where id='$_POST[newsid]'");
+					echo "<script>alert('文章内容更新成功,文件更新失败,请检查上传文件是否符合要求!');location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';</script>";
+				}
 			}
-			echo "<script>if(confirm('文章更新成功,是否继续更新?')){location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';}else{location.href='../news.php';}</script>";
 		}else{
 			//文件保存目录URL
 			$save_path = '../../images/upload/';//201109281154581.jpg
@@ -67,7 +114,7 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 			}else{
 				$db->query("update news set title='$_POST[title]',click='$_POST[click]',content='".replace($_POST[content])."'," .
 						"type_id='$_POST[type]' where id='$_POST[newsid]'");
-				echo "<script>alert('文章内容更新成功!');location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';</script>";
+				echo "<script>alert('文章内容更新成功,图片更新失败,请检查图片格式是否符合要求!');location.href='../post/news.action.php?task=toUpdateNews&newsid=$_POST[newsid]';</script>";
 			}
 		}
 	}

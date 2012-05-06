@@ -27,7 +27,7 @@ pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
 
 //新闻列表
-$newsQuery = $db->query("select n.click,n.id,n.title,n.click,n.isshow,n.path,n.type_id,t.type_name,DATE_FORMAT(n.create_date,'%Y-%m-%d') as create_dates from news n,type t where n.type_id = t.id and ".$case." order by n.create_date desc limit $firstcount, $displaypg");
+$newsQuery = $db->query("select n.click,n.id,n.title,n.click,n.isshow,n.path,n.type_id,t.type_name,DATE_FORMAT(n.create_date,'%Y-%m-%d') as create_dates ,n.filepath,n.filename from news n,type t where n.type_id = t.id and ".$case." order by n.create_date desc limit $firstcount, $displaypg");
 $newsRow = array();
 while($rownews = $db->fetch_array($newsQuery)){
 	$newsRow[] = $rownews;

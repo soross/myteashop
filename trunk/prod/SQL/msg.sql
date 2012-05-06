@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-04-19 18:36:57
+Date: 2012-05-06 22:44:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -185,7 +185,7 @@ CREATE TABLE `orderitem` (
 -- ----------------------------
 -- Records of orderitem
 -- ----------------------------
-INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', '2012-04-17 09:17:47', '2012-04-19 15:31:34', '2012-04-19 15:31:42', '3', '33.00', '2012-04-16 12:38:25', null, null, null, null, '1', 'faf');
+INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', '2012-04-17 09:17:47', '2012-04-19 15:31:34', null, '3', '33.00', '2012-04-16 12:38:25', null, null, null, null, '0', '');
 INSERT INTO `orderitem` VALUES ('7', '20120418074421761514', null, null, null, '6', '11500.00', '2012-04-18 15:44:21', null, null, null, null, null, null);
 
 -- ----------------------------
@@ -330,7 +330,7 @@ CREATE TABLE `sal` (
   `edit_user` varchar(100) default NULL,
   `edit_reason` varchar(255) default NULL COMMENT '修改原因',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sal
@@ -338,6 +338,9 @@ CREATE TABLE `sal` (
 INSERT INTO `sal` VALUES ('12', '1', '14244510.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
 INSERT INTO `sal` VALUES ('13', '2', '22809.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
 INSERT INTO `sal` VALUES ('14', '3', '144815.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
+INSERT INTO `sal` VALUES ('15', '1', '220.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
+INSERT INTO `sal` VALUES ('16', '2', '528.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
+INSERT INTO `sal` VALUES ('17', '3', '132.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `staff`
@@ -387,7 +390,7 @@ CREATE TABLE `staffjob` (
   `edit_date` datetime default NULL,
   `edit_user` varchar(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of staffjob
@@ -398,16 +401,20 @@ INSERT INTO `staffjob` VALUES ('3', '1', '3213213.00', '1', '4', '18', '1', '1',
 INSERT INTO `staffjob` VALUES ('4', '2', '2021.00', '5', '4', '18', '2', '11', '1', '0', null, '3', '2012', null, null, null, null);
 INSERT INTO `staffjob` VALUES ('5', '2', '11321.00', '3', '4', '18', '2', '10', '0', '1', null, '3', '2012', null, null, null, null);
 INSERT INTO `staffjob` VALUES ('6', '2', '113.00', '3', '4', '22', '2', '11', '0', '1', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
-INSERT INTO `staffjob` VALUES ('7', '3', '11213.00', '3', '4', '22', '2', '11', '1', '0', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
+INSERT INTO `staffjob` VALUES ('7', '3', '11213.99', '3', '4', '22', '2', '11', '1', '0', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
 INSERT INTO `staffjob` VALUES ('8', '3', '112.00', '1', '4', '24', '1', '11', '1', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
 INSERT INTO `staffjob` VALUES ('9', '1', '1312.00', '1', '7', '24', '1', '10', '0', '1', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
 INSERT INTO `staffjob` VALUES ('10', '2', '13.00', '1', '7', '24', '1', '1', '1', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
 INSERT INTO `staffjob` VALUES ('11', '3', '7213.00', '1', '7', '24', '3', '22', '0', '1', null, '4', '2012', '2012-04-18 15:17:43', null, null, null);
-INSERT INTO `staffjob` VALUES ('12', '3', '8.00', '1', '7', '24', '4', '22', '1', '0', null, '4', '2012', '2012-04-18 15:17:53', null, null, null);
+INSERT INTO `staffjob` VALUES ('12', '3', '8.66', '1', '7', '24', '4', '22', '1', '0', null, '4', '2012', '2012-04-18 15:17:53', null, null, null);
 INSERT INTO `staffjob` VALUES ('13', '3', '912.00', '1', '7', '24', '7', '22', '1', '0', null, '4', '2012', '2012-04-18 15:18:01', null, null, null);
 INSERT INTO `staffjob` VALUES ('14', '3', '332.00', '1', '7', '24', '2', '22', '0', '1', null, '4', '2012', '2012-04-18 15:18:08', null, null, null);
 INSERT INTO `staffjob` VALUES ('15', '2', '113.00', '1', '7', '18', '1', '5', '1', '0', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
 INSERT INTO `staffjob` VALUES ('16', '3', '121.00', '1', '7', '18', '1', '5', '0', '1', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
+INSERT INTO `staffjob` VALUES ('17', '2', '44.00', '5', '7', '25', '2', '10', '1', '0', null, '05', '2012', '2012-05-03 09:13:55', null, null, null);
+INSERT INTO `staffjob` VALUES ('20', '1', '44.00', '5', '7', '25', '2', '5', '1', '0', null, '05', '2012', '2012-05-03 10:07:59', null, null, null);
+INSERT INTO `staffjob` VALUES ('21', '2', '44.00', '5', '7', '25', '2', '2', '1', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
+INSERT INTO `staffjob` VALUES ('22', '3', '44.00', '5', '7', '25', '2', '3', '1', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
 
 -- ----------------------------
 -- Table structure for `sys_code`
@@ -420,7 +427,7 @@ CREATE TABLE `sys_code` (
   `sys_value` varchar(100) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `idx_sys_code_unique` (`sys_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_code
@@ -474,6 +481,7 @@ INSERT INTO `sys_code` VALUES ('46', 'CAP14001', '新增员工作业', '员工�
 INSERT INTO `sys_code` VALUES ('47', 'CAP14002', '删除员工作业', '员工作业');
 INSERT INTO `sys_code` VALUES ('48', 'CAP14003', '修改员工作业', '员工作业');
 INSERT INTO `sys_code` VALUES ('49', 'CAP08004', '生成上一月工资', '工资');
+INSERT INTO `sys_code` VALUES ('50', 'CAP04009', '订单派单时间', '订单');
 
 -- ----------------------------
 -- Table structure for `sys_log`
@@ -488,7 +496,7 @@ CREATE TABLE `sys_log` (
   `sys_desc` varchar(255) default NULL,
   `remark` longtext,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_log
@@ -563,6 +571,88 @@ INSERT INTO `sys_log` VALUES ('67', 'CAP08004', '', '2012-04-19 17:57:36', '失�
 INSERT INTO `sys_log` VALUES ('68', 'CAP08004', '', '2012-04-19 17:58:01', '失败', '生成上一月工资', '工资生成失败!');
 INSERT INTO `sys_log` VALUES ('69', 'CAP08004', '', '2012-04-19 17:58:10', '失败', '生成上一月工资', '工资生成失败!');
 INSERT INTO `sys_log` VALUES ('70', 'CAP08004', '', '2012-04-19 17:58:32', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('71', 'CAP11001', '', '2012-05-01 08:01:00', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('72', 'CAP11001', '1', '2012-05-01 08:01:10', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('73', 'CAP11001', '1', '2012-05-01 08:53:44', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('74', 'CAP08004', '', '2012-05-01 22:42:41', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('75', 'CAP11001', '1', '2012-05-02 08:39:05', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('76', 'CAP08004', '', '2012-05-02 08:55:14', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('77', 'CAP08004', '', '2012-05-02 08:55:54', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('78', 'CAP08004', '', '2012-05-02 08:56:20', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('79', 'CAP08004', '', '2012-05-02 08:56:40', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('80', 'CAP08004', '', '2012-05-02 08:56:43', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('81', 'CAP08004', '', '2012-05-02 08:57:36', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('82', 'CAP08004', '', '2012-05-02 08:57:50', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('83', 'CAP08004', '', '2012-05-02 08:57:51', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('84', 'CAP08004', '', '2012-05-02 08:57:51', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('85', 'CAP08004', '', '2012-05-02 08:57:52', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('86', 'CAP08004', '', '2012-05-02 08:57:52', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('87', 'CAP08004', '', '2012-05-02 08:57:52', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('88', 'CAP08004', '', '2012-05-02 08:57:53', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('89', 'CAP08004', '', '2012-05-02 08:57:58', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('90', 'CAP08004', '', '2012-05-02 08:59:48', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('91', 'CAP08004', '', '2012-05-02 09:03:50', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('92', 'CAP08004', '', '2012-05-02 09:04:32', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('93', 'CAP08004', '', '2012-05-02 09:04:55', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('94', 'CAP08004', '', '2012-05-02 09:05:00', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('95', 'CAP08004', '', '2012-05-02 09:05:02', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('96', 'CAP08004', '', '2012-05-02 09:05:02', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('97', 'CAP08004', '', '2012-05-02 09:05:03', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('98', 'CAP08004', '', '2012-05-02 09:05:15', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('99', 'CAP08004', '', '2012-05-02 09:06:36', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('100', 'CAP08004', '', '2012-05-02 09:06:46', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('101', 'CAP08004', '', '2012-05-02 09:06:54', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('102', 'CAP08004', '', '2012-05-02 09:07:06', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('103', 'CAP08004', '', '2012-05-02 09:07:19', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('104', 'CAP08004', '', '2012-05-02 09:07:21', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('105', 'CAP08004', '', '2012-05-02 09:07:22', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('106', 'CAP08004', '', '2012-05-02 09:07:23', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('107', 'CAP08004', '', '2012-05-02 09:07:26', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('108', 'CAP08004', '', '2012-05-02 09:07:29', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('109', 'CAP08004', '', '2012-05-02 09:07:58', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('110', 'CAP08004', '', '2012-05-02 09:08:03', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('111', 'CAP08004', '', '2012-05-02 09:08:18', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('112', 'CAP08004', '', '2012-05-02 09:09:46', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('113', 'CAP08004', '', '2012-05-02 09:09:49', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('114', 'CAP08004', '', '2012-05-02 09:09:51', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('115', 'CAP08004', '', '2012-05-02 09:09:54', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('116', 'CAP08004', '', '2012-05-02 09:09:57', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('117', 'CAP08004', '', '2012-05-02 09:10:00', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('118', 'CAP08004', '', '2012-05-02 09:10:15', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('119', 'CAP08004', '', '2012-05-02 09:13:19', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('120', 'CAP08004', '', '2012-05-02 09:14:32', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('121', 'CAP11002', '1', '2012-05-02 09:15:23', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('122', 'CAP11001', '1', '2012-05-02 09:37:34', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('123', 'CAP11002', '1', '2012-05-02 09:37:41', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('124', 'CAP04007', '1', '2012-05-02 09:38:09', '成功', '出仓', '订单已成功出仓!');
+INSERT INTO `sys_log` VALUES ('125', 'CAP11001', '1', '2012-05-02 11:55:17', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('126', 'CAP11002', '1', '2012-05-02 11:55:26', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('127', 'CAP11001', '1', '2012-05-02 12:07:37', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('128', 'CAP11002', '1', '2012-05-02 12:07:43', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('129', 'CAP04004', '1', '2012-05-02 12:57:37', '失败', '进仓', '非法操作!');
+INSERT INTO `sys_log` VALUES ('130', 'CAP04004', '1', '2012-05-02 12:58:40', '失败', '进仓', '非法操作!');
+INSERT INTO `sys_log` VALUES ('131', 'CAP11001', '1', '2012-05-02 13:01:22', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('132', 'CAP11002', '1', '2012-05-02 13:01:29', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('133', 'CAP11001', '1', '2012-05-02 13:08:10', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('134', 'CAP11002', '1', '2012-05-02 13:08:16', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('135', 'CAP04004', '1', '2012-05-02 13:08:25', '失败', '进仓', '订单明细未全部竣工,进仓失败!');
+INSERT INTO `sys_log` VALUES ('136', 'CAP04004', '1', '2012-05-02 13:08:53', '失败', '进仓', '订单明细未全部竣工,进仓失败!');
+INSERT INTO `sys_log` VALUES ('137', 'CAP11001', '1', '2012-05-02 13:10:28', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('138', 'CAP11002', '1', '2012-05-02 13:10:35', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('139', 'CAP04004', '1', '2012-05-02 13:13:58', '失败', '进仓', '订单明细未全部竣工,进仓失败!');
+INSERT INTO `sys_log` VALUES ('140', 'CAP04004', '1', '2012-05-02 13:25:46', '失败', '进仓', '订单明细未全部竣工,进仓失败!');
+INSERT INTO `sys_log` VALUES ('141', 'CAP04004', '1', '2012-05-02 13:31:25', '失败', '进仓', '订单明细未全部竣工,进仓失败!');
+INSERT INTO `sys_log` VALUES ('142', 'CAP11001', '1', '2012-05-02 13:32:17', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('143', 'CAP11002', '1', '2012-05-02 13:32:25', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('144', 'CAP04009', '1', '2012-05-02 13:32:32', '成功', '订单排单时间', '订单排单时间录入成功！');
+INSERT INTO `sys_log` VALUES ('145', 'CAP04009', '1', '2012-05-02 13:37:09', '成功', '订单排单时间', '订单排单时间录入成功！');
+INSERT INTO `sys_log` VALUES ('146', 'CAP04009', '1', '2012-05-02 13:39:09', '成功', '订单排单时间', '订单排单时间录入成功！');
+INSERT INTO `sys_log` VALUES ('147', 'CAP04009', '1', '2012-05-02 13:40:14', '成功', '订单排单时间', '订单排单时间录入成功！');
+INSERT INTO `sys_log` VALUES ('148', 'CAP04006', '1', '2012-05-03 09:13:55', '成功', '订单排单', '订单排单成功！');
+INSERT INTO `sys_log` VALUES ('149', 'CAP14003', '1', '2012-05-03 10:07:59', '成功', '修改员工作业', '修改员工作业成功！');
+INSERT INTO `sys_log` VALUES ('150', 'CAP14003', '1', '2012-05-03 10:11:45', '成功', '修改员工作业', '修改员工作业成功！');
+INSERT INTO `sys_log` VALUES ('151', 'CAP08004', '', '2012-05-03 16:16:21', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('152', 'CAP11001', '1', '2012-05-04 13:29:09', '成功', '系统登录', '系统登录成功!');
 
 -- ----------------------------
 -- Table structure for `user`

@@ -46,13 +46,10 @@ function download($file_dir,$file_name,$name)
     return true;
 
 }
-if(isset($_GET[docid]) && !empty($_GET[docid])){
-	require_once("../action/mysql.class.php");
-	$query = $db->query("select src,author from news where id='$_GET[docid]'");
-	$info = $db->fetch_array($query);
-	$bool = download("","../".$info[src],"$info[author]");
+if(isset($_GET[path]) && !empty($_GET[path])&&isset($_GET[name]) && !empty($_GET[name])){
+	$bool = download("","../".$_GET[path],"$_GET[name]");
 	if(!$bool){
-		echo "<script>alert('文件不存在,请联系客服!');window.history.back(-1);</script>" ;
+		echo "<script>alert('文件不存在,请联系客服!".$_GET[path]."');window.history.back(-1);</script>" ;
 	}
 }else{
 	echo "<script>alert('非法下载!');window.history.back(-1);</script>" ;

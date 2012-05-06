@@ -102,7 +102,11 @@ document.ondblclick=initialize
 							cellspacing="0">
 							<tr>
 								<td id="fontZoom">
-								{$newsInfo.content}
+								{if $newsInfo.filepath!=""}
+									<a href="post/download.action.php?path={$newsInfo.filepath}&name={$newsInfo.filename}" title="点击下载或者右击目标另存为.">{$newsInfo.title}</a>
+								{else}
+									{$newsInfo.content}
+								{/if}
 								</td>
 							</tr>
 						</table>

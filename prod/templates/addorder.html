@@ -151,7 +151,7 @@ var cellcnt = 1;
 
 </head>
 {/literal}
-<body>
+<body onload="javascript:document.getElementById('orderid').focus();">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -179,6 +179,12 @@ var cellcnt = 1;
         <td bgcolor="#f3ffe3">
         	<form action="post/order.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackcustid();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+		          <tr>
+		          	<td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">合同号</div></td>
+		          	<td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		          		<input type="text" id="orderid" name="orderid" size="20" maxlength="50"><font style="color:red;">*</font>
+		          	</div></td>
+		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">

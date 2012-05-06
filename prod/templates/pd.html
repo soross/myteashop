@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/thickbox.css"/>
 <style type="text/css">
 <!--
 body {
@@ -235,7 +236,7 @@ for(i=0;i<cs.length;i++){
 	          <tr>  <form action="pd.php" method="get">
 	            <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 					<table>
-	            	<tr><td align="right">订单流水号：</td><td><input type="text" id="orderid" name="orderid" value="{$orderid}" size="20" maxlength="30"></td><td></td>
+	            	<tr><td align="right">合同号：</td><td><input type="text" id="orderid" name="orderid" value="{$orderid}" size="20" maxlength="30"></td><td></td>
 	            	<td><input type="submit" value="开始排单" class="submitButton" ></td></tr>
 					</table>
 
@@ -250,7 +251,7 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单流水号</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">合同号</div></td>
             <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">排单时间</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单总价</div></td>
@@ -262,7 +263,15 @@ for(i=0;i<cs.length;i++){
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderinfo.id}</div></td>
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.orderid}</div></td>
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+
+            	{if $orderinfo.pddate==''}
+            	<!--{$orderinfo.pddate}
+            	<input type="button" value="排单" class="submitButton"  onclick="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';">
+            	 -->
+            	<div align="center"><a href="pddate.php?height=50;width=300&itemid={$orderinfo.id}&orderid={$orderinfo.orderid}" title="{$orderinfo.id}" class="thickbox"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="pddate.php?height=50;width=300&itemid={$orderinfo.id}&orderid={$orderinfo.orderid}" title="{$orderinfo.id}" class="thickbox">排单时间</a><span class="STYLE1">]</span></div>
+            	{else}
             	{$orderinfo.pddate}
+            	{/if}
             </div></td>
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.custname}</div></td>
             <td onclick="javascript:showOrderList({$orderlist[list].id});" height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderinfo.orderprice}</div></td>
@@ -302,6 +311,16 @@ for(i=0;i<cs.length;i++){
 	          </tr>
 	          {section name=pl loop=$prodjoblist}
 	          {if $prodjoblist[pl].olid==$orderlist[list].id}
+		          {assign var=isshow value="1"}
+		          {section name=sj loop=$staffjoblist}
+			          {if $prodjoblist[pl].pid==$staffjoblist[sj].prodid
+			           && $prodjoblist[pl].jid==$staffjoblist[sj].jobid
+			           && $prodjoblist[pl].orderid==$staffjoblist[sj].orderid
+			           && $prodjoblist[pl].olid==$staffjoblist[sj].orderlistid}
+			          		{assign var=isshow value="0"}
+			          {/if}
+		    	  {/section}
+		   	  {if $isshow=='1'}
 	          <tr align="left" >
 	          	<td width="10%" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodjoblist[pl].jobname}</div></td>
 	          	<td width="90%" bgcolor="#FFFFFF" class="STYLE2">
@@ -326,7 +345,7 @@ for(i=0;i<cs.length;i++){
 	          			<td colspan="5"  align="center" >
 	          				&nbsp;&nbsp;<input type="button" class="submitButton" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-"
 	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-" value="提交排单"
-	          					onclick="javascrip:if(confirm('排单信息提交后无法修改,是否确定提交?'))submitPdInfo('{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-');">
+	          					onclick="javascrip:if(confirm('是否确定提交排单信息,提交后请到员工作业中查询?'))submitPdInfo('{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-');">
 	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-jobid"
 	          					name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-jobid" value="{$prodjoblist[pl].jid}">
 	          				<input type="hidden" id="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-prodid"
@@ -342,6 +361,14 @@ for(i=0;i<cs.length;i++){
 	          		</table>
 	          	</td>
 	    	  </tr>
+	    	  {else}
+	    	  <tr align="left" >
+	          	<td width="10%" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$prodjoblist[pl].jobname}</div></td>
+	          	<td width="90%" bgcolor="#FFFFFF" class="STYLE2">
+	          		<div align="center" class="STYLE2 STYLE1" style="color:red;">该工种已经完成排单,请到员工作业中查询...</div>
+	          	</td>
+	    	  </tr>
+	    	  {/if}
 	    	  {/if}
 	    	  {/section}
     	  </table>
@@ -356,7 +383,7 @@ for(i=0;i<cs.length;i++){
       <tr>
 	    <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
     	<td bgcolor="#f3ffe3" align="center" >
-    		<br><input type="button" value="该订单的排单全部完成" class="submitButton" onclick="JavaScript:if(confirm('该操作无法回退,是否确定排单已经全部排单?'))location.href='post/order.action.php?task=overAllPd&oid={$orderinfo.id}'">
+    		<br><input type="button" value="该订单的排单全部完成" class="submitButton" onclick="JavaScript:if(confirm('该操作后无法继续排单,是否确定排单已经全部完成?'))location.href='post/order.action.php?task=overAllPd&oid={$orderinfo.id}'">
     	</td>
     	</td>
     	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
@@ -391,5 +418,7 @@ for(i=0;i<cs.length;i++){
   </tr>
 </table>
 </body>
-<script src="js/Calendar.js" language="JavaScript" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/thickbox_plus.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 </html>

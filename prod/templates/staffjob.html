@@ -237,11 +237,12 @@ function selectOneChk(obj){
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
             <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">是否竣工</div></td>
             <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种</div></td>
-            <td width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种价格</div></td>
+            <td width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工种价格</div></td>
             <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">数量</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">总价</div></td>
+            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">总价</div></td>
             <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单编号</div></td>
             <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年月</div></td>
+            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">操作</div></td>
           </tr>
 		 <form action="post/staffjob.action.php" method="post">
           {section name=list loop=$stafflist}
@@ -257,11 +258,18 @@ function selectOneChk(obj){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
             	{if $stafflist[list].isfinish ==1 }<font style="color:blue;">已竣工</font>{else}<font style="color:red;">未竣工</font>{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].jobname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].jobpriceid}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="right" class="STYLE2 STYLE1">{$stafflist[list].jobpriceid}&nbsp;</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].amount}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].jobpriceid*$stafflist[list].amount}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="right" class="STYLE2 STYLE1">{$stafflist[list].jobpriceid*$stafflist[list].amount}&nbsp;</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].orderid}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$stafflist[list].y_job}-{$stafflist[list].m_job}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            {if $stafflist[list].isfinish ==1 }
+				<a href="javascript:alert('已竣工,无法修改!');"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="javascript:alert('已竣工,无法修改!');">修改</a><span class="STYLE1">]</span>
+			{else}
+				<a href="javascript:location.href='updatestaffjob.php?sjid={$stafflist[list].id}';"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="javascript:location.href='updatestaffjob.php?sjid={$stafflist[list].id}';">修改</a><span class="STYLE1">]</span>
+			{/if}
+			</div></td>
           </tr>
           {sectionelse}
 			<tr>

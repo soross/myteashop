@@ -1,0 +1,323 @@
+{literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/thickbox.css"/>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.submitButton{
+	BORDER-RIGHT: #7EBF4F 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7EBF4F 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#B3D997); BORDER-LEFT: #7EBF4F 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7EBF4F 1px solid
+}
+
+.STYLE1 {font-size: 12px}
+.STYLE4 {
+	font-size: 12px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 12}
+
+-->
+</style>
+<script src="js/jquery.js"  type="text/javascript" language="javasrcipt"></script>
+<script>
+var  highlightcolor='#eafcd5';
+//此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+var  clickcolor='#51b2f6';
+function  changeto(){
+source=event.srcElement;
+if  (source.tagName=="TR"||source.tagName=="TABLE")
+return;
+while(source.tagName!="TD")
+source=source.parentElement;
+source=source.parentElement;
+cs  =  source.children;
+//alert(cs.length);
+if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor=highlightcolor;
+}
+}
+
+function  changeback(){
+if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+return
+if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+for(i=0;i<cs.length;i++){
+	cs[i].style.backgroundColor="";
+}
+}
+
+	function  clickto(){
+		source=event.srcElement;
+		if  (source.tagName=="TR"||source.tagName=="TABLE")
+			return;
+			while(source.tagName!="TD")
+				source=source.parentElement;
+				source=source.parentElement;
+				cs  =  source.children;
+			//alert(cs.length);
+		if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+			for(i=0;i<cs.length;i++){
+				cs[i].style.backgroundColor=clickcolor;
+			}
+		else
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor="";
+	}
+}
+
+</script>
+<script>
+	function insertStaffList(btnid){
+		var obj = document.getElementById(btnid+"stafftbl");
+		var myTR =obj.insertRow(obj.rows.length-1);
+
+		var myTD1=myTR.insertCell();
+		myTD1.style.background='#FFFFFF';
+		myTD1.innerHTML='<div align="left" class="STYLE2 STYLE1">员工：</div>';
+
+		var myTD2=myTR.insertCell();
+		myTD2.style.background='#FFFFFF';
+		myTD2.innerHTML='<div align="left" class="STYLE2 STYLE1"><select id="'+btnid+'staffid" name="'+btnid+'staffid">'+
+  				'<option value="-1">请选择员工</option>'+
+  				'{/literal}{section name=sl loop=$stafflist}{literal}'+
+  				'<option value="{/literal}{$stafflist[sl].id}{literal}">{/literal}{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]{literal}</option>'+
+  				'{/literal}{/section}{literal}'+
+  				'</select></div>';
+
+  		var myTD3=myTR.insertCell();
+		myTD3.style.background='#FFFFFF';
+		myTD3.innerHTML='<div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;数量：</div>';
+
+		var myTD4=myTR.insertCell();
+		myTD4.style.background='#FFFFFF';
+		myTD4.innerHTML='<div align="left" class="STYLE2 STYLE1"><input type="text" id="'+btnid+'cnt" name="'+btnid+'cnt" size="12" maxlength="12"></div>';
+
+		var myTD5=myTR.insertCell();
+		myTD5.style.background='#FFFFFF';
+		myTD5.innerHTML='&nbsp;&nbsp;<input type="button" id="'+btnid+'" name="'+btnid+'" class="submitButton" value="删除" onclick="javascript:removeStaffList(\''+btnid+'\');">';
+	}
+
+	function removeStaffList(delid){
+		var obj = document.getElementById(delid+'stafftbl');
+		var cGetRow=window.event.srcElement.parentElement.parentElement.rowIndex;
+		obj.deleteRow(cGetRow);
+	}
+
+	function submitPdInfo(vid){
+		vcnt = document.getElementById(vid+'count').value;
+		staffs = document.getElementsByName(vid+'staffid');
+		cnts = document.getElementsByName(vid+'cnt');
+		vstaffcnt = "";
+		vcount = 0;
+		vbool = true;
+		//alert(staffs.length+"#"+cnts.length);
+		for(var i=0;i<staffs.length;i++){
+		  if(staffs[i].value=="-1"){
+		    vbool = false;
+		  	break;
+		  }
+		  vstaffcnt = vstaffcnt+"#"+staffs[i].value+"-"+cnts[i].value;
+		  vcount += parseInt(cnts[i].value);
+		}
+
+
+		if(!vbool){
+			alert("请选择员工!");
+		}else{
+			if(vcount!=vcnt){
+				alert("排单数量"+vcount+"不等于产品的数量"+vcnt+",无法修改员工作业信息!");
+			}else{
+				jobid = document.getElementById(vid+'jobid').value;
+				prodid = document.getElementById(vid+'prodid').value;
+				orderlistid = document.getElementById(vid+'olid').value;
+				orderid = document.getElementById(vid+'oid').value;
+				sjid = document.getElementById(vid+'sjid').value;
+				vstaffcnt = vstaffcnt.substr(1);
+				vdate = "task=updateStaffJobMore&sjid="+sjid+"&jobid="+jobid+"&prodid="+prodid+"&olid="+orderlistid+"&oid="+orderid+"&staffcnt="+vstaffcnt;
+				ajaxSubmit(vdate,vid);
+			}
+		}
+	}
+
+	function ajaxSubmit(vdate,vid){
+	    //alert(vdate);
+		$.ajax({
+			type: "POST",
+			url: "post/order.action.php",
+			data: vdate,
+			success: function(rs){
+			    //alert(rs);
+				if("OK"==rs){
+					alert("员工作业信息修改成功!");
+					setButtonDisplay(vid);
+					location.href='staffjob.php';
+				}else{
+				    //alert(rs);
+					alert("员工作业信息修改失败!");
+				}
+			}
+		});
+	}
+
+	function setButtonDisplay(vid){
+	    //alert(vid);
+		var btns = document.getElementsByName(vid);
+		for(var i=0;i<btns.length;i++){
+		   btns[i].disabled="disabled";
+		}
+	}
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab/tab_05.gif"><img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">员工管理-修改员工作业</span></td>
+        <td width="281" background="images/tab/tab_05.gif">
+        	<table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="60">
+
+              	<table width="90%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="STYLE1"><!-- <div align="center"><a href="addorder.php" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="JavaScript:window.parent.dataFrame.location.href='addorder.php';">新增</a></div> --></td>
+                  </tr>
+              	</table>
+              </td>
+              </table>
+              </td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td> {/literal}
+  </tr>
+  <tr>
+    <td>
+    <table  width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+	    <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+    	<td bgcolor="#f3ffe3" align="center" >
+    	  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+	          <tr>
+	          	<td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1" colspan="2">
+	          		<div align="left" class="STYLE2 STYLE1">【产品名称：{$prodinfo.prodid}】【排单数量：{$staffjobinfo.amount}】</div>
+	          	</td>
+	          </tr>
+	          <tr align="left" >
+	          	<td width="10%" height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$jobinfo.jobname}</div></td>
+	          	<td width="90%" bgcolor="#FFFFFF" class="STYLE2">
+	          		<table id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-stafftbl">
+	          			<tr>
+	          				<td><div align="left" class="STYLE2 STYLE1">员工：</div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1"><select id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-staffid"
+	          				name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-staffid">
+	          				<option value="-1">请选择员工</option>
+	          				{section name=sl loop=$stafflist}
+	          				<option value="{$stafflist[sl].id}" {if $stafflist[sl].id==$staffjobinfo.staffid}selected{/if}>{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]</option>
+	          				{/section}
+	          				</select></div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;数量：</div></td>
+	          				<td><div align="left" class="STYLE2 STYLE1"><input type="text" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-cnt" value="{$staffjobinfo.amount}"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-cnt" size="12" maxlength="12"></div></td>
+	          				<td>&nbsp;&nbsp;<input type="button" class="submitButton" value="添加员工" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-"
+	          					onclick="javascrip:insertStaffList('{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-');"></td>
+	          			</tr>
+	          			<tr>
+	          			<td colspan="5"  align="center" >
+	          				&nbsp;&nbsp;<input type="button" class="submitButton" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-" value="修改排单"
+	          					onclick="javascrip:if(confirm('是否确定修改员工作业信息,提交后请到员工作业中查询?'))submitPdInfo('{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-');">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-jobid"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-jobid" value="{$jobinfo.id}">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-prodid"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-prodid" value="{$prodinfo.id}">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-olid"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-olid" value="{$orderlistinfo.id}">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-oid"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-oid" value="{$orderinfo.id}">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-count"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-count" value="{$staffjobinfo.amount}">
+	          				<input type="hidden" id="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-sjid"
+	          					name="{$orderlistinfo.id}-{$prodinfo.id}-{$jobinfo.id}-sjid" value="{$staffjobinfo.id}">
+	          				</td>
+	          			</tr>
+	          		</table>
+	          	</td>
+	    	  </tr>
+    	  </table>
+    	  </td>
+    	</td>
+    	<td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab/tab_21.gif">
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr>
+	                  <td  width="352"> &nbsp;</td>
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/thickbox_plus.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+</html>

@@ -103,7 +103,29 @@ document.ondblclick=initialize
 							<tr>
 								<td id="fontZoom">
 								{if $newsInfo.filepath!=""}
-									<a href="post/download.action.php?path={$newsInfo.filepath}&name={$newsInfo.filename}" title="点击下载或者右击目标另存为.">{$newsInfo.title}</a>
+									<table>
+									  <tr>
+									    <td rowspan="2">
+									    	<a href="post/download.action.php?path={$newsInfo.filepath}&name={$newsInfo.filename}" title="点击下载或者右击目标另存为.">
+										    	<img src="images/word.jpg" border="0" />
+									    	</a>
+								    	</td>
+									    <td>
+									    	<a href="post/download.action.php?path={$newsInfo.filepath}&name={$newsInfo.filename}" title="点击下载或者右击目标另存为.">
+									    	{$newsInfo.title}
+									    	</a>
+									    </td>
+									  </tr>
+									  <tr>
+									    <td>
+									    	<a href="post/download.action.php?path={$newsInfo.filepath}&name={$newsInfo.filename}" title="点击下载或者右击目标另存为.">
+										    {$newsInfo.filename}
+											</a>
+										</td>
+									  </tr>
+									</table>
+
+									</a>
 								{else}
 									{$newsInfo.content}
 								{/if}

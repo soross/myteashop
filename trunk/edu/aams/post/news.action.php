@@ -11,7 +11,7 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 			//文件保存目录URL
 			$save_path = '../../file/';//201109281154581.jpg
 			//定义允许上传的文件扩展名
-			$ext_arr = array('word','excel', 'ppt','txt');
+			$ext_arr = array('doc','xls', 'ppt','txt','wps','docx','xlsx','pptx','pdf');
 			require "../action/FileUpload.class.php";
 			$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(500*1024)));//500k
 			if($up->uploadFile('uploadfile')){
@@ -21,6 +21,7 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 					"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]','$filename','$srcfilename')");
 		  		echo "<script>if(confirm('文章发布成功,是否继续发布?')){location.href='../addnews.php';}else{location.href='../news.php';}</script>";
 			}else{
+				print_r($up->getErrorMsg());
 				echo "<script>alert('文章发布失败,请检查上传文件是否符合要求!');location.href='../addnews.php';</script>";
 			}
 		}

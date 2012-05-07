@@ -488,8 +488,8 @@ var texts="";
 						{section name=list loop=$kjlist}
 						<table width="100%" border="0" cellpadding="0" cellspacing="1">
 							<tr>
-								<td>&nbsp;·&nbsp;<a href="newsinfo.php?newsid={$kjlist[list].id}"
-									target="_blank" class="top_m_txt01">{$kjlist[list].title|truncate:"32":".."}</a></td>
+								<td>&nbsp;·&nbsp;<a href="{if $kjlist[list].isnewslist=='0'}newsinfo.php{else}news.php{/if}?type={$kjlist[list].id}"
+									target="_blank" class="top_m_txt01">{$kjlist[list].type_name|truncate:"32":".."}</a></td>
 							</tr>
 							<tr>
 								<td width="80%" valign="top" background="img_home/xn.gif"
@@ -619,7 +619,7 @@ var texts="";
 							<tr>
 								<td width="8%" height="23" align="center"><a
 									href="news.php?type=12" target="_blank"
-									style="font-size:10pt; font-weight:bold; color:#FFFFFF">合作院校</a></td>
+									style="font-size:10pt; font-weight:bold; color:#FFFFFF">三河游泳培训</a></td>
 							</tr>
 						</table>
 						</td>

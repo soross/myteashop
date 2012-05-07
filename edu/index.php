@@ -51,7 +51,7 @@ $kyList = getListBySql("select id,title from news where type_id in(select id fro
 $smarty->assign('kylist',$kyList);
 
 //思科认证8
-$kjList = getListBySql("select id,title from news where type_id in(select id from type where id='8' or pid='8') order by create_date desc limit 0,8",$db);
+$kjList = getListBySql("select id,type_name,isnewslist from type where pid='8' or pid in(select id from type where pid='8')",$db);
 $smarty->assign('kjlist',$kjList);
 
 

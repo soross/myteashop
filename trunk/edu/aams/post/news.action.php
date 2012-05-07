@@ -18,7 +18,7 @@ if(isset($_POST[task]) && "addNews"==$_POST[task]){
 				$filename = "file/".$up->getNewFileName();
 				$srcfilename=$up->getSrcFileName();
 				$db->query("insert into news(title,click,content,create_date,type_id,filename,filepath)" .
-					"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]','$filename','$srcfilename')");
+					"values('$_POST[title]','$_POST[click]','".replace($_POST[content])."',now(),'$_POST[type]','$srcfilename','$filename')");
 		  		echo "<script>if(confirm('文章发布成功,是否继续发布?')){location.href='../addnews.php';}else{location.href='../news.php';}</script>";
 			}else{
 				print_r($up->getErrorMsg());

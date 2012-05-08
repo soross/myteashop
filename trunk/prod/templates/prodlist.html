@@ -159,7 +159,7 @@ for(i=0;i<cs.length;i++){
            {section name=list loop=$prodRow}
 			<tr  valign="top">
 				<td  valign="middle" height="102px" bgcolor="#FFFFFF" class="STYLE2" rowspan="list">
-					<a href="images/prod/abc.jpg?height=300;width=400" alt="{$prodRow[list].picpath}" title="点击放大" class="thickbox"><img src="images/prod/abc.jpg" width="100" height="100" border="0"></a>
+					<a href="{$prodRow[list].picpath}?height=300;width=400" alt="{$prodRow[list].picpath}" title="点击放大" class="thickbox"><img src="{$prodRow[list].picpath}" width="100" height="100" border="0"></a>
 				</td>
 				<td  valign="middle" height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$prodRow[list].prodid}</div></td>
            		<td height="18" bgcolor="#FFFFFF" rowspan="list">

@@ -12,6 +12,7 @@ if($m-1 ==0){
 	$m = 12;
 }else{
 	$m=$m-1;
+
 }
 $querySql = $db->query("select id from sal where m_sal=$m and y_sal=$y");
 $cnt = $db->db_num_rows();
@@ -19,8 +20,8 @@ if($cnt<1){
 	$db->query('start transaction');
 	$db->query("insert into sal(staffid,sal,m_sal,y_sal,ispay,create_date)
 		select t.staffid , t.s,'$m','$y','0',now() from (select sj.staffid , sum(sj.jobpriceid*amount) as s
-		from staffjob  sj where sj.isfinish='0' and sj.issal='0'  group by staffid ) t");
-	$db->query("update staffjob sj set sj.issal='1' where sj.isfinish='0' and sj.issal='0'");
+		from staffjob  sj where sj.isfinish='1' and sj.issal='0'  group by staffid ) t");
+	$db->query("update staffjob sj set sj.issal='1' where sj.isfinish='1' and sj.issal='0'");
 	if (mysql_errno()) {
 		$db->query('rollback');
 		$db->addLog("CAP08004", '', "失败", "生成上一月工资", "工资生成失败!");

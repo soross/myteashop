@@ -18,10 +18,21 @@ $querySql = $db->query("select id from sal where m_sal=$m and y_sal=$y");
 $cnt = $db->db_num_rows();
 if($cnt<1){
 	$db->query('start transaction');
+	$sallist = getListBySql("select sj.staffid , sum(sj.jobpriceid*amount) as s
+		from staffjob  sj where sj.isfinish='1' and sj.issal='0'  group by staffid ",$db);
+	for ($i = 0; $i < sizeof($sallist); $i++) {
+		$db->query("insert into sal(staffid,sal,m_sal,y_sal,ispay,create_date) values('".$sallist[$i][staffid]."',
+				'".$sallist[$i][s]."','$m','$y','0',now())");
+		$insertsalid = $db->insert_id();
+		print_r($insertsalid);
+		$db->query("update staffjob sj set sj.issal='".$insertsalid."' where sj.isfinish='1' and sj.issal='0' and sj.staffid='".$sallist[$i][staffid]."'");
+	}
+	/**
 	$db->query("insert into sal(staffid,sal,m_sal,y_sal,ispay,create_date)
 		select t.staffid , t.s,'$m','$y','0',now() from (select sj.staffid , sum(sj.jobpriceid*amount) as s
 		from staffjob  sj where sj.isfinish='1' and sj.issal='0'  group by staffid ) t");
-	$db->query("update staffjob sj set sj.issal='1' where sj.isfinish='1' and sj.issal='0'");
+	$db->query("update staffjob sj set sj.issal='".$insertsalid."' where sj.isfinish='1' and sj.issal='0'");
+	**/
 	if (mysql_errno()) {
 		$db->query('rollback');
 		$db->addLog("CAP08004", '', "失败", "生成上一月工资", "工资生成失败!");

@@ -24,7 +24,7 @@ if(isset($_GET[salid])&& !empty($_GET[salid])){
 	//作业清单
 	$staffjob = getListBySql("SELECT oi.orderid,sj.amount,j.jobname,p.prodid,p.picname,
 		sj.jobpriceid FROM 	staffjob AS sj LEFT JOIN orderitem AS oi ON sj.orderid = oi.id
-		LEFT JOIN job AS j ON j.id = sj.jobid LEFT JOIN prod AS p ON sj.prodid = p.id where sj.staffid='".$info[sfid]."'",$db);
+		LEFT JOIN job AS j ON j.id = sj.jobid LEFT JOIN prod AS p ON sj.prodid = p.id where sj.issal='$_GET[salid]' and sj.staffid='".$info[sfid]."'",$db);
 	$smarty->assign("staffjob",$staffjob);
 
 	$smarty->display("print.html");

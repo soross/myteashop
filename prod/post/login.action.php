@@ -1,7 +1,7 @@
 <?php
+require_once ("../action/mysql.class.php");
 if(isset($_POST['task']) && "Login"==$_POST['task']){
 	if(isset($_POST[randomCode]) && 4==strlen($_POST[randomCode])){
-		require_once ("../action/mysql.class.php");
 		session_start();
 		$username = str_replace(" ", "", $_POST[username]);
 		$query = $db->query("select * from user where username = '" . $username . "'");

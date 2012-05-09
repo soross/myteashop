@@ -106,7 +106,7 @@ else
 				echo "<script>if(confirm('新增产品成功,是否继续新增?')){location.href='../addprod.php';}else{location.href='../prodlist.php';}</script>";
 			}
 		} else {
-			$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败".$up->getErrorMsg());
+			$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败,上传文件不符合要求");
 			echo "<script>alert('产品新增失败。请检查上传的文件是否符合要求!');location.href='../addprod.php';</script>";
 		}
 	}

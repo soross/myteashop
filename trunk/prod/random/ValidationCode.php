@@ -36,15 +36,18 @@
         }
         private function createCheckCode(){           //随机生成用户指定个数的字符串
             for($i=0;$i<$this->codeNum;$i++) {
+                /**
                 $number=rand(0,2);
+
                 switch($number){
                     case 0 : $rand_number=rand(48,57);break;    //数字
                     case 1 : $rand_number=rand(65,90);break;    //大写字母
                     case 2 : $rand_number=rand(97,122);break;   //小写字母
                 }
+                **/
+                $rand_number=rand(48,57);
                 //0 1 O o I i l 去掉  用户难识别
-                if($rand_number==48 || $rand_number==49 ||
-                   $rand_number==73||$rand_number==105 ||
+                if($rand_number==73||$rand_number==105 ||
                    $rand_number==79 || $rand_number==111
                    ||$rand_number==108){
                 	$i--;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-05-06 22:44:06
+Date: 2012-05-14 18:07:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -185,7 +185,7 @@ CREATE TABLE `orderitem` (
 -- ----------------------------
 -- Records of orderitem
 -- ----------------------------
-INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', '2012-04-17 09:17:47', '2012-04-19 15:31:34', null, '3', '33.00', '2012-04-16 12:38:25', null, null, null, null, '0', '');
+INSERT INTO `orderitem` VALUES ('4', '20120416043825140045', '2012-04-17 09:17:47', '2012-04-19 15:31:34', null, '3', '33.00', '2011-04-16 12:38:25', null, null, null, null, '0', '');
 INSERT INTO `orderitem` VALUES ('7', '20120418074421761514', null, null, null, '6', '11500.00', '2012-04-18 15:44:21', null, null, null, null, null, null);
 
 -- ----------------------------
@@ -254,14 +254,16 @@ CREATE TABLE `prod` (
   `edit_date` datetime default NULL,
   `create_user` varchar(100) collate utf8_unicode_ci default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of prod
 -- ----------------------------
 INSERT INTO `prod` VALUES ('1', '$$$$$', '工艺品1', 'images/prod/a.gif', null, null, null, null, null, null);
-INSERT INTO `prod` VALUES ('3', '9A1003', '工艺品3', 'images/prod/c.gif', '807', null, null, null, null, null);
+INSERT INTO `prod` VALUES ('3', '9A1003', '工艺品3', 'images/prod/abc.jpg', '807', null, null, null, null, null);
 INSERT INTO `prod` VALUES ('5', 'TEST2', 'TEST2', 'images/prod/20120416061035813.gif', null, null, '2012-04-16 14:10:35', null, null, null);
+INSERT INTO `prod` VALUES ('6', 'TTTTT', 'test', 'images/prod/20120508032034961.jpg', null, null, '2012-05-08 11:20:34', null, null, null);
+INSERT INTO `prod` VALUES ('7', 'TTSS', 'testest', 'images/prod/20120508032341926.jpg', null, null, '2012-05-08 11:23:41', null, null, null);
 
 -- ----------------------------
 -- Table structure for `prodjob`
@@ -272,7 +274,7 @@ CREATE TABLE `prodjob` (
   `prodid` int(11) default NULL,
   `jobid` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of prodjob
@@ -284,6 +286,12 @@ INSERT INTO `prodjob` VALUES ('11', '1', '4');
 INSERT INTO `prodjob` VALUES ('12', '1', '7');
 INSERT INTO `prodjob` VALUES ('14', '1', '2');
 INSERT INTO `prodjob` VALUES ('16', '3', '2');
+INSERT INTO `prodjob` VALUES ('17', '6', '1');
+INSERT INTO `prodjob` VALUES ('18', '6', '2');
+INSERT INTO `prodjob` VALUES ('19', '6', '3');
+INSERT INTO `prodjob` VALUES ('20', '7', '1');
+INSERT INTO `prodjob` VALUES ('21', '7', '4');
+INSERT INTO `prodjob` VALUES ('22', '7', '13');
 
 -- ----------------------------
 -- Table structure for `prodlist`
@@ -297,7 +305,7 @@ CREATE TABLE `prodlist` (
   `sumprice` double(13,2) default NULL,
   `bz` varchar(255) default NULL COMMENT '备注',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of prodlist
@@ -312,6 +320,9 @@ INSERT INTO `prodlist` VALUES ('14', '3', '1', '22', '22.00', null);
 INSERT INTO `prodlist` VALUES ('15', '3', '1', '22', '32.00', null);
 INSERT INTO `prodlist` VALUES ('16', '3', '3', '2', '33.00', null);
 INSERT INTO `prodlist` VALUES ('17', '3', '2', '2', '33.00', null);
+INSERT INTO `prodlist` VALUES ('18', '6', '5', '333', '14319.00', null);
+INSERT INTO `prodlist` VALUES ('19', '6', '3', '222', '7175928.00', null);
+INSERT INTO `prodlist` VALUES ('20', '7', '5', '0', '0.00', null);
 
 -- ----------------------------
 -- Table structure for `sal`
@@ -330,17 +341,14 @@ CREATE TABLE `sal` (
   `edit_user` varchar(100) default NULL,
   `edit_reason` varchar(255) default NULL COMMENT '修改原因',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sal
 -- ----------------------------
-INSERT INTO `sal` VALUES ('12', '1', '14244510.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
-INSERT INTO `sal` VALUES ('13', '2', '22809.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
-INSERT INTO `sal` VALUES ('14', '3', '144815.00', '3', '2012', '0', '2012-04-19 17:58:32', null, null, null, null);
-INSERT INTO `sal` VALUES ('15', '1', '220.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
-INSERT INTO `sal` VALUES ('16', '2', '528.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
-INSERT INTO `sal` VALUES ('17', '3', '132.00', '4', '2012', '0', '2012-05-03 16:16:20', null, null, null, null);
+INSERT INTO `sal` VALUES ('51', '1', '3226333.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('52', '2', '114453.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('53', '3', '166595.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `staff`
@@ -395,26 +403,26 @@ CREATE TABLE `staffjob` (
 -- ----------------------------
 -- Records of staffjob
 -- ----------------------------
-INSERT INTO `staffjob` VALUES ('1', '1', '1312321.00', '5', '4', '18', '2', '10', '1', '0', null, '3', '2012', null, null, null, null);
-INSERT INTO `staffjob` VALUES ('2', '1', '11213.00', '3', '4', '18', '2', '100', '1', '0', null, '3', '2012', null, null, null, null);
-INSERT INTO `staffjob` VALUES ('3', '1', '3213213.00', '1', '4', '18', '1', '1', '0', '1', null, '3', '2012', null, null, null, null);
-INSERT INTO `staffjob` VALUES ('4', '2', '2021.00', '5', '4', '18', '2', '11', '1', '0', null, '3', '2012', null, null, null, null);
-INSERT INTO `staffjob` VALUES ('5', '2', '11321.00', '3', '4', '18', '2', '10', '0', '1', null, '3', '2012', null, null, null, null);
-INSERT INTO `staffjob` VALUES ('6', '2', '113.00', '3', '4', '22', '2', '11', '0', '1', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
-INSERT INTO `staffjob` VALUES ('7', '3', '11213.99', '3', '4', '22', '2', '11', '1', '0', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
-INSERT INTO `staffjob` VALUES ('8', '3', '112.00', '1', '4', '24', '1', '11', '1', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
-INSERT INTO `staffjob` VALUES ('9', '1', '1312.00', '1', '7', '24', '1', '10', '0', '1', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
-INSERT INTO `staffjob` VALUES ('10', '2', '13.00', '1', '7', '24', '1', '1', '1', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
-INSERT INTO `staffjob` VALUES ('11', '3', '7213.00', '1', '7', '24', '3', '22', '0', '1', null, '4', '2012', '2012-04-18 15:17:43', null, null, null);
-INSERT INTO `staffjob` VALUES ('12', '3', '8.66', '1', '7', '24', '4', '22', '1', '0', null, '4', '2012', '2012-04-18 15:17:53', null, null, null);
-INSERT INTO `staffjob` VALUES ('13', '3', '912.00', '1', '7', '24', '7', '22', '1', '0', null, '4', '2012', '2012-04-18 15:18:01', null, null, null);
-INSERT INTO `staffjob` VALUES ('14', '3', '332.00', '1', '7', '24', '2', '22', '0', '1', null, '4', '2012', '2012-04-18 15:18:08', null, null, null);
-INSERT INTO `staffjob` VALUES ('15', '2', '113.00', '1', '7', '18', '1', '5', '1', '0', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
-INSERT INTO `staffjob` VALUES ('16', '3', '121.00', '1', '7', '18', '1', '5', '0', '1', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
-INSERT INTO `staffjob` VALUES ('17', '2', '44.00', '5', '7', '25', '2', '10', '1', '0', null, '05', '2012', '2012-05-03 09:13:55', null, null, null);
-INSERT INTO `staffjob` VALUES ('20', '1', '44.00', '5', '7', '25', '2', '5', '1', '0', null, '05', '2012', '2012-05-03 10:07:59', null, null, null);
-INSERT INTO `staffjob` VALUES ('21', '2', '44.00', '5', '7', '25', '2', '2', '1', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
-INSERT INTO `staffjob` VALUES ('22', '3', '44.00', '5', '7', '25', '2', '3', '1', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
+INSERT INTO `staffjob` VALUES ('1', '1', '1312321.00', '5', '4', '18', '2', '10', '0', '0', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('2', '1', '11213.00', '3', '4', '18', '2', '100', '0', '0', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('3', '1', '3213213.00', '1', '4', '18', '1', '1', '51', '1', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('4', '2', '2021.00', '5', '4', '18', '2', '11', '0', '0', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('5', '2', '11321.00', '3', '4', '18', '2', '10', '52', '1', null, '3', '2012', null, null, null, null);
+INSERT INTO `staffjob` VALUES ('6', '2', '113.00', '3', '4', '22', '2', '11', '52', '1', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
+INSERT INTO `staffjob` VALUES ('7', '3', '11213.99', '3', '4', '22', '2', '11', '0', '0', null, '4', '2012', '2012-04-18 15:16:39', null, null, null);
+INSERT INTO `staffjob` VALUES ('8', '3', '112.00', '1', '4', '24', '1', '11', '0', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
+INSERT INTO `staffjob` VALUES ('9', '1', '1312.00', '1', '7', '24', '1', '10', '51', '1', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
+INSERT INTO `staffjob` VALUES ('10', '2', '13.00', '1', '7', '24', '1', '1', '0', '0', null, '4', '2012', '2012-04-18 15:17:29', null, null, null);
+INSERT INTO `staffjob` VALUES ('11', '3', '7213.00', '1', '7', '24', '3', '22', '53', '1', null, '4', '2012', '2012-04-18 15:17:43', null, null, null);
+INSERT INTO `staffjob` VALUES ('12', '3', '8.66', '1', '7', '24', '4', '22', '0', '0', null, '4', '2012', '2012-04-18 15:17:53', null, null, null);
+INSERT INTO `staffjob` VALUES ('13', '3', '912.00', '1', '7', '24', '7', '22', '0', '0', null, '4', '2012', '2012-04-18 15:18:01', null, null, null);
+INSERT INTO `staffjob` VALUES ('14', '3', '332.00', '1', '7', '24', '2', '22', '53', '1', null, '4', '2012', '2012-04-18 15:18:08', null, null, null);
+INSERT INTO `staffjob` VALUES ('15', '2', '113.00', '1', '7', '18', '1', '5', '0', '0', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
+INSERT INTO `staffjob` VALUES ('16', '3', '121.00', '1', '7', '18', '1', '5', '53', '1', null, '4', '2012', '2012-04-18 15:53:32', null, null, null);
+INSERT INTO `staffjob` VALUES ('17', '2', '44.00', '5', '7', '25', '2', '10', '0', '0', null, '05', '2012', '2012-05-03 09:13:55', null, null, null);
+INSERT INTO `staffjob` VALUES ('20', '1', '44.00', '5', '7', '25', '2', '5', '0', '0', null, '05', '2012', '2012-05-03 10:07:59', null, null, null);
+INSERT INTO `staffjob` VALUES ('21', '2', '44.00', '5', '7', '25', '2', '2', '0', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
+INSERT INTO `staffjob` VALUES ('22', '3', '44.00', '5', '7', '25', '2', '3', '0', '0', null, '05', '2012', '2012-05-03 10:11:44', null, null, null);
 
 -- ----------------------------
 -- Table structure for `sys_code`
@@ -496,7 +504,7 @@ CREATE TABLE `sys_log` (
   `sys_desc` varchar(255) default NULL,
   `remark` longtext,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_log
@@ -653,6 +661,37 @@ INSERT INTO `sys_log` VALUES ('149', 'CAP14003', '1', '2012-05-03 10:07:59', '�
 INSERT INTO `sys_log` VALUES ('150', 'CAP14003', '1', '2012-05-03 10:11:45', '成功', '修改员工作业', '修改员工作业成功！');
 INSERT INTO `sys_log` VALUES ('151', 'CAP08004', '', '2012-05-03 16:16:21', '成功', '生成上一月工资', '工资生成成功!');
 INSERT INTO `sys_log` VALUES ('152', 'CAP11001', '1', '2012-05-04 13:29:09', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('153', 'CAP11001', '1', '2012-05-08 11:15:11', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('154', 'CAP01001', '1', '2012-05-08 11:20:34', '成功', '新增产品', '新增产品成功');
+INSERT INTO `sys_log` VALUES ('155', 'CAP01001', '1', '2012-05-08 11:23:41', '成功', '新增产品', '新增产品成功');
+INSERT INTO `sys_log` VALUES ('156', 'CAP11002', '1', '2012-05-08 12:09:23', '成功', '订单登录', '订单登录成功!');
+INSERT INTO `sys_log` VALUES ('157', 'CAP08004', '', '2012-05-08 12:12:33', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('158', 'CAP08004', '', '2012-05-08 12:12:34', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('159', 'CAP08004', '', '2012-05-08 12:12:35', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('160', 'CAP08004', '', '2012-05-08 12:12:35', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('161', 'CAP08004', '', '2012-05-08 12:12:36', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('162', 'CAP08004', '', '2012-05-08 12:12:37', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('163', 'CAP08004', '', '2012-05-08 12:12:39', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('164', 'CAP08004', '', '2012-05-08 12:12:49', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('165', 'CAP08004', '', '2012-05-08 12:15:45', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('166', 'CAP04005', '1', '2012-05-08 12:18:59', '失败', '订单明细竣工', '订单明细已竣工失败!');
+INSERT INTO `sys_log` VALUES ('167', 'CAP11001', '1', '2012-05-08 15:01:27', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('168', 'CAP08004', '', '2012-05-08 15:11:22', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('169', 'CAP08004', '', '2012-05-08 15:18:36', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('170', 'CAP08004', '', '2012-05-08 15:19:57', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('171', 'CAP08004', '', '2012-05-08 15:21:16', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('172', 'CAP08004', '', '2012-05-08 15:21:36', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('173', 'CAP08004', '', '2012-05-08 15:23:04', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('174', 'CAP08004', '', '2012-05-08 15:23:58', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('175', 'CAP08004', '', '2012-05-08 15:25:00', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('176', 'CAP08004', '', '2012-05-08 15:25:34', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('177', 'CAP08004', '', '2012-05-08 15:26:09', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('178', 'CAP08004', '', '2012-05-08 15:27:57', '成功', '生成上一月工资', '工资生成成功!');
+INSERT INTO `sys_log` VALUES ('179', 'CAP11001', '', '2012-05-09 10:03:26', '失败', '系统登录', '非法提交!');
+INSERT INTO `sys_log` VALUES ('180', 'CAP11001', '', '2012-05-09 10:03:34', '失败', '系统登录', '用户名或密码错误!');
+INSERT INTO `sys_log` VALUES ('181', 'CAP11001', '1', '2012-05-09 10:05:29', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('182', 'CAP11001', '1', '2012-05-09 10:34:26', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('183', 'CAP11001', '1', '2012-05-09 10:58:42', '成功', '系统登录', '系统登录成功!');
 
 -- ----------------------------
 -- Table structure for `user`

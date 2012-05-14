@@ -136,14 +136,13 @@ body {
 
 #splash .wrap {
 	height: 300px;;
-	background: url(../images/banner_bg-cloud.gif) no-repeat left bottom
-		;
+	background: url(../images/banner_bg-cloud.gif) no-repeat left bottom;
 }
 
 #splash .bottom {
 	height: 43px;;
-	background: url(../images/banner_bottom-info-text.gif) no-repeat
-		20px bottom;
+	background: url(../images/banner_bottom-info-text.gif) no-repeat 20px
+		bottom;
 }
 
 #splash #button_fixed {
@@ -292,8 +291,7 @@ body {
 	width: 204px;;
 	text-indent: -999999px;;
 	overflow: hidden;;
-	background: url(../images/bt_home-register.png) scroll 0 0 no-repeat
-		;
+	background: url(../images/bt_home-register.png) scroll 0 0 no-repeat;
 }
 
 #slide-content a.btn:hover {
@@ -368,6 +366,15 @@ body {
 	background: url(../images/feature_icon.png) scroll 0 0 no-repeat;;
 	height: 52px;;
 	width: 70px;;
+	float: left;;
+	position: relative;;
+	margin: 0;;
+	padding: 0;;
+	top: 20px;
+}
+#features .info {
+	height: 52px;;
+	width: 500px;;
 	float: left;;
 	position: relative;;
 	margin: 0;;
@@ -713,4 +720,107 @@ div#stats #stats-more {
 	border-left: 1px solid #999;;
 	border-bottom: 1px solid #353535;;
 	border-right: 1px solid #353535;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#page_price_chose {
+	float: left;;
+	border: solid 1px #E6E6E6;;
+	background: #FFF;;
+	margin-bottom: 20px;;
+	width: 900px;;
+	padding: 20px 20px 0 20px;бо
+}
+
+#page_price_chose #chose_customers {
+	float: left;;
+	width: 480px;
+}
+
+#page_price_chose h6 {
+	font-weight: bold;;
+	margin-top: 0;
+}
+
+#page_price_chose #chose_customers a {
+	display: block;;
+	float: left;;
+	width: 148px;;
+	height: 58px;;
+	border: solid 1px #E6E6E6;;
+	margin: 0 10px 10px 0;
+}
+
+#page_price_chose #chose_customers a.right {
+	margin-right: 0;
+}
+
+#page_price_chose #chose_service {
+	float: left;;
+	margin-left: 20px;
+}
+
+#page_price_chose #chose_service p {
+	margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+#con OL LI {
+	MARGIN: 8px
+}
+
+#con {
+	FONT-SIZE: 12px; MARGIN: 0px auto; WIDTH: 600px
+}
+#tags {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; WIDTH: 400px; PADDING-TOP: 0px; HEIGHT: 23px
+}
+#tags LI {
+	BACKGROUND: url(../images/tab/tagleft.gif) no-repeat left bottom; FLOAT: left; MARGIN-RIGHT: 1px; LIST-STYLE-TYPE: none; HEIGHT: 23px
+}
+#tags LI A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(../images/tab/tagright.gif) no-repeat right bottom; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #999; LINE-HEIGHT: 23px; PADDING-TOP: 0px; HEIGHT: 23px; TEXT-DECORATION: none
+}
+#tags LI.emptyTag {
+	BACKGROUND: none transparent scroll repeat 0% 0%; WIDTH: 4px
+}
+#tags LI.selectTag {
+	BACKGROUND-POSITION: left top; MARGIN-BOTTOM: -2px; POSITION: relative; HEIGHT: 25px
+}
+#tags LI.selectTag A {
+	BACKGROUND-POSITION: right top; COLOR: #000; LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+#tagContent {
+	BORDER-RIGHT: #aecbd4 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #aecbd4 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #aecbd4 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #aecbd4 1px solid; BACKGROUND-COLOR: #fff
+}
+.tagContent {
+	PADDING-RIGHT: 10px; DISPLAY: none; PADDING-LEFT: 10px; BACKGROUND: url(../images/tab/bg.gif) repeat-x; PADDING-BOTTOM: 10px; WIDTH: 576px; COLOR: #474747; PADDING-TOP: 10px; HEIGHT: 250px
+}
+#tagContent DIV.selectTag {
+	DISPLAY: block
 }

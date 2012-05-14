@@ -82,13 +82,70 @@
         </div>
         <div class="wrap bottom"></div>
     </div>
-
     <!-- FEATURES -->
     <div id="features">
         <div class="wrap">
+        	<br>
+        	<div id="page_price_chose">
+		        <div id="chose_customers">
+		            <ul>
+				        <li id="feature-4">
+		                    <div class="icon"></div>
+		                    <h2>注册域名</h2>
+		                    <p>亚洲最便宜域名就在xx域名网</p>
+		                </li>
+		            </ul>
+		        </div>
+		        <div id="chose_service">
+		            <p>注册过程中有问题可以联系我们的在线客服</p>
+		            <p>
+		                <img  style="CURSOR: pointer" onclick="javascript:window.open('http://bizapp.qq.com/webc.htm?new=0&sid=938056832&eid=&o=&q=7', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC="http://wpa.qq.com/pa?p=2:200596786:42">
+		                <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=200596786&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:200596786:42" alt="点击这里给我发消息" title="点击这里给我发消息"></a>-->
+		                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=200596786&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:200596786:42" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+		            </p>
+		            <p>电话：0571-89966786-806</p>
+		            <p>您可以联系我们获取免费试用（<a href="http://www.yupoo.com/help/payment/" target="_blank">查看支付方式</a>）</p>
+		        </div>
+		        <!--
+				<DIV id=con>
+					<UL id=tags>
+					  <LI><A onClick="selectTag('tagContent0',this)"
+					  href="javascript:void(0)">标签一</A> </LI>
+					  <LI class=selectTag><A onClick="selectTag('tagContent1',this)"
+					  href="javascript:void(0)">标签二</A> </LI>
+					  <LI><A onClick="selectTag('tagContent2',this)"
+					  href="javascript:void(0)">自适应宽度的标签</A> </LI>
+					</UL>
+					<DIV id=tagContent>
+						<DIV class=tagContent id=tagContent0>第一个标签的内容</DIV>
+						<DIV class="tagContent selectTag" id=tagContent1>第二个标签的内容</DIV>
+						<DIV class=tagContent id=tagContent2>第三个标签的内容</DIV>
+					</DIV>
+				</DIV>
+				<p>
+				<SCRIPT type=text/javascript>
+				function selectTag(showContent,selfObj){
+					// 操作标签
+					var tag = document.getElementById("tags").getElementsByTagName("li");
+					var taglength = tag.length;
+					for(i=0; i<taglength; i++){
+						tag[i].className = "";
+					}
+					selfObj.parentNode.className = "selectTag";
+					// 操作内容
+					for(i=0; j=document.getElementById("tagContent"+i); i++){
+						j.style.display = "none";
+					}
+					document.getElementById(showContent).style.display = "block";
+				}
+				</SCRIPT>
+				</p>-->
+		    </div>
+		    <!--
             <p class="intro">超过<span>200, 000</span>用户正在使用又拍图片管家。通过又拍云计算服务，您可以节省服务器带宽成本超过<span>50%</span>，提升网站速度<span>600%</span>，增加转化率超过<span>15%</span>，又拍云计算将是您的最佳选择。</p>
+            -->
             <ul>
-                <li id="feature-1">
+                <!--<li id="feature-1">
                     <div class="icon"></div>
                     <h2>专用图片加速服务</h2>
                     <p>云存储+多线带宽+多机房节点+高效数字分发技术=提升速度超过600%</p>
@@ -102,12 +159,13 @@
                     <div class="icon"></div>
                     <h2>图片防盗链</h2>
                     <p>支持基于URL级精准防盗链，可广告替换盗图</p>
-                </li>
+                </li>-->
                 <li id="feature-4">
                     <div class="icon"></div>
                     <h2>支持独立域名</h2>
                     <p>支持文件地址与自有域名保持一致</p>
                 </li>
+                <!--
                 <li id="feature-5">
                     <div class="icon"></div>
                     <h2>缩略图生成</h2>
@@ -117,8 +175,8 @@
                     <div class="icon"></div>
                     <h2>支持API</h2>
                     <p>全面开放API，用户在自己平台便可调用又拍图片管家所有功能</p>
-                </li>
-                <li id="feature-7">
+                </li>-->
+               <!-- <li id="feature-7">
                     <div class="icon"></div>
                     <h2>展示及营销</h2>
                     <p>支付宝合作便签支付式销售，支持社会化网络分发</p>
@@ -132,7 +190,7 @@
                     <div class="icon"></div>
                     <h2>应用无限扩展</h2>
                     <p>支持基于又拍平台拓展开通数十家应用服务商产品</p>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

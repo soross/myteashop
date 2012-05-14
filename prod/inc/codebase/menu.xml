@@ -30,7 +30,7 @@
 		</item>
 		<item text="统计查询管理" id="-5">
 			<item text="订单统计查询" id="orderrpt.php"/>
-			<item text="报表查询" id="rpt.php"/>
+			<item text="工资报表查询" id="salrpt.php"/>
 		</item>
 		<item text="客户管理" id="-6">
 			<item text="客户列表" id="customerlist.php"/>

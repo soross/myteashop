@@ -24,9 +24,16 @@ require_once("../action/mysql.class.php");
 		}
 	}else if(isset($_GET[task]) && "delJob"==$_GET[task]){
 		if(isset($_GET[id]) && !empty($_GET[id])){
-			$db->query("delete from  job where id ='".$_GET[id]."'" );
-			$db->addLog("CAP03002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除工种","删除工种成功");
-			echo "<script>alert('删除成功!');location.href='../joblist.php';</script>";
+			$db->query("select id from prodjob where jobid='$_GET[id]'");
+			$cnt = $db->db_num_rows();
+			if($cnt<1){
+				$db->query("delete from  job where id ='".$_GET[id]."'" );
+				$db->addLog("CAP03002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除工种","删除工种成功");
+				echo "<script>alert('删除成功!');location.href='../joblist.php';</script>";
+			}else{
+				$db->addLog("CAP03002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除工种","删除工种失败，该工种已被使用,不能删除");
+				echo "<script>alert('删除失败!');location.href='../joblist.php';</script>";
+			}
 		}else{
 			$db->addLog("CAP03002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除工种","删除工种失败");
 			echo "<script>alert('删除失败!');location.href='../joblist.php';</script>";

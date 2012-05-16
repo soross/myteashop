@@ -16,7 +16,7 @@ for ($i = 0; $i <= $search_max_y-$search_min_y; $i++) {
 	if($year==$search_max_y && empty($_GET['year'])){
 		$outhtml=$outhtml."<option value='".$year."' selected>".$year."Äê</option>";
 	}else{
-		if(isset($_GET['year'])&&!empty($_GET['year'])){
+		if(isset($_GET['year'])&&!empty($_GET['year'])&& $year==$_GET['year']){
 			$outhtml=$outhtml."<option value='".$year."' selected>".$year."Äê</option>";
 		}else{
 			$outhtml=$outhtml."<option value='".$year."'>".$year."Äê</option>";

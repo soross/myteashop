@@ -134,7 +134,6 @@ for(i=0;i<cs.length;i++){
 </head>
 <!--startprint-->
 <body>
-<form action="post/news.action.php" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -171,23 +170,56 @@ for(i=0;i<cs.length;i++){
       <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
       <td bgcolor="#f3ffe3">
       	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-          <tr>  <form action="orderlist.php" method="get">
+          <tr>  <form action="salrpt.php" method="get">
             <td width="100%" height="40" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
 				<table>
             	<tr>
-            		<td align="right">员工名称：</td><td><input type="text" id="key" name="key" value="{$key}" size="15" maxlength="30"></td>
             		<td align="right">员工编号：</td>
             		<td>
             			<select id="staffid" name="staffid">
-            			<option value="">请选择</option>
+            			<option value="">全公司</option>
             			{section name=list loop=$staff}
-            			<option value="{$staff[list].id}">{$staff[list].staffname}-[{$staff[list].staffid}]</option>
+            			<option value="{$staff[list].id}" {if $staffid==$staff[list].id}selected{/if}>{$staff[list].staffname}-[{$staff[list].staffid}]</option>
             			{/section}
             			</select>
             		</td>
-            		<td align="right">年份：</td><td><input type="text" id="y" name="y" value="{$y}" size="5" maxlength="4"></td>
-            		<td align="right">月份：</td><td><input type="text" id="m" name="m" value="{$m}" size="5" maxlength="2"></td>
-		           	<td><input type="submit" value="查询" class="submitButton"></td></tr>
+            		<td align="right">年份：</td><td>
+            			<select id="year" name="year">
+            				{$outYear}
+            			</select>
+            		</td>
+            		<td align="right">&nbsp;季度：</td>
+            		<td>
+            			<select id="months" name="months">
+            			<option value="" {if $ms==""}selected{/if}>请选择</option>
+            			<option value="1" {if $ms==1}selected{/if}>第一季度</option>
+            			<option value="2" {if $ms==2}selected{/if}>第二季度</option>
+            			<option value="3" {if $ms==3}selected{/if}>第三季度</option>
+            			<option value="4" {if $ms==4}selected{/if}>第四季度</option>
+            			</select>
+            		</td>
+            		<td align="right">&nbsp;月份：</td><td>
+            			<select id="mon" name="mon">
+	            			<option value="" {if $mon==""}selected{/if}>请选择</option>
+	            			<option value="01" {if $mon=="01"}selected{/if}>01月</option>
+	            			<option value="02" {if $mon=="02"}selected{/if}>02月</option>
+	            			<option value="03" {if $mon=="03"}selected{/if}>03月</option>
+	            			<option value="04" {if $mon=="04"}selected{/if}>04月</option>
+	            			<option value="05" {if $mon=="05"}selected{/if}>05月</option>
+	            			<option value="06" {if $mon=="06"}selected{/if}>06月</option>
+	            			<option value="07" {if $mon=="07"}selected{/if}>07月</option>
+	            			<option value="08" {if $mon=="08"}selected{/if}>08月</option>
+	            			<option value="09" {if $mon=="09"}selected{/if}>09月</option>
+	            			<option value="10" {if $mon=="10"}selected{/if}>10月</option>
+	            			<option value="11" {if $mon=="11"}selected{/if}>11月</option>
+	            			<option value="12" {if $mon=="12"}selected{/if}>12月</option>
+            			</select>
+            		</td>
+		           	<td>
+		           		<input type="submit" value="查询" class="submitButton">
+		           		<input type="hidden" value="1" name="isinfo" id="isinfo">
+		           	</td>
+		        </tr>
 				</table>
 
             </div></td></form>
@@ -209,7 +241,7 @@ for(i=0;i<cs.length;i++){
 		</table>
       </td></tr>
 
-
+{if $isinfo=="1"}
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -218,59 +250,20 @@ for(i=0;i<cs.length;i++){
           <tr>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工编号</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">员工名称</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">年月</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工资</div></td>
-            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">预支</div></td>
-            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">结算</div></td>
-            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已支付工资</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未支付工资</div></td>
+            <td width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">总额</div></td>
           </tr>
 
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$salinfo.staffid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.staffname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.y_sal}-{$salinfo.m_sal}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.sal}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $yzmoney.money==""}0.00{else}{$yzmoney.money}{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $yzmoney.money==""}{$salinfo.sal}{else}{$salinfo.sal-$yzmoney.money}{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$salinfo.create_date}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$salinfo.staffid}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$salinfo.staffname}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $paysal.cnt==""}0.00{else}{$paysal.cnt}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $nopaysal.cnt==""}0.00{else}{$nopaysal.cnt}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$nopaysal.cnt+$paysal.cnt}</div></td>
           </tr>
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="7"><div align="center" class="STYLE2 STYLE1">&nbsp;</div></td>
-          </tr>
-          <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">订单编号</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品编号</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品名称</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">工种名称</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">产品工种价格</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">数量</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">总价</div></td>
-          </tr>
-          {assign var=count value="0.00"}
-          {section name=list loop=$staffjob}
-          <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].orderid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].prodid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].picname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobpriceid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].amount}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$staffjob[list].jobpriceid * $staffjob[list].amount}</div></td>
-          </tr>
-          {assign var=count value=$staffjob[list].jobpriceid*$staffjob[list].amount+$count}
-          {sectionelse}
-           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="7"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据...</div></td>
-          </tr>
-          {/section}
-          <tr>
-            <td height="18" bgcolor="#FFFFFF" colspan="6"><div align="right" class="STYLE2 STYLE1">总额：</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$count}</div></td>
-          </tr>
-          <tr>
-            <td height="18" bgcolor="#FFFFFF" colspan="8">
-            	<div align="center" class="STYLE2 STYLE1">
-            		 <input type="button" value="打印工资清单" class="submitButton" onclick="print();"></div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2" colspan="5"><div align="center" class="STYLE2 STYLE1">&nbsp;</div></td>
           </tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
@@ -279,6 +272,7 @@ for(i=0;i<cs.length;i++){
 
     </td>
   </tr>
+  {/if}
   <tr>
     <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -312,7 +306,6 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
 </table>
-</form>
 </body>
 <!--endprint-->
 {literal}

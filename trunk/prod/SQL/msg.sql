@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-05-16 17:14:57
+Date: 2012-05-16 18:04:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -343,7 +343,7 @@ CREATE TABLE `sal` (
   `sal` double(12,2) default NULL COMMENT '工资',
   `m_sal` varchar(2) default NULL COMMENT '工资月份',
   `y_sal` varchar(4) default NULL COMMENT '工资年份',
-  `ispay` varchar(10) default NULL COMMENT '是否支付',
+  `ispay` varchar(10) default NULL COMMENT '是否支付0未支付1支付',
   `create_date` datetime default NULL,
   `create_user` varchar(100) default NULL,
   `edit_date` datetime default NULL,
@@ -355,9 +355,9 @@ CREATE TABLE `sal` (
 -- ----------------------------
 -- Records of sal
 -- ----------------------------
-INSERT INTO `sal` VALUES ('51', '1', '3226333.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
-INSERT INTO `sal` VALUES ('52', '2', '114453.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
-INSERT INTO `sal` VALUES ('53', '3', '166595.00', '4', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('51', '1', '3226333.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('52', '2', '114453.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('53', '3', '166595.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `staff`

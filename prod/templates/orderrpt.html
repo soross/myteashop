@@ -130,6 +130,18 @@ for(i=0;i<cs.length;i++){
 			}
 
 		}
+		//复制
+		function copyToClipboard(obj){
+			var rng = document.body.createTextRange();
+			rng.moveToElementText(obj);
+			rng.scrollIntoView();
+			rng.select();
+			rng.execCommand("Copy");
+			rng.collapse(false);
+			alert("复制成功!");
+
+		}
+
 </script>
 </head>
 
@@ -182,31 +194,32 @@ for(i=0;i<cs.length;i++){
             		<td align="right">&nbsp;季度：</td>
             		<td>
             			<select id="months" name="months">
-            			<option value="">请选择</option>
-            			<option value="1">第一季度</option>
-            			<option value="2">第二季度</option>
-            			<option value="3">第三季度</option>
-            			<option value="4">第四季度</option>
+            			<option value="" {if $ms==""}selected{/if}>请选择</option>
+            			<option value="1" {if $ms==1}selected{/if}>第一季度</option>
+            			<option value="2" {if $ms==2}selected{/if}>第二季度</option>
+            			<option value="3" {if $ms==3}selected{/if}>第三季度</option>
+            			<option value="4" {if $ms==4}selected{/if}>第四季度</option>
             			</select>
             		</td>
             		<td align="right">&nbsp;月份：</td><td>
             			<select id="mon" name="mon">
-	            			<option value="">请选择</option>
-	            			<option value="1">1月</option>
-	            			<option value="2">2月</option>
-	            			<option value="3">3月</option>
-	            			<option value="4">4月</option>
-	            			<option value="5">5月</option>
-	            			<option value="6">6月</option>
-	            			<option value="7">7月</option>
-	            			<option value="8">8月</option>
-	            			<option value="9">9月</option>
-	            			<option value="10">10月</option>
-	            			<option value="11">11月</option>
-	            			<option value="12">12月</option>
+	            			<option value="" {if $mon==""}selected{/if}>请选择</option>
+	            			<option value="01" {if $mon=="01"}selected{/if}>01月</option>
+	            			<option value="02" {if $mon=="02"}selected{/if}>02月</option>
+	            			<option value="03" {if $mon=="03"}selected{/if}>03月</option>
+	            			<option value="04" {if $mon=="04"}selected{/if}>04月</option>
+	            			<option value="05" {if $mon=="05"}selected{/if}>05月</option>
+	            			<option value="06" {if $mon=="06"}selected{/if}>06月</option>
+	            			<option value="07" {if $mon=="07"}selected{/if}>07月</option>
+	            			<option value="08" {if $mon=="08"}selected{/if}>08月</option>
+	            			<option value="09" {if $mon=="09"}selected{/if}>09月</option>
+	            			<option value="10" {if $mon=="10"}selected{/if}>10月</option>
+	            			<option value="11" {if $mon=="11"}selected{/if}>11月</option>
+	            			<option value="12" {if $mon=="12"}selected{/if}>12月</option>
             			</select>
             		</td>
-		           	<td>&nbsp;<input type="submit" value="查询" class="submitButton"></td></tr>
+		           	<td>&nbsp;<input type="submit" value="查询" class="submitButton">
+		           	<input type="hidden" value="1" name="isinfo" id="isinfo"></td></tr>
 				</table>
             </div></td></form>
           </tr>
@@ -217,43 +230,37 @@ for(i=0;i<cs.length;i++){
       </table></td></tr>
 
       <tr>
-      <td>
-      	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   			<tr>
-   			<td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-		    <td bgcolor="#f3ffe3">&nbsp;</td>
-		    <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
-		    </tr>
-		</table>
-      </td></tr>
-
+	      <td>
+	      	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	   			<tr>
+	   			<td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+			    <td bgcolor="#f3ffe3">&nbsp;</td>
+			    <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+			    </tr>
+			</table>
+	      </td>
+      </tr>
+{if $isinfo=='1'}
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+        <td bgcolor="#f3ffe3">
+        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总数</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总额</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总数</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总额</div></td>
-            <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">未完成订单清单</div></td>
           </tr>
-
-          {section name=list loop=$sallist}
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$sallist[list].id}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].staffid}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].staffname}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].y_sal}-{$sallist[list].m_sal}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].sal}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$overrpt.cnt}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $overrpt.sumprice==''}0{else}{$overrpt.sumprice}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$nooverrpt.cnt}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $nooverrpt.sumprice==''}0{else}{$nooverrpt.sumprice}{/if}</div></td>
           </tr>
-
-          {sectionelse}
-			<tr>
-				<td colspan=5 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
-			</tr>
-          {/section}
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
@@ -262,11 +269,105 @@ for(i=0;i<cs.length;i++){
     </td>
   </tr>
   <tr>
+      <td>
+      	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+   			<tr>
+   			<td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+		    <td bgcolor="#f3ffe3"><span class="STYLE4"><br>&nbsp;&nbsp;未完成订单清单</span></td>
+		    <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+		    </tr>
+		</table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3">
+        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+          <tr>
+            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
+            <td width="22%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">合同号</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">排单时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">进仓时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">出仓时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">客户名称</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单总价</div></td>
+            <td width="13%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建时间</div></td>
+          </tr>
+
+          {section name=list loop=$orderlist}
+          <tr style="cursor:hand;">
+            <td height="28" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].id}</div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	<span id="tbid{$orderlist[list].id}">{$orderlist[list].orderid}</span>&nbsp;<a href="javascript:copyToClipboard(document.getElementById('tbid{$orderlist[list].id}'));"><img src="images/tab/037.gif" width="9" height="9" border="0"/>复制</a>
+            </div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $orderlist[list].pddate==''}
+            	未排单
+            	{else}
+            	{$orderlist[list].pddate}
+            	{/if}
+            </div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $orderlist[list].jcdate==''}
+            	未进仓
+            	{else}
+            	{$orderlist[list].jcdate}
+            	{/if}
+            </div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	{if $orderlist[list].ccdate==''}
+            	未出仓
+            	{else}
+            	{$orderlist[list].ccdate}
+            	{/if}
+            </div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].custname}</div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].orderprice}</div></td>
+            <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$orderlist[list].create_date}</div></td>
+          </tr>
+          {sectionelse}
+          <tr>
+            <td height="28" bgcolor="#FFFFFF" colspan="8"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据...</div></td>
+          </tr>
+          {/section}
+        </table></td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table>
+
+    </td>
+  </tr>
+ {/if}
+  <tr>
     <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="29"><img src="images/tab/tab_20.gif" width="15" height="29" /></td>
         <td background="images/tab/tab_21.gif">
-    	{$page}
+    	<!-- page -->
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
+	                <tr><!--
+	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
+	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
+	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
+	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
+	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
+	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
+	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+	                  </span></td>
+	                  <td width="23" height="22" valign="middle">页</td>
+	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
+	                </tr>
+	              </table>
+	            </div></td>
+	          </tr>
+	        </table>
         </td>
         <td width="14"><img src="images/tab/tab_22.gif" width="14" height="29" /></td>
       </tr>

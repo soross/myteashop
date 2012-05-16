@@ -12,7 +12,9 @@ if($m-1 ==0){
 	$m = 12;
 }else{
 	$m=$m-1;
-
+}
+if(strlen($m)==1){
+	$m= "0".$m;
 }
 $querySql = $db->query("select id from sal where m_sal=$m and y_sal=$y");
 $cnt = $db->db_num_rows();
@@ -49,7 +51,11 @@ if(isset($_GET[staffname])&&!empty($_GET[staffname])){
 	$smarty->assign("staffname",$_GET[staffname]);
 }
 if(isset($_GET[m])&&!empty($_GET[m])){
-	$case=$case." and s.m_sal ='".$_GET[m]."' ";
+	if(strlen($_GET[m])==1){
+		$case=$case." and s.m_sal ='0".$_GET[m]."' ";
+	}else{
+		$case=$case." and s.m_sal ='".$_GET[m]."' ";
+	}
 	$smarty->assign("m",$_GET[m]);
 }
 if(isset($_GET[y])&&!empty($_GET[y])){

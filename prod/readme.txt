@@ -39,26 +39,6 @@ mysql> SELECT
 
 
 
-else if(tree.getSelectedItemId()=="csh_vista"){
-				tree.setImagePath("codebase/imgs/csh_vista/");
-				tree.refreshItem(0);
-			}else if(tree.getSelectedItemId()=="csh_bluebooks"){
-				tree.setImagePath("codebase/imgs/csh_bluebooks/");
-				tree.refreshItem(0);
-			}else if(tree.getSelectedItemId()=="csh_winstyle"){
-				tree.setImagePath("codebase/imgs/csh_winstyle/");
-				tree.refreshItem(0);
-			}else if(tree.getSelectedItemId()=="csh_scbrblue"){
-				tree.setImagePath("codebase/imgs/csh_scbrblue/");
-				tree.refreshItem(0);
-			}else if(tree.getSelectedItemId()=="csh_bluefolders")£û
-				tree.setImagePath("codebase/imgs/csh_bluefolders/");
-				tree.refreshItem(0);
-			£ýelse if(tree.getSelectedItemId()=="csh_yellowbooks"){
-				tree.setImagePath("codebase/imgs/csh_yellowbooks/");
-				tree.refreshItem(0);
-			}
-
 
 <script language="javascript">
 function preview()

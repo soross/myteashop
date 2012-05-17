@@ -59,6 +59,8 @@ if(isset($_GET[isinfo])&&!empty($_GET[isinfo])&&"1"==$_GET[isinfo]){
 		$staffid = $_GET['staffid'];
 		$case = $case." and staffid ='".$staffid."' ";
 		$smarty->assign("staffid",$staffid);
+		$staffinfo = getListBySql("select * from staff where id='".$staffid."'",$db);
+		$smarty->assign("staffinfo",$staffinfo[0]);
 	}
 
 

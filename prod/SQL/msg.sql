@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-05-16 18:04:57
+Date: 2012-05-17 16:18:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -356,7 +356,7 @@ CREATE TABLE `sal` (
 -- Records of sal
 -- ----------------------------
 INSERT INTO `sal` VALUES ('51', '1', '3226333.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
-INSERT INTO `sal` VALUES ('52', '2', '114453.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
+INSERT INTO `sal` VALUES ('52', '2', '114453.00', '04', '2012', '1', '2012-05-08 15:27:57', null, null, null, null);
 INSERT INTO `sal` VALUES ('53', '3', '166595.00', '04', '2012', '0', '2012-05-08 15:27:57', null, null, null, null);
 
 -- ----------------------------
@@ -462,7 +462,7 @@ CREATE TABLE `sys_code` (
   `sys_value` varchar(100) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `idx_sys_code_unique` (`sys_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_code
@@ -517,6 +517,7 @@ INSERT INTO `sys_code` VALUES ('47', 'CAP14002', '删除员工作业', '员工�
 INSERT INTO `sys_code` VALUES ('48', 'CAP14003', '修改员工作业', '员工作业');
 INSERT INTO `sys_code` VALUES ('49', 'CAP08004', '生成上一月工资', '工资');
 INSERT INTO `sys_code` VALUES ('50', 'CAP04009', '订单派单时间', '订单');
+INSERT INTO `sys_code` VALUES ('51', 'CAP08005', '确定支付工资', '工资');
 
 -- ----------------------------
 -- Table structure for `sys_log`
@@ -531,7 +532,7 @@ CREATE TABLE `sys_log` (
   `sys_desc` varchar(255) default NULL,
   `remark` longtext,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_log
@@ -743,6 +744,8 @@ INSERT INTO `sys_log` VALUES ('204', 'CAP04005', '1', '2012-05-16 16:33:55', '�
 INSERT INTO `sys_log` VALUES ('205', 'CAP04005', '1', '2012-05-16 16:33:58', '成功', '新增订单明细竣工', '订单明细已竣工!');
 INSERT INTO `sys_log` VALUES ('206', 'CAP04004', '1', '2012-05-16 16:34:04', '成功', '进仓', '订单已成功进仓!');
 INSERT INTO `sys_log` VALUES ('207', 'CAP04007', '1', '2012-05-16 16:34:13', '成功', '出仓', '订单已成功出仓!');
+INSERT INTO `sys_log` VALUES ('208', 'CAP11001', '1', '2012-05-17 15:49:47', '成功', '系统登录', '系统登录成功!');
+INSERT INTO `sys_log` VALUES ('209', 'CAP08005', '1', '2012-05-17 16:17:51', '成功', '确定支付工资', '确定支付工资成功!');
 
 -- ----------------------------
 -- Table structure for `user`

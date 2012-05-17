@@ -233,9 +233,9 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].sal}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 			{if $sallist[list].ispay=='0'}
-				<font style="color:red;">否</font>
+				<a href="#" onclick="if(confirm('是否确定已支付?'))location.href='post/yz.action.php?task=PaySal&salid={$sallist[list].id}&staffname={$staffname}&staffid={$staffid}&y={$y}&m={$m}'"><img src="images/tab/037.gif" width="9" height="9" border="0"/>&nbsp;<font style="color:red;">去支付</font></a>
             {else}
-				<font style="color:blue;">是</font>
+				<font style="color:blue;">已支付</font>
             {/if}
             </div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$sallist[list].create_date}</div></td>

@@ -256,8 +256,8 @@ for(i=0;i<cs.length;i++){
           </tr>
 
           <tr>
-            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$salinfo.staffid}{/if}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$salinfo.staffname}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$staffinfo.staffid}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $staffid==""}全公司{else}{$staffinfo.staffname}{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $paysal.cnt==""}0.00{else}{$paysal.cnt}{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $nopaysal.cnt==""}0.00{else}{$nopaysal.cnt}{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$nopaysal.cnt+$paysal.cnt}</div></td>

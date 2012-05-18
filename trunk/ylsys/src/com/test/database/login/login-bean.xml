@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="book">
+
+	<typeAlias alias="adminBean" type="com.test.database.login.bean.AdminBean" />
+	<resultMap id="admin" class="adminBean">
+		<result property="A_UserId" column="A_USERID" columnIndex="1"  />
+		<result property="A_UserName" column="A_USERNAME" columnIndex="2" />
+		<result property="A_PassWord" column="A_PASSWORD" columnIndex="3" />
+	</resultMap>
+	
+	<typeAlias alias="menuBean" type="com.test.database.login.bean.MenuBean" />
+	<resultMap id="menu" class="menuBean">
+		<result property="M_MenuId" column="M_MENUID" columnIndex="1" />
+		<result property="M_MenuName" column="M_MENUNAME" columnIndex="2" />
+		<result property="M_MenuNumber" column="M_MENUNUMBER" columnIndex="3" />
+		<result property="M_MenuParent" column="M_MENUPARENT" columnIndex="4" />
+		<result property="M_MenuUrl" column="M_MENUURL" columnIndex="5" />
+		<result property="M_MenuType" column="M_MENUTYPE" columnIndex="6" />
+		<result property="M_MenuIsDel" column="M_MENUISDEL" columnIndex="7" />
+	</resultMap>
+	<!-- 验证用户 -->
+	<select id="checkAdmin"  parameterClass="adminBean" resultMap="admin">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERNAME=#A_UserName# AND A.A_PASSWORD=#A_PassWord#
+		]]>
+	</select>
+	
+	<!-- 获得菜单列表 -->
+	<select id="getAdminMenuList" parameterClass="adminBean"  resultMap="menu">
+		<![CDATA[
+			SELECT M.M_MENUID,M.M_MENUNAME,M.M_MENUNUMBER,M.M_MENUPARENT,M.M_MENUURL,M.M_MENUTYPE,M.M_MENUISDEL FROM FB_MENU M  
+			LEFT JOIN FB_MENU_ROLE MR ON MR.MR_MENUID = M.M_MENUID
+			LEFT JOIN FB_ROLE R ON R.R_ROLEID = MR.MR_ROLEID
+			LEFT JOIN FB_ADMIN_ROLE AR ON AR.AR_ROLEID = R.R_ROLEID
+			LEFT JOIN FB_ADMIN A ON A.A_USERID=AR.AR_ADMINID
+			WHERE A.A_USERNAME=#A_UserName# AND A.A_PASSWORD=#A_PassWord# AND M.M_MENUISDEL=0 AND M.M_MENUTYPE=0
+		]]>
+	</select>
+	
+		<!-- 验证用户 -->
+	<select id="getAdminList"  parameterClass="adminBean" resultMap="admin">
+		SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A 
+			<dynamic prepend="where">
+			<isNotNull prepend="AND" property="A_UserName">
+           A_USERNAME=#A_UserName# 
+        </isNotNull>
+        <isNotNull prepend="AND" property="A_PassWord">
+        A_PASSWORD=#A_PassWord# 
+        </isNotNull>
+      </dynamic>	
+	</select>
+	<!-- 验证管理员是否重名 -->
+	<select id="checkadminusername"  parameterClass="adminBean" resultMap="admin">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERNAME=#A_UserName# ]]>
+	</select>
+	
+	<!-- 增加管理员 -->
+	<insert id="addadmin"  parameterClass="adminBean" >
+		<![CDATA[
+			INSERT INTO FB_ADMIN (A_USERID,A_USERNAME,A_PASSWORD) VALUES(#A_UserId#,#A_UserName#,#A_PassWord#) ]]>
+	</insert>
+	
+	
+	<!-- 删除管理员 -->
+	<delete id="deladmin"  parameterClass="adminBean" >
+		<![CDATA[
+			DELETE FROM  FB_ADMIN WHERE A_USERID = #A_UserId# ]]>
+	</delete>
+	
+	<!-- 查询管理员信息 -->
+	<select id="selectadminusername"  parameterClass="adminBean" resultMap="admin">
+		<![CDATA[
+			SELECT A_USERID,A_USERNAME,A_PASSWORD FROM FB_ADMIN A WHERE A.A_USERID=#A_UserId# ]]>
+	</select>
+	
+	<!-- 查询管理员信息 -->
+	<update id="updateadminpwd"  parameterClass="adminBean">
+		<![CDATA[
+			UPDATE FB_ADMIN SET A_PASSWORD=#A_PassWord# WHERE A_USERID=#A_UserId# ]]>
+	</update>
+	
+	
+</sqlMap>

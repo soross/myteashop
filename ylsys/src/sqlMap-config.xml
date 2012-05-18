@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		maxRequests="5"
+		maxSessions="5"
+		maxTransactions="5"
+		useStatementNamespaces="false"
+		/>
+	<sqlMap resource="com/test/database/login/login-bean.xml"/>
+	 <sqlMap resource="com/test/database/sys/sys-bean.xml"/> 
+	<sqlMap resource="com/test/database/advertising/advertising-bean.xml"/>
+</sqlMapConfig>
+

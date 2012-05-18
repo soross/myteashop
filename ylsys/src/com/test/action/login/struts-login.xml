@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="loginAction"  extends="struts-default">
+		<action name="basic" class="basicAction" method="test">
+			<result name="input">/</result>
+		</action>
+		<action name="login" class="loginAction" method="login">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="getAdminList" class="loginAction" method="getAdminList">
+			<result name="listadmin">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		<action name="showaddadmin" class="loginAction" method="showaddadmin">
+			<result name="showaddadmins">fb/fb_sy_admin/admin.jsp</result>
+		</action>
+		<action name="checkadminusername" class="loginAction" method="checkadminusername">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="addadmin" class="loginAction" method="addadmin">
+			<result name="addadmins">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		<action name="deladmin" class="loginAction" method="deladmin">
+			<result name="deladmins">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		<action name="showupdateadmin" class="loginAction" method="showupdateadmin">
+			<result name="showupdateadmins">fb/fb_sy_admin/updateadmin.jsp</result>
+		</action>
+		<action name="updateadminpass" class="loginAction" method="updateadminpass">
+			<result name="succadminpwd">fb/fb_sy_admin/adminlist.jsp</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+.menuroot{background-image: url(../images/menu/house.png) !important;}
+.menu_sys{background-image: url(../images/menu/computer.png) !important;}
+.menu_user_man{background-image: url(../images/menu/user.png) !important;}
+.menu_user_add{background-image: url(../images/menu/user_add.png) !important;}
+.menu_role_man{background-image: url(../images/menu/vcard.png) !important;}
+.menu_data_man{background-image: url(../images/menu/database_gear.png) !important;}
+
+.main_login{background-image: url(../images/menu/database_gear.png) !important;}
+.main_help{background-image: url(../images/menu/help.png) !important;}
+.main_edit{background-image: url(../images/menu/tool.png) !important;}

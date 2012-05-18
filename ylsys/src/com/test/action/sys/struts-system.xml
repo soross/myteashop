@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+		<package name="systemAction"  extends="struts-default">
+		<action name="basic" class="basicAction" method="test">
+			<result name="input">/</result>
+		</action>
+		<action name="getrolelist" class="systemAction" method="getrolelist">
+			<result name="rolelist">fb/fb_sy_common/rolelist.jsp</result>
+		</action>
+		
+		<action name="showaddrole" class="systemAction" method="showaddrole">
+			<result name="showaddrole">fb/fb_sy_common/addrole.jsp</result>
+		</action>
+		<action name="checkrolename" class="systemAction" method="checkrolename">
+		</action>
+		
+	</package>
+</struts>

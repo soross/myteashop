@@ -92,11 +92,11 @@ public class AdminAction extends ActionSupport implements Action {
 						session.setAttribute("loginName", loginName);
 						session.setAttribute("adminID", admin.getAdminId());
 						
-						ActionContext ac = ActionContext.getContext();
-						System.out.print("====================="+ac);
+					    String s = ServletActionContext.getServletContext().getContextPath(); 
+						System.out.print("====================="+s);
 						
 						
-						if(createMenuXml(admin.getAdminId())){
+						if(createMenuXml(admin.getAdminId(),s)){
 							return "adminlogin";
 						}						
 					}
@@ -190,7 +190,7 @@ public class AdminAction extends ActionSupport implements Action {
 	}
 	
 	//创建菜单
-	private boolean createMenuXml(Integer adminId) {
+	private boolean createMenuXml(Integer adminId,String path) {
 		// TODO Auto-generated method stub
 		String xml = "<?xml version='1.0' encoding='UTF-8'?><tree id='0'><item text='产品管理' id='-1'><item text='产品列表' id='prodlist.php'/><item text='新增产品' id='addprod.php'/><item text='材料管理' id='cllist.php'/><item text='新增材料' id='addcl.php'/><item text='工种管理' id='joblist.php'/></item>" +
 				"<item text='订单管理' id='-2'>" +
@@ -201,9 +201,11 @@ public class AdminAction extends ActionSupport implements Action {
 				"	<item text='新增出仓记录' id='addcc.php'/>" +
 				"</item>";
 		
+	 
+		
 		FileUtil fileutil = new FileUtil(); 
 		try {
-			fileutil.input(xml, "/inc/codebase/menu_"+adminId+".xml");
+			fileutil.input(xml, path+"/inc/codebase/menu_"+adminId+".xml");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;

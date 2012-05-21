@@ -104,6 +104,12 @@ function MM_swapImage() { //v3.0
 	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
 	tree.setImagePath("codebase/imgs/csh_yellowbooks/");
 	tree.loadXML("codebase/menu_<%=session.getAttribute("adminID").toString()%>.xml");
+	//link tree to asp script
+    tree.setXMLAutoLoading("xml.php"); 
+    
+    //load first level of tree
+    tree.loadXML("xml.php?id=0");
+	
 	tree.enableDragAndDrop(0);
 	tree.setOnClickHandler(tonclick);
 	function tonclick(id){

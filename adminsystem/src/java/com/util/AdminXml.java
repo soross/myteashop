@@ -35,7 +35,7 @@ public class AdminXml{
 	
 	
 	//添加管理员
-	public Boolean addUser(power userbean){
+	public Boolean addUser(String s){
 		Boolean flag=false;
 		Element user=root.addElement("user");
 		user.addAttribute("id", userbean.getSuser());

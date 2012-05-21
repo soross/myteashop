@@ -5,4 +5,5 @@
 
 <struts>
    <include file="/struts/struts_admin.xml"/>
+   <include file="/struts/struts_json.xml"/>
 </struts>

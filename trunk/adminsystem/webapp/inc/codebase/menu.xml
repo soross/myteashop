@@ -1,0 +1,43 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<tree id="0">
+		<item text="产品管理" id="-1">
+			<item text="产品列表" id="prodlist.php"/>
+			<item text="新增产品" id="addprod.php"/>
+			<item text="材料管理" id="cllist.php"/>
+			<item text="新增材料" id="addcl.php"/>
+			<item text="工种管理" id="joblist.php"/>
+		</item>
+		<item text="订单管理" id="-2">
+			<item text="订单列表" id="orderlist.php"/>
+			<item text="新增订单" id="addorder.php"/>
+			<item text="订单排单" id="pd.php"/>
+			<item text="出仓记录" id="cclist.php"/>
+			<item text="新增出仓记录" id="addcc.php"/>
+		</item>
+		<item text="员工管理" id="-3">
+			<item text="员工作业" id="staffjob.php"/>
+			<item text="员工列表" id="stafflist.php"/>
+			<item text="新增员工" id="addstaff.php"/>
+			<item text="岗位列表" id="gwlist.php"/>
+			<item text="新增岗位" id="addgw.php"/>
+		</item>
+		<item text="工资管理" id="-4">
+			<item text="工种价格" id="jobpricelist.php"/>
+			<item text="添加工种价格" id="addjobprice.php"/>
+			<item text="工资列表" id="sallist.php"/>
+			<item text="预支工资" id="yzlist.php"/>
+			<item text="员工预支" id="addyz.php"/>
+		</item>
+		<item text="统计查询管理" id="-5">
+			<item text="订单统计查询" id="orderrpt.php"/>
+			<item text="工资报表查询" id="salrpt.php"/>
+		</item>
+		<item text="客户管理" id="-6">
+			<item text="客户列表" id="customerlist.php"/>
+			<item text="新增客户" id="addcustomer.php"/>
+		</item>
+		<item text="系统管理" id="-7">
+			<item text="管理员列表" id="userlist.php"/>
+			<item text="新增管理员帐号" id="adduser.php"/>
+		</item>
+</tree>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+<package name="com.sdkd.adminsystem" extends="struts-default">
+   
+	<!-- 进入管理员登陆界面 -->
+    <action name="admintologin" class="com.sdkd.adminsystem.action.AdminAction" method="adminToLogin">
+	<result name="admintologin">/admin/adminlogin.jsp</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	 <!-- 管理员登陆界面 -->
+    <action name="adminlogin" class="com.sdkd.adminsystem.action.AdminAction" method="adminLogin">
+	<result name="adminlogin">/admin/main.html</result>
+	<result name="admintologin" type="redirectAction">admintologin</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 管理员退出 -->
+    <action name="adminlogout" class="com.sdkd.adminsystem.action.AdminAction" method="adminLogout">
+	<result name="adminlogout" type="redirectAction">admintologin</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+    <!-- 查询所有管理员列表 -->
+	<action name="adminlist" class="com.sdkd.adminsystem.action.AdminAction" method="adminList">
+	<result name="adminlist">/admin/adminlist.jsp</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 新增管理员页面 -->
+	<action name="addtoadmin" class="com.sdkd.adminsystem.action.AdminAction" method="addToAdmin">
+	<result name="addtoadmin">/admin/addadmin.jsp</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 新增管理员 -->
+	<action name="addadmin" class="com.sdkd.adminsystem.action.AdminAction" method="addAdmin">
+	<result name="addadmin" type="redirectAction">adminlist</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 编辑管理员页面 -->
+	<action name="edittoadmin" class="com.sdkd.adminsystem.action.AdminAction" method="editToAdmin">
+	<result name="edittoadmin">/admin/editadmin.jsp</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 编辑管理员 -->
+	<action name="editadmin" class="com.sdkd.adminsystem.action.AdminAction" method="editAdmin">
+	<result name="editadmin" type="redirectAction">adminlist</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+	<!-- 删除管理员页面 -->
+	<action name="deleteadmin" class="com.sdkd.adminsystem.action.AdminAction" method="deleteAdmin">
+	<result name="deleteadmin" type="redirectAction">adminlist</result>
+	<result name="error">/admin/adminerror.jsp</result>
+	</action>
+	
+</package>
+</struts>

@@ -80,7 +80,7 @@ body {
 															</div>
 														</td>
 														<td width="70%" height="20">
-															<input type="text" id="adminName" name="adminName" maxlength="50"
+															<input type="text" id="adminName" name="adminName" maxlength="50" value="root"
 																style="height: 18px; width: 100px; border: solid 1px #cadcb2; font-size: 12px; color: #81b432;"></input>
 															<font style="color: red;">*</font>
 														</td>
@@ -92,7 +92,7 @@ body {
 															</div>
 														</td>
 														<td height="20">
-															<input type="password" id="adminPassword" name="adminPassword" maxlength="50"
+															<input type="password" id="adminPassword" name="adminPassword" maxlength="50" value="1234"
 																style="height: 18px; width: 100px; border: solid 1px #cadcb2; font-size: 12px; color: #81b432;">
 															<font style="color: red;">*</font>
 														</td>
@@ -108,7 +108,7 @@ body {
 																cellspacing="0">
 																<tr>
 																	<td>
-																		<input type="text" id="randomCode" name="randomCode" maxlength="4"
+																		<input type="text" id="randomCode" name="randomCode" maxlength="4" 
 																			style="height: 18px; width: 45px; border: solid 1px #cadcb2; font-size: 12px; color: #81b432;">
 																	</td>
 																	<td>&nbsp;<img src="random.jsp"

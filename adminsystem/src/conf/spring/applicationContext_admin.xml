@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- dao bean -->
+	<bean id="adminDao" class="com.sdkd.adminsystem.dao.admin.AdminDaoImpl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- bo bean -->
+	<bean id="adminBo"
+		class="com.sdkd.adminsystem.bo.admin.AdminBoImpl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="adminDao">
+			<ref bean="adminDao" />
+		</property>
+	</bean>
+	<!-- 控制层 bean-->
+	<bean id="adminAction" class="com.sdkd.adminsystem.action.AdminAction" scope="prototype">
+	<property name="adminBo">
+	<ref local="adminBo"/>
+	</property>
+	</bean>
+	
+</beans>

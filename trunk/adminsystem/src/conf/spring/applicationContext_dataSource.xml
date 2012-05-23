@@ -33,6 +33,12 @@
 				<value>
 					hibernate/admin.hbm.xml
 				</value>
+				<value>
+					hibernate/role.hbm.xml
+				</value>
+				<value>
+					hibernate/power.hbm.xml
+				</value>
 			</list>
 		</property>
 	</bean>

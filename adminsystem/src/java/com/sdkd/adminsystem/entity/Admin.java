@@ -1,6 +1,8 @@
 package com.sdkd.adminsystem.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Admin entity.
@@ -14,7 +16,8 @@ public class Admin implements Serializable {
 	private Integer adminId;
 	private String adminName;
 	private String adminPassword;
-
+	
+	private Set<Role>  roles = new HashSet<Role>();
  
 
 	/** default constructor */
@@ -49,6 +52,14 @@ public class Admin implements Serializable {
 
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
  
 }

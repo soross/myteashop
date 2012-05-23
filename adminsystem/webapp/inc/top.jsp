@@ -1,4 +1,5 @@
-
+<%@ page language="java" pageEncoding="UTF-8"%>
+<jsp:directive.page import="com.sdkd.adminsystem.entity.Admin"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -42,7 +43,7 @@ body {
             <td height="18" background="../images/main_14.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
               <tr>
                 <td  style="width:1px;">&nbsp;</td>
-                <td ><span class="STYLE1"><%=session.getAttribute("loginName").toString()%>
+                <td ><span class="STYLE1"><%=((Admin)session.getAttribute("loginUser")).getAdminName()%>
                 </span></td>
               </tr>
             </table></td>

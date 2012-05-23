@@ -2,9 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link rel="STYLESHEET" type="text/css" href="codebase/dhtmlxtree.css" />
-<title>无标题文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>鑿滃崟</title>
 <style type="text/css">
 <!--
 body {
@@ -22,7 +21,7 @@ a:hover{font-size:12px; text-decoration:none; color:#FF0000;}
 </style>
 <style type="text/css">
 <!--
-ul,li,p,h1,h2{ margin:0; padding:0; border:0; background:#FAFAFA; font-family:Arial, Helvetica, sans-serif,"宋体"}
+ul,li,p,h1,h2{ margin:0; padding:0; border:0; background:#FAFAFA; font-family:Arial, Helvetica, sans-serif,"脣脦脤氓"}
 li{ list-style:none}
 .rolinList{ width:144px; height:auto; margin:2px auto 0 auto; text-align:left}
 .rolinList li{margin-bottom:1px;border:1px solid #B0D55E}
@@ -65,10 +64,10 @@ function MM_swapImage() { //v3.0
     <td valign="top">
 	     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed">
 	      <tr>
-	        <td height="26" background="images/main_21.gif"><br /></td>
+	        <td height="26" style="background-image:url(../images/main_21.gif);"><br /></td>
 	      </tr>
 	      <tr  valign="top">
-	        <td height="80" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">
+	        <td height="60px" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">
 		        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 		          <tr>
 		            <td height="45"><div align="center"><a href="../prodlist.php" target="dataFrame"><img src="../images/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','../images/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
@@ -76,9 +75,9 @@ function MM_swapImage() { //v3.0
 		            <td><div align="center"><a href="../sallist.php" target="dataFrame"><img src="../images/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','../images/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div></td>
 		          </tr>
 		          <tr>
-		            <td height="25"><div align="center" class="STYLE2"><a href="../prodlist.php" target="dataFrame">产品查询</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../orderlist.php" target="dataFrame">订单查询</a></div></td>
-		            <td><div align="center" class="STYLE2"><a href="../sallist.php" target="dataFrame">工资查询</a></div></td>
+		            <td height="25"><div align="center" class="STYLE2"><a href="../prodlist.php" target="dataFrame">涓枃</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../orderlist.php" target="dataFrame">涓枃</a></div></td>
+		            <td><div align="center" class="STYLE2"><a href="../sallist.php" target="dataFrame">涓枃</a></div></td>
 		          </tr>
 		        </table>
 	        </td>
@@ -97,30 +96,6 @@ function MM_swapImage() { //v3.0
 </table>
 </body>
 
-
-<script  src="codebase/dhtmlxcommon.js"></script>
-<script  src="codebase/dhtmlxtree.js"></script>
-<script>
-	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
-	tree.setImagePath("codebase/imgs/csh_yellowbooks/");
-	tree.loadXML("codebase/menu_<%=session.getAttribute("adminID").toString()%>.xml");
-	//link tree to asp script
-    tree.setXMLAutoLoading("xml.php"); 
-    
-    //load first level of tree
-    tree.loadXML("xml.php?id=0");
-	
-	tree.enableDragAndDrop(0);
-	tree.setOnClickHandler(tonclick);
-	function tonclick(id){
-		if(tree.getSelectedItemId()<0){
-			tree.openItem(id);
-		}else{
-			//alert(tree.getSelectedItemId());
-			window.parent.dataFrame.location.href="../"+tree.getSelectedItemId();
-		}
-	}
-</script>
 <script type="text/javascript">
 //<![CDATA[
 window.onload = function() {

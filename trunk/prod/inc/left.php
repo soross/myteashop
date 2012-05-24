@@ -68,7 +68,7 @@ function MM_swapImage() { //v3.0
     <td valign="top">
 	     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed">
 	      <tr>
-	        <td height="26" background="images/main_21.gif">&nbsp;</td>
+	        <td height="26" background="../images/main_21.gif">&nbsp;</td>
 	      </tr>
 	      <tr  valign="top">
 	        <td height="80" style="background-image:url(../images/main_23.gif); background-repeat:repeat-x;">

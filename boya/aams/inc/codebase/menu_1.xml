@@ -1,0 +1,22 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<tree id="0">
+		<item text="在线报名管理" id="-1">
+			<item text="在线报名列表" id="reguserlist.php"/>
+		</item>
+		<item text="课程管理" id="-2">
+			<item text="课程列表" id="classlist.php"/>
+			<item text="新增课程" id="addclass.php"/>
+		</item>
+		<item text="系统配置" id="-3">
+			<item text="导航管理" id="menu.php"/>
+			<item text="在线客服配置" id="service.php"/>
+			<item text="SEO配置" id="seo.php"/>
+			<item text="AD配置" id="ad.php"/>
+		</item>
+		<item text="系统用户管理" id="-4">
+			<item text="管理员列表" id="userlist.php"/>
+			<item text="新增管理员" id="adduser.php"/>
+			<item text="权限列表" id="powerlist.php"/>
+			<item text="新增权限" id="addpower.php"/>
+		</item>
+</tree>

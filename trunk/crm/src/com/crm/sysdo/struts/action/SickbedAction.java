@@ -22,7 +22,7 @@ public class SickbedAction extends DispatchAction{
 	private SickbedServiceDao sickbedServiceDao;
 	
 	/**
-	 * 规则列表
+	 * 病床列表
 	 * 
 	 * @param mapping
 	 * @param form

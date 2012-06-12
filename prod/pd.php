@@ -7,7 +7,7 @@ require_once("action/mysql.class.php");
 $seqid= $_GET[orderid];
 //$seqid="20120416045027891592";
 
-$db->query("select id from orderitem where pddate is null and orderid='".$seqid."'");
+$db->query("select id from orderitem where orderid='".$seqid."'");
 $cnt=$db->db_num_rows();
 $smarty->assign("orderid",$seqid);
 if($cnt>0){

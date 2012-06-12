@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-05-17 16:18:50
+Date: 2012-06-12 21:47:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -462,7 +462,7 @@ CREATE TABLE `sys_code` (
   `sys_value` varchar(100) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `idx_sys_code_unique` (`sys_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of sys_code
@@ -518,6 +518,7 @@ INSERT INTO `sys_code` VALUES ('48', 'CAP14003', '修改员工作业', '员工�
 INSERT INTO `sys_code` VALUES ('49', 'CAP08004', '生成上一月工资', '工资');
 INSERT INTO `sys_code` VALUES ('50', 'CAP04009', '订单派单时间', '订单');
 INSERT INTO `sys_code` VALUES ('51', 'CAP08005', '确定支付工资', '工资');
+INSERT INTO `sys_code` VALUES ('52', 'CAP01005', '修改产品', '产品');
 
 -- ----------------------------
 -- Table structure for `sys_log`

@@ -68,3 +68,11 @@ window.print();
 <div>文件尾部，不打印出来的内容。。。</div>
 
 <input type="button" name="print" value="预览并打印" onclick="preview()">
+
+
+
+批量
+ $staffjobids = $_POST[chk];
+  for($i=0;$i<count($staffjobids);$i++){
+  	$db->query("update staffjob set isfinish='1' where id='".$staffjobids[$i]."'");
+  }

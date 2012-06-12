@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+   <tlibversion>1.2</tlibversion><!--标签库版本 -->
+   <jspversion>1.1</jspversion><!--JSP版本 -->
+   <shortname>jn0904</shortname><!--前缀 -->
+   <uri>/jn0904</uri>
+   <tag>
+     <name>page</name>
+     <tagclass>com.crm.page.PageTag</tagclass>
+     <bodycontent>empty</bodycontent>
+     <attribute>
+       <name>name</name>
+       <required>true</required>
+       <rtexprvalue>false</rtexprvalue>
+     </attribute>
+     
+   </tag>
+   
+</taglib>

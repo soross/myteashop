@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="clubnetworkForm"
+			type="com.crm.club.struts.form.ClubnetworkForm" />
+    <form-bean name="groupDistributeForm" type="com.crm.group.struts.form.GroupDistributeForm" />
+    <form-bean name="groupViewForm" type="com.crm.group.struts.form.GroupViewForm" />
+	</form-beans>
+
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="clubnetworkForm"
+			input="/form/clubnetwork.jsp" name="clubnetworkForm" parameter="task"
+			path="/admin/clubnetwork" scope="request"
+			type="com.crm.club.struts.action.ClubnetworkAction" />
+    <action
+      attribute="groupDistributeForm"
+      input="/form/groupDistribute.jsp"
+      name="groupDistributeForm"
+      parameter="task"
+      path="/admin/groupDistribute"
+      scope="request"
+      type="com.crm.group.struts.action.GroupDistributeAction" />
+    <action
+      attribute="groupViewForm"
+      input="/form/groupView.jsp"
+      name="groupViewForm"
+      parameter="task"
+      path="/admin/groupView"
+      scope="request"
+      type="com.crm.group.struts.action.GroupViewAction" />
+	</action-mappings>
+	<controller
+		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">
+	</controller>
+
+	<message-resources parameter="com.crm.struts.ApplicationResources" />
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/applicationContext.xml" />
+	</plug-in>
+
+</struts-config>
+

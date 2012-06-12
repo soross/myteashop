@@ -111,6 +111,111 @@ else
 		}
 	}
 
+
+
+//修改产品 CAP01005
+else
+	if (isset ($_POST[task]) && "updateProd" == ($_POST[task])) {
+		//文件保存目录URL
+		$save_path = '../images/prod/'; //201109281154581.jpg
+		//定义允许上传的文件扩展名
+		$ext_arr = array (
+			'gif',
+			'png',
+			'jpg'
+		);
+		require "../action/FileUpload.class.php";
+		$up = new FileUpload(array (
+			'isRandName' => true,
+			'allowType' => $ext_arr,
+			'FilePath' => $save_path,
+			'MAXSIZE' => (1024 * 1000
+		)));
+
+		$insertID=$_POST[oldprodid];
+
+		if ($up->uploadFile('picpath')) {
+			$filename = "images/prod/" . $up->getNewFileName();
+			$db->query('start transaction');
+			$db->query("update prod set prodid='$_POST[prodid]',picname='$_POST[picname]',picpath='$filename' where id='$_POST[oldprodid]'");
+
+
+
+			//删除产品明细
+			$db->query("delete from  prodlist where prodid='$_POST[oldprodid]'");
+
+			//产品明细
+			$cls = $_POST[clid];
+			$clcnt = $_POST[amount];
+			for ($i = 0; $i < count($cls); $i++) {
+				$clinfo = getListBySql("select * from cl where id='" . $cls[$i] . "'", $db);
+				$sumprice = $clcnt[$i] * $clinfo[0][price];
+				$db->query("insert into prodlist(prodid,clid,amount,sumprice) values('" . $insertID . "','" . $cls[$i] . "','" . $clcnt[$i] . "','" . $sumprice . "')");
+			}
+
+
+			//删除工种明细
+			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
+
+			//工种明细
+			$job = $_POST[job];
+			for ($i = 0; $i < count($job); $i++) {
+				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
+			}
+			if (mysql_errno()) {
+				$db->query('rollback');
+
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败".mysql_errno());
+
+				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+			} else {
+				$db->query('commit');
+
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改产品","修改产品成功");
+
+				echo "<script>if(confirm('产品修改成功,是否继续修改?')){location.href='../updateprod.php?prodid=$_POST[oldprodid]';}else{location.href='../prodlist.php';}</script>";
+			}
+		} else {
+			$db->query('start transaction');
+			$db->query("update prod set prodid='$_POST[prodid]',picname='$_POST[picname]' where id='$_POST[oldprodid]'");
+
+			//删除产品明细
+			$db->query("delete from  prodlist where prodid='$_POST[oldprodid]'");
+
+			//产品明细
+			$cls = $_POST[clid];
+			$clcnt = $_POST[amount];
+			for ($i = 0; $i < count($cls); $i++) {
+				$clinfo = getListBySql("select * from cl where id='" . $cls[$i] . "'", $db);
+				$sumprice = $clcnt[$i] * $clinfo[0][price];
+				$db->query("insert into prodlist(prodid,clid,amount,sumprice) values('" . $insertID . "','" . $cls[$i] . "','" . $clcnt[$i] . "','" . $sumprice . "')");
+			}
+
+			//删除工种明细
+			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
+
+			//工种明细
+			$job = $_POST[job];
+			for ($i = 0; $i < count($job); $i++) {
+				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
+			}
+			if (mysql_errno()) {
+				$db->query('rollback');
+
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败".mysql_errno());
+
+				echo "<script>alert('产品修改失败,请检查上传的文件是否符合要求!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+			} else {
+				$db->query('commit');
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改产品","修改产品成功");
+				echo "<script>if(confirm('产品信息修改成功,图片没有修改或者修改失败,是否继续修改?')){location.href='../updateprod.php?prodid=$_POST[oldprodid]';}else{location.href='../prodlist.php';}</script>";
+			}
+
+			//$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败,上传文件不符合要求");
+			//echo "<script>alert('产品新增失败。请检查上传的文件是否符合要求!');location.href='../addprod.php';</script>";
+		}
+	}
+
 //删除产品 CAP01002 删除产品
 else
 	if (isset ($_GET[task]) && "delProd" == ($_GET[task])) {

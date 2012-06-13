@@ -196,7 +196,7 @@ for(i=0;i<cs.length;i++){
 		          <tr id="newsType">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">操作员工</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <select id="staffid" name="staff">
+		            <select id="staffid" name="staffid">
 		            <option value="-1">请选择</option>
 		            {section name=list loop=$stafflist}
 						<option value="{$stafflist[list].id}">{$stafflist[list].staffname}-[{$stafflist[list].staffid}]</option>

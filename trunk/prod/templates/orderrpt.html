@@ -250,16 +250,18 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3">
         <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总数</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总额</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总数</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总额</div></td>
+            <td width="20%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总数</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">已完成订单总额</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总数</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">未完成订单总额</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">订单总额</div></td>
           </tr>
           <tr>
             <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$overrpt.cnt}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $overrpt.sumprice==''}0{else}{$overrpt.sumprice}{/if}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$nooverrpt.cnt}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $nooverrpt.sumprice==''}0{else}{$nooverrpt.sumprice}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $nooverrpt.sumprice=='' && $overrpt.sumprice==''}0{else}{$overrpt.sumprice+$nooverrpt.sumprice}{/if}</div></td>
           </tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>

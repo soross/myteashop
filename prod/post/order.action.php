@@ -138,16 +138,16 @@ else
 	if (isset ($_POST[task]) && $_POST[task] == "orderJC") {
 		if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
 			//isfinish='0' and
-			$db->query("select * from orderlist where orderid='" . $_POST[itemid] . "'");
-			$cnt = $db->db_num_rows();
-			if ($cnt > 0) {
-				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "订单明细未全部竣工,进仓失败!");
-				echo "<script>alert('订单明细未全部竣工,进仓失败!');location.href='../orderlist.php'</script>";
-			} else {
+			//$db->query("select * from orderlist where orderid='" . $_POST[itemid] . "'");
+			//$cnt = $db->db_num_rows();
+			//if ($cnt > 0) {
+			//	$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "订单明细未全部竣工,进仓失败!");
+			//	echo "<script>alert('订单明细未全部竣工,进仓失败!');location.href='../orderlist.php'</script>";
+			//} else {
 				$db->query("update orderitem set jcdate='".$_POST[sdate]."' where id = '" . $_POST[itemid] . "'");
 				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "进仓", "订单已成功进仓!");
 				echo "<script>alert('订单已成功进仓!');location.href='../orderlist.php'</script>";
-			}
+			//}
 		} else {
 			$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "非法操作!");
 			echo "<script>alert('非法操作!');location.href='../orderlist.php'</script>";

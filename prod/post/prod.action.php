@@ -70,7 +70,7 @@ else
 			'isRandName' => true,
 			'allowType' => $ext_arr,
 			'FilePath' => $save_path,
-			'MAXSIZE' => (1024 * 1000
+			'MAXSIZE' => (1024 * 1024 * 10
 		)));
 		if ($up->uploadFile('picpath')) {
 			$filename = "images/prod/" . $up->getNewFileName();
@@ -129,7 +129,7 @@ else
 			'isRandName' => true,
 			'allowType' => $ext_arr,
 			'FilePath' => $save_path,
-			'MAXSIZE' => (1024 * 1000
+			'MAXSIZE' => (1024 * 1024 * 10
 		)));
 
 		$insertID=$_POST[oldprodid];
@@ -176,6 +176,7 @@ else
 				echo "<script>if(confirm('产品修改成功,是否继续修改?')){location.href='../updateprod.php?prodid=$_POST[oldprodid]';}else{location.href='../prodlist.php';}</script>";
 			}
 		} else {
+			print_r($up->getErrorMsg());
 			$db->query('start transaction');
 			$db->query("update prod set prodid='$_POST[prodid]',picname='$_POST[picname]' where id='$_POST[oldprodid]'");
 

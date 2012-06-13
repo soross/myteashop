@@ -137,7 +137,8 @@ else
 else
 	if (isset ($_POST[task]) && $_POST[task] == "orderJC") {
 		if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
-			$db->query("select * from orderlist where isfinish='0' and orderid='" . $_POST[itemid] . "'");
+			//isfinish='0' and
+			$db->query("select * from orderlist where orderid='" . $_POST[itemid] . "'");
 			$cnt = $db->db_num_rows();
 			if ($cnt > 0) {
 				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "订单明细未全部竣工,进仓失败!");

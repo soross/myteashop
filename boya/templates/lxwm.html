@@ -1,0 +1,52 @@
+{include file="inc/top.html"}
+        <div id="index_ad">
+       		<div onmouseout="ISL_StopUp()" onmouseup="ISL_StopUp()" onmousedown="ISL_GoUp()" class="Lbtn"></div>
+        	<div id="ISL_Cont" class="Cont">
+            	<div class="ScrCont">
+                	<div id="List1">
+                   		<a href="#"><img src="images/banner01.jpg" /></a>
+                        <a href="#"><img src="images/banner02.jpg" /></a>
+                	</div>
+                	<div id="List2"></div>
+            	</div>
+       	 	</div>
+        	<div onmouseout="ISL_StopDown()" onmouseup="ISL_StopDown()" onmousedown="ISL_GoDown()" class="Rbtn"></div>
+    	</div>
+        <div id="content">
+        	<div class="main">
+                <div id="left">
+                    <div id="classCate">
+                        <div class="left_tt"><span>课程种类</span><a class="more" href="#">more</a></div>
+                        <div class="classCate">
+                            <ul>
+                            {section name=list loop=$lmlist}
+                                <li {if $taskid==$lmlist[list].id} class="current_li" {/if}><a href="{$lmlist[list].url}">{$lmlist[list].name}</a></li>
+                             {/section}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="onlineRegister">
+                       {include file="inc/online_register.html"}
+                    </div>
+                    <div id="map">
+                        <img src="images/map.jpg" />
+                    </div>
+                    <div id="contact">
+                      {include file="inc/contact.html"}
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="path">
+                       <h2>{$infocn_type.type_name}</h2>
+                       <div class="path">
+                           <a href="index.html">首页&nbsp;&gt;&nbsp;</a>
+                           <a href="{$infocn_type.url}">{$infocn_type.type_name}</a>
+                       </div>
+                   </div>
+                   <div id="detail">
+                   	   {$infocn.comm_value}
+                   </div>
+                </div>
+            </div>
+    	</div>
+   	{include file="inc/buttom.html"}

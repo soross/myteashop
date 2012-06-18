@@ -1,0 +1,182 @@
+{include file="inc/top.html"}
+{literal}
+<script language="javascript" type="text/javascript" >
+       alert('');
+ function submitsigin(){
+ if(document.registerForm.username.value==""){
+alert('必须填写姓名');
+document.registerForm.username.focus();
+return false;
+ }
+if(document.registerForm.telephone.value==""){
+alert('必须填写手机号码');
+document.registerForm.telephone.focus();
+return false;
+ }
+ if(document.registerForm.course.value=="" ||document.registerForm.course.value=="请选择"){
+alert('必须选择报名课程');
+document.registerForm.course.value.focus();
+return false;
+ }
+ if(document.registerForm.amount.valaue==""){
+alert('必须选择报名人数');
+document.registerForm.amount.valaue.focus();
+return false;
+ }
+if(document.registerForm.telephone.length<>11){
+alert('手机号码只能填写11位');
+document.registerForm.telephone.focus();
+return false;
+}
+if(document.registerForm.telephone.value.match(/^[0-9]*$/)==null){
+alert('手机号码只能填写数字');
+document.registerForm.telephone.focus();
+ return false;
+}
+if(document.registerForm.qqcode.value!=null){
+if(document.registerForm.qqcode.value.match(/[1-9][0-9]{4,}/)==null){
+alert('QQ号码不合法');
+document.registerForm.qqcode.focus();
+ return false;
+}
+}
+if(document.registerForm.email.value!=null){
+if(document.registerForm.email.value.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)==null){
+alert('EMAIL地址不合法');
+document.registerForm.email.focus();
+ return false;
+}
+}
+if(document.registerForm.phone.value!=null){
+if(document.registerForm.phone.value.match(/\d{3}-\d{8}|\d{4}-\d{7}/)==null){
+alert('联系电话，请输入区号-号码');
+document.registerForm.phone.focus();
+ return false;
+}
+}
+var tmp = document.registerForm.course.value;
+var tmp1= 'fee'+tmp;
+document.registerForm.money.value=document.registerForm.amount.value*document.getElementById(tmp1).value;
+document.registerForm.submit();
+ }
+ function formrest(){
+document.registerForm.username.value="";
+document.registerForm.telephone.value="";
+document.registerForm.address.value="";
+document.registerForm.phone.value="";
+document.registerForm.qqcode.value="";
+document.registerForm.email.value="";
+document.registerForm.money.value="";
+ }
+</script>
+ {/literal}
+        <div id="content">
+        	<div class="main">
+                <div id="left">
+                    <div id="categories">
+                        <div class="left_tt">栏目类型</div>
+                        <div class="cate">
+                            <ul>
+                                {section name=list loop=$lmlist}
+                                <li {if $taskid==$lmlist[list].id} class="current_li" {/if}><a href="{$lmlist[list].url}">{$lmlist[list].name}</a></li>
+                             {/section}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="onlineRegister">
+                        {include file="inc/online_register.html"}
+                    </div>
+                    <div id="map">
+                        <img src="images/map.jpg" />
+                    </div>
+                    <div id="contact">
+                        {include file="inc/contact.html"}
+                    </div>
+                </div>
+                <div id="right">
+                   <div id="path">
+                       <h2>{$infocn.type_name}</h2>
+                       <div class="path">
+                           <a href="index.html">首页&nbsp;&gt;&nbsp;</a>
+                           <a href="wsbm.html">网上报名&nbsp;&gt;&nbsp;</a>
+                           {$infocn.type_name}
+                       </div>
+                   </div>
+                   {if $infocn.id==10}
+                   <form id="registerForm" method="get" name="online-register" action="/onlineRegister.aspx">
+                   	   <div class="register_form">
+                       	   <ol>
+                               <li><i class="fixed_red">*</i>&nbsp;<span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span></li>
+                               <li><i class="fixed_red">*</i>&nbsp;<span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span></li>
+                               <li><span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</span></li>
+                               <li><span>工作单位：</span></li>
+                               <li><i class="fixed_red">*</i>&nbsp;<span>手机号码：</span></li>
+                               <li><span>联系电话：</span></li>
+                               <li><span>Q&nbsp;Q号码：</span></li>
+                               <li><span>E-mail：</span></li>
+                               <li><i class="fixed_red">*</i>&nbsp;<span>报名课程：</span></li>
+                               <li><i class="fixed_red">*</i>&nbsp;<span>报名人数：</span></li>
+                               <li class="leave_message"><span>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：</span></li>
+                       	   </ol>
+                           <ul>
+                           	   <li><input id="username" class="input-text" name="username" type="text" value="" maxlength="40" /></li>
+                               <li class="sex">
+                               	   <input id="male" class="input-radio" type="radio" checked="checked" name="sex" value="" /><label for="sex">男</label>
+                               	   <input id="female" class="input-radio" type="radio" name="sex" value="" /><label for="sex">女</label>
+                               </li>
+                               <li>
+                               	   <select id="certi">
+                                   	   <option value="大专">大专</option>
+                                       <option value="本科">本科</option>
+                                       <option value="硕士">硕士</option>
+                                       <option value="博士">博士</option>
+                                   </select>
+                               </li>
+                               <li>
+                               	   <input id="address" class="input-text" name="address" type="text" value="" maxlength="150"  />
+                               </li>
+                               <li>
+                               	   <input id="telephone" class="input-text" name="telephone" type="text" value="" maxlength="40"  />
+                               </li>
+                               <li>
+                               	   <input id="phone" class="input-text" name="phone" type="text" value="" maxlength="40"  />
+                               </li>
+                               <li>
+                               	   <input id="qqcode" class="input-text" name="qqcode" type="text" value="" maxlength="40"  />
+                               </li>
+                               <li>
+                               	   <input id="email" class="input-text" name="email" type="text" value="" maxlength="40"  />
+                               </li>
+                               <li>
+                               	   <select id="course">
+                                   	   <option value="java精品课程">java精品课程</option>
+                                       <option value="C/C++精品课程">C/C++精品课程</option>
+                                       <option value="iphone精品课程">iphone精品课程</option>
+                                   </select>
+                               </li>
+                               <li>
+                               	   <select id="amount">
+                                   	   <option value="5">5</option>
+                                       <option value="10">10</option>
+                                       <option value="15">15</option>
+                                   </select>
+                               </li>
+                               <li class="leave_message">
+                               	   <textarea id="leaveMessage" class="textarea-text" name="leaveMessage" value="" maxlength="40" cols="60" rows="7"></textarea>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="registerBtn">
+                       	    <input id="submit" name="submit" type="submit" value=""  />
+                            <input id="reset" name="reset" type="submit" value=""  />
+                       </div>
+                   </form>
+                   {else}
+                    <div id="detail">
+                   	   fsafsadfasfd
+                   </div>
+                   {/if}
+                </div>
+            </div>
+    	</div>
+{include file="inc/buttom.html"}

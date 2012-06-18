@@ -19,6 +19,7 @@
             }
         </script>
     </head>
+
     <body>
         <img src="imgcode.php" alt="看不清楚，换一张" style="cursor: pointer;" onClick="javascript: newgdcode(this,this.src);" />
         <form method="POST" action="image.php">

@@ -10,10 +10,11 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-06-06 10:30:23
+Date: 2012-06-18 20:11:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for `boya_admin_menu`
 -- ----------------------------
@@ -105,7 +106,7 @@ CREATE TABLE `boya_config` (
   `comm_value` longtext,
   `comm_flag` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_config
@@ -116,13 +117,17 @@ INSERT INTO `boya_config` VALUES ('3', 'Goal', '立志成为福建第一培训�
 INSERT INTO `boya_config` VALUES ('4', 'SEO_Title', '福州博雅教育', null, 'Title');
 INSERT INTO `boya_config` VALUES ('5', 'SEO_Keyword', '福州博雅教育', null, 'Keyword');
 INSERT INTO `boya_config` VALUES ('6', 'SEO_Desc', '福州博雅教育', null, 'Desc');
-INSERT INTO `boya_config` VALUES ('7', 'Im_Account', '1234567', null, '点击我在线咨询');
+INSERT INTO `boya_config` VALUES ('7', 'Im_Account', '12345678', null, '点击我在线咨询8');
 INSERT INTO `boya_config` VALUES ('8', 'Im_Account', '1234567', null, '点击我在线咨询');
 INSERT INTO `boya_config` VALUES ('9', 'Im_Account', '1234567', null, '点击我在线咨询');
 INSERT INTO `boya_config` VALUES ('10', 'Im_Account', '1234567', null, '点击我在线咨询');
-INSERT INTO `boya_config` VALUES ('11', 'AD_Images', 'images/ad/1.jpg', null, null);
-INSERT INTO `boya_config` VALUES ('12', 'AD_Images', 'images/ad/1.jpg', null, null);
+INSERT INTO `boya_config` VALUES ('11', 'AD_Images', 'images/banner01.jpg', null, null);
+INSERT INTO `boya_config` VALUES ('12', 'AD_Images', 'images/banner02.jpg', null, null);
 INSERT INTO `boya_config` VALUES ('13', 'AD_Images', 'images/ad/1.jpg', null, null);
+INSERT INTO `boya_config` VALUES ('14', 'ContactUs', null, '123123123123123123123', null);
+INSERT INTO `boya_config` VALUES ('15', 'Buttom', null, 'sdafsadfs', null);
+INSERT INTO `boya_config` VALUES ('16', 'Contact', null, 'fqqqqq', null);
+INSERT INTO `boya_config` VALUES ('17', 'Intro', null, 'boya', null);
 
 -- ----------------------------
 -- Table structure for `boya_course`
@@ -132,23 +137,27 @@ CREATE TABLE `boya_course` (
   `id` int(11) NOT NULL auto_increment,
   `type_id` int(11) default NULL,
   `class_name` varchar(50) default NULL COMMENT '课程类别\\学历类别',
-  `open_time` datetime default NULL COMMENT '开课时间',
+  `open_time` varchar(20) default NULL COMMENT '开课时间',
   `course_name` varchar(50) default NULL COMMENT '开始课程\\专业',
   `class_hour` varchar(20) default NULL COMMENT '课时\\学制',
   `fee` double(10,2) default NULL COMMENT '课程费用',
   `path` varchar(50) default NULL COMMENT '招生简直word路径',
+  `content_type` int(2) default '2' COMMENT '2内容 1word文件',
   `content` longtext COMMENT '招生简章',
   `isselect` int(1) default '1' COMMENT '是否可报名：1报名可选0不可选',
   `create_date` datetime default NULL,
   `open_level` varchar(20) default NULL COMMENT '开设层次',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_course
 -- ----------------------------
-INSERT INTO `boya_course` VALUES ('1', '5', '人力资源', '2012-06-11 00:00:00', '档案管理', '10', '300.22', null, null, '0', '2012-06-01 12:33:10', null);
-INSERT INTO `boya_course` VALUES ('2', '6', '开发教育', null, '计科', '业余三年', '8000.00', null, null, '1', null, '本科');
+INSERT INTO `boya_course` VALUES ('1', '5', '人力资源', '2012-06-11', '档案管理', '10', '300.22', null, '2', 'sd', '0', '2012-06-01 12:33:10', null);
+INSERT INTO `boya_course` VALUES ('2', '6', '开发教育', '本科', '计科', '业余三年', '8000.00', null, '2', 'dd', '1', null, '');
+INSERT INTO `boya_course` VALUES ('3', '5', '2222222', '2012-07-04', '22222', '22222', '2222.00', '', '2', '22222222sss', '1', '2012-06-06 13:14:55', null);
+INSERT INTO `boya_course` VALUES ('6', '7', 'fdsafds', '2012-06-05', 'safds', 'fads', '0.00', 'file/20120606070916774.txt', '1', '滚动条样式表.txt', '-1', '2012-06-06 15:09:16', null);
+INSERT INTO `boya_course` VALUES ('7', '7', 'fdsafds', '2012-06-13', 'safds', 'fads', '0.00', 'file/20120606070916774.txt', '1', '滚动条样式表.txt', '1', '2012-06-06 15:24:44', null);
 
 -- ----------------------------
 -- Table structure for `boya_news`
@@ -159,6 +168,8 @@ CREATE TABLE `boya_news` (
   `title` varchar(50) default NULL,
   `path` varchar(50) default NULL,
   `content` longtext,
+  `create_date` datetime default NULL,
+  `url` varchar(50) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
@@ -189,13 +200,14 @@ CREATE TABLE `boya_reg_user` (
   `remark` longtext COMMENT '备注',
   `class_no` varchar(20) default NULL COMMENT '班级',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_reg_user
 -- ----------------------------
 INSERT INTO `boya_reg_user` VALUES ('1', 'abc', '男', '大专', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '1', '2', '2012-06-01 12:20:12', '0.00', null, null, null, null);
 INSERT INTO `boya_reg_user` VALUES ('2', 'efg', '女', '本科', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '2', '1', '2012-06-01 12:20:42', '200.22', '2012-06-01 12:20:50', '1', null, null);
+INSERT INTO `boya_reg_user` VALUES ('3', 'sdfsafd', 'o', '', '', '11111111111', '', '1111', '', '0', '11', null, '0.00', null, null, '', null);
 
 -- ----------------------------
 -- Table structure for `boya_type`
@@ -205,22 +217,26 @@ CREATE TABLE `boya_type` (
   `id` int(11) NOT NULL auto_increment,
   `type_name` varchar(30) default NULL COMMENT '名称',
   `pid` int(11) default '-1',
+  `url` varchar(50) default NULL,
   `seq` int(2) default '99' COMMENT '排序',
   `indexshow` int(1) default '0' COMMENT '0不显示1显示  是否首页tab页面显示',
+  `index_url` varchar(50) default NULL COMMENT '首页课程的url',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_type
 -- ----------------------------
-INSERT INTO `boya_type` VALUES ('1', '网站首页', '-1', '1', '0');
-INSERT INTO `boya_type` VALUES ('2', '培训中心', '-1', '2', '0');
-INSERT INTO `boya_type` VALUES ('3', '现场报名', '-1', '3', '0');
-INSERT INTO `boya_type` VALUES ('4', '联系我们', '-1', '4', '0');
-INSERT INTO `boya_type` VALUES ('5', '能力提升', '2', '1', '0');
-INSERT INTO `boya_type` VALUES ('6', '职业认证', '2', '2', '0');
-INSERT INTO `boya_type` VALUES ('7', '国学讲堂', '2', '3', '0');
-INSERT INTO `boya_type` VALUES ('8', '学历教育', '2', '4', '0');
-INSERT INTO `boya_type` VALUES ('9', '免费培训', '2', '5', '0');
-INSERT INTO `boya_type` VALUES ('10', '在线报名', '3', '1', '0');
-INSERT INTO `boya_type` VALUES ('11', '网上报名', '3', '2', '0');
+INSERT INTO `boya_type` VALUES ('1', '网站首页', '-1', 'www.baidu.com', '1', '0', null);
+INSERT INTO `boya_type` VALUES ('2', '培训中心', '-1', null, '2', '0', null);
+INSERT INTO `boya_type` VALUES ('3', '网上报名', '-1', '', '3', '0', null);
+INSERT INTO `boya_type` VALUES ('4', '联系我们', '-1', 'sdfdsafds', '4', '0', null);
+INSERT INTO `boya_type` VALUES ('5', '能力提升', '2', 'pxzx.php?typeid=5', '1', '1', 'index.php?typeid=5');
+INSERT INTO `boya_type` VALUES ('6', '职业认证', '2', 'pxzx.php?typeid=6', '2', '1', 'index.php?typeid=6');
+INSERT INTO `boya_type` VALUES ('7', '国学讲堂', '2', 'pxzx.php?typeid=7', '3', '0', 'index.php?typeid=7');
+INSERT INTO `boya_type` VALUES ('8', '学历教育', '2', 'pxzx.php?typeid=8', '4', '1', 'index.php?typeid=8');
+INSERT INTO `boya_type` VALUES ('9', '免费培训', '2', 'pxzx.php?typeid=9', '5', '0', 'index.php?typeid=9');
+INSERT INTO `boya_type` VALUES ('10', '在线报名', '3', 'wsbm.php?typeid=10', '1', '0', null);
+INSERT INTO `boya_type` VALUES ('11', '现场报名', '3', 'xcbm.php?typeid=11', '2', '0', null);
+INSERT INTO `boya_type` VALUES ('12', '简介', '1', 'jj.php', '1', '0', null);
+INSERT INTO `boya_type` VALUES ('13', '图片展示', '1', 'tpzs.php', '1', '0', null);

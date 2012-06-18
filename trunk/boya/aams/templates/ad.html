@@ -102,7 +102,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-首页广告管理</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-AD配置</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -128,22 +128,23 @@ for(i=0;i<cs.length;i++){
 		          <tr>
 					<td width="100px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">播放顺序</div></td>
 		            <td width="200px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
-						<input type="text" id="seq" name="seq" value="{$info[list].comm_value}" maxlength="50" size="25">
+						<input type="text" id="seq" name="seq" value="{$info[list].comm_flag}" maxlength="50" size="25">
 						<br>[从小到大排序]
 					</div></td>
 					<td width="60px" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
 
 		            <td width="320px" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file"  id="adimage" name="adimage"><br>[支持格式：gif|jpg|png&nbsp;&nbsp;长宽960px*333px&nbsp;大小：100Kb]<font style="color:red;">*</font>
+		            	<input type="file"  id="path" name="path"><br>[支持格式：gif|jpg|png&nbsp;&nbsp;长宽960px*333px&nbsp;大小：100Kb]<font style="color:red;">*</font>
 		            </div></td>
 		            <td height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1">
    					<input type="hidden" id="task" name="task" value="Index_AD">
 		            <input type="hidden" id="adid" name="adid" value="{$info[list].id}">
+		            <input type="hidden" id="oldpath" name="oldpath" value="{$info[list].comm_code}">
 		            <input type="submit" value="修改该条信息">
 		            </div></td>
 		          </tr>
 		          <tr>
-		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">广告图片</div></td>
+		          	<td bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
 		          	<td colspan="5" bgcolor="#FFFFFF" class="STYLE1"><div align="left" class="STYLE2 STYLE1"><br>
 					<img src="../{$info[list].comm_code}" width="597px" height="207px" >
 					</div></td>

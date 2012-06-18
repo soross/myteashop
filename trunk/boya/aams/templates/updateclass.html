@@ -154,7 +154,7 @@ function selected(obj){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">课程管理-新增课程</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">课程管理-修改课程</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -210,89 +210,93 @@ function selected(obj){
 		            	<select id="type_id" name="type_id" onchange="onchangeed(this);">
 		            	<option value="-1">==请=选=择==</option>
 		            	{section name=list loop=$type}
-		            	<option value="{$type[list].id}">{$type[list].type_name}</option>
+		            	<option value="{$type[list].id}" {if $classinfo.type_id==$type[list].id}selected{/if}>{$type[list].type_name}</option>
 		            	{/section}
 		            	</select><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="show">
+		          <tr class="show" style="display:{if $classinfo.type_id==8}none{else}block{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程类别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classtype" name="classtype" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="classtype" name="classtype" value="{$classinfo.class_name}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="noshow" style="display:none;">
+		          <tr class="noshow" style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="collegetype" name="collegetype" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="collegetype" name="collegetype" value="{$classinfo.class_name}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="noshow" style="display:none;">
+		          <tr class="noshow" style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设层次</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="openlevel" name="openlevel" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="openlevel" name="openlevel" value="{$classinfo.open_time}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="show">
+		          <tr class="show"  style="display:{if $classinfo.type_id==8}none{else}block{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="opentime" name="opentime" size="20" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>
+		            	<input type="text" id="opentime" name="opentime" value="{$classinfo.open_time}" size="20" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="show">
+		          <tr class="show" style="display:{if $classinfo.type_id==8}none{else}block{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课课程</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classname" name="classname" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="classname" name="classname" value="{$classinfo.course_name}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="noshow" style="display:none;">
+		          <tr class="noshow" style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">专业</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="zy" name="zy" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="zy" name="zy"  value="{$classinfo.course_name}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr  class="show">
+		          <tr  class="show"  style="display:{if $classinfo.type_id==8}none{else}block{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训课时</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="hour" name="hour" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="hour" name="hour"  value="{$classinfo.class_hour}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="noshow" style="display:none;">
+		          <tr class="noshow"  style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学制</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="xz" name="xz" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="xz" name="xz" value="{$classinfo.class_hour}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训费用</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="fee" name="fee" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="fee" name="fee" value="{$classinfo.fee}" size="20" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		           <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章类型</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="radio" id="content_type" name="content_type" value="1" checked onclick="selected(this);">WORD文档&nbsp;<input type="radio" id="content_type" name="content_type" value="2" onclick="selected(this);">文本<font style="color:red;">*</font>
+		            	<input type="radio" id="content_type" name="content_type" value="1" {if $classinfo.content_type==1}checked{/if} onclick="selected(this);">WORD文档&nbsp;<input type="radio" id="content_type" name="content_type" {if $classinfo.content_type==2}checked{/if} value="2" onclick="selected(this);">文本<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr id="word" style="display:block">
+		          <tr id="word" style="display:{if $classinfo.content_type==1}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file" id="path" name="path" size="20" maxlength="50"><font style="color:red;">*</font><br>
+			            {if $classinfo.path!=""}{$classinfo.content}<br>{/if}
+		            	<input type="file" id="path" name="path" value="{$classinfo.path}" size="20" maxlength="50"><font style="color:red;">*</font><br>
 		            	[支持格式：doc|docx|xls|xlsx|txt,大小10M的文件]
 		            </div></td>
 		          </tr>
-		          <tr id="content" style="display:none">
+		          <tr id="content" style="display:{if $classinfo.content_type==2}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<textarea  id="content" name="content"  style="width:600px;height:200px;visibility:hidden;"></textarea><font style="color:red;">*</font>
+		            	<textarea  id="content" name="content" style="width:600px;height:200px;visibility:hidden;">{$classinfo.content}</textarea><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="新增">
-						<input type="hidden" id="task" name="task" value="addClass">
+						<input type="submit" value="修改">
+						<input type="hidden" id="task" name="task" value="updateClass">
+						<input type="hidden" id="classid" name="classid" value="{$classinfo.id}">
+						<input type="hidden" id="wordpath" name="wordpath" value="{$classinfo.path}">
+						<input type="hidden" id="old_content_type" name="old_content_type" value="{$classinfo.content_type}">
 		            </div></td>
 		          </tr>
 		        </table>

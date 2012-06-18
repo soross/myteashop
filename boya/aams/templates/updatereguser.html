@@ -94,56 +94,36 @@ for(i=0;i<cs.length;i++){
 }
 </script>
 <script>
-
-function onchangeed(obj){
-	var shows=document.getElementsByTagName('tr');
-	if(obj.value=='8'){
-		for(var i=0;i<shows.length;i++){
-			if(shows[i].className=='show'){
-				shows[i].style.display="none";
-			}
-			if(shows[i].className=='noshow'){
-				shows[i].style.display="block";
-			}
+function checkSon(pid){
+	var chks = document.forms[0].elements;
+	var power = document.getElementById('power'+pid);
+	for(var i=0;i<chks.length;i++){
+		if(chks[i].className=="class"+pid){
+			chks[i].checked=power.checked
 		}
-	}else{
-		for(var i=0;i<shows.length;i++){
-			if(shows[i].className=='show'){
-				shows[i].style.display="block";
-			}
-			if(shows[i].className=='noshow'){
-				shows[i].style.display="none";
-			}
-		}
-
 	}
 }
 
-function selected(obj){
-	if(obj.value=='1'){
-		document.getElementById('word').style.display='block';
-		document.getElementById('content').style.display='none';
+function checkParent(pid,obj){
+	if(obj.checked){
+		document.getElementById("power"+pid).checked=obj.checked;
 	}else{
-		document.getElementById('word').style.display='none';
-		document.getElementById('content').style.display='block';
+		var chks = document.forms[0].elements;
+		var bool = false;
+		for(var i=0;i<chks.length;i++){
+			if(chks[i].className=="class"+pid){
+				if(chks[i].checked){
+					bool=true;
+					break;
+				}
+			}
+		}
+		if(!bool){
+			document.getElementById("power"+pid).checked=bool;
+		}
 	}
+
 }
-</script>
-<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
-<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
-<script>
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
-		});
-	});
 </script>
 </head>
 {/literal}
@@ -154,7 +134,7 @@ function selected(obj){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">课程管理-新增课程</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统管理-修改注册用户</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -202,97 +182,79 @@ function selected(obj){
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/class.action.php" method="post" enctype="multipart/form-data" onsubmit="return cheackClass();">
+        	<form action="post/account.action.php" method="post">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程大类</div></td>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">注册名称</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<select id="type_id" name="type_id" onchange="onchangeed(this);">
-		            	<option value="-1">==请=选=择==</option>
-		            	{section name=list loop=$type}
-		            	<option value="{$type[list].id}">{$type[list].type_name}</option>
-		            	{/section}
-		            	</select><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="show">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程类别</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classtype" name="classtype" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="noshow" style="display:none;">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="collegetype" name="collegetype" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="noshow" style="display:none;">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设层次</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="openlevel" name="openlevel" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="show">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="opentime" name="opentime" size="20" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="show">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课课程</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classname" name="classname" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="noshow" style="display:none;">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">专业</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="zy" name="zy" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr  class="show">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训课时</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="hour" name="hour" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr class="noshow" style="display:none;">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学制</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="xz" name="xz" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="regname" name="regname" size="20" maxlength="50" value="{$reginfo.username}"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训费用</div></td>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">性别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="fee" name="fee" size="20" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		           <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章类型</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="radio" id="content_type" name="content_type" value="1" checked onclick="selected(this);">WORD文档&nbsp;<input type="radio" id="content_type" name="content_type" value="2" onclick="selected(this);">文本<font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr id="word" style="display:block">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file" id="path" name="path" size="20" maxlength="50"><font style="color:red;">*</font><br>
-		            	[支持格式：doc|docx|xls|xlsx|txt,大小10M的文件]
-		            </div></td>
-		          </tr>
-		          <tr id="content" style="display:none">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<textarea  id="content" name="content"  style="width:600px;height:200px;visibility:hidden;"></textarea><font style="color:red;">*</font>
+		            	<input type="radio" id="gender" name="gender" value="男" {if $reginfo.gender=='男'}checked{/if}>男
+		            	<input type="radio" id="gender" name="gender" value="女" {if $reginfo.gender=='女'}checked{/if}>女<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="新增">
-						<input type="hidden" id="task" name="task" value="addClass">
+		            	<select id="college" name="college">
+		            		<option value="-1">请选择</option>
+		            		<option value="初中" {if $reginfo.college=='初中'}selected{/if}>初中</option>
+		            		<option value="高中" {if $reginfo.college=='高中'}selected{/if}>高中</option>
+		            		<option value="大专" {if $reginfo.college=='大专'}selected{/if}>大专</option>
+		            		<option value="本科" {if $reginfo.college=='本科'}selected{/if}>本科</option>
+		            		<option value="研究生" {if $reginfo.college=='研究生'}selected{/if}>研究生</option>
+		            		<option value="博士" {if $reginfo.college=='博士'}selected{/if}>博士</option>
+		            	</select> <font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工作单位</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="work_unit" name="work_unit" size="20" maxlength="50" value="{$reginfo.work_unit}"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">手机号</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="mobile" name="mobile" size="20" maxlength="50" value="{$reginfo.mobile}"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">电话</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="telephone" name="telephone" size="20" maxlength="50" value="{$reginfo.telephone}"><font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="qq" name="qq" size="20" maxlength="50" value="{$reginfo.qq}"><font style="color:red;">*</font></div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">E-mail</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="email" name="email" size="20" maxlength="50" value="{$reginfo.email}"><font style="color:red;">*</font></div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="course" name="course" size="20" maxlength="50" value="{$reginfo.course}"><font style="color:red;">*</font></div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报名人数</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <input type="text" id="cnt" name="cnt" size="20" maxlength="50" value="{$reginfo.cnt}"><font style="color:red;">*</font></div></td>
+		          </tr>
+		          <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+						<input type="submit" value="修改">
+						<input type="hidden" id="task" name="task" value="updatePower">
+						<input type="hidden" id="menuid" name="menuid" value="{$powerinfo.id}">
 		            </div></td>
 		          </tr>
 		        </table>
@@ -338,5 +300,4 @@ function selected(obj){
   </tr>
 </table>
 </body>
-<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 </html>

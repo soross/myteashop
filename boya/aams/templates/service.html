@@ -163,7 +163,7 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="20%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ/MSN号码</div></td>
-            <td width="40%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图标</div></td>
+            <!-- <td width="40%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图标</div></td> -->
             <td width="25%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">文字</div></td>
             <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">编辑</div></td>
           </tr>
@@ -173,15 +173,14 @@ for(i=0;i<cs.length;i++){
           <form action="post/config.action.php" method="post"  enctype="multipart/form-data">
             <td height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
             	&nbsp;<input type="text" id="comm_code" name="comm_code" value="{$imList[list].comm_code}"></div></td>
-            <td height="30" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
+             <!--<td height="30" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
             	&nbsp;<img src="../{$imList[list].comm_value}">&nbsp;
-            	<input type="file" id="comm_value" name="comm_value"></div></td>
-            <td height="30" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-            	&nbsp;<input type="text" id="remark" name="remark" value="{$imList[list].remark}"></div></td>
+            	<input type="file" id="comm_value" name="comm_value"></div></td> -->
+            <td height="30" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
+            	&nbsp;<input type="text" id="remark" name="remark" value="{$imList[list].comm_flag}"></div></td>
             <td height="30" bgcolor="#FFFFFF"><div align="center">
             	<input type="hidden" id="task" name="task" value="updateImConfig">
             	<input type="hidden" id="imId" name="imId" value="{$imList[list].id}">
-            	<input type="hidden" id="path" name="path" value="{$imList[list].comm_value}">
             	<input type="submit" value="更新">
             </div></td>
           </form>

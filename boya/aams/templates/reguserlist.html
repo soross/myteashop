@@ -156,12 +156,12 @@ for(i=0;i<cs.length;i++){
             <td  rowspan="2" width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">性别</div></td>
             <td  rowspan="2" width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历</div></td>
             <td  rowspan="2" width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工作单位</div></td>
-            <td  rowspan="2" width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">手机号码</div></td>
-            <td  rowspan="2" width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
-            <td  rowspan="2" width="8%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ号码</div></td>
-            <td  rowspan="2" width="11%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">E-mail</div></td>
-            <td colspan="3"  height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">交费情况</div></td>
-            <td  rowspan="2" width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+            <td  rowspan="2" width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">手机号码</div></td>
+            <td  rowspan="2" width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
+            <td  rowspan="2" width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ号码</div></td>
+            <td  rowspan="2" width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">E-mail</div></td>
+            <td colspan="3"  height="18%" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">交费情况</div></td>
+            <td  rowspan="2" width="17%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           <tr>
 	          <td width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">交费金额</div></td>
@@ -184,8 +184,9 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].adminname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].remark}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center">
-            <a href="updatepower.php?task=updatePower&menuid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updatepower.php?task=updatePower&menuid={$adminRow[list].id}">修改</a><span class="STYLE1">]</span>
-			<a href="updatepower.php?task=updatePower&menuid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updatepower.php?task=updatePower&menuid={$adminRow[list].id}">详情</a><span class="STYLE1">]</span>
+            <a href="regfee.php?task=regFee&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="regfee.php?task=regFee&regid={$adminRow[list].id}">登记费用</a><span class="STYLE1">]</span>
+            <a href="updatereguser.php?task=updateRegUser&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updatereguser.php?task=updateRegUser&regid={$adminRow[list].id}">修改</a><span class="STYLE1">]</span>
+			<a href="reguserinfo.php?task=regUserInfo&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="reguserinfo.php?task=regUserInfo&regid={$adminRow[list].id}">详情</a><span class="STYLE1">]</span>
             </div></td>
           </tr>
           {sectionelse}

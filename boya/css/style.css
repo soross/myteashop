@@ -21,9 +21,9 @@ a:hover { color:#f09b4a; }
 #menu li { float:left; position:relative; font-size:16px; font-family:ºÚÌå; z-index:50; }
 #menu li.hover { background:url(../images/menu_li_hover.gif) 0 0 no-repeat; }
 #menu li.hover a { text-shadow:0 1px 3px #6f3702; }
-#menu li a { float:left; padding:0 70px; color:#FFFFFF;font-family:ºÚÌå;font-weight:bold; background:url(../images/list1.gif) right 0 no-repeat; }
+#menu li a { float:left; padding:0 65px; color:#FFFFFF;font-family:ºÚÌå;font-weight:bold; background:url(../images/list1.gif) right 0 no-repeat; }
 #menu li.index a { padding:0 70px 0 70px; }
-#menu li.index a:hover { background:url(../images/menu_li_hover.gif) right 0 no-repeat; }
+#menu li.index a:hover { background:url(../images/menu_li_hover_index.gif) right 0 no-repeat; }
 #menu li.about a:hover { background:url(../images/menu_li_hover.gif) right 0 no-repeat; }
 #menu li.train a:hover { background:url(../images/menu_li_hover.gif) right 0 no-repeat; }
 #menu li.register a:hover { background:url(../images/menu_li_hover.gif) right 0 no-repeat; }
@@ -34,7 +34,7 @@ a:hover { color:#f09b4a; }
 #menu li.register .nav_one,#menu li.about .nav_one { background:url(../images/nav_one02.png) 0 0 no-repeat; }
 #menu li ul { float:left; width:405px; padding:0 16px; }
 #menu li li { float:left; height:36px; line-height:42px; font-family:Arial; }
-#menu li li a { font-size:14px; font-weight:normal; color:#707070; padding:0 10px 0 15px; background:url(../images/list2.gif) 5px center no-repeat; }
+#menu li li a { font-size:14px; font-weight:normal; color:#707070; padding:0 10px 0 10px; background:url(../images/list2.gif) 5px center no-repeat; }
 #menu li li.hover { background:transparent; }
 #menu li li.hover a,#menu li.hover li a { text-shadow:none; }
 #menu li.train li a:hover,#menu li.register li a:hover,#menu li.about li a:hover,#menu li li a:hover { color:#f09b4a; background:url(../images/list2.gif) 5px center no-repeat; }

@@ -139,46 +139,8 @@ else if(isset($_POST[task]) && "updateHotPhone"==$_POST[task]){
 
 
 
-//首页广告
-else if(isset($_POST[task]) && "Index_AD"==$_POST[task]){
-	//文件保存目录URL
-	$save_path = '../../images/ad/';//201109281154581.jpg
-	//定义允许上传的文件扩展名
-	$ext_arr = array('gif', 'jpg', 'png');
-	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('adimage')){
-		$query = $db->query("select comm_code from comm_code where comm_type='Index_AD' and id='$_POST[adid]'");
-		$info= $db->fetch_array($query);
-		$filename = "images/ad/".$up->getNewFileName();
-		$db->query("update comm_code set comm_code='$filename',comm_value='$_POST[seq]' where comm_type='Index_AD' and id='$_POST[adid]'");
-		if(file_exists("../../".$info[comm_code]))
-		unlink("../../".$info[comm_code]);
-  		echo "<script>alert('首页广告【信息】修改成功!');location.href='../indexad.php';</script>";
-	}else{
-		$db->query("update comm_code set comm_value='$_POST[seq]' where comm_type='Index_AD' and id='$_POST[adid]'");
-		echo "<script>alert('首页广告【顺序】修改成功!');location.href='../indexad.php';</script>";
-	}
-}
 
-else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
-	//文件保存目录URL
-	$save_path = '../../images/';//201109281154581.jpg
-	//定义允许上传的文件扩展名
-	$ext_arr = array('gif','jpg', 'png');
-	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
-	if($up->uploadFile('comm_value')){
-		$filename = "images/".$up->getNewFileName();
-		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
-		if(file_exists("../../".$_POST[path]))
-		unlink("../../".$_POST[path]);
-  		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
-	}else{
-		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportIM' and id='$_POST[imId]'");
-		echo "<script>alert('在线客服修改成功!');location.href='../imconfig.php';</script>";
-	}
-}
+
 
 else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
 	//文件保存目录URL
@@ -198,11 +160,55 @@ else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
 		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
 	}
 }
-else if(isset($_POST[task])&&"replyMsg"==$_POST[task]){
-	$db->query("update message set reply='".replace($_POST[content])."',reply_date=now() where id='$_POST[msgid]'");
-	echo "<script>alert('回复/回复修改成功!');location.href='../msginfo.php?msgid=$_POST[msgid]';</script>";
+//更新客服
+else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
+	$db->query("update boya_config set comm_code='$_POST[comm_code]',comm_flag='$_POST[remark]' where id='$_POST[imId]'");
+	echo "<script>alert('在线客服修改成功!');location.href='../service.php';</script>";
 
-}else{
+}
+//更新菜单
+else if(isset($_POST[task])&&"updateMenu"==$_POST[task]){
+	$indexshow = "indexshow".$_POST[typeid];
+	$db->query("update boya_type set type_name='$_POST[type_name]',pid='$_POST[pid]',url='$_POST[url]',
+			seq='$_POST[seq]',indexshow='$_POST[$indexshow]' where id='$_POST[typeid]'");
+	echo "<script>alert('导航更新成功!');location.href='../menu.php?';</script>";
+
+}
+
+//首页广告
+else if(isset($_POST[task]) && "Index_AD"==$_POST[task]){
+	//文件保存目录URL
+	$save_path = '../../images/ad/';//201109281154581.jpg
+	//定义允许上传的文件扩展名
+	$ext_arr = array('gif', 'jpg', 'png');
+	require "../action/FileUpload.class.php";
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
+	if($up->uploadFile('path')){
+		$filename = "images/ad/".$up->getNewFileName();
+		$db->query("update boya_config set comm_code='$filename',comm_flag='$_POST[seq]' where comm_type='AD_Images' and id='$_POST[adid]'");
+		if(file_exists("../../".$info[oldpath]))
+		unlink("../../".$_POST[oldpath]);
+  		echo "<script>alert('首页AD修改成功!');location.href='../ad.php';</script>";
+	}else{
+		$db->query("update boya_config set comm_value='$_POST[seq]' where comm_type='AD_Images' and id='$_POST[adid]'");
+		echo "<script>alert('首页AD修改成功!');location.href='../ad.php';</script>";
+	}
+}
+//更新SEO信息
+else if(isset($_POST[task]) && "updateSEOInfo"==$_POST[task]){
+	$db->query('start transaction');
+	$db->query("update boya_config set comm_code='$_POST[title]' where comm_type = 'SEO_Title'");
+	$db->query("update boya_config set comm_code='$_POST[keyword]' where comm_type = 'SEO_Keyword'");
+	$db->query("update boya_config set comm_code='$_POST[desc]' where comm_type = 'SEO_Desc'");
+	if (mysql_errno()) {
+		$db->query('rollback');
+		echo "<script>alert('SEO信息修改失败!');location.href='../seo.php'</script>";
+	} else {
+		$db->query('commit');
+		echo "<script>alert('SEO信息修改成功!');location.href='../seo.php'</script>";
+	}
+}
+else{
 	//echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }
 ?>

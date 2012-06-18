@@ -1,0 +1,85 @@
+{include file="inc/top.html"}
+        <div id="index_ad">
+       		<div onmouseout="ISL_StopUp()" onmouseup="ISL_StopUp()" onmousedown="ISL_GoUp()" class="Lbtn"></div>
+        	<div id="ISL_Cont" class="Cont">
+            	<div class="ScrCont">
+                	<div id="List1">
+                   		<a href="#"><img src="images/banner01.jpg" /></a>
+                        <a href="#"><img src="images/banner02.jpg" /></a>
+                	</div>
+                	<div id="List2"></div>
+            	</div>
+       	 	</div>
+        	<div onmouseout="ISL_StopDown()" onmouseup="ISL_StopDown()" onmousedown="ISL_GoDown()" class="Rbtn"></div>
+    	</div>
+        <div id="content">
+        	<div class="main">
+                <div id="left">
+                    <div id="classCate">
+                        <div class="left_tt"><span>课程种类</span><a class="more" href="#">more</a></div>
+                        <div class="cate">
+                            <ul>
+                               {section name=list loop=$lmlist}
+                                <li {if $taskid==$lmlist[list].id} class="current_li" {/if}><a href="{$lmlist[list].index_url}">{$lmlist[list].name}</a></li>
+                             	{/section}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="onlineRegister">
+                       {include file="inc/online_register.html"}
+                    </div>
+                    <div id="map">
+                        <img src="images/map.jpg" />
+                    </div>
+                    <div id="contact">
+                      {include file="inc/contact.html"}
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="classInfo">
+                        <div class="right_tt">课程信息</div>
+                        <div id="info">
+                            <div class="info">
+                                <dl>
+                                   <dt class="info_dd1">开课时间</dt>
+                                   <dt class="info_dd2">开设课程</dt>
+                                   <dt class="info_dd3">培训课时</dt>
+                                   <dt class="info_dd3">培训费用</dt>
+                                   <dt class="info_dd3">招生简章</dt>
+                                   <dt class="info_dd3">我要报名</dt>
+								   {section name=list loop=$courseRow}
+                                   <dd class="info_dd1">{$courseRow[list].open_time}</dd>
+                           		   <dd class="info_dd2">{$courseRow[list].course_name}</dd>
+                                   <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
+                                   <dd class="info_dd3">{$courseRow[list].fee}</dd>
+                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+									{/section}
+                               </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showImg_tt">图片展示</div>
+                    <div id="showImg">
+                        <div onmouseout="ISL_StopUp1()" onmouseup="ISL_StopUp1()" onmousedown="ISL_GoUp1()" class="Lbtn1"></div>
+                        <div id="ISL_Cont1" class="Cont1">
+                            <div class="ScrCont1">
+                                <div id="List_a">
+                                    <ul>
+                                    {section name=list loop=$piclist}
+                                        <li>
+                                            <span class="show_img"><img src="{$piclist[list].path}" /></span>
+                                            <span class="show_name"><a href="{$piclist[list].url}">{$piclist[list].title}</a></span>
+                                        </li>
+                                     {/section}
+                                    </ul>
+                                </div>
+                                <div id="List_b"></div>
+                            </div>
+                        </div>
+                        <div onmouseout="ISL_StopDown1()" onmouseup="ISL_StopDown1()" onmousedown="ISL_GoDown1()" class="Rbtn1"></div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+   	{include file="inc/buttom.html"}

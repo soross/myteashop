@@ -3,8 +3,8 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
-$list = getList("comm_code where comm_type='SupportIM'",$db);
-$smarty->assign("imList",$list);
+$info = getList(" boya_config where comm_type='AD_Images'" ,$db);
+$smarty->assign("info",$info);
 
-$smarty->display("imconfig.html");
+$smarty->display("ad.html");
 ?>

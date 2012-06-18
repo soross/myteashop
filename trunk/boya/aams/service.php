@@ -3,8 +3,8 @@ require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
 require_once("action/mysql.class.php");
 
-$info = getList(" comm_code where comm_type='Index_AD'" ,$db);
-$smarty->assign("info",$info);
+$list = getList("boya_config where comm_type='Im_Account'",$db);
+$smarty->assign("imList",$list);
 
-$smarty->display("indexad.html");
+$smarty->display("service.html");
 ?>

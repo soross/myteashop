@@ -5,9 +5,9 @@ require_once("action/mysql.class.php");
 require_once("action/page.class.aams.php");
 
 
-$pagesize = 30;//一页显示多少条
+$pagesize = 50;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from boya_reg_user");
+$queryTotal = $db->query("select id from boya_type");
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
@@ -15,7 +15,7 @@ if ($firstcount < 0) $firstcount = 0;
 
 
 //未审核会员分类
-$adminQuery = $db->query("select r.*,a.username as adminname from boya_reg_user r left join boya_admin_user a on a.id=r.input_user  order by create_date desc limit $firstcount, $displaypg");
+$adminQuery = $db->query("select * from boya_type order by seq limit $firstcount, $displaypg");
 $adminRow = array();
 while($rowadmin = $db->fetch_array($adminQuery)){
 	$adminRow[] = $rowadmin;
@@ -25,5 +25,10 @@ $smarty->assign("adminRow",$adminRow);
 //显示分页的内容
 $smarty->assign("page",$pagenav);
 
-$smarty->display("reguserlist.html");
+
+$p_menu = getListBySql("select * from boya_type where pid='-1'",$db);
+$smarty->assign("pmenu",$p_menu);
+
+
+$smarty->display("menu.html");
 ?>

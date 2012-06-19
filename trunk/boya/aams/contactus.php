@@ -1,10 +1,15 @@
 <?php
 require_once("action/checkAamsLogin.php");
 require_once("action/smarty_inc.php");
-require_once("../action/mysql.class.php");
+require_once("action/mysql.class.php");
 
-$list = getList(" comm_code a,comm_code b where a.id=b.fkid and a.comm_code='Contact'" ,$db,"a.id as fkid,a.comm_value as info,b.comm_type,b.comm_value as descinfo,b.id");
-$smarty->assign("aboutList",$list);
+$list = getListBySql("select * from boya_config where comm_type='ContactUs'",$db);
+$smarty->assign("ContactUsInfo",$list[0]);
+
+
+$conlist = getListBySql("select * from boya_config where comm_type='Contact'",$db);
+$smarty->assign("ContactInfo",$conlist[0]);
+
 
 $smarty->display("contactus.html");
 ?>

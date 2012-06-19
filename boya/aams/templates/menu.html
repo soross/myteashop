@@ -152,12 +152,11 @@ for(i=0;i<cs.length;i++){
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
             <td width="10%" height="35" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
-            <td width="18%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航名称</div></td>
-            <td width="17%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">父类导航</div></td>
-            <td width="18%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">URL</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">顺序</div></td>
-            <td width="12%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训首页显示</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">导航名称</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">父类导航</div></td>
+            <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">URL</div></td>
+            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">顺序</div></td>
+            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           {/literal}
           {section name=list loop=$adminRow}
@@ -185,7 +184,6 @@ for(i=0;i<cs.length;i++){
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 				<input type="text" id="seq" name="seq" size="10" value="{$adminRow[list].seq}">
 			</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">&nbsp;</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center">
             <input type="submit" value="修改">
             </div></td>
@@ -220,12 +218,6 @@ for(i=0;i<cs.length;i++){
 			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 			            	<input type="text" id="seq" name="seq" size="10" value="{$adminRow[lt].seq}">
 			            </div></td>
-			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-			            	{if $adminRow[lt].pid=='2'}
-			            	<input type="radio" id="indexshow{$adminRow[lt].id}" name="indexshow{$adminRow[lt].id}" value="0" {if $adminRow[lt].indexshow=='0'}checked{/if}>不显示
-			            	<input type="radio" id="indexshow{$adminRow[lt].id}" name="indexshow{$adminRow[lt].id}" value="1" {if $adminRow[lt].indexshow=='1'}checked{/if}>显示
-			            	{/if}
-			            </div></td>
 			            <td height="18" bgcolor="#FFFFFF"><div align="center">
 				            <input type="submit" value="修改">
 			            </div></td>
@@ -239,7 +231,7 @@ for(i=0;i<cs.length;i++){
           {/if}
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=6 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
         </table></td>

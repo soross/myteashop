@@ -90,11 +90,11 @@ else if(isset($_GET[task]) && "deletePower"==$_GET[task]){
 
 //更新信息
 else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
-	$sql = "update aams_user set ";
+	$sql = "update boya_admin_user set ";
 	if(isset($_POST[password]) &&  !empty($_POST[password]) && $_POST[password]==$_POST[password_confirm]){
 		$sql = $sql." password='".md5($_POST[password])."' , realname='".$_POST[realname]."' ";
 	}else{
-		$sql = $sql." realname='".$_POST[realname]."' ";
+		$sql = $sql." username='".$_POST[realname]."' ";
 	}
 	$sql = $sql." where id=' ". $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']." '";
 	$db->query($sql);

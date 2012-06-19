@@ -4,8 +4,9 @@
         	<div id="ISL_Cont" class="Cont">
             	<div class="ScrCont">
                 	<div id="List1">
-                   		<a href="#"><img src="images/banner01.jpg" /></a>
-                        <a href="#"><img src="images/banner02.jpg" /></a>
+                	{section name=list loop=$imagelist}
+                   		<a href="#"><img src="{$imagelist[list].url}" /></a>
+                     {/section}
                 	</div>
                 	<div id="List2"></div>
             	</div>
@@ -49,7 +50,7 @@
                                    <dt class="info_dd3">我要报名</dt>
 								   {section name=list loop=$courseRow}
                                    <dd class="info_dd1">{$courseRow[list].open_time}</dd>
-                           		   <dd class="info_dd2">{$courseRow[list].course_name}</dd>
+                           		   <dd class="info_dd2">【{$courseRow[list].course_name}】</dd>
                                    <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
                                    <dd class="info_dd3">{$courseRow[list].fee}</dd>
                                    <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>

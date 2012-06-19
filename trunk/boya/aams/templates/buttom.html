@@ -108,20 +108,6 @@ for(i=0;i<cs.length;i++){
 				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
-
-
-	var editorCon;
-	KindEditor.ready(function(K) {
-		editor2 = K.create('textarea[name="contentCon"]', {
-			resizeType : 1,
-			allowPreviewEmoticons : false,
-			allowImageUpload : true,
-			items : [
-				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
-		});
-	});
 </script>
 
 
@@ -134,7 +120,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统配置-联系信息配置</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统配置-Copy信息配置</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -189,23 +175,19 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3" align="center">
         	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-			  <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left" colspan="2" height="30px">&nbsp;&nbsp;<strong>简要联系信息配置</strong></td>
-	          </tr>
 	         <tr>
 	           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
 	            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-	            <textarea id="contentAdd" name="contentAdd" style="width:700px;height:100px;visibility:hidden;">{$ContactUsInfo.comm_value}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
-
+	            <textarea id="contentAdd" name="contentAdd" style="width:700px;height:100px;visibility:hidden;">{$ButtomInfo.comm_value}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
 	            </div></td>
 	          </tr>
 
 	          <tr>
 				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
 					<input type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" value="更新简要联系方式">
-					<input type="hidden" value="{$ContactUsInfo.id}" id="conid" name="conid">
-					<input type="hidden" value="updateContactUs" id="task" name="task">
+					<input type="submit" value="更新Copy信息">
+					<input type="hidden" value="{$ButtomInfo.id}" id="butid" name="butid">
+					<input type="hidden" value="updateCopy" id="task" name="task">
 				</td>
 	          </tr>
          	</table>
@@ -214,39 +196,6 @@ for(i=0;i<cs.length;i++){
       </tr>
       </form>
     </table>
-
-	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   	 <form action="post/config.action.php" method="post" enctype="multipart/form-data" >
-		<tr>
-        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
-        <td bgcolor="#f3ffe3" align="center">
-        	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
-			  <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left" colspan="2" height="30px">&nbsp;&nbsp;<strong>联系我们配置</strong></td>
-	          </tr>
-	         <tr>
-	           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
-	            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-	            <textarea id="contentAdd" name="contentCon" style="width:700px;height:300px;visibility:hidden;">{$ContactInfo.comm_value}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
-
-	            </div></td>
-	          </tr>
-
-	          <tr>
-				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
-					<input type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" value="更新联系我们">
-					<input type="hidden" value="{$ContactInfo.id}" id="conid" name="conid">
-					<input type="hidden" value="updateContact" id="task" name="task">
-				</td>
-	          </tr>
-         	</table>
-        </td>
-        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
-      </tr>
-      </form>
-    </table>
-
 
 
     </td>

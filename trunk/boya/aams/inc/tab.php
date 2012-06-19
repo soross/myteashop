@@ -108,7 +108,7 @@ for(i=0;i<cs.length;i++){
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="15" height="30"><img src="../images/tab/tab_03.gif" width="15" height="30" /></td>
-        <td width="1101" background="../images/tab/tab_05.gif"><img src="../images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">欢迎来到泛地缘管理平台</span></td>
+        <td width="1101" background="../images/tab/tab_05.gif"><img src="../images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">管理平台</span></td>
         <td width="281" background="../images/tab/tab_05.gif">
 
         </td>
@@ -133,10 +133,10 @@ for(i=0;i<cs.length;i++){
            	<td height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
           	<?php
                 		require_once ("../action/mysql.class.php");
-                		$query = $db->query("select * from aams_user where id='$_SESSION[WEB_AAMS_USER_LOGIN_UID_SESSION]'",$db);
+                		$query = $db->query("select * from boya_admin_user where id='$_SESSION[WEB_AAMS_USER_LOGIN_UID_SESSION]'",$db);
                 		$info = $db->fetch_array($query);
              ?>
-                <strong><?php echo $info[username];?></strong>
+                <strong><?php echo $info[adminname];?></strong>
 
            	</div></td>
 
@@ -147,7 +147,7 @@ for(i=0;i<cs.length;i++){
           	真实姓名：
            	</div></td>
            	<td height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-           	<input type="text" value="<?php echo $info[realname];?>" name="realname" id="realname">
+           	<input type="text" value="<?php echo $info[username];?>" name="realname" id="realname">
            	</div></td>
           </tr>
           <tr>

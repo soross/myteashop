@@ -1,6 +1,7 @@
 <?php
 require_once("../action/checkAamsLogin.php");
 require_once("../action/mysql.class.php");
+require_once("../action/public.fun.class.php");
 
 //首页公司简介简要信息修改
 if(isset($_POST[task]) && "updateAboutIndex"==$_POST[task]){
@@ -13,10 +14,7 @@ if(isset($_POST[task]) && "updateAboutIndex"==$_POST[task]){
 			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
 	echo "<script>alert('新增公司简介详细内容栏目成功!');location.href='../aboutme.php';</script>";
 
-//公司简介栏目信息修改
-}else if(isset($_POST[task]) && "updateAbout"==$_POST[task]){
-	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[aboutid]])."' where id='$_POST[aboutid]' ");
-	echo "<script>alert('公司简介栏目信息修改成功!');location.href='../aboutme.php';</script>";
+
 
 //删除公司简介栏目信息
 }else if(isset($_GET[task]) && "deleteAbout"==$_GET[task]){
@@ -53,19 +51,6 @@ if(isset($_POST[task]) && "updateAboutIndex"==$_POST[task]){
 	$db->query("insert into comm_code(comm_type,comm_value,fkid) " .
 			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
 	echo "<script>alert('新增联系方式栏目成功!');location.href='../contactus.php';</script>";
-
-//联系方式信息修改
-}else if(isset($_POST[task]) && "updateContact"==$_POST[task]){
-	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[contactid]])."' where id='$_POST[contactid]' ");
-	echo "<script>alert('联系方式栏目信息修改成功!');location.href='../contactus.php';</script>";
-
-//删除联系方式信息
-}else if(isset($_GET[task]) && "deleteContact"==$_GET[task]){
-	$db->query("delete from comm_code where id='$_GET[contactid]' ");
-	echo "<script>alert('联系方式栏目信息删除成功?');location.href='../contactus.php';</script>";
-
-
-
 
 
 //新增合作伙伴
@@ -123,21 +108,34 @@ else if(isset($_POST[task]) && "updatePartnerInfo"==$_POST[task]){
 	$db->query("update comm_code set comm_type='".replace($_POST[title])."',comm_value='".replace($_POST[content2])."' where id='$_POST[id]'");
 	echo "<script>alert('合作伙伴详细信息修改成功?');location.href='../partner.php';</script>";
 
+
+
+
 //联系我们
-}else if(isset($_POST[task]) && "updateContactUsZh_cn"==$_POST[task]){
-	$db->query("update comm_code set type_content='".htmlentities($_POST[content])."' where lang='zh_cn' and type_name='ContactUs' ");
-	echo "<script>alert('联系我们[中文]信息修改成功?');location.href='../contactus.php';</script>";
+}else if(isset($_POST[task]) && "updateContact"==$_POST[task]){
+	$db->query("update boya_config set comm_value='".replace($_POST[contentCon])."' where id='".$_POST[conid]."' and comm_type='Contact' ");
+	echo "<script>alert('联系我们更新成功?');location.href='../contactus.php';</script>";
 
-}
-//热线号码
-else if(isset($_POST[task]) && "updateHotPhone"==$_POST[task]){
-	$db->query("update comm_code set comm_value='$_POST[hotphone]' where comm_type='Hot_Phone' ");
-	echo "<script>alert('热线号码修改成功!');location.href='../hotphone.php';</script>";
-
+//简要联系信息
+}else if(isset($_POST[task]) && "updateContactUs"==$_POST[task]){
+	$db->query("update boya_config set comm_value='".replace($_POST[contentAdd])."' where id='".$_POST[conid]."' and comm_type='ContactUs' ");
+	echo "<script>alert('简要联系方式更新成功?');location.href='../contactus.php';</script>";
 }
 
+//copy
+else if(isset($_POST[task]) && "updateCopy"==$_POST[task]){
+	$db->query("update boya_config set comm_value='".replace($_POST[contentAdd])."' where id='".$_POST[butid]."' and comm_type='Buttom' ");
+	echo "<script>alert('Copy信息更新成功?');location.href='../copy.php';</script>";
 
 
+
+
+//公司简介栏目信息修改
+}else if(isset($_POST[task]) && "updateAbout"==$_POST[task]){
+	$db->query("update boya_config set comm_value='".replace($_POST['contentIndex'])."' where id='$_POST[aboutid]' ");
+	echo "<script>alert('简介信息修改!');location.href='../aboutme.php';</script>";
+
+}
 
 
 
@@ -170,7 +168,7 @@ else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
 else if(isset($_POST[task])&&"updateMenu"==$_POST[task]){
 	$indexshow = "indexshow".$_POST[typeid];
 	$db->query("update boya_type set type_name='$_POST[type_name]',pid='$_POST[pid]',url='$_POST[url]',
-			seq='$_POST[seq]',indexshow='$_POST[$indexshow]' where id='$_POST[typeid]'");
+			seq='$_POST[seq]' where id='$_POST[typeid]'");
 	echo "<script>alert('导航更新成功!');location.href='../menu.php?';</script>";
 
 }

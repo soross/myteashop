@@ -16,38 +16,52 @@
             </ul>
             <div id="menu">
             	<ul>
-                	<li class="index"><a href="index.html">首页</a></li>
+                	<li class="index">
+                	{section name=list loop=$indexlist}
+                	<a href="{$indexlist[list].url}">{$indexlist[list].menu_name}</a>
+                	{/section}
+                	</li>
                     <li class="about">
-                    	<a href="#">关于我们</a>
+                    {section name=list loop=$aboutlist}
+                    	<a href="{$aboutlist[list].url}">{$aboutlist[list].menu_name}</a>
+                    {/section}
                         <div class="nav_one">
                     		<ul>
-                        		<li><a href="#">简介</a></li>
-                            	<li><a href="#">图片展示</a></li>
+                    		{section name=list loop=$aboutlists}
+                        		<li><a href="{$aboutlists[list].url}">{$aboutlists[list].menu_name}</a></li>
+                            {/section}
                         	</ul>
                         </div>
                     </li>
                     <li class="train">
-                    	<a href="pxzx.html">培训中心</a>
+                    {section name=list loop=$trainslist}
+                    	<a href="{$trainslist[list].url}">{$trainslist[list].menu_name}</a>
+                    {/section}
                         <div class="nav_one">
                         	<ul>
-                        		<li><a href="pxzx.html">能力提升</a></li>
-                            	<li><a href="#">职业认证</a></li>
-                            	<li><a href="#">国学讲堂</a></li>
-                            	<li><a href="#">学历教育</a></li>
-                            	<li><a href="#">免费培训</a></li>
+                        		{section name=list loop=$trainsslist}
+                        		<li><a href="{$trainsslist[list].url}">{$trainsslist[list].menu_name}</a></li>
+                        		{/section}
                         	</ul>
                         </div>
                     </li>
                     <li class="register">
-                    	<a href="wsbm.html">网上报名</a>
+                    	{section name=list loop=$register}
+                    	<a href="{$register[list].url}">{$register[list].menu_name}</a>
+                    	{/section}
                         <div class="nav_one">
                     		<ul>
-                        		<li><a href="#">在线报名</a></li>
-                            	<li><a href="wsbm.html">网络报名</a></li>
+                    		{section name=list loop=$registers}
+                        		<li><a href="{$registers[list].url}">{$registers[list].menu_name}</a></li>
+                            {/section}
                         	</ul>
                         </div>
                     </li>
-                    <li class="contact"><a href="#">联系我们</a></li>
+                    <li class="contact">
+                    {section name=list loop=$contact}
+                    <a href="{$contact[list].url}">{$contact[list].menu_name}</a>
+                    {/section}
+                    </li>
                 </ul>
             </div>
 		</div>

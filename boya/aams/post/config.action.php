@@ -140,7 +140,7 @@ else if(isset($_POST[task]) && "updateCopy"==$_POST[task]){
 
 
 
-else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
+else if(isset($_POST[task]) && "updateMap"==$_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
@@ -149,13 +149,12 @@ else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*100)));
 	if($up->uploadFile('comm_value')){
 		$filename = "images/".$up->getNewFileName();
-		$db->query("update comm_code set comm_value='$filename',comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
+		$db->query("update boya_config set comm_code='$filename' where comm_type='Map' and id='$_POST[mapid]'");
 		if(file_exists("../../".$_POST[path]))
 		unlink("../../".$_POST[path]);
-  		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+  		echo "<script>alert('地图修改成功!');location.href='../map.php';</script>";
 	}else{
-		$db->query("update comm_code set comm_code='$_POST[comm_code]',remark='$_POST[remark]' where comm_type='SupportEmail' and id='$_POST[emailid]'");
-		echo "<script>alert('邮箱接入修改成功!');location.href='../emailconfig.php';</script>";
+		echo "<script>alert('地图修改失败!');location.href='../map.php';</script>";
 	}
 }
 //更新客服

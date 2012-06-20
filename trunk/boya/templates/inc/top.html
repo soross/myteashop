@@ -14,6 +14,7 @@
             	<li class="favorite"><a href="javascript:window.external.addFavorite(document.location.href,document.title)">加入收藏</a></li>
                 <li class="home"><a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage(document.location.href);event.returnValue=false;">设为首页</a></li>
             </ul>
+            <!--
             <div id="menu">
             	<ul>
                 	<li class="index">
@@ -62,6 +63,43 @@
                     <a href="{$contact[list].url}">{$contact[list].menu_name}</a>
                     {/section}
                     </li>
+                </ul>
+            </div>-->
+
+            <div id="menu">
+            	<ul>
+                	<li class="index"><a href="{$indexinfo.url}">{$indexinfo.menu_name}</a></li>
+                    <li class="about">
+                    	<a href="{$aboutinfo.url}">{$aboutinfo.menu_name}</a>
+                        <div class="nav_one">
+                    		<ul>
+                    			{section name=list loop=$aboutlists}
+                        		<li><a href="{$aboutlists[list].url}">{$aboutlists[list].menu_name}</a></li>
+                        		{/section}
+                        	</ul>
+                        </div>
+                    </li>
+                    <li class="train">
+                    	<a href="{$trainsinfo.url}">{$trainsinfo.menu_name}</a>
+                        <div class="nav_one">
+                        	<ul>
+                        		{section name=list loop=$trainsslist}
+                        		<li><a href="{$trainsslist[list].url}">{$trainsslist[list].menu_name}</a></li>
+                        		{/section}
+                        	</ul>
+                        </div>
+                    </li>
+                    <li class="register">
+                    	<a href="{$registerInfo.url}">{$registerInfo.menu_name}</a>
+                        <div class="nav_one">
+                    		<ul>
+                    			{section name=list loop=$registers}
+                        		<li><a href="{$registers[list].url}">{$registers[list].menu_name}</a></li>
+                        		{/section}
+                        	</ul>
+                        </div>
+                    </li>
+                    <li class="contact"><a href="{$contactinfo.url}">{$contactinfo.menu_name}</a></li>
                 </ul>
             </div>
 		</div>

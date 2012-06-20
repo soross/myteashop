@@ -580,5 +580,31 @@ function getListBySql($sql,$db){
 	return $returnRow;
 }
 
+function getRows($table,$db,$field = "*"){
+
+	$query = $db->query("select ".$field." from ".$table);
+
+	$returnRow = array();
+
+	while($row = $db->fetch_array($query)){
+
+		$returnRow[] = $row;
+
+	}
+
+	return $returnRow;
+
+}
+//获取一条记录信息
+
+function getInfo($table,$db,$field = "*"){
+
+	$query = $db->query("select ".$field." from ".$table);
+
+	return $info = $db->fetch_array($query);
+
+}
+
+
 require_once("public.fun.class.php");
 ?>

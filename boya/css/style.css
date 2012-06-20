@@ -41,9 +41,9 @@ a:hover { color:#f09b4a; }
 
 /*bannner*/
 #index_ad { float:left; position:relative; width:1000px; padding:5px 0; text-align:center; z-index:10; }
-#index_ad .Lbtn,#index_ad .Rbtn { position:absolute; width:51px; height:46px; background:url(../images/left.png) 0 0 no-repeat; cursor:pointer; top:157px; left:0; z-index:100; }
+#index_ad .Lbtn,#index_ad .Rbtn { position:absolute; width:51px; height:46px; background:url(../images/left.png) 0 0 no-repeat; cursor:pointer; top:87px; left:0; z-index:100; }
 #index_ad .Rbtn{ left:auto; right:0; background:url(../images/right.png) 0 0 no-repeat; }
-#index_ad .Cont { float:left; width:988px; height:359px; margin:0 6px; display:inline; overflow:hidden; }
+#index_ad .Cont { float:left; width:988px; height:209px; margin:0 6px; display:inline; overflow:hidden; }
 #index_ad .ScrCont { width:10000px; }
 #index_ad #List1,#index_ad #List2 { float:left; }
 #index_ad #List1 a,#index_ad #List2 a { float:left; }

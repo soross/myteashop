@@ -166,8 +166,7 @@ else if(isset($_POST[task]) && "updateImConfig"==$_POST[task]){
 //更新菜单
 else if(isset($_POST[task])&&"updateMenu"==$_POST[task]){
 	$indexshow = "indexshow".$_POST[typeid];
-	$db->query("update boya_type set type_name='$_POST[type_name]',pid='$_POST[pid]',url='$_POST[url]',
-			seq='$_POST[seq]' where id='$_POST[typeid]'");
+	$db->query("update boya_type set type_name='$_POST[type_name]',seq='$_POST[seq]' where id='$_POST[typeid]'");//pid='$_POST[pid]',url='$_POST[url]',
 	echo "<script>alert('导航更新成功!');location.href='../menu.php?';</script>";
 
 }

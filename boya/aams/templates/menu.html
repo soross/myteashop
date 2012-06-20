@@ -171,7 +171,7 @@ for(i=0;i<cs.length;i++){
             	&nbsp;<input type="text" id="type_name" name="type_name" value="{$adminRow[list].type_name}">
             </div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-            &nbsp;<select id="pid" name="pid">
+            &nbsp;<select id="pid" name="pid" disabled="disabled" >
             <option value="-1" {if '-1'==$adminRow[list].pid}selected{/if}>¶¥¼¶</option>
             {section name=plt loop=$pmenu}
             <option value="{$pmenu[plt].id}" {if $pmenu[plt].id==$adminRow[list].pid}selected{/if}>{$pmenu[plt].type_name}</option>
@@ -179,7 +179,7 @@ for(i=0;i<cs.length;i++){
             </select>
             </div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-            	<input type="text" id="url" name="url" value="{$adminRow[list].url}" readonly="readonly">
+            	<input type="text" id="url" name="url" value="{$adminRow[list].url}" readonly="readonly" disabled="disabled">
             </div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 				<input type="text" id="seq" name="seq" size="10" value="{$adminRow[list].seq}">
@@ -206,14 +206,14 @@ for(i=0;i<cs.length;i++){
 			            	<input type="text" id="type_name" name="type_name" value="{$adminRow[lt].type_name}">
 			            </div></td>
 			            <td height="18" bgcolor="#FFFFFF"><div align="left" class="STYLE2 STYLE1">
-			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="pid" name="pid">
+			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="pid" name="pid" disabled="disabled" >
 					    <option value="-1" {if '-1'==$adminRow[list].pid}selected{/if}>¶¥¼¶</option>
 					    {section name=pltt loop=$pmenu}
 					    <option value="{$pmenu[pltt].id}" {if $pmenu[pltt].id==$adminRow[lt].pid}selected{/if}>{$pmenu[pltt].type_name}</option>
 					    {/section}
 					    </div></td>
 			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
-			            	<input type="text" id="url" name="url"  value="{$adminRow[lt].url}" readonly="readonly">
+			            	<input type="text" id="url" name="url"  value="{$adminRow[lt].url}" readonly="readonly" disabled="disabled">
 			            </div></td>
 			            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 			            	<input type="text" id="seq" name="seq" size="10" value="{$adminRow[lt].seq}">

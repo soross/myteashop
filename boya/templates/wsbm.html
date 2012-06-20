@@ -33,7 +33,7 @@
                        </div>
                    </div>
                    {if $infocn.id==10}
-                   <form method="post" name="registerForm" action="bmpost.php">
+                   <form method="post" name="registerForm" action="post/bmpost.php">
                    	   <div class="register_form">
                        	   <ol>
                                <li><i class="fixed_red">*</i>&nbsp;<span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span></li>
@@ -46,7 +46,7 @@
                                <li><span>E-mail：</span></li>
                                <li><i class="fixed_red">*</i>&nbsp;<span>报名课程：</span></li>
                                <li><i class="fixed_red">*</i>&nbsp;<span>报名人数：</span></li>
-                               <li class="leave_message"><span>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：</span></li>
+                               <!-- <li class="leave_message"><span>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：</span></li> -->
                        	   </ol>
                            <ul>
                            	   <li><input id="username" class="input-text" name="username" type="text"  maxlength="40" onblur="checkusername()" /></li>
@@ -57,7 +57,7 @@
                                	   </tr></table>
                                </li>
                                <li>
-                               	   <select id="certi">
+                               	   <select id="certi" name="certi">
                                    	   <option value="大专">大专</option>
                                        <option value="本科">本科</option>
                                        <option value="硕士">硕士</option>
@@ -90,14 +90,17 @@
                                <li>
                                		<input id="amount" class="input-text" name="amount" type="text"  maxlength="40" onblur="checkamount()"  />
                                </li>
+                               <!--
                                <li class="leave_message">
                                	   <textarea id="leaveMessage" class="textarea-text" name="leaveMessage"  maxlength="40" cols="60" rows="7"></textarea>
                                </li>
+                                -->
                            </ul>
                        </div>
                        <div class="registerBtn">
                        	    <input id="submit" name="submit" type="submit" value=""  onclick="return checksumbit();"/>
                             <input id="reset" name="reset" type="submit" value="" onclick="return formrest();" />
+                            <input type="hidden" id="task" name="task" value="9255bb9c24f6813e3473efc49c7974f9">
                        </div>
                    </form>
                    {else}

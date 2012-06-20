@@ -21,7 +21,7 @@ if(isset($_GET[typeid])&&!empty($_GET[typeid])){
 }
 
 //ͼƬչʾ��
-$piclist = getListBySql("select id,title,path,content,create_date,url from boya_news order by create_date desc", $db );
+$piclist = getListBySql("select id,title,path,content,create_date,url from boya_news order by create_date desc limit 0,15", $db );
 $smarty->assign("piclist",$piclist);
 
 

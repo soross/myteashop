@@ -176,10 +176,9 @@ else if(isset($_GET[task]) &&"refashClass"==$_GET[task]){
 }
 
 
-
-else if(isset($_GET[task]) && "delYz"==$_GET[task]){
-	$db->query("delete from yz where id = '$_GET[id]'");
-	$db->addLog("CAP13002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除预支","删除预支成功！");
-	echo "<script>alert('删除成功?');location.href='../yzlist.php';</script>";
+//regFee
+else if(isset($_POST[task]) && "regFee"==$_POST[task]){
+	$db->query("update boya_reg_user set money='$_POST[fee]',pay_date=now(),input_user='".$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']."',remark='$_POST[content]' where id='$_POST[regid]' ");
+	echo "<script>alert('费用登记成功?');location.href='../reguserlist.php';</script>";
 }
 ?>

@@ -1,36 +1,40 @@
 <?php
 //菜单
-$indexlist = getRows("boya_type where pid = -1 and seq=1 order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
-$smarty->assign("indexlist",$indexlist);
+$indexlist = getListBySql("select id,type_name as menu_name,pid,url,seq from boya_type where id='1' ", $db );
+$smarty->assign("indexinfo",$indexlist[0]);
 
-$aboutlist = getRows("boya_type where pid = -1 and seq=5  order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
-$smarty->assign("aboutlist",$aboutlist);
+$aboutlist = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where id='14'", $db );
+$smarty->assign("aboutinfo",$aboutlist[0]);
 
-$aboutlists = getRows("boya_type where pid = 1 order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
+$aboutlists = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where pid = '14' order by seq", $db );
 $smarty->assign("aboutlists",$aboutlists);
 
-$trainslist = getRows("boya_type where pid = -1 and seq=2  order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
-$smarty->assign("trainslist",$trainslist);
+$trainslist = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where id='2'", $db );
+$smarty->assign("trainsinfo",$trainslist[0]);
 
-$trainsslist = getRows("boya_type where pid = 2  order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
+$trainsslist = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where pid = '2'  order by seq", $db );
 $smarty->assign("trainsslist",$trainsslist);
 
-$register = getRows("boya_type where pid = -1 and seq=3  order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
-$smarty->assign("register",$register);
+$register = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where id='3' ", $db );
+$smarty->assign("registerInfo",$register[0]);
 
-$registers = getRows("boya_type where pid = 3 order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
+$registers = getListBySql("select id,type_name as menu_name,pid,url,seq  from boya_type where pid = '3' order by seq", $db );
 $smarty->assign("registers",$registers);
 
-$contact = getRows("boya_type where  pid=-1 and seq=4 order by seq", $db ," id,type_name as menu_name,pid,url,seq ");
-$smarty->assign("contact",$contact);
+$contact = getListBySql("select id,type_name as menu_name,pid,url,seq  from  boya_type where  id='4'", $db );
+$smarty->assign("contactinfo",$contact[0]);
 
 //联系我们
-$contactUs = getInfo("boya_config where comm_type='ContactUs'" ,$db);
-$smarty->assign("contactUs",$contactUs);
+$contactUs = getListBySql("select * from boya_config where comm_type='ContactUs'" ,$db);
+$smarty->assign("contactUs",$contactUs[0]);
 
 
 //底部
-$Buttom = getInfo("boya_config where comm_type='Buttom'" ,$db);
-$smarty->assign("Buttom",$Buttom);
+$Buttom = getListBySql("select * from boya_config where comm_type='Buttom'" ,$db);
+$smarty->assign("Buttom",$Buttom[0]);
+
+//底部
+$map = getListBySql("select * from boya_config where comm_type='Map'" ,$db);
+$smarty->assign("map",$map[0]);
 
 ?>

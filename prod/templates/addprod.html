@@ -172,19 +172,23 @@ var cellcnt = 1;
 
 	function checkJobAndPrice(){
 		var jobs = document.getElementsByName("job[]");
+		var isbool = true;
 		for(var i=0;i<jobs.length;i++){
 			if(jobs[i].checked==true){
 				var obj = document.getElementById("jobprice-"+jobs[i].id);
 			    var reg = new RegExp("^[0-9]+(.[0-9]{2})?$");
-			    if(!reg.test(obj.value) && obj.value < 0 ){
+			    if(!reg.test(obj.value) || obj.value < 0 ){
 			        alert("请输入["+jobs[i].className+"]的价格!");
+			        isbool = false;
+			        break;
 			    }
 			}
 		}
+		return isbool;
 	}
 
     function cheackprod() {
-    	return cheackpicname()&&cheackprodid()&&cheackpicpath()&&checkJobAndPrice();
+    	return cheackpicname() && cheackprodid() && cheackpicpath() && checkJobAndPrice();
     }
 
     function inputPrice(obj,vid){
@@ -268,7 +272,6 @@ var cellcnt = 1;
 		                	<!-- <input type="button" onclick="checkJobAndPrice()" value="check"> --></td>
 		                </tr>
 		                </table>
-
 		            </div></td>
 		          </tr>
 

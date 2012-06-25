@@ -142,6 +142,15 @@ body {
 		document.getElementById(vid).src="random/imgcode.php?"+Math.round(Math.random()*1000000);
 	}
 
+	document.onkeydown=function(event){
+	  e = event?event:(window.event?window.event : null);
+	  if(e.keyCode==13){
+	   //执行的方法
+	   submitForm();
+	   //alert('回车检测到了');
+	  }
+	}
+
 </script>
 </html>
 {/literal}

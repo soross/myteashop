@@ -89,7 +89,21 @@ else
 
 			//工种明细
 			$job = $_POST[job];
+			$jobprice=$_POST[jobprice];
+
+			if(count($job)!=count($jobprice)){
+				$db->query('rollback');
+				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败-工种与工种价格数量不等");
+				echo "<script>alert('产品新增失败!');location.href='../addprod.php'</script>";
+			}
+
 			for ($i = 0; $i < count($job); $i++) {
+				//新增产品工种价格
+				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
+					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
+				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-新增产品!");
+
+				//现在产品工种
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
 			}
 			if (mysql_errno()) {
@@ -156,12 +170,30 @@ else
 
 			//删除工种明细
 			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
-
+			//删除产品价格
+			$db->query("delete from  jobprice where prodid='$_POST[oldprodid]'");
 			//工种明细
 			$job = $_POST[job];
+			//产品工种价格
+			$jobprice=$_POST[jobprice];
+
+			if(count($job)!=count($jobprice)){
+				$db->query('rollback');
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败-工种与工种价格数量不等");
+				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+			}
+
+			//新增产品工种
 			for ($i = 0; $i < count($job); $i++) {
+				//新增产品工种价格
+				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
+					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
+				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-修改产品!");
+
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
 			}
+
+
 			if (mysql_errno()) {
 				$db->query('rollback');
 
@@ -194,10 +226,26 @@ else
 
 			//删除工种明细
 			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
-
+			//删除产品价格
+			$db->query("delete from  jobprice where prodid='$_POST[oldprodid]'");
 			//工种明细
 			$job = $_POST[job];
+			//产品工种价格
+			$jobprice=$_POST[jobprice];
+
+			if(count($job)!=count($jobprice)){
+				$db->query('rollback');
+				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败-工种与工种价格数量不等");
+				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+			}
+
+
 			for ($i = 0; $i < count($job); $i++) {
+				//新增产品工种价格
+				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
+					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
+				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-修改产品!");
+
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
 			}
 			if (mysql_errno()) {

@@ -172,15 +172,49 @@ var cellcnt = {$count+1};
 	   }
 	}
 
+	function checkJobAndPrice(){
+		var jobs = document.getElementsByName("job[]");
+		for(var i=0;i<jobs.length;i++){
+			if(jobs[i].checked==true){
+				var obj = document.getElementById("jobprice-"+jobs[i].id);
+			    var reg = new RegExp("^[0-9]+(.[0-9]{2})?$");
+			    if(!reg.test(obj.value) && obj.value < 0 ){
+			        alert("请输入["+jobs[i].className+"]的价格!");
+			    }
+			}
+		}
+	}
+
+
     function cheackprod() {
-    	return cheackpicname()&&cheackprodid();
+    	return cheackpicname()&&cheackprodid()&&checkJobAndPrice();
     }
+
+    function inputPrice(obj,vid){
+    	var jp = document.getElementById("jobprice-"+vid);
+    	//alert(jp);
+    	if(obj.checked==true){
+   			jp.disabled=false;
+   			jp.focus();
+   		}else{
+   			jp.disabled=true;
+   		}
+    }
+    function disabledJobPrice(){
+    	var jobprices = document.getElementsByName("jobprice[]");
+    	for(var i=0;i<jobprices.length;i++){
+    		if(jobprices[i].value==""){
+    			jobprices[i].disabled=true;
+    		}
+    	}
+    }
+
 </script>
 
 
 </head>
 {/literal}
-<body onload="javascript:document.getElementById('picname').focus();">
+<body onload="javascript:document.getElementById('picname').focus();disabledJobPrice()">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -243,11 +277,21 @@ var cellcnt = {$count+1};
 		                checked
 		                {/if}
 		                {/section}
-		                >{$joblist[list].jobname}</td>
-		                {if $idx%8==0}</tr><tr>{/if}
+		                 onclick="inputPrice(this,'{$joblist[list].id}')" >{$joblist[list].jobname}</td>
+		                <td><input type="text" id="jobprice-{$joblist[list].id}" size="5" name="jobprice[]"
+		                {section name=seq loop=$prodjoblist}
+		                {if $prodjoblist[seq].jobid==$joblist[list].id}
+		                 value="{$prodjoblist[seq].jobprice}"
+		                {/if}
+		                {/section}
+		                 ></td>
+		                {if $idx%4==0}</tr><tr>{/if}
 		                {assign var=idx value=$idx+1}
 		                {/section}
-		                <td><font style="color:red;">*</font></td>
+		                </tr>
+		                <tr>
+		                	<td colspan="4"><font style="color:red;">*格式：最多带2位小数的正数,如22.22</font>
+		                	<!-- <input type="button" onclick="checkJobAndPrice()" value="check"> --></td>
 		                </tr>
 		                </table>
 

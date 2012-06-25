@@ -166,6 +166,7 @@ for(i=0;i<cs.length;i++){
 				orderid = document.getElementById(vid+'oid').value;
 				vstaffcnt = vstaffcnt.substr(1);
 				vdate = "task=addStaffJobMore&jobid="+jobid+"&prodid="+prodid+"&olid="+orderlistid+"&oid="+orderid+"&staffcnt="+vstaffcnt;
+				//alert(vdate);
 				ajaxSubmit(vdate,vid);
 			}
 		}
@@ -331,7 +332,7 @@ for(i=0;i<cs.length;i++){
 	          				name="{$prodjoblist[pl].olid}-{$prodjoblist[pl].pid}-{$prodjoblist[pl].jid}-staffid">
 	          				<option value="-1">请选择员工</option>
 	          				{section name=sl loop=$stafflist}
-	          				<option value="{$stafflist[list].id}">{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]</option>
+	          				<option value="{$stafflist[sl].id}">{$stafflist[sl].staffname}-[{$stafflist[sl].staffid}]</option>
 	          				{/section}
 	          				</select></div></td>
 	          				<td><div align="left" class="STYLE2 STYLE1">&nbsp;&nbsp;数量：</div></td>

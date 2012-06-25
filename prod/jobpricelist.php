@@ -16,7 +16,7 @@ if(isset($_GET[jobid])&& !empty($_GET[jobid]) &&"-1"!=$_GET[jobid]){
 }
 
 
-$pagesize = 10;//一页显示多少条
+$pagesize = 20;//一页显示多少条
 //分页
 $queryTotal = $db->query("SELECT jp.id FROM jobprice AS jp LEFT JOIN prod AS p ON jp.prodid = p.id
 	LEFT JOIN job AS j ON jp.jobid = j.id ".$case);

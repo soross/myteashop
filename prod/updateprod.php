@@ -21,7 +21,8 @@ if(isset($_GET[prodid])&& !empty($_GET[prodid])){
 
 	//print_r(count($prodlistlist));
 
-	$joblist = getListBySql("SELECT pj.prodid,pj.id,pj.jobid,j.jobname FROM prodjob AS pj LEFT JOIN job j ON pj.jobid = j.id where pj.prodid in(".$in.") order by pj.prodid",$db);
+	$joblist = getListBySql("SELECT pj.prodid,pj.id,pj.jobid,j.jobname,jp.jobprice FROM prodjob AS pj LEFT JOIN job j ON pj.jobid = j.id " .
+			"left join jobprice jp on j.id=jp.jobid and jp.prodid=pj.prodid where pj.prodid in(".$in.") order by pj.prodid",$db);
 	$smarty->assign("prodjoblist",$joblist);
 
 	//print_r($joblist);

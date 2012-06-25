@@ -146,6 +146,55 @@ var cellcnt = 1;
 	      return true;
 	   }
 	}
+
+	function checkprodcnt(){
+		var cnts = document.getElementsByName("cnt[]");
+
+		var reg = /^[1-9]\d*$/;
+		var isbool = true;
+		for(var i=0;i<cnts.length;i++){
+			if(!reg.test(cnts[i].value) || cnts[i].value <0){
+				alert("请输入产品数量!");
+				isbool = false;
+				break;
+			}
+		}
+		return isbool;
+	}
+
+	function checkprodid(){
+		var cnts = document.getElementsByName("prodid[]");
+		var isbool=true;
+		for(var i=0;i<cnts.length;i++){
+			if(cnts[i].value==-1){
+				alert("请选择产品名称!");
+				isbool=false;
+				break;
+			}
+		}
+		return isbool;
+	}
+
+	function checkprodprice(){
+		var cnts = document.getElementsByName("itemprice[]");
+		var reg = new RegExp("^[0-9]+(.[0-9]{1,2})?$");
+		var isbool = true;
+		for(var i=0;i<cnts.length;i++){
+			if(!reg.test(cnts[i].value) || cnts[i].value<0){
+				alert("请输入产品价格!");
+				isbool = false;
+				break;
+			}
+		}
+		return isbool;
+	}
+
+
+	function cheackform(){
+		return cheackcustid() && checkprodid() && checkprodcnt() && checkprodprice();
+	}
+
+
 </script>
 
 
@@ -177,7 +226,7 @@ var cellcnt = 1;
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/order.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackcustid();">
+        	<form action="post/order.action.php" method="post"  enctype="multipart/form-data" onsubmit="return cheackform();">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
 		          	<td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">合同号</div></td>
@@ -265,18 +314,6 @@ var cellcnt = 1;
     </table></td>
   </tr>
 </table>
-<div id="htmlDIV" style="display:none;">
-	<tr id="orderlisthtml">
-		<td width="15%"  align="center" bgcolor="#FFFFFF" class="STYLE1" colspan="2">产品名称：<select id="prodid[]" name="prodid[]">
-			<option value="-1">请选择产品</option>
-	    	{section name=list loop=$prodlist}
-	    	<option value="{$prodlist[list].id}">{$prodlist[list].picname}[{$prodlist[list].prodid}]</option>
-	    	{/section}
-			</select><font style="color:red;">*</font>
-			产品数量：<input type="text" id="cnt[]" name="cnt[]" size="20" maxlength="20"><font style="color:red;">*</font>
-			产品单价：<input type="text" id="itemprice[]" name="itemprice[]" size="20" maxlength="20"><font style="color:red;">*</font>
-		</td>
-	</tr>
-</div>
+
 </body>
 </html>

@@ -1,6 +1,6 @@
 {include file="inc/top.html"}
         <div id="index_ad">
-       		<div onmouseout="ISL_StopUp()" onmouseup="ISL_StopUp()" onmousedown="ISL_GoUp()" class="Lbtn"></div>
+       		<div onmouseout="ISL_StopUp()" onmouseup="ISL_StopUp()" onmousedown="ISL_GoUp()" class="Lbtn" ></div>
         	<div id="ISL_Cont" class="Cont">
             	<div class="ScrCont">
                 	<div id="List1">
@@ -11,35 +11,22 @@
                 	<div id="List2"></div>
             	</div>
        	 	</div>
-        	<div onmouseout="ISL_StopDown()" onmouseup="ISL_StopDown()" onmousedown="ISL_GoDown()" class="Rbtn"></div>
+        	<div onmouseout="ISL_StopDown()" onmouseup="ISL_StopDown()" onmousedown="ISL_GoDown()" class="Rbtn"></div><!-- -->
     	</div>
         <div id="content">
         	<div class="main">
-                <div id="left">
-                    <div id="classCate">
-                        <div class="left_tt"><span>课程种类</span><a class="more" href="pxzx.php">more</a></div>
-                        <div class="cate">
-                            <ul>
-                               {section name=list loop=$lmlist}
-                                <li {if $taskid==$lmlist[list].id} class="current_li" {/if}><a href="{$lmlist[list].index_url}">{$lmlist[list].name}</a></li>
-                             	{/section}
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="onlineRegister">
-                       {include file="inc/online_register.html"}
-                    </div>
-                    <div id="map">
-                        <img src="{$map.comm_code}" width="188px" height="116px"/>
-                    </div>
-                    <div id="contact">
-                      {include file="inc/contact.html"}
-                    </div>
-                </div>
-                <div id="right">
-                    <div id="classInfo">
-                        <div class="right_tt">课程信息</div>
-                        <div id="info">
+        		<div id="newClass">
+                	<div id="tb_0" class="tb_">
+            			<ul>
+                			<li id="tb_11" class="currenttab" onclick="HoverLi(1,1,5);"><span>Java精品课程</span></li>
+                			<li id="tb_12" class="hovertab" onclick="HoverLi(1,2,5);"><span>C/C++精品课程</span></li>
+                			<li id="tb_13" class="currenttab" onclick="HoverLi(1,3,5);"><span>Iphone精品课程</span></li>
+                			<li id="tb_14" class="currenttab" onclick="HoverLi(1,4,5);"><span>Java精品课程</span></li>
+                			<li id="tb_15" class="currenttab" onclick="HoverLi(1,5,5);"><span>C/C++精品课程</span></li>
+            			</ul>
+        			</div>
+        			<div class="ctt">
+            			<div id="tbc_11" class="dis">
                             <div class="info">
                                 <dl>
                                    <dt class="info_dd1">开课时间</dt>
@@ -56,10 +43,64 @@
                                    <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
                                    <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
 									{/section}
+								   {section name=list loop=$courseRow}
+                                   <dd class="info_dd1">{$courseRow[list].open_time}</dd>
+                           		   <dd class="info_dd2">【{$courseRow[list].course_name}】</dd>
+                                   <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
+                                   <dd class="info_dd3">{$courseRow[list].fee}</dd>
+                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+									{/section}
+								   <dd class="info_dd1">aaaa</dd>
+                           		   <dd class="info_dd2">【aaaa】</dd>
+                                   <dd class="info_dd3">aaaa</dd>
+                                   <dd class="info_dd3">aaaaaaa</dd>
+                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+
                                </dl>
                             </div>
                         </div>
-                    </div>
+            			</div>
+            			<div id="tbc_12" class="undis">
+               				<ul>
+                            	<li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                            </ul>
+                            <ul>
+                            	<li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                            </ul>
+            			</div>
+            			<div id="tbc_13" class="undis">
+                			<ul>
+                            	<li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                            </ul>
+                            <ul>
+                            	<li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
+                            </ul>
+            			</div>
+        			</div>
+                </div>
+                <div id="right">
                     <div class="showImg_tt">图片展示</div>
                     <div id="showImg">
                         <div onmouseout="ISL_StopUp1()" onmouseup="ISL_StopUp1()" onmousedown="ISL_GoUp1()" class="Lbtn1"></div>
@@ -81,6 +122,16 @@
                         <div onmouseout="ISL_StopDown1()" onmouseup="ISL_StopDown1()" onmousedown="ISL_GoDown1()" class="Rbtn1"></div>
                     </div>
                 </div>
+                <div id="contact">
+                	<div class="left_tt">联系我们</div>
+                    <ul>
+                    	<li>地址：福建省福州市鼓楼区***路***号***楼</li>
+                        <li>电话：13788889999</li>
+                        <li>QQ：77777777</li>
+                        <li>Email：77777777@qq.com</li>
+                    </ul>
+                    <div id="left_bttm"></div>
+            	</div>
             </div>
-    	</div>
+
    	{include file="inc/buttom.html"}

@@ -22,6 +22,22 @@ if(isset($_GET[typeid])&&!empty($_GET[typeid])){
 	$smarty->assign("taskid","13");
 }
 $where = " where 1=1 ";
+
+if(isset($_GET[typeid])&&!empty($_GET[typeid])){
+	$typeRow = getRows("boya_news where  id='".$_GET[typeid]."' ",$db,"id");
+	$where = $where." and id in( ";
+	for($i=0;$i< count($typeRow);$i++){
+		$row = $typeRow[$i];
+		if($i+1 == count($typeRow)){
+			$where = $where."'$row[id]'";
+		}else{
+			$where = $where." '$row[id]', ";
+		}
+	}
+	$where = $where.") ";
+}
+
+
 if(isset($_GET[typeid])&&!empty($_GET[typeid])){
 	$where = $where." order by create_date ";
 	$infocn = getInfo(" boya_type where id ='$_GET[typeid]'" ,$db);
@@ -35,7 +51,7 @@ else{
 
 //分页
 $pagesize = 8;//一页显示多少条
-$queryTotal = $db->query("select id,title,path,content,create_date,url from boya_news" .$where);
+$queryTotal = $db->query("select id from boya_news" .$where);
 $total = $db->db_num_rows();
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;
@@ -43,6 +59,10 @@ if ($firstcount < 0) $firstcount = 0;
 $smarty->assign("page",$pagenav);
 
 //print_r($where);
+
+//案例
+$prodRow = getRows("boya_news ".$where ." desc limit $firstcount, $displaypg " ,$db);
+$smarty->assign("prodRows",$prodRow);
 
 $smarty->display("tpzs.html");
 ?>

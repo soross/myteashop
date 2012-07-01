@@ -40,7 +40,7 @@ if(isset($_GET[typeid])&&!empty($_GET[typeid])){
 
 
 //分页
-$pagesize = 8;//一页显示多少条
+$pagesize = 5;//一页显示多少条
 $queryTotal = $db->query("select id,type_id,class_name,open_time,course_name,class_hour,fee,path,content_type,content,isselect,create_date,open_level from boya_course" .$where);
 $total = $db->db_num_rows();
 pageft($total, $pagesize);

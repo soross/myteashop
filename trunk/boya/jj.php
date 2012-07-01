@@ -13,7 +13,9 @@ $smarty->assign("lmlist",$lmlist);
 $infocn = getInfo(" boya_config where comm_type='AboutBoya'" ,$db);
 $smarty->assign("infocn",$infocn);
 
+
 $infocn_type = getInfo(" boya_type where id='12'" ,$db);
+
 $smarty->assign("infocn_type",$infocn_type);
 
 

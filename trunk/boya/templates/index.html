@@ -18,11 +18,9 @@
         		<div id="newClass">
                 	<div id="tb_0" class="tb_">
             			<ul>
-                			<li id="tb_11" class="currenttab" onclick="HoverLi(1,1,5);"><span>Java精品课程</span></li>
-                			<li id="tb_12" class="hovertab" onclick="HoverLi(1,2,5);"><span>C/C++精品课程</span></li>
-                			<li id="tb_13" class="currenttab" onclick="HoverLi(1,3,5);"><span>Iphone精品课程</span></li>
-                			<li id="tb_14" class="currenttab" onclick="HoverLi(1,4,5);"><span>Java精品课程</span></li>
-                			<li id="tb_15" class="currenttab" onclick="HoverLi(1,5,5);"><span>C/C++精品课程</span></li>
+            				{section name=list loop=$lmlist}
+                			<li id="tb_{$taskid}"  {if $taskid==$lmlist[list].id} class="hovertab" {else} class="currenttab" {/if} onclick="HoverLi('{$taskid}','{$lmlist[list].index_url}');"><span>{$lmlist[list].name}</span></li>
+                			{/section}
             			</ul>
         			</div>
         			<div class="ctt">
@@ -37,27 +35,12 @@
                                    <dt class="info_dd3">我要报名</dt>
 								   {section name=list loop=$courseRow}
                                    <dd class="info_dd1">{$courseRow[list].open_time}</dd>
-                           		   <dd class="info_dd2">【{$courseRow[list].course_name}】</dd>
+                           		   <dd style="text-align:left" class="info_dd2">【{$courseRow[list].course_name}】</dd>
                                    <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
                                    <dd class="info_dd3">{$courseRow[list].fee}</dd>
                                    <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
                                    <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
 									{/section}
-								   {section name=list loop=$courseRow}
-                                   <dd class="info_dd1">{$courseRow[list].open_time}</dd>
-                           		   <dd class="info_dd2">【{$courseRow[list].course_name}】</dd>
-                                   <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
-                                   <dd class="info_dd3">{$courseRow[list].fee}</dd>
-                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
-                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
-									{/section}
-								   <dd class="info_dd1">aaaa</dd>
-                           		   <dd class="info_dd2">【aaaa】</dd>
-                                   <dd class="info_dd3">aaaa</dd>
-                                   <dd class="info_dd3">aaaaaaa</dd>
-                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
-                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
-
                                </dl>
                             </div>
                         </div>
@@ -123,14 +106,7 @@
                     </div>
                 </div>
                 <div id="contact">
-                	<div class="left_tt">联系我们</div>
-                    <ul>
-                    	<li>地址：福建省福州市鼓楼区***路***号***楼</li>
-                        <li>电话：13788889999</li>
-                        <li>QQ：77777777</li>
-                        <li>Email：77777777@qq.com</li>
-                    </ul>
-                    <div id="left_bttm"></div>
+                	{include file="inc/contact.html"}
             	</div>
             </div>
 

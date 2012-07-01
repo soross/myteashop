@@ -29,12 +29,28 @@
                        <div class="path">
                            <a href="index.php">首页&nbsp;&gt;&nbsp;</a>
                            <a href="jj.php">关于我们&nbsp;&gt;&nbsp;</a>
-                           {$infocn.type_name}
+							{$infocn.type_name}
                        </div>
                    </div>
                    <div id="detail">
-                   	   asdfsafsaf
+                   <table width="100%" height="100%">
+               {section name=list loop=$prodRows}
+                  { if $smarty.section.list.index%4==0}
+				<tr>
+				{/if}
+				<td>
+				<a href="{$prodRows[list].url}"  target="_blank" >
+					<img src="{$prodRows[list].path}" alt="{$prodRows[list].title}" title="{$prodRows[list].prod_name}" style="width:95%;height:100%" border="0" /></a><br>
+			<a href="{$prodRows[list].url}"  target="_blank" class="detail" title="{$prodRows[list].title}">{$prodRows[list].title|wordwrap:26:"<br>"}
+			</a>
+			<td>
+			{ if $smarty.section.list.index%4==0 }
+			</tr>
+		{/if}
+		{/section}
+			</table>
                    </div>
+                   {$page}
                 </div>
             </div>
     	</div>

@@ -1,4 +1,5 @@
 {include file="inc/top.html"}
+<script language="javascript" type="text/javascript" src="js/wsbm.js"></script>
         <div id="content">
         	<div class="main">
                 <div id="left">
@@ -8,7 +9,7 @@
                             <ul>
                                 {section name=list loop=$lmlist}
                                 <li {if $taskid==$lmlist[list].id} class="current_li" {/if}><a href="{$lmlist[list].url}">{$lmlist[list].name}</a></li>
-                                {/section}
+                             {/section}
                             </ul>
                         </div>
                     </div>
@@ -24,19 +25,21 @@
                 </div>
                 <div id="right">
                    <div id="path">
-                       <h2>{$infocn_type.type_name}</h2>
+                       <h2>{$infocn.type_name}</h2>
                        <div class="path">
-                           <a href="index.html">首页&nbsp;&gt;&nbsp;</a>
-                           <a href="pxzx.html">培训中心&nbsp;&gt;&nbsp;</a>
-                           <a href="{$infocn_type.url}">{$infocn_type.type_name}&nbsp;&gt;&nbsp;</a>
-                          {$infocn.class_name}
+                           <a href="index.php">首页&nbsp;&gt;&nbsp;</a>
+                           <a href="jj.php">关于我们&nbsp;&gt;&nbsp;</a>
+							{$infocn.type_name}
                        </div>
                    </div>
                    <div id="detail">
-                   	   {$infocn.content|stripslashes}<br>
-						<a href="../boya/{$infocn.path}"><font color="red">{$infocn.path}</font></a>
+                   <table height="100%" width="100%">
+                   <tr style="height:15%;width=100%"><td style="width=100%" align="center">{$info.title}</td></tr>
+                   <tr style="height:15%;width=100%"><td style="width=100%"><img src="{$info.path}" style="height:15%;width=100%"></td></tr>
+                   <tr style="height:50%;width=100%"><td style="width=100%">{$info.content}</td></tr>
+                   </table>
                    </div>
                 </div>
             </div>
     	</div>
- {include file="inc/buttom.html"}
+{include file="inc/buttom.html"}

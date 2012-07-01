@@ -33,6 +33,15 @@
                    </div>
                    <div id="list">
                        <dl>
+                       	{if $taskid==8 }
+                           <dt class="list_dd1">课程类别</dt>
+                           <dt class="list_dd2">开设层次</dt>
+                           <dt class="list_dd3">专  业</dt>
+                           <dt class="list_dd2">学习方式</dt>
+                           <dt class="list_dd2">学习费用</dt>
+                           <dt class="list_dd2">招生简章</dt>
+                           <dt class="list_dd2 list_dd4">我要报名</dt>
+                         {else}
                            <dt class="list_dd1">课程类别</dt>
                            <dt class="list_dd2">开课时间</dt>
                            <dt class="list_dd3">开设课程</dt>
@@ -40,6 +49,7 @@
                            <dt class="list_dd2">培训费用</dt>
                            <dt class="list_dd2">招生简章</dt>
                            <dt class="list_dd2 list_dd4">我要报名</dt>
+                         {/if}
 							{section name=list loop=$courseRow}
                            <dd class="list_dd1">【{$courseRow[list].class_name}】</dd>
                            <dd class="list_dd2">{$courseRow[list].open_time}</dd>

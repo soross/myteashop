@@ -28,6 +28,19 @@ $smarty->assign("contactinfo",$contact[0]);
 $contactUs = getListBySql("select * from boya_config where comm_type='ContactUs'" ,$db);
 $smarty->assign("contactUs",$contactUs[0]);
 
+//SEO_Title
+
+$SEO_Title = getInfo("boya_config where comm_type='SEO_Title'" ,$db);
+$smarty->assign("SEO_Title",$SEO_Title);
+
+//SEO_Keyword
+
+$SEO_Keyword = getInfo("boya_config where comm_type='SEO_Keyword'" ,$db);
+$smarty->assign("SEO_Keyword",$SEO_Keyword);
+
+//SEO_Desc
+$SEO_Desc = getInfo("boya_config where comm_type='SEO_Desc'" ,$db);
+$smarty->assign("SEO_Desc",$SEO_Desc);
 
 //µ×²¿
 $Buttom = getListBySql("select * from boya_config where comm_type='Buttom'" ,$db);
@@ -36,5 +49,13 @@ $smarty->assign("Buttom",$Buttom[0]);
 //µ×²¿
 $map = getListBySql("select * from boya_config where comm_type='Map'" ,$db);
 $smarty->assign("map",$map[0]);
+
+
+//µ×²¿
+$imlist = getListBySql("select * from boya_config where comm_type='Im_Account' order by id" ,$db);
+$smarty->assign("imlist",$imlist);
+
+
+
 
 ?>

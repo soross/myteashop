@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2012-06-20 16:23:10
+Date: 2012-07-02 23:07:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,7 +25,7 @@ CREATE TABLE `boya_admin_menu` (
   `url` varchar(50) default NULL,
   `seq` int(2) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_admin_menu
@@ -36,7 +36,7 @@ INSERT INTO `boya_admin_menu` VALUES ('3', '新增管理员', '1', 'adduser.php'
 INSERT INTO `boya_admin_menu` VALUES ('4', '权限列表', '1', 'powerlist.php', '3');
 INSERT INTO `boya_admin_menu` VALUES ('5', '新增权限', '1', 'addpower.php', '4');
 INSERT INTO `boya_admin_menu` VALUES ('6', '在线报名管理', '-1', '-1', '1');
-INSERT INTO `boya_admin_menu` VALUES ('7', '在线报名列表', '6', 'reguserlist.php', '6');
+INSERT INTO `boya_admin_menu` VALUES ('7', '在线报名列表', '6', 'reguserlist.php', '1');
 INSERT INTO `boya_admin_menu` VALUES ('8', '课程管理', '-1', '-2', '2');
 INSERT INTO `boya_admin_menu` VALUES ('9', '课程列表', '8', 'classlist.php', '1');
 INSERT INTO `boya_admin_menu` VALUES ('10', '新增课程', '8', 'addclass.php', '2');
@@ -52,6 +52,7 @@ INSERT INTO `boya_admin_menu` VALUES ('19', '地图配置', '11', 'map.php', '8'
 INSERT INTO `boya_admin_menu` VALUES ('20', '图片管理', '-1', '-5', '3');
 INSERT INTO `boya_admin_menu` VALUES ('21', '图片列表', '20', 'piclist.php', '1');
 INSERT INTO `boya_admin_menu` VALUES ('22', '新增图片', '20', 'addpic.php', '2');
+INSERT INTO `boya_admin_menu` VALUES ('23', '查询导出班级', '6', 'queryclass.php', '2');
 
 -- ----------------------------
 -- Table structure for `boya_admin_user`
@@ -80,33 +81,34 @@ CREATE TABLE `boya_admin_user_menu` (
   `userid` int(11) default NULL,
   `menuid` int(11) unsigned zerofill default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_admin_user_menu
 -- ----------------------------
-INSERT INTO `boya_admin_user_menu` VALUES ('123', '1', '00000000006');
-INSERT INTO `boya_admin_user_menu` VALUES ('124', '1', '00000000007');
-INSERT INTO `boya_admin_user_menu` VALUES ('125', '1', '00000000008');
-INSERT INTO `boya_admin_user_menu` VALUES ('126', '1', '00000000009');
-INSERT INTO `boya_admin_user_menu` VALUES ('127', '1', '00000000010');
-INSERT INTO `boya_admin_user_menu` VALUES ('128', '1', '00000000011');
-INSERT INTO `boya_admin_user_menu` VALUES ('129', '1', '00000000012');
-INSERT INTO `boya_admin_user_menu` VALUES ('130', '1', '00000000013');
-INSERT INTO `boya_admin_user_menu` VALUES ('131', '1', '00000000014');
-INSERT INTO `boya_admin_user_menu` VALUES ('132', '1', '00000000015');
-INSERT INTO `boya_admin_user_menu` VALUES ('133', '1', '00000000016');
-INSERT INTO `boya_admin_user_menu` VALUES ('134', '1', '00000000017');
-INSERT INTO `boya_admin_user_menu` VALUES ('135', '1', '00000000018');
-INSERT INTO `boya_admin_user_menu` VALUES ('136', '1', '00000000019');
-INSERT INTO `boya_admin_user_menu` VALUES ('137', '1', '00000000020');
-INSERT INTO `boya_admin_user_menu` VALUES ('138', '1', '00000000021');
-INSERT INTO `boya_admin_user_menu` VALUES ('139', '1', '00000000022');
-INSERT INTO `boya_admin_user_menu` VALUES ('140', '1', '00000000001');
-INSERT INTO `boya_admin_user_menu` VALUES ('141', '1', '00000000002');
-INSERT INTO `boya_admin_user_menu` VALUES ('142', '1', '00000000003');
-INSERT INTO `boya_admin_user_menu` VALUES ('143', '1', '00000000004');
-INSERT INTO `boya_admin_user_menu` VALUES ('144', '1', '00000000005');
+INSERT INTO `boya_admin_user_menu` VALUES ('1', '1', '00000000006');
+INSERT INTO `boya_admin_user_menu` VALUES ('2', '1', '00000000007');
+INSERT INTO `boya_admin_user_menu` VALUES ('3', '1', '00000000023');
+INSERT INTO `boya_admin_user_menu` VALUES ('4', '1', '00000000008');
+INSERT INTO `boya_admin_user_menu` VALUES ('5', '1', '00000000009');
+INSERT INTO `boya_admin_user_menu` VALUES ('6', '1', '00000000010');
+INSERT INTO `boya_admin_user_menu` VALUES ('7', '1', '00000000011');
+INSERT INTO `boya_admin_user_menu` VALUES ('8', '1', '00000000012');
+INSERT INTO `boya_admin_user_menu` VALUES ('9', '1', '00000000013');
+INSERT INTO `boya_admin_user_menu` VALUES ('10', '1', '00000000014');
+INSERT INTO `boya_admin_user_menu` VALUES ('11', '1', '00000000015');
+INSERT INTO `boya_admin_user_menu` VALUES ('12', '1', '00000000016');
+INSERT INTO `boya_admin_user_menu` VALUES ('13', '1', '00000000017');
+INSERT INTO `boya_admin_user_menu` VALUES ('14', '1', '00000000018');
+INSERT INTO `boya_admin_user_menu` VALUES ('15', '1', '00000000019');
+INSERT INTO `boya_admin_user_menu` VALUES ('16', '1', '00000000020');
+INSERT INTO `boya_admin_user_menu` VALUES ('17', '1', '00000000021');
+INSERT INTO `boya_admin_user_menu` VALUES ('18', '1', '00000000022');
+INSERT INTO `boya_admin_user_menu` VALUES ('19', '1', '00000000001');
+INSERT INTO `boya_admin_user_menu` VALUES ('20', '1', '00000000002');
+INSERT INTO `boya_admin_user_menu` VALUES ('21', '1', '00000000003');
+INSERT INTO `boya_admin_user_menu` VALUES ('22', '1', '00000000004');
+INSERT INTO `boya_admin_user_menu` VALUES ('23', '1', '00000000005');
 
 -- ----------------------------
 -- Table structure for `boya_config`
@@ -221,16 +223,17 @@ CREATE TABLE `boya_reg_user` (
   `remark` longtext COMMENT '备注',
   `class_no` varchar(20) default NULL COMMENT '班级',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of boya_reg_user
 -- ----------------------------
 INSERT INTO `boya_reg_user` VALUES ('1', 'abc', '男', '大专', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '1', '2', '2012-06-01 12:20:12', '0.00', null, null, null, null);
-INSERT INTO `boya_reg_user` VALUES ('2', 'efg', '女', '本科', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '2', '1', '2012-06-01 12:20:42', '200.22', '2012-06-01 12:20:50', '1', null, null);
-INSERT INTO `boya_reg_user` VALUES ('3', 'sdfsafd', '女', '本科', '博雅', '11111111111', '67890543', '23456789', 'abc@abc.abc', '2', '11', '2012-06-20 15:50:27', '4234.00', '2012-06-20 15:41:20', '1', 'dfadsf', null);
+INSERT INTO `boya_reg_user` VALUES ('2', 'efg', '女', '本科', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '2', '1', '2012-06-01 12:20:42', '200.22', '2012-06-01 12:20:50', '1', null, '20120604');
+INSERT INTO `boya_reg_user` VALUES ('3', 'sdfsafd', '女', '本科', '博雅', '11111111111', '67890543', '23456789', 'abc@abc.abc', '2', '11', '2012-06-20 15:50:27', '4234.00', '2012-06-20 15:41:20', '1', 'dfadsf', '20120604');
 INSERT INTO `boya_reg_user` VALUES ('4', 'fdasf', '男', '本科', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '3', '2', '2012-06-20 15:50:29', '0.00', null, null, '', null);
 INSERT INTO `boya_reg_user` VALUES ('5', 'dasfds', '男', '本科', '博雅', '13456789023', '67890543', '23456789', 'abc@abc.abc', '1', '2', '2012-06-20 15:50:31', '0.00', null, null, '', null);
+INSERT INTO `boya_reg_user` VALUES ('8', 'fasdfds', 'o', '', 'fasdfdsf', '11111111111', '12312312', '2312312', '12312321@sds.xx', '2', '22', null, '0.00', null, null, 'afdsfds', '20120604');
 
 -- ----------------------------
 -- Table structure for `boya_type`

@@ -41,73 +41,46 @@
                                    <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
                                    <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
 									{/section}
+									{section name=list loop=$courseRow}
+                                   <dd class="info_dd1">{$courseRow[list].open_time}</dd>
+                           		   <dd style="text-align:left" class="info_dd2">【{$courseRow[list].course_name}】</dd>
+                                   <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
+                                   <dd class="info_dd3">{$courseRow[list].fee}</dd>
+                                   <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                                   <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+									{/section}
+
                                </dl>
                             </div>
                         </div>
-            			</div>
-            			<div id="tbc_12" class="undis">
-               				<ul>
-                            	<li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                            </ul>
-                            <ul>
-                            	<li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>C/C++精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                            </ul>
-            			</div>
-            			<div id="tbc_13" class="undis">
-                			<ul>
-                            	<li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                            </ul>
-                            <ul>
-                            	<li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                                <li><a href="#"><span>Iphone精品课程子专业1</span><span class="time">2012.6.3</span></a></li>
-                            </ul>
-            			</div>
-        			</div>
-                </div>
-                <div id="right">
-                    <div class="showImg_tt">图片展示</div>
-                    <div id="showImg">
-                        <div onmouseout="ISL_StopUp1()" onmouseup="ISL_StopUp1()" onmousedown="ISL_GoUp1()" class="Lbtn1"></div>
-                        <div id="ISL_Cont1" class="Cont1">
-                            <div class="ScrCont1">
-                                <div id="List_a">
-                                    <ul>
-                                    {section name=list loop=$piclist}
-                                        <li>
-                                            <span class="show_img"><img src="{$piclist[list].path}" /></span>
-                                            <span class="show_name"><a href="{$piclist[list].url}">{$piclist[list].title}</a></span>
-                                        </li>
-                                     {/section}
-                                    </ul>
-                                </div>
-                                <div id="List_b"></div>
-                            </div>
-                        </div>
-                        <div onmouseout="ISL_StopDown1()" onmouseup="ISL_StopDown1()" onmousedown="ISL_GoDown1()" class="Rbtn1"></div>
-                    </div>
-                </div>
-                <div id="contact">
-                	{include file="inc/contact.html"}
-            	</div>
-            </div>
+            		</div>
+        		</div>
+	            <div class="right_tt">
+	                <div class="showImg_tt">图片展示</div>
+	                <div id="showImg">
+	                    <div onmouseout="ISL_StopUp1()" onmouseup="ISL_StopUp1()" onmousedown="ISL_GoUp1()" class="Lbtn1"></div>
+	                    <div id="ISL_Cont1" class="Cont1">
+	                        <div class="ScrCont1">
+	                            <div id="List_a">
+	                                <ul>
+	                                {section name=list loop=$piclist}
+	                                    <li>
+	                                        <span class="show_img"><img src="{$piclist[list].path}" /></span>
+	                                        <span class="show_name"><a href="{$piclist[list].url}">{$piclist[list].title}</a></span>
+	                                    </li>
+	                                 {/section}
+	                                </ul>
+	                            </div>
+	                            <div id="List_b"></div>
+	                        </div>
+	                    </div>
+	                    <div onmouseout="ISL_StopDown1()" onmouseup="ISL_StopDown1()" onmousedown="ISL_GoDown1()" class="Rbtn1"></div>
+	                </div>
+	            </div>
+	            <div id="contact">
+	            	{include file="inc/contact.html"}
+	        	</div>
+        	</div>
+        </div>
 
    	{include file="inc/buttom.html"}

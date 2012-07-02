@@ -79,6 +79,8 @@ a:hover { color:#f09b4a; }
 #contact li { float:left; width:168px; padding-bottom:7px; }
 #left_bttm { float:left; width:200px; height:8px; background:url(../images/left_bttm.gif) 0 0 no-repeat; }
 
+
+
 /*right*/
 #right { float:left; width:777px; }
 #contact{float:right; width:200px; padding-top:15px; }
@@ -86,9 +88,9 @@ a:hover { color:#f09b4a; }
 
 /*introduce*/
 #classInfo { float:left; width:1000px; padding:5px 0 11px; background:url(../images/intro_bttm.gif) 0 bottom no-repeat; }
-.right_tt,.showImg_tt { float:left; width:978px; color:#FC510E; font-size:14px; font-weight:bold; padding:0 0 11px 15px; background:url(../images/intro_top.gif) 0 bottom no-repeat; }
-#info { float:left; width:978px; padding:0 5px; border-left:1px solid #DBDBDB; border-right:1px solid #DBDBDB; background-color:white; }
-.info { float:left; width:978px; margin-top:12px; padding:8px 10px 2px 0; background:white; }
+.right_tt,.showImg_tt { float:left; width:777px; color:#FC510E; font-size:14px; font-weight:bold; padding:0 0 11px 15px; background:url(../images/intro_top.gif) 0 bottom no-repeat; }
+#info { float:left; width:978px; height:100%; padding:0 5px; border-left:1px solid #DBDBDB; border-right:1px solid #DBDBDB; background-color:white; }
+.info { float:left; width:978px; height:100%; margin-top:12px; padding:8px 10px 2px 0; background:white; }
 .info dl { float:left; width:978px; }
 .info dt { float:left; height:34px; font-size:14px; font-weight:bold; text-align:center; }
 
@@ -171,7 +173,7 @@ h3 { float:left; width:747px; color:#FC510E; padding-bottom:10px; }
 #tb_11 { margin:0 0 1px 0; }
 .hovertab span { float:left; height:34px; line-height:36px; padding:0 15px; background:url(../images/newsclass/hover_l.gif) left 0 no-repeat; }
 .tb_ { float:left; position:relative; width:990px; height:35px; padding-bottom:3px; margin-bottom:-11px; display:inline; background:url(../images/newsclass/tab_bg.gif) center bottom no-repeat; z-index:10; }
-.ctt { float:left; width:990px; height:184px;  position:relative; }
+.ctt { float:left; width:990px; height:100%;  position:relative; }
 .ctt ul { float:left; width:235px; padding:30px 36px 0 15px; }
 .ctt li { float:left; width:235px; height:22px; overflow:hidden; }
 .ctt li a { float:left; width:235px; height:22px; line-height:22px; }

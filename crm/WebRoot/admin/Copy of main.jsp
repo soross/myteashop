@@ -18,10 +18,10 @@
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
-
 <body style="MARGIN: 0px">
 	<div class="top">
 		<div>
@@ -29,7 +29,7 @@
 			<div class="topdl">
 				<li>友情提醒：</li>
 				<li><marquee scrollamount=3 width="200px" onMouseOver="this.stop();" onMouseOut="this.start();">操作前请注意先备份数据库,以免数据丢失!</marquee></li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;欢迎${user.userid}｜<a href="#" target="main"><span class="fff">在线帮助</span></a>｜<a href="main.php" target="_blank"><span class="fff">首页</span></a>｜<a href="${pageContext.request.contextPath}/login.do?task=exit" target="_parent"><span class="fff">退出</span></a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;欢迎admddddddddin｜<a href="#" target="main"><span class="fff">在线帮助</span></a>｜<a href="main.php" target="_blank"><span class="fff">首页</span></a>｜<a href="logout.php" target="_parent"><span class="fff">退出</span></a></li>
 			</div>
 	    </div>
 		<div class="tabm">
@@ -51,7 +51,7 @@
 	        		<td height="28" id="leftmenu_title" class="leftmenu_title"><span>后台首页</span></td>
 	      		</tr>
 	    	</table>
-	    	<iframe src="main/menu.jsp" frameborder="0" id="left" name="left" scrolling="auto" align="top" class="leftiframe"></iframe>
+	    	<iframe src="left.php" frameborder="0" id="left" name="left" scrolling="auto" align="top" class="leftiframe"></iframe>
 			</td>
 	    	<td width="10">
 	    		<table height="100%" cellspacing="0" cellpadding="0" border="0">
@@ -63,7 +63,7 @@
 	    		</table>
 	    	</td>
 	    	<td valign="top">
-	    		<iframe style="margin:0; padding:0; width:100%; height:480px!important;height:100%; background-color:#081250; visibility:inherit;" src="main/index.jsp" frameborder="0" scrolling="yes" id="main" name="main"></iframe>
+	    		<iframe style="margin:0; padding:0; width:100%; height:480px!important;height:100%; background-color:#081250; visibility:inherit;" src="from.php" frameborder="0" scrolling="yes" id="main" name="main"></iframe>
 	    	</td>
 	  	</tr>
 	</table>

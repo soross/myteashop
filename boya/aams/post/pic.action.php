@@ -5,7 +5,7 @@ if(isset($_POST[task]) && "addPicture"==$_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/picture/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('jpg','png','JPG', 'gif');
+	$ext_arr = array('jpg','png','JPG','PNG','GIF','gif');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100000*1024)));//100k
 	if($up->uploadFile('newsfile')){
@@ -36,7 +36,7 @@ if(isset($_POST[task]) && "addPicture"==$_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/picture/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('jpg','png','JPG', 'gif');
+	$ext_arr = array('jpg','png','JPG','PNG','GIF','gif');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100000*1024)));//3m
 	if($up->uploadFile('newsfile')){

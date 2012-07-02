@@ -35,18 +35,14 @@
                    <div id="detail">
                    <table width="100%" height="100%">
                {section name=list loop=$prodRows}
-                  { if $smarty.section.list.index%5==0}
-				<tr>
-				{/if}
+                {if $smarty.section.list.first || $smarty.section.list.rownum%5==1}<tr>{/if}
 				<td>
 				<a href="{$prodRows[list].url}"  target="_blank" >
 					<img style="height:80px;width:120px;" src="{$prodRows[list].path}" alt="{$prodRows[list].title}" title="{$prodRows[list].prod_name}" style="width:95%;height:100%" border="0" /></a><br>
 			<a href="{$prodRows[list].url}"  target="_blank" class="detail" title="{$prodRows[list].title}">{$prodRows[list].title|wordwrap:26:"<br>"}
 			</a>
-			<td>
-			{ if $smarty.section.list.index%5==0 }
-			</tr>
-			{/if}
+			</td>
+			{if $smarty.section.list.last || $smarty.section.list.rownum%5==0}</tr>{/if}
 		{/section}
 			</table>
                    </div>

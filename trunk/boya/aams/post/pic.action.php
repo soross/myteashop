@@ -5,16 +5,16 @@ if(isset($_POST[task]) && "addPicture"==$_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/picture/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('jpg','png', 'gif');
+	$ext_arr = array('jpg','png','JPG', 'gif');
 	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100*1024)));//100k
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100000*1024)));//100k
 	if($up->uploadFile('newsfile')){
 		$filename = "images/picture/".$up->getNewFileName();
 		$srcfilename=$up->getSrcFileName();
 		$db->query("insert into boya_news(title,path,content,create_date)" .
 			"values('$_POST[title]','$filename','$_POST[content]',now())");
 			$insertID = $db->insert_id();
-		$db->query("update boya_news set url ='info.php?id=".$insertID."' where id='$insertID'");
+		$db->query("update boya_news set url ='info.php?picid=".$insertID."' where id='$insertID'");
   		echo "<script>if(confirm('图片新增成功,是否继续新增?')){location.href='../addpic.php';}else{location.href='../piclist.php';}</script>";
 	}else{
 		echo "<script>alert('图片新增失败,请重试!');location.href='../addpic.php';</script>";
@@ -36,13 +36,13 @@ if(isset($_POST[task]) && "addPicture"==$_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/picture/';//201109281154581.jpg
 	//定义允许上传的文件扩展名
-	$ext_arr = array('jpg','png', 'gif');
+	$ext_arr = array('jpg','png','JPG', 'gif');
 	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100*1024)));//3m
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(100000*1024)));//3m
 	if($up->uploadFile('newsfile')){
 		$filename = "images/picture/".$up->getNewFileName();
 		$db->query("update boya_news set title='$_POST[title]',path='$filename'," .
-			"content='$_POST[content]' where id='$_POST[picid]'");
+			"content='$_POST[content]' where picid='$_POST[picid]'");
 
 		if(file_exists("../../".$_POST[path])){
 			unlink("../../".$_POST[path]);

@@ -18,6 +18,9 @@
         		<div id="newClass">
                 	<div id="tb_0" class="tb_">
             			<ul>
+            				{section name=list loop=$zxlmlist}
+                			<li id="tb_{$taskid}"  {if $taskid==$zxlmlist[list].id} class="hovertab" {else} class="currenttab" {/if} onclick="HoverLi('{$taskid}','{$zxlmlist[list].index_url}');"><span>{$zxlmlist[list].name}</span></li>
+                			{/section}
             				{section name=list loop=$lmlist}
                 			<li id="tb_{$taskid}"  {if $taskid==$lmlist[list].id} class="hovertab" {else} class="currenttab" {/if} onclick="HoverLi('{$taskid}','{$lmlist[list].index_url}');"><span>{$lmlist[list].name}</span></li>
                 			{/section}
@@ -60,7 +63,6 @@
 	                                        <span class="show_name"><a href="{$piclist[list].url}">{$piclist[list].title}</a></span>
 	                                    </li>
 	                                 {/section}
-	                                 <ul>
 	                                </ul>
 	                            </div>
 	                            <div id="List_b"></div>

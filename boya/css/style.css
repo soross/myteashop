@@ -86,10 +86,10 @@ a:hover { color:#f09b4a; }
 
 /*introduce*/
 #classInfo { float:left; width:1000px; padding:5px 0 11px; background:url(../images/intro_bttm.gif) 0 bottom no-repeat; }
-.right_tt,.showImg_tt { float:left; width:968px; color:#FC510E; font-size:14px; font-weight:bold; padding:0 0 11px 15px; background:url(../images/intro_top.gif) 0 bottom no-repeat; }
-#info { float:left; width:968px; padding:0 5px; border-left:1px solid #DBDBDB; border-right:1px solid #DBDBDB; background-color:white; }
-.info { float:left; width:968px; margin-top:12px; padding:8px 10px 2px 0;  }
-.info dl { float:left; width:968px; }
+.right_tt,.showImg_tt { float:left; width:978px; color:#FC510E; font-size:14px; font-weight:bold; padding:0 0 11px 15px; background:url(../images/intro_top.gif) 0 bottom no-repeat; }
+#info { float:left; width:978px; padding:0 5px; border-left:1px solid #DBDBDB; border-right:1px solid #DBDBDB; background-color:white; }
+.info { float:left; width:978px; margin-top:12px; padding:8px 10px 2px 0; background:white; }
+.info dl { float:left; width:978px; }
 .info dt { float:left; height:34px; font-size:14px; font-weight:bold; text-align:center; }
 
 .info_dd1 { width:140px; }

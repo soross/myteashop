@@ -28,9 +28,9 @@ else if(isset($_POST[task]) && "addCase"== $_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/case/';
 	//定义允许上传的文件扩展名
-	$ext_arr = array('gif', 'jpg', 'png');
+	$ext_arr = array('jpg','png','JPG','PNG','GIF','gif');
 	require "../action/FileUpload.class.php";
-	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*500)));
+	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*500000)));
 	if($up->uploadFile('case1')){
 		//上传后产品图片名称 放到数据库
 		$filename1 = "images/case/".$up->getNewFileName();
@@ -59,7 +59,7 @@ else if(isset($_POST[task]) && "addCase"== $_POST[task]){
 	//文件保存目录URL
 	$save_path = '../../images/case/';
 	//定义允许上传的文件扩展名
-	$ext_arr = array('gif', 'jpg', 'png');
+	$ext_arr = array('gif', 'jpg','JGG','GIF','PNG', 'png');
 	require "../action/FileUpload.class.php";
 	$up=new FileUpload(array('isRandName'=>true,'allowType'=>$ext_arr,'FilePath'=>$save_path, 'MAXSIZE'=>(1024*500)));
 	$sql="update `case` set case_name='$_POST[name]',case_type='$_POST[type]',case_url='$_POST[url]'," .

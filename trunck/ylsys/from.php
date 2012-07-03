@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 <title>后台管理</title>
-<link href="css/style.css" rel="stylesheet" type="text/css">
+
 
 </head>
 <body>

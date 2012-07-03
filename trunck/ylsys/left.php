@@ -2,33 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<link rel="STYLESHEET" type="text/css" href="codebase/dhtmlxtree.css">
+<link rel="STYLESHEET" type="text/css" href="css/style.css">
 <title>无标题文档</title>
 </head>
 <body >
-<table >
-	<tr>
-		<td valign="top"  height="100%" width="195px">
-			<div id="treeboxbox_tree"><br>
-		 </td>
-	 </tr>
- </table>
+<div>
+<ul id="dhtmlgoodies_tree" class="dhtmlgoodies_tree">
+	<li><a href="#">常用操作</a>
+    	<ul>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=index&f=main" target="main">后台首页</a></li>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=creathtml&f=update_index" target="main">更新首页</a></li>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=update_cache" target="main">更新缓存</a></li>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=category&f=add" target="main">添加栏目</a></li>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=category" target="main">管理栏目</a></li>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=model" target="main">内容模型管理</a></li>
+    	</ul>
+    </li>
+    <li><a href="#">个人信息</a>
+    	<ul>
+    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=index&f=edit" target="main">修改密码</a></li>
+    	</ul>
+    </li>
+</ul>
+</div>
 </body>
-<script  src="codebase/dhtmlxcommon.js"></script>
-<script  src="codebase/dhtmlxtree.js"></script>
-<script>
-	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
-	tree.setImagePath("codebase/imgs/csh_yellowbooks/");
-	tree.loadXML("codebase/menu_1.xml");
-	tree.enableDragAndDrop(0);
-	tree.setOnClickHandler(tonclick);
-	function tonclick(id){
-		if(tree.getSelectedItemId()<0){
-			tree.openItem(id);
-		}else{
-			//alert(tree.getSelectedItemId());
-			window.parent.dataFrame.location.href="../"+tree.getSelectedItemId();
-		}
-	}
-</script>
+<script language="javascript" src="js/block.js"></script>
+<script language="javascript" src="js/popup.js"></script>
+
+<script type="text/javascript" src="js/tree.js"></script>
+<script type="text/javascript" src="js/context-menu.js"></script>
+
 </html>

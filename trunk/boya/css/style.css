@@ -7,7 +7,7 @@ a { color:#000000; text-decoration:none; outline:none; }
 a:hover { color:#f09b4a; }
 .clear{ clear:both; height:0; font-size:1px; line-height:0px; }
 
-#wrapper { width:1000px; margin:0 auto; background:url(../images/wrapper_bg.gif) #f4f3f2 0 0 repeat-x; }
+#wrapper { width:1000px; margin:0 auto; background:#FFFFFF; }
 
 /*-----header-----*/
 #header { float:left; width:1000px; }

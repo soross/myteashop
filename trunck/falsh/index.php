@@ -32,7 +32,7 @@
 					<input type="password" name="password" value="admin" />
 				</div>
 				<input type="checkbox" name="remember-me" id="remember-me" /><label for="remember-me">记住我</label>
-				<div class="forgot-usr-pwd">忘记 <a href="#">用户名</a> 或 <a href="#">密码</a> ?</div>
+				<div class="forgot-usr-pwd">记住我的登录状态 <a href="#">用户名</a> 或 <a href="#">密码</a> ?</div>
 				<input type="submit" name="submit" value="GO" />
 			</form>
 		</div>

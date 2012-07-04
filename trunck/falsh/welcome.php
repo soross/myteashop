@@ -13,8 +13,11 @@
 	<body>
 		<div id="container">
 			<div class="welcome">
-				<div class="welcome-user">Welcome admin!</div>
-				<div class="welcome-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+				<div class="welcome-user">Welcome 小明!</div>
+				<div class="welcome-text">
+				欢迎进入《网络综合布线技术》课程的学习天地！<br/>
+				在下面的学习中我都会陪伴你的左右，需要我开口的时候，只要点击一下按钮；<br>
+				不需要的时候，再点击一下它即可。现在我们进入课程的学习吧！</div>
 				<div class="home"><a href="test.php">HOME</a></div>
 			</div>
 		</div>

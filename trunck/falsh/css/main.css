@@ -4549,7 +4549,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 
 #footer {
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 10px;
 	width: 500px;
 	height: 30px;
 	background: url(../images/footer-bg.png) bottom center no-repeat;

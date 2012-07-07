@@ -31,6 +31,10 @@ a:hover { color:#f09b4a; }
 #menu li.contact a:hover { background:url(../images/menu_li_hover.gif) right 0 no-repeat; }
 
 #menu li .nav_one { position:absolute; width:437px; height:36px; top:40px; left:0; background:url(../images/nav_one01.png) 0 0 no-repeat; display:none; z-index:50; }
+
+#menu li .nav_thir { position:absolute; width:437px; height:36px; top:40px; left:0; background:url(../images/nav_one03.png) 0 0 no-repeat; display:none; z-index:50; }
+#menu li .nav_four { position:absolute; width:437px; height:36px; top:40px; left:0; background:url(../images/nav_one04.png) 0 0 no-repeat; display:none; z-index:50; }
+
 #menu li.register .nav_one,#menu li.about .nav_one { background:url(../images/nav_one02.png) 0 0 no-repeat; }
 #menu li ul { float:left; width:405px; padding:0 16px; }
 #menu li li { float:left; height:36px; line-height:42px; font-family:Arial; }

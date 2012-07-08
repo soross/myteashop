@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*QQ客服开始*/
+.qqbox {FONT-SIZE: 10pt; RIGHT: 0px; OVERFLOW: hidden; WIDTH: 150px; POSITION: absolute; TOP: 200px;  TEXT-ALIGN: center; }
+
+.qqbox_left {FONT-SIZE: 10pt; left: 0px; OVERFLOW: hidden; WIDTH: 100px; POSITION: absolute; TOP: 200px;  TEXT-ALIGN: center; }
+.qqlv {	FLOAT: right; OVERFLOW: hidden; WIDTH:auto; POSITION: relative; HEIGHT: 300px;}
+.qqkf {	RIGHT: 0px;FLOAT:right;	margin:0px;	WIDTH: 150px;	TOP: 0px; padding-left:35px; height:270px; *height:270px;	background: url(../images/qq/qq_bg.gif) no-repeat left top; padding-top:50px; *padding-top:40px;}
+.qqkf_en {	RIGHT: 0px;FLOAT:right;	margin:0px;	WIDTH: 150px;	TOP: 0px; padding-left:35px; height:270px; *height:270px;	background: url(../images/qq/qq_bg_en.gif) no-repeat left top; padding-top:50px; *padding-top:40px;}
+.submenu {	PADDING-BOTTOM: 4px; PADDING-TOP: 4px}
+.qqkfbt {	FONT-WEIGHT: bold;	OVERFLOW: hidden;	WIDTH: 124px;	CURSOR: pointer;	COLOR: #000000;	POSITION: relative;}
+.qqkfhm {DISPLAY: block; MARGIN: 0px 0px 0px 0px; OVERFLOW: hidden; WIDTH:124px;  POSITION: relative;}
+.qqkfhm IMG {MARGIN-TOP: 3px; FLOAT: left; }
+/*QQ客服结束*/
+
+
+
+
+/*********************AD123_Star*************************/
+.tab_hua{ width:288px; overflow:hidden;}
+
+
+
+
+.mF_tab { width:288px;}
+.mF_tab .btn { position:absolute; top:0; left:0; z-index:2; font-weight:bold;}
+.mF_tab .btn li { float:left; width:80px; height:39px; line-height:39px; text-align:center; border-bottom:0; cursor:pointer; background:#fff; }
+.mF_tab .btn li.current { height:39px;  background:url(../images/qq/bg02.jpg) repeat-x;  color:#700800;}
+.mF_tab .cont { position:absolute; top:39px; left:0; overflow:hidden; }
+.mF_tab .cont .swt { position:absolute; left:0; top:0; }
+.mF_tab .cont .swt li p { width:288px;}
+.qqTab { margin-bottom:12px; }
+.qqTab .btn li { background:#A1DEFE;}
+.qqTab .btn li.current { height:39px;  background:url(../images/qq/bg02.jpg) repeat-x; color:#700800; }
+.qqTab .cont { border-color:#36BAF0; }
+.qqTab .list { float:left; overflow:hidden; text-align:center; margin-right:0; display:inline; }
+.qqTab .list ul li { list-style:circle; }
+.qqTab .left { width:288px; background:#1EB2EF; }
+.qqTab .middle { width:236px; background:#D4F2FD; }
+.qqTab .right { width:150px; background:#CE4982; }
+
+/********************AD123_End**************************/
+

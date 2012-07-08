@@ -29,15 +29,15 @@
 
 <div class="content clearfix page-service" id="content">
     <ul class="open-service-tabs clearfix">
-        <li class="icon-channel"><a href="#style"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">教学风格转换</em><span class="open-service-tabs-intro">结合新技术，转换教学理念，重塑教学结构，深化教学模式，独有的教学风格。</span></a></li>
-        <li class="icon-operate"><a href="#info"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">课程信息升华</em><span class="open-service-tabs-intro">完善的课程信息动态展示，100%的同步课程信息，并对重点内容抢眼展示。</span></a></li>
-        <li class="icon-commercial"><a href="#time"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">提升课后时间价值</em><span class="open-service-tabs-intro">新颖的线上教学模式，让学生的课后时间花费在课业的学习中，提升课余时间的价值。</span></a></li>
+        <li class="icon-channel"><a href="javascript:show('stylediv');"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">教学风格转换</em><span class="open-service-tabs-intro">结合新技术，转换教学理念，重塑教学结构，深化教学模式，独有的教学风格。</span></a></li>
+        <li class="icon-operate"><a href="javascript:show('infodiv');"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">课程信息升华</em><span class="open-service-tabs-intro">完善的课程信息动态展示，100%的同步课程信息，并对重点内容抢眼展示。</span></a></li>
+        <li class="icon-commercial"><a href="javascript:show('timediv');"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">提升课后时间价值</em><span class="open-service-tabs-intro">新颖的线上教学模式，让学生的课后时间花费在课业的学习中，提升课余时间的价值。</span></a></li>
         <li class="icon-dev"><a href="login.html"><span class="open-service-tabs-icon"></span><em class="open-service-tabs-title">立即体验</em><span class="open-service-tabs-intro">同步上课内容，完成自主学习模式，富有动态效果的线上教学模式，赶快登入体验吧!!</span></a></li>
     </ul>
 
 
     <a name="style"></a>
-    <div class="section-wrap">
+    <div id="stylediv" class="section-wrap" style="display:none;">
         <div class="section-title section-mark"><em>教学风格转换</em></div>
         <div class="section-content">
             <ul class="open-service-list clearfix">
@@ -75,12 +75,12 @@
     </div>
 
     <a name="info"></a>
-    <div class="section-wrap">
+    <div id="infodiv" class="section-wrap"  style="display:none;">
         <div class="section-title section-mark"><em>课程信息升华</em></div>
         <div class="section-content">
             <ul class="open-service-list clearfix">
                 <li>
-                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/dev_bae.png" alt="" /></a>
+                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/icon_01.png" width="54px" height="54px"  alt="" /></a>
                     <div class="open-service-content">
                         <a href="javascript:void(0);" class="open-service-title">网络综合布线简介</a>
                         <p class="open-service-intro">综合布线系统是一个用于语音、数据、影像和其他信息技术的标准结构化布线系统。它将建筑物内部和建筑物之间的计算机信号、电话信号、音响信号、监控信号、自动化设备控制信号等融合在一起，采用标准的高速线材，统一设计、统一布线施工、统一管理，为使用和维护带来了极大的方便。</p>
@@ -88,7 +88,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/a.gif" alt="" /></a>
+                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/icon_02.png" width="54px" height="54px" alt="" /></a>
                     <div class="open-service-content">
                         <a href="javascript:void(0);" class="open-service-title">网络综合布线设计</a>
                         <p class="open-service-intro">设计一个合理的综合布线系统一般有7个步骤：① 分析用户需求。② 获取建筑物平面图。③ 系统结构设计。④ 布线路由设计。⑤ 可行性论证。⑥ 绘制综合布线施工图。⑦ 编制综合布线用料清单。<br>&nbsp;</p>
@@ -96,7 +96,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/dev_openid.jpg" alt="" /></a>
+                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/icon_03.png" width="54px" height="54px"  alt="" /></a>
                     <div class="open-service-content">
                         <a href="javascript:void(0);" class="open-service-title">综合布线工程施工技术</a>
                         <p class="open-service-intro">综合布线系统是一个用于语音、数据、影像和其他信息技术的标准结构化布线系统。它将建筑物内部和建筑物之间的计算机信号、电话信号、音响信号、监控信号、自动化设备控制信号等融合在一起，采用标准的高速线材，统一设计、统一布线施工、统一管理，为使用和维护带来了极大的方便。</p>
@@ -104,7 +104,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/profit_mobile_search.png" alt="" /></a>
+                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/icon_04.png" width="54px" height="54px"  alt="" /></a>
                     <div class="open-service-content">
                         <a href="javascript:void(0);" class="open-service-title">网络布线工程验收</a>
                         <p class="open-service-intro">综合布线系统是一个用于语音、数据、影像和其他信息技术的标准结构化布线系统。它将建筑物内部和建筑物之间的计算机信号、电话信号、音响信号、监控信号、自动化设备控制信号等融合在一起，采用标准的高速线材，统一设计、统一布线施工、统一管理，为使用和维护带来了极大的方便。</p>
@@ -112,7 +112,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/center_other_doc.gif" alt="" /></a>
+                    <a href="javascript:void(0);" class="open-service-icon"><img src="images/icon_05.png" width="54px" height="54px"  alt="" /></a>
                     <div class="open-service-content">
                         <a href="javascript:void(0);" class="open-service-title">网络综合布线工程案例</a>
                         <p class="open-service-intro">综合布线系统是一个用于语音、数据、影像和其他信息技术的标准结构化布线系统。它将建筑物内部和建筑物之间的计算机信号、电话信号、音响信号、监控信号、自动化设备控制信号等融合在一起，采用标准的高速线材，统一设计、统一布线施工、统一管理，为使用和维护带来了极大的方便。</p>
@@ -125,7 +125,7 @@
 
 
 	<a name="time"></a>
-    <div class="section-wrap">
+    <div id="timediv" class="section-wrap"  style="display:none;">
         <div class="section-title section-mark"><em>提升课后时间价值</em></div>
         <div class="section-content">
             <ul class="open-service-list clearfix">
@@ -158,4 +158,14 @@
 			Web Design by <a href="http://www.fjfdy.com">FJFDY.com</a> - <a href="http://wpa.qq.com/msgrd?v=3&uin=258372895&site=qq&menu=yes">Help it here!</a>
 		</div>
 	</body>
+	<script>
+	function show(vid){
+		document.getElementById("stylediv").style.display="none";
+		document.getElementById("infodiv").style.display="none";
+		document.getElementById("timediv").style.display="none";
+
+		document.getElementById(vid).style.display="block";
+	}
+	</script>
+
 </html>

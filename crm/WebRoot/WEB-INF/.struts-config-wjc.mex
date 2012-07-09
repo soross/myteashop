@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/admin/client.do" location="210,75" dimension="234,88" />
+  <StrutsActivity path="/admin/rule.do" location="450,75" dimension="286,91" />
+  <StrutsActivity path="/admin/business.do" location="-60,75" dimension="248,88" />
+  <StrutsActivity path="/admin/dept.do" location="495,270" dimension="269,91" />
+  <StrutsActivity path="/admin/sickbed.do" location="-75,285" dimension="287,104" />
+  <StrutsActivity path="/form/client.jsp" location="225,-30" dimension="102,49" />
+  <StrutsActivity path="/form/rule.jsp" location="495,-15" dimension="95,49" />
+  <StrutsActivity path="/form/business.jsp" location="-30,-30" dimension="118,49" />
+  <StrutsActivity path="/form/dept.jsp" location="525,180" dimension="117,53" />
+  <StrutsActivity path="/form/sickbed.jsp" location="-15,195" dimension="135,53" />
+  <StrutsActivity path="/form/index.jsp" location="255,180" dimension="121,53" />
+  <StrutsActivity path="/admin/cust.do" location="950,250" dimension="248,104" />
+  <StrutsTransition id="/form/index.jsp,null,/admin/op.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="315,233" />
+      <AbsolutePoint location="315,285" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/rule.jsp,null,/admin/rule.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="542,34" />
+      <AbsolutePoint location="542,75" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/client.jsp,null,/admin/client.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="276,19" />
+      <AbsolutePoint location="276,75" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/business.jsp,null,/admin/business.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="29,19" />
+      <AbsolutePoint location="29,75" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/sickbed.jsp,null,/admin/sickbed.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="52,248" />
+      <AbsolutePoint location="52,285" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/index.jsp,null,/admin/cust.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="315,233" />
+      <AbsolutePoint location="315,464" />
+      <AbsolutePoint location="1074,464" />
+      <AbsolutePoint location="1074,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/dept.jsp,null,/admin/dept.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="583,233" />
+      <AbsolutePoint location="583,270" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

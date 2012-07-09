@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="loginForm" type="com.crm.pub.struts.form.LoginForm" />
+    <form-bean name="userForm" type="com.crm.pub.struts.form.UserForm" />
+    <form-bean name="roleForm" type="com.crm.pub.struts.form.RoleForm" />
+    <form-bean name="dataForm" type="com.crm.pub.struts.form.DataForm" />
+    
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action
+      attribute="loginForm"
+      input="/login.jsp"
+      name="loginForm"
+      parameter="task"
+      path="/login"
+      scope="request"
+      type="com.crm.pub.struts.action.LoginAction" />
+    <action
+      attribute="userForm"
+      input="/form/user.jsp"
+      name="userForm"
+      parameter="task"
+      path="/admin/user"
+      scope="request"
+      type="com.crm.pub.struts.action.UserAction" />
+    <action
+      attribute="roleForm"
+      input="/form/role.jsp"
+      name="roleForm"
+      parameter="task"
+      path="/admin/role"
+      scope="request"
+      type="com.crm.pub.struts.action.RoleAction" />
+    <action
+      attribute="dataForm"
+      input="/form/data.jsp"
+      name="dataForm"
+      parameter="task"
+      path="/admin/data"
+      scope="request"
+      type="com.crm.pub.struts.action.DataAction" />
+    
+  </action-mappings>
+  <controller
+		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">
+	</controller>
+
+  <message-resources parameter="com.crm.pub.struts.ApplicationResources" />
+  <plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/applicationContext.xml" />
+	</plug-in>
+  
+</struts-config>
+

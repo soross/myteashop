@@ -1,1 +1,0 @@
-sqlplus "system/oracle" @crm.sql crm crm

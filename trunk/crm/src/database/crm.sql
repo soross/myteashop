@@ -33,6 +33,7 @@ connect &1./&2.
 @score_count.sql;
 @auto.sql;
 @sysdo.sql;
+@cust.sql;
 @t_power.sql;
 
 commit;

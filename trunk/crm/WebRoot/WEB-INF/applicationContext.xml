@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="applicationContext-wjc.xml" />
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	<!-- 事务管理器 -->
+	<bean name="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 动态代理工厂 -->
+	<bean name="basicProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!--系统用户-->
+	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--服务层系统用户-->
+	<bean name="userServiceDao"
+		class="com.crm.pub.service.dao.impl.UserServiceDaoImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean name="userProxy" parent="basicProxy">
+	    <property name="target" ref="userServiceDao"></property>
+	</bean>
+	<!--用户管理ACTION-->
+	<bean name="/admin/user"
+		class="com.crm.pub.struts.action.UserAction">
+		<property name="userServiceDao" ref="userProxy"></property>
+	</bean>
+	
+	<!--角色操作  -->
+	<bean name="roleDao" class="com.crm.pub.dao.impl.RoleDaoImpl">
+	   <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="roleServiceDao" class="com.crm.pub.service.dao.impl.RoleServiceDaoImpl">
+	   <property name="roleDao" ref="roleDao"></property>
+	</bean>
+	<bean name="roleProxy" parent="basicProxy">
+	    <property name="target" ref="roleServiceDao"></property>
+	</bean>
+    <bean name="/admin/role" class="com.crm.pub.struts.action.RoleAction">
+      <property name="roleServiceDao" ref="roleProxy"></property>
+    </bean>
+    
+	<!--登录-->
+	<bean name="/login" class="com.crm.pub.struts.action.LoginAction">
+		<property name="userServiceDao" ref="userServiceDao"></property>
+	</bean>
+	
+	<!-- 数字字典 -->	
+	<bean name="dataDao" class="com.crm.pub.dao.impl.DataDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--服务层系统  数字字典-->
+	<bean name="dataServiceDao"
+		class="com.crm.pub.service.dao.impl.DataServiceDaoImpl">
+		<property name="dataDao" ref="dataDao"></property>
+	</bean>
+	<bean name="dataProxy" parent="basicProxy">
+	    <property name="target" ref="dataServiceDao"></property>
+	</bean>
+	<!--数字字典ACTION-->
+	<bean name="/admin/data"
+		class="com.crm.pub.struts.action.DataAction">
+		<property name="dataServiceDao" ref="dataProxy"></property>
+	</bean>
+</beans>

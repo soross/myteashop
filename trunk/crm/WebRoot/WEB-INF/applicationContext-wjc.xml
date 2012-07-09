@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+
+	<!-- 事务管理器 -->
+	<bean name="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 动态代理工厂 -->
+	<bean name="basicProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="vipDao" class="com.crm.pub.dao.impl.VipDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="dataDao" class="com.crm.pub.dao.impl.DataDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">
+	   <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!--客户基本信息-->
+	<bean name="clientDao"
+		class="com.crm.client.dao.impl.ClientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="clientInfoDao"
+		class="com.crm.client.dao.impl.ClientInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--服务层客户信息-->
+	<bean name="clientServiceDao"
+		class="com.crm.client.service.impl.ClientServiceDaoImpl">
+		<property name="clientDao" ref="clientDao"></property>
+		<property name="clientInfoDao" ref="clientInfoDao"></property>
+		<property name="vipDao" ref="vipDao"></property>
+		<property name="dataDao" ref="dataDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<!-- 代理 -->
+	<bean name="clientServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="clientServiceDao"></property>
+	</bean>
+
+	<!--客户信息ACTION-->
+	<bean name="/admin/client"
+		class="com.crm.client.struts.action.ClientAction">
+		<property name="clientServiceDao" ref="clientServiceDaoProxy"></property>
+	</bean>
+
+
+	<!-- 规则 -->
+	<bean name="ruleDao" class="com.crm.client.dao.impl.RuleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="ruleServiceDao"
+		class="com.crm.client.service.impl.RuleServiceDaoImpl">
+		<property name="ruleDao" ref="ruleDao"></property>
+		<property name="dataDao" ref="dataDao"></property>
+	</bean>
+	<bean name="ruleServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="ruleServiceDao"></property>
+	</bean>
+	<bean name="/admin/rule"
+		class="com.crm.client.struts.action.RuleAction">
+		<property name="ruleServiceDao" ref="ruleServiceDaoProxy"></property>
+	</bean>
+	
+	
+	
+	
+	
+	<!-- 业务 -->
+	<bean name="businessDao" class="com.crm.client.dao.impl.BusinessDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="businessServiceDao"
+		class="com.crm.client.service.impl.BusinessServiceDaoImpl">
+		<property name="clientDao" ref="clientDao"></property>
+		<property name="businessDao" ref="businessDao"></property>		
+	</bean>
+	<bean name="businessServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="businessServiceDao"></property>
+	</bean>
+	<bean name="/admin/business"
+		class="com.crm.client.struts.action.BusinessAction">
+		<property name="businessServiceDao" ref="businessServiceDaoProxy"></property>
+	</bean>
+	
+	
+	<!-- dept -->
+	<bean name="deptDao" class="com.crm.sysdo.dao.impl.DeptDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="deptServiceDao"
+		class="com.crm.sysdo.service.impl.DeptServiceDaoImpl">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean name="deptServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="deptServiceDao"></property>
+	</bean>
+	<bean name="/admin/dept"
+		class="com.crm.sysdo.struts.action.DeptAction">
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
+	
+	<!-- sickbed -->
+	<bean name="sickbedDao" class="com.crm.sysdo.dao.impl.SickbedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="sickbedServiceDao"
+		class="com.crm.sysdo.service.impl.SickbedServiceDaoImpl">
+		<property name="sickbedDao" ref="sickbedDao"></property>
+	</bean>
+	<bean name="sickbedServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="sickbedServiceDao"></property>
+	</bean>
+	<bean name="/admin/sickbed"
+		class="com.crm.sysdo.struts.action.SickbedAction">
+		<property name="sickbedServiceDao" ref="sickbedServiceDaoProxy"></property>
+	</bean>
+	
+	<!-- 客户 -->
+	<bean name="custDao" class="com.crm.op.dao.impl.CustDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="custServiceDao"
+		class="com.crm.op.service.impl.CustServiceDaoImpl">
+		<property name="custDao" ref="custDao"></property>
+	</bean>
+	<bean name="custServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="custServiceDao"></property>
+	</bean>
+	<bean name="/admin/cust"
+		class="com.crm.op.struts.action.CustAction">
+		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
+	</bean>
+	
+</beans>

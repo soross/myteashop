@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="clientForm" type="com.crm.client.struts.form.ClientForm" />
+    <form-bean name="ruleForm" type="com.crm.client.struts.form.RuleForm" />
+    <form-bean name="businessForm" type="com.crm.client.struts.form.BusinessForm" />
+	<form-bean name="deptForm" type="com.crm.sysdo.struts.form.DeptForm" />
+	<form-bean name="sickbedForm" type="com.crm.sysdo.struts.form.SickbedForm" />
+	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action
+      attribute="clientForm"
+      input="/form/client.jsp"
+      name="clientForm"
+      parameter="task"
+      path="/admin/client"
+      scope="request"
+      type="com.crm.client.struts.action.ClientAction" />
+    <action
+      attribute="ruleForm"
+      input="/form/rule.jsp"
+      name="ruleForm"
+      parameter="task"
+      path="/admin/rule"
+      scope="request"
+      type="com.crm.client.struts.action.RuleAction" />
+    <action
+      attribute="businessForm"
+      input="/form/business.jsp"
+      name="businessForm"
+      parameter="task"
+      path="/admin/business"
+      scope="request"
+      type="com.crm.client.struts.action.BusinessAction" />
+    <action
+      attribute="deptForm"
+      input="/form/dept.jsp"
+      name="deptForm"
+      parameter="task"
+      path="/admin/dept"
+      scope="request"
+      type="com.crm.sysdo.struts.action.DeptAction" />
+	<action
+      attribute="sickbedForm"
+      input="/form/sickbed.jsp"
+      name="sickbedForm"
+      parameter="task"
+      path="/admin/sickbed"
+      scope="request"
+      type="com.crm.sysdo.struts.action.SickbedAction" />
+      
+    <action
+      attribute="custForm"
+      input="/form/index.jsp"
+      name="custForm"
+      parameter="task"
+      path="/admin/cust"
+      scope="request"
+      type="com.crm.op.struts.action.CustAction" />  
+     
+
+  </action-mappings>
+  <controller
+		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">
+	</controller>
+
+  <message-resources parameter="com.crm.struts.ApplicationResources" />
+  <plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/applicationContext.xml" />
+  </plug-in>
+  
+</struts-config>
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+	
+  <!-- 事务管理器 -->
+	<bean name="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 动态代理工厂 -->
+	<bean name="basicProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<!--俱乐部网点DAO-->
+	<bean name="ClubNetWorkDao" class="com.crm.club.dao.impl.ClubNetWorkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--服务层俱乐部网点DAO-->
+	<bean name="ClubServiceDao"
+		class="com.crm.club.sevice.dao.impl.ClubServiceDaoImpl">
+		<property name="clubNetWorkDao" ref="ClubNetWorkDao"></property>
+	</bean>
+	<bean name="clubnetworkProxy" parent="basicProxy">
+	    <property name="target" ref="ClubServiceDao"></property>
+	</bean>
+	<!--俱乐部网点ACTION-->
+	<bean name="/admin/clubnetwork"
+		class="com.crm.club.struts.action.ClubnetworkAction">
+		<property name="clubServiceDao" ref="clubnetworkProxy"></property>
+	</bean>
+		<!--客户基本信息-->
+	<bean name="clientDao"
+		class="com.crm.client.dao.impl.ClientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	  <!-- 集团DAO -->
+	<bean name="groupDao" class="com.crm.group.dao.impl.GroupDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 集团服务层DAO -->
+	<bean name="groupServiceDao" class="com.crm.group.service.dao.impl.GroupServiceDaoImpl">
+	 <property name="groupDao" ref="groupDao"></property>
+	</bean>
+
+		<!--集团分布DAO-->
+	<bean name="GroupDistributeDAO" class="com.crm.group.dao.impl.GroupDistributeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--服务层集团分布DAO-->
+	<bean name="GroupDistributeserviceDAO"
+		class="com.crm.group.service.dao.impl.GroupDistributeServiceDAOImpl">
+		<property name="groupDistributeDAO" ref="GroupDistributeDAO"></property>
+		<property name="groupViewDao" ref="groupViewDao"></property>
+	</bean>
+	<bean name="GroupDistributeProxy" parent="basicProxy">
+	    <property name="target" ref="GroupDistributeserviceDAO"></property>
+	</bean>
+	<!--集团分布ACTION-->
+	<bean name="/admin/groupDistribute"
+		class="com.crm.group.struts.action.GroupDistributeAction">
+		<property name="groupDistributeserviceDAO" ref="GroupDistributeProxy"></property>
+	</bean>
+	
+	<!--集团视图DAO-->
+	<bean name="groupViewDao" class="com.crm.group.dao.impl.GroupViewDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--服务层集团视图DAO-->
+	<bean name="groupViewServiceDao"
+		class="com.crm.group.service.dao.impl.GroupViewServiceDAOImpl">
+		<property name="groupViewDao" ref="groupViewDao"></property>
+		<property name="groupDistributeDAO" ref="GroupDistributeDAO"></property>
+		<property name="groupServiceDao" ref="groupServiceDao"></property>
+		<property name="clientDao" ref="clientDao"></property>
+		
+	</bean>
+	<bean name="groupViewProxy" parent="basicProxy">
+	    <property name="target" ref="groupViewServiceDao"></property>
+	</bean>
+	<!--集团视图ACTION-->
+	<bean name="/admin/groupView"
+		class="com.crm.group.struts.action.GroupViewAction">
+		<property name="groupViewServiceDAO" ref="groupViewProxy"></property>
+	</bean>
+
+</beans>

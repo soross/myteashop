@@ -200,7 +200,7 @@ function checkParent(pid,obj){
 		          <tr>
 		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<select id="college" name="college">
+		            	<select id="college" name="college" disabled="true">
 		            		<option value="-1">请选择</option>
 		            		<option value="初中" {if $reginfo.college=='初中'}selected{/if}>初中</option>
 		            		<option value="高中" {if $reginfo.college=='高中'}selected{/if}>高中</option>
@@ -209,6 +209,34 @@ function checkParent(pid,obj){
 		            		<option value="研究生" {if $reginfo.college=='研究生'}selected{/if}>研究生</option>
 		            		<option value="博士" {if $reginfo.college=='博士'}selected{/if}>博士</option>
 		            	</select> <font style="color:red;">*</font>
+		            </div></td>
+		          </tr>
+		          <tr>
+		          <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<select id="xllb" name="xllb" disabled="true">
+		            		<option value="-1">请选择</option>
+		            		<option value="开放教育" {if $reginfo.xllb=='开放教育'}selected{/if}>开放教育</option>
+		            		<option value="成人大专" {if $reginfo.xllb=='成人大专'}selected{/if}>成人大专</option>
+		            		<option value="成人中专" {if $reginfo.xllb=='成人中专'}selected{/if}>成人中专</option>
+		            	</select> <font style="color:red;">*</font>
+		            </div></td>
+				  </tr>
+				  <tr>
+		          <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报名层次</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<select id="bmcc" name="bmcc" disabled="true">
+		            		<option value="-1">请选择</option>
+		            		<option value="本科" {if $reginfo.bmcc=='本科'}selected{/if}>本科</option>
+		            		<option value="大专" {if $reginfo.bmcc=='大专'}selected{/if}>大专</option>
+		            		<option value="中专" {if $reginfo.bmcc=='中专'}selected{/if}>中专</option>
+		            	</select> <font style="color:red;">*</font>
+		            </div></td>
+				  </tr>
+				  <tr>
+		            <td width="30%" height="30" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">专业</div></td>
+		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            	<input type="text" id="zy" name="zy" size="20" maxlength="50" value="{$reginfo.zy}" readonly="readonly"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>

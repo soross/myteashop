@@ -92,10 +92,48 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+
+
+/*
+			全选/反选
+		*/
+		function checkall(){
+			var c = document.getElementsByName("selectsingle[]");
+			for(var i=0;i<c.length;i++){
+				c[i].checked=document.all.selectall.checked;
+			}
+		}
+		/*
+		判断是否选中
+		*/
+		function checkIsCheck(){
+			var isCheck = false;
+			var c = document.getElementsByName("selectsingle[]");
+			for(var i=0;i<c.length;i++){
+				if (c[i].checked){
+					isCheck=true;
+					break;
+				}
+			}
+
+			if (!isCheck){
+				alert("你还没有选中任何项目");
+				return false;
+			}else{
+				if (confirm("是否要进行操作？")){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+		}
+
 </script>
 </head>
 
 <body>
+<form action="delreguser.php" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -151,15 +189,19 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td  rowspan="2" width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
-            <td  rowspan="2" width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">姓名</div></td>
-            <td  rowspan="2" width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">性别</div></td>
-            <td  rowspan="2" width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历</div></td>
+          	<td  rowspan="2" width="3%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1"><input title="全选/反选" type="checkbox" name="selectall"
+									onclick="checkall();"></div></td>
+            <td  rowspan="2" width="2%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">序号</div></td>
+            <td  rowspan="2" width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">姓名</div></td>
+            <td  rowspan="2" width="3%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">性别</div></td>
+            <td  rowspan="2" width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历</div></td>
+            <td  rowspan="2" width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
+            <td  rowspan="2" width="4%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报名层次</div></td>
+            <td  rowspan="2" width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">专业</div></td>
             <td  rowspan="2" width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">工作单位</div></td>
             <td  rowspan="2" width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">手机号码</div></td>
             <td  rowspan="2" width="7%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">联系电话</div></td>
-            <td  rowspan="2" width="6%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ号码</div></td>
-            <td  rowspan="2" width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">E-mail</div></td>
+            <td  rowspan="2" width="5%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">QQ号码</div></td>
             <td colspan="3"  height="18%" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">交费情况</div></td>
             <td  rowspan="2" width="17%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
@@ -171,29 +213,37 @@ for(i=0;i<cs.length;i++){
           {/literal}
           {section name=list loop=$adminRow}
           <tr>
+          	<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><input type="checkbox" id="selectsingle[]"  name="selectsingle[]"
+											value="{$adminRow[list].id}" /></div></td>
             <td height="25" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].username}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].gender}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].college}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $adminRow[list].xllb==-1||$adminRow[list].xllb==''}无{else}{$adminRow[list].xllb}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{if $adminRow[list].bmcc==-1||$adminRow[list].bmcc==''}无{else}{$adminRow[list].bmcc}{/if}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].zy}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].work_unit}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].mobile}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].telephone}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].qq}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].email}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].money}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].adminname}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].remark}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center">
             <a href="regfee.php?task=regFee&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="regfee.php?task=regFee&regid={$adminRow[list].id}">登记费用</a><span class="STYLE1">]</span>
             <a href="updatereguser.php?task=updateRegUser&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updatereguser.php?task=updateRegUser&regid={$adminRow[list].id}">修改</a><span class="STYLE1">]</span>
+			<a href="#"  onclick="if(confirm('确定删除吗?'))location.href='delreguser.php?task=delreguser&regid={$adminRow[list].id}';"><img src="images/tab/010.gif" width="9" height="9" border="0"/></a><span class="STYLE2">[</span><a href="#"  onclick="if(confirm('确定删除吗?'))location.href='delreguser.php?task=delreguser&regid={$adminRow[list].id}';">删除</a><span class="STYLE2">]</span>
 			<a href="reguserinfo.php?task=regUserInfo&regid={$adminRow[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="reguserinfo.php?task=regUserInfo&regid={$adminRow[list].id}">详情</a><span class="STYLE1">]</span>
             </div></td>
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=16 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
+          <tr>
+				<td colspan=16 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><strong><font color="red">是否确定批量删除:</font></strong><input type="submit" value="批量删除" onclick="return checkIsCheck();"><input type="hidden" id="task" name="task" value="alldelNews"></div></td>
+			</tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
@@ -212,5 +262,6 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
 </table>
+</form>
 </body>
 </html>

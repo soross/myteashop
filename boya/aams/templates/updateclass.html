@@ -224,16 +224,27 @@ function selected(obj){
 		          <tr class="noshow" style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="collegetype" name="collegetype" value="{$classinfo.class_name}" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<select id="collegetype" name="collegetype">
+                               	   	   <option value="开放教育" {if $classinfo.collegetype=='开放教育'}selected{/if}>开放教育</option>
+                                   	   <option value="成人大专" {if $classinfo.collegetype=='成人大专'}selected{/if}>成人大专</option>
+                                       <option value="成人中专" {if $classinfo.collegetype=='成人中专'}selected{/if}>成人中专</option>
+                                   </select>
+		            	<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="noshow" style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设层次</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="openlevel" name="openlevel" value="{$classinfo.open_time}" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<select id="openlevel" name="openlevel">
+
+                               	   	   <option value="本科" {if $classinfo.open_level=='本科'}selected{/if}>本科</option>
+                                   	   <option value="大专" {if $classinfo.open_level=='大专'}selected{/if}>大专</option>
+                                       <option value="中专" {if $classinfo.open_level=='中专'}selected{/if}>中专</option>
+                                   </select>
+		            	<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="show"  style="display:{if $classinfo.type_id==8}none{else}block{/if};">
+		          <tr class="show"  style="display:{if $classinfo.type_id==8}block{else}none{/if};">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
 		            	<input type="text" id="opentime" name="opentime" value="{$classinfo.open_time}" size="20" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>

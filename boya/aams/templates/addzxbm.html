@@ -45,7 +45,6 @@ a:active {
 -->
 </style>
 
-<script language="javascript" type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
 <script>
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -97,9 +96,9 @@ for(i=0;i<cs.length;i++){
 <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
 <script>
-	var editor;
+	var editorCon;
 	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
+		editor2 = K.create('textarea[name="contentCon"]', {
 			resizeType : 1,
 			allowPreviewEmoticons : false,
 			allowImageUpload : true,
@@ -109,7 +108,6 @@ for(i=0;i<cs.length;i++){
 				'insertunorderedlist', '|',  'image', 'link','source', 'wordpaste']
 		});
 	});
-
 </script>
 
 
@@ -122,12 +120,13 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="15" height="30"><img src="images/tab/tab_03.gif" width="15" height="30" /></td>
         <td width="1101" background="images/tab/tab_05.gif">
-        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">图片管理-新增图片</span></td>
+        	<img src="images/tab/311.gif" width="16" height="16" /> <span class="STYLE4">系统配置-联系信息配置</span></td>
         <td width="281" background="images/tab/tab_05.gif">
 
         	<table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
               </table>
+
               </td>
             </tr>
         </table></td>
@@ -136,36 +135,30 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td>
+    <!-- 首页简介
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3">
-        	<form action="post/pic.action.php" method="post"  enctype="multipart/form-data">
+        	<form action="post/config.action.php" method="post">
 		        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">标题</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="title" name="title" size="50" maxlength="50"><font style="color:red;">*</font>
-		            </div></td>
-		          </tr>
-		          <tr id="newsFile">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file" id="newsfile" size="50" name="newsfile" ><font style="color:red;">*</font><br>
-		            	[支持图片格式gif|jpg|png,大小100K,长宽127px*86px]
-		            </div></td>
-		          </tr>
-		          <tr id="newsContent">
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">内容</div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;"></textarea><font style="color:red;">*</font>
+		            <td colspan="2" align="center" height="30" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+		            <strong>首页优势简要信息修改</strong>
 		            </div></td>
 		          </tr>
 		          <tr>
-		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1"></div></td>
-		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-						<input type="submit" value="新增图片">
-						<input type="hidden" id="task" name="task" value="addPicture">
+		           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
+		            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+		            <textarea id="contentIndex" name="contentIndex" style="width:700px;height:100px;visibility:hidden;">{$aboutList[0].info}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+		            </div></td>
+		          </tr>
+		          <tr>
+		            <td align="center" colspan="2" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">
+						<input type="submit" value="首页优势简要信息修改">
+						<input type="hidden" id="task" name="task" value="updateSupIndex">
 		            </div></td>
 		          </tr>
 		        </table>
@@ -174,7 +167,42 @@ for(i=0;i<cs.length;i++){
         </td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
+    </table>-->
+     <!-- 新增栏目 -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+   	 <form action="post/config.action.php" method="post" enctype="multipart/form-data" >
+		<tr>
+        <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3" align="center">
+        	<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
+			  <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="left" colspan="2" height="30px">&nbsp;&nbsp;<strong>现场报名</strong></td>
+	          </tr>
+	         <tr>
+	           <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="right" class="STYLE2 STYLE1">内容：</div></td>
+	            <td width="90%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
+	            <textarea id="contentAdd" name="contentCon" style="width:700px;height:300px;visibility:hidden;">{$xcbm.comm_value}</textarea><font style="color:red;">*PS：换行:Shift+Enter &nbsp;分段：Enter&nbsp;去链接：右击描文本->取消超级链接</font>
+
+	            </div></td>
+	          </tr>
+
+	          <tr>
+				<td bgcolor="#FFFFFF" class="STYLE2 STYLE1" align="center" colspan="2" height="30px">
+					<input type="reset" value="清空重填"> &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="更新现场报名">
+					<input type="hidden" value="{$xcbm.comm_type}" id="comm_type" name="comm_type">
+					<input type="hidden" value="updateXcbm" id="task" name="task">
+				</td>
+	          </tr>
+         	</table>
+        </td>
+        <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
+      </tr>
+      </form>
     </table>
+
+
+
     </td>
   </tr>
   <tr>
@@ -185,20 +213,12 @@ for(i=0;i<cs.length;i++){
     	<!-- page -->
 	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	          <tr>
-	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"><!-- 共120条纪录，当前第1/10页，每页10条纪录 --></span></td>
+	            <td width="25%" height="29" nowrap="nowrap"><span class="STYLE1"></span></td>
 	            <td width="75%" valign="top" class="STYLE1"><div align="right">
+
 	              <table width="352" height="20" border="0" cellpadding="0" cellspacing="0">
-	                <tr><!--
-	                  <td width="62" height="22" valign="middle"><div align="right"><img src="images/tab/first.gif" width="37" height="15" /></div></td>
-	                  <td width="50" height="22" valign="middle"><div align="right"><img src="images/tab/back.gif" width="43" height="15" /></div></td>
-	                  <td width="54" height="22" valign="middle"><div align="right"><img src="images/tab/next.gif" width="43" height="15" /></div></td>
-	                  <td width="49" height="22" valign="middle"><div align="right"><img src="images/tab/last.gif" width="37" height="15" /></div></td>
-	                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
-	                  <td width="25" height="22" valign="middle"><span class="STYLE7">
-	                    <input name="textfield" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
-	                  </span></td>
-	                  <td width="23" height="22" valign="middle">页</td>
-	                  <td width="30" height="22" valign="middle"><img src="images/tab/go.gif" width="37" height="15" /></td> -->
+	                <tr>
+	                  <td  width="352"> &nbsp;</td>
 	                </tr>
 	              </table>
 	            </div></td>

@@ -10,7 +10,7 @@ include_once("action/public_info.php");
 $lmlist = getRows("boya_type where pid='3' order by seq", $db ," id,type_name as name,url,seq as typeid  ");
 $smarty->assign("lmlist",$lmlist);
 
-$courselist = getRows("boya_course where isselect=1 and type_id !=8 order by create_date desc ", $db ," id,type_id,concat(class_name,'--',course_name) as course_name,fee ");
+$courselist = getRows("boya_course where isselect=1 and type_id =8 order by create_date desc ", $db ," id,concat(class_name,'--',course_name) as course_name,fee ");
 $smarty->assign("courselist",$courselist);
 
 
@@ -31,5 +31,5 @@ else{
 	$smarty->assign("infocn",$infocn);
 }
 
-$smarty->display("wsbm.html");
+$smarty->display("ddzxbm.html");
 ?>

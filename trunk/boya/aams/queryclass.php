@@ -22,14 +22,17 @@ if(isset($_GET[task])&&"queryClass"==$_GET[task]){
 	}else if("0"==$_GET[isfee]){
 		$sql = $sql." and pay_date is null ";
 	}
-
+	if(isset($_GET[opentime])&& !empty($_GET[opentime])){
+		//echo "<script>alert()</script>";
+		$sql = $sql." and ru.open_time ='$_GET[opentime]' ";
+	}
 	if("-1"!=$_GET[classname]){
 		$sql = $sql." and ru.course='$_GET[classname]' ";
 	}
 
 	$sql = $sql." order by ru.create_date desc";
 	//print_r($sql);
-
+	$smarty->assign("opentime",$_GET[opentime]);
 	$smarty->assign("isfee",$_GET[isfee]);
 	$smarty->assign("classname",$_GET[classname]);
 

@@ -22,7 +22,7 @@ alert('请重新输入手机号码');
 return false;
 }
 else if(telephone.length!=11){
-alert('请重新输入手机号码111');
+alert('请重新输入手机号码');
 }
 else{
 return true;
@@ -30,20 +30,7 @@ return true;
 
 }
 
-function checkqqcode(){
 
-var qqcode = document.registerForm.qqcode.value;
-
-if(qqcode==null&&qqcode==""||qqcode.length==0){
-alert('请输入qq号码');
-return false;
-}
-else{
-return true;
-}
-
-
-}
 
 function checkcourse(){
 
@@ -59,23 +46,11 @@ return true;
 
 }
 
-function checkamount(){
 
-var amount = document.registerForm.amount.value;
-
-if(amount==null&&amount==""||amount.length==0){
-alert('必须选择人数');
-return false;
-}
-else{
-return true;
-}
-
-}
 
 function checksumbit(){
 
-if(checkusername()&&checkphone()&&checkqqcode()&&checkcourse()&&checkamount()){
+if(checkusername()&&checkphone()&&checkcourse()){
 return true;
 }
 else{

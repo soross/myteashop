@@ -92,10 +92,47 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+
+/*
+			全选/反选
+		*/
+		function checkall(){
+			var c = document.getElementsByName("selectsingle[]");
+			for(var i=0;i<c.length;i++){
+				c[i].checked=document.all.selectall.checked;
+			}
+		}
+		/*
+		判断是否选中
+		*/
+		function checkIsCheck(){
+			var isCheck = false;
+			var c = document.getElementsByName("selectsingle[]");
+			for(var i=0;i<c.length;i++){
+				if (c[i].checked){
+					isCheck=true;
+					break;
+				}
+			}
+
+			if (!isCheck){
+				alert("你还没有选中任何项目");
+				return false;
+			}else{
+				if (confirm("是否要进行操作？")){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+		}
+
 </script>
 </head>
 
 <body>
+<form action="post/class.action.php" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -119,8 +156,8 @@ for(i=0;i<cs.length;i++){
 
               	<table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><a href="JavaScript:window.parent.dataFrame.location.href='addclass.php';" target="dataFarme"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
-                    <td class="STYLE1"><div align="center"><a href="JavaScript:window.parent.dataFrame.location.href='addclass.php';" target="dataFarme">新增</a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addclass.php"><img src="images/tab/001.gif" width="14" height="14" border="0"/></a></div></td>
+                    <td class="STYLE1"><div align="center"><a href="addclass.php">新增</a></div></td>
                   </tr>
               	</table>
 
@@ -151,23 +188,29 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
+          	<td width="3%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1"><input title="全选/反选" type="checkbox" name="selectall"
+									onclick="checkall();"></div></td>
             <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程名称</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程类别</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间/开设层次</div></td>
-            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开始课程/专业</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设层次</div></td>
+            <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设课程</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课时/学制</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程费用</div></td>
             <td width="10%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">报名状态</div></td>
-            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">删除</div></td>
+            <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2">操作</div></td>
           </tr>
           {/literal}
           {section name=list loop=$adminRow}
           <tr>
+          	<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><input type="checkbox" id="selectsingle[]"  name="selectsingle[]"
+											value="{$adminRow[list].id}" /></div></td>
             <td height="25" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].id}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].class_name}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].type_name}</div></td>
-            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].open_time|truncate:"10":""}{$adminRow[list].open_level}</div></td>
+            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].open_time|truncate:"10":""}</div></td>
+             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].open_level}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].course_name}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].class_hour}</div></td>
             <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$adminRow[list].fee}</div></td>
@@ -193,9 +236,12 @@ for(i=0;i<cs.length;i++){
           </tr>
           {sectionelse}
 			<tr>
-				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
+				<td colspan=11 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
+          <tr>
+				<td colspan=11 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><strong><font color="red">是否确定批量删除:</font></strong><input type="submit" value="批量删除" onclick="return checkIsCheck();"><input type="hidden" id="task" name="task" value="alldelClass"></div></td>
+			</tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
@@ -214,5 +260,6 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
 </table>
+</form>
 </body>
 </html>

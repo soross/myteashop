@@ -130,6 +130,7 @@ for(i=0;i<cs.length;i++){
 </head>
  {/literal}
 <body>
+<form action="post/pic.action.php" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -218,7 +219,9 @@ for(i=0;i<cs.length;i++){
         <td width="9" background="images/tab/tab_12.gif">&nbsp;</td>
         <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="10%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
+          	<td width="3%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1"><input title="全选/反选" type="checkbox" name="selectall"
+									onclick="checkall();"></div></td>
+            <td width="5%" height="26" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">ID</div></td>
             <td width="20%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片名称</div></td>
             <td width="15%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">链接</div></td>
             <td width="35%" height="18" background="images/tab/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">图片</div></td>
@@ -228,30 +231,32 @@ for(i=0;i<cs.length;i++){
 
           {section name=list loop=$logoList}
           <tr>
-	          <form method="post" action="post/config.action.php" enctype="multipart/form-data" >
-		            <td height="25" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$logoList[list].id}</div>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$logoList[list].title}</div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$logoList[list].url}</div></td>
-		            <td height="25" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><img src="../{$logoList[list].path}" width="63px" height="43px"/></div></td>
-		            <td height="25" bgcolor="#FFFFFF">
+	          		<td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><input type="checkbox" id="selectsingle[]"  name="selectsingle[]"
+											value="{$logoList[list].id}" /></div></td>
+		            <td height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">{$logoList[list].id}</div>
+		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$logoList[list].title}</div></td>
+		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">{$logoList[list].url}</div></td>
+		            <td height="18" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1" ><img src="../{$logoList[list].path}" width="63px" height="43px"/></div></td>
+		            <td height="18" bgcolor="#FFFFFF">
 		            	<div align="center">
 		            		<a href="updatepic.php?picid={$logoList[list].id}"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="updatepic.php?picid={$logoList[list].id}">编辑</a><span class="STYLE1">]</span>
 		            	</div>
 		            </td>
-		            <td height="25" bgcolor="#FFFFFF">
+		            <td height="18" bgcolor="#FFFFFF">
 		            	<div align="center"><span class="STYLE2"><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/pic.action.php?task=deletePicture&picid={$logoList[list].id}&path={$logoList[list].path}';"><img src="images/tab/010.gif" width="9" height="9"  border="0"/></a></span><span class="STYLE1">[</span><a href="#" onclick="if(confirm('确定要删除吗?'))location.href='post/pic.action.php?task=deletePicture&picid={$logoList[list].id}&path={$logoList[list].path}';">删除</a><span class="STYLE1">]</span></div></td>
-	          </form>
           </tr>
           {sectionelse}
 			<tr>
 				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1">没有所要查询的数据....</div></td>
 			</tr>
           {/section}
+			<tr>
+				<td colspan=7 height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="center" class="STYLE2 STYLE1"><strong><font color="red">是否确定批量删除:</font></strong><input type="submit" value="批量删除" onclick="return checkIsCheck();"><input type="hidden" id="task" name="task" value="alldelNews"></div></td>
+			</tr>
         </table></td>
         <td width="9" background="images/tab/tab_16.gif">&nbsp;</td>
       </tr>
     </table>
-
     </td>
   </tr>
   <tr>
@@ -266,5 +271,6 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
 </table>
+</form>
 </body>
 </html>

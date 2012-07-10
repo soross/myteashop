@@ -218,55 +218,65 @@ function selected(obj){
 		          <tr class="show">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">课程类别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classtype" name="classtype" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="classtype" name="classtype" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="noshow" style="display:none;">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学历类别</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="collegetype" name="collegetype" size="20" maxlength="50"><font style="color:red;">*</font>
+		             <select id="collegetype" name="collegetype">
+                               	   	   <option value="开放教育">开放教育</option>
+                                   	   <option value="成人大专">成人大专</option>
+                                       <option value="成人中专">成人中专</option>
+                                   </select>
+                                   <font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="noshow" style="display:none;">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开设层次</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="openlevel" name="openlevel" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<select id="openlevel" name="openlevel">
+                               	   	   <option value="本科">本科</option>
+                                   	   <option value="大专">大专</option>
+                                       <option value="中专">中专</option>
+                                   </select>
+		            	<font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
-		          <tr class="show">
+		          <tr >
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课时间</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="opentime" name="opentime" size="20" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>
+		            	<input type="text" id="opentime" name="opentime" size="50" maxlength="50"  onfocus="{literal}javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});{/literal}" class="Wdate"  readonly="readonly"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="show">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">开课课程</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="classname" name="classname" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="classname" name="classname" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="noshow" style="display:none;">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">专业</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="zy" name="zy" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="zy" name="zy" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr  class="show">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训课时</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="hour" name="hour" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="hour" name="hour" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr class="noshow" style="display:none;">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">学制</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="xz" name="xz" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="xz" name="xz" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		          <tr>
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">培训费用</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="text" id="fee" name="fee" size="20" maxlength="50"><font style="color:red;">*</font>
+		            	<input type="text" id="fee" name="fee" size="50" maxlength="50"><font style="color:red;">*</font>
 		            </div></td>
 		          </tr>
 		           <tr>
@@ -278,7 +288,7 @@ function selected(obj){
 		          <tr id="word" style="display:block">
 		            <td width="30%" height="26" bgcolor="#FFFFFF" class="STYLE1"><div align="center" class="STYLE2 STYLE1">招生简章</div></td>
 		            <td width="70%" height="18" bgcolor="#FFFFFF" class="STYLE2"><div align="left" class="STYLE2 STYLE1">
-		            	<input type="file" id="path" name="path" size="20" maxlength="50"><font style="color:red;">*</font><br>
+		            	<input type="file" id="path" name="path" size="50" maxlength="50"><font style="color:red;">*</font><br>
 		            	[支持格式：doc|docx|xls|xlsx|txt,大小10M的文件]
 		            </div></td>
 		          </tr>

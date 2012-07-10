@@ -25,5 +25,8 @@ else{
 	$smarty->assign("infocn",$infocn);
 }
 
+	$xcbm = getInfo(" boya_config where comm_type ='XCBM'" ,$db);
+	$smarty->assign("xcbm",$xcbm);
+
 $smarty->display("xcbm.html");
 ?>

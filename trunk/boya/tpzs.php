@@ -50,7 +50,7 @@ else{
 }
 
 //分页
-$pagesize = 8;//一页显示多少条
+$pagesize = 20;//一页显示多少条
 $queryTotal = $db->query("select id from boya_news" .$where);
 $total = $db->db_num_rows();
 pageft($total, $pagesize);

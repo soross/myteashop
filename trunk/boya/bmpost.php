@@ -12,3 +12,5 @@ $db->query("insert into boya_reg_user(id,username,gender,college,work_unit,mobil
 echo "<script>alert('您已报名成功，本校工作人员将48小时内与您联系确认。谢谢！');location.href='wsbm.php';</script>";
 ?>
 
+
+

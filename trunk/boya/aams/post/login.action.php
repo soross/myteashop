@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['task']) && "Login"==$_POST['task']){
-	if(isset($_POST[randomCode]) && 4==strlen($_POST[randomCode])){
+	//if(isset($_POST[randomCode]) && 4==strlen($_POST[randomCode])){
 		require_once ("../action/mysql.class.php");
 		session_start();
 		$username = str_replace(" ", "", $_POST[username]);
@@ -18,12 +18,12 @@ if(isset($_POST['task']) && "Login"==$_POST['task']){
 			session_destroy();
 			echo "<script>alert('用户名或密码错误!');location.href='../admin.php'</script>";//?error=".md5('PASSWORD')."
 		}
-	}else{
-		require_once ("../action/SysCrypt.class.php");
-		$sc = new SysCrypt('');
-		$username = $sc -> php_encrypt($_POST[username]);
-		echo "<script>alert('验证码错误!');location.href='../admin.php?error=".md5('RANDOM')."&u=".$username."'</script>";
-	}
+	//}else{
+	//	require_once ("../action/SysCrypt.class.php");
+	//	$sc = new SysCrypt('');
+	//	$username = $sc -> php_encrypt($_POST[username]);
+	//	echo "<script>alert('验证码错误!');location.href='../admin.php?error=".md5('RANDOM')."&u=".$username."'</script>";
+	//}
 }else{
 	echo "<script>alert('非法提交!');location.href='../admin.php?error=".md5('ERROR')."'</script>";
 }

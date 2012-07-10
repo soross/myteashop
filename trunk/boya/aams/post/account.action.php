@@ -92,7 +92,7 @@ else if(isset($_GET[task]) && "deletePower"==$_GET[task]){
 else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
 	$sql = "update boya_admin_user set ";
 	if(isset($_POST[password]) &&  !empty($_POST[password]) && $_POST[password]==$_POST[password_confirm]){
-		$sql = $sql." password='".md5($_POST[password])."' , realname='".$_POST[realname]."' ";
+		$sql = $sql." password='".md5($_POST[password])."' , username='".$_POST[realname]."' ";
 	}else{
 		$sql = $sql." username='".$_POST[realname]."' ";
 	}
@@ -101,7 +101,10 @@ else if(isset($_POST[task]) && "updateAdminUserInfo"==($_POST[task])){
 	echo "<script>alert('管理员信息更新成功!');location.href='../inc/tab.php';</script>";
 }
 
-
+else if(isset($_POST[task]) && "updateStudent"==($_POST[task])){
+	$db->query("update boya_reg_user set username='$_POST[regname]',gender='$_POST[gender]',college='$_POST[college]',work_unit='$_POST[work_unit]',mobile='$_POST[mobile]',telephone='$_POST[telephone]',qq='$_POST[qq]',email='$_POST[email]',course='$_POST[course]',xllb='$_POST[xllb]',bmcc='$_POST[bmcc]',zy='$_POST[zy]' where id='$_POST[menuid]' ");
+	echo "<script>alert('修改在线报名信息成功!');location.href='../reguserlist.php';</script>";
+}
 
 function createPowerXml($userid,$db){
 	//删除已经存在xml文件

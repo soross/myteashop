@@ -59,11 +59,11 @@ if(isset($_POST[task]) && "addPicture"==$_POST[task]){
 	if($selectsingle!=""){
 	$del_num=count($selectsingle);
 	for($i=0;$i<$del_num;$i++){
-		$db->query("delete from news where id ='$selectsingle[$i]'");
+		$db->query("delete from boya_news where id ='$selectsingle[$i]'");
 	}
-	echo("<script type='text/javascript'>alert('删除成功！');location.href='../news.php';</script>");
+	echo("<script type='text/javascript'>alert('批量删除图片成功！');location.href='../piclist.php';</script>");
 	}else{
-	echo("<script type='text/javascript'>alert('删除成功失改！');location.href='../news.php';</script>");
+	echo("<script type='text/javascript'>alert('批量删除图片成功失改！');location.href='../piclist.php';</script>");
 	}
 
 }

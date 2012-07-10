@@ -204,6 +204,11 @@ else if(isset($_POST[task]) && "updateSEOInfo"==$_POST[task]){
 		echo "<script>alert('SEO信息修改成功!');location.href='../seo.php'</script>";
 	}
 }
+//更新现场报名
+else if(isset($_POST[task]) && "updateXcbm"==$_POST[task]){
+	$db->query("update boya_config set comm_value='".replace($_POST[contentCon])."' where comm_type = '$_POST[comm_type]'");
+	echo "<script>alert('现场报名修改成功!');location.href='../addzxbm.php';</script>";
+}
 else{
 	//echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }

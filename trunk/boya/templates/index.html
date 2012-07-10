@@ -30,19 +30,31 @@
             			<div id="tbc_11" class="dis">
                             <div class="info">
                                 <dl>
-                                   <dt class="info_dd1">开课时间</dt>
+                                   <dt class="info_dd1">课程类型</dt>
                                    <dt class="info_dd2">开设课程</dt>
+                                   <dt class="info_dd3">开课时间</dt>
                                    <dt class="info_dd3">培训课时</dt>
                                    <dt class="info_dd3">培训费用</dt>
                                    <dt class="info_dd3">招生简章</dt>
                                    <dt class="info_dd3">我要报名</dt>
 								   {section name=list loop=$courseRow}
-                                   <dd class="info_dd1">{$courseRow[list].open_time}</dd>
-                           		   <dd style="text-align:left" class="info_dd2">【{$courseRow[list].course_name}】</dd>
+								   {if $courseRow[list].isselect==1}
+								   <dd class="info_dd1">{if $courseRow[list].class_name!=null}【{/if}{$courseRow[list].class_name}{if $courseRow[list].class_name!=null}】{/if}</dd>
+								   <dd style="text-align:left" class="info_dd2">{if $courseRow[list].course_name!=null}【{/if}{$courseRow[list].course_name}{if $courseRow[list].course_name!=null}】{/if}</dd>
+                                   <dd class="info_dd3">{$courseRow[list].open_time}</dd>
                                    <dd class="info_dd3">{$courseRow[list].class_hour}</dd>
                                    <dd class="info_dd3">{$courseRow[list].fee}</dd>
                                    <dd class="info_dd3"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
                                    <dd class="info_dd3">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+									{else}
+								   <dd class="info_dd1" style="color:#707070">{if $courseRow[list].class_name!=null}【{/if}{$courseRow[list].class_name}{if $courseRow[list].class_name!=null}】{/if}</dd>
+								   <dd style="text-align:left;color:#707070;" class="info_dd2">{if $courseRow[list].course_name!=null}【{/if}{$courseRow[list].course_name}{if $courseRow[list].class_name!=null}】{/if}</dd>
+                                   <dd class="info_dd3" style="color:#707070">{$courseRow[list].open_time}</dd>
+                                   <dd class="info_dd3" ><font color="#707070">{$courseRow[list].class_hour}</font></dd>
+                                   <dd class="info_dd3" style="color:#707070">{$courseRow[list].fee}</dd>
+                                   <dd class="info_dd3" style="color:#707070"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                                   <dd class="info_dd3" >{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+									{/if}
 									{/section}
                                </dl>
                             </div>

@@ -89,7 +89,7 @@ document.registerForm.money.value="";
                     <div id="map">
                          <img src="{$map.comm_code}" width="188px" height="116px"/>
                     </div>
-                    <div id="contact">
+                    <div id="contact1">
                         {include file="inc/contact.html"}
                     </div>
                 </div>
@@ -102,80 +102,9 @@ document.registerForm.money.value="";
                            {$infocn.type_name}
                        </div>
                    </div>
-                   {if $infocn.id==10}
-                   <form id="registerForm" method="get" name="online-register" action="/onlineRegister.aspx">
-                   	   <div class="register_form">
-                       	   <ol>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span></li>
-                               <li><span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</span></li>
-                               <li><span>工作单位：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>手机号码：</span></li>
-                               <li><span>联系电话：</span></li>
-                               <li><span>Q&nbsp;Q号码：</span></li>
-                               <li><span>E-mail：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>报名课程：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>报名人数：</span></li>
-                               <li class="leave_message"><span>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：</span></li>
-                       	   </ol>
-                           <ul>
-                           	   <li><input id="username" class="input-text" name="username" type="text" value="" maxlength="40" /></li>
-                               <li class="sex">
-                               	   <input id="male" class="input-radio" type="radio" checked="checked" name="sex" value="" /><label for="sex">男</label>
-                               	   <input id="female" class="input-radio" type="radio" name="sex" value="" /><label for="sex">女</label>
-                               </li>
-                               <li>
-                               	   <select id="certi">
-                                   	   <option value="大专">大专</option>
-                                       <option value="本科">本科</option>
-                                       <option value="硕士">硕士</option>
-                                       <option value="博士">博士</option>
-                                   </select>
-                               </li>
-                               <li>
-                               	   <input id="address" class="input-text" name="address" type="text" value="" maxlength="150"  />
-                               </li>
-                               <li>
-                               	   <input id="telephone" class="input-text" name="telephone" type="text" value="" maxlength="40"  />
-                               </li>
-                               <li>
-                               	   <input id="phone" class="input-text" name="phone" type="text" value="" maxlength="40"  />
-                               </li>
-                               <li>
-                               	   <input id="qqcode" class="input-text" name="qqcode" type="text" value="" maxlength="40"  />
-                               </li>
-                               <li>
-                               	   <input id="email" class="input-text" name="email" type="text" value="" maxlength="40"  />
-                               </li>
-                               <li>
-                               	   <select id="course">
-                                   	   <option value="java精品课程">java精品课程</option>
-                                       <option value="C/C++精品课程">C/C++精品课程</option>
-                                       <option value="iphone精品课程">iphone精品课程</option>
-                                   </select>
-                               </li>
-                               <li>
-                               	   <select id="amount">
-                                   	   <option value="5">5</option>
-                                       <option value="10">10</option>
-                                       <option value="15">15</option>
-                                   </select>
-                               </li>
-                               <li class="leave_message">
-                               	   <textarea id="leaveMessage" class="textarea-text" name="leaveMessage" value="" maxlength="40" cols="60" rows="7"></textarea>
-                               </li>
-                           </ul>
-                       </div>
-                       <div class="registerBtn">
-                       	    <input id="submit" name="submit" type="submit" value=""  />
-                            <input id="reset" name="reset" type="submit" value=""  />
-                       </div>
-                   </form>
-                   {else}
                     <div id="detail">
-                   	   fsafsadfasfd
+                   	   {$xcbm.comm_value}
                    </div>
-                   {/if}
                 </div>
             </div>
     	</div>

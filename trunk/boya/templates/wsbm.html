@@ -19,7 +19,7 @@
                     <div id="map">
                          <img src="{$map.comm_code}" width="188px" height="116px"/>
                     </div>
-                    <div id="contact">
+                    <div id="contact1">
                         {include file="inc/contact.html"}
                     </div>
                 </div>
@@ -42,22 +42,22 @@
                                <li><span>工作单位：</span></li>
                                <li><i class="fixed_red">*</i>&nbsp;<span>手机号码：</span></li>
                                <li><span>联系电话：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>Q&nbsp;Q号码：</span></li>
-                               <li><span>E-mail：</span></li>
+                               <li><span>Q&nbsp;Q号码：</span></li>
+                               <li><span>E&nbsp;-&nbsp;mail：</span></li>
                                <li><i class="fixed_red">*</i>&nbsp;<span>报名课程：</span></li>
-                               <li><i class="fixed_red">*</i>&nbsp;<span>报名人数：</span></li>
                                <!-- <li class="leave_message"><span>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：</span></li> -->
                        	   </ol>
                            <ul>
                            	   <li><input id="username" class="input-text" name="username" type="text"  maxlength="40" onblur="checkusername()" /></li>
                                <li class="sex">
                                	   <table cellpadding="0" cellspacing="0" border="0"><tr><td>
-                               	   <td><input id="male" class="input-radio" type="radio" checked="checked" name="sex"  /></td><td><label for="sex">男</label></td>
-                               	   <td><input id="female" class="input-radio" type="radio" name="sex" /></td><td><label for="sex">女</label></td>
+                               	   <td><input id="male" class="input-radio" type="radio" checked="checked" name="sex" value="男"  /></td><td><label for="sex">男</label></td>
+                               	   <td><input id="female" class="input-radio" type="radio" name="sex" value="女" /></td><td><label for="sex">女</label></td>
                                	   </tr></table>
                                </li>
                                <li>
                                	   <select id="certi" name="certi">
+                               	   	   <option value="高中（中专）">高中（中专）</option>
                                    	   <option value="大专">大专</option>
                                        <option value="本科">本科</option>
                                        <option value="硕士">硕士</option>
@@ -74,21 +74,18 @@
                                	   <input id="phone" class="input-text" name="phone" type="text"  maxlength="40"  />
                                </li>
                                <li>
-                               	   <input id="qqcode" class="input-text" name="qqcode" type="text"  maxlength="40" onblur="checkqqcode()"  />
+                               	   <input id="qqcode" class="input-text" name="qqcode" type="text"  maxlength="40"   />
                                </li>
                                <li>
                                	   <input id="email" class="input-text" name="email" type="text"  maxlength="40"  />
                                </li>
                                <li>
-                               	    <select id="course">
+                               	    <select id="course" name="course">
                                	       <option value="">--请选择--</option>
                                	       {section name=list loop=$courselist}
                                    	   <option value={$courselist[list].id}>{$courselist[list].course_name}</option>
                                    	   {/section}
                                    </select>
-                               </li>
-                               <li>
-                               		<input id="amount" class="input-text" name="amount" type="text"  maxlength="40" onblur="checkamount()"  />
                                </li>
                                <!--
                                <li class="leave_message">

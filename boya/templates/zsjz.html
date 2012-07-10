@@ -18,7 +18,7 @@
                     <div id="map">
                          <img src="{$map.comm_code}" width="188px" height="116px"/>
                     </div>
-                    <div id="contact">
+                    <div id="contact1">
                         {include file="inc/contact.html"}
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                    </div>
                    <div id="detail">
                    	   {$infocn.content|stripslashes}<br>
-						<a href="../boya/{$infocn.path}"><font color="red">{$infocn.path}</font></a>
+						<a href="../{$infocn.path}"><font color="red">{$infocn.content|stripslashes}</font></a>
                    </div>
                 </div>
             </div>

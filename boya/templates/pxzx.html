@@ -18,7 +18,7 @@
                     <div id="map">
                          <img src="{$map.comm_code}" width="188px" height="116px"/>
                     </div>
-                    <div id="contact">
+                    <div id="contact1">
                         {include file="inc/contact.html"}
                     </div>
                 </div>
@@ -51,13 +51,23 @@
                            <dt class="list_dd2 list_dd4">我要报名</dt>
                          {/if}
 							{section name=list loop=$courseRow}
-                           <dd class="list_dd1">【{$courseRow[list].class_name}】</dd>
+							{if $courseRow[list].isselect==1}
+                           <dd class="list_dd1">{if $courseRow[list].class_name!=null}【{/if}{$courseRow[list].class_name}{if $courseRow[list].class_name!=null}】{/if}</dd>
                            <dd class="list_dd2">{$courseRow[list].open_time}</dd>
-                           <dd class="list_dd3">{$courseRow[list].course_name}</dd>
+                           <dd style="text-align:left" class="list_dd3">{if $courseRow[list].course_name!=null}【{/if}{$courseRow[list].course_name}{if $courseRow[list].course_name!=null}】{/if}</dd>
                            <dd class="list_dd2">{$courseRow[list].class_hour}</dd>
                            <dd class="list_dd2">{$courseRow[list].fee}</dd>
                            <dd class="list_dd2"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
                            <dd class="list_dd2">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+							{else}
+						   <dd class="list_dd1" style="color:#707070">{if $courseRow[list].class_name!=null}【{/if}{$courseRow[list].class_name}{if $courseRow[list].class_name!=null}】{/if}</dd>
+                           <dd class="list_dd2" style="color:#707070">{$courseRow[list].open_time}</dd>
+                           <dd style="text-align:left" class="list_dd3" ><font color="#707070">{if $courseRow[list].course_name!=null}【{/if}{$courseRow[list].course_name}{if $courseRow[list].course_name!=null}】{/if}</font></dd>
+                           <dd class="list_dd2" style="color:#707070">{$courseRow[list].class_hour}</dd>
+                           <dd class="list_dd2" style="color:#707070">{$courseRow[list].fee}</dd>
+                           <dd class="list_dd2" style="color:#707070"><a href="zsjz.php?id={$courseRow[list].id}&typeid={$courseRow[list].type_id}">点击进入</a></dd>
+                           <dd class="list_dd2" style="color:#707070">{if $courseRow[list].isselect==1}<a href="wsbm.php">点击进入</a>{else}<font color="red">暂无报名</font>{/if}</dd>
+							{/if}
 							{/section}
                        </dl>
                    </div>

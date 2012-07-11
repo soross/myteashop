@@ -1,5 +1,7 @@
 package com.crm.op.struts.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
+import com.crm.op.po.TCustomer;
 import com.crm.op.service.intf.CustServiceDao;
+import com.crm.op.struts.form.CustForm;
+import com.crm.page.PageUtil;
+import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
 
@@ -17,7 +23,7 @@ public class CustAction extends DispatchAction{
 	private CustServiceDao custServiceDao;
 	
 	/**
-	 * 部门列表
+	 * 会员列表
 	 * 
 	 * @param mapping
 	 * @param form
@@ -25,17 +31,14 @@ public class CustAction extends DispatchAction{
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deptList(ActionMapping mapping, ActionForm form,
+	public ActionForward custList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
-		
-		//List list = this.deptServiceDao.getDeptList();
-		//request.setAttribute("deptList", list);
-		
-		return new ActionForward("/admin/sysdo/dept/deptlist.jsp");
+		Integer count = this.custServiceDao.getCustCount();
+		PageUtil pageUtil = new PageUtil(request, count, GlobVar.PAGESIZE_BY_TWENTY_DATA);		
+		List list = this.custServiceDao.getCustList(pageUtil);
+		request.setAttribute("custList", list);		
+		return new ActionForward("/admin/op/cust/custlist.jsp");
 	}
 	
 	/**
@@ -58,7 +61,67 @@ public class CustAction extends DispatchAction{
 		
 		return new ActionForward("/admin/op/index.jsp");
 	}
+	/**
+	 * 会员头像Ajax上传
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward uploadPhoto(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String message = "你已成功上传文件";
+
+		/**String path = ServletActionContext.getRequest().getRealPath("/upload");
+        try {
+            File f = this.getFile();
+            if(this.getFileFileName().endsWith(".exe")){
+                message="对不起,你上传的文件格式不允许!!!";
+                return ERROR;
+            }
+            FileInputStream inputStream = new FileInputStream(f);
+            FileOutputStream outputStream = new FileOutputStream(path + "/"+ this.getFileFileName());
+            byte[] buf = new byte[1024];
+            int length = 0;
+            while ((length = inputStream.read(buf)) != -1) {
+                outputStream.write(buf, 0, length);
+            }
+            inputStream.close();
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            message = "对不起,文件上传失败了!!!!";
+        }**/
+		
+		response.getWriter().write(message);
+		return null;
+	}
 	
+	/**
+	 * 跳转到修改i啊客户页面
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward toUpdateCust(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		CustForm custForm = (CustForm) form;
+		
+		Long id = Long.valueOf(request.getParameter("id"));
+		TCustomer cust = this.custServiceDao.getCustByID(id);	
+		BeanUtils.copyProperties(custForm, cust);
+		
+		request.setAttribute("cust", cust);
+		
+		return new ActionForward("/admin/op/cust/updatecust.jsp");
+	}
 	/**
 	 * 新增部门
 	 * 
@@ -96,7 +159,7 @@ public class CustAction extends DispatchAction{
 	}
 	
 	/**
-	 * 删除部门
+	 * 删除客户
 	 * 
 	 * @param mapping
 	 * @param form
@@ -107,22 +170,21 @@ public class CustAction extends DispatchAction{
 	public ActionForward deleteDept(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
+		CustForm custForm = (CustForm) form;
+		TCustomer cust = new TCustomer();
+		BeanUtils.copyProperties(cust, custForm);
 		
-		//Boolean bool = this.deptServiceDao.deleteDept(dept.getId());
-		boolean bool = false;
+		Boolean bool = this.custServiceDao.deleteCust(cust.getId());
 		if (bool) {
 			response.getWriter().write(
-					"<script>alert('科室部门删除成功!');location.href='"
+					"<script>alert('会员删除成功!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';</script>");
+							+ "/admin/cust.do?task=custList';</script>");
 		} else {
 			response.getWriter().write(
-					"<script>alert('科室部门删除失败!');location.href='"
+					"<script>alert('删除删除失败!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';</script>");
+							+ "/admin/dept.do?task=custList';</script>");
 		}
 		return null;
 	}

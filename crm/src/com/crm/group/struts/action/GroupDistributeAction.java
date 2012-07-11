@@ -67,7 +67,7 @@ public class GroupDistributeAction extends DispatchAction {
 
 		int rcount = groupDistributeserviceDAO.getCount(groups);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_SMALL_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List groupsList = groupDistributeserviceDAO.searchGroupDistributeList(
 				groups, pageUtil.pastart(), pageUtil.getPagesize());
 		request.setAttribute("pageUtil", pageUtil);
@@ -395,7 +395,7 @@ public class GroupDistributeAction extends DispatchAction {
 
 		Integer count = groupDistributeserviceDAO.searchGrHistCount(group);
 		PageUtil pageUtil = new PageUtil(request, count,
-				GlobVar.PAGESIZE_BY_SMALL_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 		List<TOldgroupmess> histList = groupDistributeserviceDAO
 				.searchGrHistList(group, pageUtil.pastart(), pageUtil

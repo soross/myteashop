@@ -64,7 +64,7 @@ public class ScoreAction extends DispatchAction {
 		score.setPhone(scoreForm.getPhone());
 		int rcount = scoreServiceDao.getApplyCount(score);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_BIG_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = scoreServiceDao.searchApply(score, pageUtil);
 		request.setAttribute("applyList", list);
 		request.setAttribute("pageUtil", pageUtil);
@@ -213,7 +213,7 @@ public class ScoreAction extends DispatchAction {
 		String phone = client.getPhone();
 		int rcount = scoreServiceDao.getPresentCount(phone);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_BIG_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = scoreServiceDao.presentList(phone, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
 		request.setAttribute("presentList", list);
@@ -437,7 +437,7 @@ public class ScoreAction extends DispatchAction {
 		}
 		int rcount = scoreServiceDao.getChangeNum(change);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_BIG_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = scoreServiceDao.getChangeList(change, pageUtil);
 		request.setAttribute("changeList", list);
 		request.setAttribute("pageUtil", pageUtil);
@@ -619,7 +619,7 @@ public class ScoreAction extends DispatchAction {
 		TChange change = new TChange();
 		BeanUtils.copyProperties(change, scoreForm);
 		int count = scoreServiceDao.getChangeCount(change);
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_BIG_DATA);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = scoreServiceDao.searchChange(change, pageUtil);
 		request.setAttribute("changeList", list);
 		request.setAttribute("pageUtil", pageUtil);
@@ -649,7 +649,7 @@ public class ScoreAction extends DispatchAction {
 		}
 		
 		int count = scoreServiceDao.getLogCount(log);
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_BIG_DATA);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = scoreServiceDao.searchLog(log, pageUtil);
 		request.setAttribute("logList", list);
 		request.setAttribute("pageUtil", pageUtil);

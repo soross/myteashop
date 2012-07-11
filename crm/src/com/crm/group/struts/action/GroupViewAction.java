@@ -140,7 +140,7 @@ public class GroupViewAction extends DispatchAction {
 		int rcount = groupViewServiceDAO.getCount(groups, fcount, tcount,
 				fmoney, tmoney);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_SMALL_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List groupsList = groupViewServiceDAO.searchGroupList(groups, pageUtil
 				.pastart(), pageUtil.getPagesize(), fcount, tcount, fmoney,
 				tmoney);
@@ -552,7 +552,7 @@ public class GroupViewAction extends DispatchAction {
 
 		int rcount = groupViewServiceDAO.gettLogCount(group);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_SMALL_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List logList = groupViewServiceDAO.searchtLogList(group, pageUtil
 				.pastart(), pageUtil.getPagesize());
 		request.setAttribute("pageUtil", pageUtil);
@@ -637,7 +637,7 @@ public class GroupViewAction extends DispatchAction {
 		List<TClient> clientList = null;
 		int rcount = groupViewServiceDAO.clientCount(groupid, nowDate);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_BIG_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		clientList = groupViewServiceDAO.clientList(groupid, nowDate, pageUtil
 				.pastart(), pageUtil.getPagesize());
 		request.setAttribute("pageUtil", pageUtil);
@@ -696,7 +696,7 @@ public class GroupViewAction extends DispatchAction {
 		int nowYear = cal.get(Calendar.YEAR);
 		int rcount = groupViewServiceDAO.userFeeListCount(groupid);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_MAX_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = groupViewServiceDAO.userFeeList(groupid,
 				pageUtil.pastart(), pageUtil.getPagesize());
 		List feelist = new ArrayList();
@@ -740,7 +740,7 @@ public class GroupViewAction extends DispatchAction {
 
 		int rcount = groupViewServiceDAO.getCount(groups);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_SMALL_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List groupsList = groupViewServiceDAO.searchGroupDistributeList(groups,
 				pageUtil.pastart(), pageUtil.getPagesize());
 		request.setAttribute("pageUtil", pageUtil);

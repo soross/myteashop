@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.crm.op.po.TCustomer;
 import com.crm.page.PageUtil;
-import com.crm.sysdo.po.TDept;
 
 public interface CustServiceDao {
 	/**

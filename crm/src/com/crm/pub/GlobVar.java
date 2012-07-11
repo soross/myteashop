@@ -13,13 +13,16 @@ import org.apache.struts.upload.FormFile;
 
 public class GlobVar {
 	
-	public static Integer PAGESIZE_BY_SMALL_DATA = 2; //少量数据时使用
 	
-	public static Integer PAGESIZE_BY_FOUR = 4;
+	public static Integer PAGESIZE_BY_FIVE = 5;
 	
-	public static Integer PAGESIZE_BY_BIG_DATA = 10;//大类数据时使用
+	public static Integer PAGESIZE_BY_TEN_DATA = 10;//一页显示10条数据
 	
-	public static Integer PAGESIZE_BY_MAX_DATA = 20;//超大数据时使用
+	public static Integer PAGESIZE_BY_TWENTY_DATA = 20;//一页显示20条数据
+	
+	public static Integer PAGESIZE_BY_THIRTY_DATA = 30;//一页显示30条数据
+	
+	public static Integer PAGESIZE_BY_FORTY_DATA = 40;//一页显示40条数据
 	
 	public static Integer BRAND = 1; //品牌
 	

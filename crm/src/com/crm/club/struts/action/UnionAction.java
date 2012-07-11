@@ -58,7 +58,7 @@ public class UnionAction extends DispatchAction {
 		UnionBinfo union=new UnionBinfo();
 		
 		int count = unionServiceDao.getCount(union);
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List ulist=unionServiceDao.getUnionList(union, pageUtil);
 		
 		List levlist=unionServiceDao.getDate(new Long(5));
@@ -273,7 +273,7 @@ public class UnionAction extends DispatchAction {
 			union.setVLevel(lev.getName());
 		}
 		int count = unionServiceDao.getCount(union);
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List ulist=unionServiceDao.getUnionList(union, pageUtil);
 		
 		List levlist=unionServiceDao.getDate(new Long(5));
@@ -303,7 +303,7 @@ public class UnionAction extends DispatchAction {
 			}
 			id = gid.substring(1);
 			int rcount = unionServiceDao.getLogCount(id);
-			PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+			PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 			List list=unionServiceDao.getLogList(id, pageUtil) ; 
 			request.setAttribute("pageUtil", pageUtil);
 	        request.setAttribute("loglist", list);
@@ -311,7 +311,7 @@ public class UnionAction extends DispatchAction {
 		}
 		else{
 		int rcount = unionServiceDao.getLogCount(slog, "0", "0");
-		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list=unionServiceDao.getLogList(slog, pageUtil, "0", "0") ; 
 		request.setAttribute("pageUtil", pageUtil);
         request.setAttribute("loglist", list);
@@ -340,7 +340,7 @@ public class UnionAction extends DispatchAction {
 			end=unionForm.getEndtime();
 		}
 		int rcount = unionServiceDao.getLogCount(slog, start, end);
-		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List loglist=unionServiceDao.getLogList(slog, pageUtil, start, end);
 		request.setAttribute("pageUtil", pageUtil);
         request.setAttribute("loglist", loglist);

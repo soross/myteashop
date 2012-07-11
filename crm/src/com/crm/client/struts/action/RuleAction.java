@@ -56,7 +56,7 @@ public class RuleAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 		RuleForm ruleForm = (RuleForm) form;
 		Integer count = this.ruleServiceDao.getRuleLogCount();
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List logList = this.ruleServiceDao.getRuleLogList(pageUtil);
 		
 		request.setAttribute("pageUtil", pageUtil);
@@ -386,7 +386,7 @@ public class RuleAction extends DispatchAction {
 		Integer count = this.ruleServiceDao.getCount(rule);
 
 		PageUtil pageUtil = new PageUtil(request, count,
-				GlobVar.PAGESIZE_BY_FOUR);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
 		List list = this.ruleServiceDao.searchRuleList(rule, pageUtil);

@@ -94,7 +94,7 @@ public class BusinessAction extends DispatchAction {
 
 		Integer count = this.businessServiceDao.getCount(operation);
 		PageUtil pageUtil = new PageUtil(request, count,
-				GlobVar.PAGESIZE_BY_FOUR);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List typeList = this.businessServiceDao.searchBusinessTypeList();
 		List businessList = this.businessServiceDao.searchBusinessList(
 				operation, pageUtil);

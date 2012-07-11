@@ -35,7 +35,7 @@
 <ul id="dhtmlgoodies_tree" class="dhtmlgoodies_tree">
 	<logic:present name="sonPowers">
 		<logic:iterate id="sonpower" name="sonPowers">
-			<li  class="page.gif" id="l17"><a href="${pageContext.request.contextPath}${sonpower.url}" target="main">${sonpower.powername}</a>
+			<LI  class="page.gif" id="${sonpower.id}"><a href="${pageContext.request.contextPath}${sonpower.url}" target="main">${sonpower.powername}</a></LI>
 	    </logic:iterate>
     </logic:present>
     <logic:notPresent name="sonPowers">	

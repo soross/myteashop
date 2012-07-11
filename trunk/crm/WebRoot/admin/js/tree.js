@@ -131,6 +131,7 @@
 
 		for(var treeCounter=0;treeCounter<idOfFolderTrees.length;treeCounter++){
 			var dhtmlgoodies_tree = document.getElementById(idOfFolderTrees[treeCounter]);
+			
 			var menuItems = dhtmlgoodies_tree.getElementsByTagName('LI');	// Get an array of all menu items
 			for(var no=0;no<menuItems.length;no++){
 				nodeId++;

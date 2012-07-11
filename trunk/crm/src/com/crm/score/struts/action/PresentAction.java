@@ -53,7 +53,7 @@ public class PresentAction extends DispatchAction {
 		}
 		int rcount = presentServiceDao.getCount(present);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_BIG_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List presentList = presentServiceDao.searchPresent(present, pageUtil);
 		request.setAttribute("presentList", presentList);
 		request.setAttribute("pageUtil", pageUtil);

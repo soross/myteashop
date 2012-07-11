@@ -221,7 +221,7 @@ public class ClientAction extends DispatchAction {
 		
 		
 		PageUtil pageUtil = new PageUtil(request, this.clientServiceDao
-				.getCount(client, map), GlobVar.PAGESIZE_BY_MAX_DATA);
+				.getCount(client, map), GlobVar.PAGESIZE_BY_TEN_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 		List list = this.clientServiceDao.searchClientList(client, map,
 				pageUtil);
@@ -811,7 +811,7 @@ public class ClientAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 		ClientForm clientForm = (ClientForm) form;		
 		Integer count = this.clientServiceDao.getGradeLogCount();		
-		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List list = this.clientServiceDao.searchGradeLog(pageUtil);
 		request.setAttribute("list", list);
 		request.setAttribute("pageUtil", pageUtil);
@@ -834,7 +834,7 @@ public class ClientAction extends DispatchAction {
 		TClient client = new TClient();
 	    BeanUtils.copyProperties(client, clientForm);
 	    int count = clientServiceDao.getClientCount(client);
-        PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_BIG_DATA);
+        PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 	    List list = clientServiceDao.clientList(client, pageUtil);
 		List managers = clientServiceDao.clientManagers();//查找客户经理
 		request.setAttribute("clientList", list);
@@ -934,7 +934,7 @@ public class ClientAction extends DispatchAction {
     	   allot.setEdate(new SimpleDateFormat("yyyy-MM-dd").parse(clientForm.getEnd()));
        }       
        int count = clientServiceDao.acceptCount(user.getUserid(),allot);
-       PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_BIG_DATA);
+       PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
        List list = clientServiceDao.acceptList(user.getUserid(),allot, pageUtil);
        request.setAttribute("acceptList", list);
        request.setAttribute("pageUtil", pageUtil);
@@ -1013,7 +1013,7 @@ public class ClientAction extends DispatchAction {
 		TClient client = new TClient();
 	    BeanUtils.copyProperties(client, clientForm);
 	    int count = clientServiceDao.getDeployCount(client);
-        PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_BIG_DATA);
+        PageUtil pageUtil = new PageUtil(request,count,GlobVar.PAGESIZE_BY_TEN_DATA);
 	    List list = clientServiceDao.deployList(client, pageUtil);
 		List managers = clientServiceDao.clientManagers();//查找客户经理
 		request.setAttribute("clientList", list);

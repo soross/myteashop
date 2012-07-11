@@ -136,7 +136,7 @@ public class DataAction extends DispatchAction {
 		DataForm dataForm = (DataForm) form;
 
 		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_FOUR);
+				.getCount(), GlobVar.PAGESIZE_BY_FIVE);
 		request.setAttribute("pageUtil", pageUtil);
 
 		List list = this.dataServiceDao.searchParentData(pageUtil);

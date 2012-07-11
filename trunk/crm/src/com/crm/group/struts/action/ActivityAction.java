@@ -54,7 +54,7 @@ public class ActivityAction extends DispatchAction {
 		ActivityForm activityForm = (ActivityForm) form;// TODO Auto-generated method stub
 		ClubActivity activity=new ClubActivity();
 		int rcount = actServiceDao.getCount(activity, "0", "0");
-		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List actlist=actServiceDao.searchACt(activity, pageUtil, "0", "0");
 		
 		request.setAttribute("pageUtil", pageUtil);
@@ -89,7 +89,7 @@ public class ActivityAction extends DispatchAction {
 		}
         
 		int rcount = actServiceDao.getCount(activity, start, end);
-		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List actlist=actServiceDao.searchACt(activity, pageUtil, start, end);
 		request.setAttribute("pageUtil", pageUtil);
         request.setAttribute("actlist", actlist);
@@ -236,7 +236,7 @@ public class ActivityAction extends DispatchAction {
 		actServiceDao.deleteAct(ac);
 		ClubActivity activity=new ClubActivity();
 		int rcount = actServiceDao.getCount(activity, "0", "0");
-		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_FOUR);
+		PageUtil pageUtil = new PageUtil(request,rcount,GlobVar.PAGESIZE_BY_TEN_DATA);
 		List actlist=actServiceDao.searchACt(activity, pageUtil, "0", "0");
 		request.setAttribute("pageUtil", pageUtil);
         request.setAttribute("actlist", actlist);

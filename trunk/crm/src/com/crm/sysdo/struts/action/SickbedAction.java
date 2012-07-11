@@ -40,7 +40,7 @@ public class SickbedAction extends DispatchAction{
 		Integer count = this.sickbedServiceDao.getSickbedCount();
 
 		PageUtil pageUtil = new PageUtil(request, count,
-				GlobVar.PAGESIZE_BY_MAX_DATA);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
 		List list = this.sickbedServiceDao.getSickbedList(pageUtil);

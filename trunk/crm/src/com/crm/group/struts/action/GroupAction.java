@@ -98,7 +98,7 @@ public class GroupAction extends DispatchAction {
 		group.setState(state);
 		int rcount = groupServiceDao.getCount(group);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_FOUR);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List grouplist = groupServiceDao.searchGroup(group, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
 
@@ -466,7 +466,7 @@ public class GroupAction extends DispatchAction {
 		group.setState(state);
 		int rcount = groupServiceDao.getCount(group);
 		PageUtil pageUtil = new PageUtil(request, rcount,
-				GlobVar.PAGESIZE_BY_FOUR);
+				GlobVar.PAGESIZE_BY_TEN_DATA);
 		List grouplist = groupServiceDao.searchGroup(group, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
 

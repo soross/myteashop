@@ -83,8 +83,8 @@
 			</td>
 		</tr>
 	</table>
-	<table width="98%" border="0" align="center" cellpadding="3"
-		cellspacing="1" class="tableBorder">
+	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
+		cellspacing="1" class="tableBorderList">
 		<tr>
 			<th colspan=5 height=25>
 				部门列表
@@ -183,4 +183,33 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
+
+
+
+<script language="javascript"><!--
+function ejiaA1(o,a,b,c,d){
+	var t=document.getElementById(o).getElementsByTagName("tr");
+	for(var i=0;i<t.length;i++){
+		t[i].style.backgroundColor=(t[i].sectionRowIndex%2==0)?a:b;
+		/**
+		t[i].onclick=function(){
+			if(this.x!="1"){
+				this.x="1";
+				this.style.backgroundColor=d;
+			}else{
+				this.x="0";
+				this.style.backgroundColor=(this.sectionRowIndex%2==0)?a:b;
+			}
+		}**/
+		t[i].onmouseover=function(){
+			if(this.x!="1")this.style.backgroundColor=c;
+		}
+		t[i].onmouseout=function(){
+			if(this.x!="1")this.style.backgroundColor=(this.sectionRowIndex%2==0)?a:b;
+		}
+	}
+}
+//ejiaA1("名称","奇数行背景","偶数行背景","鼠标经过背景","点击后背景");
+ejiaA1("listtab","#E1F1F1","#F5F5F5","#FFFFCC","");
+--></script>
 </html:html>

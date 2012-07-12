@@ -64,7 +64,24 @@
       path="/admin/cust"
       scope="request"
       type="com.crm.op.struts.action.CustAction" />  
+    
+     <action
+      attribute="regForm"
+      input="/form/addreg.jsp"
+      name="regForm"
+      parameter="task"
+      path="/admin/reg"
+      scope="request"
+      type="com.crm.op.struts.action.RegAction" />  
      
+     <action
+      attribute="orderForm"
+      input="/form/addorder.jsp"
+      name="orderForm"
+      parameter="task"
+      path="/admin/order"
+      scope="request"
+      type="com.crm.op.struts.action.OrderAction" />  
 
   </action-mappings>
   <controller

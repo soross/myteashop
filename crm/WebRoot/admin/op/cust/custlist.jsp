@@ -78,7 +78,43 @@
 			</td>
 		</tr>
 	</table>
-	<table width="98%" border="0" align="center" cellpadding="3"
+	<html:form action="/admin/cust?task=custList" method="post">
+	<table width="100%" border="0" align="center" cellpadding="2"
+		cellspacing="1" class="tableBorder">
+		<tr>
+			<th height="25" colspan="6">
+				会员查询
+			</th>
+		</tr>
+		<tr>
+			<td height=25 class="pl20">
+			会员姓名:	<html:text property="username"  size="15"  />
+			</td>
+			<td height=25 class="pl20">
+			身份证号:<html:text property="idCode"  size="15" />
+			</td>
+			<td height=25 class="pl20">
+			编码:<html:text property="code"  size="15" maxlength="30" />
+			</td>
+			<td height=25 class="pl20">
+			IC卡号:<html:text property="icCardCode"  size="15" />
+			</td>
+			<td height=25 class="pl20">
+			会员类型:<html:select property="vipType">
+				<html:option value="-1">请选择</html:option>
+			  	<html:option value="1">金牌会员</html:option>
+			  	<html:option value="2">银牌会员</html:option>
+			  	<html:option value="3">普通会员</html:option>
+			  </html:select>
+			</td>
+			<td>
+				<html:submit value="查询"></html:submit>
+			</td>
+		</tr>
+	</table>
+	</html:form>
+	
+	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th colspan=15 height=25>
@@ -194,11 +230,14 @@
 			</logic:iterate>
 		</logic:present>
 		<tr>
-			<td  align="left" colspan="15" height=25>
+			<td  align="left" colspan="5" height=25>
 				&nbsp;<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
 					onclick="outAllToExcel('exportAllClient')"></html:button>
+			</td>
+			<td colspan="10" align="right">
+				<page:page name="pageUtil" />
 			</td>
 		</tr>
 	
@@ -207,4 +246,32 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
+
+
+<script language="javascript"><!--
+function ejiaA1(o,a,b,c,d){
+	var t=document.getElementById(o).getElementsByTagName("tr");
+	for(var i=0;i<t.length;i++){
+		t[i].style.backgroundColor=(t[i].sectionRowIndex%2==0)?a:b;
+		/**
+		t[i].onclick=function(){
+			if(this.x!="1"){
+				this.x="1";
+				this.style.backgroundColor=d;
+			}else{
+				this.x="0";
+				this.style.backgroundColor=(this.sectionRowIndex%2==0)?a:b;
+			}
+		}**/
+		t[i].onmouseover=function(){
+			if(this.x!="1")this.style.backgroundColor=c;
+		}
+		t[i].onmouseout=function(){
+			if(this.x!="1")this.style.backgroundColor=(this.sectionRowIndex%2==0)?a:b;
+		}
+	}
+}
+//ejiaA1("名称","奇数行背景","偶数行背景","鼠标经过背景","点击后背景");
+ejiaA1("listtab","#E1F1F1","#F5F5F5","#FFFFCC","");
+--></script>
 </html:html>

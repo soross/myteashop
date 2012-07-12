@@ -18,6 +18,15 @@ public class CustServiceDaoImpl implements CustServiceDao{
 	public Integer getCustCount(){
 		return custDao.getCustCount();		
 	}
+	
+	/**
+	 * 取得总记录数
+	 * 
+	 * @return
+	 */
+	public Integer getCustCount(TCustomer cust){
+		return custDao.getCustCount(cust);		
+	}
 
 	/**
 	 * 取得集合
@@ -26,6 +35,14 @@ public class CustServiceDaoImpl implements CustServiceDao{
 	 */
 	public List getCustList(PageUtil pageUtil){
 		return custDao.getCustList(pageUtil);
+	}
+	/**
+	 * 取得集合
+	 * 
+	 * @return
+	 */
+	public List getCustList(TCustomer cust, PageUtil pageUtil){
+		return custDao.getCustList(cust,pageUtil);
 	}
 
 	public List getCustList(){

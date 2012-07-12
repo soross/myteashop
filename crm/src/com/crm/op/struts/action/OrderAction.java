@@ -12,15 +12,17 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.op.po.TCustomer;
-import com.crm.op.service.intf.CustServiceDao;
+import com.crm.op.po.TRegister;
+import com.crm.op.service.intf.OrderServiceDao;
+import com.crm.op.service.intf.RegServiceDao;
 import com.crm.op.struts.form.CustForm;
 import com.crm.page.PageUtil;
 import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
 
-public class CustAction extends DispatchAction{
-	private CustServiceDao custServiceDao;
+public class OrderAction extends DispatchAction{
+	private OrderServiceDao orderServiceDao;
 	
 	/**
 	 * 会员列表
@@ -35,13 +37,13 @@ public class CustAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		CustForm custForm = (CustForm) form;
-		TCustomer cust = new TCustomer();
-		BeanUtils.copyProperties(cust, custForm);
+		RegForm regForm = (RegForm) form;
+		TRegister reg = new TRegister();
+		BeanUtils.copyProperties(reg, regForm);
 		
-		Integer count = this.custServiceDao.getCustCount(cust);
+		Integer count = this.orderServiceDao.getOrderCount(reg);
 		PageUtil pageUtil = new PageUtil(request, count, GlobVar.PAGESIZE_BY_TWENTY_DATA);		
-		List list = this.custServiceDao.getCustList(cust,pageUtil);
+		List list = this.orderServiceDao.getCustList(cust,pageUtil);
 		
 		request.setAttribute("pageUtil", pageUtil);
 		request.setAttribute("custList", list);		
@@ -122,7 +124,7 @@ public class CustAction extends DispatchAction{
 		CustForm custForm = (CustForm) form;
 		
 		Long id = Long.valueOf(request.getParameter("id"));
-		TCustomer cust = this.custServiceDao.getCustByID(id);	
+		TCustomer cust = this.orderServiceDao.getCustByID(id);	
 		BeanUtils.copyProperties(custForm, cust);
 		
 		request.setAttribute("cust", cust);
@@ -181,7 +183,7 @@ public class CustAction extends DispatchAction{
 		TCustomer cust = new TCustomer();
 		BeanUtils.copyProperties(cust, custForm);
 		
-		Boolean bool = this.custServiceDao.deleteCust(cust.getId());
+		Boolean bool = this.orderServiceDao.deleteCust(cust.getId());
 		if (bool) {
 			response.getWriter().write(
 					"<script>alert('会员删除成功!');location.href='"
@@ -259,12 +261,20 @@ public class CustAction extends DispatchAction{
 		return null;
 	}
 
-	public CustServiceDao getCustServiceDao() {
-		return custServiceDao;
+	public OrderServiceDao getOrderServiceDao() {
+		return orderServiceDao;
 	}
 
-	public void setCustServiceDao(CustServiceDao custServiceDao) {
-		this.custServiceDao = custServiceDao;
+	public void setOrderServiceDao(OrderServiceDao orderServiceDao) {
+		this.orderServiceDao = orderServiceDao;
 	}
 
+	public RegServiceDao getRegServiceDao() {
+		return regServiceDao;
+	}
+
+	public void setRegServiceDao(RegServiceDao regServiceDao) {
+		this.regServiceDao = regServiceDao;
+	}
+	
 }

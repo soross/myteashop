@@ -1,42 +1,43 @@
-package com.crm.op.service.intf;
+package com.crm.op.dao.intf;
 
 import java.util.List;
 
 import com.crm.op.po.TCustomer;
+import com.crm.op.po.TOrder;
 import com.crm.page.PageUtil;
 
-public interface CustServiceDao {
+public interface OrderDao {
 	/**
 	 * 取得总记录数
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount();
+	public Integer getOrderCount();
 	
 	/**
-	 * 取得总记录数-条件
+	 * 取得总记录数
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount(TCustomer cust);
+	public Integer getOrderCount(TOrder order);
 
 	/**
 	 * 取得集合
 	 * 
 	 * @return
 	 */
-	public List getCustList(PageUtil pageUtil);
+	public List getOrderList(PageUtil pageUtil);
 	
 	/**
 	 * 取得集合
 	 * 
 	 * @return
 	 */
-	public List getCustList(TCustomer cust, PageUtil pageUtil);
+	public List getOrderList(TOrder order, PageUtil pageUtil);
 
-	public List getCustList();
+	public List getOrderList();
 
-	public TCustomer getCustByID(Long id);
+	public TOrder getOrderByID(Long id);
 
 	/**
 	 * 会员
@@ -44,7 +45,7 @@ public interface CustServiceDao {
 	 * @param cust
 	 * @return
 	 */
-	public Boolean addCust(TCustomer cust);
+	public Boolean addOrder(TOrder order);
 
 	/**
 	 * 取得序列的下一个ID
@@ -54,19 +55,19 @@ public interface CustServiceDao {
 	public Integer getSeqNextValue();
 
 	/**
-	 * 修改会员
+	 * 修改
 	 * 
 	 * @param clientrule
 	 * @param rulelog
 	 * @return
 	 */
-	public Boolean updateCust(TCustomer cust);
+	public Boolean updateOrder(TOrder cust);
 
 	/**
-	 * 删除会员
+	 * 删除
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public Boolean deleteCust(Long id);
+	public Boolean deleteOrder(Long id);
 }

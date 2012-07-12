@@ -56,8 +56,7 @@ public class PageTag extends TagSupport {
 
 		sbf.append("共" + rscount + "条记录  ");
 
-		sbf.append("[第" + currentpage + "页]");
-		sbf.append("[共" + totalpage + "页] ");
+		sbf.append("[第" + currentpage + "/"+totalpage+"页]");
 
 		/*
 		 * 如果是当前页页码是1，则不显示首页，上一页 总页数只有1页，则不显示首页，上一页，末页，下一页

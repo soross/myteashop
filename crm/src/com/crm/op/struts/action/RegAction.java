@@ -12,15 +12,18 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.op.po.TCustomer;
-import com.crm.op.service.intf.CustServiceDao;
+import com.crm.op.po.TRegister;
+import com.crm.op.service.intf.OrderServiceDao;
+import com.crm.op.service.intf.RegServiceDao;
 import com.crm.op.struts.form.CustForm;
+import com.crm.op.struts.form.RegForm;
 import com.crm.page.PageUtil;
 import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
 
-public class CustAction extends DispatchAction{
-	private CustServiceDao custServiceDao;
+public class RegAction extends DispatchAction{
+	private RegServiceDao regServiceDao;
 	
 	/**
 	 * 会员列表
@@ -31,21 +34,21 @@ public class CustAction extends DispatchAction{
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward custList(ActionMapping mapping, ActionForm form,
+	public ActionForward regList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		CustForm custForm = (CustForm) form;
-		TCustomer cust = new TCustomer();
-		BeanUtils.copyProperties(cust, custForm);
+		RegForm regForm = (RegForm) form;
+		TRegister reg = new TRegister();
+		BeanUtils.copyProperties(reg, regForm);
 		
-		Integer count = this.custServiceDao.getCustCount(cust);
+		Integer count = this.regServiceDao.getRegCount(reg);
 		PageUtil pageUtil = new PageUtil(request, count, GlobVar.PAGESIZE_BY_TWENTY_DATA);		
-		List list = this.custServiceDao.getCustList(cust,pageUtil);
+		List list = this.regServiceDao.getRegList(reg,pageUtil);
 		
 		request.setAttribute("pageUtil", pageUtil);
 		request.setAttribute("custList", list);		
-		return new ActionForward("/admin/op/cust/custlist.jsp");
+		return new ActionForward("/admin/op/reg/reglist.jsp");
 	}
 	
 	/**
@@ -66,49 +69,11 @@ public class CustAction extends DispatchAction{
 		//List list = this.deptServiceDao.getDeptList(pageUtil);		
 		//request.setAttribute("deptList", list);
 		
-		return new ActionForward("/admin/op/index.jsp");
-	}
-	/**
-	 * 会员头像Ajax上传
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 */
-	public ActionForward uploadPhoto(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String message = "你已成功上传文件";
-
-		/**String path = ServletActionContext.getRequest().getRealPath("/upload");
-        try {
-            File f = this.getFile();
-            if(this.getFileFileName().endsWith(".exe")){
-                message="对不起,你上传的文件格式不允许!!!";
-                return ERROR;
-            }
-            FileInputStream inputStream = new FileInputStream(f);
-            FileOutputStream outputStream = new FileOutputStream(path + "/"+ this.getFileFileName());
-            byte[] buf = new byte[1024];
-            int length = 0;
-            while ((length = inputStream.read(buf)) != -1) {
-                outputStream.write(buf, 0, length);
-            }
-            inputStream.close();
-            outputStream.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-            message = "对不起,文件上传失败了!!!!";
-        }**/
-		
-		response.getWriter().write(message);
-		return null;
+		return new ActionForward("/admin/op/reg/addreg.jsp");
 	}
 	
 	/**
-	 * 跳转到修改i啊客户页面
+	 * 跳转到修改页面
 	 * 
 	 * @param mapping
 	 * @param form
@@ -119,15 +84,13 @@ public class CustAction extends DispatchAction{
 	public ActionForward toUpdateCust(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		CustForm custForm = (CustForm) form;
+		RegForm regForm = (RegForm) form;
 		
 		Long id = Long.valueOf(request.getParameter("id"));
-		TCustomer cust = this.custServiceDao.getCustByID(id);	
-		BeanUtils.copyProperties(custForm, cust);
-		
-		request.setAttribute("cust", cust);
-		
-		return new ActionForward("/admin/op/cust/updatecust.jsp");
+		TRegister reg = this.regServiceDao.getRegByID(id);	
+		BeanUtils.copyProperties(regForm, reg);
+		request.setAttribute("reg", reg);
+		return new ActionForward("/admin/op/reg/updatereg.jsp");
 	}
 	/**
 	 * 新增部门
@@ -181,7 +144,7 @@ public class CustAction extends DispatchAction{
 		TCustomer cust = new TCustomer();
 		BeanUtils.copyProperties(cust, custForm);
 		
-		Boolean bool = this.custServiceDao.deleteCust(cust.getId());
+		Boolean bool = this.orderServiceDao.deleteCust(cust.getId());
 		if (bool) {
 			response.getWriter().write(
 					"<script>alert('会员删除成功!');location.href='"
@@ -259,12 +222,20 @@ public class CustAction extends DispatchAction{
 		return null;
 	}
 
-	public CustServiceDao getCustServiceDao() {
-		return custServiceDao;
+	public OrderServiceDao getOrderServiceDao() {
+		return orderServiceDao;
 	}
 
-	public void setCustServiceDao(CustServiceDao custServiceDao) {
-		this.custServiceDao = custServiceDao;
+	public void setOrderServiceDao(OrderServiceDao orderServiceDao) {
+		this.orderServiceDao = orderServiceDao;
 	}
 
+	public RegServiceDao getRegServiceDao() {
+		return regServiceDao;
+	}
+
+	public void setRegServiceDao(RegServiceDao regServiceDao) {
+		this.regServiceDao = regServiceDao;
+	}
+	
 }

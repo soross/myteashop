@@ -1,50 +1,51 @@
-package com.crm.op.service.intf;
+package com.crm.op.dao.intf;
 
 import java.util.List;
 
 import com.crm.op.po.TCustomer;
+import com.crm.op.po.TRegister;
 import com.crm.page.PageUtil;
 
-public interface CustServiceDao {
+public interface RegDao {
 	/**
 	 * 取得总记录数
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount();
+	public Integer getRegCount();
 	
 	/**
-	 * 取得总记录数-条件
+	 * 取得总记录数
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount(TCustomer cust);
+	public Integer getRegCount(TRegister reg);
 
 	/**
 	 * 取得集合
 	 * 
 	 * @return
 	 */
-	public List getCustList(PageUtil pageUtil);
+	public List getRegList(PageUtil pageUtil);
 	
 	/**
 	 * 取得集合
 	 * 
 	 * @return
 	 */
-	public List getCustList(TCustomer cust, PageUtil pageUtil);
+	public List getRegList(TRegister reg, PageUtil pageUtil);
 
-	public List getCustList();
+	public List getRegList();
 
-	public TCustomer getCustByID(Long id);
+	public TRegister getRegByID(Long id);
 
 	/**
-	 * 会员
+	 * 新增
 	 * 
 	 * @param cust
 	 * @return
 	 */
-	public Boolean addCust(TCustomer cust);
+	public Boolean addReg(TRegister reg);
 
 	/**
 	 * 取得序列的下一个ID
@@ -60,7 +61,7 @@ public interface CustServiceDao {
 	 * @param rulelog
 	 * @return
 	 */
-	public Boolean updateCust(TCustomer cust);
+	public Boolean updateReg(TRegister reg);
 
 	/**
 	 * 删除会员
@@ -68,5 +69,5 @@ public interface CustServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public Boolean deleteCust(Long id);
+	public Boolean deleteReg(Long id);
 }

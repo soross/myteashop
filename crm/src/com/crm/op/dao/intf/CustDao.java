@@ -13,6 +13,13 @@ public interface CustDao {
 	 * @return
 	 */
 	public Integer getCustCount();
+	
+	/**
+	 * 取得总记录数
+	 * 
+	 * @return
+	 */
+	public Integer getCustCount(TCustomer cust);
 
 	/**
 	 * 取得集合
@@ -20,6 +27,13 @@ public interface CustDao {
 	 * @return
 	 */
 	public List getCustList(PageUtil pageUtil);
+	
+	/**
+	 * 取得集合
+	 * 
+	 * @return
+	 */
+	public List getCustList(TCustomer cust, PageUtil pageUtil);
 
 	public List getCustList();
 

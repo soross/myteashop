@@ -6,7 +6,7 @@ if(isset($_POST[task]) && "addClass"==$_POST[task]){
 		if($_POST[content_type]=='2'){
 			$db->query("insert into boya_course(type_id,class_name,open_time,course_name,class_hour,fee,content_type,content,create_date,open_level) " .
 					"values('$_POST[type_id]','$_POST[collegetype]','$_POST[opentime]','$_POST[zy]','$_POST[xz]','$_POST[fee]'," .
-					"'$_POST[content_type]','$_POST[content]',now(),'$_POST[openlevel]')");
+					"'$_POST[content_type]','".replace($_POST[content])."',now(),'$_POST[openlevel]')");
 			echo "<script>if(confirm('课程新增成功,是否继续新增1?')){location.href='../addclass.php';}else{location.href='../classlist.php';}</script>";
 		}else{
 			//文件保存目录URL
@@ -35,7 +35,7 @@ if(isset($_POST[task]) && "addClass"==$_POST[task]){
 		if($_POST[content_type]=='2'){
 			$db->query("insert into boya_course(type_id,class_name,open_time,course_name,class_hour,fee,content_type,content,create_date) " .
 					"values('$_POST[type_id]','$_POST[classtype]','$_POST[opentime]','$_POST[classname]','$_POST[hour]','$_POST[fee]'," .
-					"'$_POST[content_type]','$_POST[content]',now())");
+					"'$_POST[content_type]','".replace($_POST[content])."',now())");
 			echo "<script>if(confirm('课程新增成功,是否继续新增4?')){location.href='../addclass.php';}else{location.href='../classlist.php';}</script>";
 		}else{
 			//文件保存目录URL
@@ -73,7 +73,7 @@ if(isset($_POST[task]) && "addClass"==$_POST[task]){
 			///111111111111111
 			$db->query("update boya_course set type_id='$_POST[type_id]',class_name='$_POST[collegetype]',path=''," .
 					"open_time='$_POST[opentime]',course_name='$_POST[classname]',class_hour='$_POST[hour]'" .
-					",fee='$_POST[fee]',content_type='$_POST[content_type]',content='$_POST[content]',open_level='$_POST[openlevel]' where id='$_POST[classid]' ");
+					",fee='$_POST[fee]',content_type='$_POST[content_type]',content='".replace($_POST[content])."',open_level='$_POST[openlevel]' where id='$_POST[classid]' ");
 			echo "<script>if(confirm('课程修改成功,是否继续修改?')){location.href='../updateclass.php?task=updateClass&classid=$_POST[classid]';}else{location.href='../classlist.php';}</script>";
 		}else{
 			//文件保存目录URL
@@ -111,7 +111,7 @@ if(isset($_POST[task]) && "addClass"==$_POST[task]){
 			}
 			$db->query("update boya_course set type_id='$_POST[type_id]',class_name='$_POST[classtype]',path=''," .
 					"open_time='$_POST[opentime]',course_name='$_POST[classname]',class_hour='$_POST[hour]'," .
-					"fee='$_POST[fee]',content_type='$_POST[content_type]',content='$_POST[content]' where id='$_POST[classid]' ");
+					"fee='$_POST[fee]',content_type='$_POST[content_type]',content='".replace($_POST[content])."' where id='$_POST[classid]' ");
 			echo "<script>if(confirm('课程修改成功,是否继续修改?')){location.href='../updateclass.php?task=updateClass&classid=$_POST[classid]';}else{location.href='../classlist.php';}</script>";
 		}else{
 			//文件保存目录URL
@@ -179,7 +179,7 @@ else if(isset($_GET[task]) &&"refashClass"==$_GET[task]){
 
 //regFee
 else if(isset($_POST[task]) && "regFee"==$_POST[task]){
-	$db->query("update boya_reg_user set money='$_POST[fee]',pay_date=now(),input_user='".$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']."',remark='$_POST[content]' where id='$_POST[regid]' ");
+	$db->query("update boya_reg_user set money='$_POST[fee]',pay_date=now(),input_user='".$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION']."',remark='".replace($_POST[content])."' where id='$_POST[regid]' ");
 	echo "<script>alert('费用登记成功?');location.href='../reguserlist.php';</script>";
 }
 

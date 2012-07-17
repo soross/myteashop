@@ -7,7 +7,7 @@ require_once("action/page.class.aams.php");
 
 $pagesize = 12;//一页显示多少条
 //分页
-$queryTotal = $db->query("select id from news");
+$queryTotal = $db->query("select id from product");
 $total = $db->db_num_rows($queryTotal);
 pageft($total, $pagesize);
 if ($firstcount < 0) $firstcount = 0;

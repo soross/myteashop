@@ -86,9 +86,9 @@ $pagenav='<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <td width="62" height="22" valign="middle"><div align="right">
 								<A href='.$url.'=1><img src="images/tab/first.gif" width="37" height="15" border="0"/></A></div></td>
 							  <td width="50" height="22" valign="middle"><div align="right">
-								<a href='.$url.'='.($page-1>0?$page-1:1).'><img src="images/tab/back.gif" width="43" height="15" border="0"/></a></div></td>
+								<a href='.$url.'='.((($page-1)>0)?$page-1:1).'><img src="images/tab/back.gif" width="43" height="15" border="0"/></a></div></td>
 							  <td width="54" height="22" valign="middle"><div align="right">
-								<a href='.$url.'='.($page+1>$lastpg?$lastpg:$page+1).'><img src="images/tab/next.gif" width="43" height="15" border="0" /></a></div></td>
+								<a href='.$url.'='.((($page+1)>$lastpg)?$lastpg:$page+1).'><img src="images/tab/next.gif" width="43" height="15" border="0" /></a></div></td>
 							  <td width="49" height="22" valign="middle"><div align="right">
 								<A href='.$url.'='.$lastpg.'><img src="images/tab/last.gif" width="37" height="15" border="0" /></div></td>
 							</tr>

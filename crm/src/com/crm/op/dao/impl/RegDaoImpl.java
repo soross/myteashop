@@ -10,7 +10,6 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.op.dao.intf.RegDao;
-import com.crm.op.po.TCustomer;
 import com.crm.op.po.TRegister;
 import com.crm.page.PageUtil;
 
@@ -92,7 +91,7 @@ public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
 				public Object doInHibernate(Session session)
 						throws HibernateException, SQLException {
 					StringBuffer sbf = new StringBuffer(
-					"select count(*) from TRegister reg where 1=1");
+					"from TRegister reg where 1=1");
 					if (null != obj.getCustName()
 							&& !"".equals(obj.getCustName())) {
 						sbf.append(" and reg.custname=:custname");

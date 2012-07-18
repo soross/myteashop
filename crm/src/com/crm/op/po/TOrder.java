@@ -11,7 +11,6 @@ import java.util.Date;
 public class TOrder implements java.io.Serializable {
 
 	// Fields
-
 	private Long id;
 	private Long custId;
 	private Date orderTime;
@@ -27,8 +26,9 @@ public class TOrder implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TOrder(Long custId, Date orderTime, Long doctor, String mobile,
-			String state, Date createDate) {
+	public TOrder(Long id, Long custId, Date orderTime, Long doctor,
+			String mobile, String state, Date createDate) {
+		this.id = id;
 		this.custId = custId;
 		this.orderTime = orderTime;
 		this.doctor = doctor;

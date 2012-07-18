@@ -45,9 +45,6 @@ public class OrderServiceDaoImpl implements OrderServiceDao{
 		return orderDao.getOrderList(obj,pageUtil);
 	}
 
-	public List getOrderList(){
-		return orderDao.getOrderList();
-	}
 
 	public TOrder getOrderByID(Long id){
 		return orderDao.getOrderByID(id);

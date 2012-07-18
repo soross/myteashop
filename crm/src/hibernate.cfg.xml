@@ -68,6 +68,7 @@
 		<mapping resource="com/crm/op/po/TCustomer.hbm.xml" />
 		<mapping resource="com/crm/op/po/TOrder.hbm.xml" />
 		<mapping resource="com/crm/op/po/TRegister.hbm.xml" />
+		<mapping resource="com/crm/op/po/TRegisterFee.hbm.xml" />
 
 
 

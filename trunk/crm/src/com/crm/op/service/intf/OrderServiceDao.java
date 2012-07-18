@@ -2,7 +2,6 @@ package com.crm.op.service.intf;
 
 import java.util.List;
 
-import com.crm.op.po.TCustomer;
 import com.crm.op.po.TOrder;
 import com.crm.page.PageUtil;
 
@@ -35,7 +34,6 @@ public interface OrderServiceDao {
 	 */
 	public List getOrderList(TOrder order, PageUtil pageUtil);
 
-	public List getOrderList();
 
 	public TOrder getOrderByID(Long id);
 

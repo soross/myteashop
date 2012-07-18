@@ -22,8 +22,7 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
 	}
 
 	public Boolean deleteOrder(Long id) {
-		TOrder obj = (TOrder) this.getHibernateTemplate().get(
-				TOrder.class, id);
+		TOrder obj = (TOrder) this.getHibernateTemplate().get(TOrder.class, id);
 		this.getHibernateTemplate().delete(obj);
 		return true;
 	}
@@ -49,13 +48,15 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
 						StringBuffer sbf = new StringBuffer(
 								"select count(*) from TOrder order where 1=1");
 						if (null != order.getCustId()
-								&& !"".equals(order.getCustId())) {
+								&& !"".equals(order.getCustId())
+								&& 0 != order.getCustId()) {
 							sbf.append(" and order.custId=:custId");
 						}
-						
+
 						Query query = session.createQuery(sbf.toString());
 						if (null != order.getCustId()
-								&& !"".equals(order.getCustId())) {
+								&& !"".equals(order.getCustId())
+								&& 0 != order.getCustId()) {
 							query.setLong("custId", order.getCustId());
 						}
 						// List list = (List) query.list();
@@ -80,39 +81,30 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
 
 	public List getOrderList(final TOrder order, final PageUtil pageUtil) {
 		return (List) this.getHibernateTemplate().execute(
-			new HibernateCallback() {
-				public Object doInHibernate(Session session)
-						throws HibernateException, SQLException {
-					StringBuffer sbf = new StringBuffer(
-						"select count(*) from TOrder order where 1=1");
-					if (null != order.getCustId()
-							&& !"".equals(order.getCustId())) {
-						sbf.append(" and order.custId=:custId");
-					}
-					
-					Query query = session.createQuery(sbf.toString());
-					if (null != order.getCustId()
-							&& !"".equals(order.getCustId())) {
-						query.setLong("custId", order.getCustId());
-					}
-					query.setFirstResult(pageUtil.pastart());
-					query.setMaxResults(pageUtil.getPagesize());
-					return query.list();
-				}
-			});
-	}
-
-	public List getOrderList() {
-		return (List) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "from TOrder";
-						Query query = session.createQuery(hql);
+						StringBuffer sbf = new StringBuffer(
+								"from TOrder order where 1=1");
+						if (null != order.getCustId()
+								&& !"".equals(order.getCustId())
+								&& 0 != order.getCustId()) {
+							sbf.append(" and order.custId=:custId");
+						}
+
+						Query query = session.createQuery(sbf.toString());
+						if (null != order.getCustId()
+								&& !"".equals(order.getCustId())
+								&& 0 != order.getCustId()) {
+							query.setLong("custId", order.getCustId());
+						}
+						query.setFirstResult(pageUtil.pastart());
+						query.setMaxResults(pageUtil.getPagesize());
 						return query.list();
 					}
 				});
 	}
+
 
 	public TOrder getOrderByID(Long id) {
 		return (TOrder) this.getHibernateTemplate().get(TOrder.class, id);

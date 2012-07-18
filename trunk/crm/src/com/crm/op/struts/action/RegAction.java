@@ -1,5 +1,6 @@
 package com.crm.op.struts.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,9 @@ import org.apache.struts.actions.DispatchAction;
 
 import com.crm.op.po.TCustomer;
 import com.crm.op.po.TRegister;
+import com.crm.op.po.TRegisterFee;
 import com.crm.op.service.intf.OrderServiceDao;
+import com.crm.op.service.intf.RegFeeServiceDao;
 import com.crm.op.service.intf.RegServiceDao;
 import com.crm.op.struts.form.CustForm;
 import com.crm.op.struts.form.RegForm;
@@ -22,11 +25,12 @@ import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
 
-public class RegAction extends DispatchAction{
+public class RegAction extends DispatchAction {
 	private RegServiceDao regServiceDao;
-	
+	private RegFeeServiceDao regFeeServiceDao;
+
 	/**
-	 * 会员列表
+	 * 列表
 	 * 
 	 * @param mapping
 	 * @param form
@@ -37,20 +41,21 @@ public class RegAction extends DispatchAction{
 	public ActionForward regList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		RegForm regForm = (RegForm) form;
 		TRegister reg = new TRegister();
 		BeanUtils.copyProperties(reg, regForm);
-		
+
 		Integer count = this.regServiceDao.getRegCount(reg);
-		PageUtil pageUtil = new PageUtil(request, count, GlobVar.PAGESIZE_BY_TWENTY_DATA);		
-		List list = this.regServiceDao.getRegList(reg,pageUtil);
-		
+		PageUtil pageUtil = new PageUtil(request, count,
+				GlobVar.PAGESIZE_BY_TWENTY_DATA);
+		List list = this.regServiceDao.getRegList(reg, pageUtil);
+
 		request.setAttribute("pageUtil", pageUtil);
-		request.setAttribute("custList", list);		
+		request.setAttribute("regList", list);
 		return new ActionForward("/admin/op/reg/reglist.jsp");
 	}
-	
+
 	/**
 	 * 跳转到新增客户页面
 	 * 
@@ -60,18 +65,18 @@ public class RegAction extends DispatchAction{
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddCust(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddReg(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
-		//Integer count = this.deptServiceDao.getDeptCount();
-		//PageUtil pageUtil = new PageUtil(request, count, count);		
-		//List list = this.deptServiceDao.getDeptList(pageUtil);		
-		//request.setAttribute("deptList", list);
-		
+
+		// Integer count = this.deptServiceDao.getDeptCount();
+		// PageUtil pageUtil = new PageUtil(request, count, count);
+		// List list = this.deptServiceDao.getDeptList(pageUtil);
+		// request.setAttribute("deptList", list);
+
 		return new ActionForward("/admin/op/reg/addreg.jsp");
 	}
-	
+
 	/**
 	 * 跳转到修改页面
 	 * 
@@ -85,15 +90,16 @@ public class RegAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RegForm regForm = (RegForm) form;
-		
+
 		Long id = Long.valueOf(request.getParameter("id"));
-		TRegister reg = this.regServiceDao.getRegByID(id);	
+		TRegister reg = this.regServiceDao.getRegByID(id);
 		BeanUtils.copyProperties(regForm, reg);
 		request.setAttribute("reg", reg);
 		return new ActionForward("/admin/op/reg/updatereg.jsp");
 	}
+
 	/**
-	 * 新增部门
+	 * 新增
 	 * 
 	 * @param mapping
 	 * @param form
@@ -101,33 +107,37 @@ public class RegAction extends DispatchAction{
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addDept(ActionMapping mapping, ActionForm form,
+	public ActionForward addReg(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
-				
-		//Boolean bool = this.deptServiceDao.addDept(dept);
-		boolean bool = false;
+		RegForm regForm = (RegForm) form;
+		TRegister reg = new TRegister();
+		BeanUtils.copyProperties(reg, regForm);
+		reg.setCreateDate(new Date());
+
+		Boolean bool = this.regServiceDao.addReg(reg);
 		if (bool) {
-			response.getWriter().write(
-					"<script>if(confirm('科室部门新增成功,是否继续新增?')){location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=toAddDept';}else{location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';}</script>");
+			response
+					.getWriter()
+					.write(
+							"<script>if(confirm('挂号成功,是否继续操作挂号?')){location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddReg';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=regList';}</script>");
 		} else {
-			response.getWriter().write(
-					"<script>if(confirm('科室部门新增失败,是否重试?')){location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=toAddDept';}else{location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';}</script>");
+			response
+					.getWriter()
+					.write(
+							"<script>if(confirm('挂号失败,是否重试?')){location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddReg';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=regList';}</script>");
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 删除客户
 	 * 
@@ -137,14 +147,14 @@ public class RegAction extends DispatchAction{
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteDept(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteReg(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		CustForm custForm = (CustForm) form;
-		TCustomer cust = new TCustomer();
-		BeanUtils.copyProperties(cust, custForm);
-		
-		Boolean bool = this.orderServiceDao.deleteCust(cust.getId());
+		RegForm regForm = (RegForm) form;
+		TRegister reg = new TRegister();
+		BeanUtils.copyProperties(reg, regForm);
+
+		Boolean bool = this.regServiceDao.deleteReg(reg.getId());
 		if (bool) {
 			response.getWriter().write(
 					"<script>alert('会员删除成功!');location.href='"
@@ -160,75 +170,56 @@ public class RegAction extends DispatchAction{
 	}
 	
 	/**
-	 * 跳转到修改部门
-	 * 
+	 * 划价
 	 * @param mapping
 	 * @param form
 	 * @param request
 	 * @param response
-	 * @return ActionForward
+	 * @return
+	 * @throws Exception
 	 */
-	public ActionForward  toUpdateDept(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-	throws Exception {
-		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
-		
-		//TDept info = this.deptServiceDao.getDeptByID(dept.getId());
-		//request.setAttribute("deptInfo", info);
-		
-		//Integer count = this.deptServiceDao.getDeptCount();
-		//PageUtil pageUtil = new PageUtil(request, count, count);
-		///List list = this.deptServiceDao.getDeptList(pageUtil);
-		//request.setAttribute("deptList", list);
-		
-		return new ActionForward("/admin/sysdo/dept/updatedept.jsp");
+	public ActionForward regFeeListByPrice(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
+
+		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
+		PageUtil pageUtil = new PageUtil(request, count,
+				GlobVar.PAGESIZE_BY_TWENTY_DATA);
+		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
+		request.setAttribute("pageUtil", pageUtil);
+		request.setAttribute("regFeeList", list);
+		return new ActionForward("/admin/op/regfee/pricelist.jsp");
 	}
 	
+	
 	/**
-	 * 修改部门
-	 * 
+	 * 收费
 	 * @param mapping
 	 * @param form
 	 * @param request
 	 * @param response
-	 * @return ActionForward
+	 * @return
+	 * @throws Exception
 	 */
-	public ActionForward  updateDept(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
-		
-		//boolean bool = this.deptServiceDao.updateDept(dept);
-		boolean bool = false;
-		if (bool) {
-			response.getWriter().write(
-					"<script>if(confirm('科室部门更新成功,是否继续更新?')){location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=toUpdateDept&id="+dept.getId()+"';}else{location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';}</script>");
-		} else {
-			response.getWriter().write(
-					"<script>if(confirm('科室部门更新失败,是否重试?')){location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=toUpdateDept&id="+dept.getId()+"';}else{location.href='"
-							+ request.getContextPath()
-							+ "/admin/dept.do?task=deptList';}</script>");
-		}
-		
-		return null;
-	}
+	public ActionForward regFeeListByCharge(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
 
-	public OrderServiceDao getOrderServiceDao() {
-		return orderServiceDao;
+		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
+		PageUtil pageUtil = new PageUtil(request, count,
+				GlobVar.PAGESIZE_BY_TWENTY_DATA);
+		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
+		request.setAttribute("pageUtil", pageUtil);
+		request.setAttribute("regFeeList", list);
+		return new ActionForward("/admin/op/regfee/chargelist.jsp");
 	}
-
-	public void setOrderServiceDao(OrderServiceDao orderServiceDao) {
-		this.orderServiceDao = orderServiceDao;
-	}
+	
 
 	public RegServiceDao getRegServiceDao() {
 		return regServiceDao;
@@ -237,5 +228,13 @@ public class RegAction extends DispatchAction{
 	public void setRegServiceDao(RegServiceDao regServiceDao) {
 		this.regServiceDao = regServiceDao;
 	}
-	
+
+	public RegFeeServiceDao getRegFeeServiceDao() {
+		return regFeeServiceDao;
+	}
+
+	public void setRegFeeServiceDao(RegFeeServiceDao regFeeServiceDao) {
+		this.regFeeServiceDao = regFeeServiceDao;
+	}
+
 }

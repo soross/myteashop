@@ -35,8 +35,6 @@ public interface OrderDao {
 	 */
 	public List getOrderList(TOrder order, PageUtil pageUtil);
 
-	public List getOrderList();
-
 	public TOrder getOrderByID(Long id);
 
 	/**

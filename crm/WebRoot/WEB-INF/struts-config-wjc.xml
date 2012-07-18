@@ -10,6 +10,8 @@
 	<form-bean name="deptForm" type="com.crm.sysdo.struts.form.DeptForm" />
 	<form-bean name="sickbedForm" type="com.crm.sysdo.struts.form.SickbedForm" />
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
+	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
+	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
   </form-beans>
 
   <global-exceptions />

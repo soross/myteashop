@@ -156,4 +156,49 @@
 		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- 预约 -->
+	<bean name="orderDao" class="com.crm.op.dao.impl.OrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="orderServiceDao"
+		class="com.crm.op.service.impl.OrderServiceDaoImpl">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean>
+	<bean name="orderServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="orderServiceDao"></property>
+	</bean>	
+	<bean name="/admin/order"
+		class="com.crm.op.struts.action.OrderAction">
+		<property name="orderServiceDao" ref="orderServiceDaoProxy"></property>
+	</bean>
+	
+	<!-- 挂号 -->
+	<!-- 挂号service -->
+	<bean name="regDao" class="com.crm.op.dao.impl.RegDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="regServiceDao"
+		class="com.crm.op.service.impl.RegServiceDaoImpl">
+		<property name="regDao" ref="regDao"></property>
+	</bean>
+	<bean name="regServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="regServiceDao"></property>
+	</bean>
+	<!-- 挂号划价收费service -->
+	<bean name="regFeeDao" class="com.crm.op.dao.impl.RegFeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="regFeeServiceDao"
+		class="com.crm.op.service.impl.RegFeeServiceDaoImpl">
+		<property name="regFeeDao" ref="regFeeDao"></property>
+	</bean>
+	<bean name="regFeeServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="regFeeServiceDao"></property>
+	</bean>
+	<!-- action -->
+	<bean name="/admin/reg"
+		class="com.crm.op.struts.action.RegAction">
+		<property name="regServiceDao" ref="regServiceDaoProxy"></property>
+		<property name="regFeeServiceDao" ref="regFeeServiceDaoProxy"></property>
+	</bean>
 </beans>

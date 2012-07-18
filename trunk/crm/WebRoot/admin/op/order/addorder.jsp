@@ -18,60 +18,67 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				系统服务操作
+				预约管理
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>部门选项：</b><a
-					href="${pageContext.request.contextPath}/admin/dept.do?task=deptList">部门首页</a>
+				<b>预约选项：</b><a
+					href="${pageContext.request.contextPath}/admin/order.do?task=orderList">预约首页</a>
 				|
 				<a
-					href="${pageContext.request.contextPath}/admin/dept.do?task=toAddDept">添加部门</a>
+					href="${pageContext.request.contextPath}/admin/order.do?task=toAddOrder">新增预约</a>
 				| [
 				<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/dept" method="post">
+	<html:form action="/admin/order" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加部门
+					新增预约
 				</th>
 			</tr>
 			<tr>
 				<td align="right">
-					科室部门名称：
+					客户名称：
 				</td>
 				<td colspan="3">
-					<html:text property="deptName"  size="30"  styleId="txt"></html:text>
+					<html:text property="custId"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					父级科室部门:
+					预约时间：
 				</td>
 				<td colspan="3">
-					<html:select property="pid">
-						<option value="-1">
-							父级
-						</option>
-						<logic:iterate id="dept" name="deptList">
-							<option value="${dept.id}">
-								${dept.deptName}
-							</option>
-						</logic:iterate>
-					</html:select>
+					<html:text property="order"  size="30"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					手机号码：
+				</td>
+				<td colspan="3">
+					<html:text property="mobile"  size="30"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					预约医生:
+				</td>
+				<td colspan="3">
+					<html:text property="doctor"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addDept">
+					<input type="hidden" name="task" value="addOrder">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 保 存 " class="inputs" />
+					<input type="submit" name="submit" value=" 预 约 " class="inputs" />
 				</td>
 			</tr>
 		</table>

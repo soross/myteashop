@@ -80,7 +80,7 @@
 </tr>
 <tr>
   <th height=25>出生日期</th>
-  <td><html:text property="birthday"  size="13"  /><html:text property="old" size="5"/>岁</td>
+  <td><html:text property="birthday"  size="13" onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});" styleId="brithday"  styleClass="Wdate" readonly="true" /><html:text property="old" onfocus="javascript:putOld(this);"  size="5"/>岁</td>
 	  
   <th height=25>体重</th>
   <td><html:text property="weight"  size="5" />Kg</td>
@@ -356,5 +356,30 @@ $("#divSCA").OpenDiv();
 function closeDiv() { 
 $("#divSCA").CloseDiv(); 
 } 
+</script>
+<!--日历控件 -->
+<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/admin/js/My97DatePicker/WdatePicker.js"></script>
+<!-- 年龄计算 -->
+<script language="javascript">
+function putOld(obj){
+	try{
+		var y = (document.getElementById("brithday").value).substring(0,4);
+		var date = new Date();
+		var ny = date.getFullYear();
+		if((parseInt(ny-y+1))>0){
+			obj.value=(ny-y+1);
+		}else{
+			obj.value="";
+			document.getElementById("brithday").value="";
+			document.getElementById("brithday").focus();
+			alert('出生日期填写非法!');
+		}
+	}catch(e){
+		obj.value="";		
+		document.getElementById("brithday").value="";
+		document.getElementById("brithday").focus();
+		alert('出生日期填写非法!');
+	}
+}
 </script>
 </html:html>

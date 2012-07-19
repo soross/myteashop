@@ -52,7 +52,7 @@
   <td style="width:120px;"><html:text property="code"  size="20" maxlength="30" /> </td>
   <th style="width:80px;" height=25>姓名</th>
   <td style="width:120px;"  colspan="3"> <html:text property="username"  size="20"  /> </td>
-  <th style="width:120px;" height=25>简码</th>
+  <th style="width:100px;" height="25px">简码</th>
   <td colspan="3"><html:text property="nameCode"  size="20"/> </td>
 </tr>
 
@@ -68,19 +68,18 @@
 	  	<html:option value="0">未婚</html:option>
 	  	<html:option value="1">已婚</html:option>
 	  </html:select>
-		</td>
-			<th height="25">性别</th>
-	 	<td>
-	  <html:select property="garden">
+	</td>
+	<th height="25">性别</th>
+	<td>
+	 <html:select property="garden">
 	  	<html:option value="0">男</html:option>
 	  	<html:option value="1">女</html:option>
 	  </html:select>
 	 	</td>
-
 </tr>
 <tr>
   <th height=25>出生日期</th>
-  <td><html:text property="birthday"  size="13"  /><html:text property="old" size="5"/>岁</td>
+  <td><html:text property="birthday"  size="13" onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});" styleId="brithday"  styleClass="Wdate" readonly="true" /><html:text onfocus="javascript:putOld(this);" property="old" size="5"/>岁</td>
 	  
   <th height=25>体重</th>
   <td><html:text property="weight"  size="5" />Kg</td>
@@ -108,7 +107,7 @@
   <th height=25>过敏信息</th>
   <td> <html:text property="allergyInfo"  size="20" /> </td>
   <th height=25>出生地址</th>
-  <td  colspan="3"> <html:text property="birthAdd"  size="20" /> </td>
+  <td  colspan="3"> <html:text property="birthAdd"  size="20"  /> </td>
   <th height=25>出生地邮编</th>
   <td  colspan="3"> <html:text property="birthZip"  size="20" /> </td>
 </tr>
@@ -217,11 +216,11 @@
 	<table>
 	<tr>
 	  <th height=25>持卡人</th>
-	  <td> <html:text property="cardUser"  size="20" /> </td>
+	  <td><html:text property="cardUser"  size="20" /> <br></td>
 	</tr>
 	<tr>
 	  <th height=25>当前余额</th>
-	  <td><html:text property="balance"  size="20" /></td>
+	  <td><html:text property="balance"  size="20" /><br></td>
 	</tr>
 	<tr>
 	  <th height=25>&nbsp;</th>
@@ -356,5 +355,31 @@ $("#divSCA").OpenDiv();
 function closeDiv() { 
 $("#divSCA").CloseDiv(); 
 } 
+</script>
+
+<!--日历控件 -->
+<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/admin/js/My97DatePicker/WdatePicker.js"></script>
+<!-- 年龄计算 -->
+<script language="javascript">
+function putOld(obj){
+	try{
+		var y = (document.getElementById("brithday").value).substring(0,4);
+		var date = new Date();
+		var ny = date.getFullYear();
+		if((parseInt(ny-y+1))>0){
+			obj.value=(ny-y+1);
+		}else{
+			obj.value="";
+			document.getElementById("brithday").value="";
+			document.getElementById("brithday").focus();
+			alert('出生日期填写非法!');
+		}
+	}catch(e){
+		obj.value="";		
+		document.getElementById("brithday").value="";
+		document.getElementById("brithday").focus();
+		alert('出生日期填写非法!');
+	}
+}
 </script>
 </html:html>

@@ -12,9 +12,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.crm.op.dao.intf.CustDao;
 import com.crm.op.po.TCustomer;
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DeptDao;
-import com.crm.sysdo.po.TDept;
-import com.crm.tool.StringUtil;
 
 public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 

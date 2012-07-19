@@ -114,7 +114,7 @@ public class OrderAction extends DispatchAction {
 		TOrder order = new TOrder();
 		BeanUtils.copyProperties(order, orderForm);
 		
-		order.setOrderTime(DateUtil.StringToFullDate(orderForm.getOrder()));
+		order.setOrderTime(DateUtil.StringToDate_YMDHMS(orderForm.getOrder()));
 		order.setCreateDate(new Date());
 		order.setState("ÐÂÔö");
 		

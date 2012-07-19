@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-	public static Date StringToFullDate(String date){
+	public static Date StringToDate_YMDHMS(String date){
 		Date newDate = null;
 		try {
 			newDate = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date));
@@ -16,7 +16,7 @@ public class DateUtil {
 		return newDate;
 	}
 	
-	public static Date StringToShortDate(String date){
+	public static Date StringToDate_YMD(String date){
 		Date newDate = null;
 		try {
 			newDate = (new SimpleDateFormat("yyyy-MM-dd").parse(date));
@@ -25,5 +25,15 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 		return newDate;
+	}
+	
+	public static String DateToStringBy_YMD(Date date){
+		String str = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		return str;
+	}
+	
+	public static String DateToStringBy_YMDHMS(Date date){
+		String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+		return str;
 	}
 }

@@ -26,7 +26,7 @@ public class CustForm  extends ActionForm implements java.io.Serializable {
 	private String nation;
 	private String marry;
 	private String garden;
-	private Date birthday;
+	private String birthday;
 	private Long old;
 	private Long weight;
 	private Long height;
@@ -70,7 +70,7 @@ public class CustForm  extends ActionForm implements java.io.Serializable {
 	/** full constructor */
 	public CustForm(String code, String username, String nameCode,
 			String country, String nation, String marry, String garden,
-			Date birthday, Long old, Long weight, Long height, String college,
+			String birthday, Long old, Long weight, Long height, String college,
 			String work, String workUnit, String workCode, String allergyInfo,
 			String birthAdd, String birthZip, String idCode, String idAdd,
 			String idZip, String mobile, String liveAdd, String liveZip,
@@ -188,11 +188,11 @@ public class CustForm  extends ActionForm implements java.io.Serializable {
 		this.garden = garden;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return this.birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

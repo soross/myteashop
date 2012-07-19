@@ -18,6 +18,7 @@ import com.crm.page.PageUtil;
 import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
+import com.crm.tool.DateUtil;
 
 public class CustAction extends DispatchAction{
 	private CustServiceDao custServiceDao;
@@ -124,6 +125,7 @@ public class CustAction extends DispatchAction{
 		Long id = Long.valueOf(request.getParameter("id"));
 		TCustomer cust = this.custServiceDao.getCustByID(id);	
 		BeanUtils.copyProperties(custForm, cust);
+		custForm.setBirthday(DateUtil.DateToStringBy_YMD(cust.getBirthday()));
 		
 		request.setAttribute("cust", cust);
 		

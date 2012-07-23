@@ -220,6 +220,42 @@ public class RegAction extends DispatchAction {
 		return new ActionForward("/admin/op/regfee/chargelist.jsp");
 	}
 	
+	/**
+	 * 新增收费
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward toAddRegFeeByCharge(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
+
+		return new ActionForward("/admin/op/regfee/addcharge.jsp");
+	}
+	
+	/**
+	 * 新增划价
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward toAddRegFeeByPrice(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
+		return new ActionForward("/admin/op/regfee/addprice.jsp");
+	}
 
 	public RegServiceDao getRegServiceDao() {
 		return regServiceDao;

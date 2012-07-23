@@ -1,12 +1,12 @@
-package com.crm.pub.service.dao.impl;
+package com.crm.sysdo.service.impl;
 
 
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.pub.dao.inf.DataDao;
-import com.crm.pub.po.TData;
-import com.crm.pub.service.dao.inf.DataServiceDao;
+import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.po.TData;
+import com.crm.sysdo.service.inf.DataServiceDao;
 
 /**
  * Êý×Ö×Öµä²Ù×÷Service
@@ -52,16 +52,6 @@ public class DataServiceDaoImpl implements DataServiceDao {
 	 * @return
 	 */
 	public Boolean updateData(TData data){
-		TData getData= dataDao.seachData(data.getId());
-		if(data.getName()==null || "".equals(data.getName())){
-			data.setName(getData.getName());
-		}
-		if(data.getPid()==null){
-			data.setPid(getData.getPid());
-		}
-		if(data.getTrade()==null || "".equals(data.getTrade())){
-			data.setTrade(getData.getTrade());
-		}
 		return dataDao.updateData(data);
 	}
 	

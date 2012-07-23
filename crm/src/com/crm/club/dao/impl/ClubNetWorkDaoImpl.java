@@ -3,7 +3,6 @@ package com.crm.club.dao.impl;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -12,10 +11,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.club.dao.inf.ClubNetWorkDao;
 import com.crm.club.po.ClubNetInfo;
-import com.crm.group.po.Groups;
 import com.crm.pub.GlobVar;
-import com.crm.pub.po.TData;
-import com.crm.pub.po.TRole;
+import com.crm.sysdo.po.TData;
 
 public class ClubNetWorkDaoImpl extends HibernateDaoSupport implements
 		ClubNetWorkDao {

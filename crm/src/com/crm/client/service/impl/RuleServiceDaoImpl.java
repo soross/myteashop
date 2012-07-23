@@ -8,7 +8,7 @@ import com.crm.client.po.TRuleexp;
 import com.crm.client.po.TRulelog;
 import com.crm.client.service.inf.RuleServiceDao;
 import com.crm.page.PageUtil;
-import com.crm.pub.dao.inf.DataDao;
+import com.crm.sysdo.dao.inf.DataDao;
 
 public class RuleServiceDaoImpl implements RuleServiceDao {
 	

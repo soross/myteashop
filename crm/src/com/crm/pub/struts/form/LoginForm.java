@@ -46,7 +46,10 @@ public class LoginForm extends ActionForm {
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		//定义页面错误消息
-		ActionErrors errors = new ActionErrors();	
+		ActionErrors errors = new ActionErrors();
+		if("exit".equalsIgnoreCase(request.getParameter("task"))){
+			return errors;
+		}
 		Object user = request.getSession().getAttribute("user");
 		if(null==user){
 			if(this.userId != null && !"".equals(this.userId)){

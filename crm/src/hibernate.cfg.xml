@@ -27,7 +27,6 @@
 		</property>
 		<mapping resource="com/crm/pub/po/TUser.hbm.xml" />
 		<mapping resource="com/crm/pub/po/TPower.hbm.xml" />
-		<mapping resource="com/crm/pub/po/TData.hbm.xml" />
 		<mapping resource="com/crm/pub/po/TRole.hbm.xml" />
 		<mapping resource="com/crm/club/po/ClubNetInfo.hbm.xml" />
 		<mapping resource="com/crm/score/po/TChange.hbm.xml" />
@@ -65,6 +64,7 @@
 		<mapping resource="com/crm/client/po/TOperlog.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TDept.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TSickbed.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TData.hbm.xml" />
 		<mapping resource="com/crm/op/po/TCustomer.hbm.xml" />
 		<mapping resource="com/crm/op/po/TOrder.hbm.xml" />
 		<mapping resource="com/crm/op/po/TRegister.hbm.xml" />

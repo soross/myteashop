@@ -14,9 +14,9 @@ import com.crm.client.service.inf.ClientServiceDao;
 import com.crm.group.po.VipCity;
 import com.crm.group.po.VipProvince;
 import com.crm.page.PageUtil;
-import com.crm.pub.dao.inf.DataDao;
 import com.crm.pub.dao.inf.UserDao;
 import com.crm.pub.dao.inf.VipDao;
+import com.crm.sysdo.dao.inf.DataDao;
 
 public class ClientServiceDaoImpl implements ClientServiceDao {
 	

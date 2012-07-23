@@ -1,4 +1,4 @@
-package com.crm.pub.dao.impl;
+package com.crm.sysdo.dao.impl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
-import com.crm.pub.dao.inf.DataDao;
-import com.crm.pub.po.TData;
+import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.po.TData;
 /**
  * Êý×Ö×Öµä²Ù×÷Inf
  * 

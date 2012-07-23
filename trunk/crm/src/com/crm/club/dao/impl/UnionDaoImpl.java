@@ -18,7 +18,7 @@ import com.crm.club.dao.inf.UnionDao;
 import com.crm.club.po.UnionBinfo;
 import com.crm.club.po.UnionSlog;
 import com.crm.page.PageUtil;
-import com.crm.pub.po.TData;
+import com.crm.sysdo.po.TData;
 
 public class UnionDaoImpl extends HibernateDaoSupport implements UnionDao {
 	/**

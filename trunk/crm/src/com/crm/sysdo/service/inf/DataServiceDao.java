@@ -1,20 +1,21 @@
-package com.crm.pub.dao.inf;
+package com.crm.sysdo.service.inf;
 
 
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.pub.po.TData;
+import com.crm.sysdo.po.TData;
 
 /**
- * 数字字典操作Inf
+ * 数字字典操作Service
  * 
  * @author wjc
  * 
  * 10.22 am
  *
  */
-public interface DataDao {
+public interface DataServiceDao {
+	
 	/**
 	 * 取得总记录数
 	 * @return
@@ -63,7 +64,7 @@ public interface DataDao {
 	
 	/**
 	 * 根据小类查询父类对象
-	 * @param id
+	 * 
 	 * @return
 	 */
 	public List searchParentData(PageUtil pageUtil);
@@ -74,4 +75,5 @@ public interface DataDao {
 	 * @return
 	 */
 	public List searchPageData(Long pid);
+
 }

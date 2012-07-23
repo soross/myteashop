@@ -9,6 +9,7 @@
     <form-bean name="businessForm" type="com.crm.client.struts.form.BusinessForm" />
 	<form-bean name="deptForm" type="com.crm.sysdo.struts.form.DeptForm" />
 	<form-bean name="sickbedForm" type="com.crm.sysdo.struts.form.SickbedForm" />
+	<form-bean name="dataForm" type="com.crm.sysdo.struts.form.DataForm" />
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
 	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
@@ -84,8 +85,17 @@
       path="/admin/order"
       scope="request"
       type="com.crm.op.struts.action.OrderAction" />  
-
+      
+	<action
+      attribute="dataForm"
+      input="/form/data.jsp"
+      name="dataForm"
+      parameter="task"
+      path="/admin/data"
+      scope="request"
+      type="com.crm.sysdo.struts.action.DataAction" />
   </action-mappings>
+  
   <controller
 		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">
 	</controller>

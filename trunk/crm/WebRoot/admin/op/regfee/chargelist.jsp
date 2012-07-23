@@ -112,7 +112,7 @@
 		<tr align="center" class="thstyle">
 			<td width="5%" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
-					onclick="selectAll(this);" />
+					onclick="selectAll(this);" />È«Ñ¡
 			</td>
 			<td width="5%">
 				ÐòºÅ

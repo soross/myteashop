@@ -7,8 +7,6 @@
     <form-bean name="loginForm" type="com.crm.pub.struts.form.LoginForm" />
     <form-bean name="userForm" type="com.crm.pub.struts.form.UserForm" />
     <form-bean name="roleForm" type="com.crm.pub.struts.form.RoleForm" />
-    <form-bean name="dataForm" type="com.crm.pub.struts.form.DataForm" />
-    
   </form-beans>
 
   <global-exceptions />
@@ -37,16 +35,7 @@
       parameter="task"
       path="/admin/role"
       scope="request"
-      type="com.crm.pub.struts.action.RoleAction" />
-    <action
-      attribute="dataForm"
-      input="/form/data.jsp"
-      name="dataForm"
-      parameter="task"
-      path="/admin/data"
-      scope="request"
-      type="com.crm.pub.struts.action.DataAction" />
-    
+      type="com.crm.pub.struts.action.RoleAction" />    
   </action-mappings>
   <controller
 		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">

@@ -93,7 +93,7 @@
 		<tr align="center" class="thstyle">
 			<td width="10%" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
-					onclick="selectAll(this);" />
+					onclick="selectAll(this);" />È«Ñ¡
 			</td>
 			<td width="10%">
 				ÐòºÅ

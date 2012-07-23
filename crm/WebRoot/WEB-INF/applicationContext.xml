@@ -67,23 +67,4 @@
 	<bean name="/login" class="com.crm.pub.struts.action.LoginAction">
 		<property name="userServiceDao" ref="userServiceDao"></property>
 	</bean>
-	
-	<!-- 数字字典 -->	
-	<bean name="dataDao" class="com.crm.pub.dao.impl.DataDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	
-	<!--服务层系统  数字字典-->
-	<bean name="dataServiceDao"
-		class="com.crm.pub.service.dao.impl.DataServiceDaoImpl">
-		<property name="dataDao" ref="dataDao"></property>
-	</bean>
-	<bean name="dataProxy" parent="basicProxy">
-	    <property name="target" ref="dataServiceDao"></property>
-	</bean>
-	<!--数字字典ACTION-->
-	<bean name="/admin/data"
-		class="com.crm.pub.struts.action.DataAction">
-		<property name="dataServiceDao" ref="dataProxy"></property>
-	</bean>
 </beans>

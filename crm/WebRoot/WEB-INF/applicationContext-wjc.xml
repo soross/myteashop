@@ -32,9 +32,25 @@
 	<bean name="vipDao" class="com.crm.pub.dao.impl.VipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name="dataDao" class="com.crm.pub.dao.impl.DataDaoImpl">
+	
+	<!-- 数字字典 -->	
+	<bean name="dataDao" class="com.crm.sysdo.dao.impl.DataDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<!--服务层系统  数字字典-->
+	<bean name="dataServiceDao"
+		class="com.crm.sysdo.service.impl.DataServiceDaoImpl">
+		<property name="dataDao" ref="dataDao"></property>
 	</bean>
+	<bean name="dataProxy" parent="basicProxy">
+	    <property name="target" ref="dataServiceDao"></property>
+	</bean>
+	<!--数字字典ACTION-->
+	<bean name="/admin/data"
+		class="com.crm.sysdo.struts.action.DataAction">
+		<property name="dataServiceDao" ref="dataProxy"></property>
+	</bean>
+
 	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">
 	   <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>

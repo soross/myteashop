@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/admin/group.do" location="0,455" dimension="280,104" />
+  <StrutsActivity path="/admin/activity.do" location="0,153" dimension="283,104" />
+  <StrutsActivity path="/admin/union.do" location="325,455" dimension="265,104" />
+  <StrutsActivity path="/form/group.jsp" location="77,302" dimension="126,53" />
+  <StrutsActivity path="/form/activity.jsp" location="77,0" dimension="129,53" />
+  <StrutsActivity path="/form/union.jsp" location="396,302" dimension="122,53" />
+  <StrutsTransition id="/form/group.jsp,null,/admin/group.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="140,355" />
+      <AbsolutePoint location="140,455" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/activity.jsp,null,/admin/activity.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="141,53" />
+      <AbsolutePoint location="141,153" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/union.jsp,null,/admin/union.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="457,355" />
+      <AbsolutePoint location="457,455" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

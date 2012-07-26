@@ -7,6 +7,7 @@ package com.crm.pub.struts.action;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -118,7 +119,95 @@ public class LoginAction extends DispatchAction {
 	public ActionForward exit(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.getSession().invalidate();
-		response.getWriter().write("<script>top.location.href='"+request.getContextPath()+"/login.jsp';</script>");		
+		response.getWriter().write("<script>window.opener=null;window.open('', '_self', '');window.close();</script>");
+		return null;
+	}
+	/**
+	 * 重新登入
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward relogin(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.getSession().invalidate();
+		response.getWriter().write("<script>top.location.href='"+request.getContextPath()+"/login.jsp';</script>");
+		return null;
+	}
+	
+	/**
+	 * 记事本
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward notepad(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('notepad');</script>");
+		Runtime.getRuntime().exec("notepad");
+		return null;
+	}
+	
+	/**
+	 * 计算器
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward calc(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
+		Runtime.getRuntime().exec("calc");
+		return null;
+	}
+	
+	/**
+	 * 系统主机信息
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward winmsd(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
+		Runtime.getRuntime().exec("winmsd");
+		return null;
+	}
+	
+	/**
+	 * 跳转到系统时间校验
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward toCheckDate(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setAttribute("currTime", new Date());	
+		
+		return new ActionRedirect("/admin/pub/checktime.jsp");
+	}
+	/**
+	 * 跳转到系统时间校验
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward checkDate(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
+		//Runtime.getRuntime().exec("winmsd");
 		return null;
 	}
 	

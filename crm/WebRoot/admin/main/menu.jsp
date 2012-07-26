@@ -12,18 +12,6 @@
 	<title>left.jsp</title>
 
 	<link rel="STYLESHEET" type="text/css" href="${pageContext.request.contextPath}/admin/css/style.css">
-	
-   <script>  
-   function getCalc(){
-		var WshShell = new ActiveXObject('WScript.Shell');
-		WshShell.Run('calc');
-   }
-   function getnotepad(){
-   		var WshShell = new ActiveXObject('WScript.Shell');
-		WshShell.Run('notepad');
-   } 
-   
-	</script>
 	<style>
 	td{font:normal 11px verdana,arial,helvetica,sans-serif;}
 	</style>

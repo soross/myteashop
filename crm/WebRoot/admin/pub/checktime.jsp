@@ -33,8 +33,7 @@
 			</td>
 		</tr>
 	</table>
-	<form action="/admin/login.do" method="post">
-
+	<form action="${pageContext.request.contextPath}/login.do?task=checkDate" method="post">
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
@@ -47,7 +46,7 @@
 					当前时间：
 				</td>
 				<td colspan="3">
-					
+					${currTime}
 				</td>
 			</tr>
 			<tr>
@@ -55,12 +54,11 @@
 					校验时间:
 				</td>
 				<td colspan="3">
-					<html:text property="checkdate"  size="30"  styleId="txt"></html:text>
+					<input type="text" id="newdate" name="newdate"  size="25"  class="txt Wdate" onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});"  readonly="readonly" />
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="checkDate">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 时间校验 " class="inputs" />
 				</td>
@@ -72,4 +70,7 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
+<!--日历控件 -->
+<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/admin/js/My97DatePicker/WdatePicker.js"></script>
+
 </html:html>

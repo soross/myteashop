@@ -28,6 +28,7 @@ import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
 import com.crm.pub.service.dao.inf.UserServiceDao;
 import com.crm.pub.struts.form.LoginForm;
+import com.crm.tool.DateUtil;
 
 /**
  * MyEclipse Struts Creation date: 10-22-2009
@@ -192,8 +193,8 @@ public class LoginAction extends DispatchAction {
 	 */
 	public ActionForward toCheckDate(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.setAttribute("currTime", new Date());	
-		
+		request.getSession().setAttribute("currTime", DateUtil.DateToStringBy_YMDHMS(new Date()));	
+		//request.getRequestDispatcher("/admin/pub/checktime.jsp").forward(request, response);
 		return new ActionRedirect("/admin/pub/checktime.jsp");
 	}
 	/**
@@ -206,8 +207,13 @@ public class LoginAction extends DispatchAction {
 	 */
 	public ActionForward checkDate(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
-		//Runtime.getRuntime().exec("winmsd");
+		LoginForm loginForm = (LoginForm)form;
+		String dateStr = loginForm.getNewdate();
+		String date = "cmd/ date " + dateStr.substring(0, 10);
+		String time = "cmd/ time " + dateStr.substring(11);//cmd/ time 12:00:00
+		Runtime.getRuntime().exec(date);
+		Runtime.getRuntime().exec(time);
+		response.getWriter().write("<script>alert('系统时间校准成功!');location.href='"+request.getContextPath()+"/admin/pub/checktime.jsp';</script>");;
 		return null;
 	}
 	
@@ -241,4 +247,14 @@ public class LoginAction extends DispatchAction {
 		this.userServiceDao = userServiceDao;
 	}
 
+	
+	public static void main(String[] args) {
+		String dateStr = "2012-01-01 22:00:00";
+		String date = dateStr.substring(0, 10);
+		String time = dateStr.substring(11);
+		System.out.println(date);
+		System.out.println(time);
+	}
+	
+	
 }

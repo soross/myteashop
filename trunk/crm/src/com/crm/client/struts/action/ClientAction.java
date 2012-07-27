@@ -36,8 +36,6 @@ import com.crm.client.po.TClientinfo;
 import com.crm.client.po.TGradelog;
 import com.crm.client.service.inf.ClientServiceDao;
 import com.crm.client.struts.form.ClientForm;
-import com.crm.group.po.VipArea;
-import com.crm.group.po.VipCity;
 import com.crm.page.PageUtil;
 import com.crm.pub.GlobVar;
 import com.crm.pub.excel.DoExcelUtil;
@@ -437,9 +435,9 @@ public class ClientAction extends DispatchAction {
 				.append("<select id='city' name='name' style='width:90px' onchange=showArea(this);>");
 		sbf.append("<option value='0'>==«Î—°‘Ò==</option>");
 		for (Object obj : list) {
-			VipCity city = (VipCity) obj;
-			sbf.append("<option value='" + city.getVProvince()
-					+ city.getVCode() + "'>" + city.getVName() + "</option>");
+			//VipCity city = (VipCity) obj;
+			//sbf.append("<option value='" + city.getVProvince()
+			//		+ city.getVCode() + "'>" + city.getVName() + "</option>");
 		}
 		sbf.append("</select>");
 
@@ -470,12 +468,12 @@ public class ClientAction extends DispatchAction {
 		JSONArray array = new JSONArray();
 
 		for (Object o : list) {
-			VipCity city = (VipCity) o;
+			//VipCity city = (VipCity) o;
 			JSONObject obj = new JSONObject();
-			obj.put("city", city.getVProvince() + city.getVCode());
-			obj.put("name", city.getVName());
-			obj.put("id", city.getNId());
-			array.put(obj);
+			//obj.put("city", city.getVProvince() + city.getVCode());
+			//obj.put("name", city.getVName());
+			//obj.put("id", city.getNId());
+			//array.put(obj);
 		}
 
 		response.getWriter().print(array);
@@ -501,10 +499,10 @@ public class ClientAction extends DispatchAction {
 
 		JSONArray array = new JSONArray();
 		for (Object o : list) {
-			VipArea area = (VipArea) o;
+			//VipArea area = (VipArea) o;
 			JSONObject obj = new JSONObject();
-			obj.put("area", area.getNId());
-			obj.put("name", area.getVName());
+			//obj.put("area", area.getNId());
+			//obj.put("name", area.getVName());
 			array.put(obj);
 		}
 
@@ -535,9 +533,9 @@ public class ClientAction extends DispatchAction {
 		sbf.append("<select id='area' name='area' style='width:90px'>");
 		sbf.append("<option value='0'>==«Î—°‘Ò==</option>");
 		for (Object obj : list) {
-			VipArea area = (VipArea) obj;
-			sbf.append("<option value='" + area.getNId() + "'>"
-					+ area.getVName() + "</option>");
+			//VipArea area = (VipArea) obj;
+			//sbf.append("<option value='" + area.getNId() + "'>"
+			//		+ area.getVName() + "</option>");
 		}
 		sbf.append("</select>");
 

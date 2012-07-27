@@ -6,6 +6,7 @@ package com.crm.pub.struts.action;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -22,26 +23,28 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
+import com.crm.pub.GlobVar;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
 import com.crm.pub.service.dao.inf.UserServiceDao;
 import com.crm.pub.struts.form.UserForm;
 
-/** 
- * MyEclipse Struts
- * Creation date: 10-22-2009
+/**
+ * MyEclipse Struts Creation date: 10-22-2009
  * 
  * XDoclet definition:
- * @struts.action path="/admin/user" name="userForm" input="/form/user.jsp" parameter="task" scope="request" validate="true"
+ * 
+ * @struts.action path="/admin/user" name="userForm" input="/form/user.jsp"
+ *                parameter="task" scope="request" validate="true"
  */
 public class UserAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
 
-	/** 
-	 * 用于用户管理的action
-	 * Method execute
+	/**
+	 * 用于用户管理的action Method execute
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -49,207 +52,234 @@ public class UserAction extends DispatchAction {
 	 * @return ActionForward
 	 */
 	private UserServiceDao userServiceDao;
-	
+
 	public UserServiceDao getUserServiceDao() {
 		return userServiceDao;
 	}
+
 	public void setUserServiceDao(UserServiceDao userServiceDao) {
 		this.userServiceDao = userServiceDao;
 	}
-	/**
-	 * 显示用户信息
-	 * @throws InvocationTargetException 
-	 * @throws Exception 
-	 */
 
-	public ActionForward showUser(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		TUser user=new TUser();
+	public ActionForward userList(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		TUser user = new TUser();
+		UserForm uf = (UserForm) form;
+		BeanUtils.copyProperties(user, uf);
 		int rcount = userServiceDao.getCount(user);
-		PageUtil pageUtil = new PageUtil(request,rcount,2);
-		List ulist=userServiceDao.searchUser(user, pageUtil);
+		PageUtil pageUtil = new PageUtil(request, rcount,
+				GlobVar.PAGESIZE_BY_TEN_DATA);
+		List ulist = userServiceDao.searchUser(user, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
-		
-		List<TUser> userlist=new ArrayList<TUser>();
-	    Iterator iter=ulist.iterator(); 
-		while(iter.hasNext()){
-		TUser u=(TUser)iter.next();
-		String sex=u.getSex();
-			if(sex.equals("0")){
+
+		List<TUser> userlist = new ArrayList<TUser>();
+		Iterator iter = ulist.iterator();
+		while (iter.hasNext()) {
+			TUser u = (TUser) iter.next();
+			String sex = u.getSex();
+			if (sex.equals("0")) {
 				u.setSex("男");
 			}
-				
-			else if(sex.equals("1")){
+
+			else if (sex.equals("1")) {
 				u.setSex("女");
 			}
-           userlist.add(u);
-			
+			userlist.add(u);
+
 		}
-		request.setAttribute("userlist", userlist);
-		return new ActionForward("/admin/pub/user/usermanage.jsp");
+		request.setAttribute("userList", userlist);
+		return new ActionForward("/admin/pub/user/userlist.jsp");
 	}
-	
+
 	/**
 	 * 增加界面
-	 * @throws InvocationTargetException 
-	 * @throws Exception 
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws Exception
 	 */
-	public ActionForward addJsp(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		TRole role=new TRole();
-		List rolelist=userServiceDao.searchRole(role);
+	public ActionForward toAddUser(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		TRole role = new TRole();
+		List rolelist = userServiceDao.searchRole(role);
 		request.setAttribute("rolelist", rolelist);
 		return new ActionForward("/admin/pub/user/adduser.jsp");
 	}
+
 	/**
 	 * 增加用户
-	 * @throws InvocationTargetException 
-	 * @throws Exception 
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws Exception
 	 */
 	public ActionForward addUser(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		String[]roles=userForm.getTrole();
-	    TUser users=new TUser();
-	    BeanUtils.copyProperties(users, userForm);
-		for(int i=0;i<roles.length;i++){
-			TRole getrole=new TRole();
+
+		String[] roles = userForm.getTrole();
+		TUser users = new TUser();
+		BeanUtils.copyProperties(users, userForm);
+		for (int i = 0; i < roles.length; i++) {
+			TRole getrole = new TRole();
 			getrole.setRoleid(new Long(roles[i]));
 			users.getRoles().add(getrole);
 		}
 		users.setOpendate(new Date());
 		users.setSlock("1");
-		userServiceDao.addUser(users);
-		
-		
-		response.getWriter().print(
-				"<script> if(confirm('添加成功,是否继续?')){location.href='"
-						+ request.getContextPath()
-						+ "/admin/user.do?task=addJsp';}else{location.href='"
-						+ request.getContextPath()
-						+ "/admin/user.do?task=showUser';}</script>");
+		try {
+			userServiceDao.addUser(users);
+			response
+					.getWriter()
+					.print(
+							"<script> if(confirm('添加成功,是否继续?')){location.href='"
+									+ request.getContextPath()
+									+ "/admin/user.do?task=toAddUser';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/user.do?task=userList';}</script>");
+		} catch (Exception e) {
+			response.getWriter().print(
+					"<script> alert('用户名已存在!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toAddUser';</script>");
+		}
+
 		return null;
+
 	}
+
 	/**
 	 * 删除用户
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public ActionForward deleteUser(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws IOException {
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		String id=request.getParameter("id");
-		
-		TUser duser=new TUser();
+		String id = request.getParameter("id");
+
+		TUser duser = new TUser();
 		duser.setUserid(id);
 		userServiceDao.deleteUser(duser);
-		
+
 		response.getWriter().print(
 				"<script> alert('删除成功!');location.href='"
 						+ request.getContextPath()
 						+ "/admin/user.do?task=showUser';</script>");
 		return null;
 	}
+
 	/**
 	 * 修改用户界面
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
 	 */
 	public ActionForward updateJsp(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		TRole role=new TRole();
-		String id=request.getParameter("id");
-		TUser suser=userServiceDao.getUser(id);
-		Set<TRole> urole=suser.getRoles();
-		Iterator iter=urole.iterator();
-		String[] roles=new String[urole.size()];
-		for(int i=0;i<urole.size();i++){
-		while(iter.hasNext()){
-			TRole r=(TRole)iter.next();
-			roles[i]=r.getRoleid().toString();
-			
-		}
+		TRole role = new TRole();
+		String id = request.getParameter("id");
+		TUser suser = userServiceDao.getUser(id);
+		Set<TRole> urole = suser.getRoles();
+		Iterator iter = urole.iterator();
+		String[] roles = new String[urole.size()];
+		for (int i = 0; i < urole.size(); i++) {
+			while (iter.hasNext()) {
+				TRole r = (TRole) iter.next();
+				roles[i] = r.getRoleid().toString();
+
 			}
-		
+		}
+
 		userForm.setTrole(roles);
-		List rolelist=userServiceDao.searchRole(role);
+		List rolelist = userServiceDao.searchRole(role);
 		request.setAttribute("uid", suser.getUserid());
 		request.setAttribute("rolelist", rolelist);
 		BeanUtils.copyProperties(userForm, suser);
 		return new ActionForward("/admin/pub/user/updateuser.jsp");
 	}
-	
+
 	/**
 	 * 修改用户
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
 	 */
 	public ActionForward updateUser(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		String[]roles=userForm.getTrole();
-	    TUser users=new TUser();
-	    BeanUtils.copyProperties(users, userForm);
-		for(int i=0;i<roles.length;i++){
-			
-			TRole getrole=new TRole();
+		String[] roles = userForm.getTrole();
+		TUser users = new TUser();
+		BeanUtils.copyProperties(users, userForm);
+		for (int i = 0; i < roles.length; i++) {
+
+			TRole getrole = new TRole();
 			getrole.setRoleid(new Long(roles[i]));
 			users.getRoles().add(getrole);
 		}
-		
+
 		userServiceDao.updateUser(users);
-		
+
 		response.getWriter().print(
 				"<script> alert('修改成功!');location.href='"
 						+ request.getContextPath()
 						+ "/admin/user.do?task=showUser';</script>");
 		return null;
 	}
+
 	/**
 	 * 查询用户
 	 */
 	public ActionForward searchUser(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		TUser user=new TUser();
-		if(!"".equals(userForm.getCuserid())&&null!=userForm.getCuserid()){
+		TUser user = new TUser();
+		if (!"".equals(userForm.getCuserid()) && null != userForm.getCuserid()) {
 			user.setUserid(userForm.getCuserid());
 		}
-		if(!"".equals(userForm.getCusername())&&null!=userForm.getCusername()){
+		if (!"".equals(userForm.getCusername())
+				&& null != userForm.getCusername()) {
 			user.setUsername(userForm.getCusername());
 		}
-		if(!"".equals(userForm.getChome())&&null!=userForm.getChome()){
+		if (!"".equals(userForm.getChome()) && null != userForm.getChome()) {
 			user.setHomeplace(userForm.getChome());
 		}
-		
+
 		int rcount = userServiceDao.getCount(user);
-		PageUtil pageUtil = new PageUtil(request,rcount,2);
-		List userlist=userServiceDao.searchUser(user, pageUtil);
+		PageUtil pageUtil = new PageUtil(request, rcount, 2);
+		List userlist = userServiceDao.searchUser(user, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
 		request.setAttribute("userlist", userlist);
 		return new ActionForward("/admin/pub/user/usermanage.jsp");
 	}
-	
+
 	/**
 	 * 修改密码
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
 	 */
 	public ActionForward updatePass(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		
-		TUser user=new TUser();
+
+		TUser user = new TUser();
 		user.setUserid(userForm.getUserid());
 		user.setPassword(userForm.getNewpass());
 		userServiceDao.updatePass(user);
-		
+
 		response.getWriter().print(
 				"<script> alert('修改成功!');location.href='"
 						+ request.getContextPath()
 						+ "/admin/user.do?task=showUser';</script>");
 		return null;
-		
+
 	}
-	
+
 }

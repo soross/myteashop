@@ -31,10 +31,19 @@ public class LoginForm extends ActionForm {
 
 	/** userId property */
 	private String userId;
+	private String newdate;
 
 	/*
 	 * Generated Methods
 	 */
+
+	public String getNewdate() {
+		return newdate;
+	}
+
+	public void setNewdate(String newdate) {
+		this.newdate = newdate;
+	}
 
 	/** 
 	 * 登录客户端验证

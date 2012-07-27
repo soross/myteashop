@@ -22,7 +22,7 @@
       type="com.crm.pub.struts.action.LoginAction" />
     <action
       attribute="userForm"
-      input="/form/user.jsp"
+      input="/form/userlist.jsp"
       name="userForm"
       parameter="task"
       path="/admin/user"

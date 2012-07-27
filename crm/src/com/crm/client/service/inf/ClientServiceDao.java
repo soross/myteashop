@@ -7,8 +7,6 @@ import com.crm.client.po.TClient;
 import com.crm.client.po.TClientallot;
 import com.crm.client.po.TClientinfo;
 import com.crm.client.po.TGradelog;
-import com.crm.group.po.VipCity;
-import com.crm.group.po.VipProvince;
 import com.crm.page.PageUtil;
 
 /**
@@ -161,7 +159,7 @@ public interface ClientServiceDao {
 	 * @param pro
 	 * @return
 	 */
-	public List searchCityList(VipProvince pro);
+	//public List searchCityList(VipProvince pro);
 
 	/**
 	 * 取得身份
@@ -176,7 +174,7 @@ public interface ClientServiceDao {
 	 * @param city
 	 * @return
 	 */
-	public List searchAreaList(VipCity city);
+	//public List searchAreaList(VipCity city);
 
 	/**
 	 * 根据父类ID查询小类

@@ -2,16 +2,13 @@ package com.crm.pub.dao.inf;
 
 import java.util.List;
 
-import com.crm.group.po.VipCity;
-import com.crm.group.po.VipProvince;
-
 public interface VipDao {
 	/**
 	 * 根据省份取得城市
 	 * @param pro
 	 * @return
 	 */
-	public List searchCityList(VipProvince pro);
+	//public List searchCityList(VipProvince pro);
 	
 	/**
 	 * 取得身份
@@ -24,6 +21,6 @@ public interface VipDao {
 	 * @param city
 	 * @return
 	 */
-	public List searchAreaList(VipCity city);
+	//public List searchAreaList(VipCity city);
 
 }

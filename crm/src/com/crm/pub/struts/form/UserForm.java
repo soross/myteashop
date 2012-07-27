@@ -12,53 +12,56 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 import com.crm.pub.po.TRole;
 
-/** 
- * MyEclipse Struts
- * Creation date: 10-22-2009
+/**
+ * MyEclipse Struts Creation date: 10-22-2009
  * 
  * XDoclet definition:
+ * 
  * @struts.form name="userForm"
  */
 /**
  * 用于系统用户管理的UserForm
  */
 public class UserForm extends ActionForm {
-	private String userid;//用户ID
+	private String userid;// 用户ID
 
-	private String username;//用户名
+	private String username;// 用户名
 
-	private String password;//密码
+	private String password;// 密码
 
-	private String sex;//性别
+	private String password2;// 密码
 
-	private String homeplace;//籍贯
+	private String sex;// 性别
 
-	private String code;//身份证号码
+	private String homeplace;// 籍贯
 
-	private String tel;//电话号码
+	private String code;// 身份证号码
 
-	private String email;//E——MAIL
+	private String tel;// 电话号码
 
-	private String phone;//手机
+	private String email;// E——MAIL
 
-	private String address;//地址
+	private String phone;// 手机
 
-	private String jobno;//工号
+	private String address;// 地址
 
-	
-	private Date opentime;//开户日期
+	private String jobno;// 工号
 
-	private String isslock;//是否冻结
-	
-	private String[] trole;//角色
-	private String cuserid;//查询的用户ID
-	private String cusername;//查询的用户名
-	private String chome;//查询的籍贯
-     private String newpass;//新密码
-	private String  chpass;//确认密码
+	private Date opentime;// 开户日期
+
+	private String isslock;// 是否冻结
+
+	private String[] trole;// 角色
+	private String cuserid;// 查询的用户ID
+	private String cusername;// 查询的用户名
+	private String chome;// 查询的籍贯
+	private String newpass;// 新密码
+	private String chpass;// 确认密码
+
 	public String getChome() {
 		return chome;
 	}
@@ -85,18 +88,18 @@ public class UserForm extends ActionForm {
 
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-	
 		return null;
 	}
 
-	/** 
+	/**
 	 * Method reset
+	 * 
 	 * @param mapping
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.sex="0";
-		
+		this.sex = "0";
+
 	}
 
 	public String getAddress() {
@@ -139,10 +142,6 @@ public class UserForm extends ActionForm {
 		this.jobno = jobno;
 	}
 
-	
-
-	
-
 	public String getPassword() {
 		return password;
 	}
@@ -166,8 +165,6 @@ public class UserForm extends ActionForm {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
-	
 
 	public String getIsslock() {
 		return isslock;
@@ -231,5 +228,13 @@ public class UserForm extends ActionForm {
 
 	public void setNewpass(String newpass) {
 		this.newpass = newpass;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 }

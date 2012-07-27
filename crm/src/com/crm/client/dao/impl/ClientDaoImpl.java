@@ -9,7 +9,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.jgroups.tests.adaptjms.Request;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -17,7 +16,6 @@ import com.crm.client.dao.inf.ClientDao;
 import com.crm.client.po.TClient;
 import com.crm.client.po.TClientallot;
 import com.crm.client.po.TGradelog;
-import com.crm.group.po.VipCity;
 import com.crm.page.PageUtil;
 import com.crm.pub.excel.DoExcelUtil;
 
@@ -303,10 +301,10 @@ public class ClientDaoImpl extends HibernateDaoSupport implements ClientDao {
 									.toString().substring(1, 4));
 							cityQuery.setString("pro", client.getCity()
 									.toString().substring(4, 6));
-							VipCity newCity = (VipCity) cityQuery
-									.uniqueResult();
+							//VipCity newCity = (VipCity) cityQuery
+							//		.uniqueResult();
 
-							query.setLong("city", newCity.getNId());
+							//query.setLong("city", newCity.getNId());
 						}
 						if (null != client.getArea()
 								&& !"".equals(client.getArea())) {
@@ -408,10 +406,10 @@ public class ClientDaoImpl extends HibernateDaoSupport implements ClientDao {
 									.toString().substring(1, 4));
 							cityQuery.setString("pro", client.getCity()
 									.toString().substring(4, 6));
-							VipCity newCity = (VipCity) cityQuery
-									.uniqueResult();
+							//VipCity newCity = (VipCity) cityQuery
+							//		.uniqueResult();
 
-							query.setLong("city", newCity.getNId());
+							//query.setLong("city", newCity.getNId());
 						}
 						if (null != client.getArea()
 								&& !"".equals(client.getArea())) {

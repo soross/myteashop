@@ -78,7 +78,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "select t from TUser t where 1=1";
+						String hql = "from TUser t where 1=1";
 						if (!"".equals(user.getUserid())
 								&& null != user.getUserid()) {
 							hql += " and userid like '%" + user.getUserid()
@@ -89,11 +89,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
 						}
-						if (!"".equals(user.getHomeplace())
-								&& null != user.getHomeplace()) {
-							hql += " and homeplace like '%"
-									+ user.getHomeplace() + "%'";
-						}
+						
 						Query query = session.createQuery(hql);
 						query.setMaxResults(pageutil.getPagesize());
 						query.setFirstResult(pageutil.pastart());
@@ -171,11 +167,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
 						}
-						if (!"".equals(user.getHomeplace())
-								&& null != user.getHomeplace()) {
-							hql += " and homeplace like '%"
-									+ user.getHomeplace() + "%'";
-						}
+						
 						Query query = session.createQuery(hql);
 						Integer count = (Integer) query.uniqueResult();
 

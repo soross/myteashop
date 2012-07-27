@@ -11,8 +11,6 @@ import com.crm.client.po.TClientallot;
 import com.crm.client.po.TClientinfo;
 import com.crm.client.po.TGradelog;
 import com.crm.client.service.inf.ClientServiceDao;
-import com.crm.group.po.VipCity;
-import com.crm.group.po.VipProvince;
 import com.crm.page.PageUtil;
 import com.crm.pub.dao.inf.UserDao;
 import com.crm.pub.dao.inf.VipDao;
@@ -234,9 +232,9 @@ public class ClientServiceDaoImpl implements ClientServiceDao {
 	 * @param pro
 	 * @return
 	 */
-	public List searchCityList(VipProvince pro){
-		return vipDao.searchCityList(pro);
-	}
+	//public List searchCityList(VipProvince pro){
+	//	return vipDao.searchCityList(pro);
+	//}
 	
 	/**
 	 * 取得身份
@@ -251,9 +249,9 @@ public class ClientServiceDaoImpl implements ClientServiceDao {
 	 * @param city
 	 * @return
 	 */
-	public List searchAreaList(VipCity city){
-		return vipDao.searchAreaList(city);
-	}
+	//public List searchAreaList(VipCity city){
+	//	return vipDao.searchAreaList(city);
+	//}
 	
 	/**
 	 * 根据父类ID查询小类

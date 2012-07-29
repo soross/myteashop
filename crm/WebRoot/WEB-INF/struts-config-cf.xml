@@ -4,40 +4,20 @@
 <struts-config>
 	<data-sources />
 	<form-beans>
-    <form-bean name="groupForm" type="com.crm.group.struts.form.GroupForm" />
-    <form-bean name="activityForm" type="com.crm.group.struts.form.ActivityForm" />
-    <form-bean name="unionForm" type="com.crm.club.struts.form.UnionForm" />
+    <form-bean name="unitForm" type="com.crm.sysdo.struts.form.UnitForm" />
 	</form-beans>
 
 	<global-exceptions />
 	<global-forwards />
 	<action-mappings>
     <action
-      attribute="groupForm"
-      input="/form/group.jsp"
-      name="groupForm"
+      attribute="unitForm"
+      input="/form/unit.jsp"
+      name="unitForm"
       parameter="task"
-      path="/admin/group"
+      path="/admin/unit"
       scope="request"
-      type="com.crm.group.struts.action.GroupAction" />
-    <action
-      attribute="activityForm"
-      input="/form/activity.jsp"
-      name="activityForm"
-      parameter="task"
-      path="/admin/activity"
-      scope="request"
-      type="com.crm.group.struts.action.ActivityAction" />
-    <action
-      attribute="unionForm"
-      input="/form/union.jsp"
-      name="unionForm"
-      parameter="task"
-      path="/admin/union"
-      scope="request"
-      type="com.crm.club.struts.action.UnionAction" />
-    
-
+      type="com.crm.sysdo.struts.action.UnitAction" />
 
 	</action-mappings>
 	<controller

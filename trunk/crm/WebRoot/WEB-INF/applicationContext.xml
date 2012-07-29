@@ -3,6 +3,7 @@
 
 <beans>
 	<import resource="applicationContext-wjc.xml" />
+	<import resource="applicationContext-cf.xml" />
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation"

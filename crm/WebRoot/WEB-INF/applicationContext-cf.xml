@@ -8,41 +8,21 @@
 			value="classpath:hibernate.cfg.xml">
 		</property>
 	</bean>
-  <!-- 集团DAO -->
-	<bean name="groupDao" class="com.crm.group.dao.impl.GroupDaoImpl">
+  <!-- 签约单位DAO -->
+	<bean name="unitDao" class="com.crm.sysdo.dao.impl.UnitImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!-- 活动DAO -->
-	<bean name="actDao" class="com.crm.group.dao.impl.ActDaoImpl">
-	<property name="sessionFactory" ref="sessionFactory"></property>
+	<!-- 签约单位DAO -->
+	<bean name="unitServiceDao" class="com.crm.sysdo.service.impl.UnitServiceDaoImpl">
+	 <property name="unitProxy" ref="unitDao"></property>
 	</bean>
-	<!-- 联盟商家DAO -->
-	<bean name="unionDao" class="com.crm.club.dao.impl.UnionDaoImpl">
-	<property name="sessionFactory" ref="sessionFactory"></property>
+	<!-- 签约单位DAO -->
+	<bean name="unitProxy" parent="basicProxy">
+	    <property name="target" ref="unitServiceDao"></property>
 	</bean>
-	<!-- 集团服务层DAO -->
-	<bean name="groupServiceDao" class="com.crm.group.service.dao.impl.GroupServiceDaoImpl">
-	 <property name="groupDao" ref="groupDao"></property>
-	</bean>
-	<!-- 活动服务层DAO -->
-	<bean name="actServiceDao" class="com.crm.group.service.dao.impl.ActServiceDaoImpl">
-	 <property name="actDao" ref="actDao"></property>
-	</bean>
-	<!-- 联盟商家服务层DAO -->
-	<bean name="unionServiceDao" class="com.crm.club.sevice.dao.impl.UnionServiceDaoImpl">
-	 <property name="unionDao" ref="unionDao"></property>
-	</bean>
-	<!-- 集团ACTION -->
-    <bean name="/admin/group" class="com.crm.group.struts.action.GroupAction">
-     <property name="groupServiceDao" ref="groupProxy"></property>
-    </bean>
-    <!--俱乐部活动ACTION -->
-    <bean name="/admin/activity" class="com.crm.group.struts.action.ActivityAction">
-    <property name="actServiceDao" ref="actProxy"></property>
-    </bean>
-     <!--联盟商家ACTION -->
-    <bean name="/admin/union" class="com.crm.club.struts.action.UnionAction">
-    <property name="unionServiceDao" ref="unionProxy"></property>
+	<!-- 签约单位ACTION -->
+    <bean name="/admin/unit" class="com.crm.sysdo.struts.action.UnitAction">
+     <property name="unitServiceDao" ref="unitProxy"></property>
     </bean>
     <!-- 事物管理器 -->
      <bean name="transactionManager"
@@ -63,16 +43,6 @@
 			</props>
 		</property>
 	</bean>
-	<!-- 集团事物DAO -->
-	<bean name="groupProxy" parent="basicProxy">
-	    <property name="target" ref="groupServiceDao"></property>
-	</bean>
-	<!-- 活动事物DAO -->
-	<bean name="actProxy" parent="basicProxy">
-	    <property name="target" ref="actServiceDao"></property>
-	</bean>
-	<!-- 联盟商家事物DAO -->
-	<bean name="unionProxy" parent="basicProxy">
-	    <property name="target" ref="unionServiceDao"></property>
-	</bean>
+	
+	
 </beans>

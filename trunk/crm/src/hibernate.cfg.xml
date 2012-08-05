@@ -49,6 +49,7 @@
 		<mapping resource="com/crm/sysdo/po/TDept.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TSickbed.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TData.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TFeeItem.hbm.xml" />
 		<mapping resource="com/crm/op/po/TCustomer.hbm.xml" />
 		<mapping resource="com/crm/op/po/TOrder.hbm.xml" />
 		<mapping resource="com/crm/op/po/TRegister.hbm.xml" />

@@ -24,6 +24,25 @@
     <bean name="/admin/unit" class="com.crm.sysdo.struts.action.UnitAction">
      <property name="unitServiceDao" ref="unitProxy"></property>
     </bean>
+    
+    <!-- 收费项目DAO -->
+	<bean name="feeItemDao" class="com.crm.sysdo.dao.impl.FeeItemDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 收费项目DAO -->
+	<bean name="feeItemServiceDao" class="com.crm.sysdo.service.impl.FeeItemServiceDaoImpl">
+	 <property name="feeItemProxy" ref="feeItemDao"></property>
+	</bean>
+	<!-- 收费项目DAO -->
+	<bean name="feeItemProxy" parent="basicProxy">
+	    <property name="target" ref="feeItemServiceDao"></property>
+	</bean>
+	<!-- 收费项目ACTION -->
+    <bean name="/admin/feeItem" class="com.crm.sysdo.struts.action.FeeItemAction">
+     <property name="feeItemServiceDao" ref="feeItemProxy"></property>
+    </bean>
+    
+    
     <!-- 事物管理器 -->
      <bean name="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">

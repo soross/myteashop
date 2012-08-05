@@ -5,6 +5,7 @@
 	<data-sources />
 	<form-beans>
     <form-bean name="unitForm" type="com.crm.sysdo.struts.form.UnitForm" />
+    <form-bean name="feeItemForm" type="com.crm.sysdo.struts.form.FeeItemForm" />
 	</form-beans>
 
 	<global-exceptions />
@@ -18,6 +19,16 @@
       path="/admin/unit"
       scope="request"
       type="com.crm.sysdo.struts.action.UnitAction" />
+      
+      
+     <action
+      attribute="feeItemForm"
+      input="/form/feeItem.jsp"
+      name="feeItemForm"
+      parameter="task"
+      path="/admin/feeItem"
+      scope="request"
+      type="com.crm.sysdo.struts.action.FeeItemAction" /> 
 
 	</action-mappings>
 	<controller

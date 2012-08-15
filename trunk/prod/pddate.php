@@ -27,7 +27,7 @@
 <form action="post/order.action.php?" method="post">
 <table border="0" cellpadding="0" cellspacing="0">
     <tr style="height:30px">
-        <td>排队时间：</td>
+        <td>排单时间：</td>
         <td>
         <input class="txtbox" type="text" id="sdate" name="sdate"
         onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" class="Wdate"  readonly="readonly"/></td>

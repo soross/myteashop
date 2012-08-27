@@ -22,6 +22,7 @@ import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionRedirect;
 import org.apache.struts.actions.DispatchAction;
 
+import com.crm.cache.CacheUtil;
 import com.crm.pub.excel.ComparatorPower;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
@@ -41,6 +42,7 @@ import com.crm.tool.DateUtil;
 public class LoginAction extends DispatchAction {
 
 	private UserServiceDao userServiceDao;
+	private CacheUtil cacheUtil;
 
 	/**
 	 * 登录方法,包括用户的信息验证
@@ -64,6 +66,8 @@ public class LoginAction extends DispatchAction {
 					Collections.sort(powerList, cp);					
 					request.getSession().setAttribute("powers", powerList);
 					
+					//cacheUtil.putObjectInCache("powers", powerList);
+					
 					int count=0;
 					for(int i=0;i<powerList.size();i++){
 						TPower power = (TPower)powerList.get(i);
@@ -72,6 +76,8 @@ public class LoginAction extends DispatchAction {
 						}
 					}
 					request.getSession().setAttribute("count", count);
+					
+					//cacheUtil.putObjectInCache("count", count);
 					
 					String id = null;					
 					for(int i=0;i<powerList.size();i++){
@@ -89,6 +95,8 @@ public class LoginAction extends DispatchAction {
 						}
 					}					
 					request.getSession().setAttribute("sonPowers", sonPowerList);
+					
+					//cacheUtil.putObjectInCache("sonPowers", sonPowerList);
 					
 					request.getSession().setAttribute("user", tuser);
 					return new ActionRedirect("/admin/main.jsp");
@@ -234,6 +242,8 @@ public class LoginAction extends DispatchAction {
 		request.getSession().setAttribute("sonPowers",null);
 		request.getSession().setAttribute("sonPowers", sonPowerList);
 		
+		//cacheUtil.putObjectInCache("sonPowers", sonPowerList);
+		
 		String url = request.getParameter("url");
 		response.getWriter().print("<script>location.href='"+request.getContextPath()+url+"';</script>");
 		return null;//new ActionRedirect(url);
@@ -254,6 +264,14 @@ public class LoginAction extends DispatchAction {
 		String time = dateStr.substring(11);
 		System.out.println(date);
 		System.out.println(time);
+	}
+
+	public CacheUtil getCacheUtil() {
+		return cacheUtil;
+	}
+
+	public void setCacheUtil(CacheUtil cacheUtil) {
+		this.cacheUtil = cacheUtil;
 	}
 	
 	

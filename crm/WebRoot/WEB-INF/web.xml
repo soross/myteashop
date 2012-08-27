@@ -27,7 +27,11 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   
-  
+   <listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
   
   
   <!--***************** 编码 过滤器 ***************-->
@@ -59,6 +63,19 @@
   		<location>/error.jsp</location> 
   	</error-page>
 	--> 
+
+
+	<!-- 测试 -->
+	<servlet>
+		<servlet-name>TestServletEhCache</servlet-name>
+		<servlet-class>
+			com.crm.cache.TestServletEhCache
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServletEhCache</servlet-name>
+		<url-pattern>/servlet/TestServletEhCache</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>

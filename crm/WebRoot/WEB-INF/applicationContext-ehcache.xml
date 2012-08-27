@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+	<!-- ehcache 配置 -->
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ehcache.xml</value>
+		</property>
+		<!-- 
+		<property name="shared">
+			<value>true</value>
+		</property>
+			 -->	
+	</bean>
+	
+	<bean id="powerCache" class="com.crm.cache.CacheUtil">
+		<property name="cache">
+			<bean
+				class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+				<property name="cacheManager">
+					<ref local="cacheManager" />
+				</property>
+				<property name="cacheName" value="powerCache" />
+			</bean>
+		</property>
+	</bean>
+</beans>

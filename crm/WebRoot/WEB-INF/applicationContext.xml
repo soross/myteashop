@@ -4,6 +4,8 @@
 <beans>
 	<import resource="applicationContext-wjc.xml" />
 	<import resource="applicationContext-cf.xml" />
+	<!-- <import resource="applicationContext-timer.xml" /> -->
+	<import resource="applicationContext-ehcache.xml"/>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation"
@@ -67,5 +69,6 @@
 	<!--登录-->
 	<bean name="/login" class="com.crm.pub.struts.action.LoginAction">
 		<property name="userServiceDao" ref="userServiceDao"></property>
+		<property name="cacheUtil" ref="powerCache"></property>
 	</bean>
 </beans>

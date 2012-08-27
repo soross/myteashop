@@ -217,4 +217,9 @@
 		<property name="regServiceDao" ref="regServiceDaoProxy"></property>
 		<property name="regFeeServiceDao" ref="regFeeServiceDaoProxy"></property>
 	</bean>
+	
+		
+	
+	
+	
 </beans>

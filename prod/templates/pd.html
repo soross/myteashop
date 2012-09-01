@@ -266,10 +266,11 @@ for(i=0;i<cs.length;i++){
             <td height="28" bgcolor="#FFFFFF"><div align="center" class="STYLE2 STYLE1">
 
             	{if $orderinfo.pddate==''}
+            	<div align="center">未录入时间</div>
             	<!--{$orderinfo.pddate}
             	<input type="button" value="排单" class="submitButton"  onclick="javascript:location.href='pd.php?orderid={$orderlist[list].orderid}';">
-            	 -->
             	<div align="center"><a href="pddate.php?height=50;width=300&itemid={$orderinfo.id}&orderid={$orderinfo.orderid}" title="{$orderinfo.id}" class="thickbox"><img src="images/tab/037.gif" width="9" height="9" border="0"/></a><span class="STYLE1">[</span><a href="pddate.php?height=50;width=300&itemid={$orderinfo.id}&orderid={$orderinfo.orderid}" title="{$orderinfo.id}" class="thickbox">排单时间</a><span class="STYLE1">]</span></div>
+            	-->
             	{else}
             	{$orderinfo.pddate}
             	{/if}

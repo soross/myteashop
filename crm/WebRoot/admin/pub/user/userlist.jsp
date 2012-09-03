@@ -70,10 +70,14 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>用户选项：</b><a
-					href="${pageContext.request.contextPath}/admin/user.do?task=userList">用户列表</a>
-				|
+				<b>用户选项：</b>				
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
+				<!-- 
+				<a href="${pageContext.request.contextPath}/admin/user.do?task=userList">用户列表</a> |
 				<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddUser">添加用户</a> |
+				 -->
 				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
@@ -82,16 +86,22 @@
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
-			<th height="25" colspan="6">
+			<th height="25" colspan="5">
 				用户查询
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-			用户姓名:	<html:text property="username"  size="15"  />(模糊)
+			用户姓名:	<html:text property="username"  size="12"  />(模糊)
+			</td>			
+			<td height=25 class="pl20">
+			登入帐号:<html:text property="userid"  size="12" />(模糊)
 			</td>
 			<td height=25 class="pl20">
-			登入帐号:<html:text property="userid"  size="15" />
+			手机号码:	<html:text property="phone"  size="12"  />
+			</td>
+			<td height=25 class="pl20">
+			身份证号:	<html:text property="code"  size="15"  />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -129,10 +139,7 @@
 			</td>
 			<td width="12%">
 				E-mail
-			</td>
-			<td width="15%">
-				地址
-			</td>			
+			</td>					
 			<td width="12%">
 				创建时间
 			</td>
@@ -175,30 +182,29 @@
 						</td>
 						<td >
 							${user.email}
-						</td>
-						<td align="left">
-							${user.address}
-						</td>
+						</td>						
 						<td>
 							<bean:write name="user" property="opendate" format="yyyy-MM-dd HH:mm:ss"/>
 						</td>
 						<td>
-							${user.slock}
+							<logic:equal value="1" name="user" property="slock"><span style="color:blue;">在用</span></logic:equal>
+							<logic:equal value="0" name="user" property="slock">冻结</logic:equal>
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddPower&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[配置权限]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}" onclick="return confirm('是否确定冻结用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[冻结]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>
 		</logic:present>
 		<tr>
 			<td  align="left" colspan="5" height=25>
-				&nbsp;<html:button property="" value="批量导出"
+				 &nbsp;<!--<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button>
+					onclick="outAllToExcel('exportAllClient')"></html:button> -->
+					
 			</td>
-			<td colspan="10" align="right">
+			<td colspan="10" align="center">
 				<page:page name="pageUtil" />
 			</td>
 		</tr>

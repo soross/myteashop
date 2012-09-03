@@ -53,7 +53,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							throws HibernateException, SQLException {
 						TUser user = (TUser) session.get(TUser.class, userId);
 						if (user != null) {
-							Hibernate.initialize(user.getRoles());
+							Hibernate.initialize(user.getPowers());
+							Hibernate.initialize(user.getRoles());							
 							Set<TRole> roles = user.getRoles();
 
 							for (Object o : roles) {
@@ -88,6 +89,17 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 								&& null != user.getUsername()) {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
+						}
+						if ( null != user.getPhone()
+								&& !"".equals(user.getPhone())) {
+							hql += " and phone ='" + user.getPhone()
+									+ "'";
+						}
+						
+						if ( null != user.getCode()
+								&& !"".equals(user.getCode())) {
+							hql += " and code ='" + user.getCode()
+									+ "'";
 						}
 						
 						Query query = session.createQuery(hql);
@@ -157,15 +169,26 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							throws HibernateException, SQLException {
 
 						String hql = "select count(*) from TUser where 1=1";
-						if (!"".equals(user.getUserid())
-								&& null != user.getUserid()) {
+						if (null != user.getUserid()
+								&& !"".equals(user.getUserid())) {
 							hql += " and userid like '%" + user.getUserid()
 									+ "%'";
 						}
-						if (!"".equals(user.getUsername())
-								&& null != user.getUsername()) {
+						if (null != user.getUsername()
+								&& !"".equals(user.getUsername())) {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
+						}
+						if ( null != user.getPhone()
+								&& !"".equals(user.getPhone())) {
+							hql += " and phone ='" + user.getPhone()
+									+ "'";
+						}
+						
+						if ( null != user.getCode()
+								&& !"".equals(user.getCode())) {
+							hql += " and code ='" + user.getCode()
+									+ "'";
 						}
 						
 						Query query = session.createQuery(hql);

@@ -51,8 +51,11 @@ public class LoginAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response) {
 		LoginForm loginForm = (LoginForm) form;
 		ActionMessages messages = new ActionMessages();
+		//随机码
 		String code = request.getSession().getAttribute("rand").toString();
+		
 		if (loginForm.getCode().equals(code)) {//判断验证码
+			//获取用户信息
 			TUser tuser = userServiceDao.getUser(loginForm.getUserId());
 			if (tuser != null) {//判断用户
 				if (tuser.getPassword().equals(loginForm.getPassword())) {
@@ -61,13 +64,18 @@ public class LoginAction extends DispatchAction {
 					for (TRole role : roles) {
 					   powers.addAll(role.getPowers());
 					}
+					//用户权限增加到权限集合中
+					powers.addAll(tuser.getPowers());
+					//转成list
 					List<TPower> powerList = new ArrayList<TPower>(powers);
+					//去重复 排序
 					ComparatorPower cp = new ComparatorPower();
-					Collections.sort(powerList, cp);					
+					Collections.sort(powerList, cp);		
+					
+					//放到session中
 					request.getSession().setAttribute("powers", powerList);
 					
-					//cacheUtil.putObjectInCache("powers", powerList);
-					
+					//顶层菜单 的数量
 					int count=0;
 					for(int i=0;i<powerList.size();i++){
 						TPower power = (TPower)powerList.get(i);
@@ -77,8 +85,7 @@ public class LoginAction extends DispatchAction {
 					}
 					request.getSession().setAttribute("count", count);
 					
-					//cacheUtil.putObjectInCache("count", count);
-					
+					//设置第一界面菜单
 					String id = null;					
 					for(int i=0;i<powerList.size();i++){
 						TPower power = (TPower)powerList.get(i);
@@ -87,17 +94,18 @@ public class LoginAction extends DispatchAction {
 							break;
 						}
 					}
+					//查询第一界面菜单的子集
 					List<TPower> sonPowerList = new ArrayList<TPower>();		
 					for(int i=0;i<powerList.size();i++){
 						TPower power = (TPower)powerList.get(i);
 						if(id.equals(power.getParentid().toString())){
 							sonPowerList.add(power);
 						}
-					}					
+					}
+					//放到session中
 					request.getSession().setAttribute("sonPowers", sonPowerList);
 					
-					//cacheUtil.putObjectInCache("sonPowers", sonPowerList);
-					
+					//保存user到session
 					request.getSession().setAttribute("user", tuser);
 					return new ActionRedirect("/admin/main.jsp");
 				} else {

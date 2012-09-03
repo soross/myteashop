@@ -40,6 +40,9 @@ public class TUser implements java.io.Serializable {
 
 	//设置角色
 	private Set<TRole>  roles = new HashSet<TRole>();
+	
+	//设置角色
+	private Set<TPower>  powers = new HashSet<TPower>();
 
 	// Constructors
 
@@ -178,6 +181,14 @@ public class TUser implements java.io.Serializable {
 
 	public void setRoles(Set<TRole> roles) {
 		this.roles = roles;
+	}
+
+	public Set<TPower> getPowers() {
+		return powers;
+	}
+
+	public void setPowers(Set<TPower> powers) {
+		this.powers = powers;
 	}
 
 }

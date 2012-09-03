@@ -23,6 +23,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
+import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
@@ -52,6 +53,7 @@ public class UserAction extends DispatchAction {
 	 * @return ActionForward
 	 */
 	private UserServiceDao userServiceDao;
+	private Permission perDao;
 
 	public UserServiceDao getUserServiceDao() {
 		return userServiceDao;
@@ -60,7 +62,8 @@ public class UserAction extends DispatchAction {
 	public void setUserServiceDao(UserServiceDao userServiceDao) {
 		this.userServiceDao = userServiceDao;
 	}
-
+	
+	//权限ID--31
 	public ActionForward userList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -89,6 +92,11 @@ public class UserAction extends DispatchAction {
 
 		}
 		request.setAttribute("userList", userlist);
+		
+		//31  用户列表
+		List list = perDao.getSonPerList("31");
+		request.setAttribute("sonPowerByMenu", list);
+		
 		return new ActionForward("/admin/pub/user/userlist.jsp");
 	}
 
@@ -104,6 +112,11 @@ public class UserAction extends DispatchAction {
 		TRole role = new TRole();
 		List rolelist = userServiceDao.searchRole(role);
 		request.setAttribute("rolelist", rolelist);
+		
+		//31  用户列表
+		List list = perDao.getSonPerList("31");
+		request.setAttribute("sonPowerByMenu", list);
+		
 		return new ActionForward("/admin/pub/user/adduser.jsp");
 	}
 
@@ -117,14 +130,15 @@ public class UserAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-
 		String[] roles = userForm.getTrole();
 		TUser users = new TUser();
 		BeanUtils.copyProperties(users, userForm);
-		for (int i = 0; i < roles.length; i++) {
-			TRole getrole = new TRole();
-			getrole.setRoleid(new Long(roles[i]));
-			users.getRoles().add(getrole);
+		if(null!=roles){
+			for (int i = 0; i < roles.length; i++) {
+				TRole getrole = new TRole();
+				getrole.setRoleid(new Long(roles[i]));
+				users.getRoles().add(getrole);
+			}
 		}
 		users.setOpendate(new Date());
 		users.setSlock("1");
@@ -144,9 +158,7 @@ public class UserAction extends DispatchAction {
 							+ request.getContextPath()
 							+ "/admin/user.do?task=toAddUser';</script>");
 		}
-
 		return null;
-
 	}
 
 	/**
@@ -280,6 +292,14 @@ public class UserAction extends DispatchAction {
 						+ "/admin/user.do?task=showUser';</script>");
 		return null;
 
+	}
+
+	public Permission getPerDao() {
+		return perDao;
+	}
+
+	public void setPerDao(Permission perDao) {
+		this.perDao = perDao;
 	}
 
 }

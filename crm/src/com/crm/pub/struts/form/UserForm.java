@@ -56,6 +56,7 @@ public class UserForm extends ActionForm {
 	private String isslock;// 是否冻结
 
 	private String[] trole;// 角色
+	private String[] tprows;// 角色
 	private String cuserid;// 查询的用户ID
 	private String cusername;// 查询的用户名
 	private String chome;// 查询的籍贯
@@ -99,7 +100,6 @@ public class UserForm extends ActionForm {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.sex = "0";
-
 	}
 
 	public String getAddress() {
@@ -236,5 +236,13 @@ public class UserForm extends ActionForm {
 
 	public void setPassword2(String password2) {
 		this.password2 = password2;
+	}
+
+	public String[] getTprows() {
+		return tprows;
+	}
+
+	public void setTprows(String[] tprows) {
+		this.tprows = tprows;
 	}
 }

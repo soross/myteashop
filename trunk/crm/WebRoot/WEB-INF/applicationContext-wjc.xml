@@ -31,7 +31,7 @@
 
 	<bean name="vipDao" class="com.crm.pub.dao.impl.VipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+	</bean>	
 	
 	<!-- 数字字典 -->	
 	<bean name="dataDao" class="com.crm.sysdo.dao.impl.DataDaoImpl">

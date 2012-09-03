@@ -32,7 +32,11 @@
 		</property>
 	</bean>
 
-
+	<!-- 权限判断 -->
+	<bean name="perDao" class="com.crm.per.impl.PermissionImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<!--系统用户-->
 	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -50,6 +54,7 @@
 	<bean name="/admin/user"
 		class="com.crm.pub.struts.action.UserAction">
 		<property name="userServiceDao" ref="userProxy"></property>
+		<property name="perDao" ref="perDao"></property>
 	</bean>
 	
 	<!--角色操作  -->

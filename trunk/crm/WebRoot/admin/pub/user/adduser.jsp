@@ -23,10 +23,10 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>用户选项：</b><a
-					href="${pageContext.request.contextPath}/admin/user.do?task=userList">用户列表</a>
-				|
-				<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddUser">添加用户</a> |
+				<b>用户选项：</b>
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
 				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
@@ -130,6 +130,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
+					<input type="hidden" value="309" name="powerID">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 新增用户 " class="inputs" />
 				</td>

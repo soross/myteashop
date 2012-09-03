@@ -20,6 +20,7 @@ public class TPower implements java.io.Serializable,Comparable<TPower>{
 	private Long sortid;
 	
 	private Set<TRole> roles = new HashSet<TRole>();
+	private Set<TUser> users = new HashSet<TUser>();
 
 	// Constructors
 
@@ -87,6 +88,14 @@ public class TPower implements java.io.Serializable,Comparable<TPower>{
 
 	public int compareTo(TPower power) {//权限ID比较
 		return String.valueOf(this.id).compareTo(String.valueOf(power.id));
+	}
+
+	public Set<TUser> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<TUser> users) {
+		this.users = users;
 	}
 
 }

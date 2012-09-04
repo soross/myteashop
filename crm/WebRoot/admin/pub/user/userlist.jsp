@@ -188,10 +188,18 @@
 						</td>
 						<td>
 							<logic:equal value="1" name="user" property="slock"><span style="color:blue;">在用</span></logic:equal>
-							<logic:equal value="0" name="user" property="slock">冻结</logic:equal>
+							<logic:equal value="0" name="user" property="slock"><span style="color:red;">冻结</span></logic:equal>
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddPower&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[配置权限]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}" onclick="return confirm('是否确定冻结用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[冻结]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdatePower&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[配置权限]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+							<logic:equal value="1" name="user" property="slock">
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}&state=0" onclick="return confirm('是否确定冻结用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[冻结]</a>
+							</logic:equal>
+							<logic:equal value="0" name="user" property="slock">
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}&state=1" onclick="return confirm('是否确定解冻用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[解冻]</a>
+							</logic:equal>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>

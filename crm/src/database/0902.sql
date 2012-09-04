@@ -61,3 +61,6 @@ insert into t_rolepower values(seq_trolepower.nextval,'1',313);
 
 
 update t_power set url = url||'&'||'modfunid='||ID;
+
+
+修改t_user SLOCK 默认值 0 sex 默认值0;

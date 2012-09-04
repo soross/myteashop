@@ -51,66 +51,75 @@ public class LoginAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response) {
 		LoginForm loginForm = (LoginForm) form;
 		ActionMessages messages = new ActionMessages();
-		//随机码
+		// 随机码
 		String code = request.getSession().getAttribute("rand").toString();
-		
-		if (loginForm.getCode().equals(code)) {//判断验证码
-			//获取用户信息
+
+		if (null != loginForm.getCode()
+				&& loginForm.getCode().equals(code)) {// 判断验证码
+			// 获取用户信息
 			TUser tuser = userServiceDao.getUser(loginForm.getUserId());
-			if (tuser != null) {//判断用户
-				if (tuser.getPassword().equals(loginForm.getPassword())) {
-					Set<TRole> roles = tuser.getRoles();
-					Set<TPower> powers = new TreeSet<TPower>();					
-					for (TRole role : roles) {
-					   powers.addAll(role.getPowers());
-					}
-					//用户权限增加到权限集合中
-					powers.addAll(tuser.getPowers());
-					//转成list
-					List<TPower> powerList = new ArrayList<TPower>(powers);
-					//去重复 排序
-					ComparatorPower cp = new ComparatorPower();
-					Collections.sort(powerList, cp);		
-					
-					//放到session中
-					request.getSession().setAttribute("powers", powerList);
-					
-					//顶层菜单 的数量
-					int count=0;
-					for(int i=0;i<powerList.size();i++){
-						TPower power = (TPower)powerList.get(i);
-						if("0".equals(power.getParentid().toString())){
-							count++;
+			if (tuser != null) {// 判断用户
+				if (null != tuser.getPassword()
+						&& tuser.getPassword().equals(loginForm.getPassword())) {
+					if ("1".equalsIgnoreCase(tuser.getSlock())) {
+						Set<TRole> roles = tuser.getRoles();
+						Set<TPower> powers = new TreeSet<TPower>();
+						for (TRole role : roles) {
+							powers.addAll(role.getPowers());
 						}
-					}
-					request.getSession().setAttribute("count", count);
-					
-					//设置第一界面菜单
-					String id = null;					
-					for(int i=0;i<powerList.size();i++){
-						TPower power = (TPower)powerList.get(i);
-						if("0".equals(power.getParentid().toString())){
-							id=power.getId().toString();
-							break;
+						// 用户权限增加到权限集合中
+						powers.addAll(tuser.getPowers());
+						// 转成list
+						List<TPower> powerList = new ArrayList<TPower>(powers);
+						// 去重复 排序
+						ComparatorPower cp = new ComparatorPower();
+						Collections.sort(powerList, cp);
+
+						// 放到session中
+						request.getSession().setAttribute("powers", powerList);
+
+						// 顶层菜单 的数量
+						int count = 0;
+						for (int i = 0; i < powerList.size(); i++) {
+							TPower power = (TPower) powerList.get(i);
+							if ("0".equals(power.getParentid().toString())) {
+								count++;
+							}
 						}
-					}
-					//查询第一界面菜单的子集
-					List<TPower> sonPowerList = new ArrayList<TPower>();		
-					for(int i=0;i<powerList.size();i++){
-						TPower power = (TPower)powerList.get(i);
-						if(id.equals(power.getParentid().toString())){
-							sonPowerList.add(power);
+						request.getSession().setAttribute("count", count);
+
+						// 设置第一界面菜单
+						String id = null;
+						for (int i = 0; i < powerList.size(); i++) {
+							TPower power = (TPower) powerList.get(i);
+							if ("0".equals(power.getParentid().toString())) {
+								id = power.getId().toString();
+								break;
+							}
 						}
+						// 查询第一界面菜单的子集
+						List<TPower> sonPowerList = new ArrayList<TPower>();
+						for (int i = 0; i < powerList.size(); i++) {
+							TPower power = (TPower) powerList.get(i);
+							if (id.equals(power.getParentid().toString())) {
+								sonPowerList.add(power);
+							}
+						}
+						// 放到session中
+						request.getSession().setAttribute("sonPowers",
+								sonPowerList);
+
+						// 保存user到session
+						request.getSession().setAttribute("user", tuser);
+						return new ActionRedirect("/admin/main.jsp");
+					} else {
+						messages.add("msg", new ActionMessage("用户处于冻结状态,无法登入!",
+								false));
+						this.saveMessages(request, messages);
 					}
-					//放到session中
-					request.getSession().setAttribute("sonPowers", sonPowerList);
-					
-					//保存user到session
-					request.getSession().setAttribute("user", tuser);
-					return new ActionRedirect("/admin/main.jsp");
+
 				} else {
-					messages
-							.add("msg", new ActionMessage("用户密码不正确!", false));
+					messages.add("msg", new ActionMessage("用户密码不正确!", false));
 					this.saveMessages(request, messages);
 				}
 
@@ -124,9 +133,10 @@ public class LoginAction extends DispatchAction {
 		}
 		return mapping.getInputForward();
 	}
-	
+
 	/**
 	 * 退出
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -134,13 +144,19 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward exit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		request.getSession().invalidate();
-		response.getWriter().write("<script>window.opener=null;window.open('', '_self', '');window.close();</script>");
+		response
+				.getWriter()
+				.write(
+						"<script>window.opener=null;window.open('', '_self', '');window.close();</script>");
 		return null;
 	}
+
 	/**
 	 * 重新登入
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -148,14 +164,18 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward relogin(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		request.getSession().invalidate();
-		response.getWriter().write("<script>top.location.href='"+request.getContextPath()+"/login.jsp';</script>");
+		response.getWriter().write(
+				"<script>top.location.href='" + request.getContextPath()
+						+ "/login.jsp';</script>");
 		return null;
 	}
-	
+
 	/**
 	 * 记事本
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -163,14 +183,17 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward notepad(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('notepad');</script>");
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// response.getWriter().write("<script>var WshShell = new
+		// ActiveXObject('WScript.Shell');WshShell.Run('notepad');</script>");
 		Runtime.getRuntime().exec("notepad");
 		return null;
 	}
-	
+
 	/**
 	 * 计算器
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -178,14 +201,17 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward calc(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// response.getWriter().write("<script>var WshShell = new
+		// ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
 		Runtime.getRuntime().exec("calc");
 		return null;
 	}
-	
+
 	/**
 	 * 系统主机信息
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -193,14 +219,17 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward winmsd(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//response.getWriter().write("<script>var WshShell = new ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// response.getWriter().write("<script>var WshShell = new
+		// ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
 		Runtime.getRuntime().exec("winmsd");
 		return null;
 	}
-	
+
 	/**
 	 * 跳转到系统时间校验
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -208,13 +237,18 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward toCheckDate(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.getSession().setAttribute("currTime", DateUtil.DateToStringBy_YMDHMS(new Date()));	
-		//request.getRequestDispatcher("/admin/pub/checktime.jsp").forward(request, response);
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		request.getSession().setAttribute("currTime",
+				DateUtil.DateToStringBy_YMDHMS(new Date()));
+		// request.getRequestDispatcher("/admin/pub/checktime.jsp").forward(request,
+		// response);
 		return new ActionRedirect("/admin/pub/checktime.jsp");
 	}
+
 	/**
 	 * 跳转到系统时间校验
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -222,41 +256,51 @@ public class LoginAction extends DispatchAction {
 	 * @return
 	 */
 	public ActionForward checkDate(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		LoginForm loginForm = (LoginForm)form;
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		LoginForm loginForm = (LoginForm) form;
 		String dateStr = loginForm.getNewdate();
 		String date = "cmd/ date " + dateStr.substring(0, 10);
-		String time = "cmd/ time " + dateStr.substring(11);//cmd/ time 12:00:00
+		String time = "cmd/ time " + dateStr.substring(11);// cmd/ time
+		// 12:00:00
 		Runtime.getRuntime().exec(date);
 		Runtime.getRuntime().exec(time);
-		response.getWriter().write("<script>alert('系统时间校准成功!');location.href='"+request.getContextPath()+"/admin/pub/checktime.jsp';</script>");;
+		response.getWriter().write(
+				"<script>alert('系统时间校准成功!');location.href='"
+						+ request.getContextPath()
+						+ "/admin/pub/checktime.jsp';</script>");
+		;
 		return null;
 	}
-	
+
 	public ActionForward menu(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
-		List powerList = (ArrayList)request.getSession().getAttribute("powers");
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		List powerList = (ArrayList) request.getSession()
+				.getAttribute("powers");
 		List sonPowerList = new ArrayList();
-		
+
 		String menuid = request.getParameter("menuid");
-		
-		for(int i=0;i<powerList.size();i++){
-			TPower power = (TPower)powerList.get(i);
-			if(menuid.equals(power.getParentid().toString())){
+
+		for (int i = 0; i < powerList.size(); i++) {
+			TPower power = (TPower) powerList.get(i);
+			if (menuid.equals(power.getParentid().toString())) {
 				sonPowerList.add(power);
 			}
 		}
-		request.getSession().setAttribute("sonPowers",null);
+		request.getSession().setAttribute("sonPowers", null);
 		request.getSession().setAttribute("sonPowers", sonPowerList);
-		
-		//cacheUtil.putObjectInCache("sonPowers", sonPowerList);
-		
+
+		// cacheUtil.putObjectInCache("sonPowers", sonPowerList);
+
 		String url = request.getParameter("url");
-		response.getWriter().print("<script>location.href='"+request.getContextPath()+url+"';</script>");
-		return null;//new ActionRedirect(url);
+		response.getWriter().print(
+				"<script>location.href='" + request.getContextPath() + url
+						+ "';</script>");
+		return null;// new ActionRedirect(url);
 	}
-	
+
 	public UserServiceDao getUserServiceDao() {
 		return userServiceDao;
 	}
@@ -265,7 +309,6 @@ public class LoginAction extends DispatchAction {
 		this.userServiceDao = userServiceDao;
 	}
 
-	
 	public static void main(String[] args) {
 		String dateStr = "2012-01-01 22:00:00";
 		String date = dateStr.substring(0, 10);
@@ -281,6 +324,5 @@ public class LoginAction extends DispatchAction {
 	public void setCacheUtil(CacheUtil cacheUtil) {
 		this.cacheUtil = cacheUtil;
 	}
-	
-	
+
 }

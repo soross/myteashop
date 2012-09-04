@@ -31,13 +31,13 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/user?task=updateUser" method="post">
+	<html:form action="/admin/user?task=updatePower" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					修改用户
+					权限配置
 				</th>
 			</tr>
 			<tr>
@@ -50,73 +50,35 @@
 			</tr>
 			<tr>
 				<td align="right">
-					姓名：
+					权限列表:
 				</td>
 				<td colspan="3">
-					<html:text property="username"  /><span id="uname"></span>
-				</td>
-			</tr>
-			
-			<tr>
-				<td align="right">
-					性别：
-				</td>
-				<td colspan="3">
-					<html:radio property="sex" value="0">男</html:radio>
-					<html:radio property="sex" value="1">女</html:radio>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					身份证号:
-				</td>
-				<td colspan="3">
-					<html:text property="code"/><span id="uphone"></span>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					电子邮件:
-				</td>
-				<td colspan="3">
-					<html:text property="email"/><span id="uphone"></span>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					电话号码:
-				</td>
-				<td colspan="3">
-					<html:text property="tel"/><span id="uphone"></span>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					手机:
-				</td>
-				<td colspan="3">
-					<html:text property="phone"/><span id="uphone"></span>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属角色:
-				</td>
-				<td colspan="3">
-					<logic:present name="rolelist">
-					<logic:notEmpty name="rolelist">
-							<logic:iterate id="role" name="rolelist">
-								<html:multibox property="trole" value="${role.roleid}"></html:multibox>${role.rolename}<br>
+					<logic:present name="powerlist">
+						<logic:notEmpty name="powerlist">
+							<logic:iterate id="power" name="powerlist">
+								<logic:equal value="0" name="power" property="parentid">
+									<html:multibox property="tprows" styleId="one${power.id}" value="${power.id}" onclick="checkSonAll('${power.id}');"></html:multibox>${power.powername}<br>
+									<logic:iterate id="power2" name="powerlist">
+										<logic:equal value="${power.id}" name="power2" property="parentid">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:multibox  styleId="two${power.id}" property="tprows" value="${power2.id}"></html:multibox>${power2.powername}<br>
+											<logic:iterate id="power3" name="powerlist">
+												<logic:equal value="${power2.id}" name="power3" property="parentid">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:multibox  styleId="three${power2.id}" property="tprows" value="${power3.id}"></html:multibox>${power3.powername}<br>
+												</logic:equal>
+											</logic:iterate>		
+										</logic:equal>
+									</logic:iterate>
+								</logic:equal>
                             </logic:iterate>
 						</logic:notEmpty>
-					</logic:present><span id="urole"></span>
+					</logic:present><span id="tpower"></span>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<input type="hidden" value="309" name="powerID">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 修改用户 " class="inputs" />
+					<input type="submit" name="submit" value=" 配置权限 " class="inputs" />
 				</td>
 			</tr>
 		</table>
@@ -126,4 +88,22 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
+<script>
+function checkSonAll(pid){
+	var cks = document.getElementsByTagName("input");
+	for(var i=0;i<cks.length;i++){
+		if(cks[i].className=="two"+pid){
+			cks[i].check = true;
+			for(var j=0;j<cks.length;j++){
+				if(cks[j].className=="three"+cks[i].value){
+					cks[j].check = true;				
+				}
+			}			
+		}
+	}
+}
+
+
+
+</script>
 </html:html>

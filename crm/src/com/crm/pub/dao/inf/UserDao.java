@@ -56,7 +56,7 @@ public interface UserDao {
 	/**
 	 * 查询角色
 	 */
-	public List searchRole(TRole role);
+	public List searchRole();
 	/**
 	 * 权限列表
 	 * @return
@@ -76,4 +76,10 @@ public interface UserDao {
 	 * @param user
 	 */
 	public boolean updatePass(TUser user);
+	/**
+	 * 修改权限
+	 * 
+	 * @param user
+	 */
+	public boolean updatePower(TUser user);
 }

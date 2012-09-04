@@ -81,8 +81,8 @@ public class UserServiceDaoImpl implements UserServiceDao {
 		this.userDao = userDao;
 	}
 
-	public List searchRole(TRole role) {
-		return this.userDao.searchRole(role);
+	public List searchRole() {
+		return this.userDao.searchRole();
 	}
 	
 	/**
@@ -104,6 +104,15 @@ public class UserServiceDaoImpl implements UserServiceDao {
 	 */
 	public boolean updatePass(TUser user) {
 		return userDao.updatePass(user);
+	}
+	
+	/**
+	 * ÐÞ¸ÄÈ¨ÏÞ
+	 * 
+	 * @param user
+	 */
+	public boolean updatePower(TUser user){
+		return userDao.updatePower(user);
 	}
 
 }

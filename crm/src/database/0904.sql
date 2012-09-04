@@ -41,6 +41,34 @@ insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
 values (313, '冻结用户', '/admin/user.do?task=slockUser&modfunid=313', 31, -1);
 
 
+修改t_userpower userid 为varchar2(20);
+
+
+-- Create sequence 
+create sequence SEQ_USER
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1111
+increment by 1
+cache 20;
+
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (329, '角色列表', '/admin/role.do?task=roleList&modfunid=329', 32, 1);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (330, '新增角色', '/admin/role.do?task=addrole&modfunid=330', 32, 2);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (331, '删除角色', '/admin/role.do?task=deleterole&modfunid=331', 32, -1);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (332, '修改角色', '/admin/role.do?task=updaterole&modfunid=332', 32, -1);
+
+
+
+
+/**
 --从Root往树末梢递归
 select * from t_power
  start with id=5
@@ -50,3 +78,4 @@ select * from t_power
 select * from t_power
  start with id=38
  connect by prior parentid = id;
+ **/

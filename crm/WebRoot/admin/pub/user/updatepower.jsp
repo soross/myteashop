@@ -32,7 +32,6 @@
 		</tr>
 	</table>
 	<html:form action="/admin/user?task=updatePower" method="post">
-
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
@@ -53,25 +52,28 @@
 					权限列表:
 				</td>
 				<td colspan="3">
-					<logic:present name="powerlist">
-						<logic:notEmpty name="powerlist">
-							<logic:iterate id="power" name="powerlist">
-								<logic:equal value="0" name="power" property="parentid">
-									<html:multibox property="tprows" styleId="one${power.id}" value="${power.id}" onclick="checkSonAll('${power.id}');"></html:multibox>${power.powername}<br>
-									<logic:iterate id="power2" name="powerlist">
-										<logic:equal value="${power.id}" name="power2" property="parentid">
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:multibox  styleId="two${power.id}" property="tprows" value="${power2.id}"></html:multibox>${power2.powername}<br>
-											<logic:iterate id="power3" name="powerlist">
-												<logic:equal value="${power2.id}" name="power3" property="parentid">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:multibox  styleId="three${power2.id}" property="tprows" value="${power3.id}"></html:multibox>${power3.powername}<br>
-												</logic:equal>
-											</logic:iterate>		
-										</logic:equal>
-									</logic:iterate>
-								</logic:equal>
-                            </logic:iterate>
-						</logic:notEmpty>
-					</logic:present><span id="tpower"></span>
+					<table>						
+						<logic:present name="powerlist">
+							<logic:notEmpty name="powerlist">
+								<logic:iterate id="power" name="powerlist">
+									<logic:equal value="0" name="power" property="parentid">
+										<tr><td><html:multibox property="tprows" styleClass="one${power.id}" value="${power.id}" onclick="selectSonAll(this)"></html:multibox>${power.powername}</td></tr>
+										<logic:iterate id="power2" name="powerlist">
+											<logic:equal value="${power.id}" name="power2" property="parentid">
+												<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:multibox  styleClass="two${power.id}" property="tprows" value="${power2.id}"  onclick="selectOneThree(this,'${power.id}')"></html:multibox>${power2.powername}</td></tr>
+												<logic:iterate id="power3" name="powerlist">
+													<logic:equal value="${power2.id}" name="power3" property="parentid">
+														<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<html:multibox  styleClass="three${power2.id}" property="tprows" value="${power3.id}" onclick="selectParentAll(this,'${power.id}','${power2.id}')"></html:multibox>${power3.powername}</td></tr>
+													</logic:equal>
+												</logic:iterate>		
+											</logic:equal>
+										</logic:iterate>
+									</logic:equal>
+	                            </logic:iterate>
+							</logic:notEmpty>
+						</logic:present><span id="tpower"></span>							
+					</table>
 				</td>
 			</tr>
 			<tr>
@@ -89,21 +91,104 @@
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
 <script>
-function checkSonAll(pid){
-	var cks = document.getElementsByTagName("input");
-	for(var i=0;i<cks.length;i++){
-		if(cks[i].className=="two"+pid){
-			cks[i].check = true;
-			for(var j=0;j<cks.length;j++){
-				if(cks[j].className=="three"+cks[i].value){
-					cks[j].check = true;				
+function selectSonAll(obj){
+	//选中所有只项
+	var chks = document.getElementsByTagName('input');
+	//alert(chks[0].className+"two"+obj.value);
+	for(var i=0;i<chks.length;i++){//选中2级
+		if(chks[i].className=="two"+obj.value){
+			chks[i].checked=obj.checked;
+			for(var j=0;j<chks.length;j++){//选中3级
+				if(chks[j].className=="three"+chks[i].value){
+					chks[j].checked=obj.checked;
 				}
-			}			
+			}		
 		}
 	}
 }
 
+function selectParentAll(obj,vid,val){
+	//选中所有父项
+	var chks = document.getElementsByTagName('input');
+	
+	for(var i=0;i<chks.length;i++){
+		//判断是否有同一级别的其他项选中
+		var boolean = true;
+		for(var j=0;j<chks.length;j++){
+			//alert(chks[j].className+"==three"+val +"----"+chks[j].value+"!="+obj.value);
+			if(chks[j].className=="three"+val && chks[j].value!=obj.value){
+				if(chks[j].checked){
+					boolean = false;
+					break;
+				}
+			}
+		}
+		
+		var booleanTWO = true;
+		for(var j=0;j<chks.length;j++){
+			if(chks[j].className=="two"+vid && chks[j].value!=val){
+				if(chks[j].checked){
+					booleanTWO = false;
+					break;
+				}
+			}
+		}
+		
+		//2级选中
+		if(chks[i].className=="two"+vid && chks[i].value==val){
+			if(obj.checked==true){
+				chks[i].checked=obj.checked;
+			}else{
+				//如果有其他3级项选中，不选的时候不过滤
+				if(boolean){
+					chks[i].checked=obj.checked;
+				}
+			}
+		}
+		//1级选中
+		if(chks[i].className=="one"+vid){
+			if(obj.checked==true){
+				chks[i].checked=obj.checked;
+			}else{
+				if(boolean && booleanTWO){
+					chks[i].checked=obj.checked;
+				}
+			}
+		}
+	}
+}
 
-
+function selectOneThree(obj,vid){
+	var chks = document.getElementsByTagName('input');
+	var boolean = true;
+	for(var i=0;i<chks.length;i++){
+		var boolean = true;
+		//判断父级是否不去选中
+		for(var j=0;j<chks.length;j++){
+			//alert(chks[j].className+"=="+obj.className +"&&"+ chks[j].value+"!="+obj.value)
+			if(chks[j].className==obj.className && chks[j].value!=obj.value){
+				if(chks[j].checked){
+					boolean = false;
+					break;
+				}
+			}
+		}		
+		//选中父级
+		if(chks[i].className=="one"+vid){
+			if(obj.checked){
+				chks[i].checked = obj.checked;
+			}else{
+				if(boolean){
+					chks[i].checked = false;
+				}
+			}
+			
+		}
+		//选中3级
+		if(chks[i].className=="three"+obj.value){
+			chks[i].checked=obj.checked;
+		}
+	}
+}
 </script>
 </html:html>

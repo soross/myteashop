@@ -69,6 +69,7 @@
 	</bean>
     <bean name="/admin/role" class="com.crm.pub.struts.action.RoleAction">
       <property name="roleServiceDao" ref="roleProxy"></property>
+      <property name="perDao" ref="perDao"></property>
     </bean>
     
 	<!--登录-->

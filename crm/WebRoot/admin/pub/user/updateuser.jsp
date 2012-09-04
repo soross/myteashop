@@ -114,7 +114,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" value="309" name="powerID">
+					<input type="hidden" value="309" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 修改用户 " class="inputs" />
 				</td>

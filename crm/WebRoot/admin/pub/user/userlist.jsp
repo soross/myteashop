@@ -122,28 +122,28 @@
 				<input type="checkbox" id="ckb" name="ckb"
 					onclick="selectAll(this);" />
 			</td>
-			<td width="8%">
+			<td width="9%">
 				姓名
 			</td>
-			<td width="7%">
+			<td width="9%">
 				登入帐号
 			</td>
-			<td width="8%">
+			<td width="10%">
 				手机
 			</td>
 			<td width="8%">
 				电话
 			</td>
-			<td width="13%">
+			<td width="15%">
 				身份证号
 			</td>
 			<td width="12%">
 				E-mail
 			</td>					
-			<td width="12%">
+			<td width="9%">
 				创建时间
 			</td>
-			<td width="4%">
+			<td width="3%">
 				状态
 			</td>
 			<td>
@@ -184,22 +184,22 @@
 							${user.email}
 						</td>						
 						<td>
-							<bean:write name="user" property="opendate" format="yyyy-MM-dd HH:mm:ss"/>
+							<bean:write name="user" property="opendate" format="yyyy-MM-dd"/>
 						</td>
 						<td>
 							<logic:equal value="1" name="user" property="slock"><span style="color:blue;">在用</span></logic:equal>
 							<logic:equal value="0" name="user" property="slock"><span style="color:red;">冻结</span></logic:equal>
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdatePower&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[配置权限]</a>
-							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+							<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdatePower&modfunid=310&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[配置权限]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=toUpdateUser&modfunid=311&id=${user.userid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
 							<logic:equal value="1" name="user" property="slock">
-							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}&state=0" onclick="return confirm('是否确定冻结用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[冻结]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&modfunid=313&id=${user.userid}&state=0" onclick="return confirm('是否确定冻结用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[冻结]</a>
 							</logic:equal>
 							<logic:equal value="0" name="user" property="slock">
-							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&id=${user.userid}&state=1" onclick="return confirm('是否确定解冻用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[解冻]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=slockUser&modfunid=313&id=${user.userid}&state=1" onclick="return confirm('是否确定解冻用户!');"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[解冻]</a>
 							</logic:equal>
-							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/user.do?task=deleteUser&modfunid=312&id=${user.userid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>

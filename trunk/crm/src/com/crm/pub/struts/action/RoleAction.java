@@ -17,6 +17,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
+import com.crm.per.dao.Permission;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.service.dao.inf.RoleServiceDao;
@@ -28,6 +29,7 @@ import com.crm.pub.struts.form.RoleForm;
 public class RoleAction extends DispatchAction {
 
 	private RoleServiceDao roleServiceDao;
+	private Permission perDao;
 
 	/**
 	 * 查找角色列表
@@ -42,6 +44,11 @@ public class RoleAction extends DispatchAction {
 		List list = roleServiceDao.searchRoleList(trole,pageUtil.pastart(),pageUtil.getPagesize());
 		request.setAttribute("roleList", list);	
 		request.setAttribute("pageUtil", pageUtil);
+		
+		// 32 角色
+		List sonList = perDao.getSonPerList("32");
+		request.setAttribute("sonPowerByMenu", sonList);
+		
 		return new ActionForward("/admin/pub/role/rolelist.jsp");
 	}
 
@@ -187,4 +194,14 @@ public class RoleAction extends DispatchAction {
 	public void setRoleServiceDao(RoleServiceDao roleServiceDao) {
 		this.roleServiceDao = roleServiceDao;
 	}
+
+	public Permission getPerDao() {
+		return perDao;
+	}
+
+	public void setPerDao(Permission perDao) {
+		this.perDao = perDao;
+	}
+	
+	
 }

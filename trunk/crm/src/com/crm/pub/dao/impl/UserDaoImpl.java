@@ -1,6 +1,10 @@
 package com.crm.pub.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -9,11 +13,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
 import com.crm.pub.dao.inf.UserDao;
+import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
 
@@ -112,8 +118,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	/**
 	 * 修改用户
 	 */
-	public boolean updateUser(final TUser users) {
-
+	public boolean updateUser(final TUser user) {
+		/**
 		this.getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
@@ -135,11 +141,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				return true;
 			}
 		});
+		*/
+		this.getHibernateTemplate().update(user);
 
 		return true;
 	}
 
-	public List searchRole(TRole role) {
+	public List searchRole() {
 		List list = this.getHibernateTemplate().executeFind(
 				new HibernateCallback() {
 
@@ -153,11 +161,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				});
 		return list;
 	}
+
 	/**
 	 * 权限列表
+	 * 
 	 * @return
 	 */
-	public List searchPower(){
+	public List searchPower() {
 		List list = this.getHibernateTemplate().executeFind(
 				new HibernateCallback() {
 
@@ -242,7 +252,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	 */
 	public boolean updatePass(final TUser user) {
 		this.getHibernateTemplate().execute(new HibernateCallback() {
-
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
 				String hql = "update TUser  set password=:pass where userid=:id";
@@ -274,6 +283,16 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				return true;
 			}
 		});
+		return true;
+	}
+
+	/**
+	 * 修改权限
+	 * 
+	 * @param user
+	 */
+	public boolean updatePower(final TUser user) {
+		this.getHibernateTemplate().update(user);
 		return true;
 	}
 }

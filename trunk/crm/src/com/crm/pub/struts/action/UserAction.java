@@ -110,8 +110,7 @@ public class UserAction extends DispatchAction {
 	public ActionForward toAddUser(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		TRole role = new TRole();
-		List rolelist = userServiceDao.searchRole(role);
+		List rolelist = userServiceDao.searchRole();
 		request.setAttribute("rolelist", rolelist);
 
 		// 31 用户列表
@@ -183,37 +182,6 @@ public class UserAction extends DispatchAction {
 		return null;
 	}
 
-	public ActionForward toUpdatePower(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-
-		String id = request.getParameter("id");
-		TUser suser = userServiceDao.getUser(id);
-		Set<TPower> powers = suser.getPowers();
-		String[] ps = new String[powers.size()];
-		
-		Iterator iter = powers.iterator();
-		for (int i = 0; i < powers.size(); i++) {
-			while (iter.hasNext()) {
-				TPower r = (TPower) iter.next();
-				ps[i] = r.getId().toString();
-			}
-		}
-
-		userForm.setTprows(ps);
-		
-		List powerlist = userServiceDao.searchPower();
-		request.setAttribute("powerlist", powerlist);
-		
-		userForm.setUserid(suser.getUserid());
-
-		// 31 用户列表
-		List list = perDao.getSonPerList("31");
-		request.setAttribute("sonPowerByMenu", list);
-
-		return new ActionForward("/admin/pub/user/updatepower.jsp");
-	}
 
 	/**
 	 * 修改用户界面
@@ -225,22 +193,22 @@ public class UserAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
-		TRole role = new TRole();
+
 		String id = request.getParameter("id");
 		TUser suser = userServiceDao.getUser(id);
-		Set<TRole> urole = suser.getRoles();
-		Iterator iter = urole.iterator();
-		String[] roles = new String[urole.size()];
-		for (int i = 0; i < urole.size(); i++) {
-			while (iter.hasNext()) {
-				TRole r = (TRole) iter.next();
-				roles[i] = r.getRoleid().toString();
-
-			}
+		
+		Set<TRole> roles = suser.getRoles();
+		
+		String[] rs = new String[roles.size()];
+		int index=0;
+		for (TRole role:roles) {
+			rs[index] = role.getRoleid().toString();
+			index++;
 		}
 
-		userForm.setTrole(roles);
-		List rolelist = userServiceDao.searchRole(role);
+		userForm.setTrole(rs);
+		
+		List rolelist = userServiceDao.searchRole();
 		request.setAttribute("uid", suser.getUserid());
 		request.setAttribute("rolelist", rolelist);
 		BeanUtils.copyProperties(userForm, suser);
@@ -263,8 +231,14 @@ public class UserAction extends DispatchAction {
 			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 		String[] roles = userForm.getTrole();
-		TUser users = new TUser();
-		BeanUtils.copyProperties(users, userForm);
+		TUser users = userServiceDao.getUser(userForm.getUserid());
+		users.setUsername(userForm.getUsername());
+		users.setSex(userForm.getSex());
+		users.setCode(userForm.getCode());
+		users.setEmail(userForm.getEmail());
+		users.setTel(userForm.getTel());
+		users.setPhone(userForm.getPhone());
+		
 		for (int i = 0; i < roles.length; i++) {
 			TRole getrole = new TRole();
 			getrole.setRoleid(new Long(roles[i]));
@@ -372,6 +346,74 @@ public class UserAction extends DispatchAction {
 						+ request.getContextPath()
 						+ "/admin/user.do?task=userList';</script>");
 
+		return null;
+	}
+	
+	public ActionForward toUpdatePower(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+
+		String id = request.getParameter("id");
+		TUser suser = userServiceDao.getUser(id);
+		Set<TPower> powers = suser.getPowers();
+		String[] ps = new String[powers.size()];
+		
+		int index=0;
+		for (TPower po :powers) {
+			ps[index] = po.getId().toString();
+			index++;
+		}
+
+		userForm.setTprows(ps);
+		
+		List powerlist = userServiceDao.searchPower();
+		request.setAttribute("powerlist", powerlist);
+		
+		userForm.setUserid(suser.getUserid());
+
+		// 31 用户列表
+		List list = perDao.getSonPerList("31");
+		request.setAttribute("sonPowerByMenu", list);
+
+		return new ActionForward("/admin/pub/user/updatepower.jsp");
+	}
+	/**
+	 * 修改权限
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward updatePower(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+		String[] powers = userForm.getTprows();
+		TUser users = userServiceDao.getUser(userForm.getUserid());
+		//BeanUtils.copyProperties(users, userForm);
+		users.getPowers().clear();
+		for (int i = 0; i < powers.length; i++) {
+			TPower getpower = new TPower();
+			getpower.setId(new Long(powers[i]));
+			users.getPowers().add(getpower);
+		}
+
+		boolean bool = userServiceDao.updatePower(users);
+		if (bool) {
+			response.getWriter().print(
+					"<script>if(confirm('权限配置成功,是否继续配置?')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdatePower&id="
+							+ users.getUserid() + "';}else{"
+							+ "location.href='" + request.getContextPath()
+							+ "/admin/user.do?task=userList';}</script>");
+		} else {
+			response.getWriter().print(
+					"<script> alert('权限配置失败,请重试!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdatePower&id="
+							+ users.getUserid() + "';</script>");
+		}
 		return null;
 	}
 

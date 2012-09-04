@@ -25,6 +25,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
 import com.crm.pub.service.dao.inf.UserServiceDao;
@@ -62,8 +63,8 @@ public class UserAction extends DispatchAction {
 	public void setUserServiceDao(UserServiceDao userServiceDao) {
 		this.userServiceDao = userServiceDao;
 	}
-	
-	//权限ID--31
+
+	// 权限ID--31
 	public ActionForward userList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -92,11 +93,11 @@ public class UserAction extends DispatchAction {
 
 		}
 		request.setAttribute("userList", userlist);
-		
-		//31  用户列表
+
+		// 31 用户列表
 		List list = perDao.getSonPerList("31");
 		request.setAttribute("sonPowerByMenu", list);
-		
+
 		return new ActionForward("/admin/pub/user/userlist.jsp");
 	}
 
@@ -112,11 +113,11 @@ public class UserAction extends DispatchAction {
 		TRole role = new TRole();
 		List rolelist = userServiceDao.searchRole(role);
 		request.setAttribute("rolelist", rolelist);
-		
-		//31  用户列表
+
+		// 31 用户列表
 		List list = perDao.getSonPerList("31");
 		request.setAttribute("sonPowerByMenu", list);
-		
+
 		return new ActionForward("/admin/pub/user/adduser.jsp");
 	}
 
@@ -133,7 +134,7 @@ public class UserAction extends DispatchAction {
 		String[] roles = userForm.getTrole();
 		TUser users = new TUser();
 		BeanUtils.copyProperties(users, userForm);
-		if(null!=roles){
+		if (null != roles) {
 			for (int i = 0; i < roles.length; i++) {
 				TRole getrole = new TRole();
 				getrole.setRoleid(new Long(roles[i]));
@@ -171,7 +172,6 @@ public class UserAction extends DispatchAction {
 			throws IOException {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 		String id = request.getParameter("id");
-
 		TUser duser = new TUser();
 		duser.setUserid(id);
 		userServiceDao.deleteUser(duser);
@@ -179,8 +179,40 @@ public class UserAction extends DispatchAction {
 		response.getWriter().print(
 				"<script> alert('删除成功!');location.href='"
 						+ request.getContextPath()
-						+ "/admin/user.do?task=showUser';</script>");
+						+ "/admin/user.do?task=userList';</script>");
 		return null;
+	}
+
+	public ActionForward toUpdatePower(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+
+		String id = request.getParameter("id");
+		TUser suser = userServiceDao.getUser(id);
+		Set<TPower> powers = suser.getPowers();
+		String[] ps = new String[powers.size()];
+		
+		Iterator iter = powers.iterator();
+		for (int i = 0; i < powers.size(); i++) {
+			while (iter.hasNext()) {
+				TPower r = (TPower) iter.next();
+				ps[i] = r.getId().toString();
+			}
+		}
+
+		userForm.setTprows(ps);
+		
+		List powerlist = userServiceDao.searchPower();
+		request.setAttribute("powerlist", powerlist);
+		
+		userForm.setUserid(suser.getUserid());
+
+		// 31 用户列表
+		List list = perDao.getSonPerList("31");
+		request.setAttribute("sonPowerByMenu", list);
+
+		return new ActionForward("/admin/pub/user/updatepower.jsp");
 	}
 
 	/**
@@ -189,7 +221,7 @@ public class UserAction extends DispatchAction {
 	 * @throws InvocationTargetException
 	 * @throws IllegalAccessException
 	 */
-	public ActionForward updateJsp(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateUser(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
@@ -212,6 +244,11 @@ public class UserAction extends DispatchAction {
 		request.setAttribute("uid", suser.getUserid());
 		request.setAttribute("rolelist", rolelist);
 		BeanUtils.copyProperties(userForm, suser);
+
+		// 31 用户列表
+		List list = perDao.getSonPerList("31");
+		request.setAttribute("sonPowerByMenu", list);
+
 		return new ActionForward("/admin/pub/user/updateuser.jsp");
 	}
 
@@ -229,18 +266,27 @@ public class UserAction extends DispatchAction {
 		TUser users = new TUser();
 		BeanUtils.copyProperties(users, userForm);
 		for (int i = 0; i < roles.length; i++) {
-
 			TRole getrole = new TRole();
 			getrole.setRoleid(new Long(roles[i]));
 			users.getRoles().add(getrole);
 		}
 
-		userServiceDao.updateUser(users);
-
-		response.getWriter().print(
-				"<script> alert('修改成功!');location.href='"
-						+ request.getContextPath()
-						+ "/admin/user.do?task=showUser';</script>");
+		boolean bool = userServiceDao.updateUser(users);
+		if (bool) {
+			response.getWriter().print(
+					"<script>if(confirm('修改成功,是否继续修改?')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdateUser&id="
+							+ users.getUserid() + "';}else{"
+							+ "location.href='" + request.getContextPath()
+							+ "/admin/user.do?task=userList';}</script>");
+		} else {
+			response.getWriter().print(
+					"<script> alert('修改失败,请重试!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdateUser&id="
+							+ users.getUserid() + "';</script>");
+		}
 		return null;
 	}
 
@@ -292,6 +338,41 @@ public class UserAction extends DispatchAction {
 						+ "/admin/user.do?task=showUser';</script>");
 		return null;
 
+	}
+
+	/**
+	 * 冻结用户
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward slockUser(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		TUser user = new TUser();
+		user.setUserid(request.getParameter("id"));
+		user.setSlock(request.getParameter("state"));
+		boolean bool = userServiceDao.updateState(user);
+
+		String msg = "";
+		if ("0".equalsIgnoreCase(request.getParameter("state")) && bool) {
+			msg = "用户冻结成功";
+		} else if ("0".equalsIgnoreCase(request.getParameter("state")) && !bool) {
+			msg = "用户冻结失败";
+		} else if ("1".equalsIgnoreCase(request.getParameter("state")) && bool) {
+			msg = "用户解冻成功";
+		} else if ("1".equalsIgnoreCase(request.getParameter("state")) && !bool) {
+			msg = "用户解冻失败";
+		} else {
+			msg = "非法操作";
+		}
+
+		response.getWriter().print(
+				"<script> alert('" + msg + "!');location.href='"
+						+ request.getContextPath()
+						+ "/admin/user.do?task=userList';</script>");
+
+		return null;
 	}
 
 	public Permission getPerDao() {

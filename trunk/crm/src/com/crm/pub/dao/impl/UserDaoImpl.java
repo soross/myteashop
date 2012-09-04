@@ -54,7 +54,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 						TUser user = (TUser) session.get(TUser.class, userId);
 						if (user != null) {
 							Hibernate.initialize(user.getPowers());
-							Hibernate.initialize(user.getRoles());							
+							Hibernate.initialize(user.getRoles());
 							Set<TRole> roles = user.getRoles();
 
 							for (Object o : roles) {
@@ -90,18 +90,16 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
 						}
-						if ( null != user.getPhone()
+						if (null != user.getPhone()
 								&& !"".equals(user.getPhone())) {
-							hql += " and phone ='" + user.getPhone()
-									+ "'";
+							hql += " and phone ='" + user.getPhone() + "'";
 						}
-						
-						if ( null != user.getCode()
+
+						if (null != user.getCode()
 								&& !"".equals(user.getCode())) {
-							hql += " and code ='" + user.getCode()
-									+ "'";
+							hql += " and code ='" + user.getCode() + "'";
 						}
-						
+
 						Query query = session.createQuery(hql);
 						query.setMaxResults(pageutil.getPagesize());
 						query.setFirstResult(pageutil.pastart());
@@ -114,13 +112,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	/**
 	 * 修改用户
 	 */
-	public void updateUser(final TUser users) {
+	public boolean updateUser(final TUser users) {
 
 		this.getHibernateTemplate().execute(new HibernateCallback() {
-
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
-
 				String hql = "update TUser set username=:uname,password=:upass,sex=:usex,homeplace=:uhome,"
 						+ "code=:ucode,tel=:utel,email=:uemail,phone=:uphone,address=:uaddress,jobno=:ujob where userid=:uid";
 				Query query = session.createQuery(hql);
@@ -136,10 +132,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				query.setString("ujob", users.getJobno());
 				query.setString("uid", users.getUserid());
 				query.executeUpdate();
-				return null;
+				return true;
 			}
 		});
 
+		return true;
 	}
 
 	public List searchRole(TRole role) {
@@ -148,7 +145,25 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "select t from TRole t";
+						String hql = "from TRole t";
+
+						Query query = session.createQuery(hql);
+						return query.list();
+					}
+				});
+		return list;
+	}
+	/**
+	 * 权限列表
+	 * @return
+	 */
+	public List searchPower(){
+		List list = this.getHibernateTemplate().executeFind(
+				new HibernateCallback() {
+
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						String hql = "from TPower t order by sortid";
 
 						Query query = session.createQuery(hql);
 						return query.list();
@@ -179,18 +194,16 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 							hql += " and username like '%" + user.getUsername()
 									+ "%'";
 						}
-						if ( null != user.getPhone()
+						if (null != user.getPhone()
 								&& !"".equals(user.getPhone())) {
-							hql += " and phone ='" + user.getPhone()
-									+ "'";
+							hql += " and phone ='" + user.getPhone() + "'";
 						}
-						
-						if ( null != user.getCode()
+
+						if (null != user.getCode()
 								&& !"".equals(user.getCode())) {
-							hql += " and code ='" + user.getCode()
-									+ "'";
+							hql += " and code ='" + user.getCode() + "'";
 						}
-						
+
 						Query query = session.createQuery(hql);
 						Integer count = (Integer) query.uniqueResult();
 
@@ -221,20 +234,46 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				});
 		return list;
 	}
-	 /**
-     * 修改密码
-     * @param user
-     */
-    public void updatePass(final TUser user){
-    	this.getHibernateTemplate().execute(new HibernateCallback(){
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql="update TUser  set password=:pass where userid=:id";
-				Query query=session.createQuery(hql);
-			query.setString("pass", user.getPassword());
-			query.setString ("id",user.getUserid());
-			query.executeUpdate();
+	/**
+	 * 修改密码
+	 * 
+	 * @param user
+	 */
+	public boolean updatePass(final TUser user) {
+		this.getHibernateTemplate().execute(new HibernateCallback() {
+
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				String hql = "update TUser  set password=:pass where userid=:id";
+				Query query = session.createQuery(hql);
+				query.setString("pass", user.getPassword());
+				query.setString("id", user.getUserid());
+				query.executeUpdate();
 				return null;
-			}});
-    }
+			}
+		});
+		return true;
+	}
+
+	/**
+	 * 更新状态
+	 * 
+	 * @param users
+	 * @return
+	 */
+	public boolean updateState(final TUser users) {
+		this.getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				String hql = "update TUser  set slock=:slock where userid=:id";
+				Query query = session.createQuery(hql);
+				query.setString("slock", users.getSlock());
+				query.setString("id", users.getUserid());
+				query.executeUpdate();
+				return true;
+			}
+		});
+		return true;
+	}
 }

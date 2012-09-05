@@ -49,6 +49,7 @@
 	<bean name="/admin/data"
 		class="com.crm.sysdo.struts.action.DataAction">
 		<property name="dataServiceDao" ref="dataProxy"></property>
+		<property name="perDao" ref="perDao"></property>
 	</bean>
 
 	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">

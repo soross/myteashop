@@ -88,13 +88,11 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>常用字典选项：</b><a
-					href="${pageContext.request.contextPath}/admin/data.do?task=dataList">常用字典首页</a>
-				|
-				<a
-					href="${pageContext.request.contextPath}/admin/data.do?task=toAddData">添加常用字典</a>
-				| [
-				<a href="javascript:location.reload()">刷新页面</a>]
+				<b>常用字典选项：</b>
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
+				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
 	</table>
@@ -171,7 +169,7 @@
 									${sonData.remark}						
 								</td>
 								<td>
-									<a href="${pageContext.request.contextPath}/admin/data.do?task=toUpdateData&id=${sonData.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/data.do?task=deleteData&id=${sonDatat.id}"  onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+									<a href="${pageContext.request.contextPath}/admin/data.do?task=toUpdateData&id=${sonData.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/data.do?task=deleteData&id=${sonData.id}"  onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 								</td>
 							</tr>
 						</logic:equal>

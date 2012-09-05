@@ -260,12 +260,74 @@
     </ul>
 </div>
 
-<div  id="divSCA" style="display: none;">
+<div  id="divSCA" style=" height:50px;display: none;">
 	<img src="${pageContext.request.contextPath}/admin/images/loading.gif" id="loading" style="display: none;">
-	<input type="file" id="file" name="file" />&nbsp;&nbsp;<input type="button" value="上传" onclick="return ajaxFileUpload();">
-	<br><input type="button" value="关闭" onclick="closeDiv()"> 
+	<table>
+	<tr>
+		<td><input type="file" id="file" name="file" /></td>
+	</tr>
+	<tr>
+		<td align="center"><input type="button" value="关闭" onclick="closeDiv()">&nbsp;&nbsp;<input type="button" value="上传" onclick="return ajaxFileUpload();"></td>
+	</tr>
+	</table>
 </div>
 </body>
+
+
+
+<div id="divPhoto" style="height:300px:weight:240px;display: none;">
+	<input type="hidden" id="picData1" name="picData1"/>
+	<input type="hidden" id="picExt1"  name="picExt1"/>
+	<input type="hidden" id="picData2" name="picData2"/>
+	<input type="hidden" id="picExt2"  name="picExt2"/>
+	<table>
+	<tr><td>
+	<object classid="clsid:34681DB3-58E6-4512-86F2-9477F1A9F3D8" id="cap1" width="245px" height="305px" codebase="${pageContext.request.contextPath}/cabs/ImageCapOnWeb.cab#version=2,0,2,14">
+		<param name="Visible" value="0">
+		<param name="AutoScroll" value="0">
+		<param name="AutoSize" value="0">
+		<param name="AxBorderStyle" value="1">
+		<param name="Caption" value="scaner">
+		<param name="Color" value="4278190095">
+		<param name="Font" value="宋体">
+		<param name="KeyPreview" value="0">
+		<param name="PixelsPerInch" value="96">
+		<param name="PrintScale" value="1">
+		<param name="Scaled" value="-1">
+		<param name="DropTarget" value="0">
+		<param name="HelpFile" value>
+		<param name="PopupMode" value="0">
+		<param name="ScreenSnap" value="0">
+		<param name="SnapBuffer" value="10">
+		<param name="DockSite" value="0">
+		<param name="DoubleBuffered" value="0">
+		<param name="ParentDoubleBuffered" value="0">
+		<param name="UseDockManager" value="0">
+		<param name="Enabled" value="-1">
+		<param name="AlignWithMargins" value="0">
+		<param name="ParentCustomHint" value="-1">
+		<param name="licenseMode" value="2">
+		<param name="key1" value="">
+		<param name="key2" value="">
+	</object>
+	</td></tr>
+	<tr><td align="center">
+	<input type="button" value="拍照" onclick="javascript:capPicture1();"  />&nbsp;
+	<input type="button" value="重照" onclick="javascript:document.getElementById('cap1').clear(); startCam();"  />&nbsp;
+	<input type="button" value="确定上传"  id="btnUpload1" onclick="javascript:ajax_post_1();"/> 
+	</td></tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <!-- 右击菜单 -->
 <script language="javascript" src="${pageContext.request.contextPath}/admin/js/jquery.min.js" ></script>
@@ -294,7 +356,9 @@
           openDiv();
         },
         'camera': function(t) {
-          alert('Trigger was '+t.id+'\nAction was Open');
+          //alert('Trigger was '+t.id+'\nAction was Open');
+          openDivPhoto();
+          startCam();
         },
         'save': function(t) {
           alert('Trigger was '+t.id+'\nAction was Open');
@@ -355,6 +419,14 @@ $("#divSCA").OpenDiv();
 function closeDiv() { 
 $("#divSCA").CloseDiv(); 
 } 
+
+function openDivPhoto(){
+	$("#divPhoto").OpenDiv(); 
+}
+
+function closeDivPhoto() { 
+	$("#divPhoto").CloseDiv(); 
+} 
 </script>
 
 <!--日历控件 -->
@@ -382,4 +454,98 @@ function putOld(obj){
 	}
 }
 </script>
+
+
+		<script type="text/javascript">
+
+			function startCam(){
+				var capActivexObject=document.getElementById('cap1');
+
+				//启动摄像头
+				capActivexObject.start();
+			}
+
+			function capPicture1(){
+				var capActivexObject=document.getElementById('cap1');
+				capActivexObject.cap(); //控制摄像头拍照
+			}
+			
+			function selectPic(){
+				var capActivexObject=document.getElementById('cap1');
+				capActivexObject.selectRect(0.3,0.25,0.6,0.8);//具体含义请查看文档
+			}
+			
+			function cutSelectedPic(){
+				var capActivexObject=document.getElementById('cap1');
+				capActivexObject.cutSelected();
+				
+			}
+
+
+			function submitToServer(){
+				//读取控件的拍照结果到hidden输入项中
+				var base64_data1 = document.getElementById('cap1').jpegBase64Data;
+				if (base64_data1.length==0) {
+					alert('请先拍照!');
+					return false;
+				}
+				document.getElementById('picData1').value=base64_data1;
+				document.getElementById('picExt1').value='.jpg';
+
+
+				/*注意不同的服务器端技术要配置不同的接收数据的url,可以参考submit.html的示
+				如asp.net的程序员可以查看submit.aspx，php程序员可以查看submit.php，asp程序员可以查看submit.asp
+				*/
+
+				document.forms[0].action="http://localhost:8080/pages/submit.jsp";
+
+				//alert('请先打开demo6.html配置服务器端程序参数再继续测试!');
+				//return false;
+				document.forms[0].submit();
+			}
+
+		</script>
+		
+		<!-- 清空控件按钮 -->
+		<script type="text/javascript">
+			document.all.cap1.SwitchWatchOnly();  //切换到只显示摄像头画面形式，隐藏编辑按钮等图标.
+		</script>
+		
+		<!-- ajax提交 -->
+		<script>
+			function ajax_post_1() {
+				var base64_data = document.getElementById('cap1').jpegBase64Data;
+				alert("data length:"+base64_data.length);
+			//	var s=getServerUrl();
+			//	alert(s);
+				$.ajax({
+							url : '${pageContext.request.contextPath}/admin/cust.do?task=uploadPhotoByCam',
+							type : 'POST',
+							dataType : 'jason',
+							data : {
+								picData : "'" + base64_data + "'",
+								picExt:".jpg"
+							},
+							timeout : 20000,
+							success :  function(html){
+							    alert(html);
+							    callbackfun1(html);
+							},
+							error:function(data){
+								alert(data);
+							}
+						});
+			}
+			
+			function callbackfun1(data) {
+				alert(data);
+				var obj = eval('(' + data + ')');
+			
+				if ('ok' == obj.savestatus) {
+					alert('success!');
+				}
+			
+			}
+		
+		</script>
 </html:html>

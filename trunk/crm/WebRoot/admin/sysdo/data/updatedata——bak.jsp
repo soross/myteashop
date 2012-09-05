@@ -18,12 +18,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				常用字典
+				系统服务操作
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>常用字典选项：</b>
+				<b>部门选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -31,52 +31,46 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/data" method="post" onsubmit="return check();">
+	<html:form action="/admin/dept" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加常用字典
+					更新部门
 				</th>
 			</tr>
 			<tr>
 				<td align="right">
-					字典名称：
+					科室部门名称：
 				</td>
 				<td colspan="3">
-					<html:text property="name" onblur="checkName();" maxlength="15" />
+					<html:text property="deptName" value="${deptInfo.deptName}"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					父类:
+					父级科室部门:
 				</td>
 				<td colspan="3">
 					<html:select property="pid">
-      					<html:option value="0">==请选择==</html:option>
-      					<logic:present name="pidList">
-      						<logic:iterate id="data" name="pidList">
-      							<html:option value="${data.id}">${data.name}</html:option>
-      						</logic:iterate>
-      					</logic:present>
-      				</html:select>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					备注:
-				</td>
-				<td colspan="3">
-					<html:text property="remark" value="行业、操作类型使用" onfocus="clearText(this)" maxlength=""/>
+						<option value="-1" <logic:equal value="-1" name="deptInfo" property="pid">selected</logic:equal> >
+							父级
+						</option>
+						<logic:iterate id="dept" name="deptList">
+							<option value="${dept.id}" <logic:equal value="${dept.id}" name="deptInfo" property="pid">selected</logic:equal>>
+								${dept.deptName}
+							</option>
+						</logic:iterate>
+					</html:select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" id="task" value="addData">
-					<input type="hidden" value="340" name="modfunid">
+					<input type="hidden" name="task" value="updateDept">
+					<input type="hidden" name="id" value="${deptInfo.id}">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 新 增 " class="inputs" />
+					<input type="submit" name="submit" value=" 修 改 " class="inputs" />
 				</td>
 			</tr>
 		</table>
@@ -86,26 +80,4 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
-<script language="javascript">
-		function clearText(temp){
-			temp.value="";		
-		}
-		
-		function checkName(){
-			var name = document.getElementById("dataName").value;
-			if(name.length==0){
-				alert("请输入数字字典名称");
-				return false;
-			}else{
-				return true;
-			}
-		}
-		
-		function check(){
-			if(document.getElementById("temp").value=="行业、操作类型使用"){
-				document.getElementById("temp").value="";
-			}
-			return checkName();
-		}
-	</script>
 </html:html>

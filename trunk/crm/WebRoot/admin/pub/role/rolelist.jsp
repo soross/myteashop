@@ -142,11 +142,11 @@
 							${role.rolename}
 						</td>
 						<td>
-							${role.descript}
+							${role.descript}&nbsp;
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/role.do?task=toUpdateRole&id=${role.roleid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/role.do?task=deleteRole&id=${role.roleid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							<a href="${pageContext.request.contextPath}/admin/role.do?task=toUpdateRole&roleid=${role.roleid}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+							&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/role.do?task=deleteRole&roleid=${role.roleid}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>

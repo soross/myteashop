@@ -18,12 +18,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				常用字典
+				用户管理
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>常用字典选项：</b>
+				<b>用户选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -31,52 +31,78 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/data" method="post" onsubmit="return check();">
+	<html:form action="/admin/user?task=updateUserByLogin" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加常用字典
+					用户信息修改
 				</th>
 			</tr>
 			<tr>
 				<td align="right">
-					字典名称：
+					登入帐号：
 				</td>
 				<td colspan="3">
-					<html:text property="name" onblur="checkName();" maxlength="15" />
+					<html:text property="userid" readonly="true"/><span id="uid"></span>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					父类:
+					姓名：
 				</td>
 				<td colspan="3">
-					<html:select property="pid">
-      					<html:option value="0">==请选择==</html:option>
-      					<logic:present name="pidList">
-      						<logic:iterate id="data" name="pidList">
-      							<html:option value="${data.id}">${data.name}</html:option>
-      						</logic:iterate>
-      					</logic:present>
-      				</html:select>
+					<html:text property="username"  /><span id="uname"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="right">
+					性别：
+				</td>
+				<td colspan="3">
+					<html:radio property="sex" value="0">男</html:radio>
+					<html:radio property="sex" value="1">女</html:radio>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					备注:
+					身份证号:
 				</td>
 				<td colspan="3">
-					<html:text property="remark" value="行业、操作类型使用" onfocus="clearText(this)" maxlength=""/>
+					<html:text property="code"/><span id="uphone"></span>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					电子邮件:
+				</td>
+				<td colspan="3">
+					<html:text property="email"/><span id="uphone"></span>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					电话号码:
+				</td>
+				<td colspan="3">
+					<html:text property="tel"/><span id="uphone"></span>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					手机:
+				</td>
+				<td colspan="3">
+					<html:text property="phone"/><span id="uphone"></span>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" id="task" value="addData">
-					<input type="hidden" value="340" name="modfunid">
+					<input type="hidden" value="60" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 新 增 " class="inputs" />
+					<input type="submit" name="submit" value=" 修改登入用户 " class="inputs" />
 				</td>
 			</tr>
 		</table>
@@ -86,26 +112,4 @@
 </body>
 <script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
-<script language="javascript">
-		function clearText(temp){
-			temp.value="";		
-		}
-		
-		function checkName(){
-			var name = document.getElementById("dataName").value;
-			if(name.length==0){
-				alert("请输入数字字典名称");
-				return false;
-			}else{
-				return true;
-			}
-		}
-		
-		function check(){
-			if(document.getElementById("temp").value=="行业、操作类型使用"){
-				document.getElementById("temp").value="";
-			}
-			return checkName();
-		}
-	</script>
 </html:html>

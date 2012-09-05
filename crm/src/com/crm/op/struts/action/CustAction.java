@@ -1,5 +1,8 @@
 package com.crm.op.struts.action;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -260,7 +263,63 @@ public class CustAction extends DispatchAction{
 		
 		return null;
 	}
+	
+	
+	/**
+	 * 拍照上传
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward  uploadPhotoByCam(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		 //注意一行html内容也不要出现,防止被编译为serlvet以后有写html到客户端的行为
+		String savePath= request.getRealPath("/admin/upload");
+		
+		File tmp_path=new File(savePath);
+		tmp_path.mkdirs();
+		System.out.println("照片数据保存路径:"+savePath);
 
+		String pic_base_64_data=request.getParameter("picData");
+		//System.out.println("图片数据:"+pic_base_64_data);
+
+		//如果下面的代码输出true则说明需要调整服务器软件工作参数，解决接受post数据的大小限制问题,例如
+		//tomcat的话需要在server.xml中配置maxPostSize="0"来解除上传数据的大小限制   <Connector port="8080" protocol="HTTP/1.1" 
+		//		               connectionTimeout="20000" 
+		//		               redirectPort="8443" maxPostSize="0"/>
+		// 
+		System.out.println(null==pic_base_64_data);
+		System.out.println("base64 string length:"+pic_base_64_data.length());
+		String fileFormat=request.getParameter("picExt");
+		
+		sun.misc.BASE64Decoder decode=new sun.misc.BASE64Decoder();
+		byte[] datas=decode.decodeBuffer(pic_base_64_data.substring(1, pic_base_64_data.length()-2));
+		
+		String filename=String.valueOf(System.currentTimeMillis())+fileFormat;
+		File file=new File(savePath+filename);
+		OutputStream fos=new FileOutputStream(file);
+		fos.write(datas);
+		fos.flush();
+		fos.close();
+		
+		System.out.println("图片文件名称:"+filename);
+		//fos.close();
+
+		response.setContentType("application/x-json");
+		response.setCharacterEncoding("utf-8");
+		
+		response.getWriter().write("{'savestatus':'ok'}");
+
+		response.getWriter().flush();
+		response.getWriter().close();
+		
+		return null;
+	}
+	
 	public CustServiceDao getCustServiceDao() {
 		return custServiceDao;
 	}

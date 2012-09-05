@@ -1,5 +1,4 @@
 <%@ page language="java" pageEncoding="GBK" isELIgnored="false"%>
-<%@include file="/ext/ext.jsp"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
@@ -11,34 +10,34 @@
 
 	<title>left.jsp</title>
 
-	<link rel="STYLESHEET" type="text/css" href="${pageContext.request.contextPath}/admin/css/style.css">
-	<style>
-	td{font:normal 11px verdana,arial,helvetica,sans-serif;}
-	</style>
+	
 
+	<style>
+		td{font:normal 11px verdana,arial,helvetica,sans-serif;}
+	</style>
+	
+	
+	
 </head>
 
-<body>
-<div>
-<ul id="dhtmlgoodies_tree" class="dhtmlgoodies_tree">
-	<logic:present name="sonPowers">
-		<logic:iterate id="sonpower" name="sonPowers">
-			<LI  class="page.gif" id="${sonpower.id}"><a href="${pageContext.request.contextPath}${sonpower.url}" target="main">${sonpower.powername}</a></LI>
-	    </logic:iterate>
-    </logic:present>
-    <logic:notPresent name="sonPowers">	
-    <li><a href="#">个人信息</a>
-    	<ul>
-    		<li class="page.gif" id="l17"><a href="index.php?m=91736&c=index&f=edit" target="main">修改密码</a></li>
-    	</ul>
-    </li>
-    </logic:notPresent>
-</ul>
-</div>
+<body onload="var myTree = dhtmlXTreeFromHTML('listBox');">
+	<link rel='STYLESHEET' type='text/css' href='common/style.css'>
+	<link rel="STYLESHEET" type="text/css" href="codebase/dhtmlxtree.css">
+	
+	<script  src="codebase/dhtmlxcommon.js"></script>
+	<script  src="codebase/dhtmlxtree.js"></script>
+	<script  src="codebase/ext/dhtmlxtree_start.js"></script>
+	
+	<div id="listBox" setImagePath="codebase/imgs/csh_bluebooks/" style="width:150px;">
+		<ul>
+			<logic:present name="sonPowers">
+				<logic:iterate id="sonpower" name="sonPowers">
+					<LI><a href="${pageContext.request.contextPath}${sonpower.url}" target="main">${sonpower.powername}</a></LI>
+			    </logic:iterate>
+	   		</logic:present>
+		</ul>
+	</div>
+ 
 </body>
-<script language="javascript" src="${pageContext.request.contextPath}/admin/js/block.js"></script>
-<script language="javascript" src="${pageContext.request.contextPath}/admin/js/popup.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/tree.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/context-menu.js"></script>
 </html:html>

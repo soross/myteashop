@@ -416,7 +416,65 @@ public class UserAction extends DispatchAction {
 		}
 		return null;
 	}
+	
+	
+	
+	/**
+	 * 跳转修改登入用户界面
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward toUpdateUserByLogin(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 
+		String id = ((TUser)request.getSession().getAttribute("user")).getUserid();
+		TUser suser = userServiceDao.getUser(id);
+		BeanUtils.copyProperties(userForm, suser);
+
+		//  60
+		List list = perDao.getSonPerList("60");
+		request.setAttribute("sonPowerByMenu", list);
+
+		return new ActionForward("/admin/pub/user/updateuserlogin.jsp");
+	}
+	
+	
+	
+	/**
+	 * 修改登入用户
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward updateUserByLogin(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+		TUser users = userServiceDao.getUser(userForm.getUserid());
+		users.setUsername(userForm.getUsername());
+		users.setSex(userForm.getSex());
+		users.setCode(userForm.getCode());
+		users.setEmail(userForm.getEmail());
+		users.setTel(userForm.getTel());
+		users.setPhone(userForm.getPhone());
+
+		boolean bool = userServiceDao.updateUser(users);
+		if (bool) {
+			response.getWriter().print(
+					"<script> alert('修改成功!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
+		} else {
+			response.getWriter().print(
+					"<script> alert('修改失败,请重试!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
+		}
+		return null;
+	}
 	public Permission getPerDao() {
 		return perDao;
 	}

@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
+import com.crm.pub.GlobVar;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.service.dao.inf.RoleServiceDao;
@@ -35,31 +36,38 @@ public class RoleAction extends DispatchAction {
 	 * 查找角色列表
 	 */
 	public ActionForward roleList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception{
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		RoleForm roleForm = (RoleForm) form;
 		TRole trole = new TRole();
 		BeanUtils.copyProperties(trole, roleForm);
 		int rcount = roleServiceDao.getCount(trole);
-		PageUtil pageUtil = new PageUtil(request,rcount,2);
-		List list = roleServiceDao.searchRoleList(trole,pageUtil.pastart(),pageUtil.getPagesize());
-		request.setAttribute("roleList", list);	
+		PageUtil pageUtil = new PageUtil(request, rcount, GlobVar.PAGESIZE_BY_TWENTY_DATA);
+		List list = roleServiceDao.searchRoleList(trole, pageUtil.pastart(),
+				pageUtil.getPagesize());
+		request.setAttribute("roleList", list);
 		request.setAttribute("pageUtil", pageUtil);
-		
+
 		// 32 角色
 		List sonList = perDao.getSonPerList("32");
 		request.setAttribute("sonPowerByMenu", sonList);
-		
+
 		return new ActionForward("/admin/pub/role/rolelist.jsp");
 	}
 
 	/**
 	 * 跳转添加角色界面
 	 */
-	public ActionForward add(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddRole(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		List powerList = roleServiceDao.powerList();
-		request.setAttribute("powerList", powerList);
-		return new ActionForward("/admin/pub/role/addrole.jsp?task=doAdd");
+		request.setAttribute("powerlist", powerList);
+
+		// 32 角色
+		List sonList = perDao.getSonPerList("32");
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/pub/role/addrole.jsp?");
 	}
 
 	/**
@@ -72,40 +80,41 @@ public class RoleAction extends DispatchAction {
 		TRole role = new TRole();
 		BeanUtils.copyProperties(role, roleForm);
 		TRole tr = roleServiceDao.getByName(roleForm.getRolename());
-		
-		String url = request.getContextPath()+"/admin/role.do?task=roleList";
-		String y_url = request.getContextPath()+"/admin/role.do?task=add";
-		if(tr==null ){
-		  String[] pids = roleForm.getMenus();
-		  for (int i = 0; i < pids.length; i++) {
-			 TPower power = new TPower();
-			 power.setId(new Long(pids[i]));
-			 role.getPowers().add(power);
-		  }
-		 try{
-		    roleServiceDao.addRole(role);
-		    request.setAttribute("message","添加角色成功,是否继续添加！");
-		    request.setAttribute("url", url);
-		    request.setAttribute("y_url", y_url);
-		    return mapping.findForward("confirm");
-		    
-		  }catch(Exception e){
-		    request.setAttribute("message","添加角色失败！");	
-		    request.setAttribute("url", url);
-		    return mapping.findForward("result");
-		 }
-		}else{
-			request.setAttribute("message","角色名重复！");	
-		    request.setAttribute("url", url);
-		    return mapping.findForward("result");
-			
+
+		String msg = "";
+
+		String listurl = request.getContextPath()
+				+ "/admin/role.do?task=roleList";
+		String addurl = request.getContextPath()
+				+ "/admin/role.do?task=toAddRole";
+		if (tr == null) {
+			String[] pids = roleForm.getMenus();
+			for (int i = 0; i < pids.length; i++) {
+				TPower power = new TPower();
+				power.setId(new Long(pids[i]));
+				role.getPowers().add(power);
+			}
+			try {
+				roleServiceDao.addRole(role);
+				msg = "添加角色成功,是否继续添加!";
+
+			} catch (Exception e) {
+				msg = "添加角色失败,是否重试!";
+			}
+		} else {
+			msg = "角色名重复,是否修改继续!";
 		}
+		response.getWriter().print(
+				"<script> if(confirm('" + msg + "')){location.href='" + addurl
+						+ "';}else{location.href='" + listurl + "';}</script>");
+
+		return null;
 	}
 
 	/**
 	 * 跳转修改角色界面
 	 */
-	public ActionForward update(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateRole(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RoleForm roleForm = (RoleForm) form;
@@ -116,14 +125,19 @@ public class RoleAction extends DispatchAction {
 		Set<TPower> powers = trole.getPowers();
 		String[] menus = new String[powers.size()];
 		int index = 0;
-		for (TPower power:powers) {
+		for (TPower power : powers) {
 			menus[index] = String.valueOf(power.getId());
 			index++;
 		}
 		roleForm.setMenus(menus);
 		List powerList = roleServiceDao.powerList();
-		request.setAttribute("powerList", powerList);
-		return new ActionForward("/admin/pub/role/addrole.jsp?task=doUpdate");
+		request.setAttribute("powerlist", powerList);
+
+		// 32 角色
+		List sonList = perDao.getSonPerList("32");
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/pub/role/updaterole.jsp");
 	}
 
 	/**
@@ -133,57 +147,75 @@ public class RoleAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RoleForm roleForm = (RoleForm) form;
-		TRole role = new TRole();
-		BeanUtils.copyProperties(role, roleForm);
-		String[] pids = roleForm.getMenus();
-		for (int i = 0; i < pids.length; i++) {
-			TPower power = new TPower();
-			power.setId(new Long(pids[i]));
-			role.getPowers().add(power);
+		String listurl = request.getContextPath()
+				+ "/admin/role.do?task=roleList";
+		String updateurl = request.getContextPath()
+				+ "/admin/role.do?task=toUpdateRole&roleid=" + roleForm.getRoleid();
+		try {
+			TRole role = new TRole();
+			BeanUtils.copyProperties(role, roleForm);
+			String[] pids = roleForm.getMenus();
+			for (int i = 0; i < pids.length; i++) {
+				TPower power = new TPower();
+				power.setId(new Long(pids[i]));
+				role.getPowers().add(power);
+			}
+			TRole trole = (TRole) roleServiceDao.getRole(new Long(roleForm
+					.getRoleid()));
+			trole.setRoleid(role.getRoleid());
+			trole.setRolename(role.getRolename());
+			trole.setDescript(role.getDescript());
+			trole.setPowers(role.getPowers());
+			roleServiceDao.updateRole(trole);
+
+			/**
+			 * String currentpage = request.getParameter("tempCurrentpage"); if
+			 * (currentpage != null && !"".equals(currentpage)) { url +=
+			 * "&currentpage=" + currentpage; }
+			 * 
+			 * String roleName = request.getParameter("tempRoleName"); if
+			 * (roleName != null && !"".equals(roleName)) { url += "&rolename=" +
+			 * roleName; }
+			 */
+
+			response.getWriter().print(
+					"<script> if(confirm('角色修改成功,是否继续修改!')){location.href='"
+							+ updateurl + "';}else{location.href='" + listurl
+							+ "';}</script>");
+
+		} catch (Exception e) {
+			response.getWriter().print(
+					"<script> if(confirm('角色修改失败,是否重试!')){location.href='"
+							+ updateurl + "';}else{location.href='" + listurl
+							+ "';}</script>");
+		}finally{
+			listurl = null;
+			updateurl = null;
 		}
-		TRole trole = (TRole)roleServiceDao.getRole(new Long(roleForm.getRoleid()));
-		trole.setRoleid(role.getRoleid());
-		trole.setRolename(role.getRolename());
-		trole.setDescript(role.getDescript());
-		trole.setPowers(role.getPowers());
-		roleServiceDao.updateRole(trole);
-		
-		String url = request.getContextPath() + "/admin/role.do?task=roleList";
-		String currentpage = request.getParameter("tempCurrentpage");
-		if (currentpage != null && !"".equals(currentpage)) {
-			url += "&currentpage=" + currentpage;
-		}
-		
-		String roleName = request.getParameter("tempRoleName");
-		if (roleName != null && !"".equals(roleName)) {
-			url += "&rolename=" + roleName;
-		}
-		
-		response.getWriter().print(
-				"<script> alert('修改成功！');location.href='"+url+"';</script>");
 		return null;
 	}
+
 	/**
 	 * 删除角色
 	 */
-	public ActionForward delete(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteRole(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String id = request.getParameter("roleid");
 		roleServiceDao.deleteRole(new Long(id));
-		
+
 		String url = request.getContextPath() + "/admin/role.do?task=roleList";
-		String currentpage = request.getParameter("currentpage");
+		
+		/**String currentpage = request.getParameter("cpage");
+		
 		if (currentpage != null && !"".equals(currentpage)) {
 			url += "&currentpage=" + currentpage;
 		}
-		String roleName = request.getParameter("rolename");
-		if (roleName != null && !"".equals(roleName)) {
-			url += "&rolename=" + roleName;
-		}
-	
-		response.getWriter().print(
-				"<script> alert('删除成功！');location.href='"+url+"';</script>");
+		 **/
+		response.getWriter()
+				.print(
+						"<script> alert('角色删除成功！');location.href='" + url
+								+ "';</script>");
 		return null;
 	}
 
@@ -202,6 +234,5 @@ public class RoleAction extends DispatchAction {
 	public void setPerDao(Permission perDao) {
 		this.perDao = perDao;
 	}
-	
-	
+
 }

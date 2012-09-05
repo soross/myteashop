@@ -23,7 +23,6 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission{
 		boolean bool = false;
 		TUser tuser = (TUser) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
-
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						TUser user = (TUser) session.get(TUser.class, userID);
@@ -55,7 +54,6 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission{
 				Set<TPower>  powers =role.getPowers();
 				for(Object obj:powers){
 					TPower power = (TPower) obj;
-					System.out.println(id+"=="+power.getId());
 					if(id.equalsIgnoreCase((power.getId()).toString())){
 						bool = true;
 						break;
@@ -73,7 +71,7 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission{
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "from TPower t where sortid<>'-1' and parentid='"+id+"'";
+						String hql = "from TPower t where sortid<>'-1' and parentid='"+id+"' order by sortid,id";
 						Query query = session.createQuery(hql);
 						return query.list();
 					}

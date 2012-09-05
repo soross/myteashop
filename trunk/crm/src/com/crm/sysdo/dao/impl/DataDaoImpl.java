@@ -83,7 +83,7 @@ public class DataDaoImpl extends HibernateDaoSupport implements DataDao {
 	 */
 	public Boolean updateData(TData data){
 		this.getHibernateTemplate().update(data);
-		return null;
+		return true;
 	}
 	
 	/**

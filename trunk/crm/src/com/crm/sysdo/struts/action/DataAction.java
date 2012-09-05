@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
+import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TData;
 import com.crm.sysdo.service.inf.DataServiceDao;
@@ -34,6 +35,7 @@ public class DataAction extends DispatchAction {
 	 * Generated Methods
 	 */
 	private DataServiceDao dataServiceDao;
+	private Permission perDao;
 
 	/**
 	 * 跳转到添加数字字典界面
@@ -49,6 +51,11 @@ public class DataAction extends DispatchAction {
 			throws Exception {
 		List list = (List) this.dataServiceDao.searchParentData(null);
 		request.setAttribute("pidList", list);
+
+		// 32 角色
+		List sonList = perDao.getSonPerList("33");
+		request.setAttribute("sonPowerByMenu", sonList);
+
 		return new ActionForward("/admin/sysdo/data/adddata.jsp");
 	}
 
@@ -125,6 +132,9 @@ public class DataAction extends DispatchAction {
 		List sonList = this.dataServiceDao.searchData(null);
 		request.setAttribute("dataSonList", sonList);
 
+		// 32 角色
+		List sl = perDao.getSonPerList("33");
+		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/data/datalist.jsp");
 	}
 
@@ -151,17 +161,16 @@ public class DataAction extends DispatchAction {
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功！！将返回数字字典列表！！');location.href='"
+					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
 							+ "/admin/data.do?task=dataList';</script>");
-			return null;
 		} else {
 			response.getWriter().print(
-					"<script> alert('删除失败！请重试！现将返回数字字典列表！！');location.href='"
+					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
 							+ "/admin/data.do?task=dataList';</script>");
-			return null;
 		}
+		return null;
 	}
 
 	/**
@@ -179,9 +188,13 @@ public class DataAction extends DispatchAction {
 		DataForm dataForm = (DataForm) form;
 		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
 		BeanUtils.copyProperties(dataForm, data);
-		
+
 		List list = this.dataServiceDao.searchParentData(null);
 		request.setAttribute("pidList", list);
+
+		// 32 角色
+		List sonList = perDao.getSonPerList("33");
+		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
 	}
@@ -202,25 +215,31 @@ public class DataAction extends DispatchAction {
 		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
 		BeanUtils.copyProperties(data, dataForm);
 
-		Boolean bool = this.dataServiceDao.updateData(data);
-
+		Boolean bool = false;
+		try {
+			bool = this.dataServiceDao.updateData(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (bool) {
 			response
 					.getWriter()
 					.print(
-							"response.getWriter().print(<script> alert('修改成功！现将返回数字字典列表！！');location.href='"
+							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';</script>");
-			return null;
+									+ "/admin/data.do?task=toUpdateData&id="
+									+ data.getId()
+									+ "';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/data.do?task=dataList';}</script>");
+
 		} else {
-			response
-					.getWriter()
-					.print(
-							"response.getWriter().print(<script> alert('修改成功！请重试！现将返回数字字典列表！！');location.href='"
-									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';</script>");
-			return null;
+			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/data.do?task=toUpdateData&id='"
+							+ data.getId() + "';</script>");
 		}
+		return null;
 	}
 
 	public DataServiceDao getDataServiceDao() {
@@ -229,5 +248,13 @@ public class DataAction extends DispatchAction {
 
 	public void setDataServiceDao(DataServiceDao dataServiceDao) {
 		this.dataServiceDao = dataServiceDao;
+	}
+
+	public Permission getPerDao() {
+		return perDao;
+	}
+
+	public void setPerDao(Permission perDao) {
+		this.perDao = perDao;
 	}
 }

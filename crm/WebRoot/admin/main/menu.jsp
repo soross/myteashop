@@ -10,8 +10,6 @@
 
 	<title>left.jsp</title>
 
-	
-
 	<style>
 		td{font:normal 11px verdana,arial,helvetica,sans-serif;}
 	</style>

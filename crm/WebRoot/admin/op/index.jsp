@@ -16,22 +16,25 @@
 	<link href="${pageContext.request.contextPath}/admin/css/style.css"
 		rel="stylesheet" type="text/css">
 	<style>
-#divSCA {
-	position: absolute;
-	width: 300px;
-	height: 200px;
-	font-size: 12px;
-	background: #EEF7FD;
-	border: 0px solid #000;
-	z-index: 10001;
-	display: none;
-	text-algin: center;
-	padding: 10px 0 0 10px;
-}
+	body{
+		
+	}
+	#divSCA {
+		position: absolute;
+		width: 300px;
+		height: 200px;
+		font-size: 12px;
+		background: #EEF7FD;
+		border: 0px solid #000;
+		z-index: 10001;
+		display: none;
+		text-algin: center;
+		padding: 10px 0 0 10px;
+	}
 </style>
 </head>
 <body>
-	<table cellpadding="2" cellspacing="1" border="0" class="tableBorder"
+	<table id="tabinfo" cellpadding="2" cellspacing="1" border="0" class="tableBorder"
 		align=center>
 		<tr>
 			<th colspan=2 height=25>
@@ -437,7 +440,7 @@
 		</ul>
 	</div>
 
-	<div id="divSCA" style="height: 50px; display: none;">
+	<div id="divSCA" style="height: 50px; display: none; ">
 		<img src="${pageContext.request.contextPath}/admin/images/loading.gif"
 			id="loading" style="display: none;">
 		<table>
@@ -620,8 +623,9 @@ function openDiv() {
 	$("#divSCA").OpenDiv(); 
 } 
 function closeDiv() {
-	$("body").css("overflow-x", "hidden"); 
 	$("#divSCA").CloseDiv();
+	$("body").css("overflow", "scroll"); 
+	//document.getElementById("tabinfo").style.width = document.body.offsetWidth; 
 } 
 
 function openDivPhoto(){
@@ -629,8 +633,11 @@ function openDivPhoto(){
 }
 
 function closeDivPhoto() {
-	$("body").css("overflow-x", "auto"); 
+	
 	$("#divPhoto").CloseDiv();
+	$("body").css("overflow", "scroll"); 
+	//document.getElementById("tabinfo").style.width = document.body.offsetWidth; 
+	
 } 
 </script>
 
@@ -745,6 +752,7 @@ function putOld(obj){
 			function callbackfun1(data) {
 				if(data.readyState==4){
 					document.getElementById('context-menu-one').innerHTML=data.responseText;
+					rspText = data.responseText;
 				}else{
 					alert('≤Ÿ◊˜ ß∞‹,«Î÷ÿ ‘!');
 				}
@@ -754,6 +762,6 @@ function putOld(obj){
 				closeDivPhoto();
 				
 			}
-		
+		var rspText="";
 		</script>
 </html:html>

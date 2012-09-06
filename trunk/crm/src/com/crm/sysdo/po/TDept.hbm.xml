@@ -8,15 +8,72 @@
     <class name="com.crm.sysdo.po.TDept" table="T_DEPT" schema="CRM">
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-           <generator class="sequence">
+            <generator class="sequence" >
             	<param name="sequence">seq_dept</param>
             </generator>
         </id>
         <property name="deptName" type="java.lang.String">
-            <column name="DEPT_NAME" length="20" />
+            <column name="DEPT_NAME" length="20">
+                <comment>科室部门名称</comment>
+            </column>
+        </property>       
+        <property name="pinyin" type="java.lang.String">
+            <column name="PINYIN" length="100">
+                <comment>拼音</comment>
+            </column>
         </property>
-        <property name="pid" type="java.lang.Long">
-            <column name="pid" precision="22" scale="0" />
+        <property name="wubi" type="java.lang.String">
+            <column name="WUBI" length="100">
+                <comment>五笔</comment>
+            </column>
+        </property>
+        <property name="isreg" type="java.lang.String">
+            <column name="ISREG" length="10">
+                <comment>是否挂号</comment>
+            </column>
+        </property>
+        <property name="ismz" type="java.lang.String">
+            <column name="ISMZ" length="10">
+                <comment>是否门诊科室</comment>
+            </column>
+        </property>
+        <property name="iszy" type="java.lang.String">
+            <column name="ISZY" length="10">
+                <comment>是否住院科室</comment>
+            </column>
+        </property>
+        <property name="isxz" type="java.lang.String">
+            <column name="ISXZ" length="10">
+                <comment>是否行政科室</comment>
+            </column>
+        </property>
+        <property name="ishq" type="java.lang.String">
+            <column name="ISHQ" length="10">
+                <comment>是否后勤科室</comment>
+            </column>
+        </property>
+        <property name="isother" type="java.lang.String">
+            <column name="ISOTHER" length="10">
+                <comment>是否其他科室</comment>
+            </column>
+        </property>
+        <property name="regfee" type="java.lang.Double">
+            <column name="REGFEE" precision="15">
+                <comment>挂号金额</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="10">
+                <comment>状态1可用0不可用</comment>
+            </column>
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK">
+                <comment>备注</comment>
+            </column>
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATE_DATE" length="7" />
         </property>
     </class>
 </hibernate-mapping>

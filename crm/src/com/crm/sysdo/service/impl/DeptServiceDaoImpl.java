@@ -30,8 +30,8 @@ public class DeptServiceDaoImpl implements DeptServiceDao{
 		return this.deptDao.getDeptList(pageUtil);
 	}
 
-	public List getDeptList() {		
-		return this.deptDao.getDeptList();
+	public List getDeptList(String type) {		
+		return this.deptDao.getDeptList(type);
 	}
 	
 	public TDept getDeptByID(Long id){

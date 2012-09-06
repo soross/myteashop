@@ -1,6 +1,7 @@
 package com.crm.sysdo.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -48,10 +49,32 @@ public class DeptDaoImpl extends HibernateDaoSupport implements DeptDao {
 		});
 	}
 	
-	public List getDeptList() {
+	public List getDeptList(final String type) {
 		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "from TDept";
+				StringBuffer sb = new StringBuffer("from TDept where 1=1");
+				if(null !=type){
+					if("ZY".equals(type)){
+						sb.append(" and iszy='1' ");
+					}
+					if("MZ".equals(type)){
+						sb.append(" and ismz='1' ");
+					}
+					if("XZ".equals(type)){
+						sb.append(" and isxz='1' ");
+					}
+					if("HQ".equals(type)){
+						sb.append(" and ishq='1' ");
+					}
+					if("OTHER".equals(type)){
+						sb.append(" and isother='1' ");
+					}
+				}else{
+					sb.append(" and ismz='1' ");					
+				}
+				
+				String hql = sb.toString();
+				System.out.println(hql);
 				Query query =session.createQuery(hql);
 				return query.list();
 			}			

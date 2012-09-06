@@ -17,7 +17,7 @@ public interface DeptDao {
 	 */	
 	public List getDeptList(PageUtil pageUtil);
 	
-	public List getDeptList();
+	public List getDeptList(String type);
 	
 	public TDept getDeptByID(Long id);
 	

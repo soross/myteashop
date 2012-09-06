@@ -1,5 +1,6 @@
 package com.crm.sysdo.struts.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +13,14 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
+import com.crm.per.dao.Permission;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.service.inf.DeptServiceDao;
 import com.crm.sysdo.struts.form.DeptForm;
 
 public class DeptAction extends DispatchAction{
 	private DeptServiceDao deptServiceDao;
+	private Permission perDao;
 	
 	/**
 	 * 部门列表
@@ -32,11 +35,13 @@ public class DeptAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
-		
-		List list = this.deptServiceDao.getDeptList();
+		String type = request.getParameter("type");
+		List list = this.deptServiceDao.getDeptList(type);
 		request.setAttribute("deptList", list);
+		
+		// 科室部门
+		List perList = perDao.getSonPerList("79");
+		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/deptlist.jsp");
 	}
@@ -52,12 +57,10 @@ public class DeptAction extends DispatchAction{
 	 */
 	public ActionForward toAddDept(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		Integer count = this.deptServiceDao.getDeptCount();
-		PageUtil pageUtil = new PageUtil(request, count, count);		
-		List list = this.deptServiceDao.getDeptList(pageUtil);		
-		request.setAttribute("deptList", list);
+			throws Exception {		
+		// 科室部门
+		List perList = perDao.getSonPerList("79");
+		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/adddept.jsp");
 	}
@@ -77,7 +80,10 @@ public class DeptAction extends DispatchAction{
 		DeptForm deptForm = (DeptForm) form;
 		TDept dept = new TDept();
 		BeanUtils.copyProperties(dept, deptForm);
-				
+		
+		Date date = new Date();
+		dept.setCreateDate(date);
+		
 		Boolean bool = this.deptServiceDao.addDept(dept);
 		
 		if (bool) {
@@ -143,16 +149,12 @@ public class DeptAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 	throws Exception {
 		DeptForm deptForm = (DeptForm) form;
-		TDept dept = new TDept();
-		BeanUtils.copyProperties(dept, deptForm);
+		TDept dept = this.deptServiceDao.getDeptByID(deptForm.getId());
+		BeanUtils.copyProperties(deptForm, dept);
 		
-		TDept info = this.deptServiceDao.getDeptByID(dept.getId());
-		request.setAttribute("deptInfo", info);
-		
-		Integer count = this.deptServiceDao.getDeptCount();
-		PageUtil pageUtil = new PageUtil(request, count, count);
-		List list = this.deptServiceDao.getDeptList(pageUtil);
-		request.setAttribute("deptList", list);
+		// 科室部门
+		List perList = perDao.getSonPerList("79");
+		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/updatedept.jsp");
 	}
@@ -171,6 +173,8 @@ public class DeptAction extends DispatchAction{
 		DeptForm deptForm = (DeptForm) form;
 		TDept dept = new TDept();
 		BeanUtils.copyProperties(dept, deptForm);
+		
+		dept.setCreateDate(new Date());
 		
 		boolean bool = this.deptServiceDao.updateDept(dept);
 		
@@ -199,6 +203,14 @@ public class DeptAction extends DispatchAction{
 
 	public void setDeptServiceDao(DeptServiceDao deptServiceDao) {
 		this.deptServiceDao = deptServiceDao;
+	}
+
+	public Permission getPerDao() {
+		return perDao;
+	}
+
+	public void setPerDao(Permission perDao) {
+		this.perDao = perDao;
 	}
 	
 }

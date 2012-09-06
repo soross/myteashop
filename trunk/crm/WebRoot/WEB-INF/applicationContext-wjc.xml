@@ -139,6 +139,7 @@
 	<bean name="/admin/dept"
 		class="com.crm.sysdo.struts.action.DeptAction">
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>		
 	</bean>
 	
 	<!-- sickbed -->

@@ -23,13 +23,15 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>部门选项：</b><a
-					href="${pageContext.request.contextPath}/admin/dept.do?task=deptList">部门首页</a>
-				|
-				<a
-					href="${pageContext.request.contextPath}/admin/dept.do?task=toAddDept">添加部门</a>
-				| [
-				<a href="javascript:location.reload()">刷新页面</a>]
+				<b>部门选项：</b>
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
+				<!-- 
+				<a href="${pageContext.request.contextPath}/admin/user.do?task=userList">用户列表</a> |
+				<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddUser">添加用户</a> |
+				 -->
+				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
 	</table>
@@ -39,38 +41,83 @@
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					更新部门
+					修改部门
 				</th>
 			</tr>
 			<tr>
-				<td align="right">
+				<td align="right" width="30%">
 					科室部门名称：
 				</td>
 				<td colspan="3">
-					<html:text property="deptName" value="${deptInfo.deptName}"  size="30"  styleId="txt"></html:text>
+					<html:text property="deptName"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					拼音简码：
+				</td>
+				<td colspan="3">
+					<html:text property="pinyin"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					五笔简码：
+				</td>
+				<td colspan="3">
+					<html:text property="wubi"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					父级科室部门:
+					允许挂号:
 				</td>
 				<td colspan="3">
-					<html:select property="pid">
-						<option value="-1" <logic:equal value="-1" name="deptInfo" property="pid">selected</logic:equal> >
-							父级
-						</option>
-						<logic:iterate id="dept" name="deptList">
-							<option value="${dept.id}" <logic:equal value="${dept.id}" name="deptInfo" property="pid">selected</logic:equal>>
-								${dept.deptName}
-							</option>
-						</logic:iterate>
-					</html:select>
+					<html:radio property="isreg" value="0"></html:radio>不是
+					<html:radio property="isreg" value="1"></html:radio>是
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					科室类别:
+				</td>
+				<td colspan="3">
+					<html:checkbox property="ismz" value="1"></html:checkbox>门诊
+					&nbsp;&nbsp;<html:checkbox property="iszy" value="1"></html:checkbox>住院
+					&nbsp;&nbsp;<html:checkbox property="isxz" value="1"></html:checkbox>行政
+					&nbsp;&nbsp;<html:checkbox property="ishq" value="1"></html:checkbox>后勤
+					&nbsp;&nbsp;<html:checkbox property="isother" value="1"></html:checkbox>其他
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					挂号费用:
+				</td>
+				<td colspan="3">
+					<html:text property="regfee"  size="10"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					状态:
+				</td>
+				<td colspan="3">
+					<html:radio property="state" value="0"></html:radio>不可用
+					<html:radio property="state" value="1"></html:radio>可用
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					备注:
+				</td>
+				<td colspan="3">
+					<html:text property="remark"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="updateDept">
-					<input type="hidden" name="id" value="${deptInfo.id}">
+					<html:hidden property="id" />
+					<input type="hidden" name="task" value="updateDept">					
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 修 改 " class="inputs" />
 				</td>

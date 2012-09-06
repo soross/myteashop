@@ -75,10 +75,14 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>部门选项：</b><a
-					href="${pageContext.request.contextPath}/admin/dept.do?task=deptList">部门首页</a>
-				|
-				<a href="${pageContext.request.contextPath}/admin/dept.do?task=toAddDept">添加部门</a> |
+				<b>部门选项：</b>
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
+				<!-- 
+				<a href="${pageContext.request.contextPath}/admin/user.do?task=userList">用户列表</a> |
+				<a href="${pageContext.request.contextPath}/admin/user.do?task=toAddUser">添加用户</a> |
+				 -->
 				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
@@ -86,25 +90,55 @@
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorderList">
 		<tr>
-			<th colspan=5 height=25>
+			<th colspan=15 height=25>
 				部门列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
-			<td width="10%" height=25>
+			<td width="5%" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
 					onclick="selectAll(this);" />全选
 			</td>
+			<td width="5%">
+				编码
+			</td>
+			<td width="8%">
+				名称
+			</td>
+			<td width="8%">
+				拼音简码
+			</td>
+			<td width="8%">
+				五笔简码
+			</td>
+			<td width="6%">
+				允许挂号
+			</td>
+			<td width="6%">
+				门诊科室
+			</td>
+			<td width="6%">
+				住院科室
+			</td>
+			<td width="6%">
+				行政科室
+			</td>
+			<td width="6%">
+				后勤科室
+			</td>
+			<td width="6%">
+				其他科室
+			</td>
+			<td width="6%">
+				挂号金额
+			</td>
+			<td width="6%">
+				有效状态
+			</td>
+			<td width="8%">
+				备注
+			</td>
 			<td width="10%">
-				序号
-			</td>
-			<td width="30%">
-				科室部门
-			</td>
-			<td width="30%">
-				父级科室部门
-			</td>
-			<td width="20%">
 				操作
 			</td>
 		</tr>
@@ -112,69 +146,75 @@
 		<logic:present name="deptList">
 			<logic:empty name="deptList">
 				<Tr>
-					<td colspan="5" height="25">
+					<td colspan="15" height="25">
 						没有所要查询的数据...
 					</td>
 				</Tr>
 			</logic:empty>
 			<logic:iterate id="dept" name="deptList">
-				<logic:equal value="-1" name="dept" property="pid">
-					<tr align="center">
-						<td height=25>
-							<input type="checkbox" name="phones" value="${dept.id}"
-								onclick="clickSon(this);" />
-						</td>
-						<td height=25>
-							${dept.id}
-						</td>
-						<td align="left"  style="padding-left:20px;">
-							<img src="${pageContext.request.contextPath}/admin/images/plus.gif">${dept.deptName}
-						</td>
-						<td>
-							父级						
-						</td>
-						<!-- <td>
-							bean:write name="dept"	property="regdate" format="yyyy-MM-dd HH:mm:ss"  
-						</td>/-->
-						<td>
-							<a href="${pageContext.request.contextPath}/admin/dept.do?task=toUpdateDept&id=${dept.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/dept.do?task=deleteDept&id=${dept.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
-						</td>
-					</tr>
-					
-					<logic:iterate id="sdept" name="deptList">
-						<logic:equal value="${dept.id}" name="sdept" property="pid">
-							<tr align="center">
-								<td height=25>
-									<input type="checkbox" name="phones" value="${sdept.id}"
-										onclick="clickSon(this);" />
-								</td>
-								<td height=25>
-									${sdept.id}
-								</td>
-								<td align="left" style="padding-left:50px;">
-									<img src="${pageContext.request.contextPath}/admin/images/minus.gif">${sdept.deptName}
-								</td>
-								<td>
-									${dept.deptName }						
-								</td>
-								<!-- <td>
-									bean:write name="dept"	property="regdate" format="yyyy-MM-dd HH:mm:ss"  
-								</td>/-->
-								<td>
-									<a href="${pageContext.request.contextPath}/admin/dept.do?task=toUpdateDept&id=${sdept.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/dept.do?task=deleteDept&id=${sdept.id}"  onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
-								</td>
-							</tr>
-						</logic:equal>
-					</logic:iterate>
-				</logic:equal>			
+				<tr align="center">
+					<td height=25>
+						<input type="checkbox" name="phones" value="${dept.id}"
+							onclick="clickSon(this);" />
+					</td>
+					<td width="5%">
+						${dept.id}
+					</td>
+					<td width="8%">
+						${dept.deptName}
+					</td>
+					<td width="8%">
+						${dept.pinyin}
+					</td>
+					<td width="8%">
+						${dept.wubi}
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="isreg">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="isreg">是</logic:equal>
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="ismz">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="ismz">是</logic:equal>
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="iszy">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="iszy">是</logic:equal>
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="isxz">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="isxz">是</logic:equal>
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="ishq">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="ishq">是</logic:equal>
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="isother">不是</logic:equal>
+						<logic:equal value="1" name="dept" property="isother">是</logic:equal>
+					</td>
+					<td width="6%">
+						${dept.regfee}
+					</td>
+					<td width="6%">
+						<logic:equal value="0" name="dept" property="state">不可用</logic:equal>
+						<logic:equal value="1" name="dept" property="state">可用</logic:equal>
+					</td>
+					<td width="8%">
+						${dept.remark}&nbsp;
+					</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/admin/dept.do?task=toUpdateDept&id=${dept.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/dept.do?task=deleteDept&id=${dept.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+					</td>
+				</tr>
 			</logic:iterate>
 		</logic:present>
 		<tr>
-			<td  align="left" colspan="5" height=25>
-				&nbsp;<html:button property="" value="批量导出"
+			<td  align="left" colspan="15" height=25>
+				&nbsp;<!-- <html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button>
+					onclick="outAllToExcel('exportAllClient')"></html:button> -->
 			</td>
 		</tr>
 	

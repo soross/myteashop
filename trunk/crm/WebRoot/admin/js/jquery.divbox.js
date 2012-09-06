@@ -22,7 +22,7 @@ maskObj.style.opacity = "0.7";
 maskObj.style.width = sWidth + "px"; 
 maskObj.style.height = sHeight + "px"; 
 maskObj.style.zIndex = "10000"; 
-$("body").attr("scroll", "no"); 
+$("body").attr("scroll", "auto"); 
 document.body.appendChild(maskObj); 
 $("#BigDiv").data("divbox_selectlist", $("select:visible")); 
 $("select:visible").hide(); 

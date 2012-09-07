@@ -75,5 +75,6 @@
         <property name="createDate" type="java.util.Date">
             <column name="CREATE_DATE" length="7" />
         </property>
+        
     </class>
 </hibernate-mapping>

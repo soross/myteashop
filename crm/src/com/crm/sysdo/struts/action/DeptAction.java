@@ -17,6 +17,7 @@ import com.crm.per.dao.Permission;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.service.inf.DeptServiceDao;
 import com.crm.sysdo.struts.form.DeptForm;
+import com.crm.tool.PinYinUtils;
 
 public class DeptAction extends DispatchAction{
 	private DeptServiceDao deptServiceDao;
@@ -83,6 +84,11 @@ public class DeptAction extends DispatchAction{
 		
 		Date date = new Date();
 		dept.setCreateDate(date);
+		
+		if(null==dept.getPinyin()||"".equals(dept.getPinyin())){
+			dept.setPinyin(PinYinUtils.getAllFirstLetter(dept.getDeptName()).toUpperCase());
+		}
+	
 		
 		Boolean bool = this.deptServiceDao.addDept(dept);
 		
@@ -175,6 +181,10 @@ public class DeptAction extends DispatchAction{
 		BeanUtils.copyProperties(dept, deptForm);
 		
 		dept.setCreateDate(new Date());
+		
+		if(null==dept.getPinyin()||"".equals(dept.getPinyin())){
+			dept.setPinyin(PinYinUtils.getAllFirstLetter(dept.getDeptName()).toUpperCase());
+		}
 		
 		boolean bool = this.deptServiceDao.updateDept(dept);
 		

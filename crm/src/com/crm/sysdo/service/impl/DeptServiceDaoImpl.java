@@ -24,7 +24,9 @@ public class DeptServiceDaoImpl implements DeptServiceDao{
 		// TODO Auto-generated method stub
 		return this.deptDao.getDeptCount();
 	}
-
+	public List getDeptList(){
+		return this.deptDao.getDeptList();
+	}
 	public List getDeptList(PageUtil pageUtil) {
 		// TODO Auto-generated method stub
 		return this.deptDao.getDeptList(pageUtil);

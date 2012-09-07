@@ -42,12 +42,24 @@ public class DeptDaoImpl extends HibernateDaoSupport implements DeptDao {
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				String hql = "from TDept";
 				Query query =session.createQuery(hql);
-				query.setFirstResult(pageUtil.pastart());
-				query.setMaxResults(pageUtil.getPagesize());
+				if(null!=pageUtil){
+					query.setFirstResult(pageUtil.pastart());
+					query.setMaxResults(pageUtil.getPagesize());
+				}
 				return query.list();
 			}			
 		});
 	}
+	public List getDeptList(){
+		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String hql = "from TDept order by id";
+				Query query =session.createQuery(hql);
+				return query.list();
+			}			
+		});
+	}
+
 	
 	public List getDeptList(final String type) {
 		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){

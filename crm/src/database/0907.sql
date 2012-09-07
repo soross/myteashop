@@ -126,7 +126,7 @@ insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
 values (80, '人事档案', '/admin/staff.do?task=staffList&modfunid=80', 77, 3);
 
 
-
+drop table T_SICKBED;
 
 -- Create table
 create table T_SICKBED
@@ -240,17 +240,7 @@ create table T_FEE_ITEM
   NBCODE      VARCHAR2(50),
   NBNAME      VARCHAR2(50),
   PAYSELF     VARCHAR2(20)
-)
-tablespace C_CRM
-  pctfree 10
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    minextents 1
-    maxextents unlimited
-  );
+);
 -- Add comments to the table 
 comment on table T_FEE_ITEM
   is '收费项目';
@@ -397,8 +387,6 @@ comment on column T_UNIT.STATE
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table T_UNIT
   add constraint T_UNIT_PK primary key (ID);
-
-
 
 -- Create sequence 
 create sequence SEQ_UNIT

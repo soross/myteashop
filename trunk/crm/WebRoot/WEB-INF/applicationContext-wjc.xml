@@ -142,6 +142,24 @@
 		<property name="perDao" ref="perDao"></property>		
 	</bean>
 	
+	<!-- staff -->
+	<bean name="staffDao" class="com.crm.sysdo.dao.impl.StaffDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="staffServiceDao"
+		class="com.crm.sysdo.service.impl.StaffServiceDaoImpl">
+		<property name="staffDao" ref="staffDao"></property>
+	</bean>
+	<bean name="staffServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="staffServiceDao"></property>
+	</bean>
+	<bean name="/admin/staff"
+		class="com.crm.sysdo.struts.action.StaffAction">
+		<property name="staffServiceDao" ref="staffServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>	
+		<property name="deptServiceDao" ref="deptServiceDao"></property>			
+	</bean>
+	
 	<!-- sickbed -->
 	<bean name="sickbedDao" class="com.crm.sysdo.dao.impl.SickbedDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>

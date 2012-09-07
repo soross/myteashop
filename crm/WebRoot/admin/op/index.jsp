@@ -117,7 +117,7 @@
 					<html:text property="birthday" size="13"
 						onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});"
 						styleId="brithday" styleClass="Wdate" readonly="true" />
-					<html:text onfocus="javascript:putOld(this);" property="old"
+					<html:text onfocus="javascript:putOld(this);" property="old" readonly="true"
 						size="5" />
 					Ëê
 				</td>

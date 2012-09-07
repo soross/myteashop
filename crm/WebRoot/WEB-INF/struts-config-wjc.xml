@@ -10,9 +10,11 @@
 	<form-bean name="deptForm" type="com.crm.sysdo.struts.form.DeptForm" />
 	<form-bean name="sickbedForm" type="com.crm.sysdo.struts.form.SickbedForm" />
 	<form-bean name="dataForm" type="com.crm.sysdo.struts.form.DataForm" />
+	<form-bean name="staffForm" type="com.crm.sysdo.struts.form.StaffForm" />
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
 	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
+	
   </form-beans>
 
   <global-exceptions />
@@ -94,6 +96,15 @@
       path="/admin/data"
       scope="request"
       type="com.crm.sysdo.struts.action.DataAction" />
+      
+	<action
+      attribute="staffForm"
+      input="/form/staff.jsp"
+      name="staffForm"
+      parameter="task"
+      path="/admin/staff"
+      scope="request"
+      type="com.crm.sysdo.struts.action.StaffAction" />      
   </action-mappings>
   
   <controller

@@ -9,6 +9,9 @@ public class PinYinUtils {
 	private final static String[] lc_FirstLetter = { "a", "b", "c", "d", "e",
 			"f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
 			"t", "w", "x", "y", "z" };
+	
+	private final static String number="1234567890";
+		
 
 	/**
 	 * 取得给定汉字串的首字母串,即声母串
@@ -38,11 +41,17 @@ public class PinYinUtils {
 	 * @return 给定汉字的声母
 	 */
 	public static String getFirstLetter(String chinese) {
+		
 		if (chinese == null || chinese.trim().length() == 0) {
 			return "";
 		}
+		
 		chinese = conversionStr(chinese, "GB2312", "ISO8859-1");
-
+		
+		if(number.indexOf(chinese)>-1){
+			return chinese;
+		}
+		
 		if (chinese.length() > 1) // 判断是不是汉字
 		{
 			int li_SectorCode = (int) chinese.charAt(0); // 汉字区码
@@ -89,4 +98,7 @@ public class PinYinUtils {
 
 		return str;
 	}
+	
+	
+
 }

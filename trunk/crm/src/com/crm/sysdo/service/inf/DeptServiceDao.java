@@ -20,6 +20,7 @@ public interface DeptServiceDao {
 	 * @return
 	 */
 	public List getDeptList(PageUtil pageUtil);
+	public List getDeptList();
 	
 	public List getDeptList(String type);
 	

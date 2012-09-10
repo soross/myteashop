@@ -1,12 +1,11 @@
 package com.crm.sysdo.po;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
-import sun.util.logging.resources.logging;
-
 /**
- * TUnit entity. @author MyEclipse Persistence Tools
+ * TUnit entity.
+ * 
+ * @author MyEclipse Persistence Tools
  */
 
 public class TUnit implements java.io.Serializable {
@@ -14,15 +13,22 @@ public class TUnit implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private String unitName;
+	private String unitname;
 	private String remark;
-	private String linkMan;
-	private String phone;
+	private String wubi;
+	private String linkman;
 	private String mobile;
-	private String code;
+	private String tel;
 	private Date createDate;
-	private String createStaff;
+	private String address;
 	private String unitFlag;
+	private String pinyin;
+	private String fax;
+	private String zip;
+	private String legal;
+	private String bankname;
+	private String bankcode;
+	private String state;
 
 	// Constructors
 
@@ -31,18 +37,26 @@ public class TUnit implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TUnit(String unitName, String remark, String linkMan, String phone,
-			String mobile, String code, Date createDate, String createStaff,
-			String unitFlag) {
-		this.unitName = unitName;
+	public TUnit(String unitname, String remark, String wubi, String linkman,
+			String mobile, String tel, Date createDate, String address,
+			String unitFlag, String pinyin, String fax, String zip,
+			String legal, String bankname, String bankcode, String state) {
+		this.unitname = unitname;
 		this.remark = remark;
-		this.linkMan = linkMan;
-		this.phone = phone;
+		this.wubi = wubi;
+		this.linkman = linkman;
 		this.mobile = mobile;
-		this.code = code;
+		this.tel = tel;
 		this.createDate = createDate;
-		this.createStaff = createStaff;
+		this.address = address;
 		this.unitFlag = unitFlag;
+		this.pinyin = pinyin;
+		this.fax = fax;
+		this.zip = zip;
+		this.legal = legal;
+		this.bankname = bankname;
+		this.bankcode = bankcode;
+		this.state = state;
 	}
 
 	// Property accessors
@@ -55,12 +69,12 @@ public class TUnit implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public String getUnitName() {
-		return this.unitName;
+	public String getUnitname() {
+		return this.unitname;
 	}
 
-	public void setUnitName(String unitName) {
-		this.unitName = unitName;
+	public void setUnitname(String unitname) {
+		this.unitname = unitname;
 	}
 
 	public String getRemark() {
@@ -71,20 +85,20 @@ public class TUnit implements java.io.Serializable {
 		this.remark = remark;
 	}
 
-	public String getLinkMan() {
-		return this.linkMan;
+	public String getWubi() {
+		return this.wubi;
 	}
 
-	public void setLinkMan(String linkMan) {
-		this.linkMan = linkMan;
+	public void setWubi(String wubi) {
+		this.wubi = wubi;
 	}
 
-	public String getPhone() {
-		return this.phone;
+	public String getLinkman() {
+		return this.linkman;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setLinkman(String linkman) {
+		this.linkman = linkman;
 	}
 
 	public String getMobile() {
@@ -95,12 +109,12 @@ public class TUnit implements java.io.Serializable {
 		this.mobile = mobile;
 	}
 
-	public String getCode() {
-		return this.code;
+	public String getTel() {
+		return this.tel;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public Date getCreateDate() {
@@ -111,12 +125,12 @@ public class TUnit implements java.io.Serializable {
 		this.createDate = createDate;
 	}
 
-	public String getCreateStaff() {
-		return this.createStaff;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setCreateStaff(String createStaff) {
-		this.createStaff = createStaff;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getUnitFlag() {
@@ -125,6 +139,62 @@ public class TUnit implements java.io.Serializable {
 
 	public void setUnitFlag(String unitFlag) {
 		this.unitFlag = unitFlag;
+	}
+
+	public String getPinyin() {
+		return this.pinyin;
+	}
+
+	public void setPinyin(String pinyin) {
+		this.pinyin = pinyin;
+	}
+
+	public String getFax() {
+		return this.fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getZip() {
+		return this.zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public String getLegal() {
+		return this.legal;
+	}
+
+	public void setLegal(String legal) {
+		this.legal = legal;
+	}
+
+	public String getBankname() {
+		return this.bankname;
+	}
+
+	public void setBankname(String bankname) {
+		this.bankname = bankname;
+	}
+
+	public String getBankcode() {
+		return this.bankcode;
+	}
+
+	public void setBankcode(String bankcode) {
+		this.bankcode = bankcode;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

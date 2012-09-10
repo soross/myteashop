@@ -9,9 +9,7 @@
         <comment>人事档案</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence">
-            <param name="sequence">seq_staff</param>
-            </generator>
+            <generator class="sequence" />
         </id>
         <property name="staffname" type="java.lang.String">
             <column name="STAFFNAME" length="20">
@@ -20,7 +18,7 @@
         </property>
         <property name="sex" type="java.lang.String">
             <column name="SEX" length="10">
-                <comment>性别</comment>
+                <comment>性别0男1女2未知</comment>
             </column>
         </property>
         <property name="pinyin" type="java.lang.String">
@@ -30,7 +28,7 @@
             <column name="WUBI" length="50" />
         </property>
         <property name="deptid" type="java.lang.String">
-            <column name="DEPTID" precision="22" scale="0">
+            <column name="DEPTID" length="20">
                 <comment>科室部门</comment>
             </column>
         </property>
@@ -52,7 +50,7 @@
         </property>
         <property name="state" type="java.lang.String">
             <column name="STATE" length="10">
-                <comment>状态0不可以1可用</comment>
+                <comment>状态0离职1在职</comment>
             </column>
         </property>
         <property name="createDate" type="java.util.Date">
@@ -73,14 +71,12 @@
                 <comment>是否医技0不可以1可用</comment>
             </column>
         </property>
+        <property name="isapp" type="java.lang.String">
+            <column name="ISAPP" length="10" />
+        </property>
         <property name="isop" type="java.lang.String">
             <column name="ISOP" length="10">
                 <comment>是否操作员0不可以1可用</comment>
-            </column>
-        </property>
-        <property name="isapp" type="java.lang.String">
-            <column name="ISAPP" length="10">
-                <comment>是否器具员0不可以1可用</comment>
             </column>
         </property>
         <property name="ispre" type="java.lang.String">
@@ -168,6 +164,5 @@
                 <comment>联系地址</comment>
             </column>
         </property>
-        
     </class>
 </hibernate-mapping>

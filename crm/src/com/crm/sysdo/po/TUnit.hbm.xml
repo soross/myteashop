@@ -9,12 +9,10 @@
         <comment>往来签约单位</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence">
-            	<param name="sequence">seq_unit</param>
-            </generator>
+            <generator class="sequence" />
         </id>
-        <property name="unitName" type="java.lang.String">
-            <column name="UNIT_NAME" length="100">
+        <property name="unitname" type="java.lang.String">
+            <column name="UNITNAME" length="100">
                 <comment>往来单位名称</comment>
             </column>
         </property>
@@ -23,14 +21,12 @@
                 <comment>备注</comment>
             </column>
         </property>
-        <property name="linkMan" type="java.lang.String">
-            <column name="LINK_MAN" length="50">
-                <comment>联系人</comment>
-            </column>
+        <property name="wubi" type="java.lang.String">
+            <column name="WUBI" />
         </property>
-        <property name="phone" type="java.lang.String">
-            <column name="PHONE" length="50">
-                <comment>电话</comment>
+        <property name="linkman" type="java.lang.String">
+            <column name="LINKMAN" length="50">
+                <comment>联系人</comment>
             </column>
         </property>
         <property name="mobile" type="java.lang.String">
@@ -38,20 +34,55 @@
                 <comment>手机</comment>
             </column>
         </property>
-        <property name="code" type="java.lang.String">
-            <column name="CODE" length="100">
-                <comment>执照编号</comment>
+        <property name="tel" type="java.lang.String">
+            <column name="TEL" length="50">
+                <comment>电话</comment>
             </column>
         </property>
         <property name="createDate" type="java.util.Date">
             <column name="CREATE_DATE" length="7" />
         </property>
-        <property name="createStaff" type="java.lang.String">
-            <column name="CREATE_STAFF" length="50" />
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS">
+                <comment>联系地址</comment>
+            </column>
         </property>
         <property name="unitFlag" type="java.lang.String">
             <column name="UNIT_FLAG" length="20">
                 <comment>字典：SIGN签约GOTO往来</comment>
+            </column>
+        </property>
+        <property name="pinyin" type="java.lang.String">
+            <column name="PINYIN" />
+        </property>
+        <property name="fax" type="java.lang.String">
+            <column name="FAX" length="50">
+                <comment>传真</comment>
+            </column>
+        </property>
+        <property name="zip" type="java.lang.String">
+            <column name="ZIP" length="20">
+                <comment>邮编</comment>
+            </column>
+        </property>
+        <property name="legal" type="java.lang.String">
+            <column name="LEGAL" length="50">
+                <comment>法定代表</comment>
+            </column>
+        </property>
+        <property name="bankname" type="java.lang.String">
+            <column name="BANKNAME" length="50">
+                <comment>开户银行</comment>
+            </column>
+        </property>
+        <property name="bankcode" type="java.lang.String">
+            <column name="BANKCODE" length="50">
+                <comment>银行账户</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="10">
+                <comment>状态1可用0不可用</comment>
             </column>
         </property>
     </class>

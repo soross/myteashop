@@ -12,10 +12,61 @@
             <generator class="sequence" />
         </id>
         <property name="sickbed" type="java.lang.String">
-            <column name="SICKBED" length="20" />
+            <column name="SICKBED" length="20">
+                <comment>名称</comment>
+            </column>
         </property>
-        <property name="spec" type="java.lang.String">
-            <column name="SPEC" length="30" />
+        <property name="code" type="java.lang.String">
+            <column name="CODE" length="30">
+                <comment>编码</comment>
+            </column>
+        </property>
+        <property name="deptid" type="java.lang.String">
+            <column name="DEPTID" length="20">
+                <comment>科室部门</comment>
+            </column>
+        </property>
+        <property name="showindex" type="java.lang.String">
+            <column name="SHOWINDEX" length="10">
+                <comment>显示顺序</comment>
+            </column>
+        </property>
+        <property name="area" type="java.lang.String">
+            <column name="AREA" length="10">
+                <comment>所属病区</comment>
+            </column>
+        </property>
+        <property name="leveltype" type="java.lang.String">
+            <column name="LEVELTYPE" length="10">
+                <comment>床位级别1普通2中级3高级</comment>
+            </column>
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="PRICE" precision="20">
+                <comment>标准金额</comment>
+            </column>
+        </property>
+        <property name="pinyin" type="java.lang.String">
+            <column name="PINYIN" length="20" />
+        </property>
+        <property name="wubi" type="java.lang.String">
+            <column name="WUBI" length="20" />
+        </property>
+        <property name="hospno" type="java.lang.String">
+            <column name="HOSPNO" length="20">
+                <comment>当前住院号</comment>
+            </column>
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="10">
+                <comment>状态0不可用1可用</comment>
+            </column>
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATE_DATE" length="7" />
         </property>
     </class>
 </hibernate-mapping>

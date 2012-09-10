@@ -104,9 +104,6 @@
 	</bean>
 	
 	
-	
-	
-	
 	<!-- 业务 -->
 	<bean name="businessDao" class="com.crm.client.dao.impl.BusinessDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -175,6 +172,20 @@
 		class="com.crm.sysdo.struts.action.SickbedAction">
 		<property name="sickbedServiceDao" ref="sickbedServiceDaoProxy"></property>
 	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<!-- 客户 -->
 	<bean name="custDao" class="com.crm.op.dao.impl.CustDaoImpl">

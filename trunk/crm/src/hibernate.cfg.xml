@@ -56,6 +56,14 @@
 		<mapping resource="com/crm/op/po/TRegisterFee.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TUnit.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TStaff.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TCollect.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TRegisterType.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TManufacturer.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TGoods.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TToolSave.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TToolinfo.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TGoodsType.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TIcd.hbm.xml" />
 
 
 

@@ -1,5 +1,7 @@
 package com.crm.sysdo.po;
 
+import java.util.Date;
+
 /**
  * TSickbed entity.
  * 
@@ -12,7 +14,18 @@ public class TSickbed implements java.io.Serializable {
 
 	private Long id;
 	private String sickbed;
-	private String spec;
+	private String code;
+	private String deptid;
+	private String showindex;
+	private String area;
+	private String leveltype;
+	private Double price;
+	private String pinyin;
+	private String wubi;
+	private String hospno;
+	private String remark;
+	private String state;
+	private Date createDate;
 
 	// Constructors
 
@@ -21,9 +34,23 @@ public class TSickbed implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TSickbed(String sickbed, String spec) {
+	public TSickbed(String sickbed, String code, String deptid,
+			String showindex, String area, String leveltype, Double price,
+			String pinyin, String wubi, String hospno, String remark,
+			String state, Date createDate) {
 		this.sickbed = sickbed;
-		this.spec = spec;
+		this.code = code;
+		this.deptid = deptid;
+		this.showindex = showindex;
+		this.area = area;
+		this.leveltype = leveltype;
+		this.price = price;
+		this.pinyin = pinyin;
+		this.wubi = wubi;
+		this.hospno = hospno;
+		this.remark = remark;
+		this.state = state;
+		this.createDate = createDate;
 	}
 
 	// Property accessors
@@ -44,12 +71,100 @@ public class TSickbed implements java.io.Serializable {
 		this.sickbed = sickbed;
 	}
 
-	public String getSpec() {
-		return this.spec;
+	public String getCode() {
+		return this.code;
 	}
 
-	public void setSpec(String spec) {
-		this.spec = spec;
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getDeptid() {
+		return this.deptid;
+	}
+
+	public void setDeptid(String deptid) {
+		this.deptid = deptid;
+	}
+
+	public String getShowindex() {
+		return this.showindex;
+	}
+
+	public void setShowindex(String showindex) {
+		this.showindex = showindex;
+	}
+
+	public String getArea() {
+		return this.area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getLeveltype() {
+		return this.leveltype;
+	}
+
+	public void setLeveltype(String leveltype) {
+		this.leveltype = leveltype;
+	}
+
+	public Double getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getPinyin() {
+		return this.pinyin;
+	}
+
+	public void setPinyin(String pinyin) {
+		this.pinyin = pinyin;
+	}
+
+	public String getWubi() {
+		return this.wubi;
+	}
+
+	public void setWubi(String wubi) {
+		this.wubi = wubi;
+	}
+
+	public String getHospno() {
+		return this.hospno;
+	}
+
+	public void setHospno(String hospno) {
+		this.hospno = hospno;
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Date getCreateDate() {
+		return this.createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

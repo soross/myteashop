@@ -286,6 +286,8 @@ create table T_GOODS_TYPE
   TYPENAME VARCHAR2(50),
   PID      NUMBER
 );
+alter table T_GOODS_TYPE
+  add constraint T_GOODS_TYPE_PK primary key (ID);
 -- Add comments to the table 
 comment on table T_GOODS_TYPE
   is '物资类型';

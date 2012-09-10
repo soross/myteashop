@@ -27,9 +27,9 @@ public class TStaff implements java.io.Serializable {
 	private String isdoctor;
 	private String isnurse;
 	private String ismt;
+	private String isapp;
 	private String isop;
 	private String ispre;
-	private String isapp;
 	private Date birthday;
 	private Long age;
 	private String ismarry;
@@ -57,11 +57,12 @@ public class TStaff implements java.io.Serializable {
 	public TStaff(String staffname, String sex, String pinyin, String wubi,
 			String deptid, String nation, String birthadd, String idcode,
 			String remark, String state, Date createDate, String isdoctor,
-			String isnurse, String ismt, String isop, String ispre,
-			Date birthday, Long age, String ismarry, String polstate,
-			String email, String tel, String mobile, Date workdate,
-			Long workage, Date indate, Long inage, String collage,
-			String major, String job, String jobtitle, String address,String isapp) {
+			String isnurse, String ismt, String isapp, String isop,
+			String ispre, Date birthday, Long age, String ismarry,
+			String polstate, String email, String tel, String mobile,
+			Date workdate, Long workage, Date indate, Long inage,
+			String collage, String major, String job, String jobtitle,
+			String address) {
 		this.staffname = staffname;
 		this.sex = sex;
 		this.pinyin = pinyin;
@@ -76,6 +77,7 @@ public class TStaff implements java.io.Serializable {
 		this.isdoctor = isdoctor;
 		this.isnurse = isnurse;
 		this.ismt = ismt;
+		this.isapp = isapp;
 		this.isop = isop;
 		this.ispre = ispre;
 		this.birthday = birthday;
@@ -94,7 +96,6 @@ public class TStaff implements java.io.Serializable {
 		this.job = job;
 		this.jobtitle = jobtitle;
 		this.address = address;
-		this.isapp = isapp;
 	}
 
 	// Property accessors
@@ -217,6 +218,14 @@ public class TStaff implements java.io.Serializable {
 
 	public void setIsmt(String ismt) {
 		this.ismt = ismt;
+	}
+
+	public String getIsapp() {
+		return this.isapp;
+	}
+
+	public void setIsapp(String isapp) {
+		this.isapp = isapp;
 	}
 
 	public String getIsop() {
@@ -361,14 +370,6 @@ public class TStaff implements java.io.Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getIsapp() {
-		return isapp;
-	}
-
-	public void setIsapp(String isapp) {
-		this.isapp = isapp;
 	}
 
 }

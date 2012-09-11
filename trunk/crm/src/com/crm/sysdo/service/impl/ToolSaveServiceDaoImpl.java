@@ -4,9 +4,10 @@ package com.crm.sysdo.service.impl;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.dao.inf.ToolSaveDao;
 import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.po.TToolSave;
+import com.crm.sysdo.service.inf.ToolSaveServiceDao;
 
 /**
  * 数字字典操作Service
@@ -16,52 +17,52 @@ import com.crm.sysdo.service.inf.DataServiceDao;
  * 10.22 am
  *
  */
-public class ToolSaveServiceDaoImpl implements DataServiceDao {
+public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 	
-	private DataDao dataDao;
+	private ToolSaveDao ToolSaveDao;
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
 	public Integer getCount(){
-		return dataDao.getCount();
+		return ToolSaveDao.getCount();
 	}
 
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param ToolSave
 	 * @return
 	 */
-	public Boolean addData(TData data){		
-		return dataDao.addData(data);
+	public Boolean addToolSave(TToolSave ToolSave){		
+		return ToolSaveDao.addToolSave(ToolSave);
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param ToolSave
 	 * @return
 	 */
-	public Boolean deleteData(TData data){		
-		return dataDao.deleteData(data);
+	public Boolean deleteToolSave(TToolSave ToolSave){		
+		return ToolSaveDao.deleteToolSave(ToolSave);
 	}
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param ToolSave
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		return dataDao.updateData(data);
+	public Boolean updateToolSave(TToolSave ToolSave){
+		return ToolSaveDao.updateToolSave(ToolSave);
 	}
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data){
+	public List searchToolSave(TToolSave ToolSave){
 		
-		return dataDao.searchData(data);
+		return ToolSaveDao.searchToolSave(ToolSave);
 	}
 	
 	/**
@@ -69,8 +70,8 @@ public class ToolSaveServiceDaoImpl implements DataServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
-		return dataDao.seachData(id);
+	public TToolSave seachToolSave(Long id){
+		return ToolSaveDao.seachToolSave(id);
 	}
 	
 	/**
@@ -78,7 +79,7 @@ public class ToolSaveServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
+	public List searchSonToolSave(Long pid){
 		return null;
 	}
 	
@@ -87,17 +88,17 @@ public class ToolSaveServiceDaoImpl implements DataServiceDao {
 	 * 
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil){
+	public List searchParentToolSave(PageUtil pageUtil){
 		
-		return dataDao.searchParentData(pageUtil);
+		return ToolSaveDao.searchParentToolSave(pageUtil);
 	}
 
-	public DataDao getDataDao() {
-		return dataDao;
+	public ToolSaveDao getToolSaveDao() {
+		return ToolSaveDao;
 	}
 
-	public void setDataDao(DataDao dataDao) {
-		this.dataDao = dataDao;
+	public void setToolSaveDao(ToolSaveDao ToolSaveDao) {
+		this.ToolSaveDao = ToolSaveDao;
 	}
 	
 	/**
@@ -105,8 +106,8 @@ public class ToolSaveServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid){
-		return this.dataDao.searchPageData(pid);
+	public List searchPageToolSave(Long pid){
+		return this.ToolSaveDao.searchPageToolSave(pid);
 	}
 
 }

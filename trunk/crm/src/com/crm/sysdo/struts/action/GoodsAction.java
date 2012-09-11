@@ -19,8 +19,11 @@ import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TGoods;
 import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.service.inf.GoodsServiceDao;
 import com.crm.sysdo.struts.form.DataForm;
+import com.crm.sysdo.struts.form.GoodsForm;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -34,7 +37,7 @@ public class GoodsAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private GoodsServiceDao GoodsServiceDao;
 	private Permission perDao;
 
 	/**
@@ -46,17 +49,16 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddGoods(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
-		request.setAttribute("pidList", list);
+		
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/adddata.jsp");
+		return new ActionForward("/admin/sysdo/Goods/addGoods.jsp");
 	}
 
 	/**
@@ -68,23 +70,23 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addData(ActionMapping mapping, ActionForm form,
+	public ActionForward addGoods(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		GoodsForm GoodsForm = (GoodsForm) form;
+		TGoods Goods = new TGoods();
+		BeanUtils.copyProperties(Goods, GoodsForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.GoodsServiceDao.searchGoods(Goods);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/Goods.do?task=toAddGoods';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.GoodsServiceDao.addGoods(Goods);
 
 		if (bool) {
 			response
@@ -92,9 +94,9 @@ public class GoodsAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Goods.do?task=toAddGoods';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Goods.do?task=GoodsList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +104,9 @@ public class GoodsAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Goods.do?task=toAddGoods';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Goods.do?task=GoodsList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +120,22 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward GoodsList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		GoodsForm GoodsForm = (GoodsForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.GoodsServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
 
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.GoodsServiceDao.searchGoods(null);
+		request.setAttribute("GoodsSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/Goods/Goodslist.jsp");
 	}
 
 	/**
@@ -149,26 +149,26 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteGoods(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		GoodsForm GoodsForm = (GoodsForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TGoods Goods = new TGoods();
+		Goods.setId(new Long(GoodsForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.GoodsServiceDao.deleteGoods(Goods);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Goods.do?task=GoodsList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Goods.do?task=GoodsList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +182,19 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateGoods(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		GoodsForm GoodsForm = (GoodsForm) form;
+		TGoods Goods = this.GoodsServiceDao.seachGoods(new Long(GoodsForm.getId()));
+		BeanUtils.copyProperties(GoodsForm, Goods);
 
-		List list = this.dataServiceDao.searchParentData(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/Goods/updateGoods.jsp");
 	}
 
 	/**
@@ -208,16 +206,16 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateGoods(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		GoodsForm GoodsForm = (GoodsForm) form;
+		TGoods Goods = this.GoodsServiceDao.seachGoods(new Long(GoodsForm.getId()));
+		BeanUtils.copyProperties(Goods, GoodsForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.GoodsServiceDao.updateGoods(Goods);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +225,27 @@ public class GoodsAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/Goods.do?task=toUpdateGoods&id="
+									+ Goods.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Goods.do?task=GoodsList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/Goods.do?task=toUpdateGoods&id='"
+							+ Goods.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	public GoodsServiceDao getGoodsServiceDao() {
+		return GoodsServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setGoodsServiceDao(GoodsServiceDao GoodsServiceDao) {
+		this.GoodsServiceDao = GoodsServiceDao;
 	}
 
 	public Permission getPerDao() {

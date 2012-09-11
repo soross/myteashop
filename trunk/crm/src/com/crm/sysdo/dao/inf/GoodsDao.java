@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TGoods;
 
 /**
  * 数字字典操作Inf
@@ -25,53 +26,34 @@ public interface GoodsDao {
 	 * @param data
 	 * @return
 	 */
-	public Boolean addData(TData data);
+	public Boolean addGoods(TGoods Goods);
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Goods
 	 * @return
 	 */
-	public Boolean deleteData(TData data);
+	public Boolean deleteGoods(TGoods Goods);
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Goods
 	 * @return
 	 */
-	public Boolean updateData(TData data);
+	public Boolean updateGoods(TGoods Goods);
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data);
+	public List searchGoods(TGoods Goods);
 	
 	/**
 	 * 查询数据字典对象
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id);
+	public TGoods seachGoods(Long id);
 	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonData(Long pid);
 	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentData(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageData(Long pid);
 }

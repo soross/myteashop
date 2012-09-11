@@ -4,9 +4,9 @@ package com.crm.sysdo.service.impl;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.dao.inf.GoodsTypeDao;
+import com.crm.sysdo.po.TGoodsType;
+import com.crm.sysdo.service.inf.GoodsTypeServiceDao;
 
 /**
  * 数字字典操作Service
@@ -16,52 +16,52 @@ import com.crm.sysdo.service.inf.DataServiceDao;
  * 10.22 am
  *
  */
-public class GoodsTypeServiceDaoImpl implements DataServiceDao {
+public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 	
-	private DataDao dataDao;
+	private GoodsTypeDao GoodsTypeDao;
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
 	public Integer getCount(){
-		return dataDao.getCount();
+		return GoodsTypeDao.getCount();
 	}
 
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean addData(TData data){		
-		return dataDao.addData(data);
+	public Boolean addGoodsType(TGoodsType GoodsType){		
+		return GoodsTypeDao.addGoodsType(GoodsType);
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean deleteData(TData data){		
-		return dataDao.deleteData(data);
+	public Boolean deleteGoodsType(TGoodsType GoodsType){		
+		return GoodsTypeDao.deleteGoodsType(GoodsType);
 	}
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		return dataDao.updateData(data);
+	public Boolean updateGoodsType(TGoodsType GoodsType){
+		return GoodsTypeDao.updateGoodsType(GoodsType);
 	}
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data){
+	public List searchGoodsType(TGoodsType GoodsType){
 		
-		return dataDao.searchData(data);
+		return GoodsTypeDao.searchGoodsType(GoodsType);
 	}
 	
 	/**
@@ -69,8 +69,8 @@ public class GoodsTypeServiceDaoImpl implements DataServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
-		return dataDao.seachData(id);
+	public TGoodsType seachGoodsType(Long id){
+		return GoodsTypeDao.seachGoodsType(id);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class GoodsTypeServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
+	public List searchSonGoodsType(Long pid){
 		return null;
 	}
 	
@@ -87,17 +87,17 @@ public class GoodsTypeServiceDaoImpl implements DataServiceDao {
 	 * 
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil){
+	public List searchParentGoodsType(PageUtil pageUtil){
 		
-		return dataDao.searchParentData(pageUtil);
+		return GoodsTypeDao.searchParentGoodsType(pageUtil);
 	}
 
-	public DataDao getDataDao() {
-		return dataDao;
+	public GoodsTypeDao getGoodsTypeDao() {
+		return GoodsTypeDao;
 	}
 
-	public void setDataDao(DataDao dataDao) {
-		this.dataDao = dataDao;
+	public void setGoodsTypeDao(GoodsTypeDao GoodsTypeDao) {
+		this.GoodsTypeDao = GoodsTypeDao;
 	}
 	
 	/**
@@ -105,8 +105,8 @@ public class GoodsTypeServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid){
-		return this.dataDao.searchPageData(pid);
+	public List searchPageGoodsType(Long pid){
+		return this.GoodsTypeDao.searchPageGoodsType(pid);
 	}
 
 }

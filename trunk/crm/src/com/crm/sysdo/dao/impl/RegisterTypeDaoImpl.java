@@ -10,8 +10,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.dao.inf.RegisterTypeDao;
+import com.crm.sysdo.po.TRegisterType;
 /**
  * 数字字典操作Inf
  * 
@@ -20,7 +20,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao {
+public class RegisterTypeDaoImpl extends HibernateDaoSupport implements RegisterTypeDao {
 	
 	/**
 	 * 取得总记录数
@@ -31,7 +31,7 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TData where pid=0";
+				String hql = "select count(*) from TRegisterType where pid=0";
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -44,28 +44,28 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean addData(TData data){
-		this.getHibernateTemplate().save(data);		
+	public Boolean addRegisterType(TRegisterType RegisterType){
+		this.getHibernateTemplate().save(RegisterType);		
 		return true;
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean deleteData(final TData data){
+	public Boolean deleteRegisterType(final TRegisterType RegisterType){
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TData where id=:id or pid=:pid";
+				String hql = "delete TRegisterType where id=:id or pid=:pid";
 				
 				Query query = session.createQuery(hql);
-				query.setLong("id", data.getId());
-				query.setLong("pid", data.getId());				
+				query.setLong("id", RegisterType.getId());
+				query.setLong("pid", RegisterType.getId());				
 				
 				query.executeUpdate();
 				return null;
@@ -78,11 +78,11 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		this.getHibernateTemplate().update(data);
+	public Boolean updateRegisterType(TRegisterType RegisterType){
+		this.getHibernateTemplate().update(RegisterType);
 		return true;
 	}
 	
@@ -90,7 +90,7 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(Long id){
+	public List searchRegisterType(Long id){
 		return null;
 	}
 	
@@ -99,10 +99,10 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
+	public TRegisterType seachRegisterType(Long id){
 		
-		TData data = (TData)this.getHibernateTemplate().get(TData.class, id);		
-		return data;
+		TRegisterType RegisterType = (TRegisterType)this.getHibernateTemplate().get(TRegisterType.class, id);		
+		return RegisterType;
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
-		return this.getHibernateTemplate().find("from TData where pid=?", pid);
+	public List searchSonRegisterType(Long pid){
+		return this.getHibernateTemplate().find("from TRegisterType where pid=?", pid);
 	}
 	
 	/**
@@ -119,11 +119,11 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(final PageUtil pageUtil){
+	public List searchParentRegisterType(final PageUtil pageUtil){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "from TData where pid=0";
+				String hql = "from TRegisterType where pid=0";
 				Query query = session.createQuery(hql);
 				if(pageUtil!=null){
 					query.setMaxResults(pageUtil.getPagesize());
@@ -137,19 +137,19 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 		return list;
 	}
 
-	public List searchData(final TData data) {
+	public List searchRegisterType(final TRegisterType RegisterType) {
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				StringBuffer hql =new StringBuffer("from TData where 1=1");
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
+				StringBuffer hql =new StringBuffer("from TRegisterType where 1=1");
+				if(null!=RegisterType && null!=RegisterType.getRegtypename() && !"".equals(RegisterType.getRegtypename())){	
 					hql.append(" and name=:name");
 				}
 				Query query = session.createQuery(hql.toString());
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
-					query.setString("name", data.getName());
+				if(null!=RegisterType && null!=RegisterType.getRegtypename() && !"".equals(RegisterType.getRegtypename())){	
+					query.setString("name", RegisterType.getRegtypename());
 				}
 				
 				List list = query.list();
@@ -166,15 +166,15 @@ public class RegisterTypeDaoImpl extends HibernateDaoSupport implements DataDao 
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(final Long pid){
+	public List searchPageRegisterType(final Long pid){
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hqlCount = "select count(*) from TData where id=:idCount or pid=:pidCount";
+				String hqlCount = "select count(*) from TRegisterType where id=:idCount or pid=:pidCount";
 				
-				String hql ="from TData where id =:id or pid =:pid";
+				String hql ="from TRegisterType where id =:id or pid =:pid";
 				
 				Query queryCount = session.createQuery(hqlCount);				
 				queryCount.setLong("idCount", pid);

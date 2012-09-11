@@ -10,7 +10,9 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
+import com.crm.sysdo.dao.inf.CollectDao;
 import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
 /**
  * 数字字典操作Inf
@@ -20,7 +22,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
+public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 	
 	/**
 	 * 取得总记录数
@@ -31,7 +33,7 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TData where pid=0";
+				String hql = "select count(*) from TCollect where pid=0";
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -44,28 +46,28 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param Collect
 	 * @return
 	 */
-	public Boolean addData(TData data){
-		this.getHibernateTemplate().save(data);		
+	public Boolean addCollect(TCollect Collect){
+		this.getHibernateTemplate().save(Collect);		
 		return true;
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Collect
 	 * @return
 	 */
-	public Boolean deleteData(final TData data){
+	public Boolean deleteCollect(final TCollect Collect){
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TData where id=:id or pid=:pid";
+				String hql = "delete TCollect where id=:id or pid=:pid";
 				
 				Query query = session.createQuery(hql);
-				query.setLong("id", data.getId());
-				query.setLong("pid", data.getId());				
+				query.setLong("id", Collect.getId());
+				query.setLong("pid", Collect.getId());				
 				
 				query.executeUpdate();
 				return null;
@@ -78,11 +80,11 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Collect
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		this.getHibernateTemplate().update(data);
+	public Boolean updateCollect(TCollect Collect){
+		this.getHibernateTemplate().update(Collect);
 		return true;
 	}
 	
@@ -90,7 +92,7 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(Long id){
+	public List searchCollect(Long id){
 		return null;
 	}
 	
@@ -99,10 +101,10 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
+	public TCollect seachCollect(Long id){
 		
-		TData data = (TData)this.getHibernateTemplate().get(TData.class, id);		
-		return data;
+		TCollect Collect = (TCollect)this.getHibernateTemplate().get(TCollect.class, id);		
+		return Collect;
 	}
 	
 	/**
@@ -110,8 +112,8 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
-		return this.getHibernateTemplate().find("from TData where pid=?", pid);
+	public List searchSonCollect(Long pid){
+		return this.getHibernateTemplate().find("from TCollect where pid=?", pid);
 	}
 	
 	/**
@@ -119,11 +121,11 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(final PageUtil pageUtil){
+	public List searchParentCollect(final PageUtil pageUtil){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "from TData where pid=0";
+				String hql = "from TCollect where pid=0";
 				Query query = session.createQuery(hql);
 				if(pageUtil!=null){
 					query.setMaxResults(pageUtil.getPagesize());
@@ -137,19 +139,19 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 		return list;
 	}
 
-	public List searchData(final TData data) {
+	public List searchCollect(final TCollect Collect) {
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				StringBuffer hql =new StringBuffer("from TData where 1=1");
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
+				StringBuffer hql =new StringBuffer("from TCollect where 1=1");
+				if(null!=Collect && null!=Collect.getCollectname() && !"".equals(Collect.getCollectname())){	
 					hql.append(" and name=:name");
 				}
 				Query query = session.createQuery(hql.toString());
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
-					query.setString("name", data.getName());
+				if(null!=Collect && null!=Collect.getCollectname() && !"".equals(Collect.getCollectname())){	
+					query.setString("name", Collect.getCollectname());
 				}
 				
 				List list = query.list();
@@ -166,15 +168,15 @@ public class CollectDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(final Long pid){
+	public List searchPageCollect(final Long pid){
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hqlCount = "select count(*) from TData where id=:idCount or pid=:pidCount";
+				String hqlCount = "select count(*) from TCollect where id=:idCount or pid=:pidCount";
 				
-				String hql ="from TData where id =:id or pid =:pid";
+				String hql ="from TCollect where id =:id or pid =:pid";
 				
 				Query queryCount = session.createQuery(hqlCount);				
 				queryCount.setLong("idCount", pid);

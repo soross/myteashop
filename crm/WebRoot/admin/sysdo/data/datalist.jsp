@@ -83,12 +83,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				系统服务操作
+				常用字典
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>常用字典选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,158 +96,100 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
-	<table width="100%" border="0" align="center" cellpadding="2"
-		cellspacing="1" class="tableBorder">
-		<tr>
-			<th height="25" colspan="6">
-				病床查询
-			</th>
-		</tr>
-		<tr>
-			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
-			</td>
-			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
-			</td>
-			<td>
-				<html:submit value="查询"></html:submit>
-			</td>
-		</tr>
-	</table>
-	</html:form>
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorderList">
 		<tr>
-			<th colspan=23 height=25>
-				病床列表
+			<th colspan=6 height=25>
+				常用字典列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
-			<td height=25>
+			<td width="10%" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
 					onclick="selectAll(this);" />全选
 			</td>
-			<td>
+			<td width="10%">
 				序号
 			</td>
-			<td>
-				病床编码
+			<td width="20%">
+				常用字典名称
 			</td>
-			<td>
-				病床姓名
+			<td width="20%">
+				父类ID
 			</td>
-			<td>
-				所属科室
-			</td>
-			<td>
-				显示顺序
-			</td>
-			<td>
-				所属病区
-			</td>
-			<td>
-				床位级别
-			</td>
-			<td>
-				标准金额
-			</td>	
-			<td>
-				拼音简码
-			</td>
-			<td>
-				五笔简码
-			</td>
-			<td>
-				当前住院号
-			</td>	
-			<td>
-				备注
-			</td>	
-			<td>
-				有效状态
-			</td>	
-			<td width="100px">
+			<td width="20%">
+				备用
+			</td>			
+			<td width="20%">
 				操作
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
-				<tr align="center" style="cursor: hand;">
-					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
-							onclick="clickSon(this);" />
-					</td>
-					<td>
-						${sickbed.id}
-					</td>
-					<td>
-						${sickbed.code}
-					</td>
-					<td>
-						${sickbed.sickbed}
-					</td>
-					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${sickbed.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
-					</td>	
-					<td>
-						${sickbed.showindex}
-					</td>
-					<td>
-						${sickbed.area}
-					</td>	
-					<td>
-						${sickbed.leveltype}
-					</td>
-					<td>
-						${sickbed.price}
-					</td>
-					<td>
-						${sickbed.pinyin}
-					</td>	
-					<td>
-						${sickbed.wubi}
-					</td>	
-					<td>
-						${sickbed.hospno}
-					</td>	
-					<td>
-						${sickbed.remark}
-					</td>	
-					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
-					</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
-					</td>
-				</tr>					
+		 <logic:present name="dataList">
+          	<logic:iterate id="data" name="dataList">
+          	  <logic:equal value="0" name="data" property="pid">
+					<tr align="center" style="cursor: hand;">
+						<td height=25>
+							<input type="checkbox" name="phones" value="${data.id}"
+								onclick="clickSon(this);" />
+						</td>
+						<td height=25 onclick="showSonData('${data.id}')">
+							${data.id}
+						</td>
+						<td align="left"  style="padding-left:20px;" onclick="showSonData('${data.id}')">
+							${data.name}
+						</td>
+						<td onclick="showSonData('${data.id}')">
+							父级						
+						</td>
+						<td onclick="showSonData('${data.id}')">
+							${data.remark}			
+						</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/admin/data.do?task=toUpdateData&id=${data.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/data.do?task=deleteData&id=${data.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+						</td>
+					</tr>					
+					 <logic:iterate id="sonData" name="dataSonList">
+	          			<logic:equal value="${data.id}" name="sonData" property="pid">
+							<tr align="center" id="${data.id}" style="display: none;">
+								<td height=25>
+									<input type="checkbox" name="phones" value="${sonData.id}"
+										onclick="clickSon(this);" />
+								</td>
+								<td height=25>
+									${sonData.id}
+								</td>
+								<td align="left" style="padding-left:50px;">
+									${sonData.name }	
+								</td>
+								<td>
+									${data.name}							
+								</td>
+								<td>
+									${sonData.remark}						
+								</td>
+								<td>
+									<a href="${pageContext.request.contextPath}/admin/data.do?task=toUpdateData&id=${sonData.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/data.do?task=deleteData&id=${sonData.id}"  onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+								</td>
+							</tr>
+						</logic:equal>
+	          		</logic:iterate>
+	          	</logic:equal>
 	          </logic:iterate>
           </logic:present>
 		<tr>
-			<td  align="left" colspan="7" height=25>
-				<!-- 
+			<td  align="left" colspan="6" height=25>
 				&nbsp;<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button> -->
-				&nbsp;
-			</td>
-			<td align="center" colspan="16" height=25>
-				<page:page name="pageUtil" />
+					onclick="outAllToExcel('exportAllClient')"></html:button>
 			</td>
 		</tr>
 	
 	</table>
 	<br>&nbsp;
-</body><script language="javascript" src="js/block.js"></script>
+</body>
+<script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
 
 

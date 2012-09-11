@@ -173,16 +173,145 @@
 		<property name="sickbedServiceDao" ref="sickbedServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- collect -->
+	<bean name="collectDao" class="com.crm.sysdo.dao.impl.CollectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="collectServiceDao"
+		class="com.crm.sysdo.service.impl.CollectServiceDaoImpl">
+		<property name="collectDao" ref="collectDao"></property>
+	</bean>
+	<bean name="collectServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="collectServiceDao"></property>
+	</bean>
+	<bean name="/admin/collect"
+		class="com.crm.sysdo.struts.action.CollectAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="collectServiceDao" ref="collectServiceDaoProxy"></property>
+	</bean>
+	
+	
+	<!-- goods -->
+	<bean name="goodsDao" class="com.crm.sysdo.dao.impl.GoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="goodsServiceDao"
+		class="com.crm.sysdo.service.impl.GoodsServiceDaoImpl">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	<bean name="goodsServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="goodsServiceDao"></property>
+	</bean>
+	<bean name="/admin/goods"
+		class="com.crm.sysdo.struts.action.GoodsAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="goodsServiceDao" ref="goodsServiceDaoProxy"></property>
+	</bean>
+	
+	
+	<!-- goodsType -->
+	<bean name="goodsTypeDao" class="com.crm.sysdo.dao.impl.GoodsTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="goodsTypeServiceDao"
+		class="com.crm.sysdo.service.impl.GoodsTypeServiceDaoImpl">
+		<property name="goodsTypeDao" ref="goodsTypeDao"></property>
+	</bean>
+	<bean name="goodsTypeServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="goodsTypeServiceDao"></property>
+	</bean>
+	<bean name="/admin/goodstype"
+		class="com.crm.sysdo.struts.action.GoodsTypeAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="goodsTypeServiceDao" ref="goodsTypeServiceDaoProxy"></property>
+	</bean>
+	
+	<!-- icd -->
+	<bean name="icdDao" class="com.crm.sysdo.dao.impl.IcdDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="icdServiceDao"
+		class="com.crm.sysdo.service.impl.IcdServiceDaoImpl">
+		<property name="icdDao" ref="icdDao"></property>
+	</bean>
+	<bean name="icdServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="icdServiceDao"></property>
+	</bean>
+	<bean name="/admin/icd"
+		class="com.crm.sysdo.struts.action.IcdAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="icdServiceDao" ref="icdServiceDaoProxy"></property>
+	</bean>
 	
 	
 	
+	<!-- manu -->
+	<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="manuServiceDao"
+		class="com.crm.sysdo.service.impl.ManufacturerServiceDaoImpl">
+		<property name="manufacturerDao" ref="manuDao"></property>
+	</bean>
+	<bean name="manuServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="manuServiceDao"></property>
+	</bean>
+	<bean name="/admin/manu"
+		class="com.crm.sysdo.struts.action.ManufacturerAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="manuServiceDao" ref="manuServiceDaoProxy"></property>
+	</bean>
 	
+	<!-- registertype -->
+	<bean name="registerTypeDao" class="com.crm.sysdo.dao.impl.RegisterTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="registerTypeServiceDao"
+		class="com.crm.sysdo.service.impl.RegisterTypeServiceDaoImpl">
+		<property name="registerTypeDao" ref="registerTypeDao"></property>
+	</bean>
+	<bean name="registerTypeServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="registerTypeServiceDao"></property>
+	</bean>
+	<bean name="/admin/regType"
+		class="com.crm.sysdo.struts.action.RegisterTypeAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="registerTypeServiceDao" ref="registerTypeServiceDaoProxy"></property>
+	</bean>
 	
+	<!-- toolinfo -->
+	<bean name="toolinfoDao" class="com.crm.sysdo.dao.impl.ToolinfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="toolinfoServiceDao"
+		class="com.crm.sysdo.service.impl.ToolinfoServiceDaoImpl">
+		<property name="toolinfoDao" ref="toolinfoDao"></property>
+	</bean>
+	<bean name="toolinfoServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="toolinfoServiceDao"></property>
+	</bean>
+	<bean name="/admin/toolinfo"
+		class="com.crm.sysdo.struts.action.ToolinfoAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="toolinfoServiceDao" ref="toolinfoServiceDaoProxy"></property>
+	</bean>
 	
-	
-	
-	
-	
+	<!-- toolsave -->
+	<bean name="toolSaveDao" class="com.crm.sysdo.dao.impl.ToolSaveDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="toolSaveServiceDao"
+		class="com.crm.sysdo.service.impl.ToolSaveServiceDaoImpl">
+		<property name="toolSaveDao" ref="toolSaveDao"></property>
+	</bean>
+	<bean name="toolSaveServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="toolSaveServiceDao"></property>
+	</bean>
+	<bean name="/admin/toolsave"
+		class="com.crm.sysdo.struts.action.ToolSaveAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="toolSaveServiceDao" ref="toolSaveServiceDaoProxy"></property>
+	</bean>
 	
 	
 	

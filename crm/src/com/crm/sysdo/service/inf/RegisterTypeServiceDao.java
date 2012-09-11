@@ -4,7 +4,7 @@ package com.crm.sysdo.service.inf;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TRegisterType;
 
 /**
  * 数字字典操作Service
@@ -26,54 +26,54 @@ public interface RegisterTypeServiceDao {
 	 * @param data
 	 * @return
 	 */
-	public Boolean addData(TData data);
+	public Boolean addRegisterType(TRegisterType RegisterType);
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean deleteData(TData data);
+	public Boolean deleteRegisterType(TRegisterType RegisterType);
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean updateData(TData data);
+	public Boolean updateRegisterType(TRegisterType RegisterType);
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data);
+	public List searchRegisterType(TRegisterType RegisterType);
 	
 	/**
 	 * 查询数据字典对象
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id);
+	public TRegisterType seachRegisterType(Long id);
 	
 	/**
 	 * 根据父类ID查询小类
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid);
+	public List searchSonRegisterType(Long pid);
 	
 	/**
 	 * 根据小类查询父类对象
 	 * 
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil);
+	public List searchParentRegisterType(PageUtil pageUtil);
 	
 	/**
 	 * 根据Pid分页
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid);
+	public List searchPageRegisterType(Long pid);
 
 }

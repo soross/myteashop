@@ -18,9 +18,9 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
-import com.crm.sysdo.struts.form.DataForm;
+import com.crm.sysdo.po.TRegisterType;
+import com.crm.sysdo.service.inf.RegisterTypeServiceDao;
+import com.crm.sysdo.struts.form.RegisterTypeForm;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -34,7 +34,7 @@ public class RegisterTypeAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private RegisterTypeServiceDao RegisterTypeServiceDao;
 	private Permission perDao;
 
 	/**
@@ -46,17 +46,17 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
+		List list = (List) this.RegisterTypeServiceDao.searchParentRegisterType(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/adddata.jsp");
+		return new ActionForward("/admin/sysdo/RegisterType/addRegisterType.jsp");
 	}
 
 	/**
@@ -68,23 +68,23 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addData(ActionMapping mapping, ActionForm form,
+	public ActionForward addRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
+		TRegisterType RegisterType = new TRegisterType();
+		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.RegisterTypeServiceDao.searchRegisterType(RegisterType);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/RegisterType.do?task=toAddRegisterType';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.RegisterTypeServiceDao.addRegisterType(RegisterType);
 
 		if (bool) {
 			response
@@ -92,9 +92,9 @@ public class RegisterTypeAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/RegisterType.do?task=toAddRegisterType';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +102,9 @@ public class RegisterTypeAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/RegisterType.do?task=toAddRegisterType';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +118,24 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward RegisterTypeList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.RegisterTypeServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
+		List list = this.RegisterTypeServiceDao.searchParentRegisterType(pageUtil);
+		request.setAttribute("RegisterTypeList", list);
 
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.RegisterTypeServiceDao.searchRegisterType(null);
+		request.setAttribute("RegisterTypeSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/RegisterType/RegisterTypelist.jsp");
 	}
 
 	/**
@@ -149,26 +149,26 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TRegisterType RegisterType = new TRegisterType();
+		RegisterType.setId(new Long(RegisterTypeForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.RegisterTypeServiceDao.deleteRegisterType(RegisterType);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/RegisterType.do?task=RegisterTypeList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/RegisterType.do?task=RegisterTypeList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +182,21 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
+		TRegisterType RegisterType = this.RegisterTypeServiceDao.seachRegisterType(new Long(RegisterTypeForm.getId()));
+		BeanUtils.copyProperties(RegisterTypeForm, RegisterType);
 
-		List list = this.dataServiceDao.searchParentData(null);
+		List list = this.RegisterTypeServiceDao.searchParentRegisterType(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/RegisterType/updateRegisterType.jsp");
 	}
 
 	/**
@@ -208,16 +208,16 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
+		TRegisterType RegisterType = this.RegisterTypeServiceDao.seachRegisterType(new Long(RegisterTypeForm.getId()));
+		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.RegisterTypeServiceDao.updateRegisterType(RegisterType);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +227,28 @@ public class RegisterTypeAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/RegisterType.do?task=toUpdateRegisterType&id="
+									+ RegisterType.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/RegisterType.do?task=toUpdateRegisterType&id='"
+							+ RegisterType.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	
+	public RegisterTypeServiceDao getRegisterTypeServiceDao() {
+		return RegisterTypeServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setRegisterTypeServiceDao(RegisterTypeServiceDao RegisterTypeServiceDao) {
+		this.RegisterTypeServiceDao = RegisterTypeServiceDao;
 	}
 
 	public Permission getPerDao() {

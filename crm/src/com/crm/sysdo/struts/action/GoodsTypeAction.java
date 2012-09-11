@@ -18,9 +18,9 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
-import com.crm.sysdo.struts.form.DataForm;
+import com.crm.sysdo.po.TGoodsType;
+import com.crm.sysdo.service.inf.GoodsTypeServiceDao;
+import com.crm.sysdo.struts.form.GoodsTypeForm;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -34,7 +34,7 @@ public class GoodsTypeAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private GoodsTypeServiceDao GoodsTypeServiceDao;
 	private Permission perDao;
 
 	/**
@@ -46,17 +46,17 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
+		List list = (List) this.GoodsTypeServiceDao.searchParentGoodsType(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/adddata.jsp");
+		return new ActionForward("/admin/sysdo/GoodsType/addGoodsType.jsp");
 	}
 
 	/**
@@ -68,23 +68,23 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addData(ActionMapping mapping, ActionForm form,
+	public ActionForward addGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
+		TGoodsType GoodsType = new TGoodsType();
+		BeanUtils.copyProperties(GoodsType, GoodsTypeForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.GoodsTypeServiceDao.searchGoodsType(GoodsType);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/GoodsType.do?task=toAddGoodsType';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.GoodsTypeServiceDao.addGoodsType(GoodsType);
 
 		if (bool) {
 			response
@@ -92,9 +92,9 @@ public class GoodsTypeAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/GoodsType.do?task=toAddGoodsType';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/GoodsType.do?task=GoodsTypeList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +102,9 @@ public class GoodsTypeAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/GoodsType.do?task=toAddGoodsType';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/GoodsType.do?task=GoodsTypeList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +118,24 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward GoodsTypeList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.GoodsTypeServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
+		List list = this.GoodsTypeServiceDao.searchParentGoodsType(pageUtil);
+		request.setAttribute("GoodsTypeList", list);
 
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.GoodsTypeServiceDao.searchGoodsType(null);
+		request.setAttribute("GoodsTypeSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/GoodsType/GoodsTypelist.jsp");
 	}
 
 	/**
@@ -149,26 +149,26 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TGoodsType GoodsType = new TGoodsType();
+		GoodsType.setId(new Long(GoodsTypeForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.GoodsTypeServiceDao.deleteGoodsType(GoodsType);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/GoodsType.do?task=GoodsTypeList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/GoodsType.do?task=GoodsTypeList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +182,21 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
+		TGoodsType GoodsType = this.GoodsTypeServiceDao.seachGoodsType(new Long(GoodsTypeForm.getId()));
+		BeanUtils.copyProperties(GoodsTypeForm, GoodsType);
 
-		List list = this.dataServiceDao.searchParentData(null);
+		List list = this.GoodsTypeServiceDao.searchParentGoodsType(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/GoodsType/updateGoodsType.jsp");
 	}
 
 	/**
@@ -208,16 +208,16 @@ public class GoodsTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
+		TGoodsType GoodsType = this.GoodsTypeServiceDao.seachGoodsType(new Long(GoodsTypeForm.getId()));
+		BeanUtils.copyProperties(GoodsType, GoodsTypeForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.GoodsTypeServiceDao.updateGoodsType(GoodsType);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +227,27 @@ public class GoodsTypeAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/GoodsType.do?task=toUpdateGoodsType&id="
+									+ GoodsType.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/GoodsType.do?task=GoodsTypeList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/GoodsType.do?task=toUpdateGoodsType&id='"
+							+ GoodsType.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	public GoodsTypeServiceDao getGoodsTypeServiceDao() {
+		return GoodsTypeServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setGoodsTypeServiceDao(GoodsTypeServiceDao GoodsTypeServiceDao) {
+		this.GoodsTypeServiceDao = GoodsTypeServiceDao;
 	}
 
 	public Permission getPerDao() {

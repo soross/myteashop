@@ -18,9 +18,9 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
-import com.crm.sysdo.struts.form.DataForm;
+import com.crm.sysdo.po.TIcd;
+import com.crm.sysdo.service.inf.IcdServiceDao;
+import com.crm.sysdo.struts.form.IcdForm;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -34,7 +34,7 @@ public class IcdAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private IcdServiceDao IcdServiceDao;
 	private Permission perDao;
 
 	/**
@@ -46,17 +46,17 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
+		List list = (List) this.IcdServiceDao.searchParentIcd(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/adddata.jsp");
+		return new ActionForward("/admin/sysdo/Icd/addIcd.jsp");
 	}
 
 	/**
@@ -68,23 +68,23 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addData(ActionMapping mapping, ActionForm form,
+	public ActionForward addIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		IcdForm IcdForm = (IcdForm) form;
+		TIcd Icd = new TIcd();
+		BeanUtils.copyProperties(Icd, IcdForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.IcdServiceDao.searchIcd(Icd);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/Icd.do?task=toAddIcd';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.IcdServiceDao.addIcd(Icd);
 
 		if (bool) {
 			response
@@ -92,9 +92,9 @@ public class IcdAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Icd.do?task=toAddIcd';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Icd.do?task=IcdList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +102,9 @@ public class IcdAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Icd.do?task=toAddIcd';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Icd.do?task=IcdList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +118,24 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward IcdList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		IcdForm IcdForm = (IcdForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.IcdServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
+		List list = this.IcdServiceDao.searchParentIcd(pageUtil);
+		request.setAttribute("IcdList", list);
 
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.IcdServiceDao.searchIcd(null);
+		request.setAttribute("IcdSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/Icd/Icdlist.jsp");
 	}
 
 	/**
@@ -149,26 +149,26 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		IcdForm IcdForm = (IcdForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TIcd Icd = new TIcd();
+		Icd.setId(new Long(IcdForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.IcdServiceDao.deleteIcd(Icd);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Icd.do?task=IcdList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Icd.do?task=IcdList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +182,21 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		IcdForm IcdForm = (IcdForm) form;
+		TIcd Icd = this.IcdServiceDao.seachIcd(new Long(IcdForm.getId()));
+		BeanUtils.copyProperties(IcdForm, Icd);
 
-		List list = this.dataServiceDao.searchParentData(null);
+		List list = this.IcdServiceDao.searchParentIcd(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/Icd/updateIcd.jsp");
 	}
 
 	/**
@@ -208,16 +208,16 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		IcdForm IcdForm = (IcdForm) form;
+		TIcd Icd = this.IcdServiceDao.seachIcd(new Long(IcdForm.getId()));
+		BeanUtils.copyProperties(Icd, IcdForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.IcdServiceDao.updateIcd(Icd);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +227,27 @@ public class IcdAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/Icd.do?task=toUpdateIcd&id="
+									+ Icd.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Icd.do?task=IcdList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/Icd.do?task=toUpdateIcd&id='"
+							+ Icd.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	public IcdServiceDao getIcdServiceDao() {
+		return IcdServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setIcdServiceDao(IcdServiceDao IcdServiceDao) {
+		this.IcdServiceDao = IcdServiceDao;
 	}
 
 	public Permission getPerDao() {

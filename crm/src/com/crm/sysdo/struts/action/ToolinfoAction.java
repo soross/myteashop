@@ -18,9 +18,9 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
-import com.crm.sysdo.struts.form.DataForm;
+import com.crm.sysdo.po.TToolinfo;
+import com.crm.sysdo.service.inf.ToolinfoServiceDao;
+import com.crm.sysdo.struts.form.ToolinfoForm;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -34,7 +34,7 @@ public class ToolinfoAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private ToolinfoServiceDao ToolinfoServiceDao;
 	private Permission perDao;
 
 	/**
@@ -46,17 +46,17 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
+		List list = (List) this.ToolinfoServiceDao.searchParentToolinfo(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/adddata.jsp");
+		return new ActionForward("/admin/sysdo/Toolinfo/addToolinfo.jsp");
 	}
 
 	/**
@@ -68,23 +68,23 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addData(ActionMapping mapping, ActionForm form,
+	public ActionForward addToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
+		TToolinfo Toolinfo = new TToolinfo();
+		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.ToolinfoServiceDao.searchToolinfo(Toolinfo);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/Toolinfo.do?task=toAddToolinfo';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.ToolinfoServiceDao.addToolinfo(Toolinfo);
 
 		if (bool) {
 			response
@@ -92,9 +92,9 @@ public class ToolinfoAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Toolinfo.do?task=toAddToolinfo';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +102,9 @@ public class ToolinfoAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Toolinfo.do?task=toAddToolinfo';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +118,24 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward ToolinfoList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.ToolinfoServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
+		List list = this.ToolinfoServiceDao.searchParentToolinfo(pageUtil);
+		request.setAttribute("ToolinfoList", list);
 
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.ToolinfoServiceDao.searchToolinfo(null);
+		request.setAttribute("ToolinfoSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/Toolinfo/Toolinfolist.jsp");
 	}
 
 	/**
@@ -149,26 +149,26 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TToolinfo Toolinfo = new TToolinfo();
+		Toolinfo.setId(new Long(ToolinfoForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.ToolinfoServiceDao.deleteToolinfo(Toolinfo);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Toolinfo.do?task=ToolinfoList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Toolinfo.do?task=ToolinfoList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +182,21 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
+		TToolinfo Toolinfo = this.ToolinfoServiceDao.seachToolinfo(new Long(ToolinfoForm.getId()));
+		BeanUtils.copyProperties(ToolinfoForm, Toolinfo);
 
-		List list = this.dataServiceDao.searchParentData(null);
+		List list = this.ToolinfoServiceDao.searchParentToolinfo(null);
 		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/Toolinfo/updateToolinfo.jsp");
 	}
 
 	/**
@@ -208,16 +208,16 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
+		TToolinfo Toolinfo = this.ToolinfoServiceDao.seachToolinfo(new Long(ToolinfoForm.getId()));
+		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.ToolinfoServiceDao.updateToolinfo(Toolinfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +227,27 @@ public class ToolinfoAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/Toolinfo.do?task=toUpdateToolinfo&id="
+									+ Toolinfo.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/Toolinfo.do?task=toUpdateToolinfo&id='"
+							+ Toolinfo.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	public ToolinfoServiceDao getToolinfoServiceDao() {
+		return ToolinfoServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setToolinfoServiceDao(ToolinfoServiceDao ToolinfoServiceDao) {
+		this.ToolinfoServiceDao = ToolinfoServiceDao;
 	}
 
 	public Permission getPerDao() {

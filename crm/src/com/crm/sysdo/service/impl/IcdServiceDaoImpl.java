@@ -4,9 +4,9 @@ package com.crm.sysdo.service.impl;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.dao.inf.IcdDao;
+import com.crm.sysdo.po.TIcd;
+import com.crm.sysdo.service.inf.IcdServiceDao;
 
 /**
  * 数字字典操作Service
@@ -16,52 +16,52 @@ import com.crm.sysdo.service.inf.DataServiceDao;
  * 10.22 am
  *
  */
-public class IcdServiceDaoImpl implements DataServiceDao {
+public class IcdServiceDaoImpl implements IcdServiceDao {
 	
-	private DataDao dataDao;
+	private IcdDao IcdDao;
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
 	public Integer getCount(){
-		return dataDao.getCount();
+		return IcdDao.getCount();
 	}
 
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param Icd
 	 * @return
 	 */
-	public Boolean addData(TData data){		
-		return dataDao.addData(data);
+	public Boolean addIcd(TIcd Icd){		
+		return IcdDao.addIcd(Icd);
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Icd
 	 * @return
 	 */
-	public Boolean deleteData(TData data){		
-		return dataDao.deleteData(data);
+	public Boolean deleteIcd(TIcd Icd){		
+		return IcdDao.deleteIcd(Icd);
 	}
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Icd
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		return dataDao.updateData(data);
+	public Boolean updateIcd(TIcd Icd){
+		return IcdDao.updateIcd(Icd);
 	}
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data){
+	public List searchIcd(TIcd Icd){
 		
-		return dataDao.searchData(data);
+		return IcdDao.searchIcd(Icd);
 	}
 	
 	/**
@@ -69,8 +69,8 @@ public class IcdServiceDaoImpl implements DataServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
-		return dataDao.seachData(id);
+	public TIcd seachIcd(Long id){
+		return IcdDao.seachIcd(id);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class IcdServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
+	public List searchSonIcd(Long pid){
 		return null;
 	}
 	
@@ -87,17 +87,17 @@ public class IcdServiceDaoImpl implements DataServiceDao {
 	 * 
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil){
+	public List searchParentIcd(PageUtil pageUtil){
 		
-		return dataDao.searchParentData(pageUtil);
+		return IcdDao.searchParentIcd(pageUtil);
 	}
 
-	public DataDao getDataDao() {
-		return dataDao;
+	public IcdDao getIcdDao() {
+		return IcdDao;
 	}
 
-	public void setDataDao(DataDao dataDao) {
-		this.dataDao = dataDao;
+	public void setIcdDao(IcdDao IcdDao) {
+		this.IcdDao = IcdDao;
 	}
 	
 	/**
@@ -105,8 +105,8 @@ public class IcdServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid){
-		return this.dataDao.searchPageData(pid);
+	public List searchPageIcd(Long pid){
+		return this.IcdDao.searchPageIcd(pid);
 	}
 
 }

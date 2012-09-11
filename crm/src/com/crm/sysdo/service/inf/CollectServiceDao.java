@@ -4,6 +4,7 @@ package com.crm.sysdo.service.inf;
 import java.util.List;
 
 import com.crm.page.PageUtil;
+import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
 
 /**
@@ -26,54 +27,35 @@ public interface CollectServiceDao {
 	 * @param data
 	 * @return
 	 */
-	public Boolean addData(TData data);
+	public Boolean addCollect(TCollect Collect);
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Collect
 	 * @return
 	 */
-	public Boolean deleteData(TData data);
+	public Boolean deleteCollect(TCollect Collect);
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Collect
 	 * @return
 	 */
-	public Boolean updateData(TData data);
+	public Boolean updateCollect(TCollect Collect);
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data);
+	public List searchCollect(TCollect Collect);
 	
 	/**
 	 * 查询数据字典对象
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id);
+	public TCollect seachCollect(Long id);
 	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonData(Long pid);
 	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentData(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageData(Long pid);
 
 }

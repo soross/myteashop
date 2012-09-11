@@ -18,8 +18,11 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.service.inf.CollectServiceDao;
 import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.struts.form.CollectForm;
 import com.crm.sysdo.struts.form.DataForm;
 
 /**
@@ -34,7 +37,7 @@ public class CollectAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private DataServiceDao dataServiceDao;
+	private CollectServiceDao collectServiceDao;
 	private Permission perDao;
 
 	/**
@@ -49,9 +52,6 @@ public class CollectAction extends DispatchAction {
 	public ActionForward toAddData(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.dataServiceDao.searchParentData(null);
-		request.setAttribute("pidList", list);
-
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
@@ -71,20 +71,20 @@ public class CollectAction extends DispatchAction {
 	public ActionForward addData(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = new TData();
-		BeanUtils.copyProperties(data, dataForm);
+		CollectForm collectForm = (CollectForm) form;
+		TCollect Collect = new TCollect();
+		BeanUtils.copyProperties(Collect, collectForm);
 
-		List list = this.dataServiceDao.searchData(data);
+		List list = this.collectServiceDao.searchCollect(Collect);
 		if (list.size() > 0) {
 			response.getWriter().print(
 					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toAddData';</script>");
+							+ "/admin/Collect.do?task=toAddCollect';</script>");
 			return null;
 		}
 
-		Boolean bool = this.dataServiceDao.addData(data);
+		Boolean bool = this.collectServiceDao.addCollect(Collect);
 
 		if (bool) {
 			response
@@ -92,9 +92,9 @@ public class CollectAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Collect.do?task=toAddCollect';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Collect.do?task=CollectList';}</script>");
 			return null;
 		} else {
 			response
@@ -102,9 +102,9 @@ public class CollectAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toAddData';}else{location.href='"
+									+ "/admin/Collect.do?task=toAddCollect';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Collect.do?task=CollectList';}</script>");
 			return null;
 		}
 	}
@@ -118,24 +118,21 @@ public class CollectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward dataList(ActionMapping mapping, ActionForm form,
+	public ActionForward CollectList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.dataServiceDao
+		CollectForm CollectForm = (CollectForm) form;
+		PageUtil pageUtil = new PageUtil(request, this.collectServiceDao
 				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.dataServiceDao.searchParentData(pageUtil);
-		request.setAttribute("dataList", list);
-
-		List sonList = this.dataServiceDao.searchData(null);
-		request.setAttribute("dataSonList", sonList);
+		List sonList = this.collectServiceDao.searchCollect(null);
+		request.setAttribute("CollectSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/data/datalist.jsp");
+		return new ActionForward("/admin/sysdo/Collect/Collectlist.jsp");
 	}
 
 	/**
@@ -149,26 +146,26 @@ public class CollectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteData(ActionMapping mapping, ActionForm form,
+	public ActionForward deleteCollect(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
+		CollectForm CollectForm = (CollectForm) form;
 
-		TData data = new TData();
-		data.setId(new Long(dataForm.getId()));
+		TCollect Collect = new TCollect();
+		Collect.setId(new Long(CollectForm.getId()));
 
-		Boolean bool = this.dataServiceDao.deleteData(data);
+		Boolean bool = this.collectServiceDao.deleteCollect(Collect);
 
 		if (bool) {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Collect.do?task=CollectList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=dataList';</script>");
+							+ "/admin/Collect.do?task=CollectList';</script>");
 		}
 		return null;
 	}
@@ -182,21 +179,20 @@ public class CollectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateData(ActionMapping mapping, ActionForm form,
+	public ActionForward toUpdateCollect(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(dataForm, data);
+		CollectForm CollectForm = (CollectForm) form;
+		TCollect Collect = this.collectServiceDao.seachCollect(new Long(CollectForm.getId()));
+		BeanUtils.copyProperties(CollectForm, Collect);
 
-		List list = this.dataServiceDao.searchParentData(null);
-		request.setAttribute("pidList", list);
+		
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/data/updatedata.jsp");
+		return new ActionForward("/admin/sysdo/Collect/updateCollect.jsp");
 	}
 
 	/**
@@ -208,16 +204,16 @@ public class CollectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateData(ActionMapping mapping, ActionForm form,
+	public ActionForward updateCollect(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DataForm dataForm = (DataForm) form;
-		TData data = this.dataServiceDao.seachData(new Long(dataForm.getId()));
-		BeanUtils.copyProperties(data, dataForm);
+		CollectForm CollectForm = (CollectForm) form;
+		TCollect Collect = this.collectServiceDao.seachCollect(new Long(CollectForm.getId()));
+		BeanUtils.copyProperties(Collect, CollectForm);
 
 		Boolean bool = false;
 		try {
-			bool = this.dataServiceDao.updateData(data);
+			bool = this.collectServiceDao.updateCollect(Collect);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,27 +223,27 @@ public class CollectAction extends DispatchAction {
 					.print(
 							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=toUpdateData&id="
-									+ data.getId()
+									+ "/admin/Collect.do?task=toUpdateCollect&id="
+									+ Collect.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/data.do?task=dataList';}</script>");
+									+ "/admin/Collect.do?task=CollectList';}</script>");
 
 		} else {
 			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/data.do?task=toUpdateData&id='"
-							+ data.getId() + "';</script>");
+							+ "/admin/Collect.do?task=toUpdateCollect&id='"
+							+ Collect.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public DataServiceDao getDataServiceDao() {
-		return dataServiceDao;
+	public CollectServiceDao getCollectServiceDao() {
+		return collectServiceDao;
 	}
 
-	public void setDataServiceDao(DataServiceDao dataServiceDao) {
-		this.dataServiceDao = dataServiceDao;
+	public void setCollectServiceDao(CollectServiceDao CollectServiceDao) {
+		this.collectServiceDao = CollectServiceDao;
 	}
 
 	public Permission getPerDao() {

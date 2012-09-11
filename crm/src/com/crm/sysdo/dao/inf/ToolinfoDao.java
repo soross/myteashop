@@ -4,7 +4,7 @@ package com.crm.sysdo.dao.inf;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TToolinfo;
 
 /**
  * 数字字典操作Inf
@@ -25,53 +25,53 @@ public interface ToolinfoDao {
 	 * @param data
 	 * @return
 	 */
-	public Boolean addData(TData data);
+	public Boolean addToolinfo(TToolinfo Toolinfo);
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Toolinfo
 	 * @return
 	 */
-	public Boolean deleteData(TData data);
+	public Boolean deleteToolinfo(TToolinfo Toolinfo);
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Toolinfo
 	 * @return
 	 */
-	public Boolean updateData(TData data);
+	public Boolean updateToolinfo(TToolinfo Toolinfo);
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data);
+	public List searchToolinfo(TToolinfo Toolinfo);
 	
 	/**
 	 * 查询数据字典对象
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id);
+	public TToolinfo seachToolinfo(Long id);
 	
 	/**
 	 * 根据父类ID查询小类
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid);
+	public List searchSonToolinfo(Long pid);
 	
 	/**
 	 * 根据小类查询父类对象
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil);
+	public List searchParentToolinfo(PageUtil pageUtil);
 	
 	/**
 	 * 根据Pid分页
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid);
+	public List searchPageToolinfo(Long pid);
 }

@@ -4,9 +4,9 @@ package com.crm.sysdo.service.impl;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
-import com.crm.sysdo.service.inf.DataServiceDao;
+import com.crm.sysdo.dao.inf.RegisterTypeDao;
+import com.crm.sysdo.po.TRegisterType;
+import com.crm.sysdo.service.inf.RegisterTypeServiceDao;
 
 /**
  * 数字字典操作Service
@@ -16,52 +16,52 @@ import com.crm.sysdo.service.inf.DataServiceDao;
  * 10.22 am
  *
  */
-public class RegisterTypeServiceDaoImpl implements DataServiceDao {
+public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 	
-	private DataDao dataDao;
+	private RegisterTypeDao RegisterTypeDao;
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
 	public Integer getCount(){
-		return dataDao.getCount();
+		return RegisterTypeDao.getCount();
 	}
 
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean addData(TData data){		
-		return dataDao.addData(data);
+	public Boolean addRegisterType(TRegisterType RegisterType){		
+		return RegisterTypeDao.addRegisterType(RegisterType);
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean deleteData(TData data){		
-		return dataDao.deleteData(data);
+	public Boolean deleteRegisterType(TRegisterType RegisterType){		
+		return RegisterTypeDao.deleteRegisterType(RegisterType);
 	}
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param RegisterType
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		return dataDao.updateData(data);
+	public Boolean updateRegisterType(TRegisterType RegisterType){
+		return RegisterTypeDao.updateRegisterType(RegisterType);
 	}
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data){
+	public List searchRegisterType(TRegisterType RegisterType){
 		
-		return dataDao.searchData(data);
+		return RegisterTypeDao.searchRegisterType(RegisterType);
 	}
 	
 	/**
@@ -69,8 +69,8 @@ public class RegisterTypeServiceDaoImpl implements DataServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
-		return dataDao.seachData(id);
+	public TRegisterType seachRegisterType(Long id){
+		return RegisterTypeDao.seachRegisterType(id);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class RegisterTypeServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
+	public List searchSonRegisterType(Long pid){
 		return null;
 	}
 	
@@ -87,17 +87,17 @@ public class RegisterTypeServiceDaoImpl implements DataServiceDao {
 	 * 
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil){
+	public List searchParentRegisterType(PageUtil pageUtil){
 		
-		return dataDao.searchParentData(pageUtil);
+		return RegisterTypeDao.searchParentRegisterType(pageUtil);
 	}
 
-	public DataDao getDataDao() {
-		return dataDao;
+	public RegisterTypeDao getRegisterTypeDao() {
+		return RegisterTypeDao;
 	}
 
-	public void setDataDao(DataDao dataDao) {
-		this.dataDao = dataDao;
+	public void setRegisterTypeDao(RegisterTypeDao RegisterTypeDao) {
+		this.RegisterTypeDao = RegisterTypeDao;
 	}
 	
 	/**
@@ -105,8 +105,8 @@ public class RegisterTypeServiceDaoImpl implements DataServiceDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid){
-		return this.dataDao.searchPageData(pid);
+	public List searchPageRegisterType(Long pid){
+		return this.RegisterTypeDao.searchPageRegisterType(pid);
 	}
 
 }

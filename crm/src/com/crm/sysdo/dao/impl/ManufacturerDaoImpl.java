@@ -10,8 +10,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.dao.inf.ManufacturerDao;
+import com.crm.sysdo.po.TManufacturer;
 /**
  * 数字字典操作Inf
  * 
@@ -20,7 +20,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao {
+public class ManufacturerDaoImpl extends HibernateDaoSupport implements ManufacturerDao {
 	
 	/**
 	 * 取得总记录数
@@ -31,7 +31,7 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TData where pid=0";
+				String hql = "select count(*) from TManufacturing where pid=0";
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -44,28 +44,28 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param Manufacturing
 	 * @return
 	 */
-	public Boolean addData(TData data){
-		this.getHibernateTemplate().save(data);		
+	public Boolean addManufacturer(TManufacturer Manufacturing){
+		this.getHibernateTemplate().save(Manufacturing);		
 		return true;
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Manufacturing
 	 * @return
 	 */
-	public Boolean deleteData(final TData data){
+	public Boolean deleteManufacturer(final TManufacturer Manufacturing){
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TData where id=:id or pid=:pid";
+				String hql = "delete TManufacturing where id=:id or pid=:pid";
 				
 				Query query = session.createQuery(hql);
-				query.setLong("id", data.getId());
-				query.setLong("pid", data.getId());				
+				query.setLong("id", Manufacturing.getId());
+				query.setLong("pid", Manufacturing.getId());				
 				
 				query.executeUpdate();
 				return null;
@@ -78,11 +78,11 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Manufacturing
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		this.getHibernateTemplate().update(data);
+	public Boolean updateManufacturer(TManufacturer Manufacturing){
+		this.getHibernateTemplate().update(Manufacturing);
 		return true;
 	}
 	
@@ -90,7 +90,7 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(Long id){
+	public List searchManufacturer(Long id){
 		return null;
 	}
 	
@@ -99,10 +99,10 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
+	public TManufacturer seachManufacturer(Long id){
 		
-		TData data = (TData)this.getHibernateTemplate().get(TData.class, id);		
-		return data;
+		TManufacturer Manufacturing = (TManufacturer)this.getHibernateTemplate().get(TManufacturer.class, id);		
+		return Manufacturing;
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
-		return this.getHibernateTemplate().find("from TData where pid=?", pid);
+	public List searchSonManufacturer(Long pid){
+		return this.getHibernateTemplate().find("from TManufacturing where pid=?", pid);
 	}
 	
 	/**
@@ -119,11 +119,11 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(final PageUtil pageUtil){
+	public List searchParentManufacturer(final PageUtil pageUtil){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "from TData where pid=0";
+				String hql = "from TManufacturer where pid=0";
 				Query query = session.createQuery(hql);
 				if(pageUtil!=null){
 					query.setMaxResults(pageUtil.getPagesize());
@@ -137,19 +137,19 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 		return list;
 	}
 
-	public List searchData(final TData data) {
+	public List searchManufacturer(final TManufacturer Manufacturing) {
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				StringBuffer hql =new StringBuffer("from TData where 1=1");
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
+				StringBuffer hql =new StringBuffer("from TManufacturer where 1=1");
+				if(null!=Manufacturing && null!=Manufacturing.getMfname() && !"".equals(Manufacturing.getMfname())){	
 					hql.append(" and name=:name");
 				}
 				Query query = session.createQuery(hql.toString());
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
-					query.setString("name", data.getName());
+				if(null!=Manufacturing && null!=Manufacturing.getMfname() && !"".equals(Manufacturing.getMfname())){	
+					query.setString("name", Manufacturing.getMfname());
 				}
 				
 				List list = query.list();
@@ -166,15 +166,15 @@ public class ManufacturingDaoImpl extends HibernateDaoSupport implements DataDao
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(final Long pid){
+	public List searchPageManufacturer(final Long pid){
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hqlCount = "select count(*) from TData where id=:idCount or pid=:pidCount";
+				String hqlCount = "select count(*) from TManufacturing where id=:idCount or pid=:pidCount";
 				
-				String hql ="from TData where id =:id or pid =:pid";
+				String hql ="from TManufacturing where id =:id or pid =:pid";
 				
 				Query queryCount = session.createQuery(hqlCount);				
 				queryCount.setLong("idCount", pid);

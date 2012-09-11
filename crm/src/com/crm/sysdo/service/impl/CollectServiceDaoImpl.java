@@ -4,8 +4,11 @@ package com.crm.sysdo.service.impl;
 import java.util.List;
 
 import com.crm.page.PageUtil;
+import com.crm.sysdo.dao.inf.CollectDao;
 import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.service.inf.CollectServiceDao;
 import com.crm.sysdo.service.inf.DataServiceDao;
 
 /**
@@ -16,52 +19,52 @@ import com.crm.sysdo.service.inf.DataServiceDao;
  * 10.22 am
  *
  */
-public class CollectServiceDaoImpl implements DataServiceDao {
+public class CollectServiceDaoImpl implements CollectServiceDao {
 	
-	private DataDao dataDao;
+	private CollectDao collectDao;
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
 	public Integer getCount(){
-		return dataDao.getCount();
+		return collectDao.getCount();
 	}
 
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param collect
 	 * @return
 	 */
-	public Boolean addData(TData data){		
-		return dataDao.addData(data);
+	public Boolean addCollect(TCollect collect){		
+		return collectDao.addCollect(collect);
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param collect
 	 * @return
 	 */
-	public Boolean deleteData(TData data){		
-		return dataDao.deleteData(data);
+	public Boolean deleteCollect(TCollect collect){		
+		return collectDao.deleteCollect(collect);
 	}
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param collect
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		return dataDao.updateData(data);
+	public Boolean updateCollect(TCollect collect){
+		return collectDao.updateCollect(collect);
 	}
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data){
+	public List searchCollect(TCollect collect){
 		
-		return dataDao.searchData(data);
+		return collectDao.searchCollect(collect);
 	}
 	
 	/**
@@ -69,44 +72,17 @@ public class CollectServiceDaoImpl implements DataServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
-		return dataDao.seachData(id);
+	public TCollect seachCollect(Long id){
+		return collectDao.seachCollect(id);
 	}
 	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonData(Long pid){
-		return null;
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentData(PageUtil pageUtil){
-		
-		return dataDao.searchParentData(pageUtil);
+
+	public CollectDao getCollectDao() {
+		return collectDao;
 	}
 
-	public DataDao getDataDao() {
-		return dataDao;
-	}
-
-	public void setDataDao(DataDao dataDao) {
-		this.dataDao = dataDao;
-	}
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageData(Long pid){
-		return this.dataDao.searchPageData(pid);
+	public void setCollectDao(CollectDao collectDao) {
+		this.collectDao = collectDao;
 	}
 
 }

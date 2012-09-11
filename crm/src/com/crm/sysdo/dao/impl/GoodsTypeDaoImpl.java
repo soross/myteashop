@@ -10,8 +10,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.DataDao;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.dao.inf.GoodsTypeDao;
+import com.crm.sysdo.po.TGoodsType;
 /**
  * 数字字典操作Inf
  * 
@@ -20,7 +20,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
+public class GoodsTypeDaoImpl extends HibernateDaoSupport implements GoodsTypeDao {
 	
 	/**
 	 * 取得总记录数
@@ -31,7 +31,7 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TData where pid=0";
+				String hql = "select count(*) from TGoodsType where pid=0";
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -44,28 +44,28 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean addData(TData data){
-		this.getHibernateTemplate().save(data);		
+	public Boolean addGoodsType(TGoodsType GoodsType){
+		this.getHibernateTemplate().save(GoodsType);		
 		return true;
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean deleteData(final TData data){
+	public Boolean deleteGoodsType(final TGoodsType GoodsType){
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TData where id=:id or pid=:pid";
+				String hql = "delete TGoodsType where id=:id or pid=:pid";
 				
 				Query query = session.createQuery(hql);
-				query.setLong("id", data.getId());
-				query.setLong("pid", data.getId());				
+				query.setLong("id", GoodsType.getId());
+				query.setLong("pid", GoodsType.getId());				
 				
 				query.executeUpdate();
 				return null;
@@ -78,11 +78,11 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param GoodsType
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		this.getHibernateTemplate().update(data);
+	public Boolean updateGoodsType(TGoodsType GoodsType){
+		this.getHibernateTemplate().update(GoodsType);
 		return true;
 	}
 	
@@ -90,7 +90,7 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(Long id){
+	public List searchGoodsType(Long id){
 		return null;
 	}
 	
@@ -99,10 +99,10 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
+	public TGoodsType seachGoodsType(Long id){
 		
-		TData data = (TData)this.getHibernateTemplate().get(TData.class, id);		
-		return data;
+		TGoodsType GoodsType = (TGoodsType)this.getHibernateTemplate().get(TGoodsType.class, id);		
+		return GoodsType;
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
-		return this.getHibernateTemplate().find("from TData where pid=?", pid);
+	public List searchSonGoodsType(Long pid){
+		return this.getHibernateTemplate().find("from TGoodsType where pid=?", pid);
 	}
 	
 	/**
@@ -119,11 +119,11 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(final PageUtil pageUtil){
+	public List searchParentGoodsType(final PageUtil pageUtil){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "from TData where pid=0";
+				String hql = "from TGoodsType where pid=0";
 				Query query = session.createQuery(hql);
 				if(pageUtil!=null){
 					query.setMaxResults(pageUtil.getPagesize());
@@ -137,19 +137,19 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 		return list;
 	}
 
-	public List searchData(final TData data) {
+	public List searchGoodsType(final TGoodsType GoodsType) {
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				StringBuffer hql =new StringBuffer("from TData where 1=1");
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
+				StringBuffer hql =new StringBuffer("from TGoodsType where 1=1");
+				if(null!=GoodsType && null!=GoodsType.getTypename() && !"".equals(GoodsType.getTypename())){	
 					hql.append(" and name=:name");
 				}
 				Query query = session.createQuery(hql.toString());
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
-					query.setString("name", data.getName());
+				if(null!=GoodsType && null!=GoodsType.getTypename() && !"".equals(GoodsType.getTypename())){	
+					query.setString("name", GoodsType.getTypename());
 				}
 				
 				List list = query.list();
@@ -166,15 +166,15 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(final Long pid){
+	public List searchPageGoodsType(final Long pid){
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hqlCount = "select count(*) from TData where id=:idCount or pid=:pidCount";
+				String hqlCount = "select count(*) from TGoodsType where id=:idCount or pid=:pidCount";
 				
-				String hql ="from TData where id =:id or pid =:pid";
+				String hql ="from TGoodsType where id =:id or pid =:pid";
 				
 				Query queryCount = session.createQuery(hqlCount);				
 				queryCount.setLong("idCount", pid);

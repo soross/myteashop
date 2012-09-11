@@ -11,7 +11,9 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.DataDao;
+import com.crm.sysdo.dao.inf.GoodsDao;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TGoods;
 /**
  * 数字字典操作Inf
  * 
@@ -20,7 +22,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
+public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	
 	/**
 	 * 取得总记录数
@@ -31,7 +33,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TData where pid=0";
+				String hql = "select count(*) from TGoods where pid=0";
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -44,28 +46,28 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 添加数据字典
-	 * @param data
+	 * @param Goods
 	 * @return
 	 */
-	public Boolean addData(TData data){
-		this.getHibernateTemplate().save(data);		
+	public Boolean addGoods(TGoods Goods){
+		this.getHibernateTemplate().save(Goods);		
 		return true;
 	}
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Goods
 	 * @return
 	 */
-	public Boolean deleteData(final TData data){
+	public Boolean deleteGoods(final TGoods Goods){
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TData where id=:id or pid=:pid";
+				String hql = "delete TGoods where id=:id or pid=:pid";
 				
 				Query query = session.createQuery(hql);
-				query.setLong("id", data.getId());
-				query.setLong("pid", data.getId());				
+				query.setLong("id", Goods.getId());
+				query.setLong("pid", Goods.getId());				
 				
 				query.executeUpdate();
 				return null;
@@ -78,11 +80,11 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Goods
 	 * @return
 	 */
-	public Boolean updateData(TData data){
-		this.getHibernateTemplate().update(data);
+	public Boolean updateGoods(TGoods Goods){
+		this.getHibernateTemplate().update(Goods);
 		return true;
 	}
 	
@@ -90,7 +92,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(Long id){
+	public List searchGoods(Long id){
 		return null;
 	}
 	
@@ -99,10 +101,10 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id){
+	public TGoods seachGoods(Long id){
 		
-		TData data = (TData)this.getHibernateTemplate().get(TData.class, id);		
-		return data;
+		TGoods Goods = (TGoods)this.getHibernateTemplate().get(TGoods.class, id);		
+		return Goods;
 	}
 	
 	/**
@@ -110,8 +112,8 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid){
-		return this.getHibernateTemplate().find("from TData where pid=?", pid);
+	public List searchSonGoods(Long pid){
+		return this.getHibernateTemplate().find("from TGoods where pid=?", pid);
 	}
 	
 	/**
@@ -119,11 +121,11 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(final PageUtil pageUtil){
+	public List searchParentGoods(final PageUtil pageUtil){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "from TData where pid=0";
+				String hql = "from TGoods where pid=0";
 				Query query = session.createQuery(hql);
 				if(pageUtil!=null){
 					query.setMaxResults(pageUtil.getPagesize());
@@ -137,19 +139,19 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 		return list;
 	}
 
-	public List searchData(final TData data) {
+	public List searchGoods(final TGoods Goods) {
 		
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				StringBuffer hql =new StringBuffer("from TData where 1=1");
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
+				StringBuffer hql =new StringBuffer("from TGoods where 1=1");
+				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
 					hql.append(" and name=:name");
 				}
 				Query query = session.createQuery(hql.toString());
-				if(null!=data && null!=data.getName() && !"".equals(data.getName())){	
-					query.setString("name", data.getName());
+				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
+					query.setString("name", Goods.getGoodsname());
 				}
 				
 				List list = query.list();
@@ -161,42 +163,6 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements DataDao {
 		return list;
 	}
 	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageData(final Long pid){
-		
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hqlCount = "select count(*) from TData where id=:idCount or pid=:pidCount";
-				
-				String hql ="from TData where id =:id or pid =:pid";
-				
-				Query queryCount = session.createQuery(hqlCount);				
-				queryCount.setLong("idCount", pid);
-				queryCount.setLong("pidCount", pid);
-				
-				int i = (Integer)queryCount.uniqueResult();
-				
-				Query query = session.createQuery(hql);
-				query.setLong("id", pid);
-				query.setLong("pid", pid);
-				
-				query.setFirstResult(0);
-				query.setMaxResults(i);
-				
-				List list = query.list();
-				
-				return list;
-			}			
-		});	
-		
-		return list;
-	}
 	
 
 }

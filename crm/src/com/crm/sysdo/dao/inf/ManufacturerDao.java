@@ -4,7 +4,7 @@ package com.crm.sysdo.dao.inf;
 import java.util.List;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TManufacturer;
 
 /**
  * 数字字典操作Inf
@@ -14,7 +14,7 @@ import com.crm.sysdo.po.TData;
  * 10.22 am
  *
  */
-public interface ManufacturingDao {
+public interface ManufacturerDao {
 	/**
 	 * 取得总记录数
 	 * @return
@@ -25,53 +25,53 @@ public interface ManufacturingDao {
 	 * @param data
 	 * @return
 	 */
-	public Boolean addData(TData data);
+	public Boolean addManufacturer(TManufacturer Manufacturing);
 	
 	/**
 	 * 删除数据字典
-	 * @param data
+	 * @param Manufacturing
 	 * @return
 	 */
-	public Boolean deleteData(TData data);
+	public Boolean deleteManufacturer(TManufacturer Manufacturing);
 	
 	/**
 	 * 更新数据字典
-	 * @param data
+	 * @param Manufacturing
 	 * @return
 	 */
-	public Boolean updateData(TData data);
+	public Boolean updateManufacturer(TManufacturer Manufacturing);
 	
 	/**
 	 * 取得数据字典列表
 	 * @return
 	 */
-	public List searchData(TData data);
+	public List searchManufacturer(TManufacturer Manufacturing);
 	
 	/**
 	 * 查询数据字典对象
 	 * @param id
 	 * @return
 	 */
-	public TData seachData(Long id);
+	public TManufacturer seachManufacturer(Long id);
 	
 	/**
 	 * 根据父类ID查询小类
 	 * @param pid
 	 * @return
 	 */
-	public List searchSonData(Long pid);
+	public List searchSonManufacturer(Long pid);
 	
 	/**
 	 * 根据小类查询父类对象
 	 * @param id
 	 * @return
 	 */
-	public List searchParentData(PageUtil pageUtil);
+	public List searchParentManufacturer(PageUtil pageUtil);
 	
 	/**
 	 * 根据Pid分页
 	 * @param pid
 	 * @return
 	 */
-	public List searchPageData(Long pid);
+	public List searchPageManufacturer(Long pid);
 }

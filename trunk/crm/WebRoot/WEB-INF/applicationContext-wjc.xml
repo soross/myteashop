@@ -171,6 +171,8 @@
 	<bean name="/admin/sickbed"
 		class="com.crm.sysdo.struts.action.SickbedAction">
 		<property name="sickbedServiceDao" ref="sickbedServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="deptServiceDao" ref="deptServiceDao"></property>		
 	</bean>
 	
 	<!-- collect -->

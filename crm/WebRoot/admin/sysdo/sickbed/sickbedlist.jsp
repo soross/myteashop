@@ -192,7 +192,7 @@
 					<td>
 						<logic:present name="deptList">
 							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${sickbed.deptName}</logic:equal>
+	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
 	      					</logic:iterate>
       					</logic:present>
 					</td>	

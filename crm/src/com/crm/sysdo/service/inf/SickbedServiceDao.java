@@ -7,14 +7,15 @@ import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.po.TSickbed;
 
 public interface SickbedServiceDao {
-
+	public TSickbed getSickbedById(Long id);
+	
 	public Boolean addSickbed(TSickbed sickbed);
 
 	public Boolean deleteSickbed(Long id);
 
-	public Integer getSickbedCount();
+	public Integer getSickbedCount(TSickbed sickbed);
 
-	public List getSickbedList(PageUtil pageUtil) ;
+	public List getSickbedList(PageUtil pageUtil,TSickbed sickbed) ;
 
 	public Integer getSeqNextValue() ;
 

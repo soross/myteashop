@@ -9,7 +9,9 @@
         <comment>汇总科目</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+            <generator class="sequence">
+            	<param name="sequence">seq_collect</param>
+            </generator>
         </id>
         <property name="collectname" type="java.lang.String">
             <column name="COLLECTNAME" length="50">

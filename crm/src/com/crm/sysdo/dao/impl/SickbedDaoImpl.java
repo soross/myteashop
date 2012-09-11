@@ -14,7 +14,11 @@ import com.crm.sysdo.dao.inf.SickbedDao;
 import com.crm.sysdo.po.TSickbed;
 
 public class SickbedDaoImpl extends HibernateDaoSupport implements SickbedDao {
-
+	
+	public TSickbed getSickbedById(Long id){
+		return (TSickbed)this.getHibernateTemplate().get(TSickbed.class, id);
+	}
+	
 	public Boolean addSickbed(TSickbed sickbed) {
 		this.getHibernateTemplate().save(sickbed);		
 		return null;
@@ -26,20 +30,32 @@ public class SickbedDaoImpl extends HibernateDaoSupport implements SickbedDao {
 		return null;
 	}
 
-	public Integer getSickbedCount() {
+	public Integer getSickbedCount(final TSickbed sickbed) {
 		return (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "select count(*) from TSickbed";
+				String hql = "select count(*) from TSickbed where 1=1 ";
+				if(null!=sickbed.getCode() && !"".equalsIgnoreCase(sickbed.getCode())){
+					hql=hql+ " and code='"+sickbed.getCode()+"'";
+				}
+				if(null!=sickbed.getSickbed() && !"".equalsIgnoreCase(sickbed.getSickbed())){
+					hql=hql+ " and sickbed like '%"+sickbed.getSickbed()+"%'";
+				}
 				Query query =session.createQuery(hql);
 				return query.uniqueResult();
 			}			
 		});
 	}
 
-	public List getSickbedList(final PageUtil pageUtil) {
+	public List getSickbedList(final PageUtil pageUtil,final TSickbed sickbed) {
 		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "from TSickbed";
+				String hql = "from TSickbed where 1=1 ";
+				if(null!=sickbed.getCode() && !"".equalsIgnoreCase(sickbed.getCode())){
+					hql=hql+ " and code='"+sickbed.getCode()+"'";
+				}
+				if(null!=sickbed.getSickbed() && !"".equalsIgnoreCase(sickbed.getSickbed())){
+					hql=hql+ " and sickbed like '%"+sickbed.getSickbed()+"%'";
+				}
 				Query query =session.createQuery(hql);
 				query.setFirstResult(pageUtil.pastart());
 				query.setMaxResults(pageUtil.getPagesize());

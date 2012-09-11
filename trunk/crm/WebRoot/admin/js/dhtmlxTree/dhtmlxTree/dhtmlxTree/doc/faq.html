@@ -44,7 +44,7 @@
 		</style>
 <h2 onclick="openFull(this)">F.A.Q.</h2>
 <div onclick="openFull(this)" style="display:block" class="block">
-<a name="kb_faq_lic"></a><h3>Licensing</h3></a>
+<a name="kb_faq_lic"><h3>Licensing</h3></a>
 </div>
 <div style="display:;margin-left:5px;margin-top:2px;">
 <div onclick="openFull(this)" style="margin-top:5px;color:blue;cursor:pointer;margin-top:10px;">
@@ -240,7 +240,7 @@ For more details about eventHandlers see "Set Event Handlers" chapter of Tree do
 <xmp>
 	function closeAllRoots(){
 		var rootsAr = tree.getSubItems(0).split(",")
-		for(var i=0;i<rootsAr.length;i++){
+		for(var i=0;i < rootsAr.length; i++){
 			tree.closeAllItems(rootsAr[i])
 		}
 	}

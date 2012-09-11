@@ -18,9 +18,9 @@
 <xmp>
 <tree..>
 	<item ...>
-		<userdata name=“myurl“>http://www.google.com</userdata>
+		<userdata name="“myurl„1¤7http://www.google.com"></userdata>
 		<item ...>
-			<userdata name=“myurl“>http://groups.google.com</userdata>
+			<userdata name="“myurl„1¤7http://groups.google.com"></userdata>
 		</item>
 	</item>
 </xmp>
@@ -29,7 +29,7 @@ there is an event handler for click processing:
 <xmp>
 tree.setOnClickHandler(doOnClick);
 function doOnClick(nodeId){
-	var myUrl = tree.getUserData(nodeId,“myurl“);
+	var myUrl = tree.getUserData(nodeId,“myurl„1¤7);
 	window.open(myUrl);// or frames[“someframe“].location.href = myUrl
 }
 </xmp>		
@@ -37,7 +37,7 @@ function doOnClick(nodeId){
 <!--  -->	
 	<a name="spec_dnd_out"><h4 >Drag-n-drop outside tree</h4
 	></a><div style="display:show" class="block">
-	Any page control can be set as “landing zone”. Here is an example:
+	Any page control can be set as “landing zone„1¤7. Here is an example:
 <xmp> 
 <div id="treeboxbox_tree" style="width:200;height:200"></div>
 <input type="text" width="120px" id="sInput">
@@ -63,7 +63,7 @@ function s_control(){
 		return this;
 	}
 }
-//set input control as “landing zone”
+//set input control as “landing zone„1¤7
 tree.dragger.addDragLanding(document.getElementById('sInput'), new s_control); 
 </script>
 </xmp>

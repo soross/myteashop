@@ -9,7 +9,9 @@
         <comment>门诊挂号类别</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+            <generator class="sequence">
+            	<param name="sequence">seq_registrertype</param>
+            </generator>
         </id>
         <property name="regtypename" type="java.lang.String">
             <column name="REGTYPENAME" length="50">

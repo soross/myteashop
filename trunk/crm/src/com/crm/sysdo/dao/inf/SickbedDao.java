@@ -6,16 +6,17 @@ import com.crm.page.PageUtil;
 import com.crm.sysdo.po.TSickbed;
 
 public interface SickbedDao {
+	public TSickbed getSickbedById(Long id);
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getSickbedCount();
+	public Integer getSickbedCount(TSickbed sickbed);
 	/**
 	 * 取得集合
 	 * @return
 	 */	
-	public List getSickbedList(PageUtil pageUtil);
+	public List getSickbedList(PageUtil pageUtil,TSickbed sickbed);
 	
 	/**
 	 * 部门

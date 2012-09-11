@@ -9,7 +9,9 @@
         <comment>病床</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+            <generator class="sequence">
+            	<param name="sequence">seq_sickbed</param>
+            </generator>
         </id>
         <property name="sickbed" type="java.lang.String">
             <column name="SICKBED" length="20">

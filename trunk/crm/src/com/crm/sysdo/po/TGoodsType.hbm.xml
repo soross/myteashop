@@ -9,7 +9,9 @@
         <comment>物资类型</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+            <generator class="sequence">
+            	<param name="sequence">seq_goodtype</param>
+            </generator>
         </id>
         <property name="typename" type="java.lang.String">
             <column name="TYPENAME" length="50">

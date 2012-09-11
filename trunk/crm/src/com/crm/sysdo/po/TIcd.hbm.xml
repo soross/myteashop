@@ -9,7 +9,9 @@
         <comment>个人疾病编码</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+            <generator class="sequence">
+            	<param name="sequence">seq_icd</param>
+            </generator>
         </id>
         <property name="icdcode" type="java.lang.String">
             <column name="ICDCODE" length="100">

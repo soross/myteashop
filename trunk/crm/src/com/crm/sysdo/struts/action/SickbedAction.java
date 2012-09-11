@@ -145,7 +145,7 @@ public class SickbedAction extends DispatchAction {
 		List sonList = perDao.getSonPerList("81");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/sickbed/addsickbed.jsp");
+		return new ActionForward("/admin/sysdo/sickbed/updatesickbed.jsp");
 	}
 
 	/**

@@ -232,4 +232,12 @@ public class CollectAction extends DispatchAction {
 		this.perDao = perDao;
 	}
 
+	public CollectServiceDao getCollectServiceDao() {
+		return collectServiceDao;
+	}
+
+	public void setCollectServiceDao(CollectServiceDao collectServiceDao) {
+		this.collectServiceDao = collectServiceDao;
+	}
+
 }

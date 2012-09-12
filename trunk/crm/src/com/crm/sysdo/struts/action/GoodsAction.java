@@ -77,15 +77,6 @@ public class GoodsAction extends DispatchAction {
 		TGoods Goods = new TGoods();
 		BeanUtils.copyProperties(Goods, GoodsForm);
 
-		List list = this.GoodsServiceDao.searchGoods(Goods);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/Goods.do?task=toAddGoods';</script>");
-			return null;
-		}
-
 		Boolean bool = this.GoodsServiceDao.addGoods(Goods);
 
 		if (bool) {
@@ -125,11 +116,11 @@ public class GoodsAction extends DispatchAction {
 			throws Exception {
 		GoodsForm GoodsForm = (GoodsForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.GoodsServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
 
-		List sonList = this.GoodsServiceDao.searchGoods(null);
+		List sonList = this.GoodsServiceDao.getGoodsList(pageUtil, null);
 		request.setAttribute("GoodsSonList", sonList);
 
 		// 32 角色
@@ -186,7 +177,7 @@ public class GoodsAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		GoodsForm GoodsForm = (GoodsForm) form;
-		TGoods Goods = this.GoodsServiceDao.seachGoods(new Long(GoodsForm.getId()));
+		TGoods Goods = this.GoodsServiceDao.getGoodsById(new Long(GoodsForm.getId()));
 		BeanUtils.copyProperties(GoodsForm, Goods);
 
 
@@ -210,7 +201,7 @@ public class GoodsAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		GoodsForm GoodsForm = (GoodsForm) form;
-		TGoods Goods = this.GoodsServiceDao.seachGoods(new Long(GoodsForm.getId()));
+		TGoods Goods = this.GoodsServiceDao.getGoodsById(new Long(GoodsForm.getId()));
 		BeanUtils.copyProperties(Goods, GoodsForm);
 
 		Boolean bool = false;

@@ -4,6 +4,7 @@ package com.crm.sysdo.service.inf;
 import java.util.List;
 
 import com.crm.page.PageUtil;
+import com.crm.sysdo.po.TGoods;
 import com.crm.sysdo.po.TGoodsType;
 
 /**
@@ -17,63 +18,42 @@ import com.crm.sysdo.po.TGoodsType;
 public interface GoodsTypeServiceDao {
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount();
-	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param data
 	 * @return
 	 */
 	public Boolean addGoodsType(TGoodsType GoodsType);
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param GoodsType
 	 * @return
 	 */
 	public Boolean deleteGoodsType(TGoodsType GoodsType);
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param GoodsType
 	 * @return
 	 */
 	public Boolean updateGoodsType(TGoodsType GoodsType);
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchGoodsType(TGoodsType GoodsType);
+	public Integer getCount(TGoodsType GoodsType);
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getGoodsTypeList(PageUtil pageUtil ,TGoodsType GoodsType);
 	
 	/**
-	 * 查询数据字典对象
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TGoodsType seachGoodsType(Long id);
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonGoodsType(Long pid);
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentGoodsType(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageGoodsType(Long pid);
+	public TGoodsType getGoodsTypeById(Long id);
 
 }

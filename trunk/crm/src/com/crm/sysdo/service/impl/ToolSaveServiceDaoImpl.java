@@ -6,6 +6,7 @@ import java.util.List;
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.ToolSaveDao;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.po.TToolSave;
 import com.crm.sysdo.service.inf.ToolSaveServiceDao;
 
@@ -22,16 +23,8 @@ public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 	private ToolSaveDao ToolSaveDao;
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return ToolSaveDao.getCount();
-	}
-
-	/**
-	 * 添加数据字典
-	 * @param ToolSave
+	 * 添加
+	 * @param Goods
 	 * @return
 	 */
 	public Boolean addToolSave(TToolSave ToolSave){		
@@ -39,7 +32,7 @@ public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param ToolSave
 	 * @return
 	 */
@@ -48,7 +41,7 @@ public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param ToolSave
 	 * @return
 	 */
@@ -57,40 +50,29 @@ public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchToolSave(TToolSave ToolSave){
-		
-		return ToolSaveDao.searchToolSave(ToolSave);
+	public Integer getCount(TToolSave ToolSave){
+		return ToolSaveDao.getCount(ToolSave);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 取得列表
+	 * @return
+	 */
+	public List getToolSaveList(PageUtil pageUtil,TToolSave ToolSave){
+		
+		return ToolSaveDao.getToolSaveList(pageUtil,ToolSave);
+	}
+	
+	/**
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TToolSave seachToolSave(Long id){
-		return ToolSaveDao.seachToolSave(id);
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonToolSave(Long pid){
-		return null;
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentToolSave(PageUtil pageUtil){
-		
-		return ToolSaveDao.searchParentToolSave(pageUtil);
+	public TToolSave getToolSaveById(Long id){
+		return ToolSaveDao.getToolSaveById(id);
 	}
 
 	public ToolSaveDao getToolSaveDao() {
@@ -101,13 +83,6 @@ public class ToolSaveServiceDaoImpl implements ToolSaveServiceDao {
 		this.ToolSaveDao = ToolSaveDao;
 	}
 	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageToolSave(Long pid){
-		return this.ToolSaveDao.searchPageToolSave(pid);
-	}
+	
 
 }

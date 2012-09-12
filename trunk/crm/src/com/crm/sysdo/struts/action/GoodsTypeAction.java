@@ -49,8 +49,7 @@ public class GoodsTypeAction extends DispatchAction {
 	public ActionForward toAddGoodsType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.GoodsTypeServiceDao.searchParentGoodsType(null);
-		request.setAttribute("pidList", list);
+		
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -75,15 +74,7 @@ public class GoodsTypeAction extends DispatchAction {
 		TGoodsType GoodsType = new TGoodsType();
 		BeanUtils.copyProperties(GoodsType, GoodsTypeForm);
 
-		List list = this.GoodsTypeServiceDao.searchGoodsType(GoodsType);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/GoodsType.do?task=toAddGoodsType';</script>");
-			return null;
-		}
-
+		
 		Boolean bool = this.GoodsTypeServiceDao.addGoodsType(GoodsType);
 
 		if (bool) {
@@ -123,14 +114,10 @@ public class GoodsTypeAction extends DispatchAction {
 			throws Exception {
 		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.GoodsTypeServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.GoodsTypeServiceDao.searchParentGoodsType(pageUtil);
-		request.setAttribute("GoodsTypeList", list);
-
-		List sonList = this.GoodsTypeServiceDao.searchGoodsType(null);
-		request.setAttribute("GoodsTypeSonList", sonList);
+		
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -186,11 +173,9 @@ public class GoodsTypeAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
-		TGoodsType GoodsType = this.GoodsTypeServiceDao.seachGoodsType(new Long(GoodsTypeForm.getId()));
+		TGoodsType GoodsType = this.GoodsTypeServiceDao.getGoodsTypeById(new Long(GoodsTypeForm.getId()));
 		BeanUtils.copyProperties(GoodsTypeForm, GoodsType);
 
-		List list = this.GoodsTypeServiceDao.searchParentGoodsType(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -212,7 +197,7 @@ public class GoodsTypeAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		GoodsTypeForm GoodsTypeForm = (GoodsTypeForm) form;
-		TGoodsType GoodsType = this.GoodsTypeServiceDao.seachGoodsType(new Long(GoodsTypeForm.getId()));
+		TGoodsType GoodsType = this.GoodsTypeServiceDao.getGoodsTypeById(new Long(GoodsTypeForm.getId()));
 		BeanUtils.copyProperties(GoodsType, GoodsTypeForm);
 
 		Boolean bool = false;

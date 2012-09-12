@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.IcdDao;
+import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.po.TIcd;
 import com.crm.sysdo.service.inf.IcdServiceDao;
 
@@ -19,18 +20,9 @@ import com.crm.sysdo.service.inf.IcdServiceDao;
 public class IcdServiceDaoImpl implements IcdServiceDao {
 	
 	private IcdDao IcdDao;
-	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return IcdDao.getCount();
-	}
-
-	/**
-	 * 添加数据字典
-	 * @param Icd
+	 * 添加
+	 * @param Goods
 	 * @return
 	 */
 	public Boolean addIcd(TIcd Icd){		
@@ -38,7 +30,7 @@ public class IcdServiceDaoImpl implements IcdServiceDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Icd
 	 * @return
 	 */
@@ -47,7 +39,7 @@ public class IcdServiceDaoImpl implements IcdServiceDao {
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Icd
 	 * @return
 	 */
@@ -56,41 +48,31 @@ public class IcdServiceDaoImpl implements IcdServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchIcd(TIcd Icd){
-		
-		return IcdDao.searchIcd(Icd);
+	public Integer getCount(TIcd Icd){
+		return IcdDao.getCount(Icd);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 取得列表
+	 * @return
+	 */
+	public List getIcdList(PageUtil pageUtil,TIcd Icd){
+		
+		return IcdDao.getIcdList(pageUtil,Icd);
+	}
+	
+	/**
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TIcd seachIcd(Long id){
-		return IcdDao.seachIcd(id);
+	public TIcd getIcdById(Long id){
+		return IcdDao.getIcdById(id);
 	}
 	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonIcd(Long pid){
-		return null;
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentIcd(PageUtil pageUtil){
-		
-		return IcdDao.searchParentIcd(pageUtil);
-	}
 
 	public IcdDao getIcdDao() {
 		return IcdDao;
@@ -100,13 +82,5 @@ public class IcdServiceDaoImpl implements IcdServiceDao {
 		this.IcdDao = IcdDao;
 	}
 	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageIcd(Long pid){
-		return this.IcdDao.searchPageIcd(pid);
-	}
-
+	
 }

@@ -16,62 +16,41 @@ import com.crm.sysdo.po.TToolinfo;
  */
 public interface ToolinfoDao {
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount();
-	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param data
 	 * @return
 	 */
 	public Boolean addToolinfo(TToolinfo Toolinfo);
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Toolinfo
 	 * @return
 	 */
 	public Boolean deleteToolinfo(TToolinfo Toolinfo);
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Toolinfo
 	 * @return
 	 */
 	public Boolean updateToolinfo(TToolinfo Toolinfo);
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchToolinfo(TToolinfo Toolinfo);
+	public Integer getCount(TToolinfo Toolinfo);
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getToolinfoList(PageUtil pageUtil ,TToolinfo Toolinfo);
 	
 	/**
-	 * 查询数据字典对象
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TToolinfo seachToolinfo(Long id);
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonToolinfo(Long pid);
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentToolinfo(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageToolinfo(Long pid);
+	public TToolinfo getToolinfoById(Long id);
 }

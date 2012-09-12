@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.po.TManufacturer;
+import com.crm.sysdo.po.TToolinfo;
 
 /**
  * 数字字典操作Inf
@@ -16,62 +17,41 @@ import com.crm.sysdo.po.TManufacturer;
  */
 public interface ManufacturerDao {
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount();
-	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param data
 	 * @return
 	 */
-	public Boolean addManufacturer(TManufacturer Manufacturing);
+	public Boolean addManufacturer(TManufacturer Manufacturer);
 	
 	/**
-	 * 删除数据字典
-	 * @param Manufacturing
+	 * 删除
+	 * @param Manufacturer
 	 * @return
 	 */
-	public Boolean deleteManufacturer(TManufacturer Manufacturing);
+	public Boolean deleteManufacturer(TManufacturer Manufacturer);
 	
 	/**
-	 * 更新数据字典
-	 * @param Manufacturing
+	 * 更新
+	 * @param Manufacturer
 	 * @return
 	 */
-	public Boolean updateManufacturer(TManufacturer Manufacturing);
+	public Boolean updateManufacturer(TManufacturer Manufacturer);
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchManufacturer(TManufacturer Manufacturing);
+	public Integer getCount(TManufacturer Manufacturer);
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getManufacturerList(PageUtil pageUtil ,TManufacturer Manufacturer);
 	
 	/**
-	 * 查询数据字典对象
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TManufacturer seachManufacturer(Long id);
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonManufacturer(Long pid);
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentManufacturer(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageManufacturer(Long pid);
+	public TManufacturer getManufacturerById(Long id);
 }

@@ -74,11 +74,13 @@ public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 		return GoodsTypeDao.getGoodsTypeById(id);
 	}
 
+	
+	
 	public GoodsTypeDao getGoodsTypeDao() {
 		return GoodsTypeDao;
 	}
 
-	public void setGoodsTypeTypeDao(GoodsTypeDao GoodsTypeDao) {
+	public void setGoodsTypeDao(GoodsTypeDao GoodsTypeDao) {
 		this.GoodsTypeDao = GoodsTypeDao;
 	}
 	

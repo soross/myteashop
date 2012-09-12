@@ -19,6 +19,7 @@ import com.crm.sysdo.po.TSickbed;
 import com.crm.sysdo.service.inf.DeptServiceDao;
 import com.crm.sysdo.service.inf.SickbedServiceDao;
 import com.crm.sysdo.struts.form.SickbedForm;
+import com.crm.tool.PinYinUtils;
 
 public class SickbedAction extends DispatchAction {
 	private SickbedServiceDao sickbedServiceDao;
@@ -96,6 +97,13 @@ public class SickbedAction extends DispatchAction {
 		SickbedForm sickbedForm = (SickbedForm) form;
 		TSickbed sickbed = new TSickbed();
 		BeanUtils.copyProperties(sickbed, sickbedForm);
+
+		if (null != sickbed.getSickbed()
+				&& !"".equalsIgnoreCase(sickbed.getSickbed())) {
+			sickbed.setPinyin(PinYinUtils.getAllFirstLetter(sickbed
+					.getSickbed()));
+		}
+
 		try {
 			this.sickbedServiceDao.addSickbed(sickbed);
 			response
@@ -106,7 +114,6 @@ public class SickbedAction extends DispatchAction {
 									+ "/admin/sickbed.do?task=toAddSickbed';}else{location.href='"
 									+ request.getContextPath()
 									+ "/admin/sickbed.do?task=sickbedList';}</script>");
-			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			response
@@ -117,8 +124,8 @@ public class SickbedAction extends DispatchAction {
 									+ "/admin/sickbed.do?task=toAddSickbed';}else{location.href='"
 									+ request.getContextPath()
 									+ "/admin/sickbed.do?task=sickbedList';}</script>");
-			return null;
 		}
+		return null;
 	}
 
 	/**
@@ -164,7 +171,32 @@ public class SickbedAction extends DispatchAction {
 		TSickbed sickbed = new TSickbed();
 		BeanUtils.copyProperties(sickbed, sickbedForm);
 
-		return new ActionForward("/admin/sysdo/sickbed/addsickbed.jsp");
+		if (null != sickbed.getSickbed()
+				&& !"".equalsIgnoreCase(sickbed.getSickbed())) {
+			sickbed.setPinyin(PinYinUtils.getAllFirstLetter(sickbed
+					.getSickbed()));
+		}
+		try {
+			this.sickbedServiceDao.updateSickbed(sickbed);
+			response.getWriter().print(
+					"<script> if(confirm('修改成功！是否继续修改？')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/sickbed.do?task=toUpdateSickbed&id="
+							+ sickbed.getId() + "';}else{location.href='"
+							+ request.getContextPath()
+							+ "/admin/sickbed.do?task=sickbedList';}</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().print(
+					"<script> if(confirm('修改失败！是否重试？')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/sickbed.do?task=toUpdateSickbed&id="
+							+ sickbed.getId() + "';}else{location.href='"
+							+ request.getContextPath()
+							+ "/admin/sickbed.do?task=sickbedList';}</script>");
+
+		}
+		return null;
 	}
 
 	/**
@@ -181,8 +213,11 @@ public class SickbedAction extends DispatchAction {
 			throws Exception {
 		SickbedForm sickbedForm = (SickbedForm) form;
 		this.sickbedServiceDao.deleteSickbed(sickbedForm.getId());
-
-		return new ActionForward("/admin/sysdo/sickbed/addsickbed.jsp");
+		response.getWriter().print(
+				"<script> alert('删除成功！');location.href='"
+						+ request.getContextPath()
+						+ "/admin/sickbed.do?task=sickbedList';</script>");
+		return null;
 	}
 
 	public SickbedServiceDao getSickbedServiceDao() {

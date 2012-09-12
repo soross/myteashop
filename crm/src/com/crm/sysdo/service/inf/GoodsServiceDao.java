@@ -18,43 +18,43 @@ import com.crm.sysdo.po.TGoods;
 public interface GoodsServiceDao {
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount();
-	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param data
 	 * @return
 	 */
 	public Boolean addGoods(TGoods Goods);
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Goods
 	 * @return
 	 */
 	public Boolean deleteGoods(TGoods Goods);
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Goods
 	 * @return
 	 */
 	public Boolean updateGoods(TGoods Goods);
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchGoods(TGoods Goods);
+	public Integer getCount(TGoods goods);
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getGoodsList(PageUtil pageUtil ,TGoods Goods);
 	
 	/**
-	 * 查询数据字典对象
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TGoods seachGoods(Long id);
+	public TGoods getGoodsById(Long id);
 	
 	
 

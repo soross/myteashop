@@ -49,8 +49,6 @@ public class IcdAction extends DispatchAction {
 	public ActionForward toAddIcd(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.IcdServiceDao.searchParentIcd(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -75,14 +73,6 @@ public class IcdAction extends DispatchAction {
 		TIcd Icd = new TIcd();
 		BeanUtils.copyProperties(Icd, IcdForm);
 
-		List list = this.IcdServiceDao.searchIcd(Icd);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/Icd.do?task=toAddIcd';</script>");
-			return null;
-		}
 
 		Boolean bool = this.IcdServiceDao.addIcd(Icd);
 
@@ -123,14 +113,8 @@ public class IcdAction extends DispatchAction {
 			throws Exception {
 		IcdForm IcdForm = (IcdForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.IcdServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
-		List list = this.IcdServiceDao.searchParentIcd(pageUtil);
-		request.setAttribute("IcdList", list);
-
-		List sonList = this.IcdServiceDao.searchIcd(null);
-		request.setAttribute("IcdSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -186,11 +170,8 @@ public class IcdAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		IcdForm IcdForm = (IcdForm) form;
-		TIcd Icd = this.IcdServiceDao.seachIcd(new Long(IcdForm.getId()));
+		TIcd Icd = this.IcdServiceDao.getIcdById(new Long(IcdForm.getId()));
 		BeanUtils.copyProperties(IcdForm, Icd);
-
-		List list = this.IcdServiceDao.searchParentIcd(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -212,7 +193,7 @@ public class IcdAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		IcdForm IcdForm = (IcdForm) form;
-		TIcd Icd = this.IcdServiceDao.seachIcd(new Long(IcdForm.getId()));
+		TIcd Icd = this.IcdServiceDao.getIcdById(new Long(IcdForm.getId()));
 		BeanUtils.copyProperties(Icd, IcdForm);
 
 		Boolean bool = false;

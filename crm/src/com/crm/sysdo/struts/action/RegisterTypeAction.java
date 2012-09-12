@@ -49,8 +49,6 @@ public class RegisterTypeAction extends DispatchAction {
 	public ActionForward toAddRegisterType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.RegisterTypeServiceDao.searchParentRegisterType(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -74,15 +72,6 @@ public class RegisterTypeAction extends DispatchAction {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
 		TRegisterType RegisterType = new TRegisterType();
 		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
-
-		List list = this.RegisterTypeServiceDao.searchRegisterType(RegisterType);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/RegisterType.do?task=toAddRegisterType';</script>");
-			return null;
-		}
 
 		Boolean bool = this.RegisterTypeServiceDao.addRegisterType(RegisterType);
 
@@ -123,14 +112,8 @@ public class RegisterTypeAction extends DispatchAction {
 			throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.RegisterTypeServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
-		List list = this.RegisterTypeServiceDao.searchParentRegisterType(pageUtil);
-		request.setAttribute("RegisterTypeList", list);
-
-		List sonList = this.RegisterTypeServiceDao.searchRegisterType(null);
-		request.setAttribute("RegisterTypeSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -186,11 +169,8 @@ public class RegisterTypeAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
-		TRegisterType RegisterType = this.RegisterTypeServiceDao.seachRegisterType(new Long(RegisterTypeForm.getId()));
+		TRegisterType RegisterType = this.RegisterTypeServiceDao.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
 		BeanUtils.copyProperties(RegisterTypeForm, RegisterType);
-
-		List list = this.RegisterTypeServiceDao.searchParentRegisterType(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -212,7 +192,7 @@ public class RegisterTypeAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
-		TRegisterType RegisterType = this.RegisterTypeServiceDao.seachRegisterType(new Long(RegisterTypeForm.getId()));
+		TRegisterType RegisterType = this.RegisterTypeServiceDao.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
 		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
 
 		Boolean bool = false;

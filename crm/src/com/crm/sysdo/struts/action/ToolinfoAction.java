@@ -49,8 +49,6 @@ public class ToolinfoAction extends DispatchAction {
 	public ActionForward toAddToolinfo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.ToolinfoServiceDao.searchParentToolinfo(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -74,15 +72,6 @@ public class ToolinfoAction extends DispatchAction {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
 		TToolinfo Toolinfo = new TToolinfo();
 		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
-
-		List list = this.ToolinfoServiceDao.searchToolinfo(Toolinfo);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/Toolinfo.do?task=toAddToolinfo';</script>");
-			return null;
-		}
 
 		Boolean bool = this.ToolinfoServiceDao.addToolinfo(Toolinfo);
 
@@ -123,14 +112,9 @@ public class ToolinfoAction extends DispatchAction {
 			throws Exception {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.ToolinfoServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.ToolinfoServiceDao.searchParentToolinfo(pageUtil);
-		request.setAttribute("ToolinfoList", list);
-
-		List sonList = this.ToolinfoServiceDao.searchToolinfo(null);
-		request.setAttribute("ToolinfoSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -186,11 +170,9 @@ public class ToolinfoAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
-		TToolinfo Toolinfo = this.ToolinfoServiceDao.seachToolinfo(new Long(ToolinfoForm.getId()));
+		TToolinfo Toolinfo = this.ToolinfoServiceDao.getToolinfoById(new Long(ToolinfoForm.getId()));
 		BeanUtils.copyProperties(ToolinfoForm, Toolinfo);
 
-		List list = this.ToolinfoServiceDao.searchParentToolinfo(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -212,7 +194,7 @@ public class ToolinfoAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
-		TToolinfo Toolinfo = this.ToolinfoServiceDao.seachToolinfo(new Long(ToolinfoForm.getId()));
+		TToolinfo Toolinfo = this.ToolinfoServiceDao.getToolinfoById(new Long(ToolinfoForm.getId()));
 		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
 
 		Boolean bool = false;

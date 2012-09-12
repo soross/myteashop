@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.ToolinfoDao;
+import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.po.TToolinfo;
 /**
  * 数字字典操作Inf
@@ -23,28 +24,8 @@ import com.crm.sysdo.po.TToolinfo;
 public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao {
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "select count(*) from TData where pid=0";
-				Query query = session.createQuery(hql);
-				Integer count = (Integer)query.uniqueResult();
-				
-				return count;
-			}			
-		});
-		
-		return i;
-	}
-	
-	/**
-	 * 添加数据字典
-	 * @param data
+	 * 添加
+	 * @param Toolinfo
 	 * @return
 	 */
 	public Boolean addToolinfo(TToolinfo Toolinfo){
@@ -53,7 +34,7 @@ public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao 
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Toolinfo
 	 * @return
 	 */
@@ -61,23 +42,18 @@ public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao 
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TToolinfo where id=:id or pid=:pid";
-				
+				String hql = "delete TToolinfo where id=:id";
 				Query query = session.createQuery(hql);
 				query.setLong("id", Toolinfo.getId());
-				query.setLong("pid", Toolinfo.getId());				
-				
 				query.executeUpdate();
 				return null;
 			}
 		});
-		
-		
 		return true;
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Toolinfo
 	 * @return
 	 */
@@ -85,60 +61,29 @@ public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao 
 		this.getHibernateTemplate().update(Toolinfo);
 		return true;
 	}
-	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchToolinfo(Long id){
-		return null;
-	}
-	
-	/**
-	 * 查询数据字典对象
-	 * @param id
-	 * @return
-	 */
-	public TToolinfo seachToolinfo(Long id){
-		
-		TToolinfo Toolinfo = (TToolinfo)this.getHibernateTemplate().get(TToolinfo.class, id);		
-		return Toolinfo;
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonToolinfo(Long pid){
-		return this.getHibernateTemplate().find("from TToolinfo where pid=?", pid);
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentToolinfo(final PageUtil pageUtil){
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "from TToolinfo where pid=0";
-				Query query = session.createQuery(hql);
-				if(pageUtil!=null){
-					query.setMaxResults(pageUtil.getPagesize());
-					query.setFirstResult(pageUtil.pastart());
-				}
-				List list = (List)query.list();
-				
-				return list;
-			}
-		});		
-		return list;
-	}
+	public Integer getCount(TToolinfo Toolinfo){
+		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
-	public List searchToolinfo(final TToolinfo Toolinfo) {
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String hql = "select count(*) from TToolinfo where 1=1 ";
+				
+				Query query = session.createQuery(hql);
+				Integer count = (Integer)query.uniqueResult();				
+				return count;
+			}			
+		});
 		
+		return i;
+	}
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getToolinfoList(final PageUtil pageUtil,final TToolinfo Toolinfo){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
@@ -147,13 +92,16 @@ public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao 
 				if(null!=Toolinfo && null!=Toolinfo.getToolname() && !"".equals(Toolinfo.getToolname())){	
 					hql.append(" and name=:name");
 				}
+				
 				Query query = session.createQuery(hql.toString());
 				if(null!=Toolinfo && null!=Toolinfo.getToolname() && !"".equals(Toolinfo.getToolname())){	
 					query.setString("name", Toolinfo.getToolname());
 				}
+				query.setFirstResult(pageUtil.pastart());
+				query.setMaxResults(pageUtil.getPagesize());
+				
 				
 				List list = query.list();
-				
 				return list;
 			}			
 		});	
@@ -162,41 +110,14 @@ public class ToolinfoDaoImpl extends HibernateDaoSupport implements ToolinfoDao 
 	}
 	
 	/**
-	 * 根据Pid分页
-	 * @param pid
+	 * 查询对象
+	 * @param id
 	 * @return
 	 */
-	public List searchPageToolinfo(final Long pid){
+	public TToolinfo getToolinfoById(Long id){
 		
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hqlCount = "select count(*) from TToolinfo where id=:idCount or pid=:pidCount";
-				
-				String hql ="from TToolinfo where id =:id or pid =:pid";
-				
-				Query queryCount = session.createQuery(hqlCount);				
-				queryCount.setLong("idCount", pid);
-				queryCount.setLong("pidCount", pid);
-				
-				int i = (Integer)queryCount.uniqueResult();
-				
-				Query query = session.createQuery(hql);
-				query.setLong("id", pid);
-				query.setLong("pid", pid);
-				
-				query.setFirstResult(0);
-				query.setMaxResults(i);
-				
-				List list = query.list();
-				
-				return list;
-			}			
-		});	
-		
-		return list;
+		TToolinfo Toolinfo = (TToolinfo)this.getHibernateTemplate().get(TToolinfo.class, id);		
+		return Toolinfo;
 	}
-	
 
 }

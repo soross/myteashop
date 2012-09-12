@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.GoodsTypeDao;
+import com.crm.sysdo.po.TGoods;
 import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.service.inf.GoodsTypeServiceDao;
 
@@ -21,16 +22,8 @@ public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 	private GoodsTypeDao GoodsTypeDao;
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return GoodsTypeDao.getCount();
-	}
-
-	/**
-	 * 添加数据字典
-	 * @param GoodsType
+	 * 添加
+	 * @param Goods
 	 * @return
 	 */
 	public Boolean addGoodsType(TGoodsType GoodsType){		
@@ -38,7 +31,7 @@ public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param GoodsType
 	 * @return
 	 */
@@ -47,7 +40,7 @@ public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param GoodsType
 	 * @return
 	 */
@@ -56,57 +49,37 @@ public class GoodsTypeServiceDaoImpl implements GoodsTypeServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchGoodsType(TGoodsType GoodsType){
-		
-		return GoodsTypeDao.searchGoodsType(GoodsType);
+	public Integer getCount(TGoodsType GoodsType){
+		return GoodsTypeDao.getCount(GoodsType);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 取得列表
+	 * @return
+	 */
+	public List getGoodsTypeList(PageUtil pageUtil,TGoodsType GoodsType){
+		
+		return GoodsTypeDao.getGoodsTypeList(pageUtil,GoodsType);
+	}
+	
+	/**
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TGoodsType seachGoodsType(Long id){
-		return GoodsTypeDao.seachGoodsType(id);
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonGoodsType(Long pid){
-		return null;
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentGoodsType(PageUtil pageUtil){
-		
-		return GoodsTypeDao.searchParentGoodsType(pageUtil);
+	public TGoodsType getGoodsTypeById(Long id){
+		return GoodsTypeDao.getGoodsTypeById(id);
 	}
 
 	public GoodsTypeDao getGoodsTypeDao() {
 		return GoodsTypeDao;
 	}
 
-	public void setGoodsTypeDao(GoodsTypeDao GoodsTypeDao) {
+	public void setGoodsTypeTypeDao(GoodsTypeDao GoodsTypeDao) {
 		this.GoodsTypeDao = GoodsTypeDao;
 	}
 	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageGoodsType(Long pid){
-		return this.GoodsTypeDao.searchPageGoodsType(pid);
-	}
-
 }

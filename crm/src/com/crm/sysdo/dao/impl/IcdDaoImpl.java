@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.IcdDao;
+import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.po.TIcd;
 /**
  * 数字字典操作Inf
@@ -23,27 +24,7 @@ import com.crm.sysdo.po.TIcd;
 public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "select count(*) from TIcd where pid=0";
-				Query query = session.createQuery(hql);
-				Integer count = (Integer)query.uniqueResult();
-				
-				return count;
-			}			
-		});
-		
-		return i;
-	}
-	
-	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param Icd
 	 * @return
 	 */
@@ -53,7 +34,7 @@ public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Icd
 	 * @return
 	 */
@@ -61,23 +42,18 @@ public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TIcd where id=:id or pid=:pid";
-				
+				String hql = "delete TIcd where id=:id";
 				Query query = session.createQuery(hql);
 				query.setLong("id", Icd.getId());
-				query.setLong("pid", Icd.getId());				
-				
 				query.executeUpdate();
 				return null;
 			}
 		});
-		
-		
 		return true;
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Icd
 	 * @return
 	 */
@@ -85,60 +61,29 @@ public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 		this.getHibernateTemplate().update(Icd);
 		return true;
 	}
-	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchIcd(Long id){
-		return null;
-	}
-	
-	/**
-	 * 查询数据字典对象
-	 * @param id
-	 * @return
-	 */
-	public TIcd seachIcd(Long id){
-		
-		TIcd Icd = (TIcd)this.getHibernateTemplate().get(TIcd.class, id);		
-		return Icd;
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonIcd(Long pid){
-		return this.getHibernateTemplate().find("from TIcd where pid=?", pid);
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentIcd(final PageUtil pageUtil){
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "from TIcd where pid=0";
-				Query query = session.createQuery(hql);
-				if(pageUtil!=null){
-					query.setMaxResults(pageUtil.getPagesize());
-					query.setFirstResult(pageUtil.pastart());
-				}
-				List list = (List)query.list();
-				
-				return list;
-			}
-		});		
-		return list;
-	}
+	public Integer getCount(TIcd Icd){
+		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
-	public List searchIcd(final TIcd Icd) {
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String hql = "select count(*) from TIcd where 1=1 ";
+				
+				Query query = session.createQuery(hql);
+				Integer count = (Integer)query.uniqueResult();				
+				return count;
+			}			
+		});
 		
+		return i;
+	}
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getIcdList(final PageUtil pageUtil,final TIcd Icd){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
@@ -147,13 +92,16 @@ public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 				if(null!=Icd && null!=Icd.getIcdname() && !"".equals(Icd.getIcdname())){	
 					hql.append(" and name=:name");
 				}
+				
 				Query query = session.createQuery(hql.toString());
 				if(null!=Icd && null!=Icd.getIcdname() && !"".equals(Icd.getIcdname())){	
 					query.setString("name", Icd.getIcdname());
 				}
+				query.setFirstResult(pageUtil.pastart());
+				query.setMaxResults(pageUtil.getPagesize());
+				
 				
 				List list = query.list();
-				
 				return list;
 			}			
 		});	
@@ -162,40 +110,14 @@ public class IcdDaoImpl extends HibernateDaoSupport implements IcdDao {
 	}
 	
 	/**
-	 * 根据Pid分页
-	 * @param pid
+	 * 查询对象
+	 * @param id
 	 * @return
 	 */
-	public List searchPageIcd(final Long pid){
+	public TIcd getIcdById(Long id){
 		
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hqlCount = "select count(*) from TIcd where id=:idCount or pid=:pidCount";
-				
-				String hql ="from TIcd where id =:id or pid =:pid";
-				
-				Query queryCount = session.createQuery(hqlCount);				
-				queryCount.setLong("idCount", pid);
-				queryCount.setLong("pidCount", pid);
-				
-				int i = (Integer)queryCount.uniqueResult();
-				
-				Query query = session.createQuery(hql);
-				query.setLong("id", pid);
-				query.setLong("pid", pid);
-				
-				query.setFirstResult(0);
-				query.setMaxResults(i);
-				
-				List list = query.list();
-				
-				return list;
-			}			
-		});	
-		
-		return list;
+		TIcd Icd = (TIcd)this.getHibernateTemplate().get(TIcd.class, id);		
+		return Icd;
 	}
 	
 

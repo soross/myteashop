@@ -24,28 +24,10 @@ import com.crm.sysdo.po.TGoods;
  */
 public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	
-	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
-
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "select count(*) from TGoods where pid=0";
-				Query query = session.createQuery(hql);
-				Integer count = (Integer)query.uniqueResult();
-				
-				return count;
-			}			
-		});
-		
-		return i;
-	}
+	
 	
 	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param Goods
 	 * @return
 	 */
@@ -55,7 +37,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Goods
 	 * @return
 	 */
@@ -63,23 +45,18 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TGoods where id=:id or pid=:pid";
-				
+				String hql = "delete TGoods where id=:id";
 				Query query = session.createQuery(hql);
 				query.setLong("id", Goods.getId());
-				query.setLong("pid", Goods.getId());				
-				
 				query.executeUpdate();
 				return null;
 			}
 		});
-		
-		
 		return true;
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Goods
 	 * @return
 	 */
@@ -87,60 +64,29 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 		this.getHibernateTemplate().update(Goods);
 		return true;
 	}
-	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchGoods(Long id){
-		return null;
-	}
-	
-	/**
-	 * 查询数据字典对象
-	 * @param id
-	 * @return
-	 */
-	public TGoods seachGoods(Long id){
-		
-		TGoods Goods = (TGoods)this.getHibernateTemplate().get(TGoods.class, id);		
-		return Goods;
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonGoods(Long pid){
-		return this.getHibernateTemplate().find("from TGoods where pid=?", pid);
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentGoods(final PageUtil pageUtil){
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "from TGoods where pid=0";
-				Query query = session.createQuery(hql);
-				if(pageUtil!=null){
-					query.setMaxResults(pageUtil.getPagesize());
-					query.setFirstResult(pageUtil.pastart());
-				}
-				List list = (List)query.list();
-				
-				return list;
-			}
-		});		
-		return list;
-	}
+	public Integer getCount(TGoods goods){
+		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
-	public List searchGoods(final TGoods Goods) {
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String hql = "select count(*) from TGoods where 1=1 ";
+				
+				Query query = session.createQuery(hql);
+				Integer count = (Integer)query.uniqueResult();				
+				return count;
+			}			
+		});
 		
+		return i;
+	}
+	/**
+	 * 取得列表
+	 * @return
+	 */
+	public List getGoodsList(final PageUtil pageUtil,final TGoods Goods){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
@@ -149,13 +95,16 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
 					hql.append(" and name=:name");
 				}
+				
 				Query query = session.createQuery(hql.toString());
 				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
 					query.setString("name", Goods.getGoodsname());
 				}
+				query.setFirstResult(pageUtil.pastart());
+				query.setMaxResults(pageUtil.getPagesize());
+				
 				
 				List list = query.list();
-				
 				return list;
 			}			
 		});	
@@ -163,6 +112,14 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 		return list;
 	}
 	
-	
-
+	/**
+	 * 查询对象
+	 * @param id
+	 * @return
+	 */
+	public TGoods getGoodsById(Long id){
+		
+		TGoods Goods = (TGoods)this.getHibernateTemplate().get(TGoods.class, id);		
+		return Goods;
+	}
 }

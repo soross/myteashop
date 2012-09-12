@@ -23,16 +23,10 @@ public class GoodsServiceDaoImpl implements GoodsServiceDao {
 	
 	private GoodsDao GoodsDao;
 	
-	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return GoodsDao.getCount();
-	}
+	
 
 	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param Goods
 	 * @return
 	 */
@@ -41,7 +35,7 @@ public class GoodsServiceDaoImpl implements GoodsServiceDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param Goods
 	 * @return
 	 */
@@ -50,7 +44,7 @@ public class GoodsServiceDaoImpl implements GoodsServiceDao {
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param Goods
 	 * @return
 	 */
@@ -59,21 +53,29 @@ public class GoodsServiceDaoImpl implements GoodsServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchGoods(TGoods Goods){
-		
-		return GoodsDao.searchGoods(Goods);
+	public Integer getCount(TGoods Goods){
+		return GoodsDao.getCount(Goods);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 取得列表
+	 * @return
+	 */
+	public List getGoodsList(PageUtil pageUtil,TGoods Goods){
+		
+		return GoodsDao.getGoodsList(pageUtil,Goods);
+	}
+	
+	/**
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TGoods seachGoods(Long id){
-		return GoodsDao.seachGoods(id);
+	public TGoods getGoodsById(Long id){
+		return GoodsDao.getGoodsById(id);
 	}
 	
 

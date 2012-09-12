@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.RegisterTypeDao;
+import com.crm.sysdo.po.TGoodsType;
 import com.crm.sysdo.po.TRegisterType;
 import com.crm.sysdo.service.inf.RegisterTypeServiceDao;
 
@@ -21,16 +22,8 @@ public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 	private RegisterTypeDao RegisterTypeDao;
 	
 	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return RegisterTypeDao.getCount();
-	}
-
-	/**
-	 * 添加数据字典
-	 * @param RegisterType
+	 * 添加
+	 * @param Goods
 	 * @return
 	 */
 	public Boolean addRegisterType(TRegisterType RegisterType){		
@@ -38,7 +31,7 @@ public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 	}
 	
 	/**
-	 * 删除数据字典
+	 * 删除
 	 * @param RegisterType
 	 * @return
 	 */
@@ -47,7 +40,7 @@ public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 	}
 	
 	/**
-	 * 更新数据字典
+	 * 更新
 	 * @param RegisterType
 	 * @return
 	 */
@@ -56,40 +49,29 @@ public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchRegisterType(TRegisterType RegisterType){
-		
-		return RegisterTypeDao.searchRegisterType(RegisterType);
+	public Integer getCount(TRegisterType RegisterType){
+		return RegisterTypeDao.getCount(RegisterType);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 取得列表
+	 * @return
+	 */
+	public List getRegisterTypeList(PageUtil pageUtil,TRegisterType RegisterType){
+		
+		return RegisterTypeDao.getRegisterTypeList(pageUtil,RegisterType);
+	}
+	
+	/**
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
-	public TRegisterType seachRegisterType(Long id){
-		return RegisterTypeDao.seachRegisterType(id);
-	}
-	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonRegisterType(Long pid){
-		return null;
-	}
-	
-	/**
-	 * 根据小类查询父类对象
-	 * 
-	 * @return
-	 */
-	public List searchParentRegisterType(PageUtil pageUtil){
-		
-		return RegisterTypeDao.searchParentRegisterType(pageUtil);
+	public TRegisterType getRegisterTypeById(Long id){
+		return RegisterTypeDao.getRegisterTypeById(id);
 	}
 
 	public RegisterTypeDao getRegisterTypeDao() {
@@ -100,13 +82,6 @@ public class RegisterTypeServiceDaoImpl implements RegisterTypeServiceDao {
 		this.RegisterTypeDao = RegisterTypeDao;
 	}
 	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageRegisterType(Long pid){
-		return this.RegisterTypeDao.searchPageRegisterType(pid);
-	}
+	
 
 }

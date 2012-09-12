@@ -49,8 +49,6 @@ public class ManufacturerAction extends DispatchAction {
 	public ActionForward toAddManu(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.ManuServiceDao.searchManufacturer(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -75,14 +73,6 @@ public class ManufacturerAction extends DispatchAction {
 		TManufacturer Manu = new TManufacturer();
 		BeanUtils.copyProperties(Manu, ManuForm);
 
-		List list = this.ManuServiceDao.searchManufacturer(Manu);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/Manu.do?task=toAddManu';</script>");
-			return null;
-		}
 
 		Boolean bool = this.ManuServiceDao.addManufacturer(Manu);
 
@@ -123,13 +113,9 @@ public class ManufacturerAction extends DispatchAction {
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.ManuServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		
-
-		List sonList = this.ManuServiceDao.searchManufacturer(null);
-		request.setAttribute("ManuSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -185,7 +171,7 @@ public class ManufacturerAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
-		TManufacturer Manu = this.ManuServiceDao.seachManufacturer(new Long(ManuForm.getId()));
+		TManufacturer Manu = this.ManuServiceDao.getManufacturerById(new Long(ManuForm.getId()));
 		BeanUtils.copyProperties(ManuForm, Manu);
 
 		// 32 角色
@@ -208,7 +194,7 @@ public class ManufacturerAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
-		TManufacturer Manu = this.ManuServiceDao.seachManufacturer(new Long(ManuForm.getId()));
+		TManufacturer Manu = this.ManuServiceDao.getManufacturerById(new Long(ManuForm.getId()));
 		BeanUtils.copyProperties(Manu, ManuForm);
 
 		Boolean bool = false;

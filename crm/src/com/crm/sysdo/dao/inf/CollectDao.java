@@ -20,7 +20,7 @@ public interface CollectDao {
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount();
+	public Integer getCount(TCollect collect);
 	/**
 	 * 添加数据字典
 	 * @param data
@@ -55,24 +55,5 @@ public interface CollectDao {
 	 */
 	public TCollect seachCollect(Long id);
 	
-	/**
-	 * 根据父类ID查询小类
-	 * @param pid
-	 * @return
-	 */
-	public List searchSonCollect(Long pid);
-	
-	/**
-	 * 根据小类查询父类对象
-	 * @param id
-	 * @return
-	 */
-	public List searchParentCollect(PageUtil pageUtil);
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageCollect(Long pid);
+	public List getCollectList(final PageUtil pageUtil,final TCollect collect);
 }

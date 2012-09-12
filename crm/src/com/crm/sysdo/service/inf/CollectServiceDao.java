@@ -6,6 +6,7 @@ import java.util.List;
 import com.crm.page.PageUtil;
 import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TSickbed;
 
 /**
  * 数字字典操作Service
@@ -21,7 +22,7 @@ public interface CollectServiceDao {
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount();
+	public Integer getCount(TCollect collect);
 	/**
 	 * 添加数据字典
 	 * @param data
@@ -55,6 +56,8 @@ public interface CollectServiceDao {
 	 * @return
 	 */
 	public TCollect seachCollect(Long id);
+	
+	public List getCollectList(final PageUtil pageUtil,final TCollect collect);
 	
 	
 

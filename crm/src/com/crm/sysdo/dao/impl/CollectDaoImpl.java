@@ -28,12 +28,16 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount(){
+	public Integer getCount(final TCollect collect){
 		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
-				String hql = "select count(*) from TCollect where pid=0";
+				String hql = "select count(*) from TCollect where 1=1";
+				
+				if(null!=collect.getCollectname() && !"".equalsIgnoreCase(collect.getCollectname())){
+					hql=hql+ " and collectname like '%"+collect.getCollectname()+"%'";
+				}
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();
 				
@@ -162,43 +166,25 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 		
 		return list;
 	}
-	
-	/**
-	 * 根据Pid分页
-	 * @param pid
-	 * @return
-	 */
-	public List searchPageCollect(final Long pid){
-		
-		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
+	public List getCollectList(final PageUtil pageUtil,final  TCollect collect) {
+		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hqlCount = "select count(*) from TCollect where id=:idCount or pid=:pidCount";
-				
-				String hql ="from TCollect where id =:id or pid =:pid";
-				
-				Query queryCount = session.createQuery(hqlCount);				
-				queryCount.setLong("idCount", pid);
-				queryCount.setLong("pidCount", pid);
-				
-				int i = (Integer)queryCount.uniqueResult();
-				
-				Query query = session.createQuery(hql);
-				query.setLong("id", pid);
-				query.setLong("pid", pid);
-				
-				query.setFirstResult(0);
-				query.setMaxResults(i);
-				
-				List list = query.list();
-				
-				return list;
+				String hql = "from TSickbed where 1=1 ";
+				if(null!=collect.getCollectname() && !"".equalsIgnoreCase(collect.getCollectname())){
+					hql=hql+ " and collectname like '%"+collect.getCollectname()+"%'";
+				}
+				Query query =session.createQuery(hql);
+				query.setFirstResult(pageUtil.pastart());
+				query.setMaxResults(pageUtil.getPagesize());
+				return query.list();
 			}			
-		});	
+		});
 		
-		return list;
+		
 	}
+	
+	
 	
 
 }

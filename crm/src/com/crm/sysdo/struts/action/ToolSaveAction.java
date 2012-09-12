@@ -49,8 +49,6 @@ public class ToolSaveAction extends DispatchAction {
 	public ActionForward toAddToolSave(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		List list = (List) this.ToolSaveServiceDao.searchParentToolSave(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -75,14 +73,6 @@ public class ToolSaveAction extends DispatchAction {
 		TToolSave ToolSave = new TToolSave();
 		BeanUtils.copyProperties(ToolSave, ToolSaveForm);
 
-		List list = this.ToolSaveServiceDao.searchToolSave(ToolSave);
-		if (list.size() > 0) {
-			response.getWriter().print(
-					"<script> alert('数字字典的名称已经存在！请重新输入！！');location.href='"
-							+ request.getContextPath()
-							+ "/admin/ToolSave.do?task=toAddToolSave';</script>");
-			return null;
-		}
 
 		Boolean bool = this.ToolSaveServiceDao.addToolSave(ToolSave);
 
@@ -123,14 +113,9 @@ public class ToolSaveAction extends DispatchAction {
 			throws Exception {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
 		PageUtil pageUtil = new PageUtil(request, this.ToolSaveServiceDao
-				.getCount(), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
-		List list = this.ToolSaveServiceDao.searchParentToolSave(pageUtil);
-		request.setAttribute("ToolSaveList", list);
-
-		List sonList = this.ToolSaveServiceDao.searchToolSave(null);
-		request.setAttribute("ToolSaveSonList", sonList);
 
 		// 32 角色
 		List sl = perDao.getSonPerList("33");
@@ -186,11 +171,9 @@ public class ToolSaveAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
-		TToolSave ToolSave = this.ToolSaveServiceDao.seachToolSave(new Long(ToolSaveForm.getId()));
+		TToolSave ToolSave = this.ToolSaveServiceDao.getToolSaveById(new Long(ToolSaveForm.getId()));
 		BeanUtils.copyProperties(ToolSaveForm, ToolSave);
 
-		List list = this.ToolSaveServiceDao.searchParentToolSave(null);
-		request.setAttribute("pidList", list);
 
 		// 32 角色
 		List sonList = perDao.getSonPerList("33");
@@ -212,7 +195,7 @@ public class ToolSaveAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
-		TToolSave ToolSave = this.ToolSaveServiceDao.seachToolSave(new Long(ToolSaveForm.getId()));
+		TToolSave ToolSave = this.ToolSaveServiceDao.getToolSaveById(new Long(ToolSaveForm.getId()));
 		BeanUtils.copyProperties(ToolSave, ToolSaveForm);
 
 		Boolean bool = false;

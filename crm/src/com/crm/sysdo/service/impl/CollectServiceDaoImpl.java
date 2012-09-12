@@ -8,6 +8,7 @@ import com.crm.sysdo.dao.inf.CollectDao;
 import com.crm.sysdo.dao.inf.DataDao;
 import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
+import com.crm.sysdo.po.TSickbed;
 import com.crm.sysdo.service.inf.CollectServiceDao;
 import com.crm.sysdo.service.inf.DataServiceDao;
 
@@ -23,16 +24,9 @@ public class CollectServiceDaoImpl implements CollectServiceDao {
 	
 	private CollectDao collectDao;
 	
-	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(){
-		return collectDao.getCount();
-	}
 
 	/**
-	 * 添加数据字典
+	 * 添加
 	 * @param collect
 	 * @return
 	 */
@@ -59,16 +53,19 @@ public class CollectServiceDaoImpl implements CollectServiceDao {
 	}
 	
 	/**
-	 * 取得数据字典列表
+	 * 取得总记录数
 	 * @return
 	 */
-	public List searchCollect(TCollect collect){
-		
-		return collectDao.searchCollect(collect);
+	public Integer getCount(TCollect collect){
+		return collectDao.getCount(collect);
+	} 
+	
+	public List getCollectList(final PageUtil pageUtil,final TCollect collect){
+		return this.collectDao.getCollectList(pageUtil,collect);
 	}
 	
 	/**
-	 * 查询数据字典对象
+	 * 查询对象
 	 * @param id
 	 * @return
 	 */
@@ -83,6 +80,11 @@ public class CollectServiceDaoImpl implements CollectServiceDao {
 
 	public void setCollectDao(CollectDao collectDao) {
 		this.collectDao = collectDao;
+	}
+
+	public List searchCollect(TCollect Collect) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

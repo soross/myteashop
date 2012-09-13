@@ -12,6 +12,11 @@ public class TCollect implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String collectname;
 	private String code;

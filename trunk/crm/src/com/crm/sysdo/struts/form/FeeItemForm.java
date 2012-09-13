@@ -2,34 +2,44 @@ package com.crm.sysdo.struts.form;
 
 
 
+import java.util.Date;
+
 import org.apache.struts.action.ActionForm;
 
 public class FeeItemForm extends ActionForm{
 	
-	private Long id;
-	private String feeItemName;
-	private Double feeItemPrice;
+	private String id;
+	private String feeitemname;
 	private String remark;
 	private String createDate;
-	private String createStaff;
-	public Long getId() {
+	private String code;
+	private String pinyin;
+	private String wubi;
+	private String spec;
+	private String unit;
+	private String pricemz;
+	private String pricezy;
+	private String collectid;
+	private String obj;
+	private String deptid;
+	private String printnamemz;
+	private String state;
+	private String printnamezy;
+	private String ybtype;
+	private String ybcode;
+	private String ybname;
+	private String nbtype;
+	private String nbcode;
+	private String nbname;
+	private String payself;
+
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFeeItemName() {
-		return feeItemName;
-	}
-	public void setFeeItemName(String feeItemName) {
-		this.feeItemName = feeItemName;
-	}
-	public Double getFeeItemPrice() {
-		return feeItemPrice;
-	}
-	public void setFeeItemPrice(Double feeItemPrice) {
-		this.feeItemPrice = feeItemPrice;
-	}
+	
 	public String getRemark() {
 		return remark;
 	}
@@ -42,11 +52,4 @@ public class FeeItemForm extends ActionForm{
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public String getCreateStaff() {
-		return createStaff;
-	}
-	public void setCreateStaff(String createStaff) {
-		this.createStaff = createStaff;
-	}
-
 }

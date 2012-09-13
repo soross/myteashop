@@ -14,6 +14,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.po.TSickbed;
 import com.crm.sysdo.service.inf.DeptServiceDao;
@@ -54,7 +55,7 @@ public class SickbedAction extends DispatchAction {
 		request.setAttribute("deptList", deptList);
 
 		// 81
-		List sonList = perDao.getSonPerList("81");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_SICKBED);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/sickbed/sickbedlist.jsp");
@@ -76,7 +77,7 @@ public class SickbedAction extends DispatchAction {
 		request.setAttribute("deptList", deptList);
 
 		// 81
-		List sonList = perDao.getSonPerList("81");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_SICKBED);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/sickbed/addsickbed.jsp");
@@ -149,7 +150,7 @@ public class SickbedAction extends DispatchAction {
 		request.setAttribute("deptList", deptList);
 
 		// 81
-		List sonList = perDao.getSonPerList("81");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_SICKBED);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/sickbed/updatesickbed.jsp");

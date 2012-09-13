@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>器具房库选项：</b>
+				<b>器具资料选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -101,7 +101,7 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				器具房库查询
+				器具资料查询
 			</th>
 		</tr>
 		<tr>
@@ -118,10 +118,10 @@
 	</table>
 	</html:form>
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
-		cellspacing="1" class="tableBorderList">
+		cellspacing="1" class="tableBorderList" style="OVERFLOW-y:scroll;">
 		<tr>
-			<th colspan=23 height=25>
-				器具房库列表
+			<th colspan=34 height=25>
+				器具资料列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -193,66 +193,146 @@
 				医保类型
 			</td>
 			<td>
-				生产厂家
+				医保编码
 			</td>
 			<td>
-				生产厂家
+				医保名称
+			</td>
+			<td>
+				农保类型
+			</td>
+			<td>
+				农保编码
+			</td>
+			<td>
+				农保名称
+			</td>
+			<td>
+				自付比率
+			</td>
+			<td>
+				最近成本
+			</td>
+			<td>
+				零售单价
+			</td>
+			<td>
+				最高限价
+			</td>
+			<td>
+				批准文号
+			</td>
+			<td>
+				备注
 			</td>
 			<td width="100px">
 				操作
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
+		 <logic:present name="toolinfoList">
+          	<logic:iterate id="toolinfo" name="toolinfoList">          	 
 				<tr align="center" style="cursor: hand;">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
+						<input type="checkbox" name="phones" value="${toolinfo.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${sickbed.id}
+						${toolinfo.id}
 					</td>
 					<td>
-						${sickbed.code}
+						${toolinfo.toolname}
 					</td>
 					<td>
-						${sickbed.sickbed}
+						${toolinfo.pinyin}
 					</td>
 					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
-					</td>	
-					<td>
-						${sickbed.showindex}
+						${toolinfo.wubi}
 					</td>
 					<td>
-						${sickbed.area}
-					</td>	
-					<td>
-						${sickbed.leveltype}
+						${toolinfo.code}
 					</td>
 					<td>
-						${sickbed.price}
+						${toolinfo.aliasname}
 					</td>
 					<td>
-						${sickbed.pinyin}
+						${toolinfo.aliaspinyin}
+					</td>
+					<td>
+						${toolinfo.aliaswubi}
 					</td>	
 					<td>
-						${sickbed.wubi}
+						<logic:equal value="1" name="toolinfo" property="state">可用</logic:equal>
+						<logic:equal value="0" name="toolinfo" property="state">不可用</logic:equal>
+					</td>
+					<td>
+						${toolinfo.obj}
+					</td>
+					<td>
+						${toolinfo.spec}
 					</td>	
 					<td>
-						${sickbed.hospno}
+						${toolinfo.weight}
 					</td>	
 					<td>
-						${sickbed.remark}
+						${toolinfo.helpunit}
 					</td>	
 					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
+						${toolinfo.saleunit}
+					</td>
+					<td>
+						${toolinfo.conver}
+					</td>
+					<td>
+						${toolinfo.material}
+					</td>
+					<td>
+						${toolinfo.prodadd}
+					</td>
+					<td>
+						${toolinfo.savemax}
+					</td>
+					<td>
+						${toolinfo.savemin}
+					</td>
+					<td>
+						${toolinfo.prodbussion}
+					</td>
+					<td>
+						${toolinfo.ybtype}
+					</td>
+					<td>
+						${toolinfo.ybcode}
+					</td>
+					<td>
+						${toolinfo.ybname}
+					</td>
+					<td>
+						${toolinfo.nbtype}
+					</td>
+					<td>
+						${toolinfo.nbcode}
+					</td>
+					<td>
+						${toolinfo.nbname}
+					</td>
+					<td>
+						${toolinfo.payself}
+					</td>
+					<td>
+						${toolinfo.mincost}
+					</td>
+					<td>
+						${toolinfo.salecost}
+					</td>
+					<td>
+						${toolinfo.maxcost}
+					</td>
+					<td>
+						${toolinfo.refcode}
+					</td>
+					<td>
+						${toolinfo.remark}
 					</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
@@ -262,7 +342,7 @@
 	          </logic:iterate>
           </logic:present>
 		<tr>
-			<td  align="left" colspan="7" height=25>
+			<td  align="left" colspan="1" height=25>
 				<!-- 
 				&nbsp;<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
@@ -270,7 +350,7 @@
 					onclick="outAllToExcel('exportAllClient')"></html:button> -->
 				&nbsp;
 			</td>
-			<td align="center" colspan="16" height=25>
+			<td align="center" colspan="33" height=25>
 				<page:page name="pageUtil" />
 			</td>
 		</tr>

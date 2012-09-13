@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床选项：</b>
+				<b>器具资料选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -35,104 +35,219 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed" method="post">
+	<html:form action="/admin/toolinfo" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
-				<th colspan=5 height=25>
-					添加病床
+				<th colspan=6 height=25>
+					添加器具资料
 				</th>
 			</tr>
 			<tr>
-				<td align="right" width="30%">
-					病床名称：
+				<td align="right" width="15%">
+					器具名称：
 				</td>
-				<td colspan="3">
-					<html:text property="sickbed"  size="20"  styleId="txt"></html:text>
+				<td colspan="1">
+					<html:text property="toolname"  size="20"  styleId="txt"></html:text>
 				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					病床编码：
-				</td>
-				<td colspan="3">
-					<html:text property="code"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属科室:
-				</td>
-				<td colspan="3">
-					<html:select property="deptid">
-						<html:option value="">==请选择==</html:option>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<html:option value="${dept.id}">${dept.deptName}</html:option>
-	      					</logic:iterate>
-   						</logic:present>
-					</html:select>
-					
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					显示顺序:
-				</td>
-				<td colspan="3">
-					<html:text property="showindex"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属病区:
-				</td>
-				<td colspan="3">
-					<html:text property="area"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					床位级别:
-				</td>
-				<td colspan="3">
-					<html:text property="leveltype"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					标准金额:
-				</td>
-				<td colspan="3">
-					<html:text property="price"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
+				<td align="right" width="15%">
 					拼音简码：
 				</td>
-				<td colspan="3">
+				<td colspan="1">
 					<html:text property="pinyin"  size="20"  styleId="txt" readonly="true"></html:text>
 				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
+				<td align="right" width="15%">
 					五笔简码：
 				</td>
-				<td colspan="3">
+				<td colspan="1">
 					<html:text property="wubi"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
-				<td align="right" width="30%">
-					当前住院号：
+				<td align="right">
+					别名:
 				</td>
-				<td colspan="3">
-					<html:text property="hospno"  size="20"  styleId="txt"></html:text>
+				<td colspan="1">
+					<html:text property="aliasname"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					 别名拼音简码：
+				</td>
+				<td colspan="1">
+					<html:text property="aliaspinyin"  size="20"  styleId="txt" readonly="true"></html:text>
+				</td>
+				<td align="right" >
+					别名五笔简码：
+				</td>
+				<td colspan="1">
+					<html:text property="aliaswubi"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
+				<td align="right" >
+					器具编码：
+				</td>
+				<td colspan="1">
+					<html:text property="code"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right">
+					状态:
+				</td>
+				<td colspan="1">
+					<html:radio property="state" value="0"></html:radio>不可用
+					<html:radio property="state" value="1"></html:radio>可用
+				</td>
+				<td align="right">
+					适用对象:
+				</td>
+				<td colspan="1">
+					<html:text property="obj"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					规格:
+				</td>
+				<td colspan="1">
+					<html:text property="spec"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right">
+					重量:
+				</td>
+				<td colspan="1">
+					<html:text property="weight"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right">
+					换算关系:
+				</td>
+				<td colspan="1">
+					<html:text property="conver"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					协助单位:
+				</td>
+				<td colspan="1">
+					<html:text property="helpunit"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right">
+					零售单位:
+				</td>
+				<td colspan="1">
+					<html:text property="helpunit"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right">
+					材料:
+				</td>
+				<td colspan="1">
+					<html:text property="material"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					产地:
+				</td>
+				<td colspan="1">
+					<html:text property="prodadd"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					最大库存：
+				</td>
+				<td colspan="1">
+					<html:text property="savemax"  size="20"  styleId="txt" ></html:text>
+				</td>
+				<td align="right" >
+					最小库存：
+				</td>
+				<td colspan="1">
+					<html:text property="savemin"  size="20"  styleId="txt" ></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >
+					生产厂商：
+				</td>
+				<td colspan="5">
+					<html:text property="prodbussion"  size="40"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >
+					医保类型：
+				</td>
+				<td colspan="1">
+					<html:text property="ybtype"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					医保编码：
+				</td>
+				<td colspan="1">
+					<html:text property="ybcode"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					医保名称：
+				</td>
+				<td colspan="1">
+					<html:text property="ybname"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >
+					农保类型：
+				</td>
+				<td colspan="1">
+					<html:text property="nbtype"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					农保编码：
+				</td>
+				<td colspan="1">
+					<html:text property="nbcode"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					农保名称：
+				</td>
+				<td colspan="1">
+					<html:text property="nbname"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >
+					自付比率：
+				</td>
+				<td colspan="5">
+					<html:text property="payself"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" >
+					最近成本：
+				</td>
+				<td colspan="1">
+					<html:text property="mincost"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					零售单价：
+				</td>
+				<td colspan="1">
+					<html:text property="salecost"  size="20"  styleId="txt"></html:text>
+				</td>
+				<td align="right" >
+					最高限价：
+				</td>
+				<td colspan="1">
+					<html:text property="maxcost"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					批准问号:
+				</td>
+				<td colspan="1">
+					<html:text property="refcode"  size="20"  styleId="txt"></html:text>
+				</td>
 				<td align="right">
 					备注:
 				</td>
@@ -141,18 +256,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right">
-					有效状态:
-				</td>
-				<td colspan="3">
-					<html:radio property="state" value="0"></html:radio>不可用
-					<html:radio property="state" value="1"></html:radio>可用
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addSickbed">
-					<input type="hidden" value="402" name="modfunid">
+				<td colspan="6" align="right" class="tdpage">
+					<input type="hidden" name="task" value="addToolinfo">
+					<input type="hidden" value="442" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 保 存 " class="inputs" />
 				</td>

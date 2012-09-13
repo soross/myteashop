@@ -53,34 +53,38 @@ values (424, '删除挂号类别', '/admin/regType.do?task=deleteRegtype&modfunid=423'
 delete from t_power where id='89';
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (89, '器具房库', '/admin/toolinfo.do?task=toolinfoList&modfunid=89', 77, 12);
+values (89, '器具房库', '/admin/toolsave.do?task=toolSaveList&modfunid=89', 77, 12);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (441, '器具列表', '/admin/toolinfo.do?task=toolinfoList&modfunid=441', 89, 1);
+values (451, '器具档案列表', '/admin/toolsave.do?task=toolSaveList&modfunid=90', 89, 1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (442, '新增器具', '/admin/toolinfo.do?task=toAddToolinfo&modfunid=442', 89, 2);
+values (452, '新增器具档案', '/admin/toolsave.do?task=toAddToolSave&modfunid=90', 89, 2);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (443, '修改器具', '/admin/toolinfo.do?task=toUpdateToolinfo&modfunid=443', 89, -1);
+values (453, '修改器具档案', '/admin/toolsave.do?task=toUpdateToolSave&modfunid=90', 89, -1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (444, '删除器具', '/admin/toolinfo.do?task=deleteToolinfo&modfunid=444', 89, -1);
+values (454, '删除器具档案', '/admin/toolsave.do?task=deleteToolSave&modfunid=90', 89, -1);
 
 
 
-insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (90, '器具档案', '/admin/toolsave.do?task=toolSaveList&modfunid=90', 77, 13);
 
-insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (451, '器具档案列表', '/admin/toolsave.do?task=toolSaveList&modfunid=90', 90, 1);
+delete from t_power where id='90';
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (452, '新增器具档案', '/admin/toolsave.do?task=toAddToolSave&modfunid=90', 90, 2);
+values (90, '器具档案', '/admin/toolinfo.do?task=toolinfoList&modfunid=90', 77, 13);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (453, '修改器具档案', '/admin/toolsave.do?task=toUpdateToolSave&modfunid=90', 90, -1);
+values (441, '器具列表', '/admin/toolinfo.do?task=toolinfoList&modfunid=441', 90, 1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (454, '删除器具档案', '/admin/toolsave.do?task=deleteToolSave&modfunid=90', 90, -1);
+values (442, '新增器具', '/admin/toolinfo.do?task=toAddToolinfo&modfunid=442', 90, 2);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (443, '修改器具', '/admin/toolinfo.do?task=toUpdateToolinfo&modfunid=443', 90, -1);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (444, '删除器具', '/admin/toolinfo.do?task=deleteToolinfo&modfunid=444', 90, -1);
+
 

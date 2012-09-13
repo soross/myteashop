@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床选项：</b>
+				<b>器具房选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -35,77 +35,21 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed" method="post">
+	<html:form action="/admin/toolsave" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加病床
+					添加器具房
 				</th>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床名称：
+					器具房名称：
 				</td>
 				<td colspan="3">
-					<html:text property="sickbed"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					病床编码：
-				</td>
-				<td colspan="3">
-					<html:text property="code"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属科室:
-				</td>
-				<td colspan="3">
-					<html:select property="deptid">
-						<html:option value="">==请选择==</html:option>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<html:option value="${dept.id}">${dept.deptName}</html:option>
-	      					</logic:iterate>
-   						</logic:present>
-					</html:select>
-					
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					显示顺序:
-				</td>
-				<td colspan="3">
-					<html:text property="showindex"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属病区:
-				</td>
-				<td colspan="3">
-					<html:text property="area"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					床位级别:
-				</td>
-				<td colspan="3">
-					<html:text property="leveltype"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					标准金额:
-				</td>
-				<td colspan="3">
-					<html:text property="price"  size="20"  styleId="txt"></html:text>
+					<html:text property="toolname"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -126,23 +70,74 @@
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					当前住院号：
+					器具房编码：
 				</td>
 				<td colspan="3">
-					<html:text property="hospno"  size="20"  styleId="txt"></html:text>
+					<html:text property="code"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					备注:
+					器具房类型:
 				</td>
 				<td colspan="3">
-					<html:text property="remark"  size="30"  styleId="txt"></html:text>
+					<html:radio property="tooltype" value="器具房"></html:radio>器具房
+					<html:radio property="tooltype" value="库房"></html:radio>库房
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					有效状态:
+					存物类别:
+				</td>
+				<td colspan="3">
+					<html:radio property="savetype" value="器具"></html:radio>器具&nbsp;&nbsp;&nbsp;
+					<html:radio property="savetype" value="物资"></html:radio>物资
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					适用对象:
+				</td>
+				<td colspan="3">
+					<html:text property="obj"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					门诊发器具:
+				</td>
+				<td colspan="3">
+					<html:text property="outmz"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					住院发器具:
+				</td>
+				<td colspan="3">
+					<html:text property="outzy"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					处方项目:
+				</td>
+				<td colspan="3">
+					<html:text property="item"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					是否允许负库存:
+				</td>
+				<td colspan="3">
+					<html:radio property="isneg" value="0"></html:radio>不允许
+					<html:radio property="isneg" value="1"></html:radio>允许
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					状态:
 				</td>
 				<td colspan="3">
 					<html:radio property="state" value="0"></html:radio>不可用
@@ -151,8 +146,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addSickbed">
-					<input type="hidden" value="402" name="modfunid">
+					<input type="hidden" name="task" value="addToolSave">
+					<input type="hidden" value="452" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 保 存 " class="inputs" />
 				</td>

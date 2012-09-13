@@ -8,15 +8,15 @@ import com.crm.sysdo.po.TFeeItem;
 
 public interface FeeItemDao {
 	
-	public List feeItemList(final TFeeItem tFeeItem, final Map map,final PageUtil pageUtil);
+public List getFeeItemList( PageUtil pageUtil, TFeeItem tFeeItem);
 	
-	public Integer getCount(final TFeeItem tFeeItem, Map map);
+	public Integer getCount( TFeeItem tFeeItem );
 	
 	public void addFeeItem(TFeeItem tFeeItem);
 
-	public void delFeeItem(String id);
+	public void deleteFeeItem(String id);
 	
-	public TFeeItem get(String id);
+	public TFeeItem getFeeItemById(String id);
 	
 	public void updateFeeItem(TFeeItem tFeeItem);
 

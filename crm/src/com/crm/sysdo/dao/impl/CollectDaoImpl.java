@@ -67,14 +67,13 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TCollect where id=:id or pid=:pid";
+				String hql = "delete TCollect where id=:id ";
 				
 				Query query = session.createQuery(hql);
 				query.setLong("id", Collect.getId());
-				query.setLong("pid", Collect.getId());				
 				
 				query.executeUpdate();
-				return null;
+				return true;
 			}
 		});
 		
@@ -170,7 +169,7 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 	public List getCollectList(final PageUtil pageUtil,final  TCollect collect) {
 		return (List)this.getHibernateTemplate().execute(new HibernateCallback(){
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "from TSickbed where 1=1 ";
+				String hql = "from TCollect where 1=1 ";
 				if(null!=collect.getCollectname() && !"".equalsIgnoreCase(collect.getCollectname())){
 					hql=hql+ " and collectname like '%"+collect.getCollectname()+"%'";
 				}

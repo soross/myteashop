@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TData;
 import com.crm.sysdo.service.inf.DataServiceDao;
 import com.crm.sysdo.struts.form.DataForm;
@@ -53,7 +54,7 @@ public class DataAction extends DispatchAction {
 		request.setAttribute("pidList", list);
 
 		// 32 ½ÇÉ«
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_DATA);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/data/adddata.jsp");
@@ -133,7 +134,7 @@ public class DataAction extends DispatchAction {
 		request.setAttribute("dataSonList", sonList);
 
 		// 32 ½ÇÉ«
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_DATA);
 		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/data/datalist.jsp");
 	}
@@ -193,7 +194,7 @@ public class DataAction extends DispatchAction {
 		request.setAttribute("pidList", list);
 
 		// 32 ½ÇÉ«
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_DATA);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/data/updatedata.jsp");

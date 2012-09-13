@@ -16,20 +16,20 @@ public class FeeItemServiceDaoImpl implements FeeItemServiceDao {
 	    feeItemProxy.addFeeItem(tFeeItem);
 	}
 
-	public void delFeeItem(String id) {
-		feeItemProxy.delFeeItem(id);
+	public void deleteFeeItem(String id) {
+		feeItemProxy.deleteFeeItem(id);
 	}
 
-	public List feeItemList(TFeeItem tFeeItem, Map map, PageUtil pageUtil) {
-		return feeItemProxy.feeItemList(tFeeItem, map, pageUtil);
+	public List getFeeItemList( PageUtil pageUtil,TFeeItem tFeeItem) {
+		return feeItemProxy.getFeeItemList(pageUtil, tFeeItem);
 	}
 
-	public TFeeItem get(String id) {
-		return feeItemProxy.get(id);
+	public TFeeItem getFeeItemById(String id) {
+		return feeItemProxy.getFeeItemById(id);
 	}
 
-	public Integer getCount(TFeeItem tFeeItem, Map map) {
-		return feeItemProxy.getCount(tFeeItem, map);
+	public Integer getCount(TFeeItem tFeeItem) {
+		return feeItemProxy.getCount(tFeeItem);
 	}
 
 	public void updateFeeItem(TFeeItem tFeeItem) {

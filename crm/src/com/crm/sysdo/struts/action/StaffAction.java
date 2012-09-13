@@ -19,6 +19,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TData;
 import com.crm.sysdo.po.TStaff;
 import com.crm.sysdo.service.inf.DataServiceDao;
@@ -76,7 +77,7 @@ public class StaffAction extends DispatchAction {
 		request.setAttribute("deptList", deptList);
 		
 		// 80ְԱ
-		List sl = perDao.getSonPerList("80");
+		List sl = perDao.getSonPerList(PowerKey.KEY_STAFF);
 		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/staff/stafflist.jsp");
 	}
@@ -96,7 +97,7 @@ public class StaffAction extends DispatchAction {
 		List deptList = deptServiceDao.getDeptList();
 		request.setAttribute("deptList", deptList);
 		//80
-		List sonList = perDao.getSonPerList("80");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_STAFF);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/staff/addstaff.jsp");
@@ -221,7 +222,7 @@ public class StaffAction extends DispatchAction {
 		request.setAttribute("deptList", deptList);
 		
 		// 80
-		List sonList = perDao.getSonPerList("80");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_STAFF);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/staff/updatestaff.jsp");

@@ -14,6 +14,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.service.inf.DeptServiceDao;
 import com.crm.sysdo.struts.form.DeptForm;
@@ -41,7 +42,7 @@ public class DeptAction extends DispatchAction{
 		request.setAttribute("deptList", list);
 		
 		// 科室部门
-		List perList = perDao.getSonPerList("79");
+		List perList = perDao.getSonPerList(PowerKey.KEY_DEPT);
 		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/deptlist.jsp");
@@ -60,7 +61,7 @@ public class DeptAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {		
 		// 科室部门
-		List perList = perDao.getSonPerList("79");
+		List perList = perDao.getSonPerList(PowerKey.KEY_DEPT);
 		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/adddept.jsp");
@@ -159,7 +160,7 @@ public class DeptAction extends DispatchAction{
 		BeanUtils.copyProperties(deptForm, dept);
 		
 		// 科室部门
-		List perList = perDao.getSonPerList("79");
+		List perList = perDao.getSonPerList(PowerKey.KEY_DEPT);
 		request.setAttribute("sonPowerByMenu", perList);
 		
 		return new ActionForward("/admin/sysdo/dept/updatedept.jsp");

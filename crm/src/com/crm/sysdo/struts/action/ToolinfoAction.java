@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TToolinfo;
 import com.crm.sysdo.service.inf.ToolinfoServiceDao;
 import com.crm.sysdo.struts.form.ToolinfoForm;
@@ -51,10 +52,10 @@ public class ToolinfoAction extends DispatchAction {
 			throws Exception {
 
 		// 32 ½ÇÉ«
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_TOOL_INFO);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Toolinfo/addToolinfo.jsp");
+		return new ActionForward("/admin/sysdo/tool/addtoolinfo.jsp");
 	}
 
 	/**
@@ -107,19 +108,23 @@ public class ToolinfoAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward ToolinfoList(ActionMapping mapping, ActionForm form,
+	public ActionForward toolinfoList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
+		TToolinfo toolinfo = new TToolinfo();
+		//BeanUtils.copyProperties(toolinfo, ToolinfoForm);
+		
 		PageUtil pageUtil = new PageUtil(request, this.ToolinfoServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(toolinfo), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
-
+		
+		List list = this.ToolinfoServiceDao.getToolinfoList(pageUtil, toolinfo);
+		request.setAttribute("toolinfoList", list);
 		// 32 ½ÇÉ«
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_TOOL_INFO);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/Toolinfo/Toolinfolist.jsp");
+		return new ActionForward("/admin/sysdo/tool/toolinfolist.jsp");
 	}
 
 	/**

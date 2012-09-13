@@ -20,12 +20,12 @@ public class FeeItemDaoImpl  extends HibernateDaoSupport implements FeeItemDao{
 		this.getHibernateTemplate().save(tFeeItem);
 	}
 
-	public void delFeeItem(String id) {
-		TFeeItem tFeeItem = this.get(id);
+	public void deleteFeeItem(String id) {
+		TFeeItem tFeeItem = (TFeeItem)this.getHibernateTemplate().get(TFeeItem.class,id);
 		this.getHibernateTemplate().delete(tFeeItem);
 	}
 
-	public List feeItemList(final TFeeItem tFeeItem, final Map map, final PageUtil pageUtil) {
+	public List getFeeItemList(final PageUtil pageUtil,final TFeeItem feeItem) {
 		List list = (List) this.getHibernateTemplate().executeFind(
 				new HibernateCallback() {
 
@@ -33,13 +33,7 @@ public class FeeItemDaoImpl  extends HibernateDaoSupport implements FeeItemDao{
 							throws HibernateException, SQLException {
 						StringBuffer hql = new StringBuffer(
 								"from TFeeItem where 1=1 ");
-
-						
-
 						Query query = session.createQuery(hql.toString());
-
-						
-						
 						query.setFirstResult(pageUtil.pastart());
 						query.setMaxResults(pageUtil.getPagesize());
 						List list = query.list();
@@ -50,24 +44,20 @@ public class FeeItemDaoImpl  extends HibernateDaoSupport implements FeeItemDao{
 
 	}
 
-	public TFeeItem get(String id) {
+	public TFeeItem getFeeItemById(String id) {
 		TFeeItem tFeeItem = (TFeeItem)this.getHibernateTemplate().get(TFeeItem.class, Long.parseLong(id));
 		return tFeeItem;
 	}
 
-	public Integer getCount(TFeeItem tFeeItem, Map map) {
+	public Integer getCount(TFeeItem tFeeItem) {
 		Integer count = (Integer) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
-
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						StringBuffer hql = new StringBuffer(
 								"select count(*) from TFeeItem where 1=1 ");
-
 						Query query = session.createQuery(hql.toString());
-
 						Integer count = (Integer) query.uniqueResult();
-
 						return count;
 					}
 				});

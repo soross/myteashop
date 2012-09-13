@@ -37,16 +37,15 @@ public class FeeItemAction extends DispatchAction{
 	public ActionForward feeItemList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
-		TFeeItem tFeeItem = new TFeeItem();
-		
-		Map<String, Object> map = new HashMap<String, Object>();
+		FeeItemForm feeItemForm = (FeeItemForm)form;
+		TFeeItem fi = new TFeeItem();
+		BeanUtils.copyProperties(fi, feeItemForm);
 		
 		PageUtil pageUtil = new PageUtil(request, this.feeItemServiceDao
-				.getCount(tFeeItem, map), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(fi), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 		
-		List list = this.feeItemServiceDao. feeItemList(tFeeItem, map, pageUtil);
+		List list = this.feeItemServiceDao. getFeeItemList( pageUtil,fi);
 		request.setAttribute("feeItemList", list);
 		
 		return new ActionForward("/admin/sysdo/feeitem/feeItemList.jsp");
@@ -108,7 +107,7 @@ public class FeeItemAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String id =request.getParameter("id");
-		TFeeItem tFeeItem = feeItemServiceDao.get(id);
+		TFeeItem tFeeItem = feeItemServiceDao.getFeeItemById(id);
 		request.setAttribute("feeItem", tFeeItem);
 		return new ActionForward("/admin/sysdo/feeitem/updateFeeItem.jsp");
 	}
@@ -154,7 +153,7 @@ public class FeeItemAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String id = request.getParameter("id");
-	    this.feeItemServiceDao.delFeeItem(id);
+	    this.feeItemServiceDao.deleteFeeItem(id);
 	    response.getWriter().write(
 				"<script>alert('收费项目删除！');location.href='"
 						+ request.getContextPath()

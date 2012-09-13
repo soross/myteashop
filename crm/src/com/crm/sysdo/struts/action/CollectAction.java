@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TCollect;
 import com.crm.sysdo.po.TData;
 import com.crm.sysdo.po.TSickbed;
@@ -70,10 +71,10 @@ public class CollectAction extends DispatchAction {
 		request.setAttribute("collectList", list);
 
 		// 81
-		List sonList = perDao.getSonPerList("82");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_COLLECT);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/sickbed/collectlist.jsp");
+		return new ActionForward("/admin/sysdo/collect/collectlist.jsp");
 	}
 
 	/**
@@ -90,10 +91,10 @@ public class CollectAction extends DispatchAction {
 			throws Exception {
 
 		// 82
-		List sonList = perDao.getSonPerList("82");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_COLLECT);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/sickbed/addcollect.jsp");
+		return new ActionForward("/admin/sysdo/collect/addcollect.jsp");
 	}
 
 	/**
@@ -105,7 +106,7 @@ public class CollectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addSickbed(ActionMapping mapping, ActionForm form,
+	public ActionForward addCollect(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		CollectForm collectForm = (CollectForm) form;
@@ -155,10 +156,10 @@ public class CollectAction extends DispatchAction {
 		BeanUtils.copyProperties(collectForm, collect);
 
 		// 81
-		List sonList = perDao.getSonPerList("82");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_COLLECT);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/sickbed/updatecollect.jsp");
+		return new ActionForward("/admin/sysdo/collect/updatecollect.jsp");
 	}
 
 	/**
@@ -220,7 +221,7 @@ public class CollectAction extends DispatchAction {
 		response.getWriter().print(
 				"<script> alert('É¾³ý³É¹¦£¡');location.href='"
 						+ request.getContextPath()
-						+ "/admin/sickbed.do?task=sickbedList';</script>");
+						+ "/admin/collect.do?task=collectList';</script>");
 		return null;
 	}
 

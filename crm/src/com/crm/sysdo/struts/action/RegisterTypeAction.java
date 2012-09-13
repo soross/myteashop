@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TRegisterType;
 import com.crm.sysdo.service.inf.RegisterTypeServiceDao;
 import com.crm.sysdo.struts.form.RegisterTypeForm;
@@ -46,15 +47,15 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toAddRegisterType(ActionMapping mapping, ActionForm form,
+	public ActionForward toAddRegtype(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_REGISTER_TYPE);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/RegisterType/addRegisterType.jsp");
+		return new ActionForward("/admin/sysdo/regtype/addregtype.jsp");
 	}
 
 	/**
@@ -66,14 +67,15 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward addRegisterType(ActionMapping mapping, ActionForm form,
+	public ActionForward addRegType(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
 		TRegisterType RegisterType = new TRegisterType();
 		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
 
-		Boolean bool = this.RegisterTypeServiceDao.addRegisterType(RegisterType);
+		Boolean bool = this.RegisterTypeServiceDao
+				.addRegisterType(RegisterType);
 
 		if (bool) {
 			response
@@ -81,21 +83,20 @@ public class RegisterTypeAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=toAddRegisterType';}else{location.href='"
+									+ "/admin/regType.do?task=toAddRegtype';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
-			return null;
+									+ "/admin/regType.do?task=regtypeList';}</script>");
 		} else {
 			response
 					.getWriter()
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=toAddRegisterType';}else{location.href='"
+									+ "/admin/regType.do?task=toAddRegtype';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
-			return null;
+									+ "/admin/regType.do?task=regtypeList';}</script>");
 		}
+		return null;
 	}
 
 	/**
@@ -107,18 +108,25 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward RegisterTypeList(ActionMapping mapping, ActionForm form,
+	public ActionForward regtypeList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
+		TRegisterType RegisterType = new TRegisterType();
+		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
+
 		PageUtil pageUtil = new PageUtil(request, this.RegisterTypeServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(RegisterType), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
+		List list = this.RegisterTypeServiceDao.getRegisterTypeList(pageUtil,
+				RegisterType);
+		request.setAttribute("regtypeList", list);
+
 		// 32 角色
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_REGISTER_TYPE);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/RegisterType/RegisterTypelist.jsp");
+		return new ActionForward("/admin/sysdo/regtype/regtypelist.jsp");
 	}
 
 	/**
@@ -132,26 +140,31 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteRegisterType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward deleteRegType(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
 
 		TRegisterType RegisterType = new TRegisterType();
 		RegisterType.setId(new Long(RegisterTypeForm.getId()));
 
-		Boolean bool = this.RegisterTypeServiceDao.deleteRegisterType(RegisterType);
+		Boolean bool = this.RegisterTypeServiceDao
+				.deleteRegisterType(RegisterType);
 
 		if (bool) {
-			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
-							+ request.getContextPath()
-							+ "/admin/RegisterType.do?task=RegisterTypeList';</script>");
+			response
+					.getWriter()
+					.print(
+							"<script> alert('删除成功!将返回列表!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/regType.do?task=regtypeList';</script>");
 		} else {
-			response.getWriter().print(
-					"<script> alert('删除失败,请重试!');location.href='"
-							+ request.getContextPath()
-							+ "/admin/RegisterType.do?task=RegisterTypeList';</script>");
+			response
+					.getWriter()
+					.print(
+							"<script> alert('删除失败,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/regType.do?task=regtypeList';</script>");
 		}
 		return null;
 	}
@@ -165,18 +178,20 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateRegisterType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward toUpdateRegType(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
-		TRegisterType RegisterType = this.RegisterTypeServiceDao.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
+		TRegisterType RegisterType = this.RegisterTypeServiceDao
+				.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
 		BeanUtils.copyProperties(RegisterTypeForm, RegisterType);
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_REGISTER_TYPE);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/RegisterType/updateRegisterType.jsp");
+		return new ActionForward(
+				"/admin/sysdo/regtype/updateregtype.jsp");
 	}
 
 	/**
@@ -188,11 +203,12 @@ public class RegisterTypeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward updateRegisterType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward updateRegType(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		RegisterTypeForm RegisterTypeForm = (RegisterTypeForm) form;
-		TRegisterType RegisterType = this.RegisterTypeServiceDao.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
+		TRegisterType RegisterType = this.RegisterTypeServiceDao
+				.getRegisterTypeById(new Long(RegisterTypeForm.getId()));
 		BeanUtils.copyProperties(RegisterType, RegisterTypeForm);
 
 		Boolean bool = false;
@@ -205,29 +221,32 @@ public class RegisterTypeAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=toUpdateRegisterType&id="
+									+ "/admin/regType.do?task=toUpdateRegType&id="
 									+ RegisterType.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/RegisterType.do?task=RegisterTypeList';}</script>");
+									+ "/admin/regType.do?task=regtypeList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
-							+ request.getContextPath()
-							+ "/admin/RegisterType.do?task=toUpdateRegisterType&id='"
-							+ RegisterType.getId() + "';</script>");
+			response
+					.getWriter()
+					.print(
+							"<script>alert('修改失败,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/regType.do?task=toUpdateRegType&id='"
+									+ RegisterType.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	
 	public RegisterTypeServiceDao getRegisterTypeServiceDao() {
 		return RegisterTypeServiceDao;
 	}
 
-	public void setRegisterTypeServiceDao(RegisterTypeServiceDao RegisterTypeServiceDao) {
+	public void setRegisterTypeServiceDao(
+			RegisterTypeServiceDao RegisterTypeServiceDao) {
 		this.RegisterTypeServiceDao = RegisterTypeServiceDao;
 	}
 

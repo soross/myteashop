@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>器具房库选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,20 +96,20 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
+	<html:form action="/admin/toolinfo?task=toolinfoList" method="post">
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				病床查询
+				器具房库查询
 			</th>
 		</tr>
 		<tr>
 			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
+			器具编码:	<html:text property="code"  size="15"  />
 			</td>
 			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
+			器具名称:<html:text property="toolname"  size="15" />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -121,7 +121,7 @@
 		cellspacing="1" class="tableBorderList">
 		<tr>
 			<th colspan=23 height=25>
-				病床列表
+				器具房库列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -133,41 +133,71 @@
 				序号
 			</td>
 			<td>
-				病床编码
+				器具名称
 			</td>
 			<td>
-				病床姓名
+				拼音
 			</td>
 			<td>
-				所属科室
+				五笔
 			</td>
 			<td>
-				显示顺序
+				编码
 			</td>
 			<td>
-				所属病区
+				别名
 			</td>
 			<td>
-				床位级别
+				别名拼音
 			</td>
 			<td>
-				标准金额
+				别名五笔
 			</td>	
 			<td>
-				拼音简码
+				状态
 			</td>
 			<td>
-				五笔简码
+				适用对象
 			</td>
 			<td>
-				当前住院号
+				规格
 			</td>	
 			<td>
-				备注
+				重量
 			</td>	
 			<td>
-				有效状态
+				协助单位
 			</td>	
+			<td>
+				销售单位
+			</td>
+			<td>
+				换算关系
+			</td>
+			<td>
+				材料
+			</td>
+			<td>
+				产地
+			</td>
+			<td>
+				最高库存
+			</td>
+			<td>
+				最低库存
+			</td>
+			<td>
+				生产厂家
+			</td>
+			<td>
+				医保类型
+			</td>
+			<td>
+				生产厂家
+			</td>
+			<td>
+				生产厂家
+			</td>
 			<td width="100px">
 				操作
 			</td>

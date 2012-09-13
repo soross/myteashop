@@ -92,7 +92,7 @@
 		<table width="100%" cellpadding="0" cellspacing="0">
                      <tr> 
                        <td width="15%" align="center">收费项目名称：</td>
-                       <td width="15%" ><html:text property="feeItemName"></html:text></td>
+                       <td width="15%" ><html:text property="feeitemname"></html:text></td>
                        <td width="15%" ><html:submit value="查 询"></html:submit></td>
                       </tr>
                   </table>
@@ -119,20 +119,65 @@
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
-			<td width="10%" height=25>
+			<td width="50px" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
 					onclick="selectAll(this);" />全选
 			</td>
-			<td width="8%">
+			<td>
 				序号
 			</td>
-			<td width="10%">
+			<td>
 				收费项目名称
 			</td>
-			<td width="20%">
-				收费项目价格
-			</td>			
-			<td width="14%">
+			<td>
+				编码
+			</td>
+			<td>
+				规格
+			</td>
+			<td>
+				单位
+			</td>	
+			<td>
+				门诊标准单价
+			</td>
+			<td>
+				住院标准单价
+			</td>
+			<td>
+				汇总科目
+			</td>
+			<td>
+				使用对象
+			</td>
+			<td>
+				核算科室
+			</td>
+			<td>
+				状态
+			</td>
+			<td>
+				门诊打印名称
+			</td>
+			<td>
+				住院打印名称
+			</td>
+			<td>
+				医保类别
+			</td>	
+			<td>
+				医保编码
+			</td>	
+			<td>
+				农保类别
+			</td>
+			<td>
+				农保编码
+			</td>	
+			<td>
+				农保名称
+			</td>					
+			<td width="100px">
 				操作
 			</td>
 		</tr>
@@ -147,10 +192,10 @@
 							${feeItem.id}
 						</td>
 						<td align="left"  style="padding-left:20px;">
-							${feeItem.feeItemName}
+							${feeItem.feeitemname}
 						</td>
 						<td >
-							${feeItem.feeItemPrice}					
+							${feeItem.code}					
 						</td>
 						<td>
 							<a href="${pageContext.request.contextPath}/admin/feeItem.do?task=toUpdateFeeItem&id=${feeItem.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/feeItem.do?task=delFeeItem&id=${feeItem.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>

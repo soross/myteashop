@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>挂号类别选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,20 +96,17 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
+	<html:form action="/admin/regType?task=regtypeList" method="post">
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				病床查询
+				挂号类别查询
 			</th>
 		</tr>
 		<tr>
 			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
-			</td>
-			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
+			挂号类别名称:<html:text property="regtypename"  size="15" />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -120,8 +117,8 @@
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorderList">
 		<tr>
-			<th colspan=23 height=25>
-				病床列表
+			<th colspan=7 height=25>
+				挂号类别列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -133,106 +130,54 @@
 				序号
 			</td>
 			<td>
-				病床编码
+				挂号类别名称
 			</td>
 			<td>
-				病床姓名
+				状态
 			</td>
 			<td>
-				所属科室
+				价格
 			</td>
-			<td>
-				显示顺序
-			</td>
-			<td>
-				所属病区
-			</td>
-			<td>
-				床位级别
-			</td>
-			<td>
-				标准金额
-			</td>	
-			<td>
-				拼音简码
-			</td>
-			<td>
-				五笔简码
-			</td>
-			<td>
-				当前住院号
-			</td>	
 			<td>
 				备注
-			</td>	
-			<td>
-				有效状态
-			</td>	
+			</td>
 			<td width="100px">
 				操作
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
+		 <logic:present name="regtypeList">
+          	<logic:iterate id="regtype" name="regtypeList">          	 
 				<tr align="center" style="cursor: hand;">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
+						<input type="checkbox" name="phones" value="${regtype.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${sickbed.id}
+						${regtype.id}
 					</td>
 					<td>
-						${sickbed.code}
+						${regtype.regtypename}
 					</td>
 					<td>
-						${sickbed.sickbed}
+						<logic:equal value="1" name="regtype" property="state">可用</logic:equal>
+						<logic:equal value="0" name="regtype" property="state">不可用</logic:equal>
 					</td>
 					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
+						${regtype.price}
+					</td>
+					<td>
+						${regtype.remark}
 					</td>	
 					<td>
-						${sickbed.showindex}
-					</td>
-					<td>
-						${sickbed.area}
-					</td>	
-					<td>
-						${sickbed.leveltype}
-					</td>
-					<td>
-						${sickbed.price}
-					</td>
-					<td>
-						${sickbed.pinyin}
-					</td>	
-					<td>
-						${sickbed.wubi}
-					</td>	
-					<td>
-						${sickbed.hospno}
-					</td>	
-					<td>
-						${sickbed.remark}
-					</td>	
-					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
-					</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+						<a href="${pageContext.request.contextPath}/admin/regType.do?task=toUpdateRegType&id=${regtype.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+						<a href="${pageContext.request.contextPath}/admin/regType.do?task=deleteRegType&id=${regtype.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 					</td>
 				</tr>					
 	          </logic:iterate>
           </logic:present>
 		<tr>
-			<td  align="left" colspan="7" height=25>
+			<td  align="left" colspan="1" height=25>
 				<!-- 
 				&nbsp;<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
@@ -240,7 +185,7 @@
 					onclick="outAllToExcel('exportAllClient')"></html:button> -->
 				&nbsp;
 			</td>
-			<td align="center" colspan="16" height=25>
+			<td align="center" colspan="6" height=25>
 				<page:page name="pageUtil" />
 			</td>
 		</tr>

@@ -18,9 +18,11 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TToolSave;
 import com.crm.sysdo.service.inf.ToolSaveServiceDao;
 import com.crm.sysdo.struts.form.ToolSaveForm;
+import com.crm.tool.PinYinUtils;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -51,10 +53,10 @@ public class ToolSaveAction extends DispatchAction {
 			throws Exception {
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_TOOL_SAVE);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/ToolSave/addToolSave.jsp");
+		return new ActionForward("/admin/sysdo/tool/addtoolsave.jsp");
 	}
 
 	/**
@@ -72,7 +74,10 @@ public class ToolSaveAction extends DispatchAction {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
 		TToolSave ToolSave = new TToolSave();
 		BeanUtils.copyProperties(ToolSave, ToolSaveForm);
-
+		
+		if(null!=ToolSaveForm.getToolname()&&!"".equalsIgnoreCase(ToolSaveForm.getToolname())){
+			ToolSave.setPinyin(PinYinUtils.getAllFirstLetter(ToolSaveForm.getToolname()));
+		}
 
 		Boolean bool = this.ToolSaveServiceDao.addToolSave(ToolSave);
 
@@ -82,9 +87,9 @@ public class ToolSaveAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=toAddToolSave';}else{location.href='"
+									+ "/admin/toolsave.do?task=toAddToolSave';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=ToolSaveList';}</script>");
+									+ "/admin/toolsave.do?task=toolSaveList';}</script>");
 			return null;
 		} else {
 			response
@@ -92,9 +97,9 @@ public class ToolSaveAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=toAddToolSave';}else{location.href='"
+									+ "/admin/toolsave.do?task=toAddToolSave';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=ToolSaveList';}</script>");
+									+ "/admin/toolsave.do?task=toolSaveList';}</script>");
 			return null;
 		}
 	}
@@ -108,19 +113,24 @@ public class ToolSaveAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward ToolSaveList(ActionMapping mapping, ActionForm form,
+	public ActionForward toolSaveList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
+		TToolSave toolSave = new TToolSave();
+		//BeanUtils.copyProperties(toolSave, ToolSaveForm);
+		
 		PageUtil pageUtil = new PageUtil(request, this.ToolSaveServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(toolSave), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
+		
+		List list = this.ToolSaveServiceDao.getToolSaveList(pageUtil, toolSave);
+		request.setAttribute("toolsaveList", list);
 
 		// 32 角色
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_TOOL_SAVE);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/ToolSave/ToolSavelist.jsp");
+		return new ActionForward("/admin/sysdo/tool/toolsavelist.jsp");
 	}
 
 	/**
@@ -146,14 +156,14 @@ public class ToolSaveAction extends DispatchAction {
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
+					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/ToolSave.do?task=ToolSaveList';</script>");
+							+ "/admin/toolsave.do?task=toolSaveList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/ToolSave.do?task=ToolSaveList';</script>");
+							+ "/admin/toolsave.do?task=toolSaveList';</script>");
 		}
 		return null;
 	}
@@ -174,12 +184,10 @@ public class ToolSaveAction extends DispatchAction {
 		TToolSave ToolSave = this.ToolSaveServiceDao.getToolSaveById(new Long(ToolSaveForm.getId()));
 		BeanUtils.copyProperties(ToolSaveForm, ToolSave);
 
-
-		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_TOOL_SAVE);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/ToolSave/updateToolSave.jsp");
+		return new ActionForward("/admin/sysdo/tool/updatetoolsave.jsp");
 	}
 
 	/**
@@ -197,7 +205,11 @@ public class ToolSaveAction extends DispatchAction {
 		ToolSaveForm ToolSaveForm = (ToolSaveForm) form;
 		TToolSave ToolSave = this.ToolSaveServiceDao.getToolSaveById(new Long(ToolSaveForm.getId()));
 		BeanUtils.copyProperties(ToolSave, ToolSaveForm);
-
+		
+		if(null!=ToolSaveForm.getToolname()&&!"".equalsIgnoreCase(ToolSaveForm.getToolname())){
+			ToolSave.setPinyin(PinYinUtils.getAllFirstLetter(ToolSaveForm.getToolname()));
+		}
+		
 		Boolean bool = false;
 		try {
 			bool = this.ToolSaveServiceDao.updateToolSave(ToolSave);
@@ -208,18 +220,18 @@ public class ToolSaveAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=toUpdateToolSave&id="
+									+ "/admin/toolsave.do?task=toUpdateToolSave&id="
 									+ ToolSave.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/ToolSave.do?task=ToolSaveList';}</script>");
+									+ "/admin/toolsave.do?task=toolSaveList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+			response.getWriter().print("<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/ToolSave.do?task=toUpdateToolSave&id='"
+							+ "/admin/toolsave.do?task=toUpdateToolSave&id='"
 							+ ToolSave.getId() + "';</script>");
 		}
 		return null;

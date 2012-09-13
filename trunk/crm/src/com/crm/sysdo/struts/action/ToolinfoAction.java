@@ -82,9 +82,9 @@ public class ToolinfoAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=toAddToolinfo';}else{location.href='"
+									+ "/admin/toolinfo.do?task=toAddToolinfo';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
+									+ "/admin/toolinfo.do?task=toolinfoList';}</script>");
 			return null;
 		} else {
 			response
@@ -92,9 +92,9 @@ public class ToolinfoAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=toAddToolinfo';}else{location.href='"
+									+ "/admin/toolinfo.do?task=toAddToolinfo';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
+									+ "/admin/toolinfo.do?task=toolinfoList';}</script>");
 			return null;
 		}
 	}
@@ -150,14 +150,14 @@ public class ToolinfoAction extends DispatchAction {
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
+					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Toolinfo.do?task=ToolinfoList';</script>");
+							+ "/admin/toolinfo.do?task=toolinfoList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Toolinfo.do?task=ToolinfoList';</script>");
+							+ "/admin/toolinfo.do?task=toolinfoList';</script>");
 		}
 		return null;
 	}
@@ -183,7 +183,7 @@ public class ToolinfoAction extends DispatchAction {
 		List sonList = perDao.getSonPerList("33");
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Toolinfo/updateToolinfo.jsp");
+		return new ActionForward("/admin/sysdo/tool/updatetoolinfo.jsp");
 	}
 
 	/**
@@ -212,18 +212,18 @@ public class ToolinfoAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=toUpdateToolinfo&id="
+									+ "/admin/toolinfo.do?task=toUpdateToolinfo&id="
 									+ Toolinfo.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Toolinfo.do?task=ToolinfoList';}</script>");
+									+ "/admin/toolinfo.do?task=toolinfoList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+			response.getWriter().print("<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Toolinfo.do?task=toUpdateToolinfo&id='"
+							+ "/admin/toolinfo.do?task=toUpdateToolinfo&id='"
 							+ Toolinfo.getId() + "';</script>");
 		}
 		return null;

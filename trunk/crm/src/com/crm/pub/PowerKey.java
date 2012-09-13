@@ -14,7 +14,7 @@ public class PowerKey {
 	
 	public static String KEY_REGISTER_TYPE = "84";
 	
-	public static String KEY_TOOL_INFO = "89";
+	public static String KEY_TOOL_SAVE = "89";
 	
-	public static String KEY_TOOL_SAVE = "90";
+	public static String KEY_TOOL_INFO = "90";
 }

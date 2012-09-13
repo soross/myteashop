@@ -61,6 +61,10 @@ public class ToolSaveForm extends ActionForm {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
+		this.tooltype="Æ÷¾ß·¿";
+		this.savetype="Æ÷¾ß";
+		this.isneg="0";
+		this.state="0";
 	}
 
 	public Long getId() {

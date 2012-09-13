@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>器具房库选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,20 +96,20 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
+	<html:form action="/admin/toolsave?task=toolSaveList" method="post">
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				病床查询
+				器具房库查询
 			</th>
 		</tr>
 		<tr>
 			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
+			器具房编码:	<html:text property="code"  size="15"  />
 			</td>
 			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
+			器具房名称:<html:text property="toolname"  size="15" />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -121,7 +121,7 @@
 		cellspacing="1" class="tableBorderList">
 		<tr>
 			<th colspan=23 height=25>
-				病床列表
+				器具房库列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -133,26 +133,8 @@
 				序号
 			</td>
 			<td>
-				病床编码
+				器具房名称
 			</td>
-			<td>
-				病床姓名
-			</td>
-			<td>
-				所属科室
-			</td>
-			<td>
-				显示顺序
-			</td>
-			<td>
-				所属病区
-			</td>
-			<td>
-				床位级别
-			</td>
-			<td>
-				标准金额
-			</td>	
 			<td>
 				拼音简码
 			</td>
@@ -160,73 +142,89 @@
 				五笔简码
 			</td>
 			<td>
-				当前住院号
+				器具房编码
+			</td>
+			<td>
+				器具房类型
+			</td>
+			<td>
+				存物类别
+			</td>
+			<td>
+				适用对象
+			</td>
+			<td>
+				状态
+			</td>
+			<td>
+				门诊发器具
+			</td>	
+			
+			<td>
+				住院发器具
 			</td>	
 			<td>
-				备注
+				处方项目
 			</td>	
 			<td>
-				有效状态
+				负库存
 			</td>	
 			<td width="100px">
 				操作
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
+		 <logic:present name="toolsaveList">
+          	<logic:iterate id="toolsave" name="toolsaveList">          	 
 				<tr align="center" style="cursor: hand;">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
+						<input type="checkbox" name="phones" value="${toolsave.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${sickbed.id}
+						${toolsave.id}
 					</td>
 					<td>
-						${sickbed.code}
+						${toolsave.toolname}
 					</td>
 					<td>
-						${sickbed.sickbed}
+						${toolsave.pinyin}
 					</td>
 					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
+						${toolsave.wubi}
+					</td>
+					<td>
+						${toolsave.code}
+					</td>
+					<td>
+						${toolsave.tooltype}
 					</td>	
 					<td>
-						${sickbed.showindex}
+						${toolsave.savetype}
 					</td>
 					<td>
-						${sickbed.area}
-					</td>	
-					<td>
-						${sickbed.leveltype}
+						${toolsave.obj}
 					</td>
 					<td>
-						${sickbed.price}
+						<logic:equal value="1" name="toolsave" property="state">可用</logic:equal>
+						<logic:equal value="0" name="toolsave" property="state">不可用</logic:equal>
+					</td>	
+					<td>
+						${toolsave.outmz}
+					</td>	
+					<td>
+						${toolsave.outzy}
+					</td>	
+					<td>
+						${toolsave.item}
+					</td>	
+					<td>
+						<logic:equal value="1" name="toolsave" property="isneg">允许</logic:equal>
+						<logic:equal value="0" name="toolsave" property="isneg">不允许</logic:equal>
 					</td>
 					<td>
-						${sickbed.pinyin}
-					</td>	
-					<td>
-						${sickbed.wubi}
-					</td>	
-					<td>
-						${sickbed.hospno}
-					</td>	
-					<td>
-						${sickbed.remark}
-					</td>	
-					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
-					</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+						<a href="${pageContext.request.contextPath}/admin/toolsave.do?task=toUpdateToolSave&id=${toolsave.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+						<a href="${pageContext.request.contextPath}/admin/toolsave.do?task=deleteToolSave&id=${toolsave.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 					</td>
 				</tr>					
 	          </logic:iterate>

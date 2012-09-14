@@ -117,245 +117,254 @@
 		</tr>
 	</table>
 	</html:form>
-	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
-		cellspacing="1" class="tableBorderList" style="OVERFLOW-y:scroll;">
+	<table width="98%" border="0" align="center">
 		<tr>
-			<th colspan=34 height=25>
-				器具资料列表
-			</th>
+			<td>
+				<div style="width:1200px; overflow-x:scroll;">
+					<table id="listtab" width="3000px" border="0" align="center" cellpadding="3"
+						cellspacing="1" class="tableBorderList">
+						<tr>
+							<th colspan=34 height=25>
+								器具资料列表
+							</th>
+						</tr>
+						<tr align="center" class="thstyle">
+							<td height=25>
+								<input type="checkbox" id="ckb" name="ckb"
+									onclick="selectAll(this);" />全选
+							</td>
+							<td>
+								序号
+							</td>
+							<td>
+								器具名称
+							</td>
+							<td>
+								拼音
+							</td>
+							<td>
+								五笔
+							</td>
+							<td>
+								编码
+							</td>
+							<td>
+								别名
+							</td>
+							<td>
+								别名拼音
+							</td>
+							<td>
+								别名五笔
+							</td>	
+							<td>
+								状态
+							</td>
+							<td>
+								适用对象
+							</td>
+							<td>
+								规格
+							</td>	
+							<td>
+								重量
+							</td>	
+							<td>
+								协助单位
+							</td>	
+							<td>
+								销售单位
+							</td>
+							<td>
+								换算关系
+							</td>
+							<td>
+								材料
+							</td>
+							<td>
+								产地
+							</td>
+							<td>
+								最高库存
+							</td>
+							<td>
+								最低库存
+							</td>
+							<td>
+								生产厂家
+							</td>
+							<td>
+								医保类型
+							</td>
+							<td>
+								医保编码
+							</td>
+							<td>
+								医保名称
+							</td>
+							<td>
+								农保类型
+							</td>
+							<td>
+								农保编码
+							</td>
+							<td>
+								农保名称
+							</td>
+							<td>
+								自付比率
+							</td>
+							<td>
+								最近成本
+							</td>
+							<td>
+								零售单价
+							</td>
+							<td>
+								最高限价
+							</td>
+							<td>
+								批准文号
+							</td>
+							<td>
+								备注
+							</td>
+							<td width="100px">
+								操作
+							</td>
+						</tr>
+				
+						 <logic:present name="toolinfoList">
+				          	<logic:iterate id="toolinfo" name="toolinfoList">          	 
+								<tr align="center" style="cursor: hand;">
+									<td height=25>
+										<input type="checkbox" name="phones" value="${toolinfo.id}"
+											onclick="clickSon(this);" />
+									</td>
+									<td>
+										${toolinfo.id}
+									</td>
+									<td>
+										${toolinfo.toolname}
+									</td>
+									<td>
+										${toolinfo.pinyin}
+									</td>
+									<td>
+										${toolinfo.wubi}
+									</td>
+									<td>
+										${toolinfo.code}
+									</td>
+									<td>
+										${toolinfo.aliasname}
+									</td>
+									<td>
+										${toolinfo.aliaspinyin}
+									</td>
+									<td>
+										${toolinfo.aliaswubi}
+									</td>	
+									<td>
+										<logic:equal value="1" name="toolinfo" property="state">可用</logic:equal>
+										<logic:equal value="0" name="toolinfo" property="state">不可用</logic:equal>
+									</td>
+									<td>
+										${toolinfo.obj}
+									</td>
+									<td>
+										${toolinfo.spec}
+									</td>	
+									<td>
+										${toolinfo.weight}
+									</td>	
+									<td>
+										${toolinfo.helpunit}
+									</td>	
+									<td>
+										${toolinfo.saleunit}
+									</td>
+									<td>
+										${toolinfo.conver}
+									</td>
+									<td>
+										${toolinfo.material}
+									</td>
+									<td>
+										${toolinfo.prodadd}
+									</td>
+									<td>
+										${toolinfo.savemax}
+									</td>
+									<td>
+										${toolinfo.savemin}
+									</td>
+									<td>
+										${toolinfo.prodbussion}
+									</td>
+									<td>
+										${toolinfo.ybtype}
+									</td>
+									<td>
+										${toolinfo.ybcode}
+									</td>
+									<td>
+										${toolinfo.ybname}
+									</td>
+									<td>
+										${toolinfo.nbtype}
+									</td>
+									<td>
+										${toolinfo.nbcode}
+									</td>
+									<td>
+										${toolinfo.nbname}
+									</td>
+									<td>
+										${toolinfo.payself}
+									</td>
+									<td>
+										${toolinfo.mincost}
+									</td>
+									<td>
+										${toolinfo.salecost}
+									</td>
+									<td>
+										${toolinfo.maxcost}
+									</td>
+									<td>
+										${toolinfo.refcode}
+									</td>
+									<td>
+										${toolinfo.remark}
+									</td>
+									<td>
+										<a href="${pageContext.request.contextPath}/admin/toolinfo.do?task=toUpdateToolinfo&id=${toolinfo.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+										<a href="${pageContext.request.contextPath}/admin/toolinfo.do?task=deleteToolinfo&id=${toolinfo.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+									</td>
+								</tr>					
+					          </logic:iterate>
+				          </logic:present>
+						<tr>
+							<td  align="left" colspan="1" height=25>
+								<!-- 
+								&nbsp;<html:button property="" value="批量导出"
+									onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
+								<html:button property="" value="全部导出"
+									onclick="outAllToExcel('exportAllClient')"></html:button> -->
+								&nbsp;
+							</td>
+							<td align="left" colspan="33" height=25>
+								<page:page name="pageUtil" />
+							</td>
+						</tr>
+					
+					</table>
+					</div>
+			</td>
 		</tr>
-		<tr align="center" class="thstyle">
-			<td height=25>
-				<input type="checkbox" id="ckb" name="ckb"
-					onclick="selectAll(this);" />全选
-			</td>
-			<td>
-				序号
-			</td>
-			<td>
-				器具名称
-			</td>
-			<td>
-				拼音
-			</td>
-			<td>
-				五笔
-			</td>
-			<td>
-				编码
-			</td>
-			<td>
-				别名
-			</td>
-			<td>
-				别名拼音
-			</td>
-			<td>
-				别名五笔
-			</td>	
-			<td>
-				状态
-			</td>
-			<td>
-				适用对象
-			</td>
-			<td>
-				规格
-			</td>	
-			<td>
-				重量
-			</td>	
-			<td>
-				协助单位
-			</td>	
-			<td>
-				销售单位
-			</td>
-			<td>
-				换算关系
-			</td>
-			<td>
-				材料
-			</td>
-			<td>
-				产地
-			</td>
-			<td>
-				最高库存
-			</td>
-			<td>
-				最低库存
-			</td>
-			<td>
-				生产厂家
-			</td>
-			<td>
-				医保类型
-			</td>
-			<td>
-				医保编码
-			</td>
-			<td>
-				医保名称
-			</td>
-			<td>
-				农保类型
-			</td>
-			<td>
-				农保编码
-			</td>
-			<td>
-				农保名称
-			</td>
-			<td>
-				自付比率
-			</td>
-			<td>
-				最近成本
-			</td>
-			<td>
-				零售单价
-			</td>
-			<td>
-				最高限价
-			</td>
-			<td>
-				批准文号
-			</td>
-			<td>
-				备注
-			</td>
-			<td width="100px">
-				操作
-			</td>
-		</tr>
-
-		 <logic:present name="toolinfoList">
-          	<logic:iterate id="toolinfo" name="toolinfoList">          	 
-				<tr align="center" style="cursor: hand;">
-					<td height=25>
-						<input type="checkbox" name="phones" value="${toolinfo.id}"
-							onclick="clickSon(this);" />
-					</td>
-					<td>
-						${toolinfo.id}
-					</td>
-					<td>
-						${toolinfo.toolname}
-					</td>
-					<td>
-						${toolinfo.pinyin}
-					</td>
-					<td>
-						${toolinfo.wubi}
-					</td>
-					<td>
-						${toolinfo.code}
-					</td>
-					<td>
-						${toolinfo.aliasname}
-					</td>
-					<td>
-						${toolinfo.aliaspinyin}
-					</td>
-					<td>
-						${toolinfo.aliaswubi}
-					</td>	
-					<td>
-						<logic:equal value="1" name="toolinfo" property="state">可用</logic:equal>
-						<logic:equal value="0" name="toolinfo" property="state">不可用</logic:equal>
-					</td>
-					<td>
-						${toolinfo.obj}
-					</td>
-					<td>
-						${toolinfo.spec}
-					</td>	
-					<td>
-						${toolinfo.weight}
-					</td>	
-					<td>
-						${toolinfo.helpunit}
-					</td>	
-					<td>
-						${toolinfo.saleunit}
-					</td>
-					<td>
-						${toolinfo.conver}
-					</td>
-					<td>
-						${toolinfo.material}
-					</td>
-					<td>
-						${toolinfo.prodadd}
-					</td>
-					<td>
-						${toolinfo.savemax}
-					</td>
-					<td>
-						${toolinfo.savemin}
-					</td>
-					<td>
-						${toolinfo.prodbussion}
-					</td>
-					<td>
-						${toolinfo.ybtype}
-					</td>
-					<td>
-						${toolinfo.ybcode}
-					</td>
-					<td>
-						${toolinfo.ybname}
-					</td>
-					<td>
-						${toolinfo.nbtype}
-					</td>
-					<td>
-						${toolinfo.nbcode}
-					</td>
-					<td>
-						${toolinfo.nbname}
-					</td>
-					<td>
-						${toolinfo.payself}
-					</td>
-					<td>
-						${toolinfo.mincost}
-					</td>
-					<td>
-						${toolinfo.salecost}
-					</td>
-					<td>
-						${toolinfo.maxcost}
-					</td>
-					<td>
-						${toolinfo.refcode}
-					</td>
-					<td>
-						${toolinfo.remark}
-					</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
-					</td>
-				</tr>					
-	          </logic:iterate>
-          </logic:present>
-		<tr>
-			<td  align="left" colspan="1" height=25>
-				<!-- 
-				&nbsp;<html:button property="" value="批量导出"
-					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
-				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button> -->
-				&nbsp;
-			</td>
-			<td align="center" colspan="33" height=25>
-				<page:page name="pageUtil" />
-			</td>
-		</tr>
-	
 	</table>
+	
 	<br>&nbsp;
 </body><script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>

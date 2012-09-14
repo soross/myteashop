@@ -36,8 +36,7 @@
 		</tr>
 	</table>
 	<html:form action="/admin/toolinfo" method="post">
-
-		<table width="100%" border="0" align="center" cellspacing="1"
+		<table  border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=6 height=25>
@@ -136,7 +135,7 @@
 					零售单位:
 				</td>
 				<td colspan="1">
-					<html:text property="helpunit"  size="20"  styleId="txt"></html:text>
+					<html:text property="saleunit"  size="20"  styleId="txt"></html:text>
 				</td>
 				<td align="right">
 					材料:
@@ -264,6 +263,7 @@
 				</td>
 			</tr>
 		</table>
+		
 	</html:form>
 	<br>
 	&nbsp;

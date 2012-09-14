@@ -22,6 +22,7 @@ import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TToolinfo;
 import com.crm.sysdo.service.inf.ToolinfoServiceDao;
 import com.crm.sysdo.struts.form.ToolinfoForm;
+import com.crm.tool.PinYinUtils;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -73,7 +74,14 @@ public class ToolinfoAction extends DispatchAction {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
 		TToolinfo Toolinfo = new TToolinfo();
 		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
-
+		
+		if(null!=ToolinfoForm.getToolname()&&!"".equalsIgnoreCase(ToolinfoForm.getToolname())){
+			Toolinfo.setPinyin(PinYinUtils.getAllFirstLetter(ToolinfoForm.getToolname()));
+		}
+		if(null!=ToolinfoForm.getAliasname()&&!"".equalsIgnoreCase(ToolinfoForm.getAliasname())){
+			Toolinfo.setAliaspinyin(PinYinUtils.getAllFirstLetter(ToolinfoForm.getAliasname()));
+		}
+		
 		Boolean bool = this.ToolinfoServiceDao.addToolinfo(Toolinfo);
 
 		if (bool) {
@@ -180,7 +188,7 @@ public class ToolinfoAction extends DispatchAction {
 
 
 		// 32 ½ÇÉ«
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_TOOL_INFO);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/sysdo/tool/updatetoolinfo.jsp");
@@ -201,7 +209,14 @@ public class ToolinfoAction extends DispatchAction {
 		ToolinfoForm ToolinfoForm = (ToolinfoForm) form;
 		TToolinfo Toolinfo = this.ToolinfoServiceDao.getToolinfoById(new Long(ToolinfoForm.getId()));
 		BeanUtils.copyProperties(Toolinfo, ToolinfoForm);
-
+		
+		if(null!=ToolinfoForm.getToolname()&&!"".equalsIgnoreCase(ToolinfoForm.getToolname())){
+			Toolinfo.setPinyin(PinYinUtils.getAllFirstLetter(ToolinfoForm.getToolname()));
+		}
+		if(null!=ToolinfoForm.getAliasname()&&!"".equalsIgnoreCase(ToolinfoForm.getAliasname())){
+			Toolinfo.setAliaspinyin(PinYinUtils.getAllFirstLetter(ToolinfoForm.getAliasname()));
+		}
+		
 		Boolean bool = false;
 		try {
 			bool = this.ToolinfoServiceDao.updateToolinfo(Toolinfo);

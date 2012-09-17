@@ -10,7 +10,7 @@
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
             <generator class="sequence">
-            	<param name="sequence">seq_goodtype</param>
+            	<param name="sequence">SEQ_GOODS_TYPE</param>
             </generator>
         </id>
         <property name="typename" type="java.lang.String">

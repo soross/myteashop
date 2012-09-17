@@ -18,12 +18,15 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TData;
 import com.crm.sysdo.po.TGoods;
 import com.crm.sysdo.service.inf.DataServiceDao;
 import com.crm.sysdo.service.inf.GoodsServiceDao;
+import com.crm.sysdo.service.inf.GoodsTypeServiceDao;
 import com.crm.sysdo.struts.form.DataForm;
 import com.crm.sysdo.struts.form.GoodsForm;
+import com.crm.tool.PinYinUtils;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -38,6 +41,7 @@ public class GoodsAction extends DispatchAction {
 	 * Generated Methods
 	 */
 	private GoodsServiceDao GoodsServiceDao;
+	private GoodsTypeServiceDao GoodsTypeServiceDao;
 	private Permission perDao;
 
 	/**
@@ -53,12 +57,14 @@ public class GoodsAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
+		List list = this.getGoodsTypeServiceDao().getGoodsTypeList(null, null);
+		request.setAttribute("goodsTypeList", list);
 
-		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		//  角色
+		List sonList = perDao.getSonPerList(PowerKey.KEY_GOODS);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Goods/addGoods.jsp");
+		return new ActionForward("/admin/sysdo/goods/addgoods.jsp");
 	}
 
 	/**
@@ -76,7 +82,11 @@ public class GoodsAction extends DispatchAction {
 		GoodsForm GoodsForm = (GoodsForm) form;
 		TGoods Goods = new TGoods();
 		BeanUtils.copyProperties(Goods, GoodsForm);
-
+		
+		if(null!=GoodsForm.getGoodsname() && !"".equalsIgnoreCase(GoodsForm.getGoodsname())){
+			Goods.setPinyin(PinYinUtils.getAllFirstLetter(GoodsForm.getGoodsname()));
+		}
+		
 		Boolean bool = this.GoodsServiceDao.addGoods(Goods);
 
 		if (bool) {
@@ -85,9 +95,9 @@ public class GoodsAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=toAddGoods';}else{location.href='"
+									+ "/admin/goods.do?task=toAddGoods';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=GoodsList';}</script>");
+									+ "/admin/goods.do?task=goodsList';}</script>");
 			return null;
 		} else {
 			response
@@ -95,9 +105,9 @@ public class GoodsAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=toAddGoods';}else{location.href='"
+									+ "/admin/goods.do?task=toAddGoods';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=GoodsList';}</script>");
+									+ "/admin/goods.do?task=goodsList';}</script>");
 			return null;
 		}
 	}
@@ -111,22 +121,24 @@ public class GoodsAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward GoodsList(ActionMapping mapping, ActionForm form,
+	public ActionForward goodsList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		GoodsForm GoodsForm = (GoodsForm) form;
+		TGoods goods = new TGoods();
+		BeanUtils.copyProperties(goods, GoodsForm);
 		PageUtil pageUtil = new PageUtil(request, this.GoodsServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(goods), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
 
 
-		List sonList = this.GoodsServiceDao.getGoodsList(pageUtil, null);
-		request.setAttribute("GoodsSonList", sonList);
+		List list = this.GoodsServiceDao.getGoodsList(pageUtil, goods);
+		request.setAttribute("goodsList", list);
 
-		// 32 角色
-		List sl = perDao.getSonPerList("33");
+		//  角色
+		List sl = perDao.getSonPerList(PowerKey.KEY_GOODS);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/Goods/Goodslist.jsp");
+		return new ActionForward("/admin/sysdo/goods/goodslist.jsp");
 	}
 
 	/**
@@ -152,14 +164,14 @@ public class GoodsAction extends DispatchAction {
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
+					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Goods.do?task=GoodsList';</script>");
+							+ "/admin/goods.do?task=goodsList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Goods.do?task=GoodsList';</script>");
+							+ "/admin/goods.do?task=goodsList';</script>");
 		}
 		return null;
 	}
@@ -179,13 +191,15 @@ public class GoodsAction extends DispatchAction {
 		GoodsForm GoodsForm = (GoodsForm) form;
 		TGoods Goods = this.GoodsServiceDao.getGoodsById(new Long(GoodsForm.getId()));
 		BeanUtils.copyProperties(GoodsForm, Goods);
+		
+		List list = this.getGoodsTypeServiceDao().getGoodsTypeList(null, null);
+		request.setAttribute("goodsTypeList", list);
 
-
-		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		//  角色
+		List sonList = perDao.getSonPerList(PowerKey.KEY_GOODS);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Goods/updateGoods.jsp");
+		return new ActionForward("/admin/sysdo/goods/updategoods.jsp");
 	}
 
 	/**
@@ -203,7 +217,11 @@ public class GoodsAction extends DispatchAction {
 		GoodsForm GoodsForm = (GoodsForm) form;
 		TGoods Goods = this.GoodsServiceDao.getGoodsById(new Long(GoodsForm.getId()));
 		BeanUtils.copyProperties(Goods, GoodsForm);
-
+		
+		if(null!=GoodsForm.getGoodsname() && !"".equalsIgnoreCase(GoodsForm.getGoodsname())){
+			Goods.setPinyin(PinYinUtils.getAllFirstLetter(GoodsForm.getGoodsname()));
+		}
+		
 		Boolean bool = false;
 		try {
 			bool = this.GoodsServiceDao.updateGoods(Goods);
@@ -214,18 +232,18 @@ public class GoodsAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=toUpdateGoods&id="
+									+ "/admin/goods.do?task=toUpdateGoods&id="
 									+ Goods.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Goods.do?task=GoodsList';}</script>");
+									+ "/admin/goods.do?task=goodsList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+			response.getWriter().print("<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Goods.do?task=toUpdateGoods&id='"
+							+ "/admin/goods.do?task=toUpdateGoods&id='"
 							+ Goods.getId() + "';</script>");
 		}
 		return null;
@@ -245,5 +263,13 @@ public class GoodsAction extends DispatchAction {
 
 	public void setPerDao(Permission perDao) {
 		this.perDao = perDao;
+	}
+	
+	public GoodsTypeServiceDao getGoodsTypeServiceDao() {
+		return GoodsTypeServiceDao;
+	}
+
+	public void setGoodsTypeServiceDao(GoodsTypeServiceDao GoodsTypeServiceDao) {
+		this.GoodsTypeServiceDao = GoodsTypeServiceDao;
 	}
 }

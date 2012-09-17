@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>物资材料选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,20 +96,20 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
+	<html:form action="/admin/goods?task=goodsList" method="post">
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				病床查询
+				物资材料查询
 			</th>
 		</tr>
 		<tr>
 			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
+			物资材料编码:	<html:text property="code"  size="15"  />
 			</td>
 			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
+			物资材料名称:<html:text property="goodsname"  size="15" />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -121,7 +121,7 @@
 		cellspacing="1" class="tableBorderList">
 		<tr>
 			<th colspan=23 height=25>
-				病床列表
+				物资材料列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -133,26 +133,11 @@
 				序号
 			</td>
 			<td>
-				病床编码
+				物资材料编码
 			</td>
 			<td>
-				病床姓名
+				物资材料姓名
 			</td>
-			<td>
-				所属科室
-			</td>
-			<td>
-				显示顺序
-			</td>
-			<td>
-				所属病区
-			</td>
-			<td>
-				床位级别
-			</td>
-			<td>
-				标准金额
-			</td>	
 			<td>
 				拼音简码
 			</td>
@@ -160,8 +145,29 @@
 				五笔简码
 			</td>
 			<td>
-				当前住院号
+				物品类型
+			</td>
+			<td>
+				规格说明
+			</td>
+			<td>
+				计量单位
+			</td>
+			<td>
+				正装单位
+			</td>
+			<td>
+				换算关系
 			</td>	
+			<td>
+				最低存量
+			</td>
+			<td>
+				最高存量
+			</td>	
+			<td>
+				生产单位
+			</td>
 			<td>
 				备注
 			</td>	
@@ -173,60 +179,62 @@
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
+		 <logic:present name="goodsList">
+          	<logic:iterate id="goods" name="goodsList">          	 
 				<tr align="center" style="cursor: hand;">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
+						<input type="checkbox" name="phones" value="${goods.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${sickbed.id}
+						${goods.id}
 					</td>
 					<td>
-						${sickbed.code}
+						${goods.code}
 					</td>
 					<td>
-						${sickbed.sickbed}
+						${goods.goodsname}
 					</td>
 					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
+						${goods.pinyin}
 					</td>	
 					<td>
-						${sickbed.showindex}
+						${goods.wubi}
 					</td>
 					<td>
-						${sickbed.area}
+						${goods.goodstype}
 					</td>	
 					<td>
-						${sickbed.leveltype}
+						${goods.spec}
 					</td>
 					<td>
-						${sickbed.price}
+						${goods.unit}
 					</td>
 					<td>
-						${sickbed.pinyin}
+						${goods.allunit}
 					</td>	
 					<td>
-						${sickbed.wubi}
+						${goods.conver}
 					</td>	
 					<td>
-						${sickbed.hospno}
-					</td>	
-					<td>
-						${sickbed.remark}
-					</td>	
-					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
+						${goods.minsave}
 					</td>
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+						${goods.maxsave}
+					</td>
+					<td>
+						${goods.produnit}
+					</td>			
+					<td>
+						${goods.remark}
+					</td>	
+					<td>
+						<logic:equal value="1" name="goods" property="state">可用</logic:equal>
+						<logic:equal value="0" name="goods" property="state">不可用</logic:equal>
+					</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/admin/goods.do?task=toUpdateGoods&id=${goods.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+						<a href="${pageContext.request.contextPath}/admin/goods.do?task=deleteGoods&id=${goods.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 					</td>
 				</tr>					
 	          </logic:iterate>

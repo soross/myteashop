@@ -65,6 +65,7 @@ public class GoodsForm extends ActionForm {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
+		this.state="0";
 	}
 
 	public Long getId() {

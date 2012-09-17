@@ -68,11 +68,18 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount(TGoods goods){
+	public Integer getCount(final TGoods Goods){
 		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				String hql = "select count(*) from TGoods where 1=1 ";
+				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
+					hql = hql+" and goodsname like '%"+Goods.getGoodsname()+"%'" ;
+				}
+				
+				if(null!=Goods && null!=Goods.getCode() && !"".equals(Goods.getCode())){	
+					hql = hql+" and code = '"+Goods.getCode()+"'" ;
+				}
 				
 				Query query = session.createQuery(hql);
 				Integer count = (Integer)query.uniqueResult();				
@@ -92,13 +99,16 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
 				StringBuffer hql =new StringBuffer("from TGoods where 1=1");
+				if(null!=Goods && null!=Goods.getCode() && !"".equals(Goods.getCode())){	
+					hql.append(" and code = :code" );
+				}
 				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
-					hql.append(" and name=:name");
+					hql.append(" and goodsname like '%"+Goods.getGoodsname()+"%' ");
 				}
 				
 				Query query = session.createQuery(hql.toString());
-				if(null!=Goods && null!=Goods.getGoodsname() && !"".equals(Goods.getGoodsname())){	
-					query.setString("name", Goods.getGoodsname());
+				if(null!=Goods && null!=Goods.getCode() && !"".equals(Goods.getCode())){	
+					query.setString("code", Goods.getCode());
 				}
 				query.setFirstResult(pageUtil.pastart());
 				query.setMaxResults(pageUtil.getPagesize());

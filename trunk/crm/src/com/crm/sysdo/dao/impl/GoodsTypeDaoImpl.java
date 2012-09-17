@@ -90,16 +90,19 @@ public class GoodsTypeDaoImpl extends HibernateDaoSupport implements GoodsTypeDa
 				
 				StringBuffer hql =new StringBuffer("from TGoodsType where 1=1");
 				if(null!=GoodsType && null!=GoodsType.getTypename() && !"".equals(GoodsType.getTypename())){	
-					hql.append(" and name=:name");
+					hql.append(" and typename=:name");
 				}
 				
 				Query query = session.createQuery(hql.toString());
+				
 				if(null!=GoodsType && null!=GoodsType.getTypename() && !"".equals(GoodsType.getTypename())){	
 					query.setString("name", GoodsType.getTypename());
 				}
-				query.setFirstResult(pageUtil.pastart());
-				query.setMaxResults(pageUtil.getPagesize());
 				
+				if(null!=pageUtil){
+					query.setFirstResult(pageUtil.pastart());
+					query.setMaxResults(pageUtil.getPagesize());
+				}
 				
 				List list = query.list();
 				return list;

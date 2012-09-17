@@ -30,7 +30,7 @@ public class PinYinUtils {
 			_str = _str + getFirstLetter(str.substring(i, i + 1));
 		}
 
-		return _str;
+		return _str.toUpperCase();
 	}
 
 	/**

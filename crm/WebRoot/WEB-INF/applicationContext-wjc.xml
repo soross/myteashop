@@ -192,25 +192,6 @@
 		<property name="collectServiceDao" ref="collectServiceDaoProxy"></property>
 	</bean>
 	
-	
-	<!-- goods -->
-	<bean name="goodsDao" class="com.crm.sysdo.dao.impl.GoodsDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean name="goodsServiceDao"
-		class="com.crm.sysdo.service.impl.GoodsServiceDaoImpl">
-		<property name="goodsDao" ref="goodsDao"></property>
-	</bean>
-	<bean name="goodsServiceDaoProxy" parent="basicProxy">
-		<property name="target" ref="goodsServiceDao"></property>
-	</bean>
-	<bean name="/admin/goods"
-		class="com.crm.sysdo.struts.action.GoodsAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="goodsServiceDao" ref="goodsServiceDaoProxy"></property>
-	</bean>
-	
-	
 	<!-- goodsType -->
 	<bean name="goodsTypeDao" class="com.crm.sysdo.dao.impl.GoodsTypeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -227,6 +208,26 @@
 		<property name="perDao" ref="perDao"></property>	
 		<property name="goodsTypeServiceDao" ref="goodsTypeServiceDaoProxy"></property>
 	</bean>
+	
+	
+	<!-- goods -->
+	<bean name="goodsDao" class="com.crm.sysdo.dao.impl.GoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="goodsServiceDao"
+		class="com.crm.sysdo.service.impl.GoodsServiceDaoImpl">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	<bean name="goodsServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="goodsServiceDao"></property>
+	</bean>
+	<bean name="/admin/goods"
+		class="com.crm.sysdo.struts.action.GoodsAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="goodsServiceDao" ref="goodsServiceDaoProxy"></property>
+		<property name="goodsTypeServiceDao" ref="goodsTypeServiceDaoProxy"></property>
+	</bean>
+	
 	
 	<!-- icd -->
 	<bean name="icdDao" class="com.crm.sysdo.dao.impl.IcdDaoImpl">

@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床选项：</b>
+				<b>物资材料选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -35,77 +35,29 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed" method="post">
+	<html:form action="/admin/goods" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					修改病床
+					修改物资材料
 				</th>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床名称：
+					物资材料名称：
 				</td>
 				<td colspan="3">
-					<html:text property="sickbed"  size="20"  styleId="txt"></html:text>
+					<html:text property="goodsname"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床编码：
+					物资材料编码：
 				</td>
 				<td colspan="3">
 					<html:text property="code"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属科室:
-				</td>
-				<td colspan="3">
-					<html:select property="deptid">
-						<html:option value="">==请选择==</html:option>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<html:option value="${dept.id}">${dept.deptName}</html:option>
-	      					</logic:iterate>
-   						</logic:present>
-					</html:select>
-					
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					显示顺序:
-				</td>
-				<td colspan="3">
-					<html:text property="showindex"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属病区:
-				</td>
-				<td colspan="3">
-					<html:text property="area"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					床位级别:
-				</td>
-				<td colspan="3">
-					<html:text property="leveltype"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					标准金额:
-				</td>
-				<td colspan="3">
-					<html:text property="price"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -125,11 +77,75 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right" width="30%">
-					当前住院号：
+				<td align="right">
+					类型:
 				</td>
 				<td colspan="3">
-					<html:text property="hospno"  size="20"  styleId="txt"></html:text>
+					<html:select property="goodstype">
+						<html:option value="">==请选择==</html:option>
+						<logic:present name="goodsTypeList">
+							<logic:iterate id="goodsType" name="goodsTypeList">
+	      						<html:option value="${goodsType.id}">${goodsType.typename}</html:option>
+	      					</logic:iterate>
+   						</logic:present>
+					</html:select>
+					
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					规格:
+				</td>
+				<td colspan="3">
+					<html:text property="spec"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					单位:
+				</td>
+				<td colspan="3">
+					<html:text property="unit"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					整装单位:
+				</td>
+				<td colspan="3">
+					<html:text property="allunit"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					换算关系:
+				</td>
+				<td colspan="3">
+					<html:text property="conver"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					最小库存：
+				</td>
+				<td colspan="3">
+					<html:text property="minsave"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					最大库存：
+				</td>
+				<td colspan="3">
+					<html:text property="maxsave"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					生产单位：
+				</td>
+				<td colspan="3">
+					<html:text property="produnit"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -152,8 +168,8 @@
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<html:hidden property="id"/>
-					<input type="hidden" name="task" value="updateSickbed">
-					<input type="hidden" value="403" name="modfunid">
+					<input type="hidden" name="task" value="updateGoods">
+					<input type="hidden" value="487" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 修 改 " class="inputs" />
 				</td>

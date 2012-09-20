@@ -22,4 +22,6 @@ public class PowerKey {
 	
 	public static String KEY_GOODS = "91";
 	
+	public static String KEY_ICD="95";
+	
 }

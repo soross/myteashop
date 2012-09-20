@@ -61,27 +61,19 @@
 </tr>
 <tr>
 <td width="12%" height=23><div align="center">软件版本</div></td>
-<td width="88%">v 1.0 20120328 <a href="http://bbs.91736.com/forum-43-1.html" target="_blank"><font color="#FF0000">[点击查看最新版本]</font></a></td>
+<td width="88%">v 1.0 20120930</td>
 </tr>
 <tr>
 <td height=23><div align="center">产品开发</div></td>
-<td><a href="http://www.91736.com" target=_blank>www.91736.com</a></td>
+<td><a href="http://www.fjfdy.com" target=_blank>www.fjfdy.com</a></td>
 </tr>
 <tr>
 <td height=23><div align="center">开发团队</div></td>
-<td>91736软件开发小组</td>
+<td>果果网络软件开发团队</td>
 </tr>
 <tr>
 <td height=23><div align="center">联系方法</div></td>
-<td>service@91736.com</td>
-</tr>
-<tr>
-<td height=23><div align="center">联系QQ</div></td>
-<td>261689713</td>
-</tr>
-<tr>
-<td height=23><div align="center">插件开发</div></td>
-<td> 91736企业管理系统插件开发小组</td>
+<td>loveecody@foxmail.com</td>
 </tr>
 </table>
 </body>

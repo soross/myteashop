@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床选项：</b>
+				<b>个人疾病编码选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -35,77 +35,29 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed" method="post">
+	<html:form action="/admin/icd" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加病床
+					添加个人疾病编码
 				</th>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床名称：
+					个人疾病名称：
 				</td>
 				<td colspan="3">
-					<html:text property="sickbed"  size="20"  styleId="txt"></html:text>
+					<html:text property="icdname"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床编码：
+					个人疾病编码：
 				</td>
 				<td colspan="3">
-					<html:text property="code"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属科室:
-				</td>
-				<td colspan="3">
-					<html:select property="deptid">
-						<html:option value="">==请选择==</html:option>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<html:option value="${dept.id}">${dept.deptName}</html:option>
-	      					</logic:iterate>
-   						</logic:present>
-					</html:select>
-					
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					显示顺序:
-				</td>
-				<td colspan="3">
-					<html:text property="showindex"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属病区:
-				</td>
-				<td colspan="3">
-					<html:text property="area"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					床位级别:
-				</td>
-				<td colspan="3">
-					<html:text property="leveltype"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					标准金额:
-				</td>
-				<td colspan="3">
-					<html:text property="price"  size="20"  styleId="txt"></html:text>
+					<html:text property="icdcode"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -122,14 +74,6 @@
 				</td>
 				<td colspan="3">
 					<html:text property="wubi"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					当前住院号：
-				</td>
-				<td colspan="3">
-					<html:text property="hospno"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -151,8 +95,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addSickbed">
-					<input type="hidden" value="402" name="modfunid">
+					<input type="hidden" name="task" value="addIcd">
+					<input type="hidden" value="492" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 保 存 " class="inputs" />
 				</td>

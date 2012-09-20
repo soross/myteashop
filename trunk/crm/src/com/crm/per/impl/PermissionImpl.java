@@ -84,10 +84,10 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission {
 	// 获取五笔
 	public String getAllWubi(final String str) {
 		char[] cs = str.toCharArray();
-		String allWubi="";
-		for(int j = 0 ;j<cs.length;j++){
+		String allWubi = "";
+		for (int j = 0; j < cs.length; j++) {
 			String wubi = getWubi(str);
-			allWubi = allWubi+ wubi.substring(0, 1);
+			allWubi = allWubi + wubi.substring(0, 1);
 		}
 		return allWubi;
 	}
@@ -95,13 +95,17 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission {
 	// 获取五笔
 	public String getWubi(final String str) {
 		String wubi = "";
+		final String unicode = gbEncoding(str);
 		List list = this.getHibernateTemplate().executeFind(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						SQLQuery query = session
 								.createSQLQuery("select * from t_word_wubi where text like '%"
-										+ str + "%'");
+										+ str
+										+ "%' or unicode ='"
+										+ unicode
+										+ "'");
 						List list = query.list();
 						return list;
 					}
@@ -117,33 +121,6 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission {
 
 				if (null != wubi && !"".equalsIgnoreCase(wubi)) {
 					break;
-				}
-			}
-		} else {
-			final String unicode = gbEncoding(str);
-			list = this.getHibernateTemplate().executeFind(
-					new HibernateCallback() {
-						public Object doInHibernate(Session session)
-								throws HibernateException, SQLException {
-							SQLQuery query = session
-									.createSQLQuery("select * from t_word_wubi where unicode ='"
-											+ unicode + "'");
-							List list = query.list();
-							return list;
-						}
-					});
-
-			if (list.size() > 0) {
-				for (int i = 0; i < list.size(); i++) {
-					Map map = (Map) list.get(i);
-					wubi = map.get("wubi_86").toString();
-					if (null == wubi || "".equalsIgnoreCase(wubi)) {
-						wubi = map.get("wubi_98").toString();
-					}
-
-					if (null != wubi && !"".equalsIgnoreCase(wubi)) {
-						break;
-					}
 				}
 			}
 		}

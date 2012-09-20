@@ -18,9 +18,11 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TIcd;
 import com.crm.sysdo.service.inf.IcdServiceDao;
 import com.crm.sysdo.struts.form.IcdForm;
+import com.crm.tool.PinYinUtils;
 
 /**
  * MyEclipse Struts Creation date: 10-23-2009
@@ -51,10 +53,10 @@ public class IcdAction extends DispatchAction {
 			throws Exception {
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_ICD);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Icd/addIcd.jsp");
+		return new ActionForward("/admin/sysdo/icd/addicd.jsp");
 	}
 
 	/**
@@ -72,8 +74,11 @@ public class IcdAction extends DispatchAction {
 		IcdForm IcdForm = (IcdForm) form;
 		TIcd Icd = new TIcd();
 		BeanUtils.copyProperties(Icd, IcdForm);
-
-
+		
+		if(null!=IcdForm.getIcdname()&&!"".equals(IcdForm.getIcdname())){
+			Icd.setPinyin(PinYinUtils.getAllFirstLetter(IcdForm.getIcdname()));
+		}
+		
 		Boolean bool = this.IcdServiceDao.addIcd(Icd);
 
 		if (bool) {
@@ -82,9 +87,9 @@ public class IcdAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=toAddIcd';}else{location.href='"
+									+ "/admin/icd.do?task=toAddIcd';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=IcdList';}</script>");
+									+ "/admin/icd.do?task=icdList';}</script>");
 			return null;
 		} else {
 			response
@@ -92,9 +97,9 @@ public class IcdAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=toAddIcd';}else{location.href='"
+									+ "/admin/icd.do?task=toAddIcd';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=IcdList';}</script>");
+									+ "/admin/icd.do?task=icdList';}</script>");
 			return null;
 		}
 	}
@@ -108,18 +113,23 @@ public class IcdAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward IcdList(ActionMapping mapping, ActionForm form,
+	public ActionForward icdList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		IcdForm IcdForm = (IcdForm) form;
+		TIcd icd = new TIcd();
+		BeanUtils.copyProperties(icd, IcdForm);
 		PageUtil pageUtil = new PageUtil(request, this.IcdServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+				.getCount(icd), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
+		
+		List list = this.IcdServiceDao.getIcdList(pageUtil, icd);
+		request.setAttribute("icdList", list);
+		
 		// 32 角色
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_ICD);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/Icd/Icdlist.jsp");
+		return new ActionForward("/admin/sysdo/icd/icdlist.jsp");
 	}
 
 	/**
@@ -145,14 +155,14 @@ public class IcdAction extends DispatchAction {
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
+					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Icd.do?task=IcdList';</script>");
+							+ "/admin/icd.do?task=icdList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Icd.do?task=IcdList';</script>");
+							+ "/admin/icd.do?task=icdList';</script>");
 		}
 		return null;
 	}
@@ -174,10 +184,10 @@ public class IcdAction extends DispatchAction {
 		BeanUtils.copyProperties(IcdForm, Icd);
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_ICD);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Icd/updateIcd.jsp");
+		return new ActionForward("/admin/sysdo/icd/updateicd.jsp");
 	}
 
 	/**
@@ -195,7 +205,10 @@ public class IcdAction extends DispatchAction {
 		IcdForm IcdForm = (IcdForm) form;
 		TIcd Icd = this.IcdServiceDao.getIcdById(new Long(IcdForm.getId()));
 		BeanUtils.copyProperties(Icd, IcdForm);
-
+		
+		if(null!=IcdForm.getIcdname()&&!"".equals(IcdForm.getIcdname())){
+			Icd.setPinyin(PinYinUtils.getAllFirstLetter(IcdForm.getIcdname()));
+		}
 		Boolean bool = false;
 		try {
 			bool = this.IcdServiceDao.updateIcd(Icd);
@@ -206,18 +219,18 @@ public class IcdAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=toUpdateIcd&id="
+									+ "/admin/icd.do?task=toUpdateIcd&id="
 									+ Icd.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Icd.do?task=IcdList';}</script>");
+									+ "/admin/icd.do?task=icdList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+			response.getWriter().print("<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Icd.do?task=toUpdateIcd&id='"
+							+ "/admin/icd.do?task=toUpdateIcd&id='"
 							+ Icd.getId() + "';</script>");
 		}
 		return null;

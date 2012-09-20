@@ -29,7 +29,7 @@
 			<div class="topdl">
 				<li>友情提醒：</li>
 				<li><marquee scrollamount=3 width="200px" onMouseOver="this.stop();" onMouseOut="this.start();">操作前请注意先备份数据库,以免数据丢失!</marquee></li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;欢迎${user.userid}｜<a href="#" target="main"><span class="fff">在线帮助</span></a>｜<a href="main.php" target="_blank"><span class="fff">首页</span></a>｜<a href="${pageContext.request.contextPath}/login.do?task=relogin" target="_parent"><span class="fff">重新登入</span></a>｜<a href="${pageContext.request.contextPath}/login.do?task=exit" target="_parent"><span class="fff">退出</span></a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;欢迎${user.userid}｜<a href="#" target="main"><span class="fff">在线帮助</span></a>｜<a href="${pageContext.request.contextPath}/admin/main.jsp" target="_self"><span class="fff">首页</span></a>｜<a href="${pageContext.request.contextPath}/login.do?task=relogin" target="_parent"><span class="fff">重新登入</span></a>｜<a href="${pageContext.request.contextPath}/login.do?task=exit" target="_parent"><span class="fff">退出</span></a></li>
 			</div>
 	    </div>
 		<div class="tabm">

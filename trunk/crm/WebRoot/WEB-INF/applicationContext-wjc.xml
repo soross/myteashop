@@ -247,6 +247,25 @@
 	</bean>
 	
 	
+	<!-- his -->
+	<bean name="hisDao" class="com.crm.ddt.dao.impl.HisDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="hisServiceDao"
+		class="com.crm.ddt.service.impl.HisServiceDaoImpl">
+		<property name="hisDao" ref="hisDao"></property>
+	</bean>
+	<bean name="hisServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="hisServiceDao"></property>
+	</bean>
+	<bean name="/admin/his"
+		class="com.crm.ddt.struts.action.HisAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="hisServiceDao" ref="hisServiceDaoProxy"></property>
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
+	
+	
 	
 	<!-- manu -->
 	<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">

@@ -55,8 +55,7 @@ function getResult(){
 	for(var i=0;i<names.length;i++){
 		result = result +"ccccc"+(i+1)+":"+ names[i].value+"\r\n";
 	}
-	
-	document.getElementById('ta').innerHTML=result;
+	document.getElementById('ta').value=result;
 }
 </script>
 </head>
@@ -115,7 +114,7 @@ function getResult(){
 	</tr>
 </table>
 
-<textarea id="ta" rows=5 cols=20></textarea>
+<textarea id="ta" rows=5 cols=200></textarea>
 
 </body>
 </html>

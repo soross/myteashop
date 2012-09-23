@@ -8,7 +8,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 
 /**
- * @author lxj 分页标签处理类
+ * @author wjc 分页标签处理类
  */
 public class PageTag extends TagSupport {
 

@@ -1,6 +1,7 @@
 package com.crm.pub;
 
 public class PowerKey {
+	public static String KEY_HIS = "15";
 	
 	public static String KEY_DATA="33";
 	

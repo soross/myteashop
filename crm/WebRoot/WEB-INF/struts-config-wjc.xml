@@ -20,6 +20,8 @@
 	<form-bean name="toolinfoForm" type="com.crm.sysdo.struts.form.ToolinfoForm" />
 	<form-bean name="toolsaveForm" type="com.crm.sysdo.struts.form.ToolSaveForm" />
 	
+	<form-bean name="hisForm" type="com.crm.ddt.struts.form.HisForm" />
+	
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
 	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
@@ -185,7 +187,16 @@
       path="/admin/toolsave"
       scope="request"
       type="com.crm.sysdo.struts.action.ToolSaveAction" />      
-   
+   	
+   	
+	<action
+      attribute="hisForm"
+      input="/form/his.jsp"
+      name="hisForm"
+      parameter="task"
+      path="/admin/his"
+      scope="request"
+      type="com.crm.ddt.struts.action.HisAction" />   
       
   </action-mappings>
   

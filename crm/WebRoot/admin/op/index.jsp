@@ -419,10 +419,63 @@
 					</table>
 				</td>
 			</tr>
-
+		</table>
+	
+		<table cellpadding="3" cellspacing="1" border="0"
+				class="tableBorder tableth" align="center" width="100%">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td><input type="button" value="读卡" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="建卡" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="续费" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="退款" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="退卡" onclick="javascript:goUrl('');"></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="挂失" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="恢复" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="销卡" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="补卡" onclick="javascript:goUrl('');"></td>
+							<td>&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td><input type="button" value="预约查询" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="患者查询" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="修改" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="查询" onclick="javascript:goUrl('');"></td>
+							<td><input type="reset" value="清空" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="退出" onclick="javascript:goUrl('');"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;<input type="button" value="制作医疗卡" onclick="javascript:goUrl('');"></td>
+				<td align="center">
+					<input type="submit" value="确定" onclick="javascript:goUrl('');">&nbsp;
+					<input type="button" value="取消" onclick="javascript:goUrl('');">
+				</td>
+			</tr>
 		</table>
 	</html:form>
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<div class="contextMenu" id="myMenu2">
 		<ul>
 			<li id="upload">
@@ -447,14 +500,13 @@
 			<tr>
 				<td>
 					<input type="file" id="file" name="file" />
-				</td>
+				<br></td>
 			</tr>
 			<tr>
-				<td align="center">
-					<input type="button" value="关闭" onclick="closeDiv()">
+				<td align="center">c<input type="button" value="关闭" onclick="closeDiv()">
 					&nbsp;&nbsp;
 					<input type="button" value="上传" onclick="return ajaxFileUpload();">
-				</td>
+				<br></td>
 			</tr>
 		</table>
 	</div>

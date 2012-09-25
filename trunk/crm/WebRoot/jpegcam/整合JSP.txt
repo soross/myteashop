@@ -1,0 +1,40 @@
+jpegcam google code project 地址： http://code.google.com/p/jpegcam/
+
+php://input 的说明http://hi.baidu.com/im886/blog/item/eacdea1f3da5bf6ef724e422.html
+
+详细请参考http://code.google.com/p/jpegcam/wiki/Instructions配置步骤
+
+JSP整合需要注意点如下：
+
+1.
+
+webcam.set_api_url( 'test.php' );
+修改成对应的JSP接受页面
+
+2.
+
+<script language="JavaScript">
+       document.write( webcam.get_html(320, 240) );
+</script>
+修改页面及其拍摄的图像大小
+
+3.
+
+$jpeg_data = file_get_contents('php://input');
+使用PHP的流函数将http请求中的http数据体读入一个变量中
+
+JSP的话就需要稍微修改，修改如下
+
+InputStream is = request.getInputStream();
+这样就把http中的数据体读入了一个stream中，可以对其进行输出到一个文件中即可，示例如下
+
+String file = “test.jpg”;
+OutputStream os = new FileOutputStream(file);
+int tt = is.read();
+while(tt != -1) {
+    os.write(tt);
+    tt = is.read();
+}
+os.flush();
+is.close();
+os.close();

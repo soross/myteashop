@@ -690,7 +690,7 @@ function closeDivPhoto() {
 	$("body").css("overflow", "scroll"); 
 	//document.getElementById("tabinfo").style.width = document.body.offsetWidth; 
 	
-} 
+}
 </script>
 
 <!--ÈÕÀú¿Ø¼þ -->

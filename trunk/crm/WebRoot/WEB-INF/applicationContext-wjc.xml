@@ -335,6 +335,23 @@
 		<property name="toolSaveServiceDao" ref="toolSaveServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- file -->
+	<bean name="fileDao" class="com.crm.sysdo.dao.impl.FileDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="fileServiceDao"
+		class="com.crm.sysdo.service.impl.FileServiceDaoImpl">
+		<property name="fileDao" ref="fileDao"></property>
+	</bean>
+	<bean name="fileServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="fileServiceDao"></property>
+	</bean>
+	<bean name="/admin/file"
+		class="com.crm.sysdo.struts.action.FileAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="fileServiceDao" ref="fileServiceDaoProxy"></property>
+		<property name="userServiceDao" ref="userProxy"></property>
+	</bean>
 	
 	
 	
@@ -353,6 +370,7 @@
 		class="com.crm.op.struts.action.CustAction">
 		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
 	</bean>
+	
 	
 	<!-- 预约 -->
 	<bean name="orderDao" class="com.crm.op.dao.impl.OrderDaoImpl">

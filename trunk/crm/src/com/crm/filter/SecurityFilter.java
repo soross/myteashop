@@ -18,16 +18,16 @@ public class SecurityFilter implements Filter{
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest httpRequest=(HttpServletRequest)request;
-		HttpServletResponse httpResponse=(HttpServletResponse)response;
-		HttpSession suser=httpRequest.getSession();
+		//HttpServletRequest httpRequest=(HttpServletRequest)request;
+		//HttpServletResponse httpResponse=(HttpServletResponse)response;
+		//HttpSession suser=httpRequest.getSession();
 		
-		if(suser.getAttribute("user")==null){
-			httpResponse.getWriter().write("<script>top.location.href='"+httpRequest.getContextPath()+"/login.jsp';</script>");
-		}
-		else{
+		//if(suser.getAttribute("user")==null){
+		//	httpResponse.getWriter().write("<script>top.location.href='"+httpRequest.getContextPath()+"/login.jsp';</script>");
+		//}
+		//else{
 			chain.doFilter(request,response);
-		}
+		//}
 
 		
 	}

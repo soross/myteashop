@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.per.dao.Permission;
+import com.crm.per.po.TLog;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
@@ -219,6 +220,11 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission {
 		}
 		return outBuffer.toString();
 
+	}
+	
+	
+	public void addLog(TLog log){
+		this.getHibernateTemplate().save(log);
 	}
 
 }

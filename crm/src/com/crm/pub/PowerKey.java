@@ -3,7 +3,11 @@ package com.crm.pub;
 public class PowerKey {
 	public static String KEY_HIS = "15";
 	
+	public static String KEY_FILE_PHOTO="21";
+	
 	public static String KEY_DATA="33";
+	
+	public static String KEY_FILE_VIEW="39";
 	
 	public static String KEY_DEPT="79";
 	
@@ -24,5 +28,10 @@ public class PowerKey {
 	public static String KEY_GOODS = "91";
 	
 	public static String KEY_ICD="95";
+	
+	
+	
+	public static String FILE_TYPE_PHOTO="PHOTO";
+	public static String FILE_TYPE_VIEW="VIEW";
 	
 }

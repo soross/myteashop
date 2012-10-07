@@ -27,8 +27,8 @@
 		<mapping resource="com/crm/pub/po/TUser.hbm.xml" />
 		<mapping resource="com/crm/pub/po/TPower.hbm.xml" />
 		<mapping resource="com/crm/pub/po/TRole.hbm.xml" />
-		
-		
+
+
 		<mapping resource="com/crm/score/po/TChange.hbm.xml" />
 		<mapping resource="com/crm/score/po/TBack.hbm.xml" />
 		<mapping resource="com/crm/score/po/TTotalScore.hbm.xml" />
@@ -38,7 +38,7 @@
 		<mapping resource="com/crm/score/po/TYearScore.hbm.xml" />
 		<mapping resource="com/crm/score/po/TMonthScore.hbm.xml" />
 		<mapping resource="com/crm/score/po/TChangeItem.hbm.xml" />
-		
+
 		<mapping resource="com/crm/client/po/TClientinfo.hbm.xml" />
 		<mapping resource="com/crm/client/po/TClient.hbm.xml" />
 		<mapping resource="com/crm/client/po/TRulelog.hbm.xml" />
@@ -49,16 +49,16 @@
 		<mapping resource="com/crm/client/po/TOperationtype.hbm.xml" />
 		<mapping resource="com/crm/client/po/TOperation.hbm.xml" />
 		<mapping resource="com/crm/client/po/TOperlog.hbm.xml" />
-		
-		
-		
-		
+
+
+
+
 		<mapping resource="com/crm/op/po/TCustomer.hbm.xml" />
 		<mapping resource="com/crm/op/po/TOrder.hbm.xml" />
 		<mapping resource="com/crm/op/po/TRegister.hbm.xml" />
 		<mapping resource="com/crm/op/po/TRegisterFee.hbm.xml" />
-		
-		
+
+
 		<mapping resource="com/crm/sysdo/po/TDept.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TSickbed.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TData.hbm.xml" />
@@ -73,9 +73,12 @@
 		<mapping resource="com/crm/sysdo/po/TToolinfo.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TGoodsType.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TIcd.hbm.xml" />
-		
-		
+
+
 		<mapping resource="com/crm/ddt/po/THis.hbm.xml" />
+		<mapping resource="com/crm/per/po/TLog.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/SysInfo.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TFile.hbm.xml" />
 
 
 	</session-factory>

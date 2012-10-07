@@ -58,7 +58,7 @@ public class LoginAction extends DispatchAction {
 				&& loginForm.getCode().equals(code)) {// 判断验证码
 			// 获取用户信息
 			TUser tuser = userServiceDao.getUser(loginForm.getUserId());
-			if (tuser != null) {// 判断用户
+			if (null != tuser) {// 判断用户
 				if (null != tuser.getPassword()
 						&& tuser.getPassword().equals(loginForm.getPassword())) {
 					if ("1".equalsIgnoreCase(tuser.getSlock())) {

@@ -84,7 +84,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addReg">
+					<input type="hidden" name="task" value="addRegFeeByPrice">
+					<input type="hidden" name="feeType" value="PRICE">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 门诊挂号划价 " class="inputs" />
 				</td>

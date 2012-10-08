@@ -445,7 +445,7 @@
 				<td>
 					<table>
 						<tr>
-							<td><input type="button" value="预约查询" onclick="javascript:goUrl('');"></td>
+							<td><input type="button" value="预约查询" onclick="javascript:goUrl('${pageContext.request.contextPath}/admin/order.do?task=toAddOrder&modfunid=103');"></td>
 							<td><input type="button" value="患者查询" onclick="javascript:goUrl('');"></td>
 							<td><input type="button" value="修改" onclick="javascript:goUrl('');"></td>
 							<td><input type="button" value="查询" onclick="javascript:goUrl('');"></td>

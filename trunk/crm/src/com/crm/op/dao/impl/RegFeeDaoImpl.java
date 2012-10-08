@@ -46,7 +46,7 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 							throws HibernateException, SQLException {
 
 						StringBuffer sbf = new StringBuffer(
-								"select count(*) from TRegisterFee rf where 1=1");
+								"select count(*) from TRegisterFee rf where fee_Type='"+rf.getFeeType()+"' ");
 						if (null != rf.getCreateStaff()
 								&& !"".equals(rf.getCreateStaff())) {
 							sbf.append(" and rf.createStaff=:custStaff");
@@ -85,7 +85,7 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						StringBuffer sbf = new StringBuffer(
-								"from TRegisterFee rf where 1=1");
+								"from TRegisterFee rf where fee_Type='"+order.getFeeType()+"' ");
 						if (null != order.getCreateStaff()
 								&& !"".equals(order.getCreateStaff())) {
 							sbf.append(" and rf.createStaff=:custStaff");

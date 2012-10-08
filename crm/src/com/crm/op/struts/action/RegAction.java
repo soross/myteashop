@@ -22,6 +22,7 @@ import com.crm.op.struts.form.CustForm;
 import com.crm.op.struts.form.RegForm;
 import com.crm.page.PageUtil;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TDept;
 import com.crm.sysdo.struts.form.DeptForm;
 
@@ -168,9 +169,10 @@ public class RegAction extends DispatchAction {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 划价
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -184,8 +186,10 @@ public class RegAction extends DispatchAction {
 		RegForm regForm = (RegForm) form;
 		TRegisterFee fee = new TRegisterFee();
 		BeanUtils.copyProperties(fee, regForm);
+		fee.setFeeType(PowerKey.REG_FEE_PRICE);
 
 		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
+
 		PageUtil pageUtil = new PageUtil(request, count,
 				GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
@@ -193,10 +197,10 @@ public class RegAction extends DispatchAction {
 		request.setAttribute("regFeeList", list);
 		return new ActionForward("/admin/op/regfee/pricelist.jsp");
 	}
-	
-	
+
 	/**
 	 * 收费
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -210,8 +214,10 @@ public class RegAction extends DispatchAction {
 		RegForm regForm = (RegForm) form;
 		TRegisterFee fee = new TRegisterFee();
 		BeanUtils.copyProperties(fee, regForm);
+		fee.setFeeType(PowerKey.REG_FEE_CHARGE);
 
 		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
+
 		PageUtil pageUtil = new PageUtil(request, count,
 				GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
@@ -219,9 +225,10 @@ public class RegAction extends DispatchAction {
 		request.setAttribute("regFeeList", list);
 		return new ActionForward("/admin/op/regfee/chargelist.jsp");
 	}
-	
+
 	/**
 	 * 新增收费
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -238,9 +245,48 @@ public class RegAction extends DispatchAction {
 
 		return new ActionForward("/admin/op/regfee/addcharge.jsp");
 	}
-	
+
+	/**
+	 * 新增收费
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward addRegFeeByCharge(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
+		try {
+			this.regFeeServiceDao.addRegFee(fee);
+			response
+					.getWriter()
+					.write(
+							"<script>if(confirm('操作成功,是否继续添加?')){location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddRegFeeByCharge';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=regFeeListByCharge';}</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+			response
+					.getWriter()
+					.write(
+							"<script>alert('操作失败,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddRegFeeByCharge';</script>");
+		}
+		return null;// ("/admin/op/regfee/addcharge.jsp");
+	}
+
 	/**
 	 * 新增划价
+	 * 
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -255,6 +301,44 @@ public class RegAction extends DispatchAction {
 		TRegisterFee fee = new TRegisterFee();
 		BeanUtils.copyProperties(fee, regForm);
 		return new ActionForward("/admin/op/regfee/addprice.jsp");
+	}
+
+	/**
+	 * 新增划价
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward addRegFeeByPrice(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RegForm regForm = (RegForm) form;
+		TRegisterFee fee = new TRegisterFee();
+		BeanUtils.copyProperties(fee, regForm);
+		try {
+			this.regFeeServiceDao.addRegFee(fee);
+			response
+					.getWriter()
+					.write(
+							"<script>if(confirm('操作成功,是否继续添加?')){location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddRegFeeByPrice';}else{location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=regFeeListByPrice';}</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+			response
+					.getWriter()
+					.write(
+							"<script>alert('操作失败,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/reg.do?task=toAddRegFeeByPrice';</script>");
+		}
+		return null;//new ActionForward("/admin/op/regfee/addprice.jsp");
 	}
 
 	public RegServiceDao getRegServiceDao() {

@@ -78,36 +78,38 @@ increment by 1
 cache 20;
   
  
-delete t_power where id='21' 
-insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (601, '门诊图像列表', '/admin/file.do?task=fileListByPhoto&modfunid=601', 21, 1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (602, '新增门诊图像', '/admin/file.do?task=addFileByPhoto&modfunid=602', 21, 2);
+values (601, '门诊图像列表', '/admin/file.do?task=fileListByPhoto'||'&'||'modfunid=601', 21, 1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (603, '修改门诊图像', '/admin/file.do?task=updateFileByPhoto&modfunid=603', 21, -1);
+values (602, '新增门诊图像', '/admin/file.do?task=addFileByPhoto'||'&'||'modfunid=602', 21, 2);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (604, '删除门诊图像', '/admin/file.do?task=deleteFileByPhoto&modfunid=604', 21, -1);
+values (603, '修改门诊图像', '/admin/file.do?task=updateFileByPhoto'||'&'||'modfunid=603', 21, -1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (21, '门诊图像浏览', '/admin/file.do?task=fileListByPhoto&modfunid=21', 2, 7);
+values (604, '删除门诊图像', '/admin/file.do?task=deleteFileByPhoto'||'&'||'modfunid=604', 21, -1);
+
+delete from t_power where id='21';
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (21, '门诊图像浏览', '/admin/file.do?task=fileListByPhoto'||'&'||'modfunid=21', 2, 7);
+
+delete from t_power where id='39';
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (39, '门诊影像浏览', '/admin/file.do?task=fileListByView'||'&'||'modfunid=39', 2, 8);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (39, '门诊影像浏览', '/admin/file.do?task=fileListByView&modfunid=39', 2, 8);
+values (611, '门诊影响列表', '/admin/file.do?task=fileListByView'||'&'||'modfunid=611', 39, 1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (611, '门诊影响列表', '/admin/file.do?task=fileListByView&modfunid=611', 39, 1);
+values (612, '新增门诊影像', '/admin/file.do?task=addFileByView'||'&'||'modfunid=612', 39, 2);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (612, '新增门诊影像', '/admin/file.do?task=addFileByView&modfunid=612', 39, 2);
+values (613, '修改门诊影像', '/admin/file.do?task=updateFileByView'||'&'||'modfunid=613', 39, -1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (613, '修改门诊影像', '/admin/file.do?task=updateFileByView&modfunid=613', 39, -1);
-
-insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (614, '删除门诊影像', '/admin/file.do?task=deleteFileByView&modfunid=614', 39, -1);
+values (614, '删除门诊影像', '/admin/file.do?task=deleteFileByView'||'&'||'modfunid=614', 39, -1);
 
 
 
@@ -167,4 +169,4 @@ alter table T_FILE
     maxextents unlimited
   );
 
-  
+ 

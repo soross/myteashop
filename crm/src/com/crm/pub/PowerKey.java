@@ -34,4 +34,8 @@ public class PowerKey {
 	public static String FILE_TYPE_PHOTO="PHOTO";
 	public static String FILE_TYPE_VIEW="VIEW";
 	
+	
+	public static String REG_FEE_CHARGE = "CHARGE";
+	public static String REG_FEE_PRICE = "PRICE";
+	
 }

@@ -32,6 +32,7 @@ public class RegForm extends ActionForm implements java.io.Serializable {
 	private String feeTime;
 	private String createStaff;
 	private String feeStaff;
+	private String feeType;
 
 	// Constructors
 
@@ -176,5 +177,13 @@ public class RegForm extends ActionForm implements java.io.Serializable {
 
 	public void setFeeStaff(String feeStaff) {
 		this.feeStaff = feeStaff;
+	}
+
+	public String getFeeType() {
+		return feeType;
+	}
+
+	public void setFeeType(String feeType) {
+		this.feeType = feeType;
 	}
 }

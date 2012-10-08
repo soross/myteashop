@@ -84,7 +84,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addReg">
+					<input type="hidden" name="task" value="addRegFeeByCharge">
+					<input type="hidden" name="feeType" value="CHARGE">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 挂号划价收费 " class="inputs" />
 				</td>

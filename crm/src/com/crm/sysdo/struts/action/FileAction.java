@@ -86,6 +86,40 @@ public class FileAction extends DispatchAction {
 
 		return new ActionForward("/admin/sysdo/file/filelist.jsp");
 	}
+	
+	/**
+	 * 图像列表
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward fileListByView(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		FileForm FileForm = (FileForm) form;
+		TFile File = new TFile();
+		BeanUtils.copyProperties(File, FileForm);
+
+		File.setFiletype(PowerKey.FILE_TYPE_VIEW);
+
+		// Integer count = this.FileServiceDao.getCount(File);
+		// PageUtil pageUtil = new PageUtil(request, count,
+		// GlobVar.PAGESIZE_BY_TEN_DATA);
+		// request.setAttribute("pageUtil", pageUtil);
+
+		// List list = this.FileServiceDao.getFileList(pageUtil, File);
+		List list = this.FileServiceDao.getFileList(null, File);
+		request.setAttribute("fileList", list);
+
+		// 81
+		List sonList = perDao.getSonPerList(PowerKey.KEY_FILE_VIEW);
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/sysdo/file/viewlist.jsp");
+	}
 
 	/**
 	 * 跳转到添加病床

@@ -16,7 +16,7 @@ public class TRegister implements java.io.Serializable {
 	private String custName;
 	private String doctor;
 	private Date createDate;
-	private Long staff;
+	private String staff;
 	private Long old;
 	private String garden;
 
@@ -28,7 +28,7 @@ public class TRegister implements java.io.Serializable {
 
 	/** full constructor */
 	public TRegister(String custName, String doctor, Date createDate,
-			Long staff, Long old, String garden) {
+			String staff, Long old, String garden) {
 		this.custName = custName;
 		this.doctor = doctor;
 		this.createDate = createDate;
@@ -71,11 +71,11 @@ public class TRegister implements java.io.Serializable {
 		this.createDate = createDate;
 	}
 
-	public Long getStaff() {
+	public String getStaff() {
 		return this.staff;
 	}
 
-	public void setStaff(Long staff) {
+	public void setStaff(String staff) {
 		this.staff = staff;
 	}
 

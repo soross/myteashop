@@ -105,7 +105,7 @@
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorder">
 		<tr>
-			<th colspan=6 height=25>
+			<th colspan=7 height=25>
 				挂号收费列表
 			</th>
 		</tr>
@@ -120,6 +120,9 @@
 			<td width="20%">
 				订单ID
 			</td>
+			<td width="20%">
+				收费金额
+			</td>	
 			<td width="20%">
 				收费时间
 			</td>			
@@ -151,6 +154,9 @@
 							${regFee.orderId}
 						</td>
 						<td>
+							${regFee.fee}
+						</td>
+						<td>
 							<bean:write name="regFee"
 							property="createDate" format="yyyy-MM-dd HH:mm:ss" />
 						</td>
@@ -171,7 +177,7 @@
 				<html:button property="" value="全部导出"
 					onclick="outAllToExcel('exportAllClient')"></html:button>
 			</td>
-			<td colspan="10" align="right">
+			<td colspan="11" align="right">
 				<page:page name="pageUtil" />
 			</td>
 		</tr>

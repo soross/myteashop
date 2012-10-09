@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.crm.op.dao.intf.RegFeeDao;
 import com.crm.op.po.TRegisterFee;
 import com.crm.page.PageUtil;
+import com.crm.pub.PowerKey;
 
 public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 
@@ -90,7 +91,13 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 								&& !"".equals(order.getCreateStaff())) {
 							sbf.append(" and rf.createStaff=:custStaff");
 						}
-
+						
+						if(PowerKey.REG_FEE_CHARGE.equalsIgnoreCase(order.getFeeType())){
+							sbf.append(" order by fee_Date desc");
+						}else{
+							sbf.append(" order by create_Date desc ");
+						}
+						
 						Query query = session.createQuery(sbf.toString());
 						if (null != order.getCreateStaff()
 								&& !"".equals(order.getCreateStaff())) {

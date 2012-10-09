@@ -28,7 +28,7 @@
                 <comment>创建时间</comment>
             </column>
         </property>
-        <property name="staff" type="java.lang.Long">
+        <property name="staff" type="java.lang.String">
             <column name="STAFF" precision="22" scale="0">
                 <comment>登记员工</comment>
             </column>

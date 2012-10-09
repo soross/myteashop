@@ -40,47 +40,47 @@
 			<tr>
 				<th colspan=5 height=25>
 					门诊挂号
-				</th>
+				<br></th>
 			</tr>
 			<tr>
 				<td align="right">
 					客户名称：
-				</td>
+				<br></td>
 				<td colspan="3">
 					<html:text property="custName"  size="30"  styleId="txt"></html:text>
-				</td>
+				<br></td>
 			</tr>
 			<tr>
 				<td align="right">
 					挂号医生:
-				</td>
+				<br></td>
 				<td colspan="3">
 					<html:text property="doctor"  size="30"  styleId="txt"></html:text>
-				</td>
+				<br></td>
 			</tr>
 			<tr>
 				<td align="right">
 					年龄:
-				</td>
+				<br></td>
 				<td colspan="3">
 					<html:text property="old"  size="30"  styleId="txt"></html:text>
-				</td>
+				<br></td>
 			</tr>
 			<tr>
 				<td align="right">
 					性别:
-				</td>
+				<br></td>
 				<td colspan="3">
-					<html:text property="garden"  size="30"  styleId="txt"></html:text>
-				</td>
+					<html:radio property="garden" value="男"></html:radio>男
+					<html:radio property="garden" value="女"></html:radio>女
+				<br></td>
 			</tr>
 			<tr>
 				<td align="right">
 					员工:
-				</td>
-				<td colspan="3">
-					<html:text property="staff"  size="30"  styleId="txt"></html:text>
-				</td>
+				<br></td>
+				<td colspan="3"><html:text property="staff"  size="30"  styleId="txt" value="${user.userid}"></html:text>
+				<br></td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">

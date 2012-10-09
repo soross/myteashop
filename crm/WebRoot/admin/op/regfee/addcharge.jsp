@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/reg" method="post">
+	<html:form action="/admin/reg" method="post" onsubmit="return confirm('是否确定已经收费!');">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
@@ -44,34 +44,10 @@
 			</tr>
 			<tr>
 				<td align="right">
-					客户名称：
+					挂号：
 				</td>
 				<td colspan="3">
-					<html:text property="custName"  size="30"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					挂号医生:
-				</td>
-				<td colspan="3">
-					<html:text property="doctor"  size="30"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					年龄:
-				</td>
-				<td colspan="3">
-					<html:text property="old"  size="30"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					性别:
-				</td>
-				<td colspan="3">
-					<html:text property="garden"  size="30"  styleId="txt"></html:text>
+					<html:text property="orderId"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -79,13 +55,22 @@
 					员工:
 				</td>
 				<td colspan="3">
-					<html:text property="staff"  size="30"  styleId="txt"></html:text>
+					<html:text property="feeStaff"  size="30"  styleId="txt" value="${user.userid}"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					价格:
+				</td>
+				<td colspan="3">
+					<html:text property="fee"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<input type="hidden" name="task" value="addRegFeeByCharge">
 					<input type="hidden" name="feeType" value="CHARGE">
+					<html:hidden property="id" />
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 挂号划价收费 " class="inputs" />
 				</td>

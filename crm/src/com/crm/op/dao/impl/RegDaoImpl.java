@@ -101,6 +101,8 @@ public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
 						sbf.append(" and reg.doctor = :doctor");
 					}
 					
+					sbf.append(" order by create_Date desc");
+					
 					Query query = session.createQuery(sbf.toString());
 		
 					if (null != obj.getCustName()

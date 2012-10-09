@@ -45,7 +45,7 @@
 	</script>
 
 </head>
-<body style="margin:0"><br>	
+<body style="margin:0"  onload="javascript:document.getElementById('userId').focus();"><br>	
 	<!--
 	<div style="position: absolute; width: 100px; height: 80px; z-index: 1;margin-left: 36%;margin-top:17%">
 		<object id="obj1" border="0" width="400px" height="117px">
@@ -54,7 +54,7 @@
 				height="117px" quality="High" wmode="transparent">
 		</object>
 	</div>	 -->
-	<html:form action="login?task=login">
+	<html:form action="login?task=login" styleId="loginForm">
 		<table width="100%" height="100%" border="0" cellpadding="0"
 			cellspacing="0">
 			<tr>
@@ -84,7 +84,7 @@
 													</td>
 													<td width="57%" height="25">
 														<div align="center">
-															<html:text property="userId" value="admin"
+															<html:text property="userId" value="admin" styleId="userId"
 																style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff"></html:text>
 														</div>
 													</td>
@@ -153,4 +153,16 @@
 		</table>
 	</html:form>
 </body>
+
+<script>
+	document.onkeydown=function(event){
+	  e = event?event:(window.event?window.event : null);
+	  if(e.keyCode==13){
+	   //执行的方法
+	   document.getElementById('loginForm').submit();
+	   //submitForm();
+	   //alert('回车检测到了');
+	  }
+	}
+</script>
 </html:html>

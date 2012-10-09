@@ -178,17 +178,17 @@
 							property="createDate" format="yyyy-MM-dd HH:mm:ss" />
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/reg.do?task=toUpdateReg&id=${reg.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=deleteReg&id=${reg.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							<a href="${pageContext.request.contextPath}/admin/reg.do?task=toAddRegFeeByPrice&id=${reg.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[划价]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=toUpdateReg&id=${reg.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=deleteReg&id=${reg.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>
 		</logic:present>
 		<tr>
 			<td  align="left" colspan="5" height=25>
-				&nbsp;<html:button property="" value="批量导出"
+				&nbsp;<!--<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button>
+					onclick="outAllToExcel('exportAllClient')"></html:button>-->
 			</td>
 			<td colspan="10" align="right">
 				<page:page name="pageUtil" />

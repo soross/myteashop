@@ -129,6 +129,7 @@ public class RegForm extends ActionForm implements java.io.Serializable {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
+		this.garden="ÄÐ";
 	}
 
 	public String getOrderId() {

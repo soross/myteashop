@@ -120,10 +120,13 @@
 			<td width="20%">
 				订单ID
 			</td>
+			<td width="15%">
+				价格
+			</td>
 			<td width="20%">
 				划价时间
 			</td>			
-			<td width="20%">
+			<td width="15%">
 				划价员工
 			</td>
 			<td>
@@ -151,6 +154,9 @@
 							${regFee.orderId}
 						</td>
 						<td>
+							${regFee.fee}
+						</td>
+						<td>
 							<bean:write name="regFee"
 							property="createDate" format="yyyy-MM-dd HH:mm:ss" />
 						</td>
@@ -159,7 +165,7 @@
 							${regFee.createStaff}
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/admin/reg.do?task=toUpdateReg&id=${regFee.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=deleteReg&id=${regFee.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+							<a href="${pageContext.request.contextPath}/admin/reg.do?task=toAddRegFeeByCharge&id=${regFee.id}&orderId=${regFee.orderId }&fee=${regFee.fee}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[收费]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=toUpdateReg&id=${regFee.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/reg.do?task=deleteReg&id=${regFee.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 						</td>
 					</tr>
 			</logic:iterate>

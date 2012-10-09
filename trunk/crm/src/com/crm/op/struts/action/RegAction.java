@@ -188,12 +188,14 @@ public class RegAction extends DispatchAction {
 		BeanUtils.copyProperties(fee, regForm);
 		fee.setFeeType(PowerKey.REG_FEE_PRICE);
 
+		
 		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
-
 		PageUtil pageUtil = new PageUtil(request, count,
 				GlobVar.PAGESIZE_BY_TWENTY_DATA);
-		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
 		request.setAttribute("pageUtil", pageUtil);
+		
+		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
+				
 		request.setAttribute("regFeeList", list);
 		return new ActionForward("/admin/op/regfee/pricelist.jsp");
 	}
@@ -240,9 +242,8 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		TRegisterFee fee = new TRegisterFee();
-		BeanUtils.copyProperties(fee, regForm);
-
+		//request.setAttribute("regid", regForm.getId());
+		
 		return new ActionForward("/admin/op/regfee/addcharge.jsp");
 	}
 
@@ -260,10 +261,13 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		TRegisterFee fee = new TRegisterFee();
-		BeanUtils.copyProperties(fee, regForm);
+		TRegisterFee fee = this.regFeeServiceDao.getRegFeeByID(new Long(regForm.getId()));
+		//BeanUtils.copyProperties(fee, regForm);
+		fee.setFeeDate(new Date());
+		fee.setFeeStaff(regForm.getFeeStaff());
+		fee.setFeeType(PowerKey.REG_FEE_CHARGE);
 		try {
-			this.regFeeServiceDao.addRegFee(fee);
+			this.regFeeServiceDao.updateRegFee(fee);
 			response
 					.getWriter()
 					.write(
@@ -298,8 +302,7 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		TRegisterFee fee = new TRegisterFee();
-		BeanUtils.copyProperties(fee, regForm);
+		
 		return new ActionForward("/admin/op/regfee/addprice.jsp");
 	}
 
@@ -319,6 +322,8 @@ public class RegAction extends DispatchAction {
 		RegForm regForm = (RegForm) form;
 		TRegisterFee fee = new TRegisterFee();
 		BeanUtils.copyProperties(fee, regForm);
+		fee.setCreateDate(new Date());
+		fee.setOrderId(regForm.getId());
 		try {
 			this.regFeeServiceDao.addRegFee(fee);
 			response

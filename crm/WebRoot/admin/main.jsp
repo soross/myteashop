@@ -47,8 +47,8 @@
 	</div>
 	<table width="100%" height="80%" border="0" cellpadding="0" cellspacing="0" class="mindex">
 	  <tr>
-	    <td width="170px" height="80%" valign="top" id="frmleft" name="frmleft">
-	    	<table width="170px" border="0" cellpadding="0" cellspacing="0">
+	    <td width="180px" height="80%" valign="top" id="frmleft" name="frmleft">
+	    	<table width="180px" border="0" cellpadding="0" cellspacing="0">
 	      		<tr>
 	        		<td height="28" id="leftmenu_title" class="leftmenu_title"><span>¿ì½Ý²Ëµ¥</span></td>
 	      		</tr>

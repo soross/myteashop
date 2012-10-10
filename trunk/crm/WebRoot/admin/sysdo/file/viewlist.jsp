@@ -254,9 +254,9 @@ function deleteFile(fileid,filename){
 	document.getElementById("srcname").value=filename;
 }
 
-function bigPhoto(path){
+function playView(path){
 	//window.open();
-	var url = '${pageContext.request.contextPath}/admin/file.do?task=bigPhoto&path='+path;
+	var url = '${pageContext.request.contextPath}/admin/file.do?task=playView&path='+path;
 	window.open (url,'´óÍ¼','height=600,width=800,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no'); 
 }
 

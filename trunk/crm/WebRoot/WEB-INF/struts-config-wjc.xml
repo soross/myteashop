@@ -26,6 +26,7 @@
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
 	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
+	<form-bean name="cardFeeForm" type="com.crm.op.struts.form.CardFeeForm" />
 	
   </form-beans>
 
@@ -99,6 +100,15 @@
       path="/admin/order"
       scope="request"
       type="com.crm.op.struts.action.OrderAction" />  
+      
+    <action
+      attribute="orderForm"
+      input="/form/addcardfee.jsp"
+      name="cardFeeForm"
+      parameter="task"
+      path="/admin/cardfee"
+      scope="request"
+      type="com.crm.op.struts.action.CardFeeAction" />  
       
 	<action
       attribute="dataForm"

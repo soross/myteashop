@@ -24,8 +24,12 @@
 <body>
 <table cellpadding="2" cellspacing="1" border="0" class="tableBorder" align=center>
   <tr>
-    <th colspan=2 height=25>系统信息</th>
+    <th colspan=2 height=25>快捷操作</th>
   </tr>
+  <tr>
+  	<td><a href="${pageContext.request.contextPath}/admin/reg.do?task=toAddReg">挂号</a></td>
+  </tr>
+  <!-- 
 <tr>
 <td height=23 colspan=2><font color="red">版权声明：《91736企业网站管理系统》 系<a href="http://www.91736.com" target="_blank"><font color="red">91736.com</font></a>自主开发的软件产品，拥有该软件的所有权利，未经91736授权不得用于任何商业用途！</font></td>
 </tr>
@@ -53,11 +57,11 @@
   </tr>
   <tr>
     <td height=23 colspan="2"><a href="websys_database.php"><font color=red>数据定期备份</font></a>：请注意做好定期数据备份，数据的定期备份可最大限度的保障您站点数据的安全	</td>
-  </tr>
+  </tr> -->
 </table>
 <table cellpadding="3" cellspacing="1" border="0" class="tableBorder" align=center>
 <tr>
-  <th colspan=2 height=25>91736企业网站管理系统</th>
+  <th colspan=2 height=25>泛地缘假肢医疗管理系统</th>
 </tr>
 <tr>
 <td width="12%" height=23><div align="center">软件版本</div></td>

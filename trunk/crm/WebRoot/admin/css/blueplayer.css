@@ -1,0 +1,290 @@
+<!--
+*{ 
+   margin: 0; 
+   padding: 0;
+}
+
+.clear{
+   clear:both;
+   font-size:1px; 
+   width:1px;
+   height:1px; 
+   visibility:hidden;
+}
+
+.cWhite,a.cWhite:link,a.cWhite:visited{ color:#fff;}
+
+/* 视频播放器部分Start */
+.v_player{
+margin:0 auto;
+width:344px;
+}
+
+/* 顶部边框 */
+.v_top1{
+float:left;
+width:12px;
+height:11px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_top1.gif);
+}
+
+.v_top2{
+float:left;
+width:320px;
+height:11px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_top2.gif);
+}
+
+.v_top3{
+float:right;
+width:12px;
+height:11px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_top3.gif);
+}
+
+/* 中间MediaPlayer控件和影片信息 */
+.v_mid1{
+float:left;
+width:12px;
+height:264px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_border.gif);
+}
+
+.v_mid2{
+float:left;
+width:320px;
+height:264px;
+font-size:1px;
+background-color:#FFF;
+color:#000;
+}
+
+/* 图片介绍 */
+#perpic{
+margin:0 auto;
+width:320px;
+height:245px;
+display:none;
+}
+
+/* 播放器对象 */
+#playerList{
+margin:0 auto;
+width:320px;
+height:245px;
+display:block;
+}
+
+/* 影片信息部分 */
+.m_info{
+margin:0 auto;
+border-top:1px solid #71b2d9;
+background-color:#BBD2E4;
+width:320px;
+height:18px;
+display:block;
+}
+
+.m_info #mediaTime{
+float:right;
+padding-top:3px;
+padding-bottom:1px;
+width:70px;
+height:12px;
+color:#FFF;
+text-align:center;
+font:normal 12px "宋体,Arial, Helvetica, sans-serif";
+}
+
+.m_info #mediaInfo{
+float:left;
+padding-left:5px;
+padding-top:3px;
+padding-bottom:1px;
+width:221px;
+height:12px;
+color:#FFF;
+text-align:left;
+font:normal 12px "宋体,Arial, Helvetica, sans-serif";
+}
+
+.v_mid3{
+float:right;
+width:12px;
+height:264px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_border.gif);
+}
+
+/* 修饰线 */
+.v_line{
+margin:0 auto;
+width:344px;
+height:4px;
+font-size:1px;
+background-image:url(../images/mediaplayer/lightblue/m_line.gif);
+}
+
+/* 播放器控制按钮区域 */
+.left_control{
+float:left;
+width:11px;
+height:55px;
+background-image: url(../images/mediaplayer/lightblue/left_control.gif);
+}
+
+.cnt_control{
+float:left;
+width:322px;
+height:55px;
+background-image: url(../images/mediaplayer/lightblue/control_bg.gif);
+overflow:hidden;
+}
+
+.cnt_control .btnPlay{
+float:left;
+padding-top:9px;
+padding-bottom:10px;
+width:34px;
+height:36px;
+}
+
+.cnt_control .btnStop{
+float:left;
+padding-top:4px;
+padding-bottom:28px;
+width:23px;
+height:23px;
+}
+
+.cnt_control .btnInfo{
+float:left;
+width:209px;
+height:55px;
+}
+
+.pbar{
+margin:0 auto;
+width:209px;
+height:32px;
+overflow:hidden;
+}
+
+.vloadingleft{
+float:left;
+width:18px;
+height:32px;
+}
+
+.v_loading{
+float:left;
+margin:0;
+width:141px;
+height:32px;
+overflow:hidden;
+}
+
+.pointer{
+cursor: pointer;
+}
+
+.pzonetop{
+margin:0 auto;
+height:13px;
+width:101px;
+font-size:1px;
+}
+
+#pZone{
+margin:0 auto;
+width:141px;
+background:url(../images/mediaplayer/lightblue/loading.gif) left top no-repeat;
+text-align:left;
+position: relative;
+left:0;
+overflow: hidden;
+}
+
+#pBox{
+left: 0; 
+top:-1px;
+overflow: hidden; 
+cursor: pointer; 
+position: relative;
+z-index:99;
+}
+
+.btnSound{
+float:right;
+padding-top:5px;
+padding-right:3px;
+padding-bottom:4px;
+padding-left:22px;
+width:23px;
+height:25px;
+}
+
+.sbar{
+float:right;
+width:52px;
+height:55px;
+}
+
+.vzonetop{
+margin:0 auto;
+width:52px;
+height:10px;
+font-size:1px;
+}
+
+#vZone{
+margin:0 auto;
+width:48px;
+height:9px;
+background:url(../images/mediaplayer/lightblue/soundbg.gif) left top no-repeat;
+position: relative; 
+left:0;
+text-align:left;
+}
+
+#vBox{
+left:25px; 
+overflow: hidden; 
+cursor: pointer; 
+position: relative; 
+top:0;
+}
+
+.fullscreen{
+margin:0 auto;
+padding-top:4px;
+padding-right:1px;
+padding-bottom:9px;
+padding-left:28px;
+width:22px;
+height:23px;
+}
+
+#v_info{
+margin:0 auto;
+padding-top:4px;
+width:203px;
+height:12px;
+font:bold 12px "宋体,arial,Helvetica,sans-serif";
+letter-spacing:1px;
+color:#1172BF;
+text-align:center;
+}
+
+.right_control{
+float:right;
+width:11px;
+height:55px;
+background-image: url(../images/mediaplayer/lightblue/right_control.gif);
+}
+/* 视频播放器部分End */
+-->

@@ -388,6 +388,25 @@
 		<property name="orderServiceDao" ref="orderServiceDaoProxy"></property>
 	</bean>
 	
+	
+	<!-- 预存 -->
+	<bean name="cardFeeDao" class="com.crm.op.dao.impl.CardFeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="cardFeeServiceDao"
+		class="com.crm.op.service.impl.CardFeeServiceDaoImpl">
+		<property name="cardFeeDao" ref="cardFeeDao"></property>
+	</bean>
+	<bean name="cardFeeServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="cardFeeServiceDao"></property>
+	</bean>	
+	<bean name="/admin/cardfee"
+		class="com.crm.op.struts.action.CardFeeAction">
+		<property name="cardFeeServiceDao" ref="cardFeeServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>	
+	</bean>
+	
+	
 	<!-- 挂号 -->
 	<!-- 挂号service -->
 	<bean name="regDao" class="com.crm.op.dao.impl.RegDaoImpl">

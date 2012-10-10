@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.op.dao.intf.RegDao;
 import com.crm.op.po.TRegister;
+import com.crm.op.po.TRegisterFee;
 import com.crm.page.PageUtil;
 
 public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
@@ -55,7 +56,7 @@ public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
 								&& !"".equals(obj.getDoctor())) {
 							sbf.append(" and reg.doctor = :doctor");
 						}
-						
+
 						Query query = session.createQuery(sbf.toString());
 
 						if (null != obj.getCustName()
@@ -87,37 +88,37 @@ public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
 
 	public List getRegList(final TRegister obj, final PageUtil pageUtil) {
 		return (List) this.getHibernateTemplate().execute(
-			new HibernateCallback() {
-				public Object doInHibernate(Session session)
-						throws HibernateException, SQLException {
-					StringBuffer sbf = new StringBuffer(
-					"from TRegister reg where 1=1");
-					if (null != obj.getCustName()
-							&& !"".equals(obj.getCustName())) {
-						sbf.append(" and reg.custname=:custname");
+				new HibernateCallback() {
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						StringBuffer sbf = new StringBuffer(
+								"from TRegister reg where 1=1");
+						if (null != obj.getCustName()
+								&& !"".equals(obj.getCustName())) {
+							sbf.append(" and reg.custname=:custname");
+						}
+						if (null != obj.getDoctor()
+								&& !"".equals(obj.getDoctor())) {
+							sbf.append(" and reg.doctor = :doctor");
+						}
+
+						sbf.append(" order by create_Date desc");
+
+						Query query = session.createQuery(sbf.toString());
+
+						if (null != obj.getCustName()
+								&& !"".equals(obj.getCustName())) {
+							query.setString("custname", obj.getCustName());
+						}
+						if (null != obj.getDoctor()
+								&& !"".equals(obj.getDoctor())) {
+							query.setString("doctor", obj.getDoctor());
+						}
+						query.setFirstResult(pageUtil.pastart());
+						query.setMaxResults(pageUtil.getPagesize());
+						return query.list();
 					}
-					if (null != obj.getDoctor()
-							&& !"".equals(obj.getDoctor())) {
-						sbf.append(" and reg.doctor = :doctor");
-					}
-					
-					sbf.append(" order by create_Date desc");
-					
-					Query query = session.createQuery(sbf.toString());
-		
-					if (null != obj.getCustName()
-							&& !"".equals(obj.getCustName())) {
-						query.setString("custname", obj.getCustName());
-					}
-					if (null != obj.getDoctor()
-							&& !"".equals(obj.getDoctor())) {
-						query.setString("doctor", obj.getDoctor());
-					}
-					query.setFirstResult(pageUtil.pastart());
-					query.setMaxResults(pageUtil.getPagesize());
-					return query.list();
-				}
-			});
+				});
 	}
 
 	public List getRegList() {
@@ -146,5 +147,4 @@ public class RegDaoImpl extends HibernateDaoSupport implements RegDao {
 		return true;
 	}
 
-	
 }

@@ -47,7 +47,8 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 							throws HibernateException, SQLException {
 
 						StringBuffer sbf = new StringBuffer(
-								"select count(*) from TRegisterFee rf where fee_Type='"+rf.getFeeType()+"' ");
+								"select count(*) from TRegisterFee rf where fee_Type='"
+										+ rf.getFeeType() + "' ");
 						if (null != rf.getCreateStaff()
 								&& !"".equals(rf.getCreateStaff())) {
 							sbf.append(" and rf.createStaff=:custStaff");
@@ -56,9 +57,7 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 						Query query = session.createQuery(sbf.toString());
 						if (null != rf.getCreateStaff()
 								&& !"".equals(rf.getCreateStaff())) {
-							query
-									.setString("custStaff", rf
-											.getCreateStaff());
+							query.setString("custStaff", rf.getCreateStaff());
 						}
 						// List list = (List) query.list();
 						return query.uniqueResult();
@@ -86,18 +85,20 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						StringBuffer sbf = new StringBuffer(
-								"from TRegisterFee rf where fee_Type='"+order.getFeeType()+"' ");
+								"from TRegisterFee rf where fee_Type='"
+										+ order.getFeeType() + "' ");
 						if (null != order.getCreateStaff()
 								&& !"".equals(order.getCreateStaff())) {
 							sbf.append(" and rf.createStaff=:custStaff");
 						}
-						
-						if(PowerKey.REG_FEE_CHARGE.equalsIgnoreCase(order.getFeeType())){
+
+						if (PowerKey.REG_FEE_CHARGE.equalsIgnoreCase(order
+								.getFeeType())) {
 							sbf.append(" order by fee_Date desc");
-						}else{
+						} else {
 							sbf.append(" order by create_Date desc ");
 						}
-						
+
 						Query query = session.createQuery(sbf.toString());
 						if (null != order.getCreateStaff()
 								&& !"".equals(order.getCreateStaff())) {
@@ -113,7 +114,8 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 	}
 
 	public TRegisterFee getRegFeeByID(Long id) {
-		return (TRegisterFee) this.getHibernateTemplate().get(TRegisterFee.class, id);
+		return (TRegisterFee) this.getHibernateTemplate().get(
+				TRegisterFee.class, id);
 	}
 
 	public Integer getSeqNextValue() {
@@ -124,5 +126,18 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 	public Boolean updateRegFee(TRegisterFee order) {
 		this.getHibernateTemplate().update(order);
 		return true;
+	}
+
+	public List getRegFeeByOrderID(final String orderID) {
+		return (List) this.getHibernateTemplate().execute(
+				new HibernateCallback() {
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						String hql = "from TRegister where order_id='"
+								+ orderID + "'";
+						Query query = session.createQuery(hql);
+						return query.list();
+					}
+				});
 	}
 }

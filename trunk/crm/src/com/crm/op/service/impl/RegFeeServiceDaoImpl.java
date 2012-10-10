@@ -40,6 +40,10 @@ public class RegFeeServiceDaoImpl implements RegFeeServiceDao {
 	public TRegisterFee getRegFeeByID(Long id) {
 		return regFeeDao.getRegFeeByID(id);
 	}
+	
+	public List getRegFeeByOrderID(String orderID){
+		return regFeeDao.getRegFeeByOrderID(orderID);
+	}
 
 	public Integer getSeqNextValue() {
 		// TODO Auto-generated method stub

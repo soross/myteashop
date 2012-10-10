@@ -35,6 +35,8 @@ public interface RegFeeDao {
 	public List getRegFeeList(TRegisterFee of, PageUtil pageUtil);
 
 	public TRegisterFee getRegFeeByID(Long id);
+	
+	public List getRegFeeByOrderID(String orderID);
 
 	/**
 	 * ª·‘±

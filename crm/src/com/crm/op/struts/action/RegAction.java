@@ -188,14 +188,13 @@ public class RegAction extends DispatchAction {
 		BeanUtils.copyProperties(fee, regForm);
 		fee.setFeeType(PowerKey.REG_FEE_PRICE);
 
-		
 		Integer count = this.regFeeServiceDao.getRegFeeCount(fee);
 		PageUtil pageUtil = new PageUtil(request, count,
 				GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-		
+
 		List list = this.regFeeServiceDao.getRegFeeList(fee, pageUtil);
-				
+
 		request.setAttribute("regFeeList", list);
 		return new ActionForward("/admin/op/regfee/pricelist.jsp");
 	}
@@ -242,9 +241,23 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		//request.setAttribute("regid", regForm.getId());
-		
-		return new ActionForward("/admin/op/regfee/addcharge.jsp");
+		// request.setAttribute("regid", regForm.getId());
+		if (null != regForm && null != regForm.getId()) {
+			TRegisterFee rf = this.regFeeServiceDao.getRegFeeByID(new Long(
+					regForm.getId()));
+
+			if (null != rf
+					&& !PowerKey.REG_FEE_CHARGE.equalsIgnoreCase(rf
+							.getFeeType())) {
+				return new ActionForward("/admin/op/regfee/addcharge.jsp");
+			} else {
+				response.getWriter().write(
+						"<script>alert('该划价已收费!');history.back();</script>");
+				return null;
+			}
+		}else{
+			return new ActionForward("/admin/reg.do?task=regFeeListByCharge");
+		}
 	}
 
 	/**
@@ -261,8 +274,9 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		TRegisterFee fee = this.regFeeServiceDao.getRegFeeByID(new Long(regForm.getId()));
-		//BeanUtils.copyProperties(fee, regForm);
+		TRegisterFee fee = this.regFeeServiceDao.getRegFeeByID(new Long(regForm
+				.getId()));
+		// BeanUtils.copyProperties(fee, regForm);
 		fee.setFeeDate(new Date());
 		fee.setFeeStaff(regForm.getFeeStaff());
 		fee.setFeeType(PowerKey.REG_FEE_CHARGE);
@@ -302,8 +316,18 @@ public class RegAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		RegForm regForm = (RegForm) form;
-		
-		return new ActionForward("/admin/op/regfee/addprice.jsp");
+		if(null!=regForm && null!=regForm.getId()){
+		List list = this.regFeeServiceDao.getRegFeeByOrderID(regForm.getId());
+		if (null != list && list.size() > 0) {
+			response.getWriter().write(
+					"<script>alert('该挂号已划价!');history.back();</script>");
+			return null;
+		} else {
+			return new ActionForward("/admin/op/regfee/addprice.jsp");
+		}
+		}else{
+			return new ActionForward("/admin/reg.do?task=regFeeListByPrice");
+		}
 	}
 
 	/**
@@ -343,7 +367,7 @@ public class RegAction extends DispatchAction {
 									+ request.getContextPath()
 									+ "/admin/reg.do?task=toAddRegFeeByPrice';</script>");
 		}
-		return null;//new ActionForward("/admin/op/regfee/addprice.jsp");
+		return null;// new ActionForward("/admin/op/regfee/addprice.jsp");
 	}
 
 	public RegServiceDao getRegServiceDao() {

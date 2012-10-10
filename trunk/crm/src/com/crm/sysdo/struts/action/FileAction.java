@@ -4,6 +4,7 @@
  */
 package com.crm.sysdo.struts.action;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
@@ -322,6 +327,24 @@ public class FileAction extends DispatchAction {
 		request.setAttribute("path", path);
 
 		return new ActionForward("/admin/sysdo/file/big.jsp");
+	}
+	
+	/**
+	 * ²¥·Å
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward playView(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String path = request.getParameter("path");
+		request.setAttribute("path", path);
+
+		return new ActionForward("/admin/sysdo/file/play.jsp");
 	}
 
 	public Permission getPerDao() {

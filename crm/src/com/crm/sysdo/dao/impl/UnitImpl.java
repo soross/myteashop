@@ -35,7 +35,9 @@ public class UnitImpl extends HibernateDaoSupport implements UnitDao {
 						StringBuffer hql = new StringBuffer(
 								"from TUnit where 1=1 ");
 
-						
+						if(tunit.getUnitname()!=null&&!"".equals(tunit.getUnitname())){
+							hql.append(" and unitname like '"+tunit.getUnitname()+"'");
+						}
 
 						Query query = session.createQuery(hql.toString());
 

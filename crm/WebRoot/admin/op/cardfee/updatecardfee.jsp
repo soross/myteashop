@@ -52,7 +52,7 @@
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					会卡预存
+					会卡预存修改
 				</th>
 			</tr>
 			<tr>
@@ -60,10 +60,10 @@
 					会员卡号：
 				</td>
 				<td colspan="3">
-					<html:hidden property="custid"/>
 					<html:hidden property="balance"/>
+					<html:hidden property="id"/>
 					<html:text property="custcode" size="30" styleId="txt"
-						onclick="loadSelectCust();"></html:text>
+						readonly="true"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -95,9 +95,9 @@
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<input type="hidden" name="createstaff" value="${user.userid}">
-					<input type="hidden" name="task" value="addCardFee">
+					<input type="hidden" name="task" value="updateCardFee">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 会卡预存 " class="inputs" />
+					<input type="submit" name="submit" value=" 会卡预存修改 " class="inputs" />
 				</td>
 			</tr>
 		</table>
@@ -154,7 +154,7 @@ function selectCust(vid){
 	var vl = document.getElementById(vid).value;
 	var strs= new Array(); //定义一数组
 	strs=vl.split(","); 
-	//alert(vl);
+	alert(vl);
 	document.getElementById("custid").value=strs[0];
 	document.getElementById("custcode").value=strs[1];
 	document.getElementById("balance").value=strs[2];

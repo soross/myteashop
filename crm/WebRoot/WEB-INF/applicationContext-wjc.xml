@@ -404,6 +404,7 @@
 		class="com.crm.op.struts.action.CardFeeAction">
 		<property name="cardFeeServiceDao" ref="cardFeeServiceDaoProxy"></property>
 		<property name="perDao" ref="perDao"></property>	
+		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
 	</bean>
 	
 	

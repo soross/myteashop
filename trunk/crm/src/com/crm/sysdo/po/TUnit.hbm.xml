@@ -9,7 +9,9 @@
         <comment>往来签约单位</comment>
         <id name="id" type="java.lang.Long">
             <column name="ID" precision="22" scale="0" />
-            <generator class="sequence" />
+             <generator class="sequence">
+            	<param name="sequence">SEQ_UNIT</param>
+            </generator>
         </id>
         <property name="unitname" type="java.lang.String">
             <column name="UNITNAME" length="100">

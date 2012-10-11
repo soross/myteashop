@@ -15,6 +15,11 @@
         </id>
         <property name="custid" type="java.lang.String">
             <column name="CUSTID" length="50">
+                <comment>会员id</comment>
+            </column>
+        </property>
+        <property name="custcode" type="java.lang.String">
+            <column name="CUSTCODE" length="50">
                 <comment>会员卡号</comment>
             </column>
         </property>

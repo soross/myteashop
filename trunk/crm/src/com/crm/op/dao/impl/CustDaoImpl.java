@@ -162,8 +162,10 @@ public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 							&& !"-1".equals(cust.getVipType())) {
 						query.setString("vipType", cust.getVipType());
 					}
-					query.setFirstResult(pageUtil.pastart());
-					query.setMaxResults(pageUtil.getPagesize());
+					if(null!=pageUtil){
+						query.setFirstResult(pageUtil.pastart());
+						query.setMaxResults(pageUtil.getPagesize());
+					}
 					return query.list();
 				}
 			});

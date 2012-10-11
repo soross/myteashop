@@ -11,19 +11,27 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.op.dao.intf.CardFeeDao;
 import com.crm.op.po.TCardFee;
+import com.crm.op.po.TCustomer;
 import com.crm.page.PageUtil;
 
 public class CardFeeDaoImpl extends HibernateDaoSupport implements CardFeeDao {
 
-	public Boolean addCardFee(TCardFee CardFee) {
-		this.getHibernateTemplate().save(CardFee);
-		return true;
-	}
-
-	public Boolean deleteCardFee(Long id) {
-		TCardFee depte = (TCardFee) this.getHibernateTemplate().get(
-				TCardFee.class, id);
-		this.getHibernateTemplate().delete(depte);
+	public Boolean addCardFee(final TCardFee CardFee) {
+		this.getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				session.beginTransaction();
+				session.save(CardFee);
+				TCustomer cust = (TCustomer) session.get(TCustomer.class,
+						new Long(CardFee.getCustid()));
+				cust.setBalance(CardFee.getBalance());
+				session.update(cust);
+				session.flush();
+				session.close();
+				return true;
+			}
+		});
+		// this.getHibernateTemplate().save(CardFee);
 		return true;
 	}
 
@@ -75,7 +83,7 @@ public class CardFeeDaoImpl extends HibernateDaoSupport implements CardFeeDao {
 						StringBuffer sbf = new StringBuffer(
 								"from TCardFee CardFee where 1=1");
 						Query query = session.createQuery(sbf.toString());
-						if(null!=pageUtil){
+						if (null != pageUtil) {
 							query.setFirstResult(pageUtil.pastart());
 							query.setMaxResults(pageUtil.getPagesize());
 						}
@@ -105,8 +113,43 @@ public class CardFeeDaoImpl extends HibernateDaoSupport implements CardFeeDao {
 		return null;
 	}
 
-	public Boolean updateCardFee(TCardFee CardFee) {
-		this.getHibernateTemplate().update(CardFee);
+	public Boolean updateCardFee(final TCardFee CardFee) {
+		this.getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				session.beginTransaction();
+				session.update(CardFee);
+				TCustomer cust = (TCustomer) session.get(TCustomer.class,
+						new Long(CardFee.getCustid()));
+				cust.setBalance(CardFee.getBalance());
+				session.update(cust);
+				session.flush();
+				session.close();
+				return true;
+			}
+		});
+
+		return true;
+	}
+
+	public Boolean deleteCardFee(final Long id) {
+		try {
+			this.getHibernateTemplate().execute(new HibernateCallback() {
+				public Object doInHibernate(Session session)
+						throws HibernateException, SQLException {
+					TCardFee cardFee = (TCardFee) session.get(TCardFee.class,
+							id);
+					TCustomer cust = (TCustomer) session.get(TCustomer.class,
+							new Long(cardFee.getCustid()));
+					session.delete(cardFee);
+					cust.setBalance(cust.getBalance() - cardFee.getMoney());
+					return true;
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 		return true;
 	}
 }

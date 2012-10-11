@@ -14,6 +14,7 @@ public class TCardFee implements java.io.Serializable {
 
 	private Long id;
 	private String custid;
+	private String custcode;
 	private Date createDate;
 	private Double balance;
 	private Double money;
@@ -103,6 +104,14 @@ public class TCardFee implements java.io.Serializable {
 
 	public void setCreatestaff(String createstaff) {
 		this.createstaff = createstaff;
+	}
+
+	public String getCustcode() {
+		return custcode;
+	}
+
+	public void setCustcode(String custcode) {
+		this.custcode = custcode;
 	}
 
 }

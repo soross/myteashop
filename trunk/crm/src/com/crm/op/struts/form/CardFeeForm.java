@@ -20,6 +20,7 @@ public class CardFeeForm extends ActionForm implements java.io.Serializable {
 
 	private Long id;
 	private String custid;
+	private String custcode;
 	private String create_Date;
 	private Double balance;
 	private Double money;
@@ -118,5 +119,13 @@ public class CardFeeForm extends ActionForm implements java.io.Serializable {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
+	}
+
+	public String getCustcode() {
+		return custcode;
+	}
+
+	public void setCustcode(String custcode) {
+		this.custcode = custcode;
 	}
 }

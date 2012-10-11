@@ -52,7 +52,7 @@ public class TCustomer implements java.io.Serializable {
 	private String safeCode;
 	private String remark;
 	private String cardUser;
-	private Long balance;
+	private Double balance;
 	private Date createDate;
 
 	// Constructors
@@ -71,7 +71,7 @@ public class TCustomer implements java.io.Serializable {
 			String linkman, String linkAdd, String linkTell, String payType,
 			String sickType, String staff, String srcInfo, String icCardCode,
 			String vipType, String vipCardCode, String photoPath, String state,
-			String safeCode, String remark, String cardUser, Long balance,
+			String safeCode, String remark, String cardUser, Double balance,
 			Date createDate) {
 		this.code = code;
 		this.username = username;
@@ -438,11 +438,11 @@ public class TCustomer implements java.io.Serializable {
 		this.cardUser = cardUser;
 	}
 
-	public Long getBalance() {
+	public Double getBalance() {
 		return this.balance;
 	}
 
-	public void setBalance(Long balance) {
+	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 

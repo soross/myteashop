@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.op.po.TCardFee;
+import com.crm.op.po.TCustomer;
 import com.crm.op.service.intf.CardFeeServiceDao;
+import com.crm.op.service.intf.CustServiceDao;
 import com.crm.op.struts.form.CardFeeForm;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
@@ -28,6 +31,7 @@ import com.crm.tool.DateUtil;
 
 public class CardFeeAction extends DispatchAction {
 	private CardFeeServiceDao cardFeeServiceDao;
+	private CustServiceDao custServiceDao;
 	private Permission perDao;
 
 	/**
@@ -42,7 +46,6 @@ public class CardFeeAction extends DispatchAction {
 	public ActionForward cardFeeList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
 		CardFeeForm cardFeeForm = (CardFeeForm) form;
 		TCardFee cardFee = new TCardFee();
 		BeanUtils.copyProperties(cardFee, cardFeeForm);
@@ -54,7 +57,11 @@ public class CardFeeAction extends DispatchAction {
 
 		request.setAttribute("pageUtil", pageUtil);
 		request.setAttribute("cardFeeList", list);
-		return new ActionForward("/admin/op/cardFee/cardFeelist.jsp");
+
+		List sonList = perDao.getSonPerList(PowerKey.KEY_FILE_CARD_FEE);
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/op/cardfee/cardfeelist.jsp");
 	}
 
 	/**
@@ -69,14 +76,120 @@ public class CardFeeAction extends DispatchAction {
 	public ActionForward toAddCardFee(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		// 81
 		List sonList = perDao.getSonPerList(PowerKey.KEY_FILE_CARD_FEE);
 		request.setAttribute("sonPowerByMenu", sonList);
-		
+
 		return new ActionForward("/admin/op/cardfee/addcardfee.jsp");
 	}
 
+	/**
+	 * 查询cust列表
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward queryCustData(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String username = request.getParameter("username");
+		String code = request.getParameter("code");
+		TCustomer cust = new TCustomer();
+		cust.setUsername(username);
+		cust.setCode(code);
+		List list = custServiceDao.getCustList(cust, null);
+		StringBuffer sbf = new StringBuffer();
+		for (int i = 0; i < list.size(); i++) {
+			TCustomer customer = (TCustomer) list.get(i);
+			sbf
+					.append("<tr><td><input type='radio' id='s_custID' name='s_custID' value='"
+							+ customer.getId()
+							+ ","
+							+ customer.getCode()
+							+ ","
+							+ customer.getBalance() + "'></td>");
+			sbf.append("<td>" + customer.getCode() + "</td>");
+			sbf.append("<td>" + customer.getUsername() + "</td>");
+			sbf.append("<td>" + customer.getGarden() + "</td>");
+			sbf.append("<td>" + customer.getIdCode() + "</td></tr>");
+		}
+		// sbf.append("<tr><td>11</td><td>22</td><td>33</td><td>44</td><td>55</td></tr>");
+		response.getWriter().write(sbf.toString());
+		return null;
+	}
+
+	/**
+	 * 新增
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public ActionForward addCardFee(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		CardFeeForm cff = (CardFeeForm) form;
+		TCardFee cardFee = new TCardFee();
+		BeanUtils.copyProperties(cardFee, cff);
+		cardFee.setCreateDate(new Date());
+		cardFee.setBalance(cff.getBalance() + cff.getMoney());// 余额等于当前余额+预存金额
+
+		try {
+			this.cardFeeServiceDao.addCardFee(cardFee);
+			if (null != cff.getIsprint()
+					&& "1".equalsIgnoreCase(cff.getIsprint())) {
+				response
+						.getWriter()
+						.write(
+								"<script>alert('预存成功,请打印!');location.href='"
+										+ request.getContextPath()
+										+ "/admin/cardfee.do?task=toPrintCardFee';</script>");
+			} else {
+				response
+						.getWriter()
+						.write(
+								"<script>if(confirm('预存成功,是否继续会卡预存操作!')){location.href='"
+										+ request.getContextPath()
+										+ "/admin/cardfee.do?task=toAddCardFee';}else{location.href='"
+										+ request.getContextPath()
+										+ "/admin/cardfee.do?task=cardFeeList';}</script>");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().write(
+					"<script>alert('预存失败,请重试!');location.href='"
+							+ request.getContextPath()
+							+ "/admin/cardfee.do?task=toAddCardFee';</script>");
+		}
+		return null;
+	}
+
+	/**
+	 * 跳转到打印页面
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward toPrintCardFee(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		List sonList = perDao.getSonPerList(PowerKey.KEY_FILE_CARD_FEE);
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/op/cardfee/print.jsp");
+	}
 
 	/**
 	 * 跳转到修改i啊客户页面
@@ -87,25 +200,27 @@ public class CardFeeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdatecardFee(ActionMapping mapping,
+	public ActionForward toUpdateCardFee(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		CardFeeForm cardFeeForm = (CardFeeForm) form;
-
 		Long id = Long.valueOf(request.getParameter("id"));
 		TCardFee cardFee = this.cardFeeServiceDao.getCardFeeByID(id);
 		BeanUtils.copyProperties(cardFeeForm, cardFee);
+
 		cardFeeForm.setCreate_Date(DateUtil.DateToStringBy_YMD(cardFee
 				.getCreateDate()));
 
 		request.setAttribute("cardFee", cardFee);
 
-		return new ActionForward("/admin/op/cardFee/updatecardFee.jsp");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_FILE_CARD_FEE);
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		return new ActionForward("/admin/op/cardfee/updatecardfee.jsp");
 	}
 
-
 	/**
-	 * 删除客户
+	 * 修改部门
 	 * 
 	 * @param mapping
 	 * @param form
@@ -113,24 +228,66 @@ public class CardFeeAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward deleteDept(ActionMapping mapping, ActionForm form,
+	public ActionForward updateCardFee(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		CardFeeForm cardFeeForm = (CardFeeForm) form;
+		TCardFee cardFee = this.cardFeeServiceDao.getCardFeeByID(cardFeeForm
+				.getId());
+		cardFee.setCreatestaff(cardFeeForm.getCreatestaff());
+		cardFee.setCreateDate(new Date());
+		// 余额=原来余额-原来金额+预存金额
+		cardFee.setBalance(cardFee.getBalance() - cardFee.getMoney()
+				+ cardFeeForm.getMoney());
+		cardFee.setMoney(cardFeeForm.getMoney());
+		cardFee.setRemark(cardFeeForm.getRemark());
+		boolean bool = this.cardFeeServiceDao.updateCardFee(cardFee);
+		if (bool) {
+			response.getWriter().write(
+					"<script>if(confirm('更新成功,是否继续更新?')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/cardfee.do?task=toUpdateCardFee&id="
+							+ cardFeeForm.getId() + "';}else{location.href='"
+							+ request.getContextPath()
+							+ "/admin/cardfee.do?task=cardFeeList';}</script>");
+		} else {
+			response.getWriter().write(
+					"<script>if(confirm('更新失败,是否重试?')){location.href='"
+							+ request.getContextPath()
+							+ "/admin/cardfee.do?task=toUpdateCardFee&id="
+							+ cardFeeForm.getId() + "';}else{location.href='"
+							+ request.getContextPath()
+							+ "/admin/cardfee.do?task=cardFeeList';}</script>");
+		}
+		return null;
+	}
+
+	/**
+	 * 删除
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward deleteCardFee(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		CardFeeForm cardFeeForm = (CardFeeForm) form;
 		TCardFee cardFee = new TCardFee();
 		BeanUtils.copyProperties(cardFee, cardFeeForm);
-
 		Boolean bool = this.cardFeeServiceDao.deleteCardFee(cardFee.getId());
 		if (bool) {
 			response.getWriter().write(
-					"<script>alert('会员删除成功!');location.href='"
+					"<script>alert('删除成功!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/cardFee.do?task=cardFeeList';</script>");
+							+ "/admin/cardfee.do?task=cardFeeList';</script>");
 		} else {
 			response.getWriter().write(
 					"<script>alert('删除删除失败!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/dept.do?task=cardFeeList';</script>");
+							+ "/admin/cardfee.do?task=cardFeeList';</script>");
 		}
 		return null;
 	}
@@ -215,6 +372,14 @@ public class CardFeeAction extends DispatchAction {
 
 	public void setPerDao(Permission perDao) {
 		this.perDao = perDao;
+	}
+
+	public CustServiceDao getCustServiceDao() {
+		return custServiceDao;
+	}
+
+	public void setCustServiceDao(CustServiceDao custServiceDao) {
+		this.custServiceDao = custServiceDao;
 	}
 
 }

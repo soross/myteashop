@@ -207,7 +207,7 @@
                 <comment>持卡人</comment>
             </column>
         </property>
-        <property name="balance" type="java.lang.Long">
+        <property name="balance" type="java.lang.Double">
             <column name="BALANCE" precision="22" scale="0">
                 <comment>余额</comment>
             </column>

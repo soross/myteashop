@@ -83,116 +83,186 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				往来单位
+				系统服务操作
 			</th>
-		</tr>
-		<tr>
-		<td>
-		<html:form action="/admin/unit.do?task=unitList">
-		<table width="100%" cellpadding="0" cellspacing="0">
-                     <tr> 
-                       <td width="15%" align="center">执照编号：</td>
-                       <td width="15%" ><html:text property="code"></html:text></td>
-                       <td width="15%" align="center">往来单位名称：</td>
-                       <td width="15%" ><html:text property="unitName"></html:text></td>
-                       <td width="15%" align="center">联系人：</td>
-                       <td width="15%" ><html:text property="linkMan"></html:text></td>
-                       <td width="15%" ><html:submit value="查 询"></html:submit></td>
-                      </tr>
-                  </table>
-        </html:form>
-		</td>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>往来单位选项：</b><a
-					href="${pageContext.request.contextPath}/admin/unit.do?task=unitList">往来单位首页</a>
-				|
-				<a
-					href="${pageContext.request.contextPath}/admin/unit.do?task=toAddUnit">添加往来单位</a>
-				| [
-				<a href="javascript:location.reload()">刷新页面</a>]
+				<b>往来单位选项：</b>
+				<logic:iterate id="menu" name="sonPowerByMenu">
+				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
+				</logic:iterate>
+				[<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
 	</table>
-	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
-		cellspacing="1" class="tableBorderList">
+	<html:form action="/admin/unit.do?task=unitList" method="post">
+	<table width="100%" border="0" align="center" cellpadding="2"
+		cellspacing="1" class="tableBorder">
 		<tr>
-			<th colspan=8 height=25>
-				往来单位列表
+			<th height="25" colspan="6">
+				往来单位资料查询
 			</th>
 		</tr>
-		<tr align="center" class="thstyle">
-			<td width="10%" height=25>
-				<input type="checkbox" id="ckb" name="ckb"
-					onclick="selectAll(this);" />全选
-			</td>
-			<td width="8%">
-				序号
-			</td>
-			<td width="10%">
-				执照编号
-			</td>
-			<td width="20%">
-				往来单位名称
-			</td>
-			<td width="10%">
-				联系人
-			</td>
-			<td width="13%">
-				电话
-			</td>
-			<td width="13%">
-				手机
-			</td>				
-			<td width="14%">
-				操作
-			</td>
-		</tr>
-		 <logic:present name="unitList">
-          	<logic:iterate id="unit" name="unitList">
-					<tr align="center" style="cursor: hand;">
-						<td height=25>
-							<input type="checkbox" name="phones" value="${data.id}"
-								onclick="clickSon(this);" />
-						</td>
-						<td height=25>
-							${unit.id}
-						</td>
-						<td align="left"  style="padding-left:20px;">
-							${unit.code}
-						</td>
-						<td >
-							${unit.unitName}					
-						</td>
-						<td>
-							${unit.linkMan}			
-						</td>
-						<td>
-							${unit.phone}			
-						</td>
-						<td>
-							${unit.mobile}			
-						</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/admin/unit.do?task=toUpdateUnit&id=${unit.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/unit.do?task=delUnit&id=${unit.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
-						</td>
-					</tr>					
-	          </logic:iterate>
-          </logic:present>
 		<tr>
-			<td  align="left" colspan="8" height=25>
-				&nbsp;<html:button property="" value="批量导出"
-					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
-				<html:button property="" value="全部导出"
-					onclick="outAllToExcel('exportAllClient')"></html:button>
+			<td width="20%" height=25 class="pl20">
+			往来单位名称:<html:text property="unitname"  size="15" />
+			</td>
+			<td>
+				<html:submit value="查询"></html:submit>
 			</td>
 		</tr>
-	
 	</table>
+	</html:form>
+	<table width="98%" border="0" align="center">
+		<tr>
+			<td>
+				<div style="width:1200px; overflow-x:scroll;overflow: auto;">
+					<table id="listtab" width="1700px" border="0" align="center" cellpadding="3"
+						cellspacing="1" class="tableBorderList">
+						<tr>
+							<th colspan=17 height=25>
+								往来单位列表
+							</th>
+						</tr>
+						<tr align="center" class="thstyle">
+							<td height=10 >
+								<input type="checkbox" id="ckb" name="ckb"
+									onclick="selectAll(this);" />全选
+							</td>
+							<td >
+								编号
+							</td>
+							<td >
+								单位名称
+							</td>
+							<td >
+								拼音
+							</td>
+							<td >
+								五笔
+							</td>
+							<td >
+								联系人
+							</td>
+							<td >
+								手机号码
+							</td>
+							<td >
+								联系电话
+							</td>
+							<td >
+								传真
+							</td>	
+							<td >
+								联系地址
+							</td>
+							<td >
+								邮编
+							</td>
+							<td >
+								法人代表
+							</td>	
+							<td >
+								开户银行
+							</td>	
+							<td >
+								银行账号
+							</td>
+								
+							<td >
+								备注
+							</td>
+							<td >
+								是否可用
+							</td>
+							<td width="100px">
+								操作
+							</td>
+						</tr>
+				
+						 <logic:present name="unitList">
+				          	<logic:iterate id="tunit" name="unitList">          	 
+								<tr align="center" style="cursor: hand;">
+									<td height=25>
+										<input type="checkbox" name="phones" value="${tunit.id}"
+											onclick="clickSon(this);" />
+									</td>
+									<td>
+										${tunit.id}
+									</td>
+									<td>
+										${tunit.unitname}
+									</td>
+									<td>
+										${tunit.pinyin}
+									</td>
+									<td>
+										${tunit.wubi}
+									</td>
+									<td>
+										${tunit.linkman}
+									</td>
+									<td>
+										${tunit.mobile}
+									</td>
+									<td>
+										${tunit.tel}
+									</td>
+									<td>
+										${tunit.fax}
+									</td>
+									<td>
+										${tunit.address}
+									</td>
+									<td>
+										${tunit.zip}
+									</td>
+									<td>
+										${tunit.legal}
+									</td>
+									<td>
+										${tunit.bankname}
+									</td>
+									<td>
+										${tunit.bankcode}
+									</td>
+									<td>
+										${tunit.remark}
+									</td>	
+									<td>
+										<logic:equal value="1" name="tunit" property="state">可用</logic:equal>
+										<logic:equal value="0" name="tunit" property="state">不可用</logic:equal>
+									</td>
+									<td>
+										<a href="${pageContext.request.contextPath}/admin/unit.do?task=toUpdateUnit&id=${tunit.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+										<a href="${pageContext.request.contextPath}/admin/unit.do?task=delUnit&id=${tunit.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+									</td>
+								</tr>					
+					          </logic:iterate>
+				          </logic:present>
+						<tr>
+							<td  align="left" colspan="1" height=25>
+								<!-- 
+								&nbsp;<html:button property="" value="批量导出"
+									onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
+								<html:button property="" value="全部导出"
+									onclick="outAllToExcel('exportAllClient')"></html:button> -->
+								&nbsp;
+							</td>
+							<td align="left" colspan="17" height=25>
+								<page:page name="pageUtil" />
+							</td>
+						</tr>
+					
+					</table>
+					</div>
+			</td>
+		</tr>
+	</table>
+	
 	<br>&nbsp;
-</body>
-<script language="javascript" src="js/block.js"></script>
+</body><script language="javascript" src="js/block.js"></script>
 <script language="javascript" src="js/popup.js"></script>
 
 

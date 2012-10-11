@@ -28,7 +28,13 @@ public class DateUtil {
 	}
 	
 	public static String DateToStringBy_YMD(Date date){
-		String str = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		String str="";
+		try{
+		str = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		}catch(Exception e){
+			e.printStackTrace();
+			return "";
+		}
 		return str;
 	}
 	

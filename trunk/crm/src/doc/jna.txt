@@ -1,0 +1,142 @@
+java(JNA)调用dll函数的问题我们关注的,首先是调用函数的问题
+
+然后是 传入参数的问题
+
+最后是 取得返回值的问题
+
+1.下载JNative.jar
+2.把JNative.jar导入到工程,然后把JNative放入到系统的SYSTEM32下
+3.把要调用的.dll文件放入到当前项目中或系统的SYSTEM32下
+4.
+
+首先,dll定义的函数如下
+
+4.1 int  rf_init(int port,long baud);
+功 能：初始化串口
+
+参 数：port：串口号，取值为0～3
+
+       baud：为通讯波特率9600～115200
+
+返 回：成功则返回串口标识符>0，失败返回负值，见错误代码表
+
+   例：int icdev;
+
+       icdev=rf_init(0,9600);//初始化串口1，波特率9600
+
+ 
+如果是WIN32程序则icdev为设备句柄，见下例：
+
+       HANDLE icdev;
+
+       icdev=rf_init(0,115200);
+
+       if(icdev<0)
+
+              MessageBox(“rf_init error”);
+
+4.2 
+
+int rf_beep(int icdev,unsigned int _Msec);
+功 能：蜂鸣
+
+参 数：icdev：通讯设备标识符
+
+       unsigned int _Msec：蜂鸣时间，单位是10毫秒
+
+返 回：成功则返回 0
+
+   例：int st;
+
+       st=rf_beep(icdev,10);             /*鸣叫100毫秒*/
+
+4.3
+
+package com.test;
+
+import org.xvolks.jnative.JNative;
+import org.xvolks.jnative.Type;
+import org.xvolks.jnative.exceptions.NativeException;
+import org.xvolks.jnative.pointers.Pointer;
+import org.xvolks.jnative.pointers.memory.MemoryBlockFactory;
+
+public class TestConn {
+
+
+ static Pointer pointer;
+  /**
+   *打开连接
+  * @param port 串口号，取值为0～3
+  * @param baud 通讯波特率9600～115200
+  * @return 通讯设备标识符
+  * @throws NativeException
+  * @throws IllegalAccessException
+  */
+ private static final int TestConnect(int port, long baud)throws NativeException, IllegalAccessException {   
+           JNative n = null;   
+           try {              
+               n = new JNative("mwrf32.dll", "rf_init");   //加载函数对象
+               n.setRetVal(Type.INT);        //设置函数返回值类型
+               int i = 0;           //设置参数顺序
+               n.setParameter(i++, Type.INT, ""+port);   //设值
+               n.setParameter(i++, Type.INT, "" + baud);     //设置 
+               System.out.println("调用的DLL文件名为："+n.getDLLName());
+               System.out.println("调用的方法名为："+n.getFunctionName());
+
+               n.invoke();   //调用函数
+               return Integer.parseInt(n.getRetVal());   //函数返回值
+          } finally {   
+               if (n != null)   
+                   n.dispose();         //关闭
+           }   
+       }
+
+  /**
+   * 创建指针,用于接收调用函数的返回值
+  * @return
+  * @throws NativeException
+  */
+ public Pointer creatPointer() throws NativeException{
+  
+   pointer = new Pointer(MemoryBlockFactory.createMemoryBlock(36));//分配的内存大小
+   return pointer;
+
+  }
+
+   
+ /**
+  * 蜂鸣控制
+  * @param icdev 通讯设备标识符
+  * @param msec 蜂鸣时间,单位10毫秒
+  * @return
+  * @throws NativeException
+  * @throws IllegalAccessException
+  */
+ private  String testBeep(int icdev,int msec)throws NativeException, IllegalAccessException {   
+        JNative n = null;   
+        try {              
+            n = new JNative("mwrf32.dll", "rf_beep");   //加载函数对象
+            n.setRetVal(Type.INT);        //设置函数返回值类型
+            int i = 0;           //设置参数顺序
+            n.setParameter(i++, icdev);
+            n.setParameter(i++, msec);   //设值
+            System.out.println("调用的DLL文件名为："+n.getDLLName());
+            System.out.println("调用的方法名为："+n.getFunctionName());
+
+            n.invoke();       //调用函数
+            return n.getRetVal();    //函数返回值
+    } finally {   
+            if (n != null)   
+                n.dispose();         //关闭
+        }   
+    }
+ 
+  public static void main(String[] args)throws Exception {
+   TestConn tc = new TestConn();
+   Pointer po = tc.creatPointer();
+   int icdev = TestConn.TestConnect(0, 115200);
+//   tc.testStatus(icdev, po);
+   tc.testBeep(icdev, 50);
+//   System.out.println(po.getAsString());  //把接收的值转换
+ }
+}

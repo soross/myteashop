@@ -23,6 +23,7 @@
 	<!-- 签约单位ACTION -->
     <bean name="/admin/unit" class="com.crm.sysdo.struts.action.UnitAction">
      <property name="unitServiceDao" ref="unitProxy"></property>
+     <property name="perDao" ref="perDao"></property>	
     </bean>
     
     <!-- 收费项目DAO -->

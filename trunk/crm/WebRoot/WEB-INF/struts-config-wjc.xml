@@ -22,6 +22,7 @@
 	<form-bean name="fileForm" type="com.crm.sysdo.struts.form.FileForm" />
 	
 	<form-bean name="hisForm" type="com.crm.ddt.struts.form.HisForm" />
+	<form-bean name="proveForm" type="com.crm.ddt.struts.form.ProveForm" />
 	
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
@@ -216,6 +217,15 @@
       path="/admin/his"
       scope="request"
       type="com.crm.ddt.struts.action.HisAction" />   
+      
+    <action
+      attribute="proveForm"
+      input="/form/prove.jsp"
+      name="proveForm"
+      parameter="task"
+      path="/admin/prove"
+      scope="request"
+      type="com.crm.ddt.struts.action.ProveAction" />   
       
   </action-mappings>
   

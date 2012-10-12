@@ -13,6 +13,7 @@ body{ OVERFLOW: auto;}/**OVERFLOW-X: hidden;**/
 .tablebg{background:#C4D8ED;}
 tr {background:#EEF7FD;}
 td {height:18px;line-height:20px;font-size:12px;border:1px solid #fff;color:#1d61a8;padding:2px;}
+
 textarea, input, select{padding:2px;border:1px solid;border-color:#666 #ccc #ccc #666;background:#ffffff;color:#000;}
 input[type=radio],input[type=checkbox]{cursor:pointer;border:none;background:none;vertical-align:middle;}
 input.valid,select.valid,textarea.valid{border:1px dotted green; background-color:#F3FAE7;padding:1px;}

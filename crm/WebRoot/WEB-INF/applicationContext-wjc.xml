@@ -265,6 +265,23 @@
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- prove-->
+	<bean name="proveDao" class="com.crm.ddt.dao.impl.ProveDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="proveServiceDao"
+		class="com.crm.ddt.service.impl.ProveServiceDaoImpl">
+		<property name="proveDao" ref="proveDao"></property>
+	</bean>
+	<bean name="proveServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="proveServiceDao"></property>
+	</bean>
+	<bean name="/admin/prove"
+		class="com.crm.ddt.struts.action.ProveAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="proveServiceDao" ref="proveServiceDaoProxy"></property>
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
 	
 	
 	<!-- manu -->

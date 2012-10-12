@@ -15,67 +15,47 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<link href="${pageContext.request.contextPath}/admin/css/style.css"
 		rel="stylesheet" type="text/css">
-		
-	<link rel='STYLESHEET' type='text/css' href='${pageContext.request.contextPath}/admin/js/dhtmlxTree/common/style.css'>
-	<link rel="STYLESHEET" type="text/css" href="${pageContext.request.contextPath}/admin/js/dhtmlxTree/codebase/dhtmlxtree.css">
-	
-	<script  src="${pageContext.request.contextPath}/admin/js/dhtmlxTree/codebase/dhtmlxcommon.js"></script>
-<script  src="${pageContext.request.contextPath}/admin/js/dhtmlxTree/codebase/dhtmlxtree.js"></script>
-<script  src="${pageContext.request.contextPath}/admin/js/dhtmlxTree/codebase/ext/dhtmlxtree_start.js"></script>
-	
+
 	<style>
-	body{
-		
-	}
-	#divSCA {
-		position: absolute;
-		width: 300px;
-		height: 200px;
-		font-size: 12px;
-		background: #EEF7FD;
-		border: 0px solid #000;
-		z-index: 10001;
-		display: none;
-		text-algin: center;
-		padding: 10px 0 0 10px;
-	}
+body {
+	
+}
+
+#divSCA {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	font-size: 12px;
+	background: #EEF7FD;
+	border: 0px solid #000;
+	z-index: 10001;
+	display: none;
+	text-algin: center;
+	padding: 10px 0 0 10px;
+}
 </style>
 </head>
-<body onload="var myTree = dhtmlXTreeFromHTML('listBox');">
-	<table id="tabinfo" cellpadding="2" cellspacing="1" border="0" class="tableBorder"
-		align=center>
+<body>
+	<table id="tabinfo" cellpadding="2" cellspacing="1" border="0"
+		class="tableBorder" align=center>
 		<tr>
 			<th colspan=2 height=25>
-				门诊病历记录
+				日常诊疗操作
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>门诊病历选项：</b><a
-					href="${pageContext.request.contextPath}/admin/vip.do?task=deptList">病人资料</a>
-				|
-				<a
-					href="${pageContext.request.contextPath}/admin/vip.do?task=toAddDept">会卡预存</a>
-				| [
+				<b>日常诊疗操作选项：</b> [
 				<a href="javascript:location.reload()">刷新页面</a>]
 			</td>
 		</tr>
 	</table>
 	<table width="98%" align=center>
-		<tr>
-			<td id="treeTD" width="100px">
-				<div  id="listBox" class="dhtmlxTree"  setImagePath="${pageContext.request.contextPath}/admin/js/dhtmlxTree/dhtmlxTree/codebase/imgs/csh_bluebooks/"  
-			        style="width:100px;overflow:auto;background-color:#f5f5f5;border :1px solid Silver;">
-		            <ul>
-		                <li>Child1
-		                <ul>
-		                    <li>Child 1-1</li>
-		                </ul>
-		                </li>
-		                <li>Child2</li>
-		                <li><b>Bold</b> <i>Italic</i></li>
-		            </ul>
-			    </div>
+		<tr valign="top">
+			<td width="200px">
+				<!-- frame -->
+				<iframe src="frame.jsp" frameborder="0" height="100%" width="220px"
+					scrolling="auto" marginwidth="0px" marginheight="0px"></iframe>
 			</td>
 			<td id="formTD">
 				<html:form action="/admin/his" method="post">
@@ -88,7 +68,7 @@
 							<td colspan="3">
 								<html:text property="sufferer" size="30" maxlength="30" />
 							</td>
-							<th height=25>
+							<th height="25">
 								日期
 							</th>
 							<td colspan="2">
@@ -104,13 +84,13 @@
 							</td>
 						</tr>
 						<tr>
-							<th height=25>
+							<th height="25">
 								姓名
 							</th>
-							<td >
-								<html:text property="name" size="15"/>
+							<td>
+								<html:text property="name" size="15" />
 							</td>
-							<th height=25>
+							<th height="25">
 								性别
 							</th>
 							<td>
@@ -119,13 +99,13 @@
 									<html:option value="1">女</html:option>
 								</html:select>
 							</td>
-							<th height=25>
+							<th height="25">
 								年龄
 							</th>
 							<td>
 								<html:text property="old" size="15" />
 							</td>
-							<th height=25>
+							<th height="25px">
 								婚况
 							</th>
 							<td colspan="2">
@@ -145,13 +125,15 @@
 								身高
 							</th>
 							<td>
-								<html:text property="height" size="10"/>CM
+								<html:text property="height" size="10" />
+								CM
 							</td>
 							<th height=25>
 								体重
 							</th>
 							<td>
-								<html:text property="weight" size="10" />KG
+								<html:text property="weight" size="10" />
+								KG
 							</td>
 							<th height=25>
 								职业
@@ -159,7 +141,7 @@
 							<td>
 								<html:text property="job" size="15" />
 							</td>
-			
+
 							<th height=25>
 								联系人
 							</th>
@@ -184,8 +166,9 @@
 								采集时间
 							</th>
 							<td colspan="3">
-								<html:text property="gatherDate" size="22" onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});"
-									styleId="gatherDate" styleClass="Wdate" readonly="true"/>
+								<html:text property="gatherDate" size="22"
+									onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});"
+									styleId="gatherDate" styleClass="Wdate" readonly="true" />
 							</td>
 						</tr>
 						<tr>
@@ -206,7 +189,7 @@
 							<th height=25>
 								联系地址
 							</th>
-							<td  colspan="5">
+							<td colspan="5">
 								<html:text property="linkadd" size="55" />
 							</td>
 							<th height=25>
@@ -226,27 +209,27 @@
 							<th height=25>
 								病史陈述
 							</th>
-							<td  colspan="3">
+							<td colspan="3">
 								<html:text property="hisstate" size="15" />
 							</td>
 						</tr>
 						<tr>
-							<th height=25 >
+							<th height=25>
 								发病节气
 							</th>
-							<td  colspan="2">
+							<td colspan="2">
 								<html:text property="cycle" size="15" />
 							</td>
-							<th height=25 >
+							<th height=25>
 								可靠程度
 							</th>
-							<td  colspan="2">
+							<td colspan="2">
 								<html:text property="hislevel" size="15" />
 							</td>
 							<th height=25>
 								X光CT号
 							</th>
-							<td  colspan="2">
+							<td colspan="2">
 								<html:text property="xregctno" size="15" />
 							</td>
 						</tr>
@@ -264,7 +247,7 @@
 								<html:text property="remark" size="35" />
 							</td>
 						</tr>
-			
+
 						<tr>
 							<th height=25>
 								主诉
@@ -273,7 +256,7 @@
 								<html:text property="state" size="80" />
 							</td>
 						</tr>
-			
+
 						<tr>
 							<th height=25>
 								现病史
@@ -282,7 +265,7 @@
 								<html:textarea property="hisNow" rows="3" cols="80"></html:textarea>
 							</td>
 						</tr>
-			
+
 						<tr>
 							<th height=25>
 								个人史
@@ -291,7 +274,7 @@
 								<html:textarea property="hisSelf" rows="3" cols="80"></html:textarea>
 							</td>
 						</tr>
-			
+
 						<tr>
 							<th height=25>
 								婚育史
@@ -329,7 +312,9 @@
 								诊疗结果
 							</th>
 							<td colspan="9">
-								<html:textarea property="result" onfocus="JavaScript:$('#divSCA').OpenDiv();" styleId="result" rows="3" cols="80"></html:textarea>
+								<html:textarea property="result"
+									onfocus="JavaScript:$('#divSCA').OpenDiv();" styleId="result"
+									rows="3" cols="80"></html:textarea>
 							</td>
 						</tr>
 						<tr>
@@ -347,10 +332,11 @@
 						</tr>
 					</table>
 					<table cellpadding="3" cellspacing="1" border="0"
-							class="tableBorder tableth" align="center" width="100%">
+						class="tableBorder tableth" align="center" width="100%">
 						<tr>
 							<td align="center">
-								<input type="submit" value="确定" onclick="javascript:goUrl('');">&nbsp;
+								<input type="submit" value="确定" onclick="javascript:goUrl('');">
+								&nbsp;
 								<input type="button" value="取消" onclick="javascript:goUrl('');">
 							</td>
 						</tr>
@@ -358,18 +344,18 @@
 				</html:form>
 			</td>
 		</tr>
-	</table>	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	</table>
+
+
+
+
+
+
+
+
+
+
+
 	<div class="contextMenu" id="myMenu2">
 		<ul>
 			<li id="upload">
@@ -381,74 +367,89 @@
 			<li id="save">
 				保存头像
 			</li>
-			<li id="delete"> 
-				删除头像</li>
+			<li id="delete">
+				删除头像
+			</li>
 		</ul>
 	</div>
 
 
 
-	<div id="divSCA" style="margin-top:400px;display: none; ">
+	<div id="divSCA" style="margin-top: 400px; display: none;">
 		<table>
 			<tr>
-				<td>i<br>
-					<table id="typeone">
+				<td><br>
+					<table id="typeone" width="400px">
 						<tr>
 							<td>
-							疾病诊断
+								疾病诊断
 							</td>
 							<td>
-							<input id="aaaaa1" name="aaaaa"/>
+								<input id="aaaaa1" name="aaaaa" size="35" />
+							</td>
+							<td>
+								&nbsp;
 							</td>
 						</tr>
 					</table>
-					<table id="typetwo">
-						<tr>
-							<td>
-							残损诊断
-							</td>
-							<td>
-							<input name="bbbbb"/>
-							</td>
-						</tr>
-					</table>
-					<table id="typethree">
-						<tr>
-							<td>
-							残障诊断
-							</td>
-							<td>
-							<input name="ccccc"/>
-							</td>
-						</tr>
-					</table>
-		
-					<table>
-						<tr>
-							<td>
-							<input type="button" value="增加疾病诊断" onclick="insertTypeOne('typeone');">
-							</td>
-							<td>
-							<input type="button" value="增加残损诊断" onclick="insertTypeTwo('typetwo');">
-							</td>
-							<td>
-							<input type="button" value="增加残障诊断" onclick="insertTypeThree('typethree');">
-							</td>
-							<td>
-							<input type="button" value="确定" onclick="getResult();closeDiv();">
-							</td>
-						</tr>
-					</table>
-				<br><br></td>
+			<table id="typetwo" width="400px">
+				<tr>
+					<td>
+						残损诊断
+					</td>
+					<td>
+						<input name="bbbbb" size="35" />
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+			<table id="typethree" width="400px">
+				<tr>
+					<td>
+						残障诊断
+					</td>
+					<td>
+						<input name="ccccc" size="35" />
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td>
+						<input type="button" value="增加疾病诊断"
+							onclick="insertTypeOne('typeone');">
+					</td>
+					<td>
+						<input type="button" value="增加残损诊断"
+							onclick="insertTypeTwo('typetwo');">
+					</td>
+					<td>
+						<input type="button" value="增加残障诊断"
+							onclick="insertTypeThree('typethree');">
+					</td>
+					<td>
+						<input type="button" value="确定" onclick="getResult();closeDiv();">
+					</td>
+				</tr>
+			</table>
+			</td>
 			</tr>
 		</table>
+		<br>
+		<br>
 	</div>
 </body>
 
 
 
 <div id="divPhoto"
-	style="height: 300px : weight : 240px; display: none;">
+	style="height: 300px :           weight :           240px; display: none;">
 	<input type="hidden" id="picData1" name="picData1" />
 	<input type="hidden" id="picExt1" name="picExt1" />
 	<input type="hidden" id="picData2" name="picData2" />
@@ -749,7 +750,7 @@ function putOld(obj){
 			}
 		var rspText="";
 		</script>
-		
+
 <!-- 诊疗结果-->
 <script>
 function insertTypeOne(tabid){
@@ -761,7 +762,10 @@ function insertTypeOne(tabid){
 	myTD1.innerHTML='疾病诊断';//+obj.rows.length;
 	
 	var myTD2=myTR.insertCell();
-	myTD2.innerHTML='<input name="aaaaa" id="aaaaa'+obj.rows.length+'"/>';
+	myTD2.innerHTML='<input name="aaaaa" id="aaaaa'+obj.rows.length+'" size="35"/>';
+	
+	var myTD3 = myTR.insertCell();
+	myTD3.innerHTML='<input type="button" onclick="deleteRow(\'typeone\',this)" value="删除"/>'
 }
 
 function insertTypeTwo(tabid){
@@ -772,7 +776,10 @@ function insertTypeTwo(tabid){
 	myTD1.innerHTML='残损诊断';//+obj.rows.length;
 	
 	var myTD2=myTR.insertCell();
-	myTD2.innerHTML='<input name="bbbbb" id="bbbbb'+obj.rows.length+'"/>';
+	myTD2.innerHTML='<input name="bbbbb" id="bbbbb'+obj.rows.length+'" size="35"/>';
+	
+	var myTD3 = myTR.insertCell();
+	myTD3.innerHTML='<input type="button" onclick="deleteRow(\'typetwo\',this)" value="删除"/>'
 }
 
 function insertTypeThree(tabid){
@@ -783,7 +790,10 @@ function insertTypeThree(tabid){
 	myTD1.innerHTML='残障诊断';//+obj.rows.length;
 	
 	var myTD2=myTR.insertCell();
-	myTD2.innerHTML='<input name="ccccc" id="ccccc'+obj.rows.length+'"/>';
+	myTD2.innerHTML='<input name="ccccc" id="ccccc'+obj.rows.length+'" size="35"/>';
+	
+	var myTD3 = myTR.insertCell();
+	myTD3.innerHTML='<input type="button" onclick="deleteRow(\'typeThree\',this)" value="删除"/>'
 }
 function getResult(){
 	var result="";
@@ -809,6 +819,11 @@ function getResult(){
 	
 	document.getElementById('result').value=result;
 }
-</script>
 
+function deleteRow(tabid,obj) {  
+	var rootTable = document.getElementById(tabid);  
+	rootTable.deleteRow(obj.parentNode.parentNode.rowIndex);  
+}  
+
+</script>
 </html:html>

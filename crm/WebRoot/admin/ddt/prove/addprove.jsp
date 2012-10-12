@@ -32,12 +32,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				会卡预存管理
+				门诊证明申请
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>会卡预存选项：</b>
+				<b>门诊证明申请选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -46,58 +46,56 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/cardfee" method="post">
+	<html:form action="/admin/prove" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					会卡预存
+					门诊证明申请
 				</th>
 			</tr>
 			<tr>
 				<td align="right">
-					会员卡号：
+					病人编号：
 				</td>
 				<td colspan="3">
-					<html:hidden property="custid"/>
-					<html:hidden property="balance"/>
-					<html:text property="custcode" size="30" styleId="txt"
+					<html:text property="sickid" size="30" styleId="txt"
 						onclick="loadSelectCust();"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					预存金额:
+					病人名称:
 				</td>
 				<td colspan="3">
-					<html:text property="money" size="30" styleId="txt"></html:text>
+					<html:text property="sickname" size="30" styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					备注:
+					身份证号:
 				</td>
 				<td colspan="3">
-					<html:text property="remark" size="30" styleId="txt"></html:text>
+					<html:text property="idcard" size="30" styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					&nbsp;
+					性别
 				</td>
 				<td colspan="3">
-					<html:checkbox property="isprint" value="1"></html:checkbox>
-					保存后打印
+					<html:radio property="garden" value="男"></html:radio>男
+					<html:radio property="garden" value="女"></html:radio>女
 				</td>
 			</tr>
 
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<input type="hidden" name="createstaff" value="${user.userid}">
-					<input type="hidden" name="task" value="addCardFee">
+					<input type="hidden" name="task" value="addProve">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 会卡预存 " class="inputs" />
+					<input type="submit" name="submit" value=" 门诊证明申请 " class="inputs" />
 				</td>
 			</tr>
 		</table>
@@ -155,9 +153,9 @@ function selectCust(vid){
 	var strs= new Array(); //定义一数组
 	strs=vl.split(","); 
 	//alert(vl);
-	document.getElementById("custid").value=strs[0];
-	document.getElementById("custcode").value=strs[1];
-	document.getElementById("balance").value=strs[2];
+	document.getElementById("sickid").value=strs[0];
+	document.getElementById("sickname").value=strs[1];
+	//document.getElementById("balance").value=strs[2];
 	closeDiv();
 }
 function queryCustList(){

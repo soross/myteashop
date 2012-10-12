@@ -80,6 +80,7 @@
 		<mapping resource="com/crm/sysdo/po/SysInfo.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TFile.hbm.xml" />
 		<mapping resource="com/crm/op/po/TCardFee.hbm.xml" />
+		<mapping resource="com/crm/ddt/po/TProve.hbm.xml" />
 
 
 	</session-factory>

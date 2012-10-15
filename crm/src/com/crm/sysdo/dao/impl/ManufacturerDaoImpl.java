@@ -2,6 +2,7 @@ package com.crm.sysdo.dao.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -65,7 +66,7 @@ public class ManufacturerDaoImpl extends HibernateDaoSupport implements Manufact
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount(TManufacturer Manufacturer){
+	public Integer getCount(TManufacturer Manufacturer,Map map){
 		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
@@ -83,7 +84,7 @@ public class ManufacturerDaoImpl extends HibernateDaoSupport implements Manufact
 	 * 取得列表
 	 * @return
 	 */
-	public List getManufacturerList(final PageUtil pageUtil,final TManufacturer Manufacturer){
+	public List getManufacturerList(final PageUtil pageUtil,final TManufacturer Manufacturer,final Map map){
 		List list = (List)this.getHibernateTemplate().executeFind(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {

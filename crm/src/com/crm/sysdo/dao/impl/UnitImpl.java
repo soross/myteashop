@@ -68,7 +68,11 @@ public class UnitImpl extends HibernateDaoSupport implements UnitDao {
 							throws HibernateException, SQLException {
 						StringBuffer hql = new StringBuffer(
 								"select count(*) from TUnit where 1=1 ");
-
+						
+						if(tunit.getUnitname()!=null&&!"".equals(tunit.getUnitname())){
+							hql.append(" and unitname like '"+tunit.getUnitname()+"'");
+						}
+						
 						Query query = session.createQuery(hql.toString());
 
 						Integer count = (Integer) query.uniqueResult();

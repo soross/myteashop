@@ -4,7 +4,9 @@
  */
 package com.crm.sysdo.struts.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +20,7 @@ import org.apache.struts.actions.DispatchAction;
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.sysdo.po.TManufacturer;
 import com.crm.sysdo.service.inf.ManufacturerServiceDao;
 import com.crm.sysdo.struts.form.ManuFacturerForm;
@@ -34,11 +37,11 @@ public class ManufacturerAction extends DispatchAction {
 	/*
 	 * Generated Methods
 	 */
-	private ManufacturerServiceDao ManuServiceDao;
+	private ManufacturerServiceDao manuServiceDao;
 	private Permission perDao;
 
 	/**
-	 * 跳转到添加数字字典界面
+	 * 跳转到生产厂家界面
 	 * 
 	 * @param mapping
 	 * @param form
@@ -51,14 +54,14 @@ public class ManufacturerAction extends DispatchAction {
 			throws Exception {
 
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_MANUFACTURER);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Manu/addManu.jsp");
+		return new ActionForward("/admin/sysdo/manu/addmanu.jsp");
 	}
 
 	/**
-	 * 添加
+	 * 添加生产厂家
 	 * 
 	 * @param mapping
 	 * @param form
@@ -74,7 +77,7 @@ public class ManufacturerAction extends DispatchAction {
 		BeanUtils.copyProperties(Manu, ManuForm);
 
 
-		Boolean bool = this.ManuServiceDao.addManufacturer(Manu);
+		Boolean bool = this.manuServiceDao.addManufacturer(Manu);
 
 		if (bool) {
 			response
@@ -82,9 +85,9 @@ public class ManufacturerAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=toAddManu';}else{location.href='"
+									+ "/admin/manu.do?task=toAddManu';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=ManuList';}</script>");
+									+ "/admin/manu.do?task=ManuList';}</script>");
 			return null;
 		} else {
 			response
@@ -92,9 +95,9 @@ public class ManufacturerAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=toAddManu';}else{location.href='"
+									+ "/admin/manu.do?task=toAddManu';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=ManuList';}</script>");
+									+ "/admin/manu.do?task=ManuList';}</script>");
 			return null;
 		}
 	}
@@ -112,19 +115,23 @@ public class ManufacturerAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
-		PageUtil pageUtil = new PageUtil(request, this.ManuServiceDao
-				.getCount(null), GlobVar.PAGESIZE_BY_TWENTY_DATA);
+		TManufacturer tManufacturer = new TManufacturer();
+		Map<String, Object> map = new HashMap<String, Object>();
+		BeanUtils.copyProperties(tManufacturer, ManuForm);
+		PageUtil pageUtil = new PageUtil(request, this.manuServiceDao
+				.getCount(tManufacturer, map), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-
+		List list = this.manuServiceDao.getManufacturerList(pageUtil, tManufacturer,map);
+		request.setAttribute("manuList", list);
 
 		// 32 角色
-		List sl = perDao.getSonPerList("33");
+		List sl = perDao.getSonPerList(PowerKey.KEY_MANUFACTURER);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/sysdo/Manu/Manulist.jsp");
+		return new ActionForward("/admin/sysdo/manu/manulist.jsp");
 	}
 
 	/**
-	 * 删除数字字典
+	 * 删除生产厂家
 	 * 
 	 * 连同子类一起删除
 	 * 
@@ -142,24 +149,24 @@ public class ManufacturerAction extends DispatchAction {
 		TManufacturer Manu = new TManufacturer();
 		Manu.setId(new Long(ManuForm.getId()));
 
-		Boolean bool = this.ManuServiceDao.deleteManufacturer(Manu);
+		Boolean bool = this.manuServiceDao.deleteManufacturer(Manu);
 
 		if (bool) {
 			response.getWriter().print(
-					"<script> alert('删除成功!将返回数字字典列表!');location.href='"
+					"<script> alert('删除成功!将返回生产厂家列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Manu.do?task=ManuList';</script>");
+							+ "/admin/manu.do?task=ManuList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Manu.do?task=ManuList';</script>");
+							+ "/admin/manu.do?task=ManuList';</script>");
 		}
 		return null;
 	}
 
 	/**
-	 * 跳转到修改页面
+	 * 跳转到修改生产厂家页面
 	 * 
 	 * @param mapping
 	 * @param form
@@ -171,18 +178,19 @@ public class ManufacturerAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
-		TManufacturer Manu = this.ManuServiceDao.getManufacturerById(new Long(ManuForm.getId()));
+		String id = request.getParameter("id");
+		TManufacturer Manu = this.manuServiceDao.getManufacturerById(Long.parseLong(id));
 		BeanUtils.copyProperties(ManuForm, Manu);
-
+		request.setAttribute("Manubean", Manu);
 		// 32 角色
-		List sonList = perDao.getSonPerList("33");
+		List sonList = perDao.getSonPerList(PowerKey.KEY_MANUFACTURER);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/sysdo/Manu/updateManu.jsp");
+		return new ActionForward("/admin/sysdo/manu/updatemanu.jsp");
 	}
 
 	/**
-	 * 修改
+	 * 修改生产厂家
 	 * 
 	 * @param mapping
 	 * @param form
@@ -194,12 +202,14 @@ public class ManufacturerAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ManuFacturerForm ManuForm = (ManuFacturerForm) form;
-		TManufacturer Manu = this.ManuServiceDao.getManufacturerById(new Long(ManuForm.getId()));
+		String id = request.getParameter("id");
+		TManufacturer Manu1 = this.manuServiceDao.getManufacturerById(new Long(id));
+		TManufacturer Manu = new TManufacturer();
 		BeanUtils.copyProperties(Manu, ManuForm);
-
+		Manu.setCreateDate(Manu1.getCreateDate());
 		Boolean bool = false;
 		try {
-			bool = this.ManuServiceDao.updateManufacturer(Manu);
+			bool = this.manuServiceDao.updateManufacturer(Manu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -207,30 +217,24 @@ public class ManufacturerAction extends DispatchAction {
 			response
 					.getWriter()
 					.print(
-							"<script>if(confirm('数字字典修改成功,是否继续修改!')){location.href='"
+							"<script>if(confirm('生产厂家修改成功,是否继续修改!')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=toUpdateManu&id="
+									+ "/admin/manu.do?task=toUpdateManu&id="
 									+ Manu.getId()
 									+ "';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Manu.do?task=ManuList';}</script>");
+									+ "/admin/manu.do?task=ManuList';}</script>");
 
 		} else {
-			response.getWriter().print("<script>alert('数字字典修改失败,请重试!');location.href='"
+			response.getWriter().print("<script>alert('生产厂家修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Manu.do?task=toUpdateManu&id='"
+							+ "/admin/manu.do?task=toUpdateManu&id='"
 							+ Manu.getId() + "';</script>");
 		}
 		return null;
 	}
 
-	public ManufacturerServiceDao getManuServiceDao() {
-		return ManuServiceDao;
-	}
-
-	public void setManuServiceDao(ManufacturerServiceDao ManuServiceDao) {
-		this.ManuServiceDao = ManuServiceDao;
-	}
+	
 
 	public Permission getPerDao() {
 		return perDao;
@@ -239,4 +243,13 @@ public class ManufacturerAction extends DispatchAction {
 	public void setPerDao(Permission perDao) {
 		this.perDao = perDao;
 	}
+
+	public ManufacturerServiceDao getManuServiceDao() {
+		return manuServiceDao;
+	}
+
+	public void setManuServiceDao(ManufacturerServiceDao manuServiceDao) {
+		this.manuServiceDao = manuServiceDao;
+	}
+
 }

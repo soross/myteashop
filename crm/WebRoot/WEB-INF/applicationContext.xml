@@ -4,6 +4,7 @@
 <beans>
 	<import resource="applicationContext-wjc.xml" />
 	<import resource="applicationContext-cf.xml" />
+	<import resource="applicationContext-cys.xml" />
 	<!-- <import resource="applicationContext-timer.xml" /> -->
 	<import resource="applicationContext-ehcache.xml"/>
 	<bean id="sessionFactory"

@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床管理选项：</b>
+				<b>生产厂家选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -96,20 +96,17 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed?task=sickbedList" method="post">
+	<html:form action="/admin/manu.do?task=ManuList" method="post">
 	<table width="100%" border="0" align="center" cellpadding="2"
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25" colspan="6">
-				病床查询
+				生产厂家查询
 			</th>
 		</tr>
 		<tr>
 			<td width="20%" height=25 class="pl20">
-			病床编码:	<html:text property="code"  size="15"  />
-			</td>
-			<td width="20%" height=25 class="pl20">
-			病床名称:<html:text property="sickbed"  size="15" />
+			生产厂家名称:<html:text property="mfname"  size="15" />
 			</td>
 			<td>
 				<html:submit value="查询"></html:submit>
@@ -121,7 +118,7 @@
 		cellspacing="1" class="tableBorderList">
 		<tr>
 			<th colspan=23 height=25>
-				病床列表
+				生产厂家列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -133,100 +130,84 @@
 				序号
 			</td>
 			<td>
-				病床编码
+				厂家名称
 			</td>
 			<td>
-				病床姓名
+				拼音
 			</td>
 			<td>
-				所属科室
+				五笔
 			</td>
 			<td>
-				显示顺序
+				联系人
 			</td>
 			<td>
-				所属病区
+				联系电话
 			</td>
 			<td>
-				床位级别
-			</td>
-			<td>
-				标准金额
+				传真
 			</td>	
 			<td>
-				拼音简码
+				联系地址
 			</td>
 			<td>
-				五笔简码
+				邮编
 			</td>
-			<td>
-				当前住院号
-			</td>	
 			<td>
 				备注
-			</td>	
+			</td>
 			<td>
 				有效状态
-			</td>	
+			</td>		
 			<td width="100px">
 				操作
 			</td>
 		</tr>
 
-		 <logic:present name="sickbedList">
-          	<logic:iterate id="sickbed" name="sickbedList">          	 
+		 <logic:present name="manuList">
+          	<logic:iterate id="manu" name="manuList">          	 
 				<tr align="center" style="cursor: hand;">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${sickbed.id}"
+						<input type="checkbox" name="id" value="${manu.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${sickbed.id}
+						${manu.id}
 					</td>
 					<td>
-						${sickbed.code}
+						${manu.mfname}
 					</td>
 					<td>
-						${sickbed.sickbed}
+						${manu.pinyin}
 					</td>
 					<td>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<logic:equal value="${sickbed.deptid}" name="dept" property="id">${dept.deptName}</logic:equal>
-	      					</logic:iterate>
-      					</logic:present>
+						${manu.wubi}
+					</td>
+					<td>
+						${manu.linkman}
 					</td>	
 					<td>
-						${sickbed.showindex}
+						${manu.tel}
 					</td>
 					<td>
-						${sickbed.area}
-					</td>	
-					<td>
-						${sickbed.leveltype}
+						${manu.fax}
 					</td>
 					<td>
-						${sickbed.price}
+						${manu.address}
+					</td>	
+					<td>
+						${manu.zip}
+					</td>	
+					<td>
+						${manu.remark}
+					</td>		
+					<td>
+						<logic:equal value="1" name="manu" property="state">可用</logic:equal>
+						<logic:equal value="0" name="manu" property="state">不可用</logic:equal>
 					</td>
 					<td>
-						${sickbed.pinyin}
-					</td>	
-					<td>
-						${sickbed.wubi}
-					</td>	
-					<td>
-						${sickbed.hospno}
-					</td>	
-					<td>
-						${sickbed.remark}
-					</td>	
-					<td>
-						<logic:equal value="1" name="sickbed" property="state">可用</logic:equal>
-						<logic:equal value="0" name="sickbed" property="state">不可用</logic:equal>
-					</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=toUpdateSickbed&id=${sickbed.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
-						<a href="${pageContext.request.contextPath}/admin/sickbed.do?task=deleteSickbed&id=${sickbed.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
+						<a href="${pageContext.request.contextPath}/admin/manu.do?task=toUpdateManu&id=${manu.id}"><img src="${pageContext.request.contextPath}/admin/images/edit.gif" border="0">[修改]</a>
+						<a href="${pageContext.request.contextPath}/admin/manu.do?task=deleteManu&id=${manu.id}" onclick="return confirm('是否确定删除!');"><img src="${pageContext.request.contextPath}/admin/images/del.gif" border="0">[删除]</a>
 					</td>
 				</tr>					
 	          </logic:iterate>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+  <!-- 门诊报表DAO -->
+	<bean name="registDao" class="com.crm.report.dao.impl.RegisterReportDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 门诊报表service -->
+	<bean name="registServiceDao" class="com.crm.report.service.impl.RegisterReportServiceDaoImpl">
+	 <property name="registDao" ref="registDao"></property>
+	</bean>
+	
+	<!-- 门诊报表 -->
+	<bean name="registProxy" parent="basicProxy">
+	    <property name="target" ref="registServiceDao"></property>
+	</bean>
+	<!--门诊报表action  -->
+	<bean name="/admin/registerReport" class="com.crm.report.struts.action.RegisterReportAction">
+	   <property name="registServiceDao" ref="registProxy"></property>
+	   <property name="perDao" ref="perDao"></property>	
+	</bean>
+	
+	<!-- 动态代理工厂 -->
+	<bean name="basicProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

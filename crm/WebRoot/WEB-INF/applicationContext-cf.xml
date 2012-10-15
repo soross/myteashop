@@ -26,6 +26,26 @@
      <property name="perDao" ref="perDao"></property>	
     </bean>
     
+    
+     <!-- 签约单位DAO -->
+	<bean name="signUnitDao" class="com.crm.sysdo.dao.impl.SignUnitDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 签约单位DAO -->
+	<bean name="signUnitServiceDao" class="com.crm.sysdo.service.impl.SignUnitServiceDaoImpl">
+	 <property name="signUnitProxy" ref="signUnitDao"></property>
+	</bean>
+	<!-- 签约单位DAO -->
+	<bean name="signUnitProxy" parent="basicProxy">
+	    <property name="target" ref="signUnitServiceDao"></property>
+	</bean>
+	<!-- 签约单位ACTION -->
+    <bean name="/admin/signUnit" class="com.crm.sysdo.struts.action.SignUnitAction">
+     <property name="signUnitServiceDao" ref="signUnitProxy"></property>
+     <property name="perDao" ref="perDao"></property>	
+    </bean>
+    
+    
     <!-- 收费项目DAO -->
 	<bean name="feeItemDao" class="com.crm.sysdo.dao.impl.FeeItemDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
@@ -42,6 +62,26 @@
     <bean name="/admin/feeItem" class="com.crm.sysdo.struts.action.FeeItemAction">
      <property name="feeItemServiceDao" ref="feeItemProxy"></property>
     </bean>
+    
+    
+    <!-- 生产厂家DAO -->
+	<bean name="manuFacturerDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 生产厂家DAO -->
+	<bean name="manuServiceDao" class="com.crm.sysdo.service.impl.ManufacturerServiceDaoImpl">
+	 <property name="manuFacturerProxy" ref="manuFacturerDao"></property>
+	</bean>
+	<!-- 生产厂家DAO -->
+	<bean name="manuFacturerProxy" parent="basicProxy">
+	    <property name="target" ref="manuServiceDao"></property>
+	</bean>
+	<!-- 生产厂家ACTION -->
+    <bean name="/admin/manu" class="com.crm.sysdo.struts.action.ManufacturerAction">
+     <property name="manuServiceDao" ref="manuFacturerProxy"></property>
+     <property name="perDao" ref="perDao"></property>	
+    </bean>
+    
     
     
     <!-- 事物管理器 -->

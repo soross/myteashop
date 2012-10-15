@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>病床选项：</b>
+				<b>生产厂家选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 				<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -35,109 +35,85 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/sickbed" method="post">
+	<html:form action="/admin/manu" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					添加病床
+					添加生产厂家
 				</th>
 			</tr>
 			<tr>
 				<td align="right" width="30%">
-					病床名称：
+					生产厂家名称：
 				</td>
 				<td colspan="3">
-					<html:text property="sickbed"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					病床编码：
-				</td>
-				<td colspan="3">
-					<html:text property="code"  size="20"  styleId="txt"></html:text>
+					<html:text property="mfname"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					所属科室:
+					拼音:
 				</td>
 				<td colspan="3">
-					<html:select property="deptid">
-						<html:option value="">==请选择==</html:option>
-						<logic:present name="deptList">
-							<logic:iterate id="dept" name="deptList">
-	      						<html:option value="${dept.id}">${dept.deptName}</html:option>
-	      					</logic:iterate>
-   						</logic:present>
-					</html:select>
-					
+					<html:text property="pinyin"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					显示顺序:
-				</td>
-				<td colspan="3">
-					<html:text property="showindex"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					所属病区:
-				</td>
-				<td colspan="3">
-					<html:text property="area"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					床位级别:
-				</td>
-				<td colspan="3">
-					<html:text property="leveltype"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right">
-					标准金额:
-				</td>
-				<td colspan="3">
-					<html:text property="price"  size="20"  styleId="txt"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					拼音简码：
-				</td>
-				<td colspan="3">
-					<html:text property="pinyin"  size="20"  styleId="txt" readonly="true"></html:text>
-				</td>
-			</tr>
-			<tr>
-				<td align="right" width="30%">
-					五笔简码：
+					五笔:
 				</td>
 				<td colspan="3">
 					<html:text property="wubi"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
-				<td align="right" width="30%">
-					当前住院号：
+				<td align="right">
+					联系人:
 				</td>
 				<td colspan="3">
-					<html:text property="hospno"  size="20"  styleId="txt"></html:text>
+					<html:text property="linkman"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">
-					备注:
+					联系电话:
 				</td>
 				<td colspan="3">
-					<html:text property="remark"  size="30"  styleId="txt"></html:text>
+					<html:text property="tel"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					传真:
+				</td>
+				<td colspan="3">
+					<html:text property="fax"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					联系地址：
+				</td>
+				<td colspan="3">
+					<html:text property="address"  size="20"  styleId="txt" ></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					邮编：
+				</td>
+				<td colspan="3">
+					<html:text property="zip"  size="20"  styleId="txt"></html:text>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="30%">
+					备注：
+				</td>
+				<td colspan="3">
+					<html:text property="remark"  size="20"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -151,8 +127,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="task" value="addSickbed">
-					<input type="hidden" value="402" name="modfunid">
+					<input type="hidden" name="task" value="addManu">
+					<input type="hidden" value="187" name="modfunid">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
 					<input type="submit" name="submit" value=" 保 存 " class="inputs" />
 				</td>

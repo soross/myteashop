@@ -1,0 +1,1 @@
+update t_power t set t.url = '/admin/registerReport.do?task=regAmount&modfunid=129' where t.id = 129

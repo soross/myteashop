@@ -35,6 +35,8 @@ public class PowerKey {
 	
 	public static String KEY_UNIT="85";
 	
+	public static String KEY_REGAMOUNT = "129";
+	
 	public static String FILE_TYPE_PHOTO="PHOTO";
 	public static String FILE_TYPE_VIEW="VIEW";
 	

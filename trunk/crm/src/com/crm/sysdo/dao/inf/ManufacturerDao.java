@@ -2,6 +2,7 @@ package com.crm.sysdo.dao.inf;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.po.TManufacturer;
@@ -41,12 +42,12 @@ public interface ManufacturerDao {
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount(TManufacturer Manufacturer);
+	public Integer getCount(TManufacturer Manufacturer,Map map);
 	/**
 	 * 取得列表
 	 * @return
 	 */
-	public List getManufacturerList(PageUtil pageUtil ,TManufacturer Manufacturer);
+	public List getManufacturerList(PageUtil pageUtil ,TManufacturer Manufacturer,Map map);
 	
 	/**
 	 * 查询对象

@@ -1,6 +1,7 @@
 package com.crm.sysdo.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.crm.page.PageUtil;
 import com.crm.sysdo.dao.inf.ManufacturerDao;
@@ -18,7 +19,7 @@ import com.crm.sysdo.service.inf.ManufacturerServiceDao;
  */
 public class ManufacturerServiceDaoImpl implements ManufacturerServiceDao {
 
-	private ManufacturerDao ManufacturerDao;
+	private ManufacturerDao manuFacturerProxy;
 
 	/**
 	 * 添加
@@ -26,7 +27,7 @@ public class ManufacturerServiceDaoImpl implements ManufacturerServiceDao {
 	 * @return
 	 */
 	public Boolean addManufacturer(TManufacturer Manufacturer){		
-		return ManufacturerDao.addManufacturer(Manufacturer);
+		return manuFacturerProxy.addManufacturer(Manufacturer);
 	}
 	
 	/**
@@ -35,7 +36,7 @@ public class ManufacturerServiceDaoImpl implements ManufacturerServiceDao {
 	 * @return
 	 */
 	public Boolean deleteManufacturer(TManufacturer Manufacturer){		
-		return ManufacturerDao.deleteManufacturer(Manufacturer);
+		return manuFacturerProxy.deleteManufacturer(Manufacturer);
 	}
 	
 	/**
@@ -44,24 +45,24 @@ public class ManufacturerServiceDaoImpl implements ManufacturerServiceDao {
 	 * @return
 	 */
 	public Boolean updateManufacturer(TManufacturer Manufacturer){
-		return ManufacturerDao.updateManufacturer(Manufacturer);
+		return manuFacturerProxy.updateManufacturer(Manufacturer);
 	}
 	
 	/**
 	 * 取得总记录数
 	 * @return
 	 */
-	public Integer getCount(TManufacturer Manufacturer){
-		return ManufacturerDao.getCount(Manufacturer);
+	public Integer getCount(TManufacturer Manufacturer, Map map){
+		return manuFacturerProxy.getCount(Manufacturer,map);
 	}
 	
 	/**
 	 * 取得列表
 	 * @return
 	 */
-	public List getManufacturerList(PageUtil pageUtil,TManufacturer Manufacturer){
+	public List getManufacturerList(PageUtil pageUtil,TManufacturer Manufacturer,Map map){
 		
-		return ManufacturerDao.getManufacturerList(pageUtil,Manufacturer);
+		return manuFacturerProxy.getManufacturerList(pageUtil,Manufacturer,map);
 	}
 	
 	/**
@@ -70,16 +71,18 @@ public class ManufacturerServiceDaoImpl implements ManufacturerServiceDao {
 	 * @return
 	 */
 	public TManufacturer getManufacturerById(Long id){
-		return ManufacturerDao.getManufacturerById(id);
+		return manuFacturerProxy.getManufacturerById(id);
 	}
 
-	public ManufacturerDao getManufacturerDao() {
-		return ManufacturerDao;
+	public ManufacturerDao getManuFacturerProxy() {
+		return manuFacturerProxy;
 	}
 
-	public void setManufacturerDao(ManufacturerDao ManufacturerDao) {
-		this.ManufacturerDao = ManufacturerDao;
+	public void setManuFacturerProxy(ManufacturerDao manuFacturerProxy) {
+		this.manuFacturerProxy = manuFacturerProxy;
 	}
+
+
 
 
 }

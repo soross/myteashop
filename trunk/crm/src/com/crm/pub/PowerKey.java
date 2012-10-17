@@ -41,6 +41,8 @@ public class PowerKey {
 	
 	public static String KEY_MANUFACTURER="86";
 	
+	public static String KEY_ORDERMANUFACTURER="87";
+	
 
 	public static String KEY_REGAMOUNT = "129";
 	

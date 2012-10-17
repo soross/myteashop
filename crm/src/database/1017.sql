@@ -18,10 +18,10 @@ alter table T_ILLNESS
  ;
 
  insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (804, '删除患者疾病证明', '/admin/illness.do?task=deleteIllness&modfunid=804', 20, 4);
+values (804, '删除患者疾病证明', '/admin/illness.do?task=deleteIllness&modfunid=804', 20, -1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
-values (803, '修改换着疾病证明', '/admin/illness.do?task=toUpdateIllness&modfunid=803', 20, 3);
+values (803, '修改换着疾病证明', '/admin/illness.do?task=toUpdateIllness&modfunid=803', 20, -1);
 
 insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
 values (802, '患者疾病证明列表', '/admin/illness.do?task=illnessList&modfunid=802', 20, 2);

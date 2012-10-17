@@ -283,6 +283,24 @@
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- illness-->
+	<bean name="illnessDao" class="com.crm.ddt.dao.impl.IllnessDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="illnessServiceDao"
+		class="com.crm.ddt.service.impl.IllnessServiceDaoImpl">
+		<property name="illnessDao" ref="illnessDao"></property>
+	</bean>
+	<bean name="illnessServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="illnessServiceDao"></property>
+	</bean>
+	<bean name="/admin/illness"
+		class="com.crm.ddt.struts.action.IllnessAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="illnessServiceDao" ref="illnessServiceDaoProxy"></property>
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
+	
 	
 	<!-- manu 
 	<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">

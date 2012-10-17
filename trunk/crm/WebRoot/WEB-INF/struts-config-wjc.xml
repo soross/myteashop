@@ -23,6 +23,7 @@
 	
 	<form-bean name="hisForm" type="com.crm.ddt.struts.form.HisForm" />
 	<form-bean name="proveForm" type="com.crm.ddt.struts.form.ProveForm" />
+	<form-bean name="illnessForm" type="com.crm.ddt.struts.form.IllnessForm" />
 	
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
@@ -228,6 +229,15 @@
       path="/admin/prove"
       scope="request"
       type="com.crm.ddt.struts.action.ProveAction" />   
+    
+    <action
+      attribute="illnessForm"
+      input="/form/illness.jsp"
+      name="illnessForm"
+      parameter="task"
+      path="/admin/illness"
+      scope="request"
+      type="com.crm.ddt.struts.action.IllnewssAction" />   
       
   </action-mappings>
   

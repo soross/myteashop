@@ -54,7 +54,7 @@ body {
 		<tr valign="top">
 			<td width="200px">
 				<!-- frame -->
-				<iframe src="frame.jsp" frameborder="0" height="100%" width="220px"
+				<iframe src="${pageContext.request.contextPath}/admin/his.do?task=TreeFrame" frameborder="0" height="100%" width="220px"
 					scrolling="auto" marginwidth="0px" marginheight="0px"></iframe>
 			</td>
 			<td id="formTD">

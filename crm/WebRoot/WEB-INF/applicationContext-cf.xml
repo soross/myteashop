@@ -83,6 +83,24 @@
     </bean>
     
     
+     <!-- 订购厂家DAO -->
+	<bean name="orderManuFacturerDao" class="com.crm.sysdo.dao.impl.OrderManufacturerDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 订购厂家DAO -->
+	<bean name="orderManuServiceDao" class="com.crm.sysdo.service.impl.OrderManufacturerServiceDaoImpl">
+	 <property name="orderManuFacturerProxy" ref="orderManuFacturerDao"></property>
+	</bean>
+	<!-- 订购厂家DAO -->
+	<bean name="orderManuFacturerProxy" parent="basicProxy">
+	    <property name="target" ref="orderManuServiceDao"></property>
+	</bean>
+	<!-- 订购厂家ACTION -->
+    <bean name="/admin/ordermanu" class="com.crm.sysdo.struts.action.OrderManufacturerAction">
+     <property name="orderManuServiceDao" ref="orderManuFacturerProxy"></property>
+     <property name="perDao" ref="perDao"></property>	
+    </bean>
+    
     
     <!-- 事物管理器 -->
      <bean name="transactionManager"

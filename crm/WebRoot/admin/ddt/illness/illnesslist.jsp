@@ -65,12 +65,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				门诊证明申请
+				患者疾病证明
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>门诊证明申请选项：</b>
+				<b>患者疾病证明选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -84,7 +84,7 @@
 			cellspacing="1" class="tableBorder">
 			<tr>
 				<th height="25" colspan="3">
-					门诊证明申请查询
+					患者疾病证明查询
 				</th>
 			</tr>
 			<tr>
@@ -107,7 +107,7 @@
 		cellpadding="3" cellspacing="1" class="tableBorder">
 		<tr>
 			<th colspan=10 height=25>
-				门诊证明申请列表
+				患者疾病证明列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">

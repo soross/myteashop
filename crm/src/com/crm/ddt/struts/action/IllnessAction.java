@@ -63,10 +63,10 @@ public class IllnessAction extends DispatchAction {
 			throws Exception {
 		
 		// ½ÇÉ«
-		List sl = perDao.getSonPerList(PowerKey.KEY_Illness);
+		List sl = perDao.getSonPerList(PowerKey.KEY_ILLNESS);
 		request.setAttribute("sonPowerByMenu", sl);
 		
-		return new ActionForward("/admin/ddt/Illness/addIllness.jsp");
+		return new ActionForward("/admin/ddt/illness/addillness.jsp");
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class IllnessAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward IllnessList(ActionMapping mapping, ActionForm form,
+	public ActionForward illnessList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		IllnessForm IllnessForm = (IllnessForm) form;
@@ -133,9 +133,9 @@ public class IllnessAction extends DispatchAction {
 		request.setAttribute("IllnessList", list);
 
 		// ½ÇÉ«
-		List sl = perDao.getSonPerList(PowerKey.KEY_Illness);
+		List sl = perDao.getSonPerList(PowerKey.KEY_ILLNESS);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/ddt/Illness/Illnesslist.jsp");
+		return new ActionForward("/admin/ddt/illness/illnesslist.jsp");
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class IllnessAction extends DispatchAction {
 		BeanUtils.copyProperties(IllnessForm, Illness);
 
 		// ½ÇÉ«
-		List sonList = perDao.getSonPerList(PowerKey.KEY_Illness);
+		List sonList = perDao.getSonPerList(PowerKey.KEY_ILLNESS);
 		request.setAttribute("sonPowerByMenu", sonList);
 
 		return new ActionForward("/admin/ddt/Illness/updateIllness.jsp");

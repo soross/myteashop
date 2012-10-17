@@ -33,22 +33,21 @@
 		style=" height:98%;width:180px;background-color: #f5f5f5; border: 1px solid Silver;">
 		<ul>
 			<li>
-				Root
+				²¡ÈË
 				<ul>
+				   <logic:iterate id="sick" name="sickList">
 					<li>
-						Child1
+						${sick.custName}
 						<ul>
 							<li>
-								Child 1-1
+								²¡Àý
+							</li>
+							<li>
+								µµ°¸
 							</li>
 						</ul>
 					</li>
-					<li>
-						Child2
-					</li>
-					<li>
-						<b>Bold</b><i>Italic</i>
-					</li>
+					</logic:iterate>
 				</ul>
 			</li>
 		</ul>

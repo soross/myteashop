@@ -11,69 +11,39 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.crm.page.PageUtil;
-import com.crm.sysdo.dao.inf.ManufacturerDao;
-import com.crm.sysdo.po.TGoodsType;
+import com.crm.sysdo.dao.inf.OrderManufacturerDao;
 import com.crm.sysdo.po.TManufacturer;
-/**
- * 数字字典操作Inf
- * 
- * @author wjc
- * 
- * 10.22 am
- *
- */
-public class ManufacturerDaoImpl extends HibernateDaoSupport implements ManufacturerDao {
-	
-	/**
-	 * 添加
-	 * @param Manufacturer
-	 * @return
-	 */
-	public Boolean addManufacturer(TManufacturer Manufacturer){
-		this.getHibernateTemplate().save(Manufacturer);		
+import com.crm.sysdo.po.TOrderManufacturer;
+
+public class OrderManufacturerDaoImpl extends HibernateDaoSupport implements OrderManufacturerDao {
+
+	public Boolean addOrderManufacturer(TOrderManufacturer tOrderManufacturer) {
+		this.getHibernateTemplate().save(tOrderManufacturer);		
 		return true;
 	}
-	
-	/**
-	 * 删除
-	 * @param Manufacturer
-	 * @return
-	 */
-	public Boolean deleteManufacturer(final TManufacturer Manufacturer){
+
+	public Boolean deleteOrderManufacturer(final TOrderManufacturer tOrderManufacturer) {
 		Boolean bool = (Boolean)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				String hql = "delete TManufacturer where id=:id";
+				String hql = "delete TOrderManufacturer where id=:id";
 				Query query = session.createQuery(hql);
-				query.setLong("id", Manufacturer.getId());
+				query.setLong("id", tOrderManufacturer.getId());
 				query.executeUpdate();
 				return null;
 			}
 		});
 		return true;
 	}
-	
-	/**
-	 * 更新
-	 * @param Manufacturer
-	 * @return
-	 */
-	public Boolean updateManufacturer(TManufacturer Manufacturer){
-		this.getHibernateTemplate().update(Manufacturer);
-		return true;
-	}
-	/**
-	 * 取得总记录数
-	 * @return
-	 */
-	public Integer getCount(final TManufacturer Manufacturer,Map map){
+
+	public Integer getCount(final TOrderManufacturer tOrderManufacturer, Map map) {
 		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				StringBuffer hql = new StringBuffer("select count(*) from TOrderManufacturer where 1=1 ");
 				
-				if(Manufacturer.getMfname()!=null&&!"".equals(Manufacturer.getMfname())){
-					hql.append(" and mfname like '"+Manufacturer.getMfname()+"'");
+				if(tOrderManufacturer.getOrdermfname()!=null&&!"".equals(tOrderManufacturer.getOrdermfname())){
+					hql.append(" and ordermfname like '"+tOrderManufacturer.getOrdermfname()+"'");
 				}
 				
 				Query query = session.createQuery(hql.toString());
@@ -84,21 +54,24 @@ public class ManufacturerDaoImpl extends HibernateDaoSupport implements Manufact
 		
 		return i;
 	}
-	/**
-	 * 取得列表
-	 * @return
-	 */
-	public List getManufacturerList(final PageUtil pageUtil,final TManufacturer Manufacturer,final Map map){
+
+	public TOrderManufacturer getOrderManufacturerById(Long id) {
+		TOrderManufacturer tOrderManufacturer = (TOrderManufacturer)this.getHibernateTemplate().get(TOrderManufacturer.class, id);		
+		return tOrderManufacturer;
+	}
+
+	public List getOrderManufacturerList(final PageUtil pageUtil,
+			final TOrderManufacturer tOrderManufacturer,final Map map) {
 		List list = (List) this.getHibernateTemplate().executeFind(
 				new HibernateCallback() {
 
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 						StringBuffer hql = new StringBuffer(
-								"from TManufacturer where 1=1 ");
+								"from TOrderManufacturer where 1=1 ");
 
-						if(Manufacturer.getMfname()!=null&&!"".equals(Manufacturer.getMfname())){
-							hql.append(" and mfname like '"+Manufacturer.getMfname()+"'");
+						if(tOrderManufacturer.getOrdermfname()!=null&&!"".equals(tOrderManufacturer.getOrdermfname())){
+							hql.append(" and ordermfname like '"+tOrderManufacturer.getOrdermfname()+"'");
 						}
 
 						Query query = session.createQuery(hql.toString());
@@ -114,16 +87,10 @@ public class ManufacturerDaoImpl extends HibernateDaoSupport implements Manufact
 
 		return list;
 	}
-	
-	/**
-	 * 查询对象
-	 * @param id
-	 * @return
-	 */
-	public TManufacturer getManufacturerById(Long id){
-		
-		TManufacturer Manufacturer = (TManufacturer)this.getHibernateTemplate().get(TManufacturer.class, id);		
-		return Manufacturer;
+
+	public Boolean updateOrderManufacturer(TOrderManufacturer tOrderManufacturer) {
+		this.getHibernateTemplate().update(tOrderManufacturer);
+		return true;
 	}
 
 }

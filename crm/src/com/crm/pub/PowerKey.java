@@ -5,6 +5,8 @@ public class PowerKey {
 	
 	public static String KEY_PROVE="18";
 	
+	public static String KEY_ILLNESS="20";
+	
 	public static String KEY_FILE_PHOTO="21";
 	
 	public static String KEY_DATA="33";

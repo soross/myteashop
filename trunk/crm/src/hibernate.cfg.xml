@@ -81,7 +81,10 @@
 		<mapping resource="com/crm/sysdo/po/TFile.hbm.xml" />
 		<mapping resource="com/crm/op/po/TCardFee.hbm.xml" />
 		<mapping resource="com/crm/ddt/po/TProve.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TSignUnit.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TOrderManufacturer.hbm.xml" />
 		<mapping resource="com/crm/ddt/po/TIllness.hbm.xml" />
+
 
 
 	</session-factory>

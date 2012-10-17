@@ -8,6 +8,7 @@
     <form-bean name="feeItemForm" type="com.crm.sysdo.struts.form.FeeItemForm" />
     <form-bean name="signUnitForm" type="com.crm.sysdo.struts.form.SignUnitForm" />
     <form-bean name="manuFacturerForm" type="com.crm.sysdo.struts.form.ManuFacturerForm"></form-bean>
+	<form-bean name="orderManuFacturerForm" type="com.crm.sysdo.struts.form.OrderManufacturerForm"></form-bean>
 	</form-beans>
 
 	<global-exceptions />
@@ -50,6 +51,16 @@
       path="/admin/manu"
       scope="request"
       type="com.crm.sysdo.struts.action.ManufacturerAction" />
+      
+      
+      <action
+      attribute="orderManuFacturerForm"
+      input="/form/ordermanu.jsp"
+      name="orderManuFacturerForm"
+      parameter="task"
+      path="/admin/ordermanu"
+      scope="request"
+      type="com.crm.sysdo.struts.action.OrderManufacturerAction" />
 
 	</action-mappings>
 	<controller

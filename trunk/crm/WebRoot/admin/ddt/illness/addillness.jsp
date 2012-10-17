@@ -32,12 +32,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				门诊证明申请
+				患者疾病证明
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>门诊证明申请选项：</b>
+				<b>患者疾病证明选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -52,7 +52,7 @@
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					门诊证明申请
+					患者疾病证明
 				</th>
 			</tr>
 			<tr>
@@ -95,7 +95,7 @@
 					<input type="hidden" name="createstaff" value="${user.userid}">
 					<input type="hidden" name="task" value="addProve">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 门诊证明申请 " class="inputs" />
+					<input type="submit" name="submit" value=" 患者疾病证明 " class="inputs" />
 				</td>
 			</tr>
 		</table>

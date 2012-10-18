@@ -45,6 +45,7 @@ public class PowerKey {
 	
 
 	public static String KEY_REGAMOUNT = "129";
+	public static String KEY_REGDETAILS = "130";
 	
 	public static String FILE_TYPE_PHOTO="PHOTO";
 	public static String FILE_TYPE_VIEW="VIEW";

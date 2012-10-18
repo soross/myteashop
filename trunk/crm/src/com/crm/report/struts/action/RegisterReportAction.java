@@ -5,7 +5,9 @@
 package com.crm.report.struts.action;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,5 +88,25 @@ public class RegisterReportAction extends DispatchAction {
 		// 129½ÇÉ«
 		List sl = perDao.getSonPerList(PowerKey.KEY_REGAMOUNT);
 		return new ActionForward("/admin/report/register/regAmount.jsp");
+	}
+	
+	/**
+	 * ÃÅÕïÃ÷Ï¸
+	 */
+	public ActionForward regDetails(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+		RegisterReportForm registerReportForm = (RegisterReportForm) form;
+		String beginDate = registerReportForm.getBeginDate();
+		String endDate = registerReportForm.getEndDate();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("beginDate", beginDate);
+		map.put("endDate", endDate);
+		List list = registServiceDao.getRegDetailsList(map);
+		request.setAttribute("regList", list);
+		PageUtil pageUtil = new PageUtil(request, 1,
+				GlobVar.PAGESIZE_BY_TEN_DATA);
+		request.setAttribute("pageUtil", pageUtil);
+		List sl = perDao.getSonPerList(PowerKey.KEY_REGDETAILS);
+		return new ActionForward("/admin/report/register/regDetails.jsp");
 	}
 }

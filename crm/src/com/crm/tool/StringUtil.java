@@ -1,5 +1,6 @@
 package com.crm.tool;
 
+
 public  class StringUtil {
 	public static String trimByStringBuffer(String str){
 		StringBuffer sfr = new StringBuffer(str);   
@@ -45,5 +46,21 @@ public  class StringUtil {
             tArray[i] = tArray1[i];   
         }   
         return new String(tArray);  
+	}
+	
+	public static String toString(String txt) {
+		return StringUtil.toString(txt, "");
+	}
+	
+	public static String toString(Object obj) {
+		return StringUtil.toString(obj, "");
+	}
+	
+	public static String toString(Object obj, Object str) {
+		return StringUtil.toString(obj, str + "");
+	}
+	
+	public static String toString(Object obj, String str) {
+		return MatchUtil.isEmpty(obj) ? str: obj + "";
 	}
 }

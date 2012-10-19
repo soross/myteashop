@@ -52,7 +52,7 @@
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					患者疾病证明
+					患者疾病证明修改
 				</th>
 			</tr>
 			<tr>
@@ -92,10 +92,12 @@
 
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
+					<html:hidden property="id" />
 					<input type="hidden" name="createstaff" value="${user.userid}">
-					<input type="hidden" name="task" value="addIllness">
+					<input type="hidden" name="task" value="updateIllness">
+					<input type="hidden" name="modfunid" value="803">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 患者疾病证明 " class="inputs" />
+					<input type="submit" name="submit" value=" 患者疾病证明修改 " class="inputs" />
 				</td>
 			</tr>
 		</table>

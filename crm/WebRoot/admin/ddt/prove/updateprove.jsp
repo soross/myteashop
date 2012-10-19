@@ -32,12 +32,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				患者疾病证明
+				门诊证明申请
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>患者疾病证明选项：</b>
+				<b>门诊证明申请选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -46,13 +46,13 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/illness" method="post">
+	<html:form action="/admin/prove" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					患者疾病证明
+					门诊证明申请修改
 				</th>
 			</tr>
 			<tr>
@@ -93,9 +93,11 @@
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
 					<input type="hidden" name="createstaff" value="${user.userid}">
-					<input type="hidden" name="task" value="addIllness">
+					<input type="hidden" name="task" value="updateProve">
+					<input type="hidden" name="modfunid" value="773">
+					<html:hidden property="id"/>
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 患者疾病证明 " class="inputs" />
+					<input type="submit" name="submit" value=" 门诊证明申请修改 " class="inputs" />
 				</td>
 			</tr>
 		</table>

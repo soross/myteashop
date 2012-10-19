@@ -90,7 +90,7 @@
 			<tr>
 				<td width="20%" height=25 class="pl20">
 					≤°»À±‡∫≈:
-					<html:text property="sickid" size="20" styleId="txt" />
+					<html:text property="sickid" size="15" styleId="txt" />
 				</td>
 				<td width="20%" height=25 class="pl20">
 					≤°»À√˚≥∆:

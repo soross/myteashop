@@ -93,9 +93,9 @@ public class IllnessAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Illness.do?task=toAddIllness';}else{location.href='"
+									+ "/admin/illness.do?task=toAddIllness';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Illness.do?task=IllnessList';}</script>");
+									+ "/admin/illness.do?task=illnessList';}</script>");
 			return null;
 		} else {
 			response
@@ -103,9 +103,9 @@ public class IllnessAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Illness.do?task=toAddIllness';}else{location.href='"
+									+ "/admin/illness.do?task=toAddIllness';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Illness.do?task=IllnessList';}</script>");
+									+ "/admin/illness.do?task=illnessList';}</script>");
 			return null;
 		}
 	}
@@ -163,12 +163,12 @@ public class IllnessAction extends DispatchAction {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Illness.do?task=IllnessList';</script>");
+							+ "/admin/illness.do?task=illnessList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Illness.do?task=IllnessList';</script>");
+							+ "/admin/illness.do?task=illnessList';</script>");
 		}
 		return null;
 	}
@@ -193,7 +193,7 @@ public class IllnessAction extends DispatchAction {
 		List sonList = perDao.getSonPerList(PowerKey.KEY_ILLNESS);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/ddt/Illness/updateIllness.jsp");
+		return new ActionForward("/admin/ddt/illness/updateillness.jsp");
 	}
 
 	/**
@@ -210,7 +210,11 @@ public class IllnessAction extends DispatchAction {
 			throws Exception {
 		IllnessForm IllnessForm = (IllnessForm) form;
 		TIllness Illness = this.IllnessServiceDao.getIllnessById(new Long(IllnessForm.getId()));
-		BeanUtils.copyProperties(Illness, IllnessForm);
+		//BeanUtils.copyProperties(Illness, IllnessForm);
+		Illness.setSickid(IllnessForm.getSickid());
+		Illness.setSickname(IllnessForm.getSickname());
+		Illness.setIdcard(IllnessForm.getIdcard());
+		Illness.setGarden(IllnessForm.getGarden());
 
 		Boolean bool = false;
 		try {
@@ -222,16 +226,16 @@ public class IllnessAction extends DispatchAction {
 			response.getWriter().print(
 					"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 							+ request.getContextPath()
-							+ "/admin/Illness/Illness.do?task=toUpdateIllness&id="
+							+ "/admin/illness.do?task=toUpdateIllness&id="
 							+ Illness.getId() + "';}else{location.href='"
 							+ request.getContextPath()
-							+ "/admin/Illness/Illness.do?task=IllnessList';}</script>");
+							+ "/admin/illness.do?task=illnessList';}</script>");
 
 		} else {
 			response.getWriter().print(
 					"<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Illness/Illness.do?task=toUpdateIllness&id='"
+							+ "/admin/illness.do?task=toUpdateIllness&id='"
 							+ Illness.getId() + "';</script>");
 		}
 		return null;

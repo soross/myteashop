@@ -207,7 +207,11 @@ public class ProveAction extends DispatchAction {
 			throws Exception {
 		ProveForm ProveForm = (ProveForm) form;
 		TProve Prove = this.ProveServiceDao.getProveById(new Long(ProveForm.getId()));
-		BeanUtils.copyProperties(Prove, ProveForm);
+		//BeanUtils.copyProperties(Prove, ProveForm);
+		Prove.setSickid(ProveForm.getSickid());
+		Prove.setSickname(ProveForm.getSickname());
+		Prove.setIdcard(ProveForm.getIdcard());
+		Prove.setGarden(ProveForm.getGarden());
 
 		Boolean bool = false;
 		try {
@@ -219,16 +223,16 @@ public class ProveAction extends DispatchAction {
 			response.getWriter().print(
 					"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 							+ request.getContextPath()
-							+ "/admin/prove/prove.do?task=toUpdateProve&id="
+							+ "/admin/prove.do?task=toUpdateProve&id="
 							+ Prove.getId() + "';}else{location.href='"
 							+ request.getContextPath()
-							+ "/admin/prove/prove.do?task=ProveList';}</script>");
+							+ "/admin/prove.do?task=proveList';}</script>");
 
 		} else {
 			response.getWriter().print(
 					"<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/prove/prove.do?task=toUpdateProve&id='"
+							+ "/admin/prove.do?task=toUpdateProve&id='"
 							+ Prove.getId() + "';</script>");
 		}
 		return null;

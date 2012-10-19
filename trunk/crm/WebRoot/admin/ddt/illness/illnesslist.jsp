@@ -90,7 +90,7 @@
 			<tr>
 				<td width="20%" height=25 class="pl20">
 					病人编号:
-					<html:text property="sickid" size="20" styleId="txt" />
+					<html:text property="sickid" size="15" styleId="txt" />
 				</td>
 				<td width="20%" height=25 class="pl20">
 					病人名称:
@@ -111,7 +111,7 @@
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
-			<td width="5%" height=25>
+			<td width="6%" height=25>
 				<input type="checkbox" id="ckb" name="ckb"
 					onclick="selectAll(this);" />
 				全选
@@ -138,46 +138,46 @@
 				操作
 			</td>
 		</tr>
-		<logic:present name="ProveList">
-			<logic:empty name="ProveList">
+		<logic:present name="IllnessList">
+			<logic:empty name="IllnessList">
 				<Tr>
 					<td colspan="6" height="25">
 						没有所要查询的数据...
 					</td>
 				</Tr>
 			</logic:empty>
-			<logic:iterate id="prove" name="ProveList">
+			<logic:iterate id="ill" name="IllnessList">
 				<tr align="center">
 					<td height=25>
-						<input type="checkbox" name="phones" value="${prove.id}"
+						<input type="checkbox" name="phones" value="${ill.id}"
 							onclick="clickSon(this);" />
 					</td>
 					<td>
-						${prove.id}
+						${ill.id}
 					</td>
 					<td>
-						${prove.sickid}
+						${ill.sickid}
 					</td>
 					<td>
-						${prove.sickname}
+						${ill.sickname}
 					</td>
 					<td>
-						${prove.garden}
+						${ill.garden}
 					</td>
 					<td>
-						${prove.createstaff}
+						${ill.createstaff}
 					</td>
 					<td>
-						<bean:write name="prove" property="createDate"
+						<bean:write name="ill" property="createDate"
 							format="yyyy-MM-dd HH:mm:ss" />
 					</td>
 					<td>
 						<a
-							href="${pageContext.request.contextPath}/admin/prove.do?task=toUpdateProve&id=${prove.id}"><img
+							href="${pageContext.request.contextPath}/admin/illness.do?task=toUpdateIllness&id=${ill.id}"><img
 								src="${pageContext.request.contextPath}/admin/images/edit.gif"
 								border="0">[修改]</a>&nbsp;&nbsp;&nbsp;
 						<a
-							href="${pageContext.request.contextPath}/admin/prove.do?task=deleteProve&id=${prove.id}"
+							href="${pageContext.request.contextPath}/admin/illness.do?task=deleteIllness&id=${ill.id}"
 							onclick="return confirm('是否确定删除!');"><img
 								src="${pageContext.request.contextPath}/admin/images/del.gif"
 								border="0">[删除]</a>

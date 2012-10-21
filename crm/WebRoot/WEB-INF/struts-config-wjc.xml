@@ -24,6 +24,8 @@
 	<form-bean name="hisForm" type="com.crm.ddt.struts.form.HisForm" />
 	<form-bean name="proveForm" type="com.crm.ddt.struts.form.ProveForm" />
 	<form-bean name="illnessForm" type="com.crm.ddt.struts.form.IllnessForm" />
+	<form-bean name="deformityForm" type="com.crm.ddt.struts.form.DeformityForm" />
+	<form-bean name="medicalForm" type="com.crm.ddt.struts.form.MedicalForm" />
 	
 	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
 	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
@@ -238,6 +240,24 @@
       path="/admin/illness"
       scope="request"
       type="com.crm.ddt.struts.action.IllnewssAction" />   
+      
+   <action
+      attribute="deformityForm"
+      input="/form/deformity.jsp"
+      name="deformityForm"
+      parameter="task"
+      path="/admin/deformity"
+      scope="request"
+      type="com.crm.ddt.struts.action.DeformityAction" />   
+   
+   <action
+      attribute="medicalForm"
+      input="/form/medical.jsp"
+      name="medicalForm"
+      parameter="task"
+      path="/admin/medical"
+      scope="request"
+      type="com.crm.ddt.struts.action.MedicalAction" />   
       
   </action-mappings>
   

@@ -301,6 +301,44 @@
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
 	
+	<!-- deformity-->
+	<bean name="deformityDao" class="com.crm.ddt.dao.impl.DeformityDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="deformityServiceDao"
+		class="com.crm.ddt.service.impl.DeformityServiceDaoImpl">
+		<property name="deformityDao" ref="deformityDao"></property>
+	</bean>
+	<bean name="deformityServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="deformityServiceDao"></property>
+	</bean>
+	<bean name="/admin/deformity"
+		class="com.crm.ddt.struts.action.DeformityAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="deformityServiceDao" ref="deformityServiceDaoProxy"></property>
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
+	
+	
+	<!-- medical-->
+	<bean name="medicalDao" class="com.crm.ddt.dao.impl.MedicalDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="medicalServiceDao"
+		class="com.crm.ddt.service.impl.MedicalServiceDaoImpl">
+		<property name="medicalDao" ref="medicalDao"></property>
+	</bean>
+	<bean name="medicalServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="medicalServiceDao"></property>
+	</bean>
+	<bean name="/admin/medical"
+		class="com.crm.ddt.struts.action.MedicalAction">
+		<property name="perDao" ref="perDao"></property>	
+		<property name="medicalServiceDao" ref="medicalServiceDaoProxy"></property>
+		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
+	</bean>
+	
+	
 	
 	<!-- manu 
 	<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">

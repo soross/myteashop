@@ -1,2 +1,2 @@
-update t_power t set t.url = '/admin/registerReport.do?task=regAmount&modfunid=129' where t.id = 129
-update t_power t set t.url = '/admin/registerReport.do?task=regDetails&modfunid=130' where t.id = 130
+update t_power t set t.url = '/admin/registerReport.do?task=regAmount'||'&'||'modfunid=129' where t.id = 129;
+update t_power t set t.url = '/admin/registerReport.do?task=regDetails'||'&'||'modfunid=130' where t.id = 130;

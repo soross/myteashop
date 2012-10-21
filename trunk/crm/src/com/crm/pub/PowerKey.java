@@ -13,6 +13,10 @@ public class PowerKey {
 	
 	public static String KEY_FILE_VIEW="39";
 	
+	public static String KEY_DEFORMITY ="40";
+	
+	public static String KEY_MEDICAL = "42";
+	
 	public static String KEY_DEPT="79";
 	
 	public static String KEY_STAFF="80";

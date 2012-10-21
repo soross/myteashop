@@ -84,6 +84,8 @@
 		<mapping resource="com/crm/sysdo/po/TSignUnit.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TOrderManufacturer.hbm.xml" />
 		<mapping resource="com/crm/ddt/po/TIllness.hbm.xml" />
+		<mapping resource="com/crm/ddt/po/TMedical.hbm.xml" />
+		<mapping resource="com/crm/ddt/po/TDeformity.hbm.xml" />
 
 
 

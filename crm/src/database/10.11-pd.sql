@@ -1,2 +1,2 @@
-insert into t_power (id,powername,url,parentid,sortid) value(183,'往来单位列表','/admin/unit.do?task=unitList&modfunid=183','85',1)
-insert into t_power (id,powername,url,parentid,sortid) value(184,'往来单位列表','/admin/unit.do?task=unitList&modfunid=184','85',2)
+insert into t_power (id,powername,url,parentid,sortid) values(183,'往来单位列表','/admin/unit.do?task=unitList'||'&'||'modfunid=183','85',1);
+insert into t_power (id,powername,url,parentid,sortid) values(184,'往来单位列表','/admin/unit.do?task=unitList'||'&'||'modfunid=184','85',2);

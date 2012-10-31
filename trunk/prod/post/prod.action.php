@@ -89,19 +89,20 @@ else
 
 			//工种明细
 			$job = $_POST[job];
-			$jobprice=$_POST[jobprice];
+			$jobprice = $_POST[jobprice];
 
-			if(count($job)!=count($jobprice)){
+			if (count($job) != count($jobprice)) {
 				$db->query('rollback');
-				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败-工种与工种价格数量不等");
+				$db->addLog("CAP01001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "新增产品", "新增产品失败-工种与工种价格数量不等");
 				echo "<script>alert('产品新增失败!');location.href='../addprod.php'</script>";
+				exit;
 			}
 
 			for ($i = 0; $i < count($job); $i++) {
 				//新增产品工种价格
 				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
-					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
-				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-新增产品!");
+				"values('" . $job[$i] . "','" . $insertID . "','" . $jobprice[$i] . "',now())");
+				$db->addLog("CAP12001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "新增工种价格", "新增工种价格成功-新增产品!");
 
 				//现在产品工种
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
@@ -109,23 +110,24 @@ else
 			if (mysql_errno()) {
 				$db->query('rollback');
 
-				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败".mysql_errno());
+				$db->addLog("CAP01001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "新增产品", "新增产品失败" . mysql_errno());
 
 				echo "<script>alert('产品新增失败!');location.href='../addprod.php'</script>";
+				exit;
 			} else {
 				$db->query('commit');
 
-				$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增产品","新增产品成功");
+				$db->addLog("CAP01001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "新增产品", "新增产品成功");
 
 				echo "<script>if(confirm('新增产品成功,是否继续新增?')){location.href='../addprod.php';}else{location.href='../prodlist.php';}</script>";
+				exit;
 			}
 		} else {
-			$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败,上传文件不符合要求");
+			$db->addLog("CAP01001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "新增产品", "新增产品失败,上传文件不符合要求");
 			echo "<script>alert('产品新增失败。请检查上传的文件是否符合要求!');location.href='../addprod.php';</script>";
+			exit;
 		}
 	}
-
-
 
 //修改产品 CAP01005
 else
@@ -146,14 +148,12 @@ else
 			'MAXSIZE' => (1024 * 1024 * 10
 		)));
 
-		$insertID=$_POST[oldprodid];
+		$insertID = $_POST[oldprodid];
 
 		if ($up->uploadFile('picpath')) {
 			$filename = "images/prod/" . $up->getNewFileName();
 			$db->query('start transaction');
 			$db->query("update prod set prodid='$_POST[prodid]',picname='$_POST[picname]',picpath='$filename' where id='$_POST[oldprodid]'");
-
-
 
 			//删除产品明细
 			$db->query("delete from  prodlist where prodid='$_POST[oldprodid]'");
@@ -167,45 +167,46 @@ else
 				$db->query("insert into prodlist(prodid,clid,amount,sumprice) values('" . $insertID . "','" . $cls[$i] . "','" . $clcnt[$i] . "','" . $sumprice . "')");
 			}
 
-
 			//删除工种明细
 			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
-			//删除产品价格
+			//删除产品工种价格
 			$db->query("delete from  jobprice where prodid='$_POST[oldprodid]'");
 			//工种明细
 			$job = $_POST[job];
 			//产品工种价格
-			$jobprice=$_POST[jobprice];
+			$jobprice = $_POST[jobprice];
 
-			if(count($job)!=count($jobprice)){
+			if (count($job) != count($jobprice)) {
 				$db->query('rollback');
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败-工种与工种价格数量不等");
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "修改产品", "修改产品失败-工种与工种价格数量不等");
 				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+				exit;
 			}
 
 			//新增产品工种
 			for ($i = 0; $i < count($job); $i++) {
 				//新增产品工种价格
 				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
-					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
-				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-修改产品!");
+				"values('" . $job[$i] . "','" . $insertID . "','" . $jobprice[$i] . "',now())");
+				$db->addLog("CAP12001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "新增工种价格", "新增工种价格成功-修改产品!");
 
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
 			}
 
-
 			if (mysql_errno()) {
 				$db->query('rollback');
 
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败".mysql_errno());
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "修改产品", "修改产品失败" . mysql_errno());
 
 				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+				exit;
 			} else {
 				$db->query('commit');
 
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改产品","修改产品成功");
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "修改产品", "修改产品成功");
 
 				echo "<script>if(confirm('产品修改成功,是否继续修改?')){location.href='../updateprod.php?prodid=$_POST[oldprodid]';}else{location.href='../prodlist.php';}</script>";
+				exit;
 			}
 		} else {
 			print_r($up->getErrorMsg());
@@ -226,38 +227,40 @@ else
 
 			//删除工种明细
 			$db->query("delete from  prodjob where prodid='$_POST[oldprodid]'");
-			//删除产品价格
+			//删除产品工种价格
 			$db->query("delete from  jobprice where prodid='$_POST[oldprodid]'");
 			//工种明细
 			$job = $_POST[job];
 			//产品工种价格
-			$jobprice=$_POST[jobprice];
+			$jobprice = $_POST[jobprice];
 
-			if(count($job)!=count($jobprice)){
+			if (count($job) != count($jobprice)) {
 				$db->query('rollback');
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败-工种与工种价格数量不等");
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "修改产品", "修改产品失败-工种与工种价格数量不等");
 				echo "<script>alert('产品修改失败!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+				exit;
 			}
-
 
 			for ($i = 0; $i < count($job); $i++) {
 				//新增产品工种价格
 				$db->query("insert into jobprice(jobid,prodid,jobprice,create_date)" .
-					"values('" . $job[$i] . "','" . $insertID . "','".$jobprice[$i]."',now())");
-				$db->addLog("CAP12001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","新增工种价格","新增工种价格成功-修改产品!");
+				"values('" . $job[$i] . "','" . $insertID . "','" . $jobprice[$i] . "',now())");
+				$db->addLog("CAP12001", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "新增工种价格", "新增工种价格成功-修改产品!");
 
 				$db->query("insert into prodjob(prodid,jobid) values('" . $insertID . "','" . $job[$i] . "')");
 			}
 			if (mysql_errno()) {
 				$db->query('rollback');
 
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","修改产品","修改产品失败".mysql_errno());
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "修改产品", "修改产品失败" . mysql_errno());
 
 				echo "<script>alert('产品修改失败,请检查上传的文件是否符合要求!');location.href='../updateprod.php?prodid=$_POST[oldprodid]'</script>";
+				exit;
 			} else {
 				$db->query('commit');
-				$db->addLog("CAP01005",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","修改产品","修改产品成功");
+				$db->addLog("CAP01005", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "修改产品", "修改产品成功");
 				echo "<script>if(confirm('产品信息修改成功,图片没有修改或者修改失败,是否继续修改?')){location.href='../updateprod.php?prodid=$_POST[oldprodid]';}else{location.href='../prodlist.php';}</script>";
+				exit;
 			}
 
 			//$db->addLog("CAP01001",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","新增产品","新增产品失败,上传文件不符合要求");
@@ -268,61 +271,69 @@ else
 //删除产品 CAP01002 删除产品
 else
 	if (isset ($_GET[task]) && "delProd" == ($_GET[task])) {
-		if(isExistsOrder($db,$_GET[prodid])){
+		if (isExistsOrder($db, $_GET[prodid])) {
 			$db->query('start transaction');
+			//删除产品
 			$db->query("delete from prod where id='" . $_GET[prodid] . "'");
+			//删除产品明细
 			$db->query("delete from prodlist where prodid='" . $_GET[prodid] . "'");
+			//删除产品工种明细
 			$db->query("delete from prodjob where prodid='" . $_GET[prodid] . "'");
+			//删除工种价格
+			$db->query("delete from jobprice where prodid='" . $_GET[prodid] . "'");
 
 			if (mysql_errno()) {
 				$db->query('rollback');
-				$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败".mysql_errno());
+				$db->addLog("CAP01002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除产品", "删除产品失败" . mysql_errno());
 				echo "<script>alert('产品删除失败!');location.href='../prodlist.php'</script>";
+				exit;
 			} else {
 				if (file_exists("../" . $_GET[path]))
 					unlink("../" .
 					$_GET[path]);
 				$db->query('commit');
-				$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品","删除产品成功");
+				$db->addLog("CAP01002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除产品", "删除产品成功");
 				echo "<script>alert('产品已删除成功!');location.href='../prodlist.php'</script>";
+				exit;
 			}
-		}else{
-			$db->addLog("CAP01002",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品","删除产品失败，产品在订单明显中存在");
+		} else {
+			$db->addLog("CAP01002", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除产品", "删除产品失败，产品在订单明显中存在");
 			echo "<script>alert('产品删除失败,因为订单明细中使用了该产品!');location.href='../prodlist.php'</script>";
+			exit;
 		}
 	}
 
 //删除产品工种 CAP01004 删除产品工种属性
 else
 	if (isset ($_GET[task]) && "delProdJob" == ($_GET[task])) {
-		if(isExistsOrder($db,$_GET[prodid])){
+		if (isExistsOrder($db, $_GET[prodid])) {
 			$db->query("delete from prodjob where id='" . $_GET[jobid] . "'");
-			$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品工种","删除产品工种成功");
+			$db->addLog("CAP01004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除产品工种", "删除产品工种成功");
 			echo "<script>alert('产品工种删除成功!');location.href='../prodlist.php'</script>";
-		}else{
-			$db->addLog("CAP01004",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品工种","删除产品工种失败，因为订单明细中使用了该产品!");
+		} else {
+			$db->addLog("CAP01004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除产品工种", "删除产品工种失败，因为订单明细中使用了该产品!");
 			echo "<script>alert('删除产品工种失败,因为订单明细中使用了该产品!!');location.href='../prodlist.php'</script>";
 		}
 	}
 //删除产品材料delProdList&listid=12 CAP01003 删除产品材料属性
 else
 	if (isset ($_GET[task]) && "delProdList" == ($_GET[task])) {
-		if(isExistsOrder($db,$_GET[prodid])){
+		if (isExistsOrder($db, $_GET[prodid])) {
 			$db->query("delete from prodlist where id='" . $_GET[listid] . "'");
-			$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","删除产品材料属性","删除产品材料属性成功");
+			$db->addLog("CAP01003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "删除产品材料属性", "删除产品材料属性成功");
 			echo "<script>alert('产品材料删除成功!');location.href='../prodlist.php'</script>";
-		}else{
-			$db->addLog("CAP01003",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"失败","删除产品材料属性","删除产品材料属性失败，因为订单明细中使用了该产品!");
+		} else {
+			$db->addLog("CAP01003", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "删除产品材料属性", "删除产品材料属性失败，因为订单明细中使用了该产品!");
 			echo "<script>alert('删除产品材料属性失败,因为订单明细中使用了该产品!!');location.href='../prodlist.php'</script>";
 		}
 	}
 
-function isExistsOrder($db ,$prodid){
-	$db->query("select id from orderlist where prodid ='".$prodid."'");
+function isExistsOrder($db, $prodid) {
+	$db->query("select id from orderlist where prodid ='" . $prodid . "'");
 	$cnt = $db->db_num_rows();
-	if($cnt>0){
+	if ($cnt > 0) {
 		return false;
-	}else{
+	} else {
 		return true;
 	}
 }

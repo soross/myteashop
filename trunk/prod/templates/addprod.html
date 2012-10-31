@@ -176,9 +176,9 @@ var cellcnt = 1;
 		for(var i=0;i<jobs.length;i++){
 			if(jobs[i].checked==true){
 				var obj = document.getElementById("jobprice-"+jobs[i].id);
-			    var reg = new RegExp("^[0-9]+(.[0-9]{1,2})?$");
+			    var reg = new RegExp("^[0-9]+(.[0-9]{1,3})?$");
 			    if(!reg.test(obj.value) || obj.value < 0 ){
-			        alert("请输入["+jobs[i].className+"]的价格!");
+			        alert("["+jobs[i].className+"]的价格不合法!");
 			        isbool = false;
 			        break;
 			    }
@@ -268,7 +268,7 @@ var cellcnt = 1;
 		                {/section}
 		                </tr>
 		                <tr>
-		                	<td colspan="4"><font style="color:red;">*格式：最多带2位小数的正数,如22.22</font>
+		                	<td colspan="4"><font style="color:red;">*格式：最多带3位小数的正数,如22.222</font>
 		                	<!-- <input type="button" onclick="checkJobAndPrice()" value="check"> --></td>
 		                </tr>
 		                </table>

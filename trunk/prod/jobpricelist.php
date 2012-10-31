@@ -37,7 +37,7 @@ FROM
 jobprice AS jp
 LEFT JOIN prod AS p ON jp.prodid = p.id
 LEFT JOIN job AS j ON jp.jobid = j.id ".$case.
-" order by prodid,jobid desc limit $firstcount, $displaypg");
+" order by jp.create_date desc,prodid,jobid limit $firstcount, $displaypg");
 
 $jobpriceRow = array();
 while($rowjobprice = $db->fetch_array($jobpriceQuery)){

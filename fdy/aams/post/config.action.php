@@ -203,6 +203,6 @@ else if(isset($_POST[task])&&"replyMsg"==$_POST[task]){
 	echo "<script>alert('回复/回复修改成功!');location.href='../msginfo.php?msgid=$_POST[msgid]';</script>";
 
 }else{
-	//echo "<script>alert('操作失败!');window.history.back(-1);</script>";
+	echo "<script>alert('操作失败!');window.history.back(-1);</script>";
 }
 ?>

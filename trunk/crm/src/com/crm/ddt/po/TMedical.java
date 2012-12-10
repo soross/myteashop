@@ -18,6 +18,7 @@ public class TMedical implements java.io.Serializable {
 	private Date createDate;
 	private String state;
 	private String mobile;
+	private String createStaff;
 
 	// Constructors
 
@@ -27,12 +28,13 @@ public class TMedical implements java.io.Serializable {
 
 	/** full constructor */
 	public TMedical(String sickid, String sickname, Date createDate,
-			String state, String mobile) {
+			String state, String mobile,String createStaff) {
 		this.sickid = sickid;
 		this.sickname = sickname;
 		this.createDate = createDate;
 		this.state = state;
 		this.mobile = mobile;
+		this.createStaff=createStaff;
 	}
 
 	// Property accessors
@@ -83,6 +85,14 @@ public class TMedical implements java.io.Serializable {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getCreateStaff() {
+		return createStaff;
+	}
+
+	public void setCreateStaff(String createStaff) {
+		this.createStaff = createStaff;
 	}
 
 }

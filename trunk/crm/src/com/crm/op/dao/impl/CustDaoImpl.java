@@ -120,7 +120,7 @@ public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 							"from TCustomer cust where 1=1");
 					if (null != cust.getUsername()
 							&& !"".equals(cust.getUsername())) {
-						sbf.append(" and cust.username=:username");
+						sbf.append(" and cust.username like :username ");
 					}
 					if (null != cust.getIcCardCode()
 							&& !"".equals(cust.getIcCardCode())) {
@@ -128,7 +128,7 @@ public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 					}
 					if (null != cust.getCode()
 							&& !"".equals(cust.getCode())) {
-						sbf.append(" and cust.code=:code");
+						sbf.append(" and cust.code like :code");
 					}
 					if (null != cust.getIdCode()
 							&& !"".equals(cust.getIdCode())) {
@@ -143,7 +143,7 @@ public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 
 					if (null != cust.getUsername()
 							&& !"".equals(cust.getUsername())) {
-						query.setString("username", cust.getUsername());
+						query.setString("username", "%"+cust.getUsername()+"%");
 					}
 					if (null != cust.getIcCardCode()
 							&& !"".equals(cust.getIcCardCode())) {
@@ -151,7 +151,7 @@ public class CustDaoImpl extends HibernateDaoSupport implements CustDao {
 					}
 					if (null != cust.getCode()
 							&& !"".equals(cust.getCode())) {
-						query.setString("code", cust.getCode());
+						query.setString("code", "%"+cust.getCode()+"%");
 					}
 					if (null != cust.getIdCode()
 							&& !"".equals(cust.getIdCode())) {

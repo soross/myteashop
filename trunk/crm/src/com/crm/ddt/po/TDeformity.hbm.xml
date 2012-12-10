@@ -28,6 +28,9 @@
         <property name="createDate" type="java.util.Date">
             <column name="CREATE_DATE" length="7" />
         </property>
+        <property name="createStaff" type="java.lang.String">
+            <column name="CREATE_STAFF" length="20" />
+        </property>
         <property name="state" type="java.lang.String">
             <column name="STATE" length="10" />
         </property>

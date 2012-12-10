@@ -58,7 +58,7 @@ public class MedicalAction extends DispatchAction {
 		List sl = perDao.getSonPerList(PowerKey.KEY_MEDICAL);
 		request.setAttribute("sonPowerByMenu", sl);
 		
-		return new ActionForward("/admin/ddt/Medical/addMedical.jsp");
+		return new ActionForward("/admin/ddt/medical/addmedical.jsp");
 	}
 
 	/**
@@ -85,9 +85,9 @@ public class MedicalAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Medical.do?task=toAddMedical';}else{location.href='"
+									+ "/admin/medical.do?task=toAddMedical';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Medical.do?task=MedicalList';}</script>");
+									+ "/admin/medical.do?task=medicalList';}</script>");
 			return null;
 		} else {
 			response
@@ -95,9 +95,9 @@ public class MedicalAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Medical.do?task=toAddMedical';}else{location.href='"
+									+ "/admin/medical.do?task=toAddMedical';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Medical.do?task=MedicalList';}</script>");
+									+ "/admin/medical.do?task=medicalList';}</script>");
 			return null;
 		}
 	}
@@ -127,7 +127,7 @@ public class MedicalAction extends DispatchAction {
 		// 角色
 		List sl = perDao.getSonPerList(PowerKey.KEY_MEDICAL);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/ddt/Medical/Medicallist.jsp");
+		return new ActionForward("/admin/ddt/medical/medicallist.jsp");
 	}
 
 	/**
@@ -155,12 +155,12 @@ public class MedicalAction extends DispatchAction {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Medical.do?task=MedicalList';</script>");
+							+ "/admin/medical.do?task=medicalList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Medical.do?task=MedicalList';</script>");
+							+ "/admin/medical.do?task=medicalList';</script>");
 		}
 		return null;
 	}
@@ -185,7 +185,7 @@ public class MedicalAction extends DispatchAction {
 		List sonList = perDao.getSonPerList(PowerKey.KEY_MEDICAL);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/ddt/Medical/updateMedical.jsp");
+		return new ActionForward("/admin/ddt/medical/updatemedical.jsp");
 	}
 
 	/**
@@ -218,16 +218,16 @@ public class MedicalAction extends DispatchAction {
 			response.getWriter().print(
 					"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 							+ request.getContextPath()
-							+ "/admin/Medical.do?task=toUpdateMedical&id="
+							+ "/admin/medical.do?task=toUpdateMedical&id="
 							+ Medical.getId() + "';}else{location.href='"
 							+ request.getContextPath()
-							+ "/admin/Medical.do?task=MedicalList';}</script>");
+							+ "/admin/medical.do?task=medicalList';}</script>");
 
 		} else {
 			response.getWriter().print(
 					"<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Medical.do?task=toUpdateMedical&id='"
+							+ "/admin/medical.do?task=toUpdateMedical&id='"
 							+ Medical.getId() + "';</script>");
 		}
 		return null;

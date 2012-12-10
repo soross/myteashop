@@ -19,6 +19,7 @@ public class TDeformity implements java.io.Serializable {
 	private String mobile;
 	private Date createDate;
 	private String state;
+	private String createStaff;
 
 	// Constructors
 
@@ -28,13 +29,14 @@ public class TDeformity implements java.io.Serializable {
 
 	/** full constructor */
 	public TDeformity(String sickid, String sickname, String linkman,
-			String mobile, Date createDate, String state) {
+			String mobile, Date createDate, String state,String createStaff) {
 		this.sickid = sickid;
 		this.sickname = sickname;
 		this.linkman = linkman;
 		this.mobile = mobile;
 		this.createDate = createDate;
 		this.state = state;
+		this.createStaff = createStaff;
 	}
 
 	// Property accessors
@@ -93,6 +95,14 @@ public class TDeformity implements java.io.Serializable {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getCreateStaff() {
+		return createStaff;
+	}
+
+	public void setCreateStaff(String createStaff) {
+		this.createStaff = createStaff;
 	}
 
 }

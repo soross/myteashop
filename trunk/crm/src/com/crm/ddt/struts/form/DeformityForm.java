@@ -28,6 +28,7 @@ public class DeformityForm extends ActionForm {
 	private String mobile;
 	private Date createDate;
 	private String state;
+	private String createStaff;
 
 	
 	/** 
@@ -106,6 +107,14 @@ public class DeformityForm extends ActionForm {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getCreateStaff() {
+		return createStaff;
+	}
+
+	public void setCreateStaff(String createStaff) {
+		this.createStaff = createStaff;
 	}
 
 }

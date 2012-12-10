@@ -114,7 +114,7 @@
 	<table id="listtab" width="98%" border="0" align="center" cellpadding="3"
 		cellspacing="1" class="tableBorderList">
 		<tr>
-			<th colspan=8 height=25>
+			<th colspan=20 height=25>
 				收费项目列表
 			</th>
 		</tr>
@@ -203,14 +203,24 @@
 					</tr>					
 	          </logic:iterate>
           </logic:present>
+          <tr>
+			<td align="left" colspan="3" height=25>
+				&nbsp;
+			</td>
+			<td colspan="17" align="right">
+				<page:page name="pageUtil" />
+			</td>
+		</tr>
+		<!-- 
 		<tr>
-			<td  align="left" colspan="8" height=25>
+			<td  align="left" colspan="20" height=25>
 				&nbsp;<html:button property="" value="批量导出"
 					onclick="outToExcel('exportClient')"></html:button>&nbsp;&nbsp;
 				<html:button property="" value="全部导出"
 					onclick="outAllToExcel('exportAllClient')"></html:button>
 			</td>
-		</tr>
+		</tr> -->
+		
 	
 	</table>
 	<br>&nbsp;

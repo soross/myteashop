@@ -227,7 +227,42 @@ public class StaffAction extends DispatchAction {
 
 		return new ActionForward("/admin/sysdo/staff/updatestaff.jsp");
 	}
+	
+	/**
+	 * 跳转到详细信息页面
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward toShowStaffInfo(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		StaffForm staffForm = (StaffForm)form;
+		String id = request.getParameter("id");
+		TStaff staff = this.staffServiceDao.seachStaff(new Long(id));
+		
+		BeanUtils.copyProperties(staffForm, staff);
+		if(null!=staff.getBirthday())
+		staffForm.setBirthdays(DateUtil.DateToStringBy_YMD(staff.getBirthday()));
+		if(null!=staff.getWorkdate())
+		staffForm.setWorkdates(DateUtil.DateToStringBy_YMD(staff.getWorkdate()));
+		if(null!=staff.getIndate())
+		staffForm.setIndates(DateUtil.DateToStringBy_YMD(staff.getIndate()));
+		
+		List deptList = deptServiceDao.getDeptList();
+		request.setAttribute("deptList", deptList);
+		
+		// 80
+		List sonList = perDao.getSonPerList(PowerKey.KEY_STAFF);
+		request.setAttribute("sonPowerByMenu", sonList);
 
+		return new ActionForward("/admin/sysdo/staff/staffinfo.jsp");
+	}
+	
+	
 	/**
 	 * 修改
 	 * 

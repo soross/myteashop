@@ -47,7 +47,7 @@
 					收费项目名称：
 				</td>
 				<td colspan="3">
-					<html:text property="feeItemName"  size="30"  styleId="txt"></html:text>
+					<html:text property="feeitemname"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -55,7 +55,7 @@
 					收费项目价格：
 				</td>
 				<td colspan="3">
-					<html:text property="feeItemPrice"  size="30"  styleId="txt"></html:text>
+					<html:text property="pricemz"  size="30"  styleId="txt"></html:text>
 				</td>
 			</tr>
 			<tr>
@@ -63,7 +63,7 @@
 					备注：
 				</td>
 				<td colspan="3">
-					<html:textarea property="remark" style="width:300px;height:100px" styleId="txt"></html:textarea>
+					<html:textarea property="remark" style="width:400px;height:50px" styleId="txt"></html:textarea>
 				</td>
 			</tr>
 			<tr>

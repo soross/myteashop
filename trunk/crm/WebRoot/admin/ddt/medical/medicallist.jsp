@@ -65,12 +65,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				患者疾病证明
+				医技报告查询
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>患者疾病证明选项：</b>
+				<b>医技报告查询选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -84,7 +84,7 @@
 			cellspacing="1" class="tableBorder">
 			<tr>
 				<th height="25" colspan="3">
-					患者疾病证明查询
+					医技报告查询
 				</th>
 			</tr>
 			<tr>
@@ -107,7 +107,7 @@
 		cellpadding="3" cellspacing="1" class="tableBorder">
 		<tr>
 			<th colspan=10 height=25>
-				患者疾病证明列表
+				医技报告查询列表
 			</th>
 		</tr>
 		<tr align="center" class="thstyle">
@@ -126,7 +126,7 @@
 				病人名称
 			</td>
 			<td>
-				性别
+				联系电话
 			</td>
 			<td>
 				操作员工
@@ -138,15 +138,15 @@
 				操作
 			</td>
 		</tr>
-		<logic:present name="IllnessList">
-			<logic:empty name="IllnessList">
+		<logic:present name="MedicalList">
+			<logic:empty name="MedicalList">
 				<Tr>
-					<td colspan="6" height="25">
+					<td colspan="8" height="25">
 						没有所要查询的数据...
 					</td>
 				</Tr>
 			</logic:empty>
-			<logic:iterate id="ill" name="IllnessList">
+			<logic:iterate id="ill" name="MedicalList">
 				<tr align="center">
 					<td height=25>
 						<input type="checkbox" name="phones" value="${ill.id}"
@@ -162,10 +162,10 @@
 						${ill.sickname}
 					</td>
 					<td>
-						${ill.garden}
+						${ill.mobile}
 					</td>
 					<td>
-						${ill.createstaff}
+						${ill.createStaff}
 					</td>
 					<td>
 						<bean:write name="ill" property="createDate"
@@ -173,11 +173,11 @@
 					</td>
 					<td>
 						<a
-							href="${pageContext.request.contextPath}/admin/illness.do?task=toUpdateIllness&id=${ill.id}"><img
+							href="${pageContext.request.contextPath}/admin/medical.do?task=toUpdateMedical&id=${ill.id}"><img
 								src="${pageContext.request.contextPath}/admin/images/edit.gif"
 								border="0">[修改]</a>&nbsp;&nbsp;&nbsp;
 						<a
-							href="${pageContext.request.contextPath}/admin/illness.do?task=deleteIllness&id=${ill.id}"
+							href="${pageContext.request.contextPath}/admin/medical.do?task=deleteMedical&id=${ill.id}"
 							onclick="return confirm('是否确定删除!');"><img
 								src="${pageContext.request.contextPath}/admin/images/del.gif"
 								border="0">[删除]</a>

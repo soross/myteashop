@@ -32,12 +32,12 @@
 		cellspacing="1" class="tableBorder">
 		<tr>
 			<th height="25">
-				患者疾病证明
+				医技报告查询
 			</th>
 		</tr>
 		<tr>
 			<td height=25 class="pl20">
-				<b>患者疾病证明选项：</b>
+				<b>医技报告查询选项：</b>
 				<logic:iterate id="menu" name="sonPowerByMenu">
 					<a href="${pageContext.request.contextPath}${menu.url}">${menu.powername}</a> |
 				</logic:iterate>
@@ -46,13 +46,13 @@
 			</td>
 		</tr>
 	</table>
-	<html:form action="/admin/illness" method="post">
+	<html:form action="/admin/medical" method="post">
 
 		<table width="100%" border="0" align="center" cellspacing="1"
 			cellpadding="2" class="tableBorder mt6">
 			<tr>
 				<th colspan=5 height=25>
-					患者疾病证明
+					医技报告查询
 				</th>
 			</tr>
 			<tr>
@@ -74,28 +74,18 @@
 			</tr>
 			<tr>
 				<td align="right">
-					身份证号:
+					联系电话:
 				</td>
 				<td colspan="3">
-					<html:text property="idcard" size="30" styleId="txt"></html:text>
+					<html:text property="mobile" size="30" styleId="txt"></html:text>
 				</td>
 			</tr>
-			<tr>
-				<td align="right">
-					性别
-				</td>
-				<td colspan="3">
-					<html:radio property="garden" value="男"></html:radio>男
-					<html:radio property="garden" value="女"></html:radio>女
-				</td>
-			</tr>
-
 			<tr>
 				<td colspan="4" align="right" class="tdpage">
-					<input type="hidden" name="createstaff" value="${user.userid}">
-					<input type="hidden" name="task" value="addIllness">
+					<input type="hidden" name="createStaff" value="${user.userid}">
+					<input type="hidden" name="task" value="addMedical">
 					<input type="reset" name="reset" value=" 重 置 " class="inputs" />
-					<input type="submit" name="submit" value=" 患者疾病证明 " class="inputs" />
+					<input type="submit" name="submit" value=" 新增医技报告查询 " class="inputs" />
 				</td>
 			</tr>
 		</table>

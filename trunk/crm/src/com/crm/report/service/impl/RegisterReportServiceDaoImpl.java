@@ -28,7 +28,6 @@ public class RegisterReportServiceDaoImpl implements RegisterReportServiceDao{
 	/**
 	 * ÃÅÕï»ã×Ü
 	 */
-	@Override
 	public List registerAmount(RegisterAmountBean regAmount) {
 		
 		return registDao.registerAmount(regAmount);

@@ -58,7 +58,7 @@ public class DeformityAction extends DispatchAction {
 		List sl = perDao.getSonPerList(PowerKey.KEY_DEFORMITY);
 		request.setAttribute("sonPowerByMenu", sl);
 		
-		return new ActionForward("/admin/ddt/Deformity/addDeformity.jsp");
+		return new ActionForward("/admin/ddt/deformity/adddeformity.jsp");
 	}
 
 	/**
@@ -85,9 +85,9 @@ public class DeformityAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加成功！是否继续添加？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Deformity.do?task=toAddDeformity';}else{location.href='"
+									+ "/admin/deformity.do?task=toAddDeformity';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Deformity.do?task=DeformityList';}</script>");
+									+ "/admin/deformity.do?task=deformityList';}</script>");
 			return null;
 		} else {
 			response
@@ -95,9 +95,9 @@ public class DeformityAction extends DispatchAction {
 					.print(
 							"<script> if(confirm('添加失败！是否重试？')){location.href='"
 									+ request.getContextPath()
-									+ "/admin/Deformity.do?task=toAddDeformity';}else{location.href='"
+									+ "/admin/deformity.do?task=toAddDeformity';}else{location.href='"
 									+ request.getContextPath()
-									+ "/admin/Deformity.do?task=DeformityList';}</script>");
+									+ "/admin/deformity.do?task=deformityList';}</script>");
 			return null;
 		}
 	}
@@ -127,7 +127,7 @@ public class DeformityAction extends DispatchAction {
 		// 角色
 		List sl = perDao.getSonPerList(PowerKey.KEY_DEFORMITY);
 		request.setAttribute("sonPowerByMenu", sl);
-		return new ActionForward("/admin/ddt/Deformity/Deformitylist.jsp");
+		return new ActionForward("/admin/ddt/deformity/deformitylist.jsp");
 	}
 
 	/**
@@ -155,12 +155,12 @@ public class DeformityAction extends DispatchAction {
 			response.getWriter().print(
 					"<script> alert('删除成功!将返回列表!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Deformity.do?task=DeformityList';</script>");
+							+ "/admin/deformity.do?task=deformityList';</script>");
 		} else {
 			response.getWriter().print(
 					"<script> alert('删除失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Deformity.do?task=DeformityList';</script>");
+							+ "/admin/deformity.do?task=deformityList';</script>");
 		}
 		return null;
 	}
@@ -185,7 +185,7 @@ public class DeformityAction extends DispatchAction {
 		List sonList = perDao.getSonPerList(PowerKey.KEY_DEFORMITY);
 		request.setAttribute("sonPowerByMenu", sonList);
 
-		return new ActionForward("/admin/ddt/Deformity/updateDeformity.jsp");
+		return new ActionForward("/admin/ddt/deformity/updatedeformity.jsp");
 	}
 
 	/**
@@ -208,6 +208,7 @@ public class DeformityAction extends DispatchAction {
 		Deformity.setLinkman(DeformityForm.getLinkman());
 		Deformity.setMobile(DeformityForm.getMobile());
 		Deformity.setState(DeformityForm.getState());
+		Deformity.setCreateStaff(DeformityForm.getCreateStaff());
 
 		Boolean bool = false;
 		try {
@@ -219,16 +220,16 @@ public class DeformityAction extends DispatchAction {
 			response.getWriter().print(
 					"<script>if(confirm('修改成功,是否继续修改!')){location.href='"
 							+ request.getContextPath()
-							+ "/admin/Deformity.do?task=toUpdateDeformity&id="
+							+ "/admin/deformity.do?task=toUpdateDeformity&id="
 							+ Deformity.getId() + "';}else{location.href='"
 							+ request.getContextPath()
-							+ "/admin/Deformity.do?task=DeformityList';}</script>");
+							+ "/admin/deformity.do?task=deformityList';}</script>");
 
 		} else {
 			response.getWriter().print(
 					"<script>alert('修改失败,请重试!');location.href='"
 							+ request.getContextPath()
-							+ "/admin/Deformity.do?task=toUpdateDeformity&id='"
+							+ "/admin/deformity.do?task=toUpdateDeformity&id='"
 							+ Deformity.getId() + "';</script>");
 		}
 		return null;

@@ -27,7 +27,7 @@ public class MedicalForm extends ActionForm {
 	private Date createDate;
 	private String state;
 	private String mobile;
-
+	private String createStaff;
 	
 
 	/** 
@@ -98,6 +98,14 @@ public class MedicalForm extends ActionForm {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getCreateStaff() {
+		return createStaff;
+	}
+
+	public void setCreateStaff(String createStaff) {
+		this.createStaff = createStaff;
 	}
 
 }

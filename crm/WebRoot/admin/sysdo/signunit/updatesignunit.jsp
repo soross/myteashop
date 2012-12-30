@@ -140,9 +140,9 @@
 			</tr>
 			<tr>
 				<td colspan="6" align="right" class="tdpage">
-					<input type="hidden" name="task" value="updateSignUnit">
-					<input type="hidden" name="signunitFlag" value="GOTO">
-					<input type="hidden" name="id" value="${ManuForm.id}">
+					<input type="hidden" name="task" value="updateSignUnit" />
+					<html:hidden property="createDates" />
+					<html:hidden property="id" />
 					<input type="hidden" value="185" name="modfunid">
 					<input type="reset" name="reset" value=" ÖØ ÖÃ " class="inputs" />
 					<input type="submit" name="submit" value=" ±£ ´æ " class="inputs" />

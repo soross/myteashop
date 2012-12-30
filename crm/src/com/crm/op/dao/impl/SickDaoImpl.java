@@ -9,100 +9,84 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.crm.op.dao.intf.CustDao;
-import com.crm.op.po.TCustomer;
+import com.crm.op.dao.intf.SickDao;
+import com.crm.op.po.TSick;
 import com.crm.page.PageUtil;
 
-public class SickDaoImpl extends HibernateDaoSupport implements CustDao {
+public class SickDaoImpl extends HibernateDaoSupport implements SickDao {
 
-	public Boolean addCust(TCustomer cust) {
-		this.getHibernateTemplate().save(cust);
+	public Boolean addSick(TSick Sick) {
+		this.getHibernateTemplate().save(Sick);
 		return true;
 	}
 
-	public Boolean deleteCust(Long id) {
-		TCustomer depte = (TCustomer) this.getHibernateTemplate().get(
-				TCustomer.class, id);
+	public Boolean deleteSick(Long id) {
+		TSick depte = (TSick) this.getHibernateTemplate().get(
+				TSick.class, id);
 		this.getHibernateTemplate().delete(depte);
 		return true;
 	}
 
-	public Integer getCustCount() {
+	public Integer getSickCount() {
 		return (Integer) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "select count(*) from TCustomer";
+						String hql = "select count(*) from TSick";
 						Query query = session.createQuery(hql);
 						return query.uniqueResult();
 					}
 				});
 	}
 
-	public Integer getCustCount(final TCustomer cust) {
+	public Integer getSickCount(final TSick Sick) {
 		return (Integer) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
 
 						StringBuffer sbf = new StringBuffer(
-								"select count(*) from TCustomer cust where 1=1");
-						if (null != cust.getUsername()
-								&& !"".equals(cust.getUsername())) {
-							sbf.append(" and cust.username=:username");
+								"select count(*) from TSick Sick where 1=1");
+						if (null != Sick.getSickname()
+								&& !"".equals(Sick.getSickname())) {
+							sbf.append(" and Sick.username=:username");
 						}
-						if (null != cust.getIcCardCode()
-								&& !"".equals(cust.getIcCardCode())) {
-							sbf.append(" and cust.icCardCode = :icCardCode");
+						if (null != Sick.getIcCardCode()
+								&& !"".equals(Sick.getIcCardCode())) {
+							sbf.append(" and Sick.icCardCode = :icCardCode");
 						}
-						if (null != cust.getCode()
-								&& !"".equals(cust.getCode())) {
-							sbf.append(" and cust.code=:code");
+						if (null != Sick.getCode()
+								&& !"".equals(Sick.getCode())) {
+							sbf.append(" and Sick.code=:code");
 						}
-						if (null != cust.getIdCode()
-								&& !"".equals(cust.getIdCode())) {
-							sbf.append(" and cust.idCode=:idCode");
-						}
-						if (null != cust.getVipType()
-								&& !"".equals(cust.getVipType())
-								&& !"-1".equals(cust.getVipType())) {
-							sbf.append(" and cust.vipType=:vipType");
-						}
+
 						Query query = session.createQuery(sbf.toString());
 
-						if (null != cust.getUsername()
-								&& !"".equals(cust.getUsername())) {
-							query.setString("username", cust.getUsername());
+						if (null != Sick.getSickname()
+								&& !"".equals(Sick.getSickname())) {
+							query.setString("username", Sick.getSickname());
 						}
-						if (null != cust.getIcCardCode()
-								&& !"".equals(cust.getIcCardCode())) {
-							query.setString("icCardCode", cust.getIcCardCode());
+						if (null != Sick.getIcCardCode()
+								&& !"".equals(Sick.getIcCardCode())) {
+							query.setString("icCardCode", Sick.getIcCardCode());
 						}
-						if (null != cust.getCode()
-								&& !"".equals(cust.getCode())) {
-							query.setString("code", cust.getCode());
+						if (null != Sick.getCode()
+								&& !"".equals(Sick.getCode())) {
+							query.setString("code", Sick.getCode());
 						}
-						if (null != cust.getIdCode()
-								&& !"".equals(cust.getIdCode())) {
-							query.setString("idCode", cust.getIdCode());
-						}
-						if (null != cust.getVipType()
-								&& !"".equals(cust.getVipType())
-								&& !"-1".equals(cust.getVipType())) {
-							query.setString("vipType", cust.getVipType());
-						}
+
 						// List list = (List) query.list();
 						return query.uniqueResult();
 					}
 				});
 	}
 
-	public List getCustList(final PageUtil pageUtil) {
+	public List getSickList(final PageUtil pageUtil) {
 		return (List) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "from TCustomer";
+						String hql = "from TSick";
 						Query query = session.createQuery(hql);
 						query.setFirstResult(pageUtil.pastart());
 						query.setMaxResults(pageUtil.getPagesize());
@@ -111,78 +95,62 @@ public class SickDaoImpl extends HibernateDaoSupport implements CustDao {
 				});
 	}
 
-	public List getCustList(final TCustomer cust, final PageUtil pageUtil) {
-		return (List) this.getHibernateTemplate().execute(
-			new HibernateCallback() {
-				public Object doInHibernate(Session session)
-						throws HibernateException, SQLException {
-					StringBuffer sbf = new StringBuffer(
-							"from TCustomer cust where 1=1");
-					if (null != cust.getUsername()
-							&& !"".equals(cust.getUsername())) {
-						sbf.append(" and cust.username=:username");
-					}
-					if (null != cust.getIcCardCode()
-							&& !"".equals(cust.getIcCardCode())) {
-						sbf.append(" and cust.icCardCode = :icCardCode");
-					}
-					if (null != cust.getCode()
-							&& !"".equals(cust.getCode())) {
-						sbf.append(" and cust.code=:code");
-					}
-					if (null != cust.getIdCode()
-							&& !"".equals(cust.getIdCode())) {
-						sbf.append(" and cust.idCode=:idCode");
-					}
-					if (null != cust.getVipType()
-							&& !"".equals(cust.getVipType())
-							&& !"-1".equals(cust.getVipType())) {
-						sbf.append(" and cust.vipType=:vipType");
-					}
-					Query query = session.createQuery(sbf.toString());
-
-					if (null != cust.getUsername()
-							&& !"".equals(cust.getUsername())) {
-						query.setString("username", cust.getUsername());
-					}
-					if (null != cust.getIcCardCode()
-							&& !"".equals(cust.getIcCardCode())) {
-						query.setString("icCardCode", cust.getIcCardCode());
-					}
-					if (null != cust.getCode()
-							&& !"".equals(cust.getCode())) {
-						query.setString("code", cust.getCode());
-					}
-					if (null != cust.getIdCode()
-							&& !"".equals(cust.getIdCode())) {
-						query.setString("idCode", cust.getIdCode());
-					}
-					if (null != cust.getVipType()
-							&& !"".equals(cust.getVipType())
-							&& !"-1".equals(cust.getVipType())) {
-						query.setString("vipType", cust.getVipType());
-					}
-					query.setFirstResult(pageUtil.pastart());
-					query.setMaxResults(pageUtil.getPagesize());
-					return query.list();
-				}
-			});
-	}
-
-	public List getCustList() {
+	public List getSickList(final TSick Sick, final PageUtil pageUtil) {
 		return (List) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "from TCustomer";
+						StringBuffer sbf = new StringBuffer(
+								"from TSick Sick where 1=1");
+						if (null != Sick.getSickname()
+								&& !"".equals(Sick.getSickname())) {
+							sbf.append(" and Sick.username=:username");
+						}
+						if (null != Sick.getIcCardCode()
+								&& !"".equals(Sick.getIcCardCode())) {
+							sbf.append(" and Sick.icCardCode = :icCardCode");
+						}
+						if (null != Sick.getCode()
+								&& !"".equals(Sick.getCode())) {
+							sbf.append(" and Sick.code=:code");
+						}
+
+						Query query = session.createQuery(sbf.toString());
+
+						if (null != Sick.getSickname()
+								&& !"".equals(Sick.getSickname())) {
+							query.setString("username", Sick.getSickname());
+						}
+						if (null != Sick.getIcCardCode()
+								&& !"".equals(Sick.getIcCardCode())) {
+							query.setString("icCardCode", Sick.getIcCardCode());
+						}
+						if (null != Sick.getCode()
+								&& !"".equals(Sick.getCode())) {
+							query.setString("code", Sick.getCode());
+						}
+
+						query.setFirstResult(pageUtil.pastart());
+						query.setMaxResults(pageUtil.getPagesize());
+						return query.list();
+					}
+				});
+	}
+
+	public List getSickList() {
+		return (List) this.getHibernateTemplate().execute(
+				new HibernateCallback() {
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						String hql = "from TSick";
 						Query query = session.createQuery(hql);
 						return query.list();
 					}
 				});
 	}
 
-	public TCustomer getCustByID(Long id) {
-		return (TCustomer) this.getHibernateTemplate().get(TCustomer.class, id);
+	public TSick getSickByID(Long id) {
+		return (TSick) this.getHibernateTemplate().get(TSick.class, id);
 	}
 
 	public Integer getSeqNextValue() {
@@ -190,8 +158,8 @@ public class SickDaoImpl extends HibernateDaoSupport implements CustDao {
 		return null;
 	}
 
-	public Boolean updateCust(TCustomer cust) {
-		this.getHibernateTemplate().update(cust);
+	public Boolean updateSick(TSick Sick) {
+		this.getHibernateTemplate().update(Sick);
 		return true;
 	}
 }

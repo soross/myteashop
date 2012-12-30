@@ -2,21 +2,20 @@ package com.crm.op.service.impl;
 
 import java.util.List;
 
-import com.crm.op.dao.intf.CustDao;
-import com.crm.op.po.TCustomer;
-import com.crm.op.service.intf.CustServiceDao;
+import com.crm.op.dao.intf.SickDao;
+import com.crm.op.po.TSick;
+import com.crm.op.service.intf.SickServiceDao;
 import com.crm.page.PageUtil;
-import com.crm.sysdo.po.TDept;
 
-public class SickServiceDaoImpl implements CustServiceDao{
-	CustDao custDao;
+public class SickServiceDaoImpl implements SickServiceDao{
+	SickDao SickDao;
 	/**
 	 * 取得总记录数
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount(){
-		return custDao.getCustCount();		
+	public Integer getSickCount(){
+		return SickDao.getSickCount();		
 	}
 	
 	/**
@@ -24,8 +23,8 @@ public class SickServiceDaoImpl implements CustServiceDao{
 	 * 
 	 * @return
 	 */
-	public Integer getCustCount(TCustomer cust){
-		return custDao.getCustCount(cust);		
+	public Integer getSickCount(TSick Sick){
+		return SickDao.getSickCount(Sick);		
 	}
 
 	/**
@@ -33,34 +32,34 @@ public class SickServiceDaoImpl implements CustServiceDao{
 	 * 
 	 * @return
 	 */
-	public List getCustList(PageUtil pageUtil){
-		return custDao.getCustList(pageUtil);
+	public List getSickList(PageUtil pageUtil){
+		return SickDao.getSickList(pageUtil);
 	}
 	/**
 	 * 取得集合
 	 * 
 	 * @return
 	 */
-	public List getCustList(TCustomer cust, PageUtil pageUtil){
-		return custDao.getCustList(cust,pageUtil);
+	public List getSickList(TSick Sick, PageUtil pageUtil){
+		return SickDao.getSickList(Sick,pageUtil);
 	}
 
-	public List getCustList(){
-		return custDao.getCustList();
+	public List getSickList(){
+		return SickDao.getSickList();
 	}
 
-	public TCustomer getCustByID(Long id){
-		return custDao.getCustByID(id);
+	public TSick getSickByID(Long id){
+		return SickDao.getSickByID(id);
 	}
 
 	/**
 	 * 会员
 	 * 
-	 * @param cust
+	 * @param Sick
 	 * @return
 	 */
-	public Boolean addCust(TCustomer cust){
-		return custDao.addCust(cust);
+	public Boolean addSick(TSick Sick){
+		return SickDao.addSick(Sick);
 	}
 
 	/**
@@ -69,7 +68,7 @@ public class SickServiceDaoImpl implements CustServiceDao{
 	 * @return
 	 */
 	public Integer getSeqNextValue(){
-		return custDao.getSeqNextValue();
+		return SickDao.getSeqNextValue();
 	}
 
 	/**
@@ -79,8 +78,8 @@ public class SickServiceDaoImpl implements CustServiceDao{
 	 * @param rulelog
 	 * @return
 	 */
-	public Boolean updateCust(TCustomer cust){
-		return custDao.updateCust(cust);
+	public Boolean updateSick(TSick Sick){
+		return SickDao.updateSick(Sick);
 	}
 
 	/**
@@ -89,15 +88,15 @@ public class SickServiceDaoImpl implements CustServiceDao{
 	 * @param id
 	 * @return
 	 */
-	public Boolean deleteCust(Long id){
-		return custDao.deleteCust(id);
+	public Boolean deleteSick(Long id){
+		return SickDao.deleteSick(id);
 	}
 
-	public CustDao getCustDao() {
-		return custDao;
+	public SickDao getSickDao() {
+		return SickDao;
 	}
 
-	public void setCustDao(CustDao custDao) {
-		this.custDao = custDao;
+	public void setSickDao(SickDao SickDao) {
+		this.SickDao = SickDao;
 	}
 }

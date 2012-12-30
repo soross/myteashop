@@ -70,7 +70,7 @@ public class ManufacturerDaoImpl extends HibernateDaoSupport implements Manufact
 		Integer i = (Integer)this.getHibernateTemplate().execute(new HibernateCallback(){
 
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				StringBuffer hql = new StringBuffer("select count(*) from TOrderManufacturer where 1=1 ");
+				StringBuffer hql = new StringBuffer("select count(*) from TManufacturer where 1=1 ");
 				
 				if(Manufacturer.getMfname()!=null&&!"".equals(Manufacturer.getMfname())){
 					hql.append(" and mfname like '"+Manufacturer.getMfname()+"'");

@@ -31,19 +31,19 @@
 
 	<bean name="vipDao" class="com.crm.pub.dao.impl.VipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>	
-	
-	<!-- 数字字典 -->	
+	</bean>
+
+	<!-- 数字字典 -->
 	<bean name="dataDao" class="com.crm.sysdo.dao.impl.DataDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>	
+	</bean>
 	<!--服务层系统  数字字典-->
 	<bean name="dataServiceDao"
 		class="com.crm.sysdo.service.impl.DataServiceDaoImpl">
 		<property name="dataDao" ref="dataDao"></property>
 	</bean>
 	<bean name="dataProxy" parent="basicProxy">
-	    <property name="target" ref="dataServiceDao"></property>
+		<property name="target" ref="dataServiceDao"></property>
 	</bean>
 	<!--数字字典ACTION-->
 	<bean name="/admin/data"
@@ -53,7 +53,7 @@
 	</bean>
 
 	<bean name="userDao" class="com.crm.pub.dao.impl.UserDaoImpl">
-	   <property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 	<!--客户基本信息-->
@@ -102,26 +102,29 @@
 		class="com.crm.client.struts.action.RuleAction">
 		<property name="ruleServiceDao" ref="ruleServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- 业务 -->
-	<bean name="businessDao" class="com.crm.client.dao.impl.BusinessDaoImpl">
+	<bean name="businessDao"
+		class="com.crm.client.dao.impl.BusinessDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="businessServiceDao"
 		class="com.crm.client.service.impl.BusinessServiceDaoImpl">
 		<property name="clientDao" ref="clientDao"></property>
-		<property name="businessDao" ref="businessDao"></property>		
+		<property name="businessDao" ref="businessDao"></property>
 	</bean>
 	<bean name="businessServiceDaoProxy" parent="basicProxy">
 		<property name="target" ref="businessServiceDao"></property>
 	</bean>
 	<bean name="/admin/business"
 		class="com.crm.client.struts.action.BusinessAction">
-		<property name="businessServiceDao" ref="businessServiceDaoProxy"></property>
+		<property name="businessServiceDao"
+			ref="businessServiceDaoProxy">
+		</property>
 	</bean>
-	
-	
+
+
 	<!-- dept -->
 	<bean name="deptDao" class="com.crm.sysdo.dao.impl.DeptDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -136,9 +139,9 @@
 	<bean name="/admin/dept"
 		class="com.crm.sysdo.struts.action.DeptAction">
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
-		<property name="perDao" ref="perDao"></property>		
+		<property name="perDao" ref="perDao"></property>
 	</bean>
-	
+
 	<!-- staff -->
 	<bean name="staffDao" class="com.crm.sysdo.dao.impl.StaffDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -153,12 +156,13 @@
 	<bean name="/admin/staff"
 		class="com.crm.sysdo.struts.action.StaffAction">
 		<property name="staffServiceDao" ref="staffServiceDaoProxy"></property>
-		<property name="perDao" ref="perDao"></property>	
-		<property name="deptServiceDao" ref="deptServiceDao"></property>			
+		<property name="perDao" ref="perDao"></property>
+		<property name="deptServiceDao" ref="deptServiceDao"></property>
 	</bean>
-	
+
 	<!-- sickbed -->
-	<bean name="sickbedDao" class="com.crm.sysdo.dao.impl.SickbedDaoImpl">
+	<bean name="sickbedDao"
+		class="com.crm.sysdo.dao.impl.SickbedDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="sickbedServiceDao"
@@ -170,13 +174,16 @@
 	</bean>
 	<bean name="/admin/sickbed"
 		class="com.crm.sysdo.struts.action.SickbedAction">
-		<property name="sickbedServiceDao" ref="sickbedServiceDaoProxy"></property>
+		<property name="sickbedServiceDao"
+			ref="sickbedServiceDaoProxy">
+		</property>
 		<property name="perDao" ref="perDao"></property>
-		<property name="deptServiceDao" ref="deptServiceDao"></property>		
+		<property name="deptServiceDao" ref="deptServiceDao"></property>
 	</bean>
-	
+
 	<!-- collect -->
-	<bean name="collectDao" class="com.crm.sysdo.dao.impl.CollectDaoImpl">
+	<bean name="collectDao"
+		class="com.crm.sysdo.dao.impl.CollectDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="collectServiceDao"
@@ -188,12 +195,15 @@
 	</bean>
 	<bean name="/admin/collect"
 		class="com.crm.sysdo.struts.action.CollectAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="collectServiceDao" ref="collectServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="collectServiceDao"
+			ref="collectServiceDaoProxy">
+		</property>
 	</bean>
-	
+
 	<!-- goodsType -->
-	<bean name="goodsTypeDao" class="com.crm.sysdo.dao.impl.GoodsTypeDaoImpl">
+	<bean name="goodsTypeDao"
+		class="com.crm.sysdo.dao.impl.GoodsTypeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="goodsTypeServiceDao"
@@ -205,11 +215,13 @@
 	</bean>
 	<bean name="/admin/goodstype"
 		class="com.crm.sysdo.struts.action.GoodsTypeAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="goodsTypeServiceDao" ref="goodsTypeServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="goodsTypeServiceDao"
+			ref="goodsTypeServiceDaoProxy">
+		</property>
 	</bean>
-	
-	
+
+
 	<!-- goods -->
 	<bean name="goodsDao" class="com.crm.sysdo.dao.impl.GoodsDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -223,12 +235,14 @@
 	</bean>
 	<bean name="/admin/goods"
 		class="com.crm.sysdo.struts.action.GoodsAction">
-		<property name="perDao" ref="perDao"></property>	
+		<property name="perDao" ref="perDao"></property>
 		<property name="goodsServiceDao" ref="goodsServiceDaoProxy"></property>
-		<property name="goodsTypeServiceDao" ref="goodsTypeServiceDaoProxy"></property>
+		<property name="goodsTypeServiceDao"
+			ref="goodsTypeServiceDaoProxy">
+		</property>
 	</bean>
-	
-	
+
+
 	<!-- icd -->
 	<bean name="icdDao" class="com.crm.sysdo.dao.impl.IcdDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -242,11 +256,11 @@
 	</bean>
 	<bean name="/admin/icd"
 		class="com.crm.sysdo.struts.action.IcdAction">
-		<property name="perDao" ref="perDao"></property>	
+		<property name="perDao" ref="perDao"></property>
 		<property name="icdServiceDao" ref="icdServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- his -->
 	<bean name="hisDao" class="com.crm.ddt.dao.impl.HisDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -260,11 +274,11 @@
 	</bean>
 	<bean name="/admin/his"
 		class="com.crm.ddt.struts.action.HisAction">
-		<property name="perDao" ref="perDao"></property>	
+		<property name="perDao" ref="perDao"></property>
 		<property name="hisServiceDao" ref="hisServiceDaoProxy"></property>
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
-	
+
 	<!-- prove-->
 	<bean name="proveDao" class="com.crm.ddt.dao.impl.ProveDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -278,13 +292,14 @@
 	</bean>
 	<bean name="/admin/prove"
 		class="com.crm.ddt.struts.action.ProveAction">
-		<property name="perDao" ref="perDao"></property>	
+		<property name="perDao" ref="perDao"></property>
 		<property name="proveServiceDao" ref="proveServiceDaoProxy"></property>
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
-	
+
 	<!-- illness-->
-	<bean name="illnessDao" class="com.crm.ddt.dao.impl.IllnessDaoImpl">
+	<bean name="illnessDao"
+		class="com.crm.ddt.dao.impl.IllnessDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="illnessServiceDao"
@@ -296,13 +311,16 @@
 	</bean>
 	<bean name="/admin/illness"
 		class="com.crm.ddt.struts.action.IllnessAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="illnessServiceDao" ref="illnessServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="illnessServiceDao"
+			ref="illnessServiceDaoProxy">
+		</property>
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
-	
+
 	<!-- deformity-->
-	<bean name="deformityDao" class="com.crm.ddt.dao.impl.DeformityDaoImpl">
+	<bean name="deformityDao"
+		class="com.crm.ddt.dao.impl.DeformityDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="deformityServiceDao"
@@ -314,14 +332,17 @@
 	</bean>
 	<bean name="/admin/deformity"
 		class="com.crm.ddt.struts.action.DeformityAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="deformityServiceDao" ref="deformityServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="deformityServiceDao"
+			ref="deformityServiceDaoProxy">
+		</property>
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- medical-->
-	<bean name="medicalDao" class="com.crm.ddt.dao.impl.MedicalDaoImpl">
+	<bean name="medicalDao"
+		class="com.crm.ddt.dao.impl.MedicalDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="medicalServiceDao"
@@ -333,32 +354,35 @@
 	</bean>
 	<bean name="/admin/medical"
 		class="com.crm.ddt.struts.action.MedicalAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="medicalServiceDao" ref="medicalServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="medicalServiceDao"
+			ref="medicalServiceDaoProxy">
+		</property>
 		<property name="deptServiceDao" ref="deptServiceDaoProxy"></property>
 	</bean>
-	
-	
-	
+
+
+
 	<!-- manu 
-	<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">
+		<bean name="manuDao" class="com.crm.sysdo.dao.impl.ManufacturerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean name="manuServiceDao"
+		</bean>
+		<bean name="manuServiceDao"
 		class="com.crm.sysdo.service.impl.ManufacturerServiceDaoImpl">
 		<property name="manufacturerDao" ref="manuDao"></property>
-	</bean>
-	<bean name="manuServiceDaoProxy" parent="basicProxy">
+		</bean>
+		<bean name="manuServiceDaoProxy" parent="basicProxy">
 		<property name="target" ref="manuServiceDao"></property>
-	</bean>
-	<bean name="/admin/manu"
+		</bean>
+		<bean name="/admin/manu"
 		class="com.crm.sysdo.struts.action.ManufacturerAction">
 		<property name="perDao" ref="perDao"></property>	
 		<property name="manuServiceDao" ref="manuServiceDaoProxy"></property>
-	</bean>
+		</bean>
 	-->
 	<!-- registertype -->
-	<bean name="registerTypeDao" class="com.crm.sysdo.dao.impl.RegisterTypeDaoImpl">
+	<bean name="registerTypeDao"
+		class="com.crm.sysdo.dao.impl.RegisterTypeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="registerTypeServiceDao"
@@ -370,12 +394,15 @@
 	</bean>
 	<bean name="/admin/regType"
 		class="com.crm.sysdo.struts.action.RegisterTypeAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="registerTypeServiceDao" ref="registerTypeServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="registerTypeServiceDao"
+			ref="registerTypeServiceDaoProxy">
+		</property>
 	</bean>
-	
+
 	<!-- toolinfo -->
-	<bean name="toolinfoDao" class="com.crm.sysdo.dao.impl.ToolinfoDaoImpl">
+	<bean name="toolinfoDao"
+		class="com.crm.sysdo.dao.impl.ToolinfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="toolinfoServiceDao"
@@ -387,12 +414,15 @@
 	</bean>
 	<bean name="/admin/toolinfo"
 		class="com.crm.sysdo.struts.action.ToolinfoAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="toolinfoServiceDao" ref="toolinfoServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="toolinfoServiceDao"
+			ref="toolinfoServiceDaoProxy">
+		</property>
 	</bean>
-	
+
 	<!-- toolsave -->
-	<bean name="toolSaveDao" class="com.crm.sysdo.dao.impl.ToolSaveDaoImpl">
+	<bean name="toolSaveDao"
+		class="com.crm.sysdo.dao.impl.ToolSaveDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="toolSaveServiceDao"
@@ -404,10 +434,12 @@
 	</bean>
 	<bean name="/admin/toolsave"
 		class="com.crm.sysdo.struts.action.ToolSaveAction">
-		<property name="perDao" ref="perDao"></property>	
-		<property name="toolSaveServiceDao" ref="toolSaveServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+		<property name="toolSaveServiceDao"
+			ref="toolSaveServiceDaoProxy">
+		</property>
 	</bean>
-	
+
 	<!-- file -->
 	<bean name="fileDao" class="com.crm.sysdo.dao.impl.FileDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -421,13 +453,13 @@
 	</bean>
 	<bean name="/admin/file"
 		class="com.crm.sysdo.struts.action.FileAction">
-		<property name="perDao" ref="perDao"></property>	
+		<property name="perDao" ref="perDao"></property>
 		<property name="fileServiceDao" ref="fileServiceDaoProxy"></property>
 		<property name="userServiceDao" ref="userProxy"></property>
 	</bean>
-	
-	
-	
+
+
+
 	<!-- 客户 -->
 	<bean name="custDao" class="com.crm.op.dao.impl.CustDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -443,8 +475,8 @@
 		class="com.crm.op.struts.action.CustAction">
 		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- 预约 -->
 	<bean name="orderDao" class="com.crm.op.dao.impl.OrderDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -455,15 +487,16 @@
 	</bean>
 	<bean name="orderServiceDaoProxy" parent="basicProxy">
 		<property name="target" ref="orderServiceDao"></property>
-	</bean>	
+	</bean>
 	<bean name="/admin/order"
 		class="com.crm.op.struts.action.OrderAction">
 		<property name="orderServiceDao" ref="orderServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- 预存 -->
-	<bean name="cardFeeDao" class="com.crm.op.dao.impl.CardFeeDaoImpl">
+	<bean name="cardFeeDao"
+		class="com.crm.op.dao.impl.CardFeeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="cardFeeServiceDao"
@@ -472,15 +505,17 @@
 	</bean>
 	<bean name="cardFeeServiceDaoProxy" parent="basicProxy">
 		<property name="target" ref="cardFeeServiceDao"></property>
-	</bean>	
+	</bean>
 	<bean name="/admin/cardfee"
 		class="com.crm.op.struts.action.CardFeeAction">
-		<property name="cardFeeServiceDao" ref="cardFeeServiceDaoProxy"></property>
-		<property name="perDao" ref="perDao"></property>	
+		<property name="cardFeeServiceDao"
+			ref="cardFeeServiceDaoProxy">
+		</property>
+		<property name="perDao" ref="perDao"></property>
 		<property name="custServiceDao" ref="custServiceDaoProxy"></property>
 	</bean>
-	
-	
+
+
 	<!-- 挂号 -->
 	<!-- 挂号service -->
 	<bean name="regDao" class="com.crm.op.dao.impl.RegDaoImpl">
@@ -510,9 +545,80 @@
 		<property name="regServiceDao" ref="regServiceDaoProxy"></property>
 		<property name="regFeeServiceDao" ref="regFeeServiceDaoProxy"></property>
 	</bean>
-	
-		
-	
-	
-	
+
+	<!-- 诊疗模版 -->
+	<bean name="templateDao"
+		class="com.crm.sysdo.dao.impl.TemplateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="templateServiceDao"
+		class="com.crm.sysdo.service.impl.TemplateServiceDaoImpl">
+		<property name="templateDao" ref="templateDao"></property>
+	</bean>
+	<bean name="templateServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="templateServiceDao"></property>
+	</bean>
+	<bean name="/admin/template"
+		class="com.crm.sysdo.struts.action.TemplateAction">
+		<property name="templateServiceDao"
+			ref="templateServiceDaoProxy">
+		</property>
+		<property name="perDao" ref="perDao"></property>
+	</bean>
+
+	<!-- 疾病模版 -->
+	<bean name="disTplDao"
+		class="com.crm.sysdo.dao.impl.DisTplDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="disTplServiceDao"
+		class="com.crm.sysdo.service.impl.DisTplServiceDaoImpl">
+		<property name="disTplDao" ref="disTplDao"></property>
+	</bean>
+	<bean name="disTplServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="disTplServiceDao"></property>
+	</bean>
+	<bean name="/admin/disTpl"
+		class="com.crm.sysdo.struts.action.DisTplAction">
+		<property name="disTplServiceDao" ref="disTplServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+	</bean>
+
+	<!-- 处方模版 -->
+	<bean name="preTplDao"
+		class="com.crm.sysdo.dao.impl.PreTplDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="preTplServiceDao"
+		class="com.crm.sysdo.service.impl.PreTplServiceDaoImpl">
+		<property name="preTplDao" ref="preTplDao"></property>
+	</bean>
+	<bean name="preTplServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="preTplServiceDao"></property>
+	</bean>
+	<bean name="/admin/preTpl"
+		class="com.crm.sysdo.struts.action.PreTplAction">
+		<property name="preTplServiceDao" ref="preTplServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+	</bean>
+
+
+	<!-- 病人 -->
+	<bean name="sickDao" class="com.crm.op.dao.impl.SickDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="sickServiceDao"
+		class="com.crm.op.service.impl.SickServiceDaoImpl">
+		<property name="sickDao" ref="sickDao"></property>
+	</bean>
+	<bean name="sickServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="sickServiceDao"></property>
+	</bean>
+	<bean name="/admin/sick"
+		class="com.crm.op.struts.action.SickAction">
+		<property name="sickServiceDao" ref="sickServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+	</bean>
+
+
 </beans>

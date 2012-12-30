@@ -3,274 +3,201 @@
 
 <struts-config>
   <data-sources />
-  <form-beans >
-    <form-bean name="clientForm" type="com.crm.client.struts.form.ClientForm" />
-    <form-bean name="ruleForm" type="com.crm.client.struts.form.RuleForm" />
-    <form-bean name="businessForm" type="com.crm.client.struts.form.BusinessForm" />
-	<form-bean name="deptForm" type="com.crm.sysdo.struts.form.DeptForm" />
-	<form-bean name="sickbedForm" type="com.crm.sysdo.struts.form.SickbedForm" />
-	<form-bean name="dataForm" type="com.crm.sysdo.struts.form.DataForm" />
-	<form-bean name="staffForm" type="com.crm.sysdo.struts.form.StaffForm" />
-	<form-bean name="collectForm" type="com.crm.sysdo.struts.form.CollectForm" />
-	<form-bean name="goodsForm" type="com.crm.sysdo.struts.form.GoodsForm" />
-	<form-bean name="goodsTypeForm" type="com.crm.sysdo.struts.form.GoodsTypeForm" />
-	<form-bean name="icdForm" type="com.crm.sysdo.struts.form.IcdForm" />
-	<!-- <form-bean name="manuForm" type="com.crm.sysdo.struts.form.ManuFacturerForm" /> -->
-	<form-bean name="regTypeForm" type="com.crm.sysdo.struts.form.RegisterTypeForm" />
-	<form-bean name="toolinfoForm" type="com.crm.sysdo.struts.form.ToolinfoForm" />
-	<form-bean name="toolsaveForm" type="com.crm.sysdo.struts.form.ToolSaveForm" />
-	<form-bean name="fileForm" type="com.crm.sysdo.struts.form.FileForm" />
-	
-	<form-bean name="hisForm" type="com.crm.ddt.struts.form.HisForm" />
-	<form-bean name="proveForm" type="com.crm.ddt.struts.form.ProveForm" />
-	<form-bean name="illnessForm" type="com.crm.ddt.struts.form.IllnessForm" />
-	<form-bean name="deformityForm" type="com.crm.ddt.struts.form.DeformityForm" />
-	<form-bean name="medicalForm" type="com.crm.ddt.struts.form.MedicalForm" />
-	
-	<form-bean name="custForm" type="com.crm.op.struts.form.CustForm" />
-	<form-bean name="orderForm" type="com.crm.op.struts.form.OrderForm" />
-	<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
-	<form-bean name="cardFeeForm" type="com.crm.op.struts.form.CardFeeForm" />
-	
-  </form-beans>
+	<form-beans>
+		<form-bean name="clientForm"
+			type="com.crm.client.struts.form.ClientForm" />
+		<form-bean name="ruleForm"
+			type="com.crm.client.struts.form.RuleForm" />
+		<form-bean name="businessForm"
+			type="com.crm.client.struts.form.BusinessForm" />
+		<form-bean name="deptForm"
+			type="com.crm.sysdo.struts.form.DeptForm" />
+		<form-bean name="sickbedForm"
+			type="com.crm.sysdo.struts.form.SickbedForm" />
+		<form-bean name="dataForm"
+			type="com.crm.sysdo.struts.form.DataForm" />
+		<form-bean name="staffForm"
+			type="com.crm.sysdo.struts.form.StaffForm" />
+		<form-bean name="collectForm"
+			type="com.crm.sysdo.struts.form.CollectForm" />
+		<form-bean name="goodsForm"
+			type="com.crm.sysdo.struts.form.GoodsForm" />
+		<form-bean name="goodsTypeForm"
+			type="com.crm.sysdo.struts.form.GoodsTypeForm" />
+		<form-bean name="icdForm"
+			type="com.crm.sysdo.struts.form.IcdForm" />
+		<!-- <form-bean name="manuForm" type="com.crm.sysdo.struts.form.ManuFacturerForm" /> -->
+		<form-bean name="regTypeForm"
+			type="com.crm.sysdo.struts.form.RegisterTypeForm" />
+		<form-bean name="toolinfoForm"
+			type="com.crm.sysdo.struts.form.ToolinfoForm" />
+		<form-bean name="toolsaveForm"
+			type="com.crm.sysdo.struts.form.ToolSaveForm" />
+		<form-bean name="fileForm"
+			type="com.crm.sysdo.struts.form.FileForm" />
+		<form-bean name="templateForm"
+			type="com.crm.sysdo.struts.form.TemplateForm" />
+		<form-bean name="preTplForm"
+			type="com.crm.sysdo.struts.form.PreTplForm" />
+		<form-bean name="disTplForm"
+			type="com.crm.sysdo.struts.form.DisTplForm" />
 
-  <global-exceptions />
-  <global-forwards />
-  <action-mappings >
-    <action
-      attribute="clientForm"
-      input="/form/client.jsp"
-      name="clientForm"
-      parameter="task"
-      path="/admin/client"
-      scope="request"
-      type="com.crm.client.struts.action.ClientAction" />
-    <action
-      attribute="ruleForm"
-      input="/form/rule.jsp"
-      name="ruleForm"
-      parameter="task"
-      path="/admin/rule"
-      scope="request"
-      type="com.crm.client.struts.action.RuleAction" />
-    <action
-      attribute="businessForm"
-      input="/form/business.jsp"
-      name="businessForm"
-      parameter="task"
-      path="/admin/business"
-      scope="request"
-      type="com.crm.client.struts.action.BusinessAction" />
-    <action
-      attribute="deptForm"
-      input="/form/dept.jsp"
-      name="deptForm"
-      parameter="task"
-      path="/admin/dept"
-      scope="request"
-      type="com.crm.sysdo.struts.action.DeptAction" />
-	<action
-      attribute="sickbedForm"
-      input="/form/sickbed.jsp"
-      name="sickbedForm"
-      parameter="task"
-      path="/admin/sickbed"
-      scope="request"
-      type="com.crm.sysdo.struts.action.SickbedAction" />
-      
-    <action
-      attribute="custForm"
-      input="/form/index.jsp"
-      name="custForm"
-      parameter="task"
-      path="/admin/cust"
-      scope="request"
-      type="com.crm.op.struts.action.CustAction" />  
-    
-     <action
-      attribute="regForm"
-      input="/form/addreg.jsp"
-      name="regForm"
-      parameter="task"
-      path="/admin/reg"
-      scope="request"
-      type="com.crm.op.struts.action.RegAction" />  
-     
-     <action
-      attribute="orderForm"
-      input="/form/addorder.jsp"
-      name="orderForm"
-      parameter="task"
-      path="/admin/order"
-      scope="request"
-      type="com.crm.op.struts.action.OrderAction" />  
-      
-    <action
-      attribute="orderForm"
-      input="/form/addcardfee.jsp"
-      name="cardFeeForm"
-      parameter="task"
-      path="/admin/cardfee"
-      scope="request"
-      type="com.crm.op.struts.action.CardFeeAction" />  
-      
-	<action
-      attribute="dataForm"
-      input="/form/data.jsp"
-      name="dataForm"
-      parameter="task"
-      path="/admin/data"
-      scope="request"
-      type="com.crm.sysdo.struts.action.DataAction" />
-      
-	<action
-      attribute="staffForm"
-      input="/form/staff.jsp"
-      name="staffForm"
-      parameter="task"
-      path="/admin/staff"
-      scope="request"
-      type="com.crm.sysdo.struts.action.StaffAction" />      
-  
-  <action
-      attribute="collectForm"
-      input="/form/collect.jsp"
-      name="collectForm"
-      parameter="task"
-      path="/admin/collect"
-      scope="request"
-      type="com.crm.sysdo.struts.action.CollectAction" />      
-      
-  <action
-      attribute="goodsForm"
-      input="/form/goods.jsp"
-      name="goodsForm"
-      parameter="task"
-      path="/admin/goods"
-      scope="request"
-      type="com.crm.sysdo.struts.action.GoodsAction" />      
-  
-  <action
-      attribute="goodsTypeForm"
-      input="/form/goodstype.jsp"
-      name="goodsTypeForm"
-      parameter="task"
-      path="/admin/goodstype"
-      scope="request"
-      type="com.crm.sysdo.struts.action.GoodsTypeAction" />    
-    <action
-      attribute="icdForm"
-      input="/form/icd.jsp"
-      name="icdForm"
-      parameter="task"
-      path="/admin/icd"
-      scope="request"
-      type="com.crm.sysdo.struts.action.IcdAction" />    
-      
-      <!--
-    <action
-      attribute="ManuFacturerForm"
-      input="/form/manu.jsp"
-      name="ManuFacturerForm"
-      parameter="task"
-      path="/admin/manu"
-      scope="request"
-      type="com.crm.sysdo.struts.action.ManufacturerAction" />
-      -->
-      
-   <action
-      attribute="regTypeForm"
-      input="/form/regType.jsp"
-      name="regTypeForm"
-      parameter="task"
-      path="/admin/regType"
-      scope="request"
-      type="com.crm.sysdo.struts.action.RegTypeAction" />   
-      
-    <action
-      attribute="toolinfoForm"
-      input="/form/toolinfo.jsp"
-      name="toolinfoForm"
-      parameter="task"
-      path="/admin/toolinfo"
-      scope="request"
-      type="com.crm.sysdo.struts.action.ToolinfoAction" />      
-               
-   <action
-      attribute="toolsaveForm"
-      input="/form/toolsave.jsp"
-      name="toolsaveForm"
-      parameter="task"
-      path="/admin/toolsave"
-      scope="request"
-      type="com.crm.sysdo.struts.action.ToolSaveAction" />      
-  
-   <action
-      attribute="fileForm"
-      input="/form/addfile.jsp"
-      name="fileForm"
-      parameter="task"
-      path="/admin/file"
-      scope="request"
-      type="com.crm.sysdo.struts.action.FileAction" /> 	
-   	
-	<action
-      attribute="hisForm"
-      input="/form/his.jsp"
-      name="hisForm"
-      parameter="task"
-      path="/admin/his"
-      scope="request"
-      type="com.crm.ddt.struts.action.HisAction" />   
-      
-    <action
-      attribute="proveForm"
-      input="/form/prove.jsp"
-      name="proveForm"
-      parameter="task"
-      path="/admin/prove"
-      scope="request"
-      type="com.crm.ddt.struts.action.ProveAction" />   
-    
-    <action
-      attribute="illnessForm"
-      input="/form/illness.jsp"
-      name="illnessForm"
-      parameter="task"
-      path="/admin/illness"
-      scope="request"
-      type="com.crm.ddt.struts.action.IllnewssAction" />   
-      
-   <action
-      attribute="deformityForm"
-      input="/form/deformity.jsp"
-      name="deformityForm"
-      parameter="task"
-      path="/admin/deformity"
-      scope="request"
-      type="com.crm.ddt.struts.action.DeformityAction" />   
-   
-   <action
-      attribute="medicalForm"
-      input="/form/medical.jsp"
-      name="medicalForm"
-      parameter="task"
-      path="/admin/medical"
-      scope="request"
-      type="com.crm.ddt.struts.action.MedicalAction" />   
-      
-  </action-mappings>
-  
-  <controller
+		<form-bean name="hisForm"
+			type="com.crm.ddt.struts.form.HisForm" />
+		<form-bean name="proveForm"
+			type="com.crm.ddt.struts.form.ProveForm" />
+		<form-bean name="illnessForm"
+			type="com.crm.ddt.struts.form.IllnessForm" />
+		<form-bean name="deformityForm"
+			type="com.crm.ddt.struts.form.DeformityForm" />
+		<form-bean name="medicalForm"
+			type="com.crm.ddt.struts.form.MedicalForm" />
+
+		<form-bean name="custForm"
+			type="com.crm.op.struts.form.CustForm" />
+		<form-bean name="orderForm"
+			type="com.crm.op.struts.form.OrderForm" />
+		<form-bean name="regForm" type="com.crm.op.struts.form.RegForm" />
+		<form-bean name="cardFeeForm"
+			type="com.crm.op.struts.form.CardFeeForm" />
+		<form-bean name="sickForm"
+			type="com.crm.op.struts.form.SickForm" />
+
+	</form-beans>
+
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="clientForm" input="/form/client.jsp"
+			name="clientForm" parameter="task" path="/admin/client"
+			scope="request" type="com.crm.client.struts.action.ClientAction" />
+		<action attribute="ruleForm" input="/form/rule.jsp"
+			name="ruleForm" parameter="task" path="/admin/rule" scope="request"
+			type="com.crm.client.struts.action.RuleAction" />
+		<action attribute="businessForm" input="/form/business.jsp"
+			name="businessForm" parameter="task" path="/admin/business"
+			scope="request" type="com.crm.client.struts.action.BusinessAction" />
+		<action attribute="deptForm" input="/form/dept.jsp"
+			name="deptForm" parameter="task" path="/admin/dept" scope="request"
+			type="com.crm.sysdo.struts.action.DeptAction" />
+		<action attribute="sickbedForm" input="/form/sickbed.jsp"
+			name="sickbedForm" parameter="task" path="/admin/sickbed"
+			scope="request" type="com.crm.sysdo.struts.action.SickbedAction" />
+
+		<action attribute="custForm" input="/form/index.jsp"
+			name="custForm" parameter="task" path="/admin/cust" scope="request"
+			type="com.crm.op.struts.action.CustAction" />
+
+		<action attribute="regForm" input="/form/addreg.jsp"
+			name="regForm" parameter="task" path="/admin/reg" scope="request"
+			type="com.crm.op.struts.action.RegAction" />
+
+		<action attribute="orderForm" input="/form/addorder.jsp"
+			name="orderForm" parameter="task" path="/admin/order" scope="request"
+			type="com.crm.op.struts.action.OrderAction" />
+
+		<action attribute="orderForm" input="/form/addcardfee.jsp"
+			name="cardFeeForm" parameter="task" path="/admin/cardfee"
+			scope="request" type="com.crm.op.struts.action.CardFeeAction" />
+
+		<action attribute="dataForm" input="/form/data.jsp"
+			name="dataForm" parameter="task" path="/admin/data" scope="request"
+			type="com.crm.sysdo.struts.action.DataAction" />
+
+		<action attribute="staffForm" input="/form/staff.jsp"
+			name="staffForm" parameter="task" path="/admin/staff" scope="request"
+			type="com.crm.sysdo.struts.action.StaffAction" />
+
+		<action attribute="collectForm" input="/form/collect.jsp"
+			name="collectForm" parameter="task" path="/admin/collect"
+			scope="request" type="com.crm.sysdo.struts.action.CollectAction" />
+
+		<action attribute="goodsForm" input="/form/goods.jsp"
+			name="goodsForm" parameter="task" path="/admin/goods" scope="request"
+			type="com.crm.sysdo.struts.action.GoodsAction" />
+
+		<action attribute="goodsTypeForm" input="/form/goodstype.jsp"
+			name="goodsTypeForm" parameter="task" path="/admin/goodstype"
+			scope="request" type="com.crm.sysdo.struts.action.GoodsTypeAction" />
+		<action attribute="icdForm" input="/form/icd.jsp" name="icdForm"
+			parameter="task" path="/admin/icd" scope="request"
+			type="com.crm.sysdo.struts.action.IcdAction" />
+
+		<!--
+			<action
+			attribute="ManuFacturerForm"
+			input="/form/manu.jsp"
+			name="ManuFacturerForm"
+			parameter="task"
+			path="/admin/manu"
+			scope="request"
+			type="com.crm.sysdo.struts.action.ManufacturerAction" />
+		-->
+
+		<action attribute="regTypeForm" input="/form/regType.jsp"
+			name="regTypeForm" parameter="task" path="/admin/regType"
+			scope="request" type="com.crm.sysdo.struts.action.RegTypeAction" />
+
+		<action attribute="toolinfoForm" input="/form/toolinfo.jsp"
+			name="toolinfoForm" parameter="task" path="/admin/toolinfo"
+			scope="request" type="com.crm.sysdo.struts.action.ToolinfoAction" />
+
+		<action attribute="toolsaveForm" input="/form/toolsave.jsp"
+			name="toolsaveForm" parameter="task" path="/admin/toolsave"
+			scope="request" type="com.crm.sysdo.struts.action.ToolSaveAction" />
+
+		<action attribute="fileForm" input="/form/addfile.jsp"
+			name="fileForm" parameter="task" path="/admin/file" scope="request"
+			type="com.crm.sysdo.struts.action.FileAction" />
+
+		<action attribute="hisForm" input="/form/his.jsp" name="hisForm"
+			parameter="task" path="/admin/his" scope="request"
+			type="com.crm.ddt.struts.action.HisAction" />
+
+		<action attribute="proveForm" input="/form/prove.jsp"
+			name="proveForm" parameter="task" path="/admin/prove" scope="request"
+			type="com.crm.ddt.struts.action.ProveAction" />
+
+		<action attribute="illnessForm" input="/form/illness.jsp"
+			name="illnessForm" parameter="task" path="/admin/illness"
+			scope="request" type="com.crm.ddt.struts.action.IllnewssAction" />
+
+		<action attribute="deformityForm" input="/form/deformity.jsp"
+			name="deformityForm" parameter="task" path="/admin/deformity"
+			scope="request" type="com.crm.ddt.struts.action.DeformityAction" />
+
+		<action attribute="medicalForm" input="/form/medical.jsp"
+			name="medicalForm" parameter="task" path="/admin/medical"
+			scope="request" type="com.crm.ddt.struts.action.MedicalAction" />
+
+		<action attribute="templateForm" input="/form/templatesp"
+			name="templateForm" parameter="task" path="/admin/template"
+			scope="request" type="com.crm.sysdo.struts.action.TemplateAction" />
+
+		<action attribute="disTplForm" input="/form/disTpl"
+			name="disTplForm" parameter="task" path="/admin/disTpl"
+			scope="request" type="com.crm.sysdo.struts.action.DisTplAction" />
+
+		<action attribute="preTplForm" input="/form/preTpl"
+			name="preTplForm" parameter="task" path="/admin/preTpl"
+			scope="request" type="com.crm.sysdo.struts.action.PreTplAction" />
+
+		<action attribute="sickForm" input="/form/sick" name="sickForm"
+			parameter="task" path="/admin/sick" scope="request"
+			type="com.crm.sysdo.struts.action.SickAction" />
+
+	</action-mappings>
+
+	<controller
 		processorClass="org.springframework.web.struts.DelegatingRequestProcessor">
 	</controller>
 
-  <message-resources parameter="com.crm.struts.ApplicationResources" />
-  <plug-in
+	<message-resources parameter="com.crm.struts.ApplicationResources" />
+	<plug-in
 		className="org.springframework.web.struts.ContextLoaderPlugIn">
 		<set-property property="contextConfigLocation"
 			value="/WEB-INF/applicationContext.xml" />
-  </plug-in>
-  
+	</plug-in>
+
 </struts-config>
 

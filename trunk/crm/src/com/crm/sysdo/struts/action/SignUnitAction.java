@@ -42,20 +42,20 @@ public class SignUnitAction extends DispatchAction {
 			throws Exception {
 		SignUnitForm signUnitForm = (SignUnitForm) form;
 		TSignUnit tSignUnit = new TSignUnit();
-		 BeanUtils.copyProperties(tSignUnit, signUnitForm);
+		BeanUtils.copyProperties(tSignUnit, signUnitForm);
 		Map<String, Object> map = new HashMap<String, Object>();
 		PageUtil pageUtil = new PageUtil(request, this.signUnitServiceDao
 				.getCount(tSignUnit, map), GlobVar.PAGESIZE_BY_TWENTY_DATA);
 		request.setAttribute("pageUtil", pageUtil);
-		List list = this.signUnitServiceDao.signunitList(tSignUnit, map, pageUtil);
+		List list = this.signUnitServiceDao.signunitList(tSignUnit, map,
+				pageUtil);
 		request.setAttribute("signunitList", list);
 		// 32 角色
 		List sl = perDao.getSonPerList(PowerKey.KEY_SINGUNIT);
 		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/signunit/signunitlist.jsp");
 	}
-	
-	
+
 	/**
 	 * 跳转往来签约单位增加的页面
 	 * 
@@ -73,8 +73,7 @@ public class SignUnitAction extends DispatchAction {
 		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/signunit/addsignunit.jsp");
 	}
-	
-	
+
 	/**
 	 * 签约单位增加
 	 * 
@@ -87,19 +86,21 @@ public class SignUnitAction extends DispatchAction {
 	public ActionForward addSignUnit(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		SignUnitForm signUnitForm =(SignUnitForm) form;
+		SignUnitForm signUnitForm = (SignUnitForm) form;
 		TSignUnit tSignUnit = new TSignUnit();
 		BeanUtils.copyProperties(tSignUnit, signUnitForm);
-		tSignUnit.setCreateDate(DateUtil.StringToDate_YMD(DateUtil.DateToStringBy_YMD(new Date())));
+		tSignUnit.setCreateDate(DateUtil.StringToDate_YMD(DateUtil
+				.DateToStringBy_YMD(new Date())));
 		signUnitServiceDao.addSignUnit(tSignUnit);
-	    response.getWriter().write(
-				"<script>location.href='"
-						+ request.getContextPath()
-						+ "/admin/signUnit.do?task=signUnitList&modfunid=85';</script>");
-	    return null;
+		response
+				.getWriter()
+				.write(
+						"<script>location.href='"
+								+ request.getContextPath()
+								+ "/admin/signUnit.do?task=signUnitList&modfunid=85';</script>");
+		return null;
 	}
-	
-	
+
 	/**
 	 * 签约单位跳转到更新页面
 	 * 
@@ -109,24 +110,23 @@ public class SignUnitAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward toUpdateSignUnit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		SignUnitForm signUnitForm =(SignUnitForm) form;
-		String id =request.getParameter("id");
+	public ActionForward toUpdateSignUnit(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		SignUnitForm signUnitForm = (SignUnitForm) form;
+		String id = request.getParameter("id");
 		TSignUnit tSignUnit = signUnitServiceDao.get(id);
 		request.setAttribute("tSignUnit", tSignUnit);
 		BeanUtils.copyProperties(signUnitForm, tSignUnit);
-		
+		signUnitForm.setCreateDates(DateUtil.DateToStringBy_YMDHMS(tSignUnit
+				.getCreateDate()));
+
 		// 32 角色
 		List sl = perDao.getSonPerList(PowerKey.KEY_SINGUNIT);
 		request.setAttribute("sonPowerByMenu", sl);
 		return new ActionForward("/admin/sysdo/signunit/updatesignunit.jsp");
 	}
-	
-	
-	
-	
+
 	/**
 	 * 签约单位更新
 	 * 
@@ -139,23 +139,22 @@ public class SignUnitAction extends DispatchAction {
 	public ActionForward updateSignUnit(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
-		SignUnitForm signUnitForm =(SignUnitForm) form;
-		
+
+		SignUnitForm signUnitForm = (SignUnitForm) form;
 		TSignUnit tSignUnit = new TSignUnit();
-	    BeanUtils.copyProperties(tSignUnit, signUnitForm);
-	    TSignUnit tSignUnit1 = signUnitServiceDao.get(String.valueOf(tSignUnit.getId()));
-	    tSignUnit.setCreateDate(tSignUnit1.getCreateDate());
-	    signUnitServiceDao.updateSignUnit(tSignUnit);
-	    response.getWriter().write(
+		BeanUtils.copyProperties(tSignUnit, signUnitForm);
+
+		tSignUnit.setCreateDate(DateUtil.StringToDate_YMDHMS(signUnitForm
+				.getCreateDates()));
+
+		signUnitServiceDao.updateSignUnit(tSignUnit);
+		response.getWriter().write(
 				"<script>alert('签约单位修改成功！');location.href='"
 						+ request.getContextPath()
 						+ "/admin/signUnit.do?task=signUnitList';</script>");
-	    return null;
+		return null;
 	}
-	
-	
-	
+
 	/**
 	 * 签约单位删除
 	 * 
@@ -169,37 +168,31 @@ public class SignUnitAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String id = request.getParameter("id");
-	    this.signUnitServiceDao.delSignUnit(id);
-	    response.getWriter().write(
-				"<script>alert('签约单位删除！');location.href='"
-						+ request.getContextPath()
-						+ "/admin/signUnit.do?task=signUnitList&modfunid=85';</script>");
-	    
-	    return null;
-	}
+		this.signUnitServiceDao.delSignUnit(id);
+		response
+				.getWriter()
+				.write(
+						"<script>alert('签约单位删除！');location.href='"
+								+ request.getContextPath()
+								+ "/admin/signUnit.do?task=signUnitList&modfunid=85';</script>");
 
+		return null;
+	}
 
 	public SignUnitServiceDao getSignUnitServiceDao() {
 		return signUnitServiceDao;
 	}
 
-
 	public void setSignUnitServiceDao(SignUnitServiceDao signUnitServiceDao) {
 		this.signUnitServiceDao = signUnitServiceDao;
 	}
-
 
 	public Permission getPerDao() {
 		return perDao;
 	}
 
-
 	public void setPerDao(Permission perDao) {
 		this.perDao = perDao;
 	}
-	
-
-
-
 
 }

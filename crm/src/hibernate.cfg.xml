@@ -86,6 +86,10 @@
 		<mapping resource="com/crm/ddt/po/TIllness.hbm.xml" />
 		<mapping resource="com/crm/ddt/po/TMedical.hbm.xml" />
 		<mapping resource="com/crm/ddt/po/TDeformity.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TTemplate.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TDisTpl.hbm.xml" />
+		<mapping resource="com/crm/sysdo/po/TPreTpl.hbm.xml" />
+		<mapping resource="com/crm/op/po/TSick.hbm.xml" />
 
 
 

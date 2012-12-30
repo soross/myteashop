@@ -1,20 +1,14 @@
-package com.crm.op.struts.form;
+package com.crm.op.po;
 
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-
 /**
- * TCustomer entity.
+ * TSick entity.
  * 
  * @author MyEclipse Persistence Tools
  */
 
-public class SickForm extends ActionForm implements java.io.Serializable {
+public class TSick implements java.io.Serializable {
 
 	// Fields
 
@@ -32,7 +26,22 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public SickForm() {
+	public TSick() {
+	}
+
+	/** full constructor */
+	public TSick(String code, String sickname, String garden, String old,
+			String mobile, String staff, String icCardCode, String state,
+			Date createDate) {
+		this.code = code;
+		this.sickname = sickname;
+		this.garden = garden;
+		this.old = old;
+		this.mobile = mobile;
+		this.staff = staff;
+		this.icCardCode = icCardCode;
+		this.state = state;
+		this.createDate = createDate;
 	}
 
 	// Property accessors
@@ -54,7 +63,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getSickname() {
-		return sickname;
+		return this.sickname;
 	}
 
 	public void setSickname(String sickname) {
@@ -62,7 +71,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getGarden() {
-		return garden;
+		return this.garden;
 	}
 
 	public void setGarden(String garden) {
@@ -70,7 +79,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getOld() {
-		return old;
+		return this.old;
 	}
 
 	public void setOld(String old) {
@@ -78,7 +87,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getMobile() {
-		return mobile;
+		return this.mobile;
 	}
 
 	public void setMobile(String mobile) {
@@ -86,7 +95,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getStaff() {
-		return staff;
+		return this.staff;
 	}
 
 	public void setStaff(String staff) {
@@ -94,7 +103,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getIcCardCode() {
-		return icCardCode;
+		return this.icCardCode;
 	}
 
 	public void setIcCardCode(String icCardCode) {
@@ -102,7 +111,7 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 	}
 
 	public String getState() {
-		return state;
+		return this.state;
 	}
 
 	public void setState(String state) {
@@ -117,27 +126,4 @@ public class SickForm extends ActionForm implements java.io.Serializable {
 		this.createDate = createDate;
 	}
 
-	/**
-	 * Method validate
-	 * 
-	 * @param mapping
-	 * @param request
-	 * @return ActionErrors
-	 */
-	public ActionErrors validate(ActionMapping mapping,
-			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * Method reset
-	 * 
-	 * @param mapping
-	 * @param request
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		this.state="0";
-	}
 }

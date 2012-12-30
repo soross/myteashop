@@ -285,7 +285,7 @@ public class CardFeeAction extends DispatchAction {
 							+ "/admin/cardfee.do?task=cardFeeList';</script>");
 		} else {
 			response.getWriter().write(
-					"<script>alert('É¾³ýÉ¾³ýÊ§°Ü!');location.href='"
+					"<script>alert('É¾³ýÊ§°Ü!');location.href='"
 							+ request.getContextPath()
 							+ "/admin/cardfee.do?task=cardFeeList';</script>");
 		}

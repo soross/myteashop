@@ -133,7 +133,7 @@ public class RegFeeDaoImpl extends HibernateDaoSupport implements RegFeeDao {
 				new HibernateCallback() {
 					public Object doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						String hql = "from TRegister where order_id='"
+						String hql = "from TRegisterFee where order_id='"
 								+ orderID + "'";
 						Query query = session.createQuery(hql);
 						return query.list();

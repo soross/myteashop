@@ -17,7 +17,7 @@ public class SignUnitForm extends ActionForm{
 	private String linkman;
 	private String mobile; 
 	private String tel;
-	private Date createDate;
+	private String createDates;
 	private String address; 
 	private String signunitFlag;
 	private String pinyin; 
@@ -109,12 +109,12 @@ public class SignUnitForm extends ActionForm{
 		this.tel = tel;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	public String getCreateDates() {
+		return createDates;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateDates(String createDate) {
+		this.createDates = createDate;
 	}
 
 	public String getAddress() {

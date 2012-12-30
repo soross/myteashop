@@ -54,7 +54,7 @@ public class UnitForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		this.state="0";
 	}
 
 	public Long getId() {

@@ -1,6 +1,8 @@
 package com.crm.pub;
 
 public class PowerKey {
+	public static String KEY_SICK = "8";
+	
 	public static String KEY_HIS = "15";
 	
 	public static String KEY_PROVE="18";
@@ -34,6 +36,12 @@ public class PowerKey {
 	public static String KEY_TOOL_INFO = "90";
 	
 	public static String KEY_GOODS = "91";
+	
+	public static String KEY_TEMPLATE = "92";
+	
+	public static String KEY_PRETPL = "93";
+	
+	public static String KEY_DISTPL = "94";
 	
 	public static String KEY_ICD="95";
 	

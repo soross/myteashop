@@ -77,5 +77,6 @@
 	<bean name="/login" class="com.crm.pub.struts.action.LoginAction">
 		<property name="userServiceDao" ref="userServiceDao"></property>
 		<property name="cacheUtil" ref="powerCache"></property>
+		<property name="per" ref="perDao"></property>
 	</bean>
 </beans>

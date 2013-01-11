@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
 import com.crm.per.po.TLog;
 import com.crm.pub.po.TPower;
@@ -221,10 +222,98 @@ public class PermissionImpl extends HibernateDaoSupport implements Permission {
 		return outBuffer.toString();
 
 	}
-	
-	
-	public void addLog(TLog log){
+
+	public void addLog(TLog log) {
 		this.getHibernateTemplate().save(log);
 	}
 
+	// 登入日志
+	public List<TLog> queryLoginLog(final TLog log, final PageUtil pageutil) {
+		List list = this.getHibernateTemplate().executeFind(
+				new HibernateCallback() {
+
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						String hql = "from TLog t where 1=1";
+
+						if (null != log.getUserid()
+								&& !"".equals(log.getUserid())) {
+							hql += " and userid like '%" + log.getUserid()
+									+ "%'";
+						}
+
+						if (null != log.getStartCreateDate()
+								&& !"".equals(log.getStartCreateDate())) {
+							hql += " and create_Date>=to_date('"
+									+ log.getStartCreateDate()
+									+ "','yyyy-mm-dd HH24:mi:ss') ";
+						}
+
+						if (null != log.getEndCreateDate()
+								&& !"".equals(log.getEndCreateDate())) {
+							hql += " and create_Date<=to_date('"
+									+ log.getEndCreateDate()
+									+ "','yyyy-mm-dd HH24:mi:ss') ";
+						}
+
+						if (null != log.getAction()
+								&& !"".equalsIgnoreCase(log.getAction())) {
+							hql += " and action ='" + log.getAction() + "'";
+						}
+						Query query = session.createQuery(hql);
+						query.setMaxResults(pageutil.getPagesize());
+						query.setFirstResult(pageutil.pastart());
+						return query.list();
+					}
+				});
+		return list;
+	}
+
+	// 登入日志统计
+	public int queryLoginLogCount(final TLog log) {
+		Integer i = (Integer) this.getHibernateTemplate().execute(
+				new HibernateCallback() {
+
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+
+						String hql = "select count(*) from TLog where 1=1";
+						if (null != log.getUserid()
+								&& !"".equals(log.getUserid())) {
+							hql += " and userid like '%" + log.getUserid()
+									+ "%'";
+						}
+
+						if (null != log.getStartCreateDate()
+								&& !"".equals(log.getStartCreateDate())) {
+							hql += " and create_Date>=to_date('"
+									+ log.getStartCreateDate()
+									+ "','yyyy-mm-dd HH24:mi:ss') ";
+						}
+
+						if (null != log.getEndCreateDate()
+								&& !"".equals(log.getEndCreateDate())) {
+							hql += " and create_Date<=to_date('"
+									+ log.getEndCreateDate()
+									+ "','yyyy-mm-dd HH24:mi:ss') ";
+						}
+
+						if (null != log.getAction()
+								&& !"".equalsIgnoreCase(log.getAction())) {
+							hql += " and action ='" + log.getAction() + "'";
+						}
+						Query query = session.createQuery(hql);
+						Integer count = (Integer) query.uniqueResult();
+
+						return count;
+					}
+				});
+		return i;
+	}
+
+	// 删除登入日志
+	public Boolean deleteLoginLog(TLog log) {
+		this.getHibernateTemplate().delete(log);
+		return true;
+	}
 }

@@ -17,6 +17,8 @@ public class TLog implements java.io.Serializable {
 	private String result;
 	private String content;
 	private Date createDate;
+	private String startCreateDate;
+	private String endCreateDate;
 	private String userid;
 	private String username;
 
@@ -75,9 +77,6 @@ public class TLog implements java.io.Serializable {
 		return this.createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
 
 	public String getUserid() {
 		return this.userid;
@@ -93,6 +92,26 @@ public class TLog implements java.io.Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

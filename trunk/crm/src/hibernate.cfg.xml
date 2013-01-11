@@ -90,7 +90,7 @@
 		<mapping resource="com/crm/sysdo/po/TDisTpl.hbm.xml" />
 		<mapping resource="com/crm/sysdo/po/TPreTpl.hbm.xml" />
 		<mapping resource="com/crm/op/po/TSick.hbm.xml" />
-
+		<mapping resource="com/crm/account/po/TSickFeeBill.hbm.xml" />
 
 
 	</session-factory>

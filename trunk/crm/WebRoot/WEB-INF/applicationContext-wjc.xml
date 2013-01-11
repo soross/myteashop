@@ -546,7 +546,7 @@
 		<property name="regFeeServiceDao" ref="regFeeServiceDaoProxy"></property>
 	</bean>
 
-	<!-- 诊疗模版 
+	<!-- 诊疗模版 -->
 	<bean name="templateDao"
 		class="com.crm.sysdo.dao.impl.TemplateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -564,9 +564,9 @@
 			ref="templateServiceDaoProxy">
 		</property>
 		<property name="perDao" ref="perDao"></property>
-	</bean>-->
+	</bean>
 
-	<!-- 疾病模版 
+	<!-- 疾病模版 -->
 	<bean name="disTplDao"
 		class="com.crm.sysdo.dao.impl.DisTplDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -582,9 +582,9 @@
 		class="com.crm.sysdo.struts.action.DisTplAction">
 		<property name="disTplServiceDao" ref="disTplServiceDaoProxy"></property>
 		<property name="perDao" ref="perDao"></property>
-	</bean>-->
+	</bean>
 
-	<!-- 处方模版 
+	<!-- 处方模版 -->
 	<bean name="preTplDao"
 		class="com.crm.sysdo.dao.impl.PreTplDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -600,10 +600,10 @@
 		class="com.crm.sysdo.struts.action.PreTplAction">
 		<property name="preTplServiceDao" ref="preTplServiceDaoProxy"></property>
 		<property name="perDao" ref="perDao"></property>
-	</bean>-->
+	</bean>
 
 
-	<!-- 病人 
+	<!-- 病人 -->
 	<bean name="sickDao" class="com.crm.op.dao.impl.SickDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -618,7 +618,7 @@
 		class="com.crm.op.struts.action.SickAction">
 		<property name="sickServiceDao" ref="sickServiceDaoProxy"></property>
 		<property name="perDao" ref="perDao"></property>
-	</bean>-->
+	</bean>
 
 
 </beans>

@@ -24,12 +24,15 @@ import org.apache.struts.actions.DispatchAction;
 
 import com.crm.page.PageUtil;
 import com.crm.per.dao.Permission;
+import com.crm.per.po.TLog;
 import com.crm.pub.GlobVar;
+import com.crm.pub.PowerKey;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
 import com.crm.pub.po.TUser;
 import com.crm.pub.service.dao.inf.UserServiceDao;
 import com.crm.pub.struts.form.UserForm;
+import com.crm.tool.DateUtil;
 
 /**
  * MyEclipse Struts Creation date: 10-22-2009
@@ -182,7 +185,6 @@ public class UserAction extends DispatchAction {
 		return null;
 	}
 
-
 	/**
 	 * 修改用户界面
 	 * 
@@ -196,18 +198,18 @@ public class UserAction extends DispatchAction {
 
 		String id = request.getParameter("id");
 		TUser suser = userServiceDao.getUser(id);
-		
+
 		Set<TRole> roles = suser.getRoles();
-		
+
 		String[] rs = new String[roles.size()];
-		int index=0;
-		for (TRole role:roles) {
+		int index = 0;
+		for (TRole role : roles) {
 			rs[index] = role.getRoleid().toString();
 			index++;
 		}
 
 		userForm.setTrole(rs);
-		
+
 		List rolelist = userServiceDao.searchRole();
 		request.setAttribute("uid", suser.getUserid());
 		request.setAttribute("rolelist", rolelist);
@@ -238,7 +240,7 @@ public class UserAction extends DispatchAction {
 		users.setEmail(userForm.getEmail());
 		users.setTel(userForm.getTel());
 		users.setPhone(userForm.getPhone());
-		
+
 		for (int i = 0; i < roles.length; i++) {
 			TRole getrole = new TRole();
 			getrole.setRoleid(new Long(roles[i]));
@@ -348,7 +350,7 @@ public class UserAction extends DispatchAction {
 
 		return null;
 	}
-	
+
 	public ActionForward toUpdatePower(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -358,18 +360,18 @@ public class UserAction extends DispatchAction {
 		TUser suser = userServiceDao.getUser(id);
 		Set<TPower> powers = suser.getPowers();
 		String[] ps = new String[powers.size()];
-		
-		int index=0;
-		for (TPower po :powers) {
+
+		int index = 0;
+		for (TPower po : powers) {
 			ps[index] = po.getId().toString();
 			index++;
 		}
 
 		userForm.setTprows(ps);
-		
+
 		List powerlist = userServiceDao.searchPower();
 		request.setAttribute("powerlist", powerlist);
-		
+
 		userForm.setUserid(suser.getUserid());
 
 		// 31 用户列表
@@ -378,6 +380,7 @@ public class UserAction extends DispatchAction {
 
 		return new ActionForward("/admin/pub/user/updatepower.jsp");
 	}
+
 	/**
 	 * 修改权限
 	 * 
@@ -390,7 +393,7 @@ public class UserAction extends DispatchAction {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 		String[] powers = userForm.getTprows();
 		TUser users = userServiceDao.getUser(userForm.getUserid());
-		//BeanUtils.copyProperties(users, userForm);
+		// BeanUtils.copyProperties(users, userForm);
 		users.getPowers().clear();
 		for (int i = 0; i < powers.length; i++) {
 			TPower getpower = new TPower();
@@ -416,42 +419,39 @@ public class UserAction extends DispatchAction {
 		}
 		return null;
 	}
-	
-	
-	
+
 	/**
 	 * 跳转修改登入用户界面
 	 * 
 	 * @throws InvocationTargetException
 	 * @throws IllegalAccessException
 	 */
-	public ActionForward toUpdateUserByLogin(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward toUpdateUserByLogin(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 
-		String id = ((TUser)request.getSession().getAttribute("user")).getUserid();
+		String id = ((TUser) request.getSession().getAttribute("user"))
+				.getUserid();
 		TUser suser = userServiceDao.getUser(id);
 		BeanUtils.copyProperties(userForm, suser);
 
-		//  60
+		// 60
 		List list = perDao.getSonPerList("60");
 		request.setAttribute("sonPowerByMenu", list);
 
 		return new ActionForward("/admin/pub/user/updateuserlogin.jsp");
 	}
-	
-	
-	
+
 	/**
 	 * 修改登入用户
 	 * 
 	 * @throws InvocationTargetException
 	 * @throws IllegalAccessException
 	 */
-	public ActionForward updateUserByLogin(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward updateUserByLogin(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
 		TUser users = userServiceDao.getUser(userForm.getUserid());
 		users.setUsername(userForm.getUsername());
@@ -463,18 +463,141 @@ public class UserAction extends DispatchAction {
 
 		boolean bool = userServiceDao.updateUser(users);
 		if (bool) {
-			response.getWriter().print(
-					"<script> alert('修改成功!');location.href='"
-							+ request.getContextPath()
-							+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
+			response
+					.getWriter()
+					.print(
+							"<script> alert('修改成功!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
 		} else {
-			response.getWriter().print(
-					"<script> alert('修改失败,请重试!');location.href='"
-							+ request.getContextPath()
-							+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
+			response
+					.getWriter()
+					.print(
+							"<script> alert('修改失败,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/user.do?task=toUpdateUserByLogin';</script>");
 		}
 		return null;
 	}
+
+	/**
+	 * 跳转修改登入用户问题修改
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward toUpdateUserQuestionByLogin(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+
+		String id = ((TUser) request.getSession().getAttribute("user"))
+				.getUserid();
+		TUser suser = userServiceDao.getUser(id);
+		BeanUtils.copyProperties(userForm, suser);
+		userForm.setJobno("");
+
+		// 60
+		List list = perDao.getSonPerList("61");
+		request.setAttribute("sonPowerByMenu", list);
+
+		return new ActionForward("/admin/pub/user/updateuserquestionlogin.jsp");
+	}
+
+	/**
+	 * 修改登入用户
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward updateUserQuestionByLogin(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		UserForm userForm = (UserForm) form;// TODO Auto-generated method stub
+		TUser users = userServiceDao.getUser(userForm.getUserid());
+		if (null == users.getJobno()) {
+			users.setJobno("");
+		}
+		if (null == userForm.getJobno()) {
+			userForm.setJobno("");
+		}
+		if (users.getJobno().equalsIgnoreCase(userForm.getJobno())) {
+			users.setHomeplace(userForm.getQuestion());
+			users.setJobno(userForm.getAnswer());
+
+			boolean bool = userServiceDao.updateUser(users);
+			if (bool) {
+				response
+						.getWriter()
+						.print(
+								"<script> alert('密码问答设置成功!');location.href='"
+										+ request.getContextPath()
+										+ "/admin/user.do?task=toUpdateUserQuestionByLogin';</script>");
+			} else {
+				response
+						.getWriter()
+						.print(
+								"<script> alert('修改失败,请重试!');location.href='"
+										+ request.getContextPath()
+										+ "/admin/user.do?task=toUpdateUserQuestionByLogin';</script>");
+			}
+		} else {
+			response
+					.getWriter()
+					.print(
+							"<script> alert('修改失败,答案错误,请重试!');location.href='"
+									+ request.getContextPath()
+									+ "/admin/user.do?task=toUpdateUserQuestionByLogin';</script>");
+		}
+		return null;
+	}
+
+	/**
+	 * 修改登入用户
+	 * 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 */
+	public ActionForward queryLoginLog(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		UserForm uf = (UserForm) form;
+		TLog log = new TLog();
+		log.setAction("login");
+		log.setUserid(uf.getUserid());
+		log.setStartCreateDate(uf.getStartCeateDates());
+		log.setEndCreateDate(uf.getEndCeateDates());
+
+		int cnt = perDao.queryLoginLogCount(log);
+		PageUtil pageUtil = new PageUtil(request, cnt,
+				GlobVar.PAGESIZE_BY_TEN_DATA);
+		List<TLog> list = perDao.queryLoginLog(log, pageUtil);
+		request.setAttribute("logList", list);
+
+		List sonList = perDao.getSonPerList(PowerKey.KEY_LOGIN_LOG);
+		request.setAttribute("sonPowerByMenu", sonList);
+
+		request.setAttribute("pageUtil", pageUtil);
+
+		return new ActionForward("/admin/pub/log/loginloglist.jsp");
+	}
+
+	public ActionForward deleteUserLoginLog(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		UserForm uf = (UserForm) form;
+		TLog log = new TLog();
+		log.setId(new Long(uf.getId()));
+		perDao.deleteLoginLog(log);
+
+		response.getWriter().print(
+				"<script> alert('删除成功!');location.href='"
+						+ request.getContextPath()
+						+ "/admin/user.do?task=queryLoginLog';</script>");
+
+		return null;
+	}
+
 	public Permission getPerDao() {
 		return perDao;
 	}

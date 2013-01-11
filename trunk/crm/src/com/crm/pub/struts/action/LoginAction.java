@@ -23,6 +23,8 @@ import org.apache.struts.action.ActionRedirect;
 import org.apache.struts.actions.DispatchAction;
 
 import com.crm.cache.CacheUtil;
+import com.crm.per.dao.Permission;
+import com.crm.per.po.TLog;
 import com.crm.pub.excel.ComparatorPower;
 import com.crm.pub.po.TPower;
 import com.crm.pub.po.TRole;
@@ -43,6 +45,7 @@ public class LoginAction extends DispatchAction {
 
 	private UserServiceDao userServiceDao;
 	private CacheUtil cacheUtil;
+	private Permission per;
 
 	/**
 	 * 登录方法,包括用户的信息验证
@@ -54,8 +57,12 @@ public class LoginAction extends DispatchAction {
 		// 随机码
 		String code = request.getSession().getAttribute("rand").toString();
 
-		if (null != loginForm.getCode()
-				&& loginForm.getCode().equals(code)) {// 判断验证码
+		TLog log = new TLog();
+		log.setAction(request.getParameter("task").toString());
+		log.setCreateDate(new Date());
+		log.setUserid(loginForm.getUserId());
+
+		if (null != loginForm.getCode() && loginForm.getCode().equals(code)) {// 判断验证码
 			// 获取用户信息
 			TUser tuser = userServiceDao.getUser(loginForm.getUserId());
 			if (null != tuser) {// 判断用户
@@ -111,24 +118,44 @@ public class LoginAction extends DispatchAction {
 
 						// 保存user到session
 						request.getSession().setAttribute("user", tuser);
+
+						log.setResult("true");
+						log.setUsername(tuser.getUsername());
+						per.addLog(log);
+
 						return new ActionRedirect("/admin/main.jsp");
 					} else {
 						messages.add("msg", new ActionMessage("用户处于冻结状态,无法登入!",
 								false));
+
+						log.setResult("false");
+						log.setContent("用户处于冻结状态,无法登入!");
+						per.addLog(log);
+
 						this.saveMessages(request, messages);
 					}
 
 				} else {
 					messages.add("msg", new ActionMessage("用户密码不正确!", false));
+
+					log.setResult("false");
+					log.setContent("用户密码不正确!");
+					per.addLog(log);
 					this.saveMessages(request, messages);
 				}
 
 			} else {
 				messages.add("msg", new ActionMessage("用户不存在!", false));
+				log.setResult("false");
+				log.setContent("用户不存在!");
+				per.addLog(log);
 				this.saveMessages(request, messages);
 			}
 		} else {
 			messages.add("msg", new ActionMessage("验证码不正确!", false));
+			log.setResult("false");
+			log.setContent("验证码不正确!");
+			per.addLog(log);
 			this.saveMessages(request, messages);
 		}
 		return mapping.getInputForward();
@@ -167,10 +194,7 @@ public class LoginAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.getSession().invalidate();
-		response.getWriter().write(
-				"<script>top.location.href='" + request.getContextPath()
-						+ "/login.jsp';</script>");
-		return null;
+		return new ActionRedirect("/");
 	}
 
 	/**
@@ -207,6 +231,22 @@ public class LoginAction extends DispatchAction {
 		// ActiveXObject('WScript.Shell');WshShell.Run('calc');</script>");
 		Runtime.getRuntime().exec("calc");
 		return null;
+	}
+
+	/**
+	 * 万年历
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward WanNianLi(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		return new ActionRedirect("/admin/pub/wannianli.html");
 	}
 
 	/**
@@ -323,6 +363,14 @@ public class LoginAction extends DispatchAction {
 
 	public void setCacheUtil(CacheUtil cacheUtil) {
 		this.cacheUtil = cacheUtil;
+	}
+
+	public Permission getPer() {
+		return per;
+	}
+
+	public void setPer(Permission per) {
+		this.per = per;
 	}
 
 }

@@ -620,5 +620,21 @@
 		<property name="perDao" ref="perDao"></property>
 	</bean>
 
-
+	<!-- 发器具 -->
+	<bean name="toolinfoPayoutDao" class="com.crm.op.dao.impl.ToolinfoPayoutDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="toolinfoPayoutServiceDao"
+		class="com.crm.op.service.impl.ToolinfoPayoutServiceDaoImpl">
+		<property name="toolinfoPayoutDao" ref="toolinfoPayoutDao"></property>
+	</bean>
+	<bean name="toolinfoPayoutServiceDaoProxy" parent="basicProxy">
+		<property name="target" ref="toolinfoPayoutServiceDao"></property>
+	</bean>
+	<bean name="/admin/toolinfoPayout"
+		class="com.crm.op.struts.action.ToolinfoPayoutAction">
+		<property name="toolinfoPayoutServiceDao" ref="toolinfoPayoutServiceDaoProxy"></property>
+		<property name="perDao" ref="perDao"></property>
+	</bean>
+	
 </beans>

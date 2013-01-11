@@ -96,7 +96,8 @@ public class RegisterReportAction extends DispatchAction {
 		request.setAttribute("pageUtil", pageUtil);
 
 		// 129½ÇÉ«
-		List sl = perDao.getSonPerList(PowerKey.KEY_REGAMOUNT);
+		List sonList = perDao.getSonPerList(PowerKey.KEY_REGAMOUNT);
+		request.setAttribute("sonPowerByMenu", sonList);
 		return new ActionForward("/admin/report/register/regAmount.jsp");
 	}
 

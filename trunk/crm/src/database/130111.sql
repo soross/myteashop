@@ -62,8 +62,51 @@ delete from t_power t where t.id='62';--输入法设置
 delete from t_power t where t.id='63';--用户喜好设置
 delete from t_power t where t.id='69';--清理升级文件设置
 
+update t_power set url='/login.do?task=WanNianLi&modfunid=66' where id='66';
 
+-- Create sequence 
+create sequence SEQ_LOG
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
 
+-- Create table
+create table T_LOG
+(
+  ID          NUMBER not null,
+  ACTION      VARCHAR2(255),
+  RESULT      VARCHAR2(255),
+  CONTENT     CLOB,
+  CREATE_DATE DATE default sysdate,
+  USERID      VARCHAR2(255),
+  USERNAME    VARCHAR2(255)
+);
+-- Add comments to the columns 
+comment on column T_LOG.ACTION
+  is '服务';
+comment on column T_LOG.RESULT
+  is '结果';
+comment on column T_LOG.CONTENT
+  is '内容';
+comment on column T_LOG.CREATE_DATE
+  is '时间';
+comment on column T_LOG.USERID
+  is '用户id';
+comment on column T_LOG.USERNAME
+  is '用户名称';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_LOG
+  add constraint T_LOG_PK primary key (ID)
+  ;
+
+delete t_power where id in('123');
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (123, '登入日志查询', '/admin/user.do?task=queryLoginLog&modfunid=123', 120, 3);
+
+insert into t_power (ID, POWERNAME, URL, PARENTID, SORTID)
+values (900, '删除登入日志', '', 123, -1);
 
 
 

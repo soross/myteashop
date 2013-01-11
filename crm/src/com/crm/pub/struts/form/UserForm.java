@@ -27,6 +27,8 @@ import com.crm.pub.po.TRole;
  * 用于系统用户管理的UserForm
  */
 public class UserForm extends ActionForm {
+	private String id;
+	
 	private String userid;// 用户ID
 
 	private String username;// 用户名
@@ -54,6 +56,13 @@ public class UserForm extends ActionForm {
 	private Date opentime;// 开户日期
 
 	private String isslock;// 是否冻结
+
+	private String question;// 是否冻结
+
+	private String answer;// 是否冻结
+
+	private String startCeateDates;
+	private String endCeateDates;
 
 	private String[] trole;// 角色
 	private String[] tprows;// 角色
@@ -244,5 +253,45 @@ public class UserForm extends ActionForm {
 
 	public void setTprows(String[] tprows) {
 		this.tprows = tprows;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public String getStartCeateDates() {
+		return startCeateDates;
+	}
+
+	public void setStartCeateDates(String startCeateDates) {
+		this.startCeateDates = startCeateDates;
+	}
+
+	public String getEndCeateDates() {
+		return endCeateDates;
+	}
+
+	public void setEndCeateDates(String endCeateDates) {
+		this.endCeateDates = endCeateDates;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

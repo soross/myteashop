@@ -1,0 +1,120 @@
+<html>
+<head>
+<style>
+table{border:1px;}
+</style>
+<script>
+function insertTypeOne(tabid){
+	var obj = document.getElementById(tabid);
+	//alert(obj.rows.length);
+	var myTR =obj.insertRow(obj.rows.length);
+	
+	var myTD1=myTR.insertCell();
+	myTD1.innerHTML='aaaaa'+obj.rows.length;
+	
+	var myTD2=myTR.insertCell();
+	myTD2.innerHTML='<input name="aaaaa" id="aaaaa'+obj.rows.length+'"/>';
+}
+
+function insertTypeTwo(tabid){
+	var obj = document.getElementById(tabid);
+	var myTR =obj.insertRow(obj.rows.length);
+	
+	var myTD1=myTR.insertCell();
+	myTD1.innerHTML='bbbbb'+obj.rows.length;
+	
+	var myTD2=myTR.insertCell();
+	myTD2.innerHTML='<input name="bbbbb" id="bbbbb'+obj.rows.length+'"/>';
+}
+
+function insertTypeThree(tabid){
+	var obj = document.getElementById(tabid);
+	var myTR =obj.insertRow(obj.rows.length);
+	
+	var myTD1=myTR.insertCell();
+	myTD1.innerHTML='ccccc'+obj.rows.length;
+	
+	var myTD2=myTR.insertCell();
+	myTD2.innerHTML='<input name="ccccc" id="ccccc'+obj.rows.length+'"/>';
+}
+function getResult(){
+	var result="";
+	var names = document.getElementsByName("aaaaa");
+	for(var i=0;i<names.length;i++){
+		//alert("aaaaa"+(i+1)+":"+ names[i].value+"\r\n");
+		result = result +"aaaaa"+(i+1)+":"+ names[i].value+"\r\n";
+	}
+	
+	
+	var names = document.getElementsByName("bbbbb");
+	for(var i=0;i<names.length;i++){
+		result = result +"bbbbb"+(i+1)+":"+ names[i].value+"\r\n";
+	}
+	
+	var names = document.getElementsByName("aaaaa");
+	for(var i=0;i<names.length;i++){
+		result = result +"ccccc"+(i+1)+":"+ names[i].value+"\r\n";
+	}
+	document.getElementById('ta').value=result;
+}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<table id="typeone">
+				<tr>
+					<td>
+					aaaaa1
+					</td>
+					<td>
+					<input id="aaaaa1" name="aaaaa"/>
+					</td>
+				</tr>
+			</table>
+			<table id="typetwo">
+				<tr>
+					<td>
+					bbbbb1
+					</td>
+					<td>
+					<input name="bbbbb"/>
+					</td>
+				</tr>
+			</table>
+			<table id="typethree">
+				<tr>
+					<td>
+					ccccc1
+					</td>
+					<td>
+					<input name="ccccc"/>
+					</td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td>
+					<input type="button" value="one" onclick="insertTypeOne('typeone');">
+					</td>
+					<td>
+					<input type="button" value="two" onclick="insertTypeTwo('typetwo');">
+					</td>
+					<td>
+					<input type="button" value="three" onclick="insertTypeThree('typethree');">
+					</td>
+					<td>
+					<input type="button" value="send" onclick="getResult();">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<textarea id="ta" rows=5 cols=200></textarea>
+
+</body>
+</html>

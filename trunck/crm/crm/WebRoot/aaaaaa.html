@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<input name="" class="one1" type="checkbox" value="1" onclick="selectSonAll(this)"/>您解答问题。<br />
+
+&nbsp;&nbsp;&nbsp;<input name="" class="two1" type="checkbox" value="11" onclick="selectOneThree(this,'1')"/>您解答问题。<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" class="three11" type="checkbox" value="111" onclick="selectParentAll(this,'1','11')"/>您解答问题。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" class="three11" type="checkbox" value="112" onclick="selectParentAll(this,'1','11')"/>您解答问题。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" class="three11" type="checkbox" value="113" onclick="selectParentAll(this,'1','11')"/>您解答问题。<br />
+
+
+&nbsp;&nbsp;&nbsp;<input name="" class="two1" type="checkbox" value="12" onclick="selectOneThree(this,'1')"/>您解答问题。<br />
+&nbsp;&nbsp;&nbsp;<input name="" class="two1" type="checkbox" value="13" onclick="selectOneThree(this,'1')"/>您解答问题。<br />
+
+
+
+
+<input name="" class="one2" type="checkbox" value="2" onclick="selectSonAll(this)"/>您解答问题。<br />
+&nbsp;&nbsp;&nbsp;<input name="" class="two2" type="checkbox" value="21" onclick="selectOneThree(this,'2')"/>您解答问题。<br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" class="three22" type="checkbox" value="222" onclick="selectParentAll(this,'21','2')"/>您解答问题。<br />
+
+
+
+<input name="" class="one3" type="checkbox" value="3" onclick="selectSonAll(this)" />您解答问题。<br />
+<input name="" class="one4" type="checkbox" value="4" onclick="selectSonAll(this)" />您解答问题。<br />
+</body>
+<script>
+function selectSonAll(obj){
+	//选中所有只项
+	var chks = document.getElementsByTagName('input');
+	for(var i=0;i<chks.length;i++){//选中2级
+		if(chks[i].className=="two"+obj.value){
+			chks[i].checked=obj.checked;
+			for(var j=0;j<chks.length;j++){//选中3级
+				if(chks[j].className=="three"+chks[i].value){
+					chks[j].checked=obj.checked;
+				}
+			}		
+		}
+	}
+}
+
+function selectParentAll(obj,vid,val){
+	//选中所有父项
+	var chks = document.getElementsByTagName('input');
+	
+	for(var i=0;i<chks.length;i++){
+		//判断是否有同一级别的其他项选中
+		var boolean = true;
+		for(var j=0;j<chks.length;j++){
+			//alert(chks[j].className+"==three"+val +"----"+chks[j].value+"!="+obj.value);
+			if(chks[j].className=="three"+val && chks[j].value!=obj.value){
+				if(chks[j].checked){
+					boolean = false;
+					break;
+				}
+			}
+		}
+		
+		//2级选中
+		if(chks[i].className=="two"+vid && chks[i].value==val){
+			if(obj.checked==true){
+				chks[i].checked=obj.checked;
+			}else{
+				//如果有其他3级项选中，不选的时候不过滤
+				if(boolean){
+					chks[i].checked=obj.checked;
+				}
+			}
+		}
+		//1级选中
+		if(chks[i].className=="one"+vid){
+			if(obj.checked==true){
+				chks[i].checked=obj.checked;
+			}else{
+				if(boolean){
+					chks[i].checked=obj.checked;
+				}
+			}
+		}
+	}
+}
+
+function selectOneThree(obj,vid){
+	var chks = document.getElementsByTagName('input');
+	var boolean = true;
+	for(var i=0;i<chks.length;i++){
+		var boolean = true;
+		//判断父级是否不去选中
+		for(var j=0;j<chks.length;j++){
+			//alert(chks[j].className+"=="+obj.className +"&&"+ chks[j].value+"!="+obj.value)
+			if(chks[j].className==obj.className && chks[j].value!=obj.value){
+				if(chks[j].checked){
+					boolean = false;
+					break;
+				}
+			}
+		}		
+		//选中父级
+		if(chks[i].className=="one"+vid){
+			if(obj.checked){
+				chks[i].checked = obj.checked;
+			}else{
+				if(boolean){
+					chks[i].checked = false;
+				}
+			}
+			
+		}
+		//选中3级
+		if(chks[i].className=="three"+obj.value){
+			chks[i].checked=obj.checked;
+		}
+	}
+}
+
+</script>
+
+
+</html>

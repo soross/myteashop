@@ -201,6 +201,16 @@ else if(isset($_POST[task]) && "updateEmailConfig"==$_POST[task]){
 else if(isset($_POST[task])&&"replyMsg"==$_POST[task]){
 	$db->query("update message set reply='".replace($_POST[content])."',reply_date=now() where id='$_POST[msgid]'");
 	echo "<script>alert('回复/回复修改成功!');location.href='../msginfo.php?msgid=$_POST[msgid]';</script>";
+}else if(isset($_POST[task]) && "addJoinUs"==$_POST[task]){
+	$db->query("insert into comm_code(comm_type,comm_value,fkid) " .
+			"values('$_POST[title]', '".replace($_POST[contentAdd])."','$_POST[fkid]') ");
+	echo "<script>alert('新增招聘信息成功!');location.href='../joinus.php';</script>";
+}else if(isset($_POST[task]) && "updateJoinUs"==$_POST[task]){
+	$db->query("update comm_code set comm_type='$_POST[title]',comm_value='".replace($_POST['content'.$_POST[joinusid]])."' where id='$_POST[joinusid]' ");
+	echo "<script>alert('招聘信息修改成功!');location.href='../joinus.php';</script>";
+}else if(isset($_GET[task]) && "deleteJoinUs"==$_GET[task]){
+	$db->query("delete from comm_code where id='$_GET[joinusid]' ");
+	echo "<script>alert('招聘信息删除成功?');location.href='../joinus.php';</script>";
 
 }else{
 	echo "<script>alert('操作失败!');window.history.back(-1);</script>";

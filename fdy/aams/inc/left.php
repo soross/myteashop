@@ -106,6 +106,7 @@ function MM_swapImage() { //v3.0
 	    <div class="content">
 		 <p>-&nbsp;<a href="../partner.php" target="dataFrame">合作伙伴配置</a></p>
 	      <p>-&nbsp;<a href="../partnerlogo.php" target="dataFrame">合作伙伴Logo管理</a></p>
+	      <p>-&nbsp;<a href="../joinus.php" target="dataFrame">招聘贤才配置</a></p>
 	    </div>
 	  </li>
 	  <li>

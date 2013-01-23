@@ -63,7 +63,7 @@ function fontZoom(size)
           <div class='content'>
 			<div id="newscontent">
 				<div class="newstitle">{$newsInfo.title}</div>
-				{if $newsInfo.type=='NEWS'}
+				{if $newsInfo.remark=='NEWS'}
 				<div class="info">来源：{$newsInfo.src} &nbsp;&nbsp;作者：{$newsInfo.author} &nbsp;&nbsp; 发布于：{$newsInfo.create_date} &nbsp;&nbsp; 文字：【<a  href="javascript:fontZoom(16)">大</a>】【<a  href="javascript:fontZoom(14)">中</a>】【<a   href="javascript:fontZoom(12)">小</a>】</div>
 				<div id="con" class="con">
 				{$newsInfo.content}

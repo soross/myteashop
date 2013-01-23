@@ -30,7 +30,7 @@
         <td>排单时间：</td>
         <td>
         <input class="txtbox" type="text" id="sdate" name="sdate"
-        onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" class="Wdate"  readonly="readonly"/></td>
+        onfocus="javascript:WdatePicker({dateFmt:'yyyy-MM-dd'});" class="Wdate"  readonly="readonly"/></td>
         <td>&nbsp;<input class="submitButton" type="submit" name="tijiao" value="录入排单时间"/>
         <input type="hidden" id="itemid" name="itemid" value="<?php echo $_GET[itemid];?>"/>
         <input type="hidden" id="orderid" name="orderid" value="<?php echo $_GET[orderid];?>"/>
@@ -39,6 +39,6 @@
     </tr>
 </table>
 </form>
-
 </body>
+
 </html>

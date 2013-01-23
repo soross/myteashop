@@ -144,9 +144,14 @@ else
 			//	$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "订单明细未全部竣工,进仓失败!");
 			//	echo "<script>alert('订单明细未全部竣工,进仓失败!');location.href='../orderlist.php'</script>";
 			//} else {
+
+			if (isset ($_POST[sdate]) && !empty ($_POST[sdate])) {
 				$db->query("update orderitem set jcdate='".$_POST[sdate]."' where id = '" . $_POST[itemid] . "'");
 				$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "成功", "进仓", "订单已成功进仓!");
 				echo "<script>alert('订单已成功进仓!');location.href='../orderlist.php'</script>";
+			}else{
+				echo "<script>alert('订单进仓时间不能为空!');location.href='../orderlist.php'</script>";
+			}
 			//}
 		} else {
 			$db->addLog("CAP04004", $_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'], "失败", "进仓", "非法操作!");
@@ -262,9 +267,13 @@ else if(isset($_GET[task])&&"overAllPd"==$_GET[task]){
 //排单时间
 else if(isset($_POST[task])&&"orderPDdate"==$_POST[task]){
 	if (isset ($_POST[itemid]) && !empty ($_POST[itemid])) {
+		if(isset ($_POST[sdate]) && !empty ($_POST[sdate])){
 		$db->query("update orderitem set pddate ='".$_POST[sdate]."' where id = '".$_POST[itemid]."'");
 		$db->addLog("CAP04009",$_SESSION['WEB_AAMS_USER_LOGIN_UID_SESSION'],"成功","订单排单时间","订单排单时间录入成功！");
-		echo "<script>alert('订单排单时间录入时间!');location.href='../orderlist.php'</script>";
+			echo "<script>alert('订单排单时间录入时间!');location.href='../orderlist.php'</script>";
+		}else{
+			echo "<script>alert('请录入排单时间,不能为空!');location.href='../orderlist.php'</script>";
+		}
 	}else{
 		echo "<script>alert('非法操作!');location.href='../pd.php?orderid=$_POST[orderid]'</script>";
 	}
